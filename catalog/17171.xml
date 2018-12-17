@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17171"><title>up to date m5d exporter</title><posts><post id="p156831" date="Posted: Tue Sep 12, 2006 9:21 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello, 
+<br />i am looking for an up to date maya to md5 (version 10) exporter. the sticky here in this forum only exports to version 6.
+<br /><br />all i found was:
+<br />on this page
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081204230017/http://www.iddevnet.com/doom3/modelexport.php">http://www.iddevnet.com/doom3/modelexport.php</a><!-- m -->
+<br />it says:
+<br /><br />"The files have to be processed using a built in tool to convert the Maya files to .md5mesh and .md5anim files."
+<br /><br />but unfortunately i could not find this tool in the doom3 sdk.
+<br /><br />thanks!</div>]]></body></post><post id="p156835" date="Posted: Tue Sep 12, 2006 9:57 am "><author>Kamikazee</author><body><![CDATA[<div class="postbody">The built-in tool is built into the engine, and must be issued with a console command. (Much like typing "editor" into the console to launch the map editor)
+<br /><br />AFAIK, it's "exportmodels". See <a href="https://web.archive.org/web/20081204230017/http://www.modwiki.net/wiki/Exportmodels_%28console_command%29" class="postlink">ModWiki:  Exportmodels (console command)</a> on how to use it, it also links to more info on iddevnet.com.</div>]]></body></post><post id="p156836" date="Posted: Tue Sep 12, 2006 10:23 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">thank you.
+<br /><br />does that mean, that you have to own a doom3engine-based game to use this tool?</div>]]></body></post><post id="p156837" date="Posted: Tue Sep 12, 2006 11:00 am "><author>Kamikazee</author><body><![CDATA[<div class="postbody">Of course... With "the console", I mean the in-game console.</div>]]></body></post><post id="p156921" date="Posted: Wed Sep 13, 2006 9:09 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">ok thanks!
+<br />luckily i have quake4, so i started the console using Quake3Ded.exe and tried to export a sample model using:
+<br /><br />exportModels test.def
+<br /><br />which gives me this output:
+<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">]reexportmodels test.def<br />Converting md5/berserker_ref.ma to C:/Programme/id Software/Quake 4/q4base/md5/berserker_ref.md5mesh...<br />Loading file...<br />Creating joints...<br />Creating meshes...<br />WARNING: file C:/Programme/id Software/Quake 4/q4base/def/test.def, line 4: Failed to export 'C:/Programme/id Software/Quake 4/q4base/md5/berserker_ref.ma' : kObjectNameFilter: Error getting skin cluster ((kInvalidParameter): Object is incompatible with this method)<br /></div>
+<br /><br />does anyone know what the problem could be? i tried mb files and ma files exported from Maya6.0.
+<br /><br />edit: i have now also been trying to use the models from the Q4SDK, but it gives me the same error.  here is my simple def file:
+<br /><br />export test_neu {
+<br />	options -sourcedir md5 -destdir md5
+<br />	mesh    berserker_ref.ma
+<br />}</div>]]></body></post><post id="p157626" date="Posted: Wed Sep 20, 2006 2:34 pm "><author>ehmdjii</author><body><![CDATA[<div class="postbody">did anyone of you guys ever get this exportmodels command to work as supposed?
+<br /><br />the last week i have been trying it from different games which use the doom3 engine, but without any success.
+<br /><br />either the game crashes, the above error message occurs, or nothing happens at all.
+<br /><br />is there no other way to create MD5s out of Maya?</div>]]></body></post><post id="p158292" date="Posted: Wed Sep 27, 2006 1:17 pm "><author>elusive</author><body><![CDATA[<div class="postbody">Hm first of all don't use spaces in filename or paths.
+<br />I think the error you got has something to do with the weight maps of the model. I can remember that some of our animators got that message some months ago. He binded the skeleton to the model again and it worked. 
+<br />I'm not sure it's the same problem here. Doom 3 can be very creative when it comes to error messages</div>]]></body></post><post id="p156831" date="Posted: Tue Sep 12, 2006 9:21 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello, 
+<br />i am looking for an up to date maya to md5 (version 10) exporter. the sticky here in this forum only exports to version 6.
+<br /><br />all i found was:
+<br />on this page
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081204230314/http://www.iddevnet.com/doom3/modelexport.php">http://www.iddevnet.com/doom3/modelexport.php</a><!-- m -->
+<br />it says:
+<br /><br />"The files have to be processed using a built in tool to convert the Maya files to .md5mesh and .md5anim files."
+<br /><br />but unfortunately i could not find this tool in the doom3 sdk.
+<br /><br />thanks!</div>]]></body></post><post id="p156835" date="Posted: Tue Sep 12, 2006 9:57 am "><author>Kamikazee</author><body><![CDATA[<div class="postbody">The built-in tool is built into the engine, and must be issued with a console command. (Much like typing "editor" into the console to launch the map editor)
+<br /><br />AFAIK, it's "exportmodels". See <a href="https://web.archive.org/web/20081204230314/http://www.modwiki.net/wiki/Exportmodels_%28console_command%29" class="postlink">ModWiki:  Exportmodels (console command)</a> on how to use it, it also links to more info on iddevnet.com.</div>]]></body></post><post id="p156836" date="Posted: Tue Sep 12, 2006 10:23 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">thank you.
+<br /><br />does that mean, that you have to own a doom3engine-based game to use this tool?</div>]]></body></post><post id="p156837" date="Posted: Tue Sep 12, 2006 11:00 am "><author>Kamikazee</author><body><![CDATA[<div class="postbody">Of course... With "the console", I mean the in-game console.</div>]]></body></post><post id="p156921" date="Posted: Wed Sep 13, 2006 9:09 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">ok thanks!
+<br />luckily i have quake4, so i started the console using Quake3Ded.exe and tried to export a sample model using:
+<br /><br />exportModels test.def
+<br /><br />which gives me this output:
+<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">]reexportmodels test.def<br />Converting md5/berserker_ref.ma to C:/Programme/id Software/Quake 4/q4base/md5/berserker_ref.md5mesh...<br />Loading file...<br />Creating joints...<br />Creating meshes...<br />WARNING: file C:/Programme/id Software/Quake 4/q4base/def/test.def, line 4: Failed to export 'C:/Programme/id Software/Quake 4/q4base/md5/berserker_ref.ma' : kObjectNameFilter: Error getting skin cluster ((kInvalidParameter): Object is incompatible with this method)<br /></div>
+<br /><br />does anyone know what the problem could be? i tried mb files and ma files exported from Maya6.0.
+<br /><br />edit: i have now also been trying to use the models from the Q4SDK, but it gives me the same error.  here is my simple def file:
+<br /><br />export test_neu {
+<br />	options -sourcedir md5 -destdir md5
+<br />	mesh    berserker_ref.ma
+<br />}</div>]]></body></post><post id="p157626" date="Posted: Wed Sep 20, 2006 2:34 pm "><author>ehmdjii</author><body><![CDATA[<div class="postbody">did anyone of you guys ever get this exportmodels command to work as supposed?
+<br /><br />the last week i have been trying it from different games which use the doom3 engine, but without any success.
+<br /><br />either the game crashes, the above error message occurs, or nothing happens at all.
+<br /><br />is there no other way to create MD5s out of Maya?</div>]]></body></post><post id="p158292" date="Posted: Wed Sep 27, 2006 1:17 pm "><author>elusive</author><body><![CDATA[<div class="postbody">Hm first of all don't use spaces in filename or paths.
+<br />I think the error you got has something to do with the weight maps of the model. I can remember that some of our animators got that message some months ago. He binded the skeleton to the model again and it worked. 
+<br />I'm not sure it's the same problem here. Doom 3 can be very creative when it comes to error messages</div>]]></body></post></posts></thread></xml>

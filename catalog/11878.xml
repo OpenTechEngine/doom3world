@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="11878"><title>Fixing stretched and aligning textures/materials</title><posts><post id="107493" date="Posted: Tue Aug 09, 2005 6:09 pm    Post subject: Fixing stretched and aligning textures/materials"><author>Kaiser</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I am currently making a test terrain model and some parts of the model have stretched textures:&#13;
+<br/><br/><img src="/web/20061012184027im_/http://vault.d3files.com/temp/terrain.jpg" border="0"/><br/><br/><br/>
+How can this be fixed in lightwave? Also how do you align/move textures around in lightwave as well?&#13;
+<br/><br/>
+Thanks.&#13;
+<br/><br/><br/>
+edit: oh yeah, just in case, this is the material information used for this terrain:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+   }    &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }       &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }         &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012184027/http://dsv.newdoom.com/" target="_blank">http://dsv.newdoom.com/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107574" date="Posted: Wed Aug 10, 2005 4:30 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The way the texture is applied to a model is controlled entirely by the UV map.&#13;
+<br/><br/>
+The way UV maps are adjusted in LightWave (and probably every other modeling package for that matter) is completely different than that of the level editor.&#13;
+<br/><br/>
+You can't select faces and slide the texture applied to them around easily.&#13;
+<br/><br/>
+Instead you have to move points and polygons around in the UV viewport.&#13;
+<br/><br/>
+Tutorials on the subject of UV mapping would probably help you alot.<br/>_________________<br/><a href="/web/20061012184027/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012184027im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012184027/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107625" date="Posted: Wed Aug 10, 2005 3:30 pm    Post subject: "><author>MercyKiller</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The UV map is basically a set of 2d coordinates that correspond to the 3d faces of the model. Before applying a texture, you need to "unwrap" the UV map and position it in the UV viewport so you can understand what face corresponds to what on the model. Minimal distortion in the UV viewport is best, as you don't want small faces to recieve the most detail when you texture them <img src="/web/20061012184027im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+After you've got the UVmap completed many packages allow you to export an image of it for use in photoshop or a similar 2d package. This is where the actual skinning takes place.&#13;
+<br/><br/>
+3ds max (dunno about lightwave) also has some generic UV map modifiers such as planar, cylindrical, etc. That are fairly good for aligning textures on shapes that don't vary too much from the base primitive.&#13;
+<br/><br/>
+Blah, but what do I know, I'm a noob modeller anyway. Someone like kat would probably be able to help you more. <img src="/web/20061012184027im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>"Nothing earns you geek points like installing Linux on a dead badger."&#13;
+<br/>
+__________________________________&#13;
+<br/>
+-MercyKiller&#13;
+<br/>
+Level Designer - Last Man Standing Team</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107493" date="Posted: Tue Aug 09, 2005 6:09 pm    Post subject: Fixing stretched and aligning textures/materials"><author>Kaiser</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I am currently making a test terrain model and some parts of the model have stretched textures:&#13;
+<br/><br/><img src="/web/20061012183309im_/http://vault.d3files.com/temp/terrain.jpg" border="0"/><br/><br/><br/>
+How can this be fixed in lightwave? Also how do you align/move textures around in lightwave as well?&#13;
+<br/><br/>
+Thanks.&#13;
+<br/><br/><br/>
+edit: oh yeah, just in case, this is the material information used for this terrain:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+   }    &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }       &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }         &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012183309/http://dsv.newdoom.com/" target="_blank">http://dsv.newdoom.com/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107574" date="Posted: Wed Aug 10, 2005 4:30 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The way the texture is applied to a model is controlled entirely by the UV map.&#13;
+<br/><br/>
+The way UV maps are adjusted in LightWave (and probably every other modeling package for that matter) is completely different than that of the level editor.&#13;
+<br/><br/>
+You can't select faces and slide the texture applied to them around easily.&#13;
+<br/><br/>
+Instead you have to move points and polygons around in the UV viewport.&#13;
+<br/><br/>
+Tutorials on the subject of UV mapping would probably help you alot.<br/>_________________<br/><a href="/web/20061012183309/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183309im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183309/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107625" date="Posted: Wed Aug 10, 2005 3:30 pm    Post subject: "><author>MercyKiller</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The UV map is basically a set of 2d coordinates that correspond to the 3d faces of the model. Before applying a texture, you need to "unwrap" the UV map and position it in the UV viewport so you can understand what face corresponds to what on the model. Minimal distortion in the UV viewport is best, as you don't want small faces to recieve the most detail when you texture them <img src="/web/20061012183309im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+After you've got the UVmap completed many packages allow you to export an image of it for use in photoshop or a similar 2d package. This is where the actual skinning takes place.&#13;
+<br/><br/>
+3ds max (dunno about lightwave) also has some generic UV map modifiers such as planar, cylindrical, etc. That are fairly good for aligning textures on shapes that don't vary too much from the base primitive.&#13;
+<br/><br/>
+Blah, but what do I know, I'm a noob modeller anyway. Someone like kat would probably be able to help you more. <img src="/web/20061012183309im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>"Nothing earns you geek points like installing Linux on a dead badger."&#13;
+<br/>
+__________________________________&#13;
+<br/>
+-MercyKiller&#13;
+<br/>
+Level Designer - Last Man Standing Team</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p107493" date="Posted: Tue Aug 09, 2005 6:09 pm "><author>Kaiser</author><body><![CDATA[<div class="postbody">I am currently making a test terrain model and some parts of the model have stretched textures:
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://vault.d3files.com/temp/terrain.jpg" alt="Image" /><br /><br /><br />How can this be fixed in lightwave? Also how do you align/move textures around in lightwave as well?
+<br /><br />Thanks.
+<br /><br /><br />edit: oh yeah, just in case, this is the material information used for this terrain:
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">models/mapobjects/my_model/my_terrain<br />{<br />   stone<br />   {<br />      blend       bumpmap<br />      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))<br />      scale 5, 5      <br />   }      <br />   {<br />      blend      diffusemap<br />      map      textures/rock/skysand1_d.tga<br />      scale 5, 5<br />      vertexColor<br />   }    <br />    {<br />      blend      specularmap<br />      map      textures/rock/dirt03_s.tga<br />      scale 5, 5      <br />      vertexColor<br />   }          <br />   {<br />      blend      bumpmap<br />      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )<br />      scale 5, 5<br />   }    <br />   {<br />      blend      diffusemap<br />      map      textures/rock/sharprock3.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }       <br />   {<br />      blend      specularmap<br />      map      textures/rock/sharprock3_s.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }         <br />}<br /></div></div>]]></body></post><post id="p107574" date="Posted: Wed Aug 10, 2005 4:30 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">The way the texture is applied to a model is controlled entirely by the UV map.
+<br /><br />The way UV maps are adjusted in LightWave (and probably every other modeling package for that matter) is completely different than that of the level editor.
+<br /><br />You can't select faces and slide the texture applied to them around easily.
+<br /><br />Instead you have to move points and polygons around in the UV viewport.
+<br /><br />Tutorials on the subject of UV mapping would probably help you alot.</div>]]></body></post><post id="p107625" date="Posted: Wed Aug 10, 2005 3:30 pm "><author>MercyKiller</author><body><![CDATA[<div class="postbody">The UV map is basically a set of 2d coordinates that correspond to the 3d faces of the model. Before applying a texture, you need to "unwrap" the UV map and position it in the UV viewport so you can understand what face corresponds to what on the model. Minimal distortion in the UV viewport is best, as you don't want small faces to recieve the most detail when you texture them <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /><br /><br />After you've got the UVmap completed many packages allow you to export an image of it for use in photoshop or a similar 2d package. This is where the actual skinning takes place.
+<br /><br />3ds max (dunno about lightwave) also has some generic UV map modifiers such as planar, cylindrical, etc. That are fairly good for aligning textures on shapes that don't vary too much from the base primitive.
+<br /><br />Blah, but what do I know, I'm a noob modeller anyway. Someone like kat would probably be able to help you more. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post></posts></thread></xml>

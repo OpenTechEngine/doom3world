@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10541"><title>sry another n00b question</title><posts><post id="94477" date="Posted: Mon May 16, 2005 11:37 am    Post subject: sry another n00b question"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was reading goliath's tutorial on normal mapping, and inside, he said that using lightwave and the surface baker shader, we can generate diffuse maps. However, I get a message saying that it only works for quads or something like that. So, is there another way to generate the diffuse map? Let's say I've set up an Atlas UV map in modeller, must I create my image in photoshop and using the UV map within modeller as a <span style="text-decoration: underline">reference</span> or do I have the choice of copying the outlines of the polygons into photoshop then start texturing from there?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94480" date="Posted: Mon May 16, 2005 12:00 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can do one of this:&#13;
+<br/><br/><br/>
+1) enlarge your viewport where your UV map laying, and just take a screenshot.. With photoshop, using the crop tool, crop your canvas leaving only the UV template visible (ok, i must improve my english.. maybe I would post a screenshot)&#13;
+<br/><br/><br/>
+2) Using the various exporters that comes with lightwave, I'm sure there is a .PSD exporter that export directly your uv viewport to a photoshop image file...&#13;
+<br/><br/>
+3) bake your color and diffuse maps with surface baker<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94481" date="Posted: Mon May 16, 2005 12:01 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I take a screenshot of the UV map and bring it into photoshop. THe best workflow from there is to crop it to the size of the UV grid, resize it to what ever size you're making your texture, open u pthe levels dialogue and bring the left slider in to about 130, so everyting is black apart from the Uv outlines,  then set this on top of your texture as a screen.&#13;
+<br/>
+ YOu should never use atlas map though.&#13;
+<br/>
+ Another option is to paint directly on the the model in 3d using deep paint 3d or maxon bodypaint. I usually use this method to project photos on to the model, when doing heads.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012181821/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94586" date="Posted: Mon May 16, 2005 10:08 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks rayne and odd, I think right now the copy n paste method works best. I have bodypaint but I can't seem to get it to work with lighwave. Everytime I try to paint on to a surface in bodypaint after setting up the settings, the whole surface gets painted when I click just once using the paintbrush tool  <img src="/web/20061012181821im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94477" date="Posted: Mon May 16, 2005 11:37 am    Post subject: sry another n00b question"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was reading goliath's tutorial on normal mapping, and inside, he said that using lightwave and the surface baker shader, we can generate diffuse maps. However, I get a message saying that it only works for quads or something like that. So, is there another way to generate the diffuse map? Let's say I've set up an Atlas UV map in modeller, must I create my image in photoshop and using the UV map within modeller as a <span style="text-decoration: underline">reference</span> or do I have the choice of copying the outlines of the polygons into photoshop then start texturing from there?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94480" date="Posted: Mon May 16, 2005 12:00 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can do one of this:&#13;
+<br/><br/><br/>
+1) enlarge your viewport where your UV map laying, and just take a screenshot.. With photoshop, using the crop tool, crop your canvas leaving only the UV template visible (ok, i must improve my english.. maybe I would post a screenshot)&#13;
+<br/><br/><br/>
+2) Using the various exporters that comes with lightwave, I'm sure there is a .PSD exporter that export directly your uv viewport to a photoshop image file...&#13;
+<br/><br/>
+3) bake your color and diffuse maps with surface baker<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94481" date="Posted: Mon May 16, 2005 12:01 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I take a screenshot of the UV map and bring it into photoshop. THe best workflow from there is to crop it to the size of the UV grid, resize it to what ever size you're making your texture, open u pthe levels dialogue and bring the left slider in to about 130, so everyting is black apart from the Uv outlines,  then set this on top of your texture as a screen.&#13;
+<br/>
+ YOu should never use atlas map though.&#13;
+<br/>
+ Another option is to paint directly on the the model in 3d using deep paint 3d or maxon bodypaint. I usually use this method to project photos on to the model, when doing heads.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012182618/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94586" date="Posted: Mon May 16, 2005 10:08 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks rayne and odd, I think right now the copy n paste method works best. I have bodypaint but I can't seem to get it to work with lighwave. Everytime I try to paint on to a surface in bodypaint after setting up the settings, the whole surface gets painted when I click just once using the paintbrush tool  <img src="/web/20061012182618im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

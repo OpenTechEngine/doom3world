@@ -1,0 +1,1134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17452"><title>def_head (or general md5) offsets _ other problems</title><posts><post id="159104" date="Posted: Sun Oct 08, 2006 2:51 am    Post subject: def_head (or general md5) offsets &amp; other problems"><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi all, I have a bit of a problem. It seems as though md5 meshes hate having an offset (or similar) variable. They show up as blackboxes. Anyone know any work arounds or sdk/script fixes for that?&#13;
+<br/><br/>
+The Dark Mod is currently converting the AI to have swapable heads but the skeletons we're using have the head bone way too high for the doom 3 heads. I ended up tweaking the head joints so I could attach the heads to our current skeleton. But we may want to have vanilla doom 3 heads as part of the heads we can attach. As soon as we add an offset or similar the meshes show as black boxes. That's rather inconvenient.&#13;
+<br/><br/>
+I toyed with the option of using doom 3 skeletons but our skeletons are a little more versatile &amp; the d3 skels didn't play well with the Dark Mod meshes.&#13;
+<br/><br/>
+Another problem I'm having is that the maya exporter (I'm using Maya 6.5 &amp; the 6.5 version of MayaImportx86) refuses to include some meshes in the mb so they're missing in the md5mesh. I've done just about every trick &amp; troubleshooting tips on these forums (delete history, freeze transformations, made sure they are properly triangulated, properly rigged &amp; weighted, each mesh is pointing to a different texture &amp; so on) but the exporter refuses to see these meshes. &#13;
+<br/><br/>
+I successfully resized &amp; modified another one of our AI so it could use a head attachment but the problematic one, well, is still being problematic. I did the same steps as my successful attempt but nothing works.&#13;
+<br/><br/>
+Here's the full def of the AI I'm trying to do do:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">export elitecitywatch {&#13;
+<br/><br/>
+options -keep Hips LeftHips_Dummy LeftUpLeg LeftUpLegRoll LeftLeg LeftLegRoll LeftFoot LeftToeBase joint3 joint4 RightHips_Dummy RightUpLeg RightUpLegRoll RightLeg RightUpLegRoll RightLegRoll RightFoot RightToeBase joint5 joint6 Spine_Dummy Spine Spine1 Spine2 LeftShoulder_Dummy LeftShoulder LeftArm_Dummy LeftArm LeftArmRoll LeftForeArm LeftForeArmRoll LeftHand LeftHandIndex1 LeftHandIndex2 LeftHandIndex3 joint12 LeftHandRing1 LeftHandRing2 LeftHandRing3 LeftHandRing4 LeftHandThumb1 LeftHandThumb2 LeftHandThumb3 Neck Head RightShoulder_Dummy RightShoulder RightArm_Dummy RightArm RightArmRoll RightForeArm RightForeArmRoll RightHand RightHandIndex1 RightHandIndex2 RightHandIndex3 joint14 RightHandMiddle1 RightHandMiddle2 RightHandMiddle3 joint13 RightHandThumb1 RightHandThumb2 RightHandThumb3 leftpad rightpad joint7 sword -sourcedir models/ask/elitecityMBs -destdir models/md5/chars/guards/elite_citywatch -scale .94&#13;
+<br/>
+   mesh stance2.mb -dest tdm_ai_citywatch_elite&#13;
+<br/>
+    addoptions -scale .94&#13;
+<br/>
+   anim af_pose.mb&#13;
+<br/>
+   anim walk.mb&#13;
+<br/>
+   anim jog.mb -dest run&#13;
+<br/>
+   anim look.mb -dest look_around&#13;
+<br/>
+   anim drawsword.mb&#13;
+<br/>
+   anim idle.mb&#13;
+<br/>
+   anim whack.mb -dest attack&#13;
+<br/>
+   anim idlwtsword.mb -dest idle_sword&#13;
+<br/>
+   anim search.mb&#13;
+<br/>
+}&#13;
+<br/><br/>
+export head_elitecitywatch {&#13;
+<br/><br/>
+options -keep eyecontrol Leyeaim Reyeaim loneckcontrol Loneck neckcontrol headcontrol Head Jaw mouth4 mouth5 mouth6 mouth7 mouth8 tongue1 tongue2 Lbrow1 Lbrow2 Lbrow3 Lcheek Llolid Lnostril Lsmile Lsneer Luplid Rbrow1 Rbrow2 Rbrow3 Rcheek Rlolid Rnostril Rsmile Rsneer Ruplid mouth1 mouth10 mouth11 mouth12 mouth2 mouth3 mouth9 -sourcedir models/ask/elitecityMBs -destdir models/md5/chars/guards/elite_citywatch -scale .94&#13;
+<br/>
+    mesh elitecitywatch_head.mb -dest elitecitywatch_head&#13;
+<br/>
+    addoptions -sourcedir models/ask/d3/heads -scale .94&#13;
+<br/>
+      anim head_idle.mb -range 2 7 -dest head_idle&#13;
+<br/>
+      anim head_blink.mb -range 2 7 -dest head_blink&#13;
+<br/>
+      anim head_death.mb -dest head_death&#13;
+<br/>
+}&#13;
+<br/><br/>
+model tdm_ai_citywatch_elite {&#13;
+<br/>
+    mesh                       models/md5/chars/guards/elite_citywatch/tdm_ai_citywatch_elite.md5mesh&#13;
+<br/><br/>
+    channel torso      ( *Spine1 )&#13;
+<br/>
+    channel legs      ( *origin -*Spine1 )&#13;
+<br/><br/>
+    anim af_pose         models/md5/chars/guards/elite_citywatch/af_pose.md5anim&#13;
+<br/>
+    anim walk              models/md5/chars/guards/elite_citywatch/walk.md5anim {&#13;
+<br/>
+      frame 10   footstep&#13;
+<br/>
+      frame 28   footstep&#13;
+<br/>
+   }&#13;
+<br/>
+    anim run              models/md5/chars/guards/elite_citywatch/run.md5anim {&#13;
+<br/>
+      frame 11   footstep&#13;
+<br/>
+      frame 20   footstep&#13;
+<br/>
+   }&#13;
+<br/>
+    //anim search           models/md5/chars/guards/elite_citywatch/search.md5anim {&#13;
+<br/>
+   //   frame 11   footstep&#13;
+<br/>
+   //   frame 20   footstep&#13;
+<br/>
+   //}&#13;
+<br/><br/>
+    anim idle              models/md5/chars/guards/elite_citywatch/idle.md5anim&#13;
+<br/>
+    anim draw              models/md5/chars/guards/elite_citywatch/drawsword.md5anim {&#13;
+<br/>
+      frame 16   sound_weapon snd_drawsword&#13;
+<br/>
+   }&#13;
+<br/>
+    anim look_around           models/md5/chars/guards/elite_citywatch/look_around.md5anim&#13;
+<br/>
+    anim melee_attack           models/md5/chars/guards/elite_citywatch/attack.md5anim {&#13;
+<br/>
+      frame 18   melee melee_sword_rswing_base&#13;
+<br/>
+   }&#13;
+<br/>
+    anim idle_sword             models/md5/chars/guards/elite_citywatch/idle_sword.md5anim&#13;
+<br/><br/>
+} &#13;
+<br/><br/>
+model head_elitecitywatch {&#13;
+<br/>
+   mesh                     models/md5/chars/guards/elite_citywatch/elitecitywatch_head.md5mesh&#13;
+<br/>
+   channel eyelids               ( Ruplid Rlolid Luplid Llolid )&#13;
+<br/><br/>
+   anim idle                  models/md5/chars/guards/elite_citywatch/head_idle.md5anim&#13;
+<br/>
+   anim stand                  models/md5/chars/guards/elite_citywatch/head_idle.md5anim&#13;
+<br/>
+   anim blink                  models/md5/chars/guards/elite_citywatch/head_blink.md5anim&#13;
+<br/>
+   anim dead                  models/md5/chars/guards/elite_citywatch/head_death.md5anim&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef atdm:ai_citywatch_elite&#13;
+<br/><br/>
+{&#13;
+<br/>
+   "inherit"      "atdm:ai_humanoid"&#13;
+<br/>
+   "ragdoll"                       "guard_base"&#13;
+<br/>
+   "model"                     "tdm_ai_citywatch_elite"&#13;
+<br/>
+   "def_head"                  "head_elitecitywatch"&#13;
+<br/>
+   //"def_head"                  "head_builderguard"&#13;
+<br/>
+   "head_joint"               "Head"&#13;
+<br/><br/>
+   "use_aas"                       "aas32"&#13;
+<br/>
+       "size"                  "32 32 68"&#13;
+<br/>
+   "team"                     "1"&#13;
+<br/>
+   "rank"                     "0"&#13;
+<br/>
+   "health"   "100"&#13;
+<br/>
+   "melee_range"               "74"&#13;
+<br/>
+   "anim"                     "idle"&#13;
+<br/>
+   "attack_cone"               "70"&#13;
+<br/>
+   "attack_accuracy"            "0"&#13;
+<br/>
+   "mass"                     "200"&#13;
+<br/><br/>
+   "look_min"                  "-90 -125 0"&#13;
+<br/>
+   "look_max"                  "25 125 0"&#13;
+<br/>
+   "look_joint Waist"            "0.4 0.4 0"&#13;
+<br/>
+   "look_joint Head"            "0.6 0.6 0"&#13;
+<br/><br/>
+   &#13;
+<br/><br/>
+   "chatter_min"               "3"&#13;
+<br/>
+   "chatter_max"               "4"&#13;
+<br/>
+   "chatter_combat_min"         "2"&#13;
+<br/>
+   "chatter_combat_max"         "2"&#13;
+<br/>
+   &#13;
+<br/>
+   &#13;
+<br/>
+   "ik_numLegs"               "2"&#13;
+<br/>
+   "ik_footSize"               "4"&#13;
+<br/>
+   "ik_waist"                  "Hips"&#13;
+<br/>
+   "ik_hip1"                  "LeftUpLeg"&#13;
+<br/>
+   "ik_hip2"                  "RightUpLeg"&#13;
+<br/>
+   "ik_knee1"                  "LeftLeg"&#13;
+<br/>
+   "ik_knee2"                  "RightLeg"&#13;
+<br/>
+   "ik_ankle1"                  "LeftFoot"&#13;
+<br/>
+   "ik_ankle2"                  "RightFoot"&#13;
+<br/>
+   "ik_dir1"                  "LeftLegRoll"&#13;
+<br/>
+   "ik_dir2"                  "RightLegRoll"&#13;
+<br/>
+   "ik_foot1"                  "LeftToeBase"&#13;
+<br/>
+   "ik_foot2"                  "RightToeBase"&#13;
+<br/><br/>
+   "def_attach"               "ai_weapon_longsword"&#13;
+<br/>
+   "def_dropDeathItem"            "ai_weapon_longsword_drop"&#13;
+<br/>
+   "dropDeathItemJoint"         "RightHand"&#13;
+<br/>
+   "dropDeathItemRotation"         "0 0 0"&#13;
+<br/>
+   //"skin_dropDeath"            "hammer_drop"&#13;
+<br/><br/>
+   "damage_zone chest"         "*Spine -*Neck"&#13;
+<br/>
+   "damage_zone left_arm"         "*LeftArm"&#13;
+<br/>
+   "damage_zone right_arm"         "*RightArm"&#13;
+<br/>
+   "damage_zone legs"         "*Hips origin Spine2"&#13;
+<br/><br/>
+   "damage_scale head"            "3"&#13;
+<br/>
+   "damage_scale chest"            "1"&#13;
+<br/>
+   "damage_scale left_arm"            "0.2"&#13;
+<br/>
+   "damage_scale right_arm"         "0.2"&#13;
+<br/>
+   "damage_scale legs"            "0.3"&#13;
+<br/>
+   &#13;
+<br/>
+   "snd_drawsword"      "sword_unsheath"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I had to be specific about which bones to keep.&#13;
+<br/><br/>
+Thanks for the help</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159109" date="Posted: Sun Oct 08, 2006 5:48 am    Post subject: "><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sorry for the double post but I'm almost figuring out why the exporter is ignoring the meshes. I added all the joints I need in the options in the def file in order to match the number of joints in the mesh to the animations. But when I do that the exporter ignores the meshes. &#13;
+<br/><br/>
+When I leave out the -keep option then the meshes are there, but it adds a lot of unecessary joints so the mesh joints doesn't match the animations. It's a catch 22, leave out the -keep option &amp; keep the meshes, or only keep the joints the animations need &amp; lose some meshes.&#13;
+<br/><br/>
+I also tried -keep with joints I didn't rig to the mesh, but the exporter only keeps those joints. I also tried the -parent joint option.&#13;
+<br/><br/>
+It's possible the 6.5 version of MayaImportx86 might be a little screwy.&#13;
+<br/><br/>
+Here's what the animation joints look like in a text editor:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+numFrames 97&#13;
+<br/>
+numJoints 68&#13;
+<br/>
+frameRate 24&#13;
+<br/>
+numAnimatedComponents 71&#13;
+<br/><br/>
+hierarchy {&#13;
+<br/>
+   "origin"   -1 0 0   //&#13;
+<br/>
+   "Hips"   0 62 0   // origin ( Ty Tz Qx Qy Qz )&#13;
+<br/>
+   "LeftHips_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "LeftUpLeg"   2 56 5   // LeftHips_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftUpLegRoll"   3 56 8   // LeftUpLeg ( Qx Qy Qz )&#13;
+<br/>
+   "LeftLeg"   4 56 11   // LeftUpLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftLegRoll"   5 56 14   // LeftLeg ( Qx Qy Qz )&#13;
+<br/>
+   "LeftFoot"   6 56 17   // LeftLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftToeBase"   7 56 20   // LeftFoot ( Qx Qy Qz )&#13;
+<br/>
+   "joint3"   4 0 0   // LeftUpLegRoll&#13;
+<br/>
+   "joint4"   4 0 0   // LeftUpLegRoll&#13;
+<br/>
+   "RightHips_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "RightUpLeg"   11 56 23   // RightHips_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "RightUpLegRoll"   12 56 26   // RightUpLeg ( Qx Qy Qz )&#13;
+<br/>
+   "RightLeg"   13 56 29   // RightUpLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightLegRoll"   14 56 32   // RightLeg ( Qx Qy Qz )&#13;
+<br/>
+   "RightFoot"   15 56 35   // RightLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightToeBase"   16 0 0   // RightFoot&#13;
+<br/>
+   "joint5"   13 0 0   // RightUpLegRoll&#13;
+<br/>
+   "joint6"   13 0 0   // RightUpLegRoll&#13;
+<br/>
+   "Spine_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "Spine"   20 0 0   // Spine_Dummy&#13;
+<br/>
+   "Spine1"   21 0 0   // Spine&#13;
+<br/>
+   "Spine2"   22 0 0   // Spine1&#13;
+<br/>
+   "LeftShoulder_Dummy"   23 0 0   // Spine2&#13;
+<br/>
+   "LeftShoulder"   24 56 38   // LeftShoulder_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftArm_Dummy"   25 0 0   // LeftShoulder&#13;
+<br/>
+   "LeftArm"   26 56 41   // LeftArm_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftArmRoll"   27 56 44   // LeftArm ( Qx Qy Qz )&#13;
+<br/>
+   "LeftForeArm"   28 56 47   // LeftArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftForeArmRoll"   29 24 50   // LeftForeArm ( Qx Qy )&#13;
+<br/>
+   "LeftHand"   30 56 52   // LeftForeArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftHandIndex1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandIndex2"   32 0 0   // LeftHandIndex1&#13;
+<br/>
+   "LeftHandIndex3"   33 0 0   // LeftHandIndex2&#13;
+<br/>
+   "joint12"   34 0 0   // LeftHandIndex3&#13;
+<br/>
+   "LeftHandRing1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandRing2"   36 0 0   // LeftHandRing1&#13;
+<br/>
+   "LeftHandRing3"   37 0 0   // LeftHandRing2&#13;
+<br/>
+   "LeftHandRing4"   38 0 0   // LeftHandRing3&#13;
+<br/>
+   "LeftHandThumb1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandThumb2"   40 0 0   // LeftHandThumb1&#13;
+<br/>
+   "LeftHandThumb3"   41 0 0   // LeftHandThumb2&#13;
+<br/>
+   "Neck"   23 56 55   // Spine2 ( Qx Qy Qz )&#13;
+<br/>
+   "Head"   43 56 58   // Neck ( Qx Qy Qz )&#13;
+<br/>
+   "RightShoulder_Dummy"   23 0 0   // Spine2&#13;
+<br/>
+   "RightShoulder"   45 0 0   // RightShoulder_Dummy&#13;
+<br/>
+   "RightArm_Dummy"   46 0 0   // RightShoulder&#13;
+<br/>
+   "RightArm"   47 56 61   // RightArm_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "RightArmRoll"   48 56 64   // RightArm ( Qx Qy Qz )&#13;
+<br/>
+   "RightForeArm"   49 56 67   // RightArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightForeArmRoll"   50 8 70   // RightForeArm ( Qx )&#13;
+<br/>
+   "RightHand"   51 0 0   // RightForeArmRoll&#13;
+<br/>
+   "RightHandIndex1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandIndex2"   53 0 0   // RightHandIndex1&#13;
+<br/>
+   "RightHandIndex3"   54 0 0   // RightHandIndex2&#13;
+<br/>
+   "joint14"   55 0 0   // RightHandIndex3&#13;
+<br/>
+   "RightHandMiddle1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandMiddle2"   57 0 0   // RightHandMiddle1&#13;
+<br/>
+   "RightHandMiddle3"   58 0 0   // RightHandMiddle2&#13;
+<br/>
+   "joint13"   59 0 0   // RightHandMiddle3&#13;
+<br/>
+   "RightHandThumb1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandThumb2"   61 0 0   // RightHandThumb1&#13;
+<br/>
+   "RightHandThumb3"   62 0 0   // RightHandThumb2&#13;
+<br/>
+   "leftpad"   23 0 0   // Spine2&#13;
+<br/>
+   "rightpad"   23 0 0   // Spine2&#13;
+<br/>
+   "joint7"   20 0 0   // Spine_Dummy&#13;
+<br/>
+   "sword"   1 0 0   // Hips&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Here's the md5mesh without the -keep option:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">numJoints 74&#13;
+<br/>
+numMeshes 6&#13;
+<br/><br/>
+joints {&#13;
+<br/>
+   "origin"   -1 ( 0 0 0 ) ( -0 -0 -0.0000000219 )      // &#13;
+<br/>
+   "Hips"   0 ( -1.991923213 -0.0321655907 39.150932312 ) ( -0.5 -0.5 -0.5 )      // origin&#13;
+<br/>
+   "LeftHips_Dummy"   1 ( -1.1008975506 1.7862641811 38.6879806519 ) ( 0.0040507964 0.7070956826 0.707100153 )      // Hips&#13;
+<br/>
+   "LeftUpLeg"   2 ( -1.1008945704 3.8412084579 38.691204071 ) ( -0.0875882208 -0.6676871777 -0.7258224487 )      // LeftHips_Dummy&#13;
+<br/>
+   "LeftUpLegRoll"   3 ( -0.459336102 4.321615696 28.7806968689 ) ( -0.076844871 -0.6826014519 0.025022801 )      // LeftUpLeg&#13;
+<br/>
+   "LeftLeg"   4 ( 0.1315372586 4.6811461449 21.8930931091 ) ( -0.123549141 -0.6717206836 0.0905993357 )      // LeftUpLegRoll&#13;
+<br/>
+   "LeftLegRoll"   5 ( -2.3584094048 5.3390674591 13.0559234619 ) ( -0.0733017102 -0.6645630002 -0.729583025 )      // LeftLeg&#13;
+<br/>
+   "LeftFoot"   6 ( -2.8021316528 5.5666065216 6.6293001175 ) ( 0.23330082 -0.6771828532 -0.5197858214 )      // LeftLegRoll&#13;
+<br/>
+   "LeftToeBase"   7 ( 4.7686629295 5.7431778908 1.5380482674 ) ( 0.4286173284 -0.5738407373 -0.3531135917 )      // LeftFoot&#13;
+<br/>
+   "LeftToe_end"   8 ( 9.9203071594 6.1440858841 1.475006938 ) ( 0.5598016977 -0.7361319661 -0.1522065401 )      // LeftToeBase&#13;
+<br/>
+   "joint1"   5 ( 7.3739266396 4.5775427818 21.6297111511 ) ( -0.0733016804 -0.6645630002 -0.7295827866 )      // LeftLeg&#13;
+<br/>
+   "joint3"   4 ( 6.2764897346 4.2457785606 27.5572128296 ) ( -0.0875882134 -0.6676871777 -0.7258224487 )      // LeftUpLegRoll&#13;
+<br/>
+   "joint4"   4 ( -8.0421762466 4.983915329 29.1941108704 ) ( -0.076844871 -0.6826014519 0.025022801 )      // LeftUpLegRoll&#13;
+<br/>
+   "RightHips_Dummy"   1 ( -1.1008975506 -1.8505954742 38.6879806519 ) ( 0.7070914507 -0.0029483566 -0.0040571797 )      // Hips&#13;
+<br/>
+   "RightUpLeg"   13 ( -1.1008826494 -3.9055402279 38.6911659241 ) ( 0.7118535042 0.0462610684 -0.0503936037 )      // RightHips_Dummy&#13;
+<br/>
+   "RightUpLegRoll"   14 ( -1.2725054026 -4.2160563469 28.7538833618 ) ( 0.7003775239 -0.0377105549 -0.7127737999 )      // RightUpLeg&#13;
+<br/>
+   "RightLeg"   15 ( -1.4398341179 -4.5388531685 21.838508606 ) ( -0.6829346418 -0.0323188081 0.7279426455 )      // RightUpLegRoll&#13;
+<br/>
+   "RightLegRoll"   16 ( -2.316062212 -5.1640930176 13.0983171463 ) ( 0.7176393867 0.0279776305 -0.0600873157 )      // RightLeg&#13;
+<br/>
+   "RightFoot"   17 ( -2.747273922 -5.3681812286 6.7279868126 ) ( 0.5798562765 0.3658156693 0.2584534287 )      // RightLegRoll&#13;
+<br/>
+   "RightToeBase"   18 ( 4.589012146 -5.6993541718 1.6896429062 ) ( 0.4407526553 0.5251585841 0.4535990059 )      // RightFoot&#13;
+<br/>
+   "RightToe_end"   19 ( 9.9621286392 -5.8128123283 1.4615992308 ) ( 0.1499048322 0.2357936502 0.7050925493 )      // RightToeBase&#13;
+<br/>
+   "joint2"   16 ( 7.3337159157 -4.587744236 21.6054782867 ) ( 0.7176393867 0.0279776305 -0.0600873157 )      // RightLeg&#13;
+<br/>
+   "joint5"   15 ( 6.1809639931 -4.1310534477 27.6371250153 ) ( 0.7118534446 0.0462610684 -0.0503936 )      // RightUpLegRoll&#13;
+<br/>
+   "joint6"   15 ( -9.4395160675 -4.2086572647 27.6207714081 ) ( 0.7003775239 -0.0377105549 -0.7127737999 )      // RightUpLegRoll&#13;
+<br/>
+   "Spine_Dummy"   1 ( -1.0558667183 -0.032164555 42.6389160156 ) ( 0.7072789073 0.0001721637 0.0001720907 )      // Hips&#13;
+<br/>
+   "Spine"   24 ( -1.0583146811 -0.0297165457 47.6667022705 ) ( 0.3748911321 0.5996409059 0.5997069478 )      // Spine_Dummy&#13;
+<br/>
+   "Spine1"   25 ( -1.858556509 -0.0289179143 49.307144165 ) ( 0.7047878504 0.0593391955 0.0593107939 )      // Spine&#13;
+<br/>
+   "Spine2"   26 ( -2.6765832901 -0.0263075642 52.3255348206 ) ( -0.6898474693 -0.1549607664 -0.7039454579 )      // Spine1&#13;
+<br/>
+   "LeftShoulder_Dummy"   27 ( -2.8614082336 1.4334999323 56.8171577454 ) ( 0.1106409281 -0.9907070994 -0.0598612912 )      // Spine2&#13;
+<br/>
+   "LeftShoulder"   28 ( -0.8500931263 1.9715452194 57.9016609192 ) ( 0.0634843111 -0.9520196915 -0.2990782857 )      // LeftShoulder_Dummy&#13;
+<br/>
+   "LeftArm_Dummy"   29 ( -3.3256297112 3.9050030708 57.7551651001 ) ( 0.4538953304 -0.3968711793 0.2211595029 )      // LeftShoulder&#13;
+<br/>
+   "LeftArm"   30 ( -3.4508702755 6.4031410217 57.545917511 ) ( -0.4930449128 -0.5067495108 -0.4974133968 )      // LeftArm_Dummy&#13;
+<br/>
+   "LeftArmRoll"   31 ( -3.5206227303 10.5808334351 57.3898239136 ) ( -0.3726033568 -0.3912162185 -0.5835577846 )      // LeftArm&#13;
+<br/>
+   "LeftForeArm"   32 ( -3.4663155079 15.8612957001 57.3291015625 ) ( -0.3814322352 -0.3906049728 -0.5706988573 )      // LeftArmRoll&#13;
+<br/>
+   "LeftForeArmRoll"   33 ( -3.5274784565 22.8337211609 57.2760009766 ) ( -0.381773591 -0.3909225464 -0.5704814196 )      // LeftForeArm&#13;
+<br/>
+   "LeftHand"   34 ( -3.5501101017 26.9167251587 57.1425209045 ) ( -0.4815578461 -0.4544113576 -0.5394315124 )      // LeftForeArmRoll&#13;
+<br/>
+   "LeftHandIndex1"   35 ( -1.915910244 31.9458389282 57.5914726257 ) ( -0.6953306198 -0.7093792558 0.0570471771 )      // LeftHand&#13;
+<br/>
+   "LeftHandIndex2"   36 ( -1.7306777239 33.3882293701 57.3910369873 ) ( -0.6951596737 -0.7093945146 0.0577410161 )      // LeftHandIndex1&#13;
+<br/>
+   "LeftHandIndex3"   37 ( -1.6337074041 34.102897644 56.7426300049 ) ( -0.5673632026 -0.4218513966 -0.4218841195 )      // LeftHandIndex2&#13;
+<br/>
+   "joint12"   38 ( -1.3741645813 34.8973770142 55.8016281128 ) ( -0.6943204999 -0.7106109262 0.0564595759 )      // LeftHandIndex3&#13;
+<br/>
+   "LeftHandRing1"   35 ( -3.94080019 31.7117176056 57.4472503662 ) ( -0.623159349 -0.7675420642 -0.1470531225 )      // LeftHand&#13;
+<br/>
+   "LeftHandRing2"   40 ( -3.6462819576 33.0336074829 56.213104248 ) ( -0.6231604218 -0.7675411105 -0.1470532864 )      // LeftHandRing1&#13;
+<br/>
+   "LeftHandRing3"   41 ( -3.5126717091 33.0140724182 55.1895027161 ) ( -0.6231632233 -0.7675386071 -0.1470542401 )      // LeftHandRing2&#13;
+<br/>
+   "LeftHandRing4"   42 ( -3.2277214527 32.6718673706 53.7698516846 ) ( -0.6231513619 -0.7675484419 -0.14705275 )      // LeftHandRing3&#13;
+<br/>
+   "LeftHandThumb1"   35 ( -1.0668666363 29.38489151 56.0885887146 ) ( -0.3724616766 -0.838930428 -0.0325729214 )      // LeftHand&#13;
+<br/>
+   "LeftHandThumb2"   44 ( -0.4420531392 30.8836269379 55.9067306519 ) ( -0.174852252 -0.7675637007 -0.4023869336 )      // LeftHandThumb1&#13;
+<br/>
+   "LeftHandThumb3"   45 ( 0.1790360212 31.9922447205 55.4840583801 ) ( -0.2894011736 -0.8474075794 -0.2605854273 )      // LeftHandThumb2&#13;
+<br/>
+   "Neck"   27 ( -3.2981052399 -0.0219732001 61.2287750244 ) ( 0.7068653703 -0.0242607947 -0.0242482536 )      // Spine2&#13;
+<br/>
+   "Head"   47 ( -3.1145277023 -0.0206751581 63.8999900818 ) ( 0.7068653703 -0.0242607947 -0.0242482536 )      // Neck&#13;
+<br/>
+   "Head_End"   48 ( -2.6095619202 -0.0171076544 71.2477722168 ) ( 0.7068654299 -0.0242618602 -0.0242471863 )      // Head&#13;
+<br/>
+   "RightShoulder_Dummy"   27 ( -2.8614134789 -1.4817427397 56.8186378479 ) ( 0.0603440888 0.0517706499 0.1106152236 )      // Spine2&#13;
+<br/>
+   "RightShoulder"   50 ( -0.8501024246 -2.0187292099 57.903755188 ) ( 0.2968612909 -0.0353214592 0.0786059126 )      // RightShoulder_Dummy&#13;
+<br/>
+   "RightArm_Dummy"   51 ( -3.3229515553 -3.7620100975 57.4662742615 ) ( -0.1817194968 0.7530571818 0.4779632688 )      // RightShoulder&#13;
+<br/>
+   "RightArm"   52 ( -3.6136784554 -6.8535528183 57.2558364868 ) ( -0.4948472977 0.5052121878 0.4970107973 )      // RightArm_Dummy&#13;
+<br/>
+   "RightArmRoll"   53 ( -3.6514041424 -10.8718070984 57.2294044495 ) ( 0.5891829133 0.6010381579 -0.3919118941 )      // RightArm&#13;
+<br/>
+   "RightForeArm"   54 ( -3.6450898647 -16.7603282928 57.1420135498 ) ( 0.5890251398 0.6011901498 -0.3829548359 )      // RightArmRoll&#13;
+<br/>
+   "RightForeArmRoll"   55 ( -3.6203291416 -23.6639976501 57.0594863892 ) ( 0.5890250802 0.6011901498 -0.3829548359 )      // RightForeArm&#13;
+<br/>
+   "RightHand"   56 ( -3.7387423515 -27.5011425018 56.9367218018 ) ( 0.5360928774 0.5311589241 -0.4795790613 )      // RightForeArmRoll&#13;
+<br/>
+   "RightHandIndex1"   57 ( -2.1246306896 -31.5575847626 57.5592880249 ) ( 0.0529025495 -0.0008087878 -0.6940296292 )      // RightHand&#13;
+<br/>
+   "RightHandIndex2"   58 ( -1.7504253387 -33.1676559448 56.9446601868 ) ( 0.0522291139 -0.0001048394 -0.6939665079 )      // RightHandIndex1&#13;
+<br/>
+   "RightHandIndex3"   59 ( -1.6642069817 -34.0933380127 56.3437156677 ) ( -0.5587653518 0.4334321022 0.4332123697 )      // RightHandIndex2&#13;
+<br/>
+   "joint14"   60 ( -1.2730613947 -35.0079193115 55.4021072388 ) ( 0.0539298169 -0.0018618308 -0.6929844618 )      // RightHandIndex3&#13;
+<br/>
+   "RightHandMiddle1"   57 ( -3.9792776108 -31.9026432037 57.3501777649 ) ( 0.1226415187 -0.0074640503 -0.6557921767 )      // RightHand&#13;
+<br/>
+   "RightHandMiddle2"   62 ( -3.7204189301 -33.1457977295 55.8658485413 ) ( 0.1226380616 -0.0074560614 -0.6557835937 )      // RightHandMiddle1&#13;
+<br/>
+   "RightHandMiddle3"   63 ( -3.5086359978 -33.0645179749 54.807849884 ) ( -0.450217396 0.5453761816 0.5451577902 )      // RightHandMiddle2&#13;
+<br/>
+   "joint13"   64 ( -3.0414044857 -32.8727416992 53.4520149231 ) ( 0.1226382703 -0.0074577662 -0.655777812 )      // RightHandMiddle3&#13;
+<br/>
+   "RightHandThumb1"   57 ( -1.0047736168 -29.3858985901 55.8424453735 ) ( 0.0261824783 0.4018576741 -0.3828309774 )      // RightHand&#13;
+<br/>
+   "RightHandThumb2"   66 ( -0.4444748759 -31.030456543 55.4482460022 ) ( 0.3689905703 0.4736049473 -0.1929261386 )      // RightHandThumb1&#13;
+<br/>
+   "RightHandThumb3"   67 ( 0.271053195 -32.162109375 55.0425605774 ) ( 0.1185610369 0.3250899613 -0.3500130773 )      // RightHandThumb2&#13;
+<br/>
+   "joint8"   27 ( 3.7071838379 4.8019118309 53.8568344116 ) ( 0.706720233 0.028171625 0.0281581655 )      // Spine2&#13;
+<br/>
+   "leftpad"   27 ( -3.245262146 8.2246284485 60.4016418457 ) ( -0.3708024025 -0.3895086944 -0.584716022 )      // Spine2&#13;
+<br/>
+   "rightpad"   27 ( -3.6144742966 -9.2547254562 60.7976226807 ) ( 0.5824303031 0.5940206051 -0.4026247263 )      // Spine2&#13;
+<br/>
+   "joint7"   24 ( 4.2074365616 -0.03006294 46.1275787354 ) ( 0.7047852278 0.0593393967 0.0593105592 )      // Spine_Dummy&#13;
+<br/>
+   "sword"   1 ( 3.7936296463 6.8458580971 43.2506713867 ) ( 0.3749167025 0.5995311141 0.5997321606 )      // Hips&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+So all of my meshes are there but the number of joints conflict with the animations'.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159148" date="Posted: Sun Oct 08, 2006 6:55 pm    Post subject: One solution . . ."><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Triple post <img src="/web/20061013055032im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/> . I just joined this forum but I figured out the solution to one of my problems about the missing meshes when using the -keep joint option.&#13;
+<br/><br/>
+Instead of putting that option before the mesh, I put an addoption -keep before the animations &amp; that works perfectly <img src="/web/20061013055032im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> So all my meshes are accounted for and I keep only the joints referenced in the md5mesh.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159104" date="Posted: Sun Oct 08, 2006 2:51 am    Post subject: def_head (or general md5) offsets &amp; other problems"><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi all, I have a bit of a problem. It seems as though md5 meshes hate having an offset (or similar) variable. They show up as blackboxes. Anyone know any work arounds or sdk/script fixes for that?&#13;
+<br/><br/>
+The Dark Mod is currently converting the AI to have swapable heads but the skeletons we're using have the head bone way too high for the doom 3 heads. I ended up tweaking the head joints so I could attach the heads to our current skeleton. But we may want to have vanilla doom 3 heads as part of the heads we can attach. As soon as we add an offset or similar the meshes show as black boxes. That's rather inconvenient.&#13;
+<br/><br/>
+I toyed with the option of using doom 3 skeletons but our skeletons are a little more versatile &amp; the d3 skels didn't play well with the Dark Mod meshes.&#13;
+<br/><br/>
+Another problem I'm having is that the maya exporter (I'm using Maya 6.5 &amp; the 6.5 version of MayaImportx86) refuses to include some meshes in the mb so they're missing in the md5mesh. I've done just about every trick &amp; troubleshooting tips on these forums (delete history, freeze transformations, made sure they are properly triangulated, properly rigged &amp; weighted, each mesh is pointing to a different texture &amp; so on) but the exporter refuses to see these meshes. &#13;
+<br/><br/>
+I successfully resized &amp; modified another one of our AI so it could use a head attachment but the problematic one, well, is still being problematic. I did the same steps as my successful attempt but nothing works.&#13;
+<br/><br/>
+Here's the full def of the AI I'm trying to do do:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">export elitecitywatch {&#13;
+<br/><br/>
+options -keep Hips LeftHips_Dummy LeftUpLeg LeftUpLegRoll LeftLeg LeftLegRoll LeftFoot LeftToeBase joint3 joint4 RightHips_Dummy RightUpLeg RightUpLegRoll RightLeg RightUpLegRoll RightLegRoll RightFoot RightToeBase joint5 joint6 Spine_Dummy Spine Spine1 Spine2 LeftShoulder_Dummy LeftShoulder LeftArm_Dummy LeftArm LeftArmRoll LeftForeArm LeftForeArmRoll LeftHand LeftHandIndex1 LeftHandIndex2 LeftHandIndex3 joint12 LeftHandRing1 LeftHandRing2 LeftHandRing3 LeftHandRing4 LeftHandThumb1 LeftHandThumb2 LeftHandThumb3 Neck Head RightShoulder_Dummy RightShoulder RightArm_Dummy RightArm RightArmRoll RightForeArm RightForeArmRoll RightHand RightHandIndex1 RightHandIndex2 RightHandIndex3 joint14 RightHandMiddle1 RightHandMiddle2 RightHandMiddle3 joint13 RightHandThumb1 RightHandThumb2 RightHandThumb3 leftpad rightpad joint7 sword -sourcedir models/ask/elitecityMBs -destdir models/md5/chars/guards/elite_citywatch -scale .94&#13;
+<br/>
+   mesh stance2.mb -dest tdm_ai_citywatch_elite&#13;
+<br/>
+    addoptions -scale .94&#13;
+<br/>
+   anim af_pose.mb&#13;
+<br/>
+   anim walk.mb&#13;
+<br/>
+   anim jog.mb -dest run&#13;
+<br/>
+   anim look.mb -dest look_around&#13;
+<br/>
+   anim drawsword.mb&#13;
+<br/>
+   anim idle.mb&#13;
+<br/>
+   anim whack.mb -dest attack&#13;
+<br/>
+   anim idlwtsword.mb -dest idle_sword&#13;
+<br/>
+   anim search.mb&#13;
+<br/>
+}&#13;
+<br/><br/>
+export head_elitecitywatch {&#13;
+<br/><br/>
+options -keep eyecontrol Leyeaim Reyeaim loneckcontrol Loneck neckcontrol headcontrol Head Jaw mouth4 mouth5 mouth6 mouth7 mouth8 tongue1 tongue2 Lbrow1 Lbrow2 Lbrow3 Lcheek Llolid Lnostril Lsmile Lsneer Luplid Rbrow1 Rbrow2 Rbrow3 Rcheek Rlolid Rnostril Rsmile Rsneer Ruplid mouth1 mouth10 mouth11 mouth12 mouth2 mouth3 mouth9 -sourcedir models/ask/elitecityMBs -destdir models/md5/chars/guards/elite_citywatch -scale .94&#13;
+<br/>
+    mesh elitecitywatch_head.mb -dest elitecitywatch_head&#13;
+<br/>
+    addoptions -sourcedir models/ask/d3/heads -scale .94&#13;
+<br/>
+      anim head_idle.mb -range 2 7 -dest head_idle&#13;
+<br/>
+      anim head_blink.mb -range 2 7 -dest head_blink&#13;
+<br/>
+      anim head_death.mb -dest head_death&#13;
+<br/>
+}&#13;
+<br/><br/>
+model tdm_ai_citywatch_elite {&#13;
+<br/>
+    mesh                       models/md5/chars/guards/elite_citywatch/tdm_ai_citywatch_elite.md5mesh&#13;
+<br/><br/>
+    channel torso      ( *Spine1 )&#13;
+<br/>
+    channel legs      ( *origin -*Spine1 )&#13;
+<br/><br/>
+    anim af_pose         models/md5/chars/guards/elite_citywatch/af_pose.md5anim&#13;
+<br/>
+    anim walk              models/md5/chars/guards/elite_citywatch/walk.md5anim {&#13;
+<br/>
+      frame 10   footstep&#13;
+<br/>
+      frame 28   footstep&#13;
+<br/>
+   }&#13;
+<br/>
+    anim run              models/md5/chars/guards/elite_citywatch/run.md5anim {&#13;
+<br/>
+      frame 11   footstep&#13;
+<br/>
+      frame 20   footstep&#13;
+<br/>
+   }&#13;
+<br/>
+    //anim search           models/md5/chars/guards/elite_citywatch/search.md5anim {&#13;
+<br/>
+   //   frame 11   footstep&#13;
+<br/>
+   //   frame 20   footstep&#13;
+<br/>
+   //}&#13;
+<br/><br/>
+    anim idle              models/md5/chars/guards/elite_citywatch/idle.md5anim&#13;
+<br/>
+    anim draw              models/md5/chars/guards/elite_citywatch/drawsword.md5anim {&#13;
+<br/>
+      frame 16   sound_weapon snd_drawsword&#13;
+<br/>
+   }&#13;
+<br/>
+    anim look_around           models/md5/chars/guards/elite_citywatch/look_around.md5anim&#13;
+<br/>
+    anim melee_attack           models/md5/chars/guards/elite_citywatch/attack.md5anim {&#13;
+<br/>
+      frame 18   melee melee_sword_rswing_base&#13;
+<br/>
+   }&#13;
+<br/>
+    anim idle_sword             models/md5/chars/guards/elite_citywatch/idle_sword.md5anim&#13;
+<br/><br/>
+} &#13;
+<br/><br/>
+model head_elitecitywatch {&#13;
+<br/>
+   mesh                     models/md5/chars/guards/elite_citywatch/elitecitywatch_head.md5mesh&#13;
+<br/>
+   channel eyelids               ( Ruplid Rlolid Luplid Llolid )&#13;
+<br/><br/>
+   anim idle                  models/md5/chars/guards/elite_citywatch/head_idle.md5anim&#13;
+<br/>
+   anim stand                  models/md5/chars/guards/elite_citywatch/head_idle.md5anim&#13;
+<br/>
+   anim blink                  models/md5/chars/guards/elite_citywatch/head_blink.md5anim&#13;
+<br/>
+   anim dead                  models/md5/chars/guards/elite_citywatch/head_death.md5anim&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef atdm:ai_citywatch_elite&#13;
+<br/><br/>
+{&#13;
+<br/>
+   "inherit"      "atdm:ai_humanoid"&#13;
+<br/>
+   "ragdoll"                       "guard_base"&#13;
+<br/>
+   "model"                     "tdm_ai_citywatch_elite"&#13;
+<br/>
+   "def_head"                  "head_elitecitywatch"&#13;
+<br/>
+   //"def_head"                  "head_builderguard"&#13;
+<br/>
+   "head_joint"               "Head"&#13;
+<br/><br/>
+   "use_aas"                       "aas32"&#13;
+<br/>
+       "size"                  "32 32 68"&#13;
+<br/>
+   "team"                     "1"&#13;
+<br/>
+   "rank"                     "0"&#13;
+<br/>
+   "health"   "100"&#13;
+<br/>
+   "melee_range"               "74"&#13;
+<br/>
+   "anim"                     "idle"&#13;
+<br/>
+   "attack_cone"               "70"&#13;
+<br/>
+   "attack_accuracy"            "0"&#13;
+<br/>
+   "mass"                     "200"&#13;
+<br/><br/>
+   "look_min"                  "-90 -125 0"&#13;
+<br/>
+   "look_max"                  "25 125 0"&#13;
+<br/>
+   "look_joint Waist"            "0.4 0.4 0"&#13;
+<br/>
+   "look_joint Head"            "0.6 0.6 0"&#13;
+<br/><br/>
+   &#13;
+<br/><br/>
+   "chatter_min"               "3"&#13;
+<br/>
+   "chatter_max"               "4"&#13;
+<br/>
+   "chatter_combat_min"         "2"&#13;
+<br/>
+   "chatter_combat_max"         "2"&#13;
+<br/>
+   &#13;
+<br/>
+   &#13;
+<br/>
+   "ik_numLegs"               "2"&#13;
+<br/>
+   "ik_footSize"               "4"&#13;
+<br/>
+   "ik_waist"                  "Hips"&#13;
+<br/>
+   "ik_hip1"                  "LeftUpLeg"&#13;
+<br/>
+   "ik_hip2"                  "RightUpLeg"&#13;
+<br/>
+   "ik_knee1"                  "LeftLeg"&#13;
+<br/>
+   "ik_knee2"                  "RightLeg"&#13;
+<br/>
+   "ik_ankle1"                  "LeftFoot"&#13;
+<br/>
+   "ik_ankle2"                  "RightFoot"&#13;
+<br/>
+   "ik_dir1"                  "LeftLegRoll"&#13;
+<br/>
+   "ik_dir2"                  "RightLegRoll"&#13;
+<br/>
+   "ik_foot1"                  "LeftToeBase"&#13;
+<br/>
+   "ik_foot2"                  "RightToeBase"&#13;
+<br/><br/>
+   "def_attach"               "ai_weapon_longsword"&#13;
+<br/>
+   "def_dropDeathItem"            "ai_weapon_longsword_drop"&#13;
+<br/>
+   "dropDeathItemJoint"         "RightHand"&#13;
+<br/>
+   "dropDeathItemRotation"         "0 0 0"&#13;
+<br/>
+   //"skin_dropDeath"            "hammer_drop"&#13;
+<br/><br/>
+   "damage_zone chest"         "*Spine -*Neck"&#13;
+<br/>
+   "damage_zone left_arm"         "*LeftArm"&#13;
+<br/>
+   "damage_zone right_arm"         "*RightArm"&#13;
+<br/>
+   "damage_zone legs"         "*Hips origin Spine2"&#13;
+<br/><br/>
+   "damage_scale head"            "3"&#13;
+<br/>
+   "damage_scale chest"            "1"&#13;
+<br/>
+   "damage_scale left_arm"            "0.2"&#13;
+<br/>
+   "damage_scale right_arm"         "0.2"&#13;
+<br/>
+   "damage_scale legs"            "0.3"&#13;
+<br/>
+   &#13;
+<br/>
+   "snd_drawsword"      "sword_unsheath"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I had to be specific about which bones to keep.&#13;
+<br/><br/>
+Thanks for the help</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159109" date="Posted: Sun Oct 08, 2006 5:48 am    Post subject: "><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sorry for the double post but I'm almost figuring out why the exporter is ignoring the meshes. I added all the joints I need in the options in the def file in order to match the number of joints in the mesh to the animations. But when I do that the exporter ignores the meshes. &#13;
+<br/><br/>
+When I leave out the -keep option then the meshes are there, but it adds a lot of unecessary joints so the mesh joints doesn't match the animations. It's a catch 22, leave out the -keep option &amp; keep the meshes, or only keep the joints the animations need &amp; lose some meshes.&#13;
+<br/><br/>
+I also tried -keep with joints I didn't rig to the mesh, but the exporter only keeps those joints. I also tried the -parent joint option.&#13;
+<br/><br/>
+It's possible the 6.5 version of MayaImportx86 might be a little screwy.&#13;
+<br/><br/>
+Here's what the animation joints look like in a text editor:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+numFrames 97&#13;
+<br/>
+numJoints 68&#13;
+<br/>
+frameRate 24&#13;
+<br/>
+numAnimatedComponents 71&#13;
+<br/><br/>
+hierarchy {&#13;
+<br/>
+   "origin"   -1 0 0   //&#13;
+<br/>
+   "Hips"   0 62 0   // origin ( Ty Tz Qx Qy Qz )&#13;
+<br/>
+   "LeftHips_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "LeftUpLeg"   2 56 5   // LeftHips_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftUpLegRoll"   3 56 8   // LeftUpLeg ( Qx Qy Qz )&#13;
+<br/>
+   "LeftLeg"   4 56 11   // LeftUpLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftLegRoll"   5 56 14   // LeftLeg ( Qx Qy Qz )&#13;
+<br/>
+   "LeftFoot"   6 56 17   // LeftLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftToeBase"   7 56 20   // LeftFoot ( Qx Qy Qz )&#13;
+<br/>
+   "joint3"   4 0 0   // LeftUpLegRoll&#13;
+<br/>
+   "joint4"   4 0 0   // LeftUpLegRoll&#13;
+<br/>
+   "RightHips_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "RightUpLeg"   11 56 23   // RightHips_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "RightUpLegRoll"   12 56 26   // RightUpLeg ( Qx Qy Qz )&#13;
+<br/>
+   "RightLeg"   13 56 29   // RightUpLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightLegRoll"   14 56 32   // RightLeg ( Qx Qy Qz )&#13;
+<br/>
+   "RightFoot"   15 56 35   // RightLegRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightToeBase"   16 0 0   // RightFoot&#13;
+<br/>
+   "joint5"   13 0 0   // RightUpLegRoll&#13;
+<br/>
+   "joint6"   13 0 0   // RightUpLegRoll&#13;
+<br/>
+   "Spine_Dummy"   1 0 0   // Hips&#13;
+<br/>
+   "Spine"   20 0 0   // Spine_Dummy&#13;
+<br/>
+   "Spine1"   21 0 0   // Spine&#13;
+<br/>
+   "Spine2"   22 0 0   // Spine1&#13;
+<br/>
+   "LeftShoulder_Dummy"   23 0 0   // Spine2&#13;
+<br/>
+   "LeftShoulder"   24 56 38   // LeftShoulder_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftArm_Dummy"   25 0 0   // LeftShoulder&#13;
+<br/>
+   "LeftArm"   26 56 41   // LeftArm_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "LeftArmRoll"   27 56 44   // LeftArm ( Qx Qy Qz )&#13;
+<br/>
+   "LeftForeArm"   28 56 47   // LeftArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftForeArmRoll"   29 24 50   // LeftForeArm ( Qx Qy )&#13;
+<br/>
+   "LeftHand"   30 56 52   // LeftForeArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "LeftHandIndex1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandIndex2"   32 0 0   // LeftHandIndex1&#13;
+<br/>
+   "LeftHandIndex3"   33 0 0   // LeftHandIndex2&#13;
+<br/>
+   "joint12"   34 0 0   // LeftHandIndex3&#13;
+<br/>
+   "LeftHandRing1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandRing2"   36 0 0   // LeftHandRing1&#13;
+<br/>
+   "LeftHandRing3"   37 0 0   // LeftHandRing2&#13;
+<br/>
+   "LeftHandRing4"   38 0 0   // LeftHandRing3&#13;
+<br/>
+   "LeftHandThumb1"   31 0 0   // LeftHand&#13;
+<br/>
+   "LeftHandThumb2"   40 0 0   // LeftHandThumb1&#13;
+<br/>
+   "LeftHandThumb3"   41 0 0   // LeftHandThumb2&#13;
+<br/>
+   "Neck"   23 56 55   // Spine2 ( Qx Qy Qz )&#13;
+<br/>
+   "Head"   43 56 58   // Neck ( Qx Qy Qz )&#13;
+<br/>
+   "RightShoulder_Dummy"   23 0 0   // Spine2&#13;
+<br/>
+   "RightShoulder"   45 0 0   // RightShoulder_Dummy&#13;
+<br/>
+   "RightArm_Dummy"   46 0 0   // RightShoulder&#13;
+<br/>
+   "RightArm"   47 56 61   // RightArm_Dummy ( Qx Qy Qz )&#13;
+<br/>
+   "RightArmRoll"   48 56 64   // RightArm ( Qx Qy Qz )&#13;
+<br/>
+   "RightForeArm"   49 56 67   // RightArmRoll ( Qx Qy Qz )&#13;
+<br/>
+   "RightForeArmRoll"   50 8 70   // RightForeArm ( Qx )&#13;
+<br/>
+   "RightHand"   51 0 0   // RightForeArmRoll&#13;
+<br/>
+   "RightHandIndex1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandIndex2"   53 0 0   // RightHandIndex1&#13;
+<br/>
+   "RightHandIndex3"   54 0 0   // RightHandIndex2&#13;
+<br/>
+   "joint14"   55 0 0   // RightHandIndex3&#13;
+<br/>
+   "RightHandMiddle1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandMiddle2"   57 0 0   // RightHandMiddle1&#13;
+<br/>
+   "RightHandMiddle3"   58 0 0   // RightHandMiddle2&#13;
+<br/>
+   "joint13"   59 0 0   // RightHandMiddle3&#13;
+<br/>
+   "RightHandThumb1"   52 0 0   // RightHand&#13;
+<br/>
+   "RightHandThumb2"   61 0 0   // RightHandThumb1&#13;
+<br/>
+   "RightHandThumb3"   62 0 0   // RightHandThumb2&#13;
+<br/>
+   "leftpad"   23 0 0   // Spine2&#13;
+<br/>
+   "rightpad"   23 0 0   // Spine2&#13;
+<br/>
+   "joint7"   20 0 0   // Spine_Dummy&#13;
+<br/>
+   "sword"   1 0 0   // Hips&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Here's the md5mesh without the -keep option:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">numJoints 74&#13;
+<br/>
+numMeshes 6&#13;
+<br/><br/>
+joints {&#13;
+<br/>
+   "origin"   -1 ( 0 0 0 ) ( -0 -0 -0.0000000219 )      // &#13;
+<br/>
+   "Hips"   0 ( -1.991923213 -0.0321655907 39.150932312 ) ( -0.5 -0.5 -0.5 )      // origin&#13;
+<br/>
+   "LeftHips_Dummy"   1 ( -1.1008975506 1.7862641811 38.6879806519 ) ( 0.0040507964 0.7070956826 0.707100153 )      // Hips&#13;
+<br/>
+   "LeftUpLeg"   2 ( -1.1008945704 3.8412084579 38.691204071 ) ( -0.0875882208 -0.6676871777 -0.7258224487 )      // LeftHips_Dummy&#13;
+<br/>
+   "LeftUpLegRoll"   3 ( -0.459336102 4.321615696 28.7806968689 ) ( -0.076844871 -0.6826014519 0.025022801 )      // LeftUpLeg&#13;
+<br/>
+   "LeftLeg"   4 ( 0.1315372586 4.6811461449 21.8930931091 ) ( -0.123549141 -0.6717206836 0.0905993357 )      // LeftUpLegRoll&#13;
+<br/>
+   "LeftLegRoll"   5 ( -2.3584094048 5.3390674591 13.0559234619 ) ( -0.0733017102 -0.6645630002 -0.729583025 )      // LeftLeg&#13;
+<br/>
+   "LeftFoot"   6 ( -2.8021316528 5.5666065216 6.6293001175 ) ( 0.23330082 -0.6771828532 -0.5197858214 )      // LeftLegRoll&#13;
+<br/>
+   "LeftToeBase"   7 ( 4.7686629295 5.7431778908 1.5380482674 ) ( 0.4286173284 -0.5738407373 -0.3531135917 )      // LeftFoot&#13;
+<br/>
+   "LeftToe_end"   8 ( 9.9203071594 6.1440858841 1.475006938 ) ( 0.5598016977 -0.7361319661 -0.1522065401 )      // LeftToeBase&#13;
+<br/>
+   "joint1"   5 ( 7.3739266396 4.5775427818 21.6297111511 ) ( -0.0733016804 -0.6645630002 -0.7295827866 )      // LeftLeg&#13;
+<br/>
+   "joint3"   4 ( 6.2764897346 4.2457785606 27.5572128296 ) ( -0.0875882134 -0.6676871777 -0.7258224487 )      // LeftUpLegRoll&#13;
+<br/>
+   "joint4"   4 ( -8.0421762466 4.983915329 29.1941108704 ) ( -0.076844871 -0.6826014519 0.025022801 )      // LeftUpLegRoll&#13;
+<br/>
+   "RightHips_Dummy"   1 ( -1.1008975506 -1.8505954742 38.6879806519 ) ( 0.7070914507 -0.0029483566 -0.0040571797 )      // Hips&#13;
+<br/>
+   "RightUpLeg"   13 ( -1.1008826494 -3.9055402279 38.6911659241 ) ( 0.7118535042 0.0462610684 -0.0503936037 )      // RightHips_Dummy&#13;
+<br/>
+   "RightUpLegRoll"   14 ( -1.2725054026 -4.2160563469 28.7538833618 ) ( 0.7003775239 -0.0377105549 -0.7127737999 )      // RightUpLeg&#13;
+<br/>
+   "RightLeg"   15 ( -1.4398341179 -4.5388531685 21.838508606 ) ( -0.6829346418 -0.0323188081 0.7279426455 )      // RightUpLegRoll&#13;
+<br/>
+   "RightLegRoll"   16 ( -2.316062212 -5.1640930176 13.0983171463 ) ( 0.7176393867 0.0279776305 -0.0600873157 )      // RightLeg&#13;
+<br/>
+   "RightFoot"   17 ( -2.747273922 -5.3681812286 6.7279868126 ) ( 0.5798562765 0.3658156693 0.2584534287 )      // RightLegRoll&#13;
+<br/>
+   "RightToeBase"   18 ( 4.589012146 -5.6993541718 1.6896429062 ) ( 0.4407526553 0.5251585841 0.4535990059 )      // RightFoot&#13;
+<br/>
+   "RightToe_end"   19 ( 9.9621286392 -5.8128123283 1.4615992308 ) ( 0.1499048322 0.2357936502 0.7050925493 )      // RightToeBase&#13;
+<br/>
+   "joint2"   16 ( 7.3337159157 -4.587744236 21.6054782867 ) ( 0.7176393867 0.0279776305 -0.0600873157 )      // RightLeg&#13;
+<br/>
+   "joint5"   15 ( 6.1809639931 -4.1310534477 27.6371250153 ) ( 0.7118534446 0.0462610684 -0.0503936 )      // RightUpLegRoll&#13;
+<br/>
+   "joint6"   15 ( -9.4395160675 -4.2086572647 27.6207714081 ) ( 0.7003775239 -0.0377105549 -0.7127737999 )      // RightUpLegRoll&#13;
+<br/>
+   "Spine_Dummy"   1 ( -1.0558667183 -0.032164555 42.6389160156 ) ( 0.7072789073 0.0001721637 0.0001720907 )      // Hips&#13;
+<br/>
+   "Spine"   24 ( -1.0583146811 -0.0297165457 47.6667022705 ) ( 0.3748911321 0.5996409059 0.5997069478 )      // Spine_Dummy&#13;
+<br/>
+   "Spine1"   25 ( -1.858556509 -0.0289179143 49.307144165 ) ( 0.7047878504 0.0593391955 0.0593107939 )      // Spine&#13;
+<br/>
+   "Spine2"   26 ( -2.6765832901 -0.0263075642 52.3255348206 ) ( -0.6898474693 -0.1549607664 -0.7039454579 )      // Spine1&#13;
+<br/>
+   "LeftShoulder_Dummy"   27 ( -2.8614082336 1.4334999323 56.8171577454 ) ( 0.1106409281 -0.9907070994 -0.0598612912 )      // Spine2&#13;
+<br/>
+   "LeftShoulder"   28 ( -0.8500931263 1.9715452194 57.9016609192 ) ( 0.0634843111 -0.9520196915 -0.2990782857 )      // LeftShoulder_Dummy&#13;
+<br/>
+   "LeftArm_Dummy"   29 ( -3.3256297112 3.9050030708 57.7551651001 ) ( 0.4538953304 -0.3968711793 0.2211595029 )      // LeftShoulder&#13;
+<br/>
+   "LeftArm"   30 ( -3.4508702755 6.4031410217 57.545917511 ) ( -0.4930449128 -0.5067495108 -0.4974133968 )      // LeftArm_Dummy&#13;
+<br/>
+   "LeftArmRoll"   31 ( -3.5206227303 10.5808334351 57.3898239136 ) ( -0.3726033568 -0.3912162185 -0.5835577846 )      // LeftArm&#13;
+<br/>
+   "LeftForeArm"   32 ( -3.4663155079 15.8612957001 57.3291015625 ) ( -0.3814322352 -0.3906049728 -0.5706988573 )      // LeftArmRoll&#13;
+<br/>
+   "LeftForeArmRoll"   33 ( -3.5274784565 22.8337211609 57.2760009766 ) ( -0.381773591 -0.3909225464 -0.5704814196 )      // LeftForeArm&#13;
+<br/>
+   "LeftHand"   34 ( -3.5501101017 26.9167251587 57.1425209045 ) ( -0.4815578461 -0.4544113576 -0.5394315124 )      // LeftForeArmRoll&#13;
+<br/>
+   "LeftHandIndex1"   35 ( -1.915910244 31.9458389282 57.5914726257 ) ( -0.6953306198 -0.7093792558 0.0570471771 )      // LeftHand&#13;
+<br/>
+   "LeftHandIndex2"   36 ( -1.7306777239 33.3882293701 57.3910369873 ) ( -0.6951596737 -0.7093945146 0.0577410161 )      // LeftHandIndex1&#13;
+<br/>
+   "LeftHandIndex3"   37 ( -1.6337074041 34.102897644 56.7426300049 ) ( -0.5673632026 -0.4218513966 -0.4218841195 )      // LeftHandIndex2&#13;
+<br/>
+   "joint12"   38 ( -1.3741645813 34.8973770142 55.8016281128 ) ( -0.6943204999 -0.7106109262 0.0564595759 )      // LeftHandIndex3&#13;
+<br/>
+   "LeftHandRing1"   35 ( -3.94080019 31.7117176056 57.4472503662 ) ( -0.623159349 -0.7675420642 -0.1470531225 )      // LeftHand&#13;
+<br/>
+   "LeftHandRing2"   40 ( -3.6462819576 33.0336074829 56.213104248 ) ( -0.6231604218 -0.7675411105 -0.1470532864 )      // LeftHandRing1&#13;
+<br/>
+   "LeftHandRing3"   41 ( -3.5126717091 33.0140724182 55.1895027161 ) ( -0.6231632233 -0.7675386071 -0.1470542401 )      // LeftHandRing2&#13;
+<br/>
+   "LeftHandRing4"   42 ( -3.2277214527 32.6718673706 53.7698516846 ) ( -0.6231513619 -0.7675484419 -0.14705275 )      // LeftHandRing3&#13;
+<br/>
+   "LeftHandThumb1"   35 ( -1.0668666363 29.38489151 56.0885887146 ) ( -0.3724616766 -0.838930428 -0.0325729214 )      // LeftHand&#13;
+<br/>
+   "LeftHandThumb2"   44 ( -0.4420531392 30.8836269379 55.9067306519 ) ( -0.174852252 -0.7675637007 -0.4023869336 )      // LeftHandThumb1&#13;
+<br/>
+   "LeftHandThumb3"   45 ( 0.1790360212 31.9922447205 55.4840583801 ) ( -0.2894011736 -0.8474075794 -0.2605854273 )      // LeftHandThumb2&#13;
+<br/>
+   "Neck"   27 ( -3.2981052399 -0.0219732001 61.2287750244 ) ( 0.7068653703 -0.0242607947 -0.0242482536 )      // Spine2&#13;
+<br/>
+   "Head"   47 ( -3.1145277023 -0.0206751581 63.8999900818 ) ( 0.7068653703 -0.0242607947 -0.0242482536 )      // Neck&#13;
+<br/>
+   "Head_End"   48 ( -2.6095619202 -0.0171076544 71.2477722168 ) ( 0.7068654299 -0.0242618602 -0.0242471863 )      // Head&#13;
+<br/>
+   "RightShoulder_Dummy"   27 ( -2.8614134789 -1.4817427397 56.8186378479 ) ( 0.0603440888 0.0517706499 0.1106152236 )      // Spine2&#13;
+<br/>
+   "RightShoulder"   50 ( -0.8501024246 -2.0187292099 57.903755188 ) ( 0.2968612909 -0.0353214592 0.0786059126 )      // RightShoulder_Dummy&#13;
+<br/>
+   "RightArm_Dummy"   51 ( -3.3229515553 -3.7620100975 57.4662742615 ) ( -0.1817194968 0.7530571818 0.4779632688 )      // RightShoulder&#13;
+<br/>
+   "RightArm"   52 ( -3.6136784554 -6.8535528183 57.2558364868 ) ( -0.4948472977 0.5052121878 0.4970107973 )      // RightArm_Dummy&#13;
+<br/>
+   "RightArmRoll"   53 ( -3.6514041424 -10.8718070984 57.2294044495 ) ( 0.5891829133 0.6010381579 -0.3919118941 )      // RightArm&#13;
+<br/>
+   "RightForeArm"   54 ( -3.6450898647 -16.7603282928 57.1420135498 ) ( 0.5890251398 0.6011901498 -0.3829548359 )      // RightArmRoll&#13;
+<br/>
+   "RightForeArmRoll"   55 ( -3.6203291416 -23.6639976501 57.0594863892 ) ( 0.5890250802 0.6011901498 -0.3829548359 )      // RightForeArm&#13;
+<br/>
+   "RightHand"   56 ( -3.7387423515 -27.5011425018 56.9367218018 ) ( 0.5360928774 0.5311589241 -0.4795790613 )      // RightForeArmRoll&#13;
+<br/>
+   "RightHandIndex1"   57 ( -2.1246306896 -31.5575847626 57.5592880249 ) ( 0.0529025495 -0.0008087878 -0.6940296292 )      // RightHand&#13;
+<br/>
+   "RightHandIndex2"   58 ( -1.7504253387 -33.1676559448 56.9446601868 ) ( 0.0522291139 -0.0001048394 -0.6939665079 )      // RightHandIndex1&#13;
+<br/>
+   "RightHandIndex3"   59 ( -1.6642069817 -34.0933380127 56.3437156677 ) ( -0.5587653518 0.4334321022 0.4332123697 )      // RightHandIndex2&#13;
+<br/>
+   "joint14"   60 ( -1.2730613947 -35.0079193115 55.4021072388 ) ( 0.0539298169 -0.0018618308 -0.6929844618 )      // RightHandIndex3&#13;
+<br/>
+   "RightHandMiddle1"   57 ( -3.9792776108 -31.9026432037 57.3501777649 ) ( 0.1226415187 -0.0074640503 -0.6557921767 )      // RightHand&#13;
+<br/>
+   "RightHandMiddle2"   62 ( -3.7204189301 -33.1457977295 55.8658485413 ) ( 0.1226380616 -0.0074560614 -0.6557835937 )      // RightHandMiddle1&#13;
+<br/>
+   "RightHandMiddle3"   63 ( -3.5086359978 -33.0645179749 54.807849884 ) ( -0.450217396 0.5453761816 0.5451577902 )      // RightHandMiddle2&#13;
+<br/>
+   "joint13"   64 ( -3.0414044857 -32.8727416992 53.4520149231 ) ( 0.1226382703 -0.0074577662 -0.655777812 )      // RightHandMiddle3&#13;
+<br/>
+   "RightHandThumb1"   57 ( -1.0047736168 -29.3858985901 55.8424453735 ) ( 0.0261824783 0.4018576741 -0.3828309774 )      // RightHand&#13;
+<br/>
+   "RightHandThumb2"   66 ( -0.4444748759 -31.030456543 55.4482460022 ) ( 0.3689905703 0.4736049473 -0.1929261386 )      // RightHandThumb1&#13;
+<br/>
+   "RightHandThumb3"   67 ( 0.271053195 -32.162109375 55.0425605774 ) ( 0.1185610369 0.3250899613 -0.3500130773 )      // RightHandThumb2&#13;
+<br/>
+   "joint8"   27 ( 3.7071838379 4.8019118309 53.8568344116 ) ( 0.706720233 0.028171625 0.0281581655 )      // Spine2&#13;
+<br/>
+   "leftpad"   27 ( -3.245262146 8.2246284485 60.4016418457 ) ( -0.3708024025 -0.3895086944 -0.584716022 )      // Spine2&#13;
+<br/>
+   "rightpad"   27 ( -3.6144742966 -9.2547254562 60.7976226807 ) ( 0.5824303031 0.5940206051 -0.4026247263 )      // Spine2&#13;
+<br/>
+   "joint7"   24 ( 4.2074365616 -0.03006294 46.1275787354 ) ( 0.7047852278 0.0593393967 0.0593105592 )      // Spine_Dummy&#13;
+<br/>
+   "sword"   1 ( 3.7936296463 6.8458580971 43.2506713867 ) ( 0.3749167025 0.5995311141 0.5997321606 )      // Hips&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+So all of my meshes are there but the number of joints conflict with the animations'.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159148" date="Posted: Sun Oct 08, 2006 6:55 pm    Post subject: One solution . . ."><author>ascottk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Triple post <img src="/web/20061013060226im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/> . I just joined this forum but I figured out the solution to one of my problems about the missing meshes when using the -keep joint option.&#13;
+<br/><br/>
+Instead of putting that option before the mesh, I put an addoption -keep before the animations &amp; that works perfectly <img src="/web/20061013060226im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> So all my meshes are accounted for and I keep only the joints referenced in the md5mesh.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

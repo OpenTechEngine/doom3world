@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16921"><title>flare deform?</title><posts><post id="154498" date="Posted: Mon Aug 21, 2006 9:11 pm    Post subject: flare deform?"><author>Syx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe what I'm trying is simply impossible and I read the description of flares wrong. But what I heard is flare will work on any 4-sided surface. So I made a material for it&#13;
+<br/><br/>
+textures/Grid/lightTest&#13;
+<br/>
+{&#13;
+<br/>
+qer_editorimage	textures/lightTest.tga        &#13;
+<br/>
+diffusemap textures\blak.tga&#13;
+<br/>
+{&#13;
+<br/>
+  blend add &#13;
+<br/>
+  map textures/lightTest.tga  &#13;
+<br/>
+  translate 1,0&#13;
+<br/>
+        {&#13;
+<br/>
+         flare 10&#13;
+<br/>
+        }&#13;
+<br/><br/>
+  }&#13;
+<br/>
+}&#13;
+<br/><br/>
+and then slapped it on a cube. The cube comes out pure black, so there's an error somewhere. I'm not sure if I'm even using it properly. I tried placing it before the stages and the same problem arose. &#13;
+<br/><br/>
+The material in this example works fine without the flare stage.&#13;
+<br/><br/>
+I've found no documentation on how flare works. Maybe I need to define a map that gets used as the flare?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154502" date="Posted: Mon Aug 21, 2006 10:01 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">First off, deform is a <a href="/web/20061013023615/http://www.modwiki.net/wiki/Global_material_keywords" target="_blank" class="postlink"> global material keyword</a>, so you'll need to put it in the top level (same as qer_editorimage). Second, it's "deform flare X" not just "flare X".&#13;
+<br/><br/>
+Compare this id material from Doom 3:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/sfx/flare&#13;
+<br/>
+{&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   translucent&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   deform flare      16&#13;
+<br/>
+   qer_editorimage   textures/editor/flare.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      if ( parm7 == 0 )&#13;
+<br/>
+      blend      add&#13;
+<br/>
+      map         _quadratic&#13;
+<br/>
+      colored&#13;
+<br/>
+      vertexcolor&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013023615/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023615im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013023615/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154498" date="Posted: Mon Aug 21, 2006 9:11 pm    Post subject: flare deform?"><author>Syx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe what I'm trying is simply impossible and I read the description of flares wrong. But what I heard is flare will work on any 4-sided surface. So I made a material for it&#13;
+<br/><br/>
+textures/Grid/lightTest&#13;
+<br/>
+{&#13;
+<br/>
+qer_editorimage	textures/lightTest.tga        &#13;
+<br/>
+diffusemap textures\blak.tga&#13;
+<br/>
+{&#13;
+<br/>
+  blend add &#13;
+<br/>
+  map textures/lightTest.tga  &#13;
+<br/>
+  translate 1,0&#13;
+<br/>
+        {&#13;
+<br/>
+         flare 10&#13;
+<br/>
+        }&#13;
+<br/><br/>
+  }&#13;
+<br/>
+}&#13;
+<br/><br/>
+and then slapped it on a cube. The cube comes out pure black, so there's an error somewhere. I'm not sure if I'm even using it properly. I tried placing it before the stages and the same problem arose. &#13;
+<br/><br/>
+The material in this example works fine without the flare stage.&#13;
+<br/><br/>
+I've found no documentation on how flare works. Maybe I need to define a map that gets used as the flare?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154502" date="Posted: Mon Aug 21, 2006 10:01 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">First off, deform is a <a href="/web/20061013023537/http://www.modwiki.net/wiki/Global_material_keywords" target="_blank" class="postlink"> global material keyword</a>, so you'll need to put it in the top level (same as qer_editorimage). Second, it's "deform flare X" not just "flare X".&#13;
+<br/><br/>
+Compare this id material from Doom 3:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/sfx/flare&#13;
+<br/>
+{&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   translucent&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   deform flare      16&#13;
+<br/>
+   qer_editorimage   textures/editor/flare.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      if ( parm7 == 0 )&#13;
+<br/>
+      blend      add&#13;
+<br/>
+      map         _quadratic&#13;
+<br/>
+      colored&#13;
+<br/>
+      vertexcolor&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013023537/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023537im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013023537/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

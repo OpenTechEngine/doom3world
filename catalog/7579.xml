@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="7579"><title>BEERman's Multistop Rideable Train Tutorial</title><posts><post id="p64937" date="Posted: Sat Nov 27, 2004 6:46 pm "><author>BEERman</author><body><![CDATA[<div class="postbody">MAKING A MULTI-STOP RIDEABLE TRAIN:
+<br /><br />This Tutorial assumes you already know how to make a func_mover following a Nurbs Path, It also assumes you know the basics of GUI scripting. As well as
+<br />basic scripting knowledge:
+<br />If you don't read these first:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522163842/http://www.doom3world.org/phpbb2/viewtopic.php?t=5123&amp;highlight=moving+train">http://www.doom3world.org/phpbb2/viewto ... ving+train</a><!-- m -->
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522163842/http://www.doom3world.org/phpbb2/viewtopic.php?t=2808">http://www.doom3world.org/phpbb2/viewtopic.php?t=2808</a><!-- m --> &lt;--scroll down to the GUI Scripting section
+<br /><br /><br />Step 1: Start with everyone's good ole favorite Cube Map. Make it a little bigger for this exercise, I'm using 1024x1024 to give our Train some elbow room.
+<br /><br /><br /><br />Step 2: Now we're going to start by creating the first NURBS Path for the Train. This will be the first stop.
+<br /><br />-Right-Click to Create a func_static (use the "NoDraw" texture)
+<br />-then switch to the ENTITY TAB and click "CURVE", select NURBS..
+<br />-Set your path up to do a Half-loop of your cube.
+<br /><br />-Name the func_static "spline1"
+<br /><br /><img src="https://web.archive.org/web/20100522163842im_/http://hosting.mismith7.com/beerman/Doom3/Tutorials/train_1.jpg" alt="Image" /><br /><br /><br /><br /><br />Step 3: Now make a second NURBS path for the train which goes from the end of the first path and loops back to the starting station. This will be the second stop
+<br /><br />-Name this func_static "spline2"
+<br /><br /><img src="https://web.archive.org/web/20100522163842im_/http://hosting.mismith7.com/beerman/Doom3/Tutorials/train_2.jpg" alt="Image" /><br /><br /><br /><br />Step 4: Now we're going to make the train itself.
+<br /><br />-Create a "func_mover" with the "NoDraw" texture. Name it "train_1"
+<br /><br />-Line it's Origin up perfectly with the Origin of our func_static "spline1"
+<br /><br />-Now add the following to the func_mover:
+<br /><br />key "model"
+<br />value "models/mapobjects/loadtrans/loadtranscomp.lwo"
+<br /><br />**IMPORTANT NOTE** IF YOU WANT THE TRAIN TO BE RIDEABLE, YOU MUST USE THE MODEL TAB IN THE FUNC_MOVER. If you bind a "func_static"
+<br />train model to the Func_mover instead of having the model a part of the func_mpver itself the player will slide off the train when it moves like a carpet being pulled from under his feet.
+<br /><br />key "solid"
+<br />value "1"
+<br /><br />key "gui"
+<br />value "guis/A_BEER/beer_trainstart.gui" //This is a stock GUI that I tweaked to run the train
+<br /><br />key "gui_parm1"
+<br />value "train_start1" //uses the GUI to call the trains first movement script
+<br /><br />key "gui_parm2"
+<br />value "train_start2" //uses the GUI to call the trains 2nd movement script
+<br /><br /><img src="https://web.archive.org/web/20100522163842im_/http://hosting.mismith7.com/beerman/Doom3/Tutorials/train_3.jpg" alt="Image" /><br /><br /><br />Step 5: Open up Notepad/Wordpad and make a file called *urmapname*.script
+<br />-add the following
+<br /><br /><span style="color: red">void train_start1() <br /><br />{ <br />        $train_1.time(45); <br />        $train_1.accelTime(10); <br />        $train_1.decelTime(5); <br /><br />        $train_1.startSpline($spline1); <br /><br />} <br /><br />void train_start2() <br /><br />{ <br />        $train_1.time(45); <br />        $train_1.accelTime(10); <br />        $train_1.decelTime(5); <br /><br />        $train_1.startSpline($spline2); <br /><br />} <br /><br />void main()<br /><br />{</span>
+<br />}
+<br /><br />//These are the functions that will be activated by GUI parm 1/2 to activate the train
+<br /><br />Step 7: Compile and Enjoy your Multi-Stop train! (make sure you place the GUI you made and the *urmapname*.script in the appropriate folders)
+<br /><br /><br />Download the testmap (with the mapscript and the GUI):
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522163842/http://hosting.mismith7.com/beerman/Doom3/Tutorials/Multistop_train.zip">http://hosting.mismith7.com/beerman/Doo ... _train.zip</a><!-- m --></div>]]></body></post><post id="p65158" date="Posted: Mon Nov 29, 2004 7:05 am "><author>KungFuGuy</author><body><![CDATA[<div class="postbody">???</div>]]></body></post><post id="p65191" date="Posted: Mon Nov 29, 2004 12:36 pm "><author>bb_matt</author><body><![CDATA[<div class="postbody">Great tutorial Beerman ! - I'll add it to the list ASAP.</div>]]></body></post><post id="p65283" date="Posted: Mon Nov 29, 2004 11:22 pm "><author>BEERman</author><body><![CDATA[<div class="postbody">Ya i'm going to be making an update to it when I get my Multi-Stop / Multi-Lock GUI scripted and working. (It'll run the train through multiple stops, but recquires the GUI be "unlocked" at each stop by a remote GUI panel) I think I can do that, I was stumped but I had an epiphany at work today and I think I can do it now.</div>]]></body></post></posts></thread></xml>

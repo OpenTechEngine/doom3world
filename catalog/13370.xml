@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="13370"><title>Scaling an MD5mesh and it's anims</title><posts><post id="p120908" date="Posted: Wed Nov 09, 2005 10:21 pm "><author>zl1corvette</author><body><![CDATA[<div class="postbody">Is there a to scale a md5mesh and it's anims?  I know scaling bones is a no no, so I tried scaling the verts but that just messed up my rigging.  I just want to scale the mesh/bones but not affect the weights or anything like that.</div>]]></body></post><post id="p120909" date="Posted: Wed Nov 09, 2005 10:37 pm "><author>Brain Trepaning</author><body><![CDATA[<div class="postbody">Save the weights in Skin's ADVANCED PARAMETERS rollout as an .ENV
+<br /><br />Remove the SKIN from the modifier list
+<br /><br />Scale the mesh
+<br /><br />Scale the bones with CHARACTER/Bone Tools (bone edit mode)
+<br /><br />Add SKIN
+<br /><br />Load the .ENV
+<br /><br />This MIGHT work...</div>]]></body></post><post id="p120922" date="Posted: Thu Nov 10, 2005 12:26 am "><author>BliTZ!</author><body><![CDATA[<div class="postbody">you can scale it when exporting:
+<br />from iddevnet:
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">-scale [scale amount]	Scale up or down your character during export. Example: -scale 2 will double the size of the character. Scaled up from the origin.</div></div>]]></body></post><post id="p120996" date="Posted: Thu Nov 10, 2005 3:20 pm "><author>zl1corvette</author><body><![CDATA[<div class="postbody">@Brian
+<br />That worked really well until I exported it.  Everything looked fine in max, but when I reimported it, it was like the rig was scaled but not the mesh for the first frame and then for the actual animation it just went back to the orginal size.
+<br /><br />@Blitz
+<br />That's for the D3 maya exporter</div>]]></body></post><post id="p121001" date="Posted: Thu Nov 10, 2005 4:28 pm "><author>Brain Trepaning</author><body><![CDATA[<div class="postbody">It's because the MD5anims are set up for the full size rig. You would need to import the anims on the new scale rig and re-export them, would be my guess. The MD5mesh has the info on how vertices are weighted to a hierarchal skeleton. The MD5anim has the info on where the points of those bones sit in 3d space.
+<br /><br />You may need to import the anims and save out the animation info, then reimport the info for the rescaled bones. I believe that's in File/Merge Animation or something.</div>]]></body></post></posts></thread></xml>

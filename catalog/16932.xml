@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16932"><title>Create cm file.</title><posts><post id="154638" date="Posted: Wed Aug 23, 2006 7:52 am    Post subject: Create cm file."><author>mxkash</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have ase file. How create cm file?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154654" date="Posted: Wed Aug 23, 2006 12:56 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Load D3/Q4Radiant (either one works) then load the model into the editor and with the model selected click Selection -&gt; Export -&gt; .cm&#13;
+<br/><br/>
+That will place a .cm file of the same name as your model in the model's folder.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154661" date="Posted: Wed Aug 23, 2006 2:14 pm    Post subject: "><author>mxkash</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thank you Bittoman</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154638" date="Posted: Wed Aug 23, 2006 7:52 am    Post subject: Create cm file."><author>mxkash</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have ase file. How create cm file?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154654" date="Posted: Wed Aug 23, 2006 12:56 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Load D3/Q4Radiant (either one works) then load the model into the editor and with the model selected click Selection -&gt; Export -&gt; .cm&#13;
+<br/><br/>
+That will place a .cm file of the same name as your model in the model's folder.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154661" date="Posted: Wed Aug 23, 2006 2:14 pm    Post subject: "><author>mxkash</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thank you Bittoman</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

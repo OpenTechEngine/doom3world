@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18141"><title>root joint error</title><posts><post id="164857" date="Posted: Sat Dec 16, 2006 7:41 pm    Post subject: root joint error"><author>chris89</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey guys&#13;
+<br/><br/>
+i was trying to import a monster model i made. i've set up the .def and .af and i have fixed allot of errors (it's my first time with the doom enginge)&#13;
+<br/>
+so i think i'm finally done, i load up my af in the afeditor... and guess what.. it gives me this error:&#13;
+<br/><br/><img src="/web/20070213033430im_/http://img177.imageshack.us/img177/9913/clipboard01ro8.jpg" border="0"/><br/><br/>
+anybody knows what the problem could be? &#13;
+<br/>
+thanks in advance</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164987" date="Posted: Mon Dec 18, 2006 9:13 am    Post subject: Re: root joint error"><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm... hmmm.... very strange and obscure...&#13;
+<br/><br/>
+BTW, and totally unrelated: can you tell us the number of root joints in your model? <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/><a href="/web/20070213033430/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20070213033430im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20070213033430/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165022" date="Posted: Mon Dec 18, 2006 6:11 pm    Post subject: "><author>chris89</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">well, thats part of the problem. i thought that a root joint is the main joint to which all bone chains are connected, and that joint is only a parent joint and not a child.&#13;
+<br/>
+or am i completely wrong about this?  <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/><br/>
+i'm going to rerig the monster and hope that it will work then.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165024" date="Posted: Mon Dec 18, 2006 7:25 pm    Post subject: "><author>chris89</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok that doesnt work, getting more and more errors now. i'll go through some more tutorials then <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> any tips for tutorials to look into?&#13;
+<br/><br/>
+thanks for listening to my stypid rambling</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165031" date="Posted: Mon Dec 18, 2006 8:22 pm    Post subject: "><author>senkusha</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You haven't mentioned what software package your using?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165035" date="Posted: Mon Dec 18, 2006 9:29 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I did got the same error at my very first try to make a D3 monster... don't remember exactly what it was, but i'm sure if your look into you model.md5mesh you will see something like:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">joints {&#13;
+<br/>
+   "origin"   0 ( -0.0000000026 0.0000000000 0.0000000000 ) ( -0.5000000000 -0.5000000000 -0.5000000000 )      //&#13;
+<br/>
+   "Hips"   0 ( -0.0782306766 0.0000001723 42.3756675720 ) ( -0.7070741176 -0.0067120141 0.0067119750 )      //&#13;
+<br/>
+...</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Instead of:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">joints {&#13;
+<br/>
+   "origin"   -1 ( -0.0000000026 0.0000000000 0.0000000000 ) ( -0.5000000000 -0.5000000000 -0.5000000000 )      //&#13;
+<br/>
+   "Hips"   0 ( -0.0782306766 0.0000001723 42.3756675720 ) ( -0.7070741176 -0.0067120141 0.0067119750 )      // origin&#13;
+<br/>
+...</td>	</tr></table><span class="postbody">&#13;
+<br/>
+(the number after the bone name IS the important part here i think)&#13;
+<br/><br/>
+In my old memory ( <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> ) i did got it when i used to export a biped from max, but not binding it to any "origin" bone, just renaming the "bip 01" (the first one, the big parent of all the biped).&#13;
+<br/>
+But there is one thing i learn now, this "bip 01" bone is not really the only one "big parent", when you pass in 'step mode' (to create automatic animations, just placing steps) a bone appear between the 2 feet. (don't remember the name)&#13;
+<br/><br/>
+So i think you problem is something like this, just try to create an Origin (point or bone) and bind/link your old origin (that you rename something else of course) bone to it.&#13;
+<br/><br/>
+Give it a try.  <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165088" date="Posted: Tue Dec 19, 2006 4:29 pm    Post subject: "><author>chris89</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">6th venom: you're my hero <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> thanks. that helped allot. it was a problem with the digits after the name of the bones. ("origin" -1, "Hips" 0) i had 3 joints that were -1 and that, in combination with the names to which bone the bones were linked, caused the error.&#13;
+<br/>
+i can load the model in the AFeditor now and it doesnt give me an error immediatly. untill i try to spawn the model. it gives me an irregular runtime error, and needs to quit <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+anybody have a solution or an idea on what it could be?&#13;
+<br/>
+and thanks for the great help.&#13;
+<br/>
+and i'm using 3dsmax btw.&#13;
+<br/>
+and thanks again <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165104" date="Posted: Tue Dec 19, 2006 9:35 pm    Post subject: "><author>chris89</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok i fixed that problem, it was a small AF problem.&#13;
+<br/>
+thanks for the help i got here <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> it really helped</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165119" date="Posted: Wed Dec 20, 2006 12:15 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">cool.  <img src="/web/20070213033430im_/http://www.doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="165353" date="Posted: Sat Dec 23, 2006 9:45 am    Post subject: "><author>__MaX__</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You know, using iddevnet is  not a bad thing sometimes :p<br/>_________________<br/>Co-Leader- Sound Designer // Requiem: Avenging Angel - Q4:SP Total Conversion&#13;
+<br/><a href="/web/20070213033430/http://www.modrequiem.net/eng/" target="_blank">http://www.modrequiem.net/eng/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

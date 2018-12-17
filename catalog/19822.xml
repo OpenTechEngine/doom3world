@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="19822"><title>scaling an md5 model</title><posts><post id="p181233" date="Posted: Sun Jun 17, 2007 9:01 pm "><author>jstier</author><body><![CDATA[<div class="postbody">Hi,
+<br /><br /><br />I am trying to use md5 character animation in my graphics engine. So far
+<br />I have been able to load and animate a model including textures and all. 
+<br /><br />Now I would like to scale the units to meters instead of inches. It turns
+<br />out that this is more difficult than I thought. At first, I tried to simply scale 
+<br />the positions of the joints, weights and vertices by some factor. That did 
+<br />not work, and now it seems that I have to scale each bone in its parents 
+<br />frame of reference. Is that correct ? Is there some code floating around 
+<br />that scales an md5 model ? 
+<br /><br /><br />Cheers
+<br />Jochen</div>]]></body></post><post id="p181237" date="Posted: Sun Jun 17, 2007 10:18 pm "><author>Kristus</author><body><![CDATA[<div class="postbody">There's supposed to be a program of that sort in the chex quest for Doom3 TC package.
+<br /><br />You can find that on D3Files.</div>]]></body></post><post id="p181250" date="Posted: Mon Jun 18, 2007 2:00 am "><author>jstier</author><body><![CDATA[<div class="postbody">Thx,
+<br /><br />I found it. It turns out that it is quite easy to scale an MD5. All you have to do is scale all the positions. I just forgot to scale the right values in each frame as well.</div>]]></body></post></posts></thread></xml>

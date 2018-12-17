@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="19710"><title>MD5 Maya Exporter</title><posts><post id="p179921" date="Posted: Tue Jun 05, 2007 5:13 pm "><author>hyperion_5</author><body><![CDATA[<div class="postbody">So originally when I created this script, I had no idea it would get out to this forum or that may page would eventually be google-able, so I &#13;<br /><br />never posted directions on how to use it or how it works. Apparently though, more and more people are using it (with varying degrees of success) &#13;<br /><br />so I felt that I needed to post on it. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I understand some people are having issues with it. Before I go further I will state that it *does* indeed work, its just that I cut a few corners &#13;<br /><br />and made some assumptions about how people would prepare their files for it, and there may indeed still be some runtime bugs that I had never &#13;<br /><br />experienced before that people are running into. I will be working to make it more robust (a process made easier now that people are giving me &#13;<br /><br />feedback on it). Also, I created the script for a friend who is a professor teaching game design classes that needed it, and I was able to work &#13;<br /><br />with them directly when they used it--thus I never created directions. I should write those up and put them in the RAR file you download off my &#13;<br /><br />site.&#13;<br /><br /><a href="https://web.archive.org/web/20070509181516/http://scripts.zbufferstudios.com/" class="postlink">my scripts website</a> link to the scripts page (there is also an ASE exporter for static meshes)&#13;<br /><br /><br /><br />So without further ado...&#13;<br /><br />----------------------------------md5 exporter-----------------------------------&#13;<br /><br />Upon running the script you should have a GUI with all the check boxes and text fields you need to input your desired settings. There should have &#13;<br /><br />been a zbuffer studios shelf with a button if you loaded the files correctly. if not, they type "md5ExporterOptions" to run the GUI.&#13;<br /><br />When the script starts running, it will reopen your file (it does this becuase of batch processing animations--see below) so always make sure to &#13;<br /><br />SAVE the file if you modify it between opening the file and running the script. If it is working you should see many things such as green dots &#13;<br /><br />appear on your model (the uvs being processed and merged), it may turn sideways (see below), and eventually you should see it run the animation &#13;<br /><br />cycle twice (while it builds skeleton data, and creates keygrames). The files should then be in your designated location. If there was an error &#13;<br /><br />you can usually tell becuase your md5mesh or anim files will be tiny like 1kb or something. Please email me with error messages if you get them.&#13;<br /><br /><br />Common ones are: &#13;<br /><br />"error cannot open *filename* for mode W"&#13;<br /><br />this is due to pipe symbols or some other issue with your names which make windows unhappy with your filename). It may also be due to something &#13;<br /><br />else but mainly you should check to make sure your mesh name and or joint names are unique in the scene.&#13;<br /><br /><br /><br />This script allows/needs the following: &#13;<br /><br />1)creating and saving project paths as well as using default ones for Doom 3, Quake, etc&#13;<br /><br />2)Despite being able to be used for Quake and others, it was designed primarily for Doom 3 (in regards to the .mtr and .def files). I have no idea &#13;<br /><br />if these are needed or can even be used with other games. If you don't need them just delete them. It puts all files relative to your project &#13;<br /><br />path.&#13;<br /><br />3)You should get the following files from it: md5mesh, md5anim, def, and mtr (assuming you output an material file)&#13;<br /><br />4) you can run the script on a single file OR batch process a folder of animation cycles&#13;<br /><br />4.1) Only put ONE animation cycle for a model in the maya file. frankly, it is best if you really have nothing but your mesh, skeleton, etc in a &#13;<br /><br />file. Also, it is BEST to use a baked skeleton (i.e. gotten rid of all the IK, controls, etc that you used, and have only your bound skeleton and &#13;<br /><br />keyframes on it). At this time the script really only wants to deal with joints...so get rid of groups, and other garbage if you can. Also, the &#13;<br /><br />top root joint should be named "Origin" (I will work on relaxing this, becuase I thought md5 files HAD to have the root named origin, but they may &#13;<br /><br />not in reality). &#13;<br /><br />4.2 This script works only on models that are a SINGLE mesh. Accessories such as swords, guns, etc. should either be part of that mesh and bound &#13;<br /><br />into the skeleton as well, OR exported as another file with its own joints. &#13;<br /><br />4.3) if you choose to run a batch process make sure that you put all the cycles into a folder and browse that location with the GUI provided. the &#13;<br /><br />animation cycles are named for the .mb file names, so name them things like walk.mb, run.mb, etc. &#13;<br /><br />4.4) it gets the mesh name from the first polymesh if finds in the file when you first source the script, however, it will update when selecting a &#13;<br /><br />new mesh. OR you can just type the mesh name in. Make sure the mesh name is unique and not in a group or something where Maya will put pipe "|" &#13;<br /><br />symbols into its name since it will put the full DAG path to an object when it isn't unique in the scene. Rename meshes if necessary. The filename &#13;<br /><br />comes from the mesh name so a pipe symbol with freak Windows out and error the script.&#13;<br /><br />4.5) if its a single file (still with only one animation cycle--its far too complicated to figure out what particular stuff is your cycle. its &#13;<br /><br />just easier to have only one thing in a file), you are good to go, just make sure your mesh and all that other above stuff is right and you should &#13;<br /><br />be fine.&#13;<br /><br />5) The attach shader button creates a phong shader in the hypershade with file inputs already created and connected. It will let you browse your &#13;<br /><br />maps. This shader is referenced to create the .mtr file. (Though this may only be relevant for Doom3).&#13;<br /><br />6) Also, at this time, if your framerate is set to PAL it will have an error. In the meantime use NTSC, FILM, or simple a numbered framerate &#13;<br /><br />preset. Technically, even if your file is set to run at any framerate, you can simply correct the framerate line in the md5anim file in wordpad or &#13;<br /><br />something as the framerate doesn't matter for writing it to file only in playing it back in Doom, etc. You should not neet to rescale your &#13;<br /><br />keyframes. This is also an easy way to change speed after exporting the file if you need to.&#13;<br /><br />7) Since Maya is y-up by default and md5 works in z-up, Maya does a coordinate system change in order to compensate on the fly if it detects it is &#13;<br /><br />necessary (since Maya can be set z-up too). If you see your model turn on its side/upside down looking thats probably why.&#13;<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><!-- e --><a href="mailto:scripts@zbufferstudios.com">scripts@zbufferstudios.com</a><!-- e --> is the email addy for my MEL scripts. If you have bug reports, need questions answered, etc email that addy.</div>]]></body></post><post id="p179926" date="Posted: Tue Jun 05, 2007 5:32 pm "><author>Hunnenkoenig</author><body><![CDATA[<div class="postbody">WoW!&#13;<br /><br />I am happy, you did find your way here! Thanks for this and keep up the good work!&#13;<br /><br />Attila der Hunnenkoenig  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p182181" date="Posted: Tue Jun 26, 2007 3:02 pm "><author>pbmax</author><body><![CDATA[<div class="postbody">fantastic!&#13;<br /><br />your ase exporter is nice too.&#13;<br /><br />many many thanks.</div>]]></body></post><post id="p182203" date="Posted: Tue Jun 26, 2007 4:58 pm "><author>g0th</author><body><![CDATA[<div class="postbody">thanks for the scripts man</div>]]></body></post><post id="p179921" date="Posted: Tue Jun 05, 2007 5:13 pm "><author>hyperion_5</author><body><![CDATA[<div class="postbody">So originally when I created this script, I had no idea it would get out to this forum or that may page would eventually be google-able, so I 
+<br /><br />never posted directions on how to use it or how it works. Apparently though, more and more people are using it (with varying degrees of success) 
+<br /><br />so I felt that I needed to post on it. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I understand some people are having issues with it. Before I go further I will state that it *does* indeed work, its just that I cut a few corners 
+<br /><br />and made some assumptions about how people would prepare their files for it, and there may indeed still be some runtime bugs that I had never 
+<br /><br />experienced before that people are running into. I will be working to make it more robust (a process made easier now that people are giving me 
+<br /><br />feedback on it). Also, I created the script for a friend who is a professor teaching game design classes that needed it, and I was able to work 
+<br /><br />with them directly when they used it--thus I never created directions. I should write those up and put them in the RAR file you download off my 
+<br /><br />site.
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://scripts.zbufferstudios.com/" class="postlink">my scripts website</a> link to the scripts page (there is also an ASE exporter for static meshes)
+<br /><br /><br /><br />So without further ado...
+<br /><br />----------------------------------md5 exporter-----------------------------------
+<br /><br />Upon running the script you should have a GUI with all the check boxes and text fields you need to input your desired settings. There should have 
+<br /><br />been a zbuffer studios shelf with a button if you loaded the files correctly. if not, they type "md5ExporterOptions" to run the GUI.
+<br /><br />When the script starts running, it will reopen your file (it does this becuase of batch processing animations--see below) so always make sure to 
+<br /><br />SAVE the file if you modify it between opening the file and running the script. If it is working you should see many things such as green dots 
+<br /><br />appear on your model (the uvs being processed and merged), it may turn sideways (see below), and eventually you should see it run the animation 
+<br /><br />cycle twice (while it builds skeleton data, and creates keygrames). The files should then be in your designated location. If there was an error 
+<br /><br />you can usually tell becuase your md5mesh or anim files will be tiny like 1kb or something. Please email me with error messages if you get them.
+<br /><br /><br />Common ones are: 
+<br /><br />"error cannot open *filename* for mode W"
+<br /><br />this is due to pipe symbols or some other issue with your names which make windows unhappy with your filename). It may also be due to something 
+<br /><br />else but mainly you should check to make sure your mesh name and or joint names are unique in the scene.
+<br /><br /><br /><br />This script allows/needs the following: 
+<br /><br />1)creating and saving project paths as well as using default ones for Doom 3, Quake, etc
+<br /><br />2)Despite being able to be used for Quake and others, it was designed primarily for Doom 3 (in regards to the .mtr and .def files). I have no idea 
+<br /><br />if these are needed or can even be used with other games. If you don't need them just delete them. It puts all files relative to your project 
+<br /><br />path.
+<br /><br />3)You should get the following files from it: md5mesh, md5anim, def, and mtr (assuming you output an material file)
+<br /><br />4) you can run the script on a single file OR batch process a folder of animation cycles
+<br /><br />4.1) Only put ONE animation cycle for a model in the maya file. frankly, it is best if you really have nothing but your mesh, skeleton, etc in a 
+<br /><br />file. Also, it is BEST to use a baked skeleton (i.e. gotten rid of all the IK, controls, etc that you used, and have only your bound skeleton and 
+<br /><br />keyframes on it). At this time the script really only wants to deal with joints...so get rid of groups, and other garbage if you can. Also, the 
+<br /><br />top root joint should be named "Origin" (I will work on relaxing this, becuase I thought md5 files HAD to have the root named origin, but they may 
+<br /><br />not in reality). 
+<br /><br />4.2 This script works only on models that are a SINGLE mesh. Accessories such as swords, guns, etc. should either be part of that mesh and bound 
+<br /><br />into the skeleton as well, OR exported as another file with its own joints. 
+<br /><br />4.3) if you choose to run a batch process make sure that you put all the cycles into a folder and browse that location with the GUI provided. the 
+<br /><br />animation cycles are named for the .mb file names, so name them things like walk.mb, run.mb, etc. 
+<br /><br />4.4) it gets the mesh name from the first polymesh if finds in the file when you first source the script, however, it will update when selecting a 
+<br /><br />new mesh. OR you can just type the mesh name in. Make sure the mesh name is unique and not in a group or something where Maya will put pipe "|" 
+<br /><br />symbols into its name since it will put the full DAG path to an object when it isn't unique in the scene. Rename meshes if necessary. The filename 
+<br /><br />comes from the mesh name so a pipe symbol with freak Windows out and error the script.
+<br /><br />4.5) if its a single file (still with only one animation cycle--its far too complicated to figure out what particular stuff is your cycle. its 
+<br /><br />just easier to have only one thing in a file), you are good to go, just make sure your mesh and all that other above stuff is right and you should 
+<br /><br />be fine.
+<br /><br />5) The attach shader button creates a phong shader in the hypershade with file inputs already created and connected. It will let you browse your 
+<br /><br />maps. This shader is referenced to create the .mtr file. (Though this may only be relevant for Doom3).
+<br /><br />6) Also, at this time, if your framerate is set to PAL it will have an error. In the meantime use NTSC, FILM, or simple a numbered framerate 
+<br /><br />preset. Technically, even if your file is set to run at any framerate, you can simply correct the framerate line in the md5anim file in wordpad or 
+<br /><br />something as the framerate doesn't matter for writing it to file only in playing it back in Doom, etc. You should not neet to rescale your 
+<br /><br />keyframes. This is also an easy way to change speed after exporting the file if you need to.
+<br /><br />7) Since Maya is y-up by default and md5 works in z-up, Maya does a coordinate system change in order to compensate on the fly if it detects it is 
+<br /><br />necessary (since Maya can be set z-up too). If you see your model turn on its side/upside down looking thats probably why.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><!-- e --><a href="mailto:scripts@zbufferstudios.com">scripts@zbufferstudios.com</a><!-- e --> is the email addy for my MEL scripts. If you have bug reports, need questions answered, etc email that addy.</div>]]></body></post><post id="p179926" date="Posted: Tue Jun 05, 2007 5:32 pm "><author>Hunnenkoenig</author><body><![CDATA[<div class="postbody">WoW!
+<br /><br />I am happy, you did find your way here! Thanks for this and keep up the good work!
+<br /><br />Attila der Hunnenkoenig  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p182181" date="Posted: Tue Jun 26, 2007 3:02 pm "><author>pbmax</author><body><![CDATA[<div class="postbody">fantastic!
+<br /><br />your ase exporter is nice too.
+<br /><br />many many thanks.</div>]]></body></post><post id="p182203" date="Posted: Tue Jun 26, 2007 4:58 pm "><author>g0th</author><body><![CDATA[<div class="postbody">thanks for the scripts man</div>]]></body></post><post id="p179921" date="Posted: Tue Jun 05, 2007 5:13 pm "><author>hyperion_5</author><body><![CDATA[<div class="postbody">So originally when I created this script, I had no idea it would get out to this forum or that may page would eventually be google-able, so I 
+<br /><br />never posted directions on how to use it or how it works. Apparently though, more and more people are using it (with varying degrees of success) 
+<br /><br />so I felt that I needed to post on it. <img src="https://web.archive.org/web/20081204230935im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I understand some people are having issues with it. Before I go further I will state that it *does* indeed work, its just that I cut a few corners 
+<br /><br />and made some assumptions about how people would prepare their files for it, and there may indeed still be some runtime bugs that I had never 
+<br /><br />experienced before that people are running into. I will be working to make it more robust (a process made easier now that people are giving me 
+<br /><br />feedback on it). Also, I created the script for a friend who is a professor teaching game design classes that needed it, and I was able to work 
+<br /><br />with them directly when they used it--thus I never created directions. I should write those up and put them in the RAR file you download off my 
+<br /><br />site.
+<br /><br /><a href="https://web.archive.org/web/20081204230935/http://scripts.zbufferstudios.com/" class="postlink">my scripts website</a> link to the scripts page (there is also an ASE exporter for static meshes)
+<br /><br /><br /><br />So without further ado...
+<br /><br />----------------------------------md5 exporter-----------------------------------
+<br /><br />Upon running the script you should have a GUI with all the check boxes and text fields you need to input your desired settings. There should have 
+<br /><br />been a zbuffer studios shelf with a button if you loaded the files correctly. if not, they type "md5ExporterOptions" to run the GUI.
+<br /><br />When the script starts running, it will reopen your file (it does this becuase of batch processing animations--see below) so always make sure to 
+<br /><br />SAVE the file if you modify it between opening the file and running the script. If it is working you should see many things such as green dots 
+<br /><br />appear on your model (the uvs being processed and merged), it may turn sideways (see below), and eventually you should see it run the animation 
+<br /><br />cycle twice (while it builds skeleton data, and creates keygrames). The files should then be in your designated location. If there was an error 
+<br /><br />you can usually tell becuase your md5mesh or anim files will be tiny like 1kb or something. Please email me with error messages if you get them.
+<br /><br /><br />Common ones are: 
+<br /><br />"error cannot open *filename* for mode W"
+<br /><br />this is due to pipe symbols or some other issue with your names which make windows unhappy with your filename). It may also be due to something 
+<br /><br />else but mainly you should check to make sure your mesh name and or joint names are unique in the scene.
+<br /><br /><br /><br />This script allows/needs the following: 
+<br /><br />1)creating and saving project paths as well as using default ones for Doom 3, Quake, etc
+<br /><br />2)Despite being able to be used for Quake and others, it was designed primarily for Doom 3 (in regards to the .mtr and .def files). I have no idea 
+<br /><br />if these are needed or can even be used with other games. If you don't need them just delete them. It puts all files relative to your project 
+<br /><br />path.
+<br /><br />3)You should get the following files from it: md5mesh, md5anim, def, and mtr (assuming you output an material file)
+<br /><br />4) you can run the script on a single file OR batch process a folder of animation cycles
+<br /><br />4.1) Only put ONE animation cycle for a model in the maya file. frankly, it is best if you really have nothing but your mesh, skeleton, etc in a 
+<br /><br />file. Also, it is BEST to use a baked skeleton (i.e. gotten rid of all the IK, controls, etc that you used, and have only your bound skeleton and 
+<br /><br />keyframes on it). At this time the script really only wants to deal with joints...so get rid of groups, and other garbage if you can. Also, the 
+<br /><br />top root joint should be named "Origin" (I will work on relaxing this, becuase I thought md5 files HAD to have the root named origin, but they may 
+<br /><br />not in reality). 
+<br /><br />4.2 This script works only on models that are a SINGLE mesh. Accessories such as swords, guns, etc. should either be part of that mesh and bound 
+<br /><br />into the skeleton as well, OR exported as another file with its own joints. 
+<br /><br />4.3) if you choose to run a batch process make sure that you put all the cycles into a folder and browse that location with the GUI provided. the 
+<br /><br />animation cycles are named for the .mb file names, so name them things like walk.mb, run.mb, etc. 
+<br /><br />4.4) it gets the mesh name from the first polymesh if finds in the file when you first source the script, however, it will update when selecting a 
+<br /><br />new mesh. OR you can just type the mesh name in. Make sure the mesh name is unique and not in a group or something where Maya will put pipe "|" 
+<br /><br />symbols into its name since it will put the full DAG path to an object when it isn't unique in the scene. Rename meshes if necessary. The filename 
+<br /><br />comes from the mesh name so a pipe symbol with freak Windows out and error the script.
+<br /><br />4.5) if its a single file (still with only one animation cycle--its far too complicated to figure out what particular stuff is your cycle. its 
+<br /><br />just easier to have only one thing in a file), you are good to go, just make sure your mesh and all that other above stuff is right and you should 
+<br /><br />be fine.
+<br /><br />5) The attach shader button creates a phong shader in the hypershade with file inputs already created and connected. It will let you browse your 
+<br /><br />maps. This shader is referenced to create the .mtr file. (Though this may only be relevant for Doom3).
+<br /><br />6) Also, at this time, if your framerate is set to PAL it will have an error. In the meantime use NTSC, FILM, or simple a numbered framerate 
+<br /><br />preset. Technically, even if your file is set to run at any framerate, you can simply correct the framerate line in the md5anim file in wordpad or 
+<br /><br />something as the framerate doesn't matter for writing it to file only in playing it back in Doom, etc. You should not neet to rescale your 
+<br /><br />keyframes. This is also an easy way to change speed after exporting the file if you need to.
+<br /><br />7) Since Maya is y-up by default and md5 works in z-up, Maya does a coordinate system change in order to compensate on the fly if it detects it is 
+<br /><br />necessary (since Maya can be set z-up too). If you see your model turn on its side/upside down looking thats probably why.
+<br /><br /><img src="https://web.archive.org/web/20081204230935im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><!-- e --><a href="mailto:scripts@zbufferstudios.com">scripts@zbufferstudios.com</a><!-- e --> is the email addy for my MEL scripts. If you have bug reports, need questions answered, etc email that addy.</div>]]></body></post><post id="p179926" date="Posted: Tue Jun 05, 2007 5:32 pm "><author>Hunnenkoenig</author><body><![CDATA[<div class="postbody">WoW!
+<br /><br />I am happy, you did find your way here! Thanks for this and keep up the good work!
+<br /><br />Attila der Hunnenkoenig  <img src="https://web.archive.org/web/20081204230935im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p182181" date="Posted: Tue Jun 26, 2007 3:02 pm "><author>pbmax</author><body><![CDATA[<div class="postbody">fantastic!
+<br /><br />your ase exporter is nice too.
+<br /><br />many many thanks.</div>]]></body></post><post id="p182203" date="Posted: Tue Jun 26, 2007 4:58 pm "><author>g0th</author><body><![CDATA[<div class="postbody">thanks for the scripts man</div>]]></body></post><post id="p179921" date="Posted: Tue Jun 05, 2007 5:13 pm "><author>hyperion_5</author><body><![CDATA[<div class="postbody">So originally when I created this script, I had no idea it would get out to this forum or that may page would eventually be google-able, so I 
+<br /><br />never posted directions on how to use it or how it works. Apparently though, more and more people are using it (with varying degrees of success) 
+<br /><br />so I felt that I needed to post on it. <img src="https://web.archive.org/web/20081204230800im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I understand some people are having issues with it. Before I go further I will state that it *does* indeed work, its just that I cut a few corners 
+<br /><br />and made some assumptions about how people would prepare their files for it, and there may indeed still be some runtime bugs that I had never 
+<br /><br />experienced before that people are running into. I will be working to make it more robust (a process made easier now that people are giving me 
+<br /><br />feedback on it). Also, I created the script for a friend who is a professor teaching game design classes that needed it, and I was able to work 
+<br /><br />with them directly when they used it--thus I never created directions. I should write those up and put them in the RAR file you download off my 
+<br /><br />site.
+<br /><br /><a href="https://web.archive.org/web/20081204230800/http://scripts.zbufferstudios.com/" class="postlink">my scripts website</a> link to the scripts page (there is also an ASE exporter for static meshes)
+<br /><br /><br /><br />So without further ado...
+<br /><br />----------------------------------md5 exporter-----------------------------------
+<br /><br />Upon running the script you should have a GUI with all the check boxes and text fields you need to input your desired settings. There should have 
+<br /><br />been a zbuffer studios shelf with a button if you loaded the files correctly. if not, they type "md5ExporterOptions" to run the GUI.
+<br /><br />When the script starts running, it will reopen your file (it does this becuase of batch processing animations--see below) so always make sure to 
+<br /><br />SAVE the file if you modify it between opening the file and running the script. If it is working you should see many things such as green dots 
+<br /><br />appear on your model (the uvs being processed and merged), it may turn sideways (see below), and eventually you should see it run the animation 
+<br /><br />cycle twice (while it builds skeleton data, and creates keygrames). The files should then be in your designated location. If there was an error 
+<br /><br />you can usually tell becuase your md5mesh or anim files will be tiny like 1kb or something. Please email me with error messages if you get them.
+<br /><br /><br />Common ones are: 
+<br /><br />"error cannot open *filename* for mode W"
+<br /><br />this is due to pipe symbols or some other issue with your names which make windows unhappy with your filename). It may also be due to something 
+<br /><br />else but mainly you should check to make sure your mesh name and or joint names are unique in the scene.
+<br /><br /><br /><br />This script allows/needs the following: 
+<br /><br />1)creating and saving project paths as well as using default ones for Doom 3, Quake, etc
+<br /><br />2)Despite being able to be used for Quake and others, it was designed primarily for Doom 3 (in regards to the .mtr and .def files). I have no idea 
+<br /><br />if these are needed or can even be used with other games. If you don't need them just delete them. It puts all files relative to your project 
+<br /><br />path.
+<br /><br />3)You should get the following files from it: md5mesh, md5anim, def, and mtr (assuming you output an material file)
+<br /><br />4) you can run the script on a single file OR batch process a folder of animation cycles
+<br /><br />4.1) Only put ONE animation cycle for a model in the maya file. frankly, it is best if you really have nothing but your mesh, skeleton, etc in a 
+<br /><br />file. Also, it is BEST to use a baked skeleton (i.e. gotten rid of all the IK, controls, etc that you used, and have only your bound skeleton and 
+<br /><br />keyframes on it). At this time the script really only wants to deal with joints...so get rid of groups, and other garbage if you can. Also, the 
+<br /><br />top root joint should be named "Origin" (I will work on relaxing this, becuase I thought md5 files HAD to have the root named origin, but they may 
+<br /><br />not in reality). 
+<br /><br />4.2 This script works only on models that are a SINGLE mesh. Accessories such as swords, guns, etc. should either be part of that mesh and bound 
+<br /><br />into the skeleton as well, OR exported as another file with its own joints. 
+<br /><br />4.3) if you choose to run a batch process make sure that you put all the cycles into a folder and browse that location with the GUI provided. the 
+<br /><br />animation cycles are named for the .mb file names, so name them things like walk.mb, run.mb, etc. 
+<br /><br />4.4) it gets the mesh name from the first polymesh if finds in the file when you first source the script, however, it will update when selecting a 
+<br /><br />new mesh. OR you can just type the mesh name in. Make sure the mesh name is unique and not in a group or something where Maya will put pipe "|" 
+<br /><br />symbols into its name since it will put the full DAG path to an object when it isn't unique in the scene. Rename meshes if necessary. The filename 
+<br /><br />comes from the mesh name so a pipe symbol with freak Windows out and error the script.
+<br /><br />4.5) if its a single file (still with only one animation cycle--its far too complicated to figure out what particular stuff is your cycle. its 
+<br /><br />just easier to have only one thing in a file), you are good to go, just make sure your mesh and all that other above stuff is right and you should 
+<br /><br />be fine.
+<br /><br />5) The attach shader button creates a phong shader in the hypershade with file inputs already created and connected. It will let you browse your 
+<br /><br />maps. This shader is referenced to create the .mtr file. (Though this may only be relevant for Doom3).
+<br /><br />6) Also, at this time, if your framerate is set to PAL it will have an error. In the meantime use NTSC, FILM, or simple a numbered framerate 
+<br /><br />preset. Technically, even if your file is set to run at any framerate, you can simply correct the framerate line in the md5anim file in wordpad or 
+<br /><br />something as the framerate doesn't matter for writing it to file only in playing it back in Doom, etc. You should not neet to rescale your 
+<br /><br />keyframes. This is also an easy way to change speed after exporting the file if you need to.
+<br /><br />7) Since Maya is y-up by default and md5 works in z-up, Maya does a coordinate system change in order to compensate on the fly if it detects it is 
+<br /><br />necessary (since Maya can be set z-up too). If you see your model turn on its side/upside down looking thats probably why.
+<br /><br /><img src="https://web.archive.org/web/20081204230800im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><!-- e --><a href="mailto:scripts@zbufferstudios.com">scripts@zbufferstudios.com</a><!-- e --> is the email addy for my MEL scripts. If you have bug reports, need questions answered, etc email that addy.</div>]]></body></post><post id="p179926" date="Posted: Tue Jun 05, 2007 5:32 pm "><author>Hunnenkoenig</author><body><![CDATA[<div class="postbody">WoW!
+<br /><br />I am happy, you did find your way here! Thanks for this and keep up the good work!
+<br /><br />Attila der Hunnenkoenig  <img src="https://web.archive.org/web/20081204230800im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p182181" date="Posted: Tue Jun 26, 2007 3:02 pm "><author>pbmax</author><body><![CDATA[<div class="postbody">fantastic!
+<br /><br />your ase exporter is nice too.
+<br /><br />many many thanks.</div>]]></body></post><post id="p182203" date="Posted: Tue Jun 26, 2007 4:58 pm "><author>g0th</author><body><![CDATA[<div class="postbody">thanks for the scripts man</div>]]></body></post><post id="p179921" date="Posted: Tue Jun 05, 2007 5:13 pm "><author>hyperion_5</author><body><![CDATA[<div class="postbody">So originally when I created this script, I had no idea it would get out to this forum or that may page would eventually be google-able, so I 
+<br /><br />never posted directions on how to use it or how it works. Apparently though, more and more people are using it (with varying degrees of success) 
+<br /><br />so I felt that I needed to post on it. <img src="https://web.archive.org/web/20081119154950im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I understand some people are having issues with it. Before I go further I will state that it *does* indeed work, its just that I cut a few corners 
+<br /><br />and made some assumptions about how people would prepare their files for it, and there may indeed still be some runtime bugs that I had never 
+<br /><br />experienced before that people are running into. I will be working to make it more robust (a process made easier now that people are giving me 
+<br /><br />feedback on it). Also, I created the script for a friend who is a professor teaching game design classes that needed it, and I was able to work 
+<br /><br />with them directly when they used it--thus I never created directions. I should write those up and put them in the RAR file you download off my 
+<br /><br />site.
+<br /><br /><a href="https://web.archive.org/web/20081119154950/http://scripts.zbufferstudios.com/" class="postlink">my scripts website</a> link to the scripts page (there is also an ASE exporter for static meshes)
+<br /><br /><br /><br />So without further ado...
+<br /><br />----------------------------------md5 exporter-----------------------------------
+<br /><br />Upon running the script you should have a GUI with all the check boxes and text fields you need to input your desired settings. There should have 
+<br /><br />been a zbuffer studios shelf with a button if you loaded the files correctly. if not, they type "md5ExporterOptions" to run the GUI.
+<br /><br />When the script starts running, it will reopen your file (it does this becuase of batch processing animations--see below) so always make sure to 
+<br /><br />SAVE the file if you modify it between opening the file and running the script. If it is working you should see many things such as green dots 
+<br /><br />appear on your model (the uvs being processed and merged), it may turn sideways (see below), and eventually you should see it run the animation 
+<br /><br />cycle twice (while it builds skeleton data, and creates keygrames). The files should then be in your designated location. If there was an error 
+<br /><br />you can usually tell becuase your md5mesh or anim files will be tiny like 1kb or something. Please email me with error messages if you get them.
+<br /><br /><br />Common ones are: 
+<br /><br />"error cannot open *filename* for mode W"
+<br /><br />this is due to pipe symbols or some other issue with your names which make windows unhappy with your filename). It may also be due to something 
+<br /><br />else but mainly you should check to make sure your mesh name and or joint names are unique in the scene.
+<br /><br /><br /><br />This script allows/needs the following: 
+<br /><br />1)creating and saving project paths as well as using default ones for Doom 3, Quake, etc
+<br /><br />2)Despite being able to be used for Quake and others, it was designed primarily for Doom 3 (in regards to the .mtr and .def files). I have no idea 
+<br /><br />if these are needed or can even be used with other games. If you don't need them just delete them. It puts all files relative to your project 
+<br /><br />path.
+<br /><br />3)You should get the following files from it: md5mesh, md5anim, def, and mtr (assuming you output an material file)
+<br /><br />4) you can run the script on a single file OR batch process a folder of animation cycles
+<br /><br />4.1) Only put ONE animation cycle for a model in the maya file. frankly, it is best if you really have nothing but your mesh, skeleton, etc in a 
+<br /><br />file. Also, it is BEST to use a baked skeleton (i.e. gotten rid of all the IK, controls, etc that you used, and have only your bound skeleton and 
+<br /><br />keyframes on it). At this time the script really only wants to deal with joints...so get rid of groups, and other garbage if you can. Also, the 
+<br /><br />top root joint should be named "Origin" (I will work on relaxing this, becuase I thought md5 files HAD to have the root named origin, but they may 
+<br /><br />not in reality). 
+<br /><br />4.2 This script works only on models that are a SINGLE mesh. Accessories such as swords, guns, etc. should either be part of that mesh and bound 
+<br /><br />into the skeleton as well, OR exported as another file with its own joints. 
+<br /><br />4.3) if you choose to run a batch process make sure that you put all the cycles into a folder and browse that location with the GUI provided. the 
+<br /><br />animation cycles are named for the .mb file names, so name them things like walk.mb, run.mb, etc. 
+<br /><br />4.4) it gets the mesh name from the first polymesh if finds in the file when you first source the script, however, it will update when selecting a 
+<br /><br />new mesh. OR you can just type the mesh name in. Make sure the mesh name is unique and not in a group or something where Maya will put pipe "|" 
+<br /><br />symbols into its name since it will put the full DAG path to an object when it isn't unique in the scene. Rename meshes if necessary. The filename 
+<br /><br />comes from the mesh name so a pipe symbol with freak Windows out and error the script.
+<br /><br />4.5) if its a single file (still with only one animation cycle--its far too complicated to figure out what particular stuff is your cycle. its 
+<br /><br />just easier to have only one thing in a file), you are good to go, just make sure your mesh and all that other above stuff is right and you should 
+<br /><br />be fine.
+<br /><br />5) The attach shader button creates a phong shader in the hypershade with file inputs already created and connected. It will let you browse your 
+<br /><br />maps. This shader is referenced to create the .mtr file. (Though this may only be relevant for Doom3).
+<br /><br />6) Also, at this time, if your framerate is set to PAL it will have an error. In the meantime use NTSC, FILM, or simple a numbered framerate 
+<br /><br />preset. Technically, even if your file is set to run at any framerate, you can simply correct the framerate line in the md5anim file in wordpad or 
+<br /><br />something as the framerate doesn't matter for writing it to file only in playing it back in Doom, etc. You should not neet to rescale your 
+<br /><br />keyframes. This is also an easy way to change speed after exporting the file if you need to.
+<br /><br />7) Since Maya is y-up by default and md5 works in z-up, Maya does a coordinate system change in order to compensate on the fly if it detects it is 
+<br /><br />necessary (since Maya can be set z-up too). If you see your model turn on its side/upside down looking thats probably why.
+<br /><br /><img src="https://web.archive.org/web/20081119154950im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><!-- e --><a href="mailto:scripts@zbufferstudios.com">scripts@zbufferstudios.com</a><!-- e --> is the email addy for my MEL scripts. If you have bug reports, need questions answered, etc email that addy.</div>]]></body></post><post id="p179926" date="Posted: Tue Jun 05, 2007 5:32 pm "><author>Hunnenkoenig</author><body><![CDATA[<div class="postbody">WoW!
+<br /><br />I am happy, you did find your way here! Thanks for this and keep up the good work!
+<br /><br />Attila der Hunnenkoenig  <img src="https://web.archive.org/web/20081119154950im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p182181" date="Posted: Tue Jun 26, 2007 3:02 pm "><author>pbmax</author><body><![CDATA[<div class="postbody">fantastic!
+<br /><br />your ase exporter is nice too.
+<br /><br />many many thanks.</div>]]></body></post><post id="p182203" date="Posted: Tue Jun 26, 2007 4:58 pm "><author>g0th</author><body><![CDATA[<div class="postbody">thanks for the scripts man</div>]]></body></post></posts></thread></xml>

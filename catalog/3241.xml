@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="3241"><title>Complete GUI Scripting - 3: Preparing and importing assets</title><posts><post id="30810" date="Posted: Sun Aug 08, 2004 8:32 pm    Post subject: Complete GUI Scripting - 3: Preparing and importing assets"><author>zeh</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Welcome to the fourth (#3 as any programmer would know) in the complete GUI scripting tutorials. This lesson won't cover much low-level scripting; it will, rather, show you how to prepare your external assets (materials) and use them on your GUI script. I'll use Adobe Photoshop CS in this lesson, but every technique used in this program can be easily reproduced on other graphic editing packages, including older Photoshop versions. We will transform a PSD file into a GUI script, and this GUI script will be used in later lessons; see this as a workflow tutorial rather then a scripting one.&#13;
+<br/><br/><span style="font-weight: bold">Notice:</span> this is version 2 of this lesson. I've rewritten most of it and redone all screens and files from scratch after some corrections/advices from patd (on reply, below).&#13;
+<br/><br/><span style="font-size: 20px; line-height: normal"><span style="font-weight: bold">Complete GUI Scripting - 3: Preparing and importing assets</span></span>&#13;
+<br/><br/>
+When designing interfaces, no matter which media is the target, it's common for designers to just work on Photoshop (or a similar program) to create the basic layout, then import (or recreate) it in the final production tool. Creating Flash content works like that, creating After Effects content works like that, and GUI scripting couldn't be different; usually, the first step to creating an interface for the DOOM 3 engine would be to create it on your graphics editing package of choice than exporting images to be used by your GUI script.&#13;
+<br/><br/>
+While creating the general design of an interface is something much bigger and that is beyond the scope of these tutorials, there's a lot that can be said about exporting materials correctly from Photoshop then using them on the DOOM 3 engine. This tutorial will start from a finished PSD file, then we'll export all materials thinking about how they should work, then reassemble them on the GUI editor.&#13;
+<br/><br/>
+For this lesson, there's a little background that I have to add, to explain the sample PSD we'll be working with. Please bare with me while I go a bit off topic now...&#13;
+<br/><br/>
+...before the alien/demon invasion, the UAC officials on the UAC base on Mars were very worried about the staff morale. After all, being slayed by HellKnights and turning into zombies can put anyone down. To help bringing staff morale up, the UAC officials created a weekly cake celebration - basically, the kitchen staff would create a cake using brand-new UAC technology and put it on the kitchen for everyone to eat and feel happy.&#13;
+<br/><br/>
+However, the situation on Mars kitchens aren't exactly top-notch, and after complaints about people feeling ill after eating the weekly cake, the UAC decided to put a panel next to the cake indicating the current cake quality. Everybody could get on the cake status panel and look at the current cake quality before trying to eat it. Also, if they think the status is wrong, they can simply click a button and change the current cake quality, so anyone approaching the cake status panel later will also notice the current cake quality.&#13;
+<br/><br/>
+On the next few lessons, we'll be building the cake status panel. Here's a preview of how it will look like after we're finished.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_26.jpg" border="0"/><br/><br/>
+With that said, this is the *complete* cake status PSD, opened in Photoshop (again, all files are available for download on a link at the end of this tutorial, so download to try yourself). This is just a quick design I created for this lesson, but it illustrates well what GUIs usually need.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_01.jpg" border="0"/><br/><br/>
+All layers are shown on this screenshot, and some content will be created on the GUI editor itself. Also, notice I created the PSD file using a 640x480 size - this will help when I have to resize and position windowDefs on the GUI editor, so I just need to see their original values and positions.&#13;
+<br/><br/>
+Before we start exporting everything to materials, one word of advice: while GUI scripts works a lot like Photoshop - windowDefs work like layers, being stacked and all that - creating one windowDef/material for each PSD layer is not a good idea. If you use shared assets (like materials that are common and used on other GUIs too), this is fine, but other than that, it's a good idea to stack as many layers as possible on one single material file. This is what I'll do here, so even though this is a semi-complex PSD file with folders and a couple dozen layers, it'll be a pretty simple GUI script in the end.&#13;
+<br/><br/>
+Okey, let's start. The first thing to do here is to turn everything you don't want off, while seeing what you want to export as one material. In our case, we will first export the background; so we hide everything (including the background) and let the panelBack layer (and its grouped layers) visible only.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_02.jpg" border="0"/><br/><br/>
+Now, select all (CTRL+A), make sure you have a visible layer selected (worst Photoshop usability bug ever), and select the menu "Edit &gt; Copy Merged" (SHIFT+CTRL+C) to create a flatten copy of everything on the clipboard.&#13;
+<br/><br/>
+Now, select the "File &gt; New" menu (CTRL+N). You'll notice it uses the values of the visible clipboard width and height in the new image properties, so just click OK or press enter to create a new image.&#13;
+<br/><br/>
+With that image created, select "Edit &gt; Paste" (CTRL+V), delete the default "background" layer on the layers panel, and you'll have a new material ready to be exported.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_03.jpg" border="0"/><br/><br/>
+Before saving, however, there's are two catches.&#13;
+<br/><br/>
+The first catch is related to the image size. As you'll notice on the "Image &gt; Canvas Size" menu, our image has a 600x440 size. We will transform this on an image to be used by the DOOM 3 engine; and 3D video cards only use images with dimensions that are a number which is a power of two - that means using dimensions like 64, 128, 256, 512 and so on, so we have to conform to those rules.&#13;
+<br/><br/>
+Even though we *could* create images with custom sizes - in fact, I did that, in the first version of the article, but the result was pretty bad - it would mean that the engine would resize the image to a given size (256x256, or something similar) before using it, then resize it again when displaying it.&#13;
+<br/><br/>
+With that said, we have three choices now. We can:&#13;
+<br/><br/>
+1. Grab our 600x440 image and resize it to a valid size on Photoshop, like 512x256, then export it at that size and simply use it with the original 600x440 size on the GUI script; or&#13;
+<br/>
+2. Add some transparent areas to our image to make it big enough to fit into a valid image size, like 1024x512, then export it and use it at this same size on the GUI script; or&#13;
+<br/>
+3. Build our image from several small images (corners, top, sides, center), each one a separate image with a valid size.&#13;
+<br/><br/>
+Memory wise, the first choice is the better one; we would use the whole area for our image. It would result in resizing, though, and in the end the image would never be crisp, even at the original 640x480 size.&#13;
+<br/><br/>
+The second choice is a good one because you would have the image be as crisp as possible, but you would be wasting texture space.&#13;
+<br/><br/>
+The third choice is overall the best one; however, it would be harder to implement since you'll have to develop a whole user interface system that makes sense. This is the good choice to make when building a complex window-like system, or several different GUI scripts that would share the same assets and have different sizes, but for our example which is a lone GUI script, it would be overkill.&#13;
+<br/><br/>
+With that said, I'll stick to the second option for now. Keep in mind, however, that in the future, you will have to decide which is the best option, and it will vary according to several different factors.&#13;
+<br/><br/>
+Okey. So we will add some little unused space to our image; call the "Image &gt; Canvas Size" menu, and resize it to the next big sizes which are valid numbers. In this case, 1024x512. Also, be sure to click on the top left anchor button, so our image will stay at the top left corner of the document. Like so:&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_04.jpg" border="0"/><br/><br/>
+It will resize the canvas without touching the image.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_05.jpg" border="0"/><br/><br/>
+Now, the second catch. Since this material will have a transparency, we have to make sure an alpha channel gets exported. Now, if we were exporting this image to a PNG file, we could simply export/save it now. But since this is a TGA file, there's something we need to do: create an alpha channel manually.&#13;
+<br/><br/>
+Press CTRL and click on the name of the layer on the layers panel. This will create a selection that matches the current layer's alpha mask, so you'll see the so-called walking ants on top of the layer's opacity edges.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_06.jpg" border="0"/><br/><br/>
+Now, select the "Select &gt; Save Selection" menu, and use whatever name you want as the new channel.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_07.jpg" border="0"/><br/><br/>
+This creates a new alpha channel on your document file. You can find it in the "Channels" window in Photoshop; it's a just grayscale mask of your opacity, where whites means total opacity and black means total transparency.&#13;
+<br/><br/>
+We're finally ready to save, wew. I hope that wasn't hard.&#13;
+<br/><br/>
+To do this, select the "File &gt; Save As" menu (for other Photoshop versions, do "File &gt; Save as a copy"). On the screen that opens, be sure to select "As a copy", select the "Targa" (TGA) format, and make sure that "Alpha Channels" is also selected.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_08.jpg" border="0"/><br/><br/>
+Also, this time, instead of saving everything into DOOM 3's /base dir, we'll get a bit more organized. Create a new "cakestatus" directory on the &lt;doom3&gt;/base directory, and save this new tga file there, with the name "panel.tga".&#13;
+<br/><br/>
+When the bit options window pops up, be sure to select "32 bits" as the exporting option, or else the alpha channel won't be exported.&#13;
+<br/><br/>
+Great, this first material is exported and ready to use. Before we can jump into the GUI editor, however, we have other materials to export. So close this new file (and don't save it - you don't have to) and we're back to the original PSD file.&#13;
+<br/><br/>
+Hide all layers, and turn on the "_noisegore" folder and all layers inside of it so we can export the blood and broken glass overlay materials.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_09.jpg" border="0"/><br/><br/>
+With that done, the process is pretty much the same as the previous one, and I'm using the "blood.tga" name. Once again...&#13;
+<br/><br/>
+1. Select everything (CTRL+A)&#13;
+<br/>
+2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)&#13;
+<br/>
+3. Create a new image document (CTRL+N)&#13;
+<br/>
+4. Accept the default properties (ENTER)&#13;
+<br/>
+5. Paste the flatten material (CTRL+V)&#13;
+<br/>
+6. Delete the default "background" layer&#13;
+<br/>
+7. Resize the canvas ("Image &gt; Canvas Size") using an 1024x512 size and at the top left corner&#13;
+<br/>
+8. CTRL+Click on the only layer on the layers list to select its transparency&#13;
+<br/>
+9. Use the menu "Select &gt; Save Selection", use any name&#13;
+<br/>
+10. Save as a copy, format TGA, with Alpha Channels, with 32 bit/pixel&#13;
+<br/>
+11. Close the image document, don't save&#13;
+<br/><br/>
+Nice! We're *almost* ready to get to edit the GUI (of course, we could have both editors opened at the same time, exporting and importing, but I'm doing these things one step at a time).&#13;
+<br/><br/>
+We still have a few images to export: our buttons, and the status icons. So get back to the original PSD file, hide everything, and show the "_buttons" folder only.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_10.jpg" border="0"/><br/><br/>
+We'll export them in a different way now. Also, even though some of these buttons assets belong to the same layer (the background), we'll export three different images. Also, this time we don't need an alpha channel, so it'll be a bit easier. We will do the "valid sizes" thingy a bit different, though.&#13;
+<br/><br/>
+First, use the marquee tool and drag a box around the first button to select it. Don't worry about the box size; when you copy, the transparent areas are subtracted. Just make sure the entire first button is selected, and no areas from the other buttons are.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_11.jpg" border="0"/><br/><br/>
+Now, do the same you did with the other materials, but stop on step 6...&#13;
+<br/><br/>
+1. Select everything (CTRL+A)&#13;
+<br/>
+2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)&#13;
+<br/>
+3. Create a new image document (CTRL+N)&#13;
+<br/>
+4. Accept the default properties (ENTER)&#13;
+<br/>
+5. Paste the flatten material (CTRL+V)&#13;
+<br/>
+6. Delete the default "background" layer&#13;
+<br/><br/>
+Now, we would usually resize the canvas to a valid size - probably 128x64 in this case - but since we're dealing with a very simple box button and crispness is not a real issue, we will resize the image, as I mentioned in the first "type" of solution we had. This will provide a good example of the "other" kind of export.&#13;
+<br/><br/>
+So call the "Image &gt; Image Size" menu. This works like the "Canvas Size" window, but it will resize the image inside the document properly. When the window opens, turn off the "Constrain Proportions" option - we want the image to be resizeable with no respect to ratio. Also, use width and height values that are valid power of two numbers - 128 and 64, respectively.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_12.jpg" border="0"/><br/><br/>
+Press OK and the image will get a bit bigger.&#13;
+<br/><br/>
+Now, to save. Since we're not using any transparency - it's a box button after all - we don't have to worry about alpha channels. So we just do the "File &gt; Save as" or "File &gt; Save as a copy" directly. In the window that pops up, make sure you don't have the "Alpha channels" check on (it's off if you don't have any additional channel anyway). Save it on the same "cakestatus" directory, this time with the "button_bad.tga" name. On the window that pops up, select 24 bits per pixel - again, we're not using alpha channels, so we only need RGB values.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_13.jpg" border="0"/><br/><br/>
+Close this new document, don't save, and get back to the original PSD file.&#13;
+<br/><br/>
+Now, I don't want to sound repetitive, so I'll just be brief and say to you to do the same thing with the other buttons. Save them as "button_soso.tga" and "button_ok.tga", on the same "cakestatus" directory.&#13;
+<br/><br/>
+With that done, we're almost there. There are a few other layers to export: the status symbols. Like the first materials we exported, these ones also have transparency settings, so we'll need to do all the channel process again.&#13;
+<br/><br/>
+So get to the original PSD file, hide everything, open up the "_status" folder, and show one of the layers. Now, repeat the exporting process (notice step 7 is different)...&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_14.jpg" border="0"/><br/><br/>
+1. Select everything (CTRL+A)&#13;
+<br/>
+2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)&#13;
+<br/>
+3. Create a new image document (CTRL+N)&#13;
+<br/>
+4. Accept the default properties (ENTER)&#13;
+<br/>
+5. Paste the flatten material (CTRL+V)&#13;
+<br/>
+6. Delete the default "background" layer&#13;
+<br/>
+7. Resize the canvas ("Image &gt; Canvas Size") using an 128x128 size and at the center/middle&#13;
+<br/>
+8. CTRL+Click on the only layer on the layers list to select its transparency&#13;
+<br/>
+9. Use the menu "Select &gt; Save Selection", use any name&#13;
+<br/>
+10. Save as a copy, format TGA, with Alpha Channels, with 32 bit color&#13;
+<br/>
+11. Close the image document, don't save&#13;
+<br/><br/>
+Do this for all three "_status" layers, saving them to the "cakestatus" folder. I saved them as "symbol_ok.tga", "symbol_soso.tga", and "symbol_bad.tga".&#13;
+<br/><br/>
+One note about step 7: I used the 128x128 size, which is the nearest bigger valid size for images that size. Also, instead of using the top left corner, I centered it; this makes it easier to position this type of windowDef in the GUI script later.. or else we would have to manually center the symbols later in relation to each other. This way, we just place them at the same position.&#13;
+<br/><br/>
+And now, after we have exported everything, we're *finally* ready to create the GUI itself. Close Photoshop (you don't need to save the original PSD file since we didn't modify it) and we're ready to move.&#13;
+<br/><br/>
+Open up the GUI editor we've setup on the previous lesson, and create a new blank GUI document. Before anything, save it as "cakestatus.gui" on the same "&lt;doom3&gt;/base/cakestatus" directory we created earlier and placed our materials.&#13;
+<br/><br/>
+Let's start from the bottom levels: create a new windowDef (menu "Item &gt; New &gt; windowDef"), and double-click it to edit its properties. On the "General" tab, give it the "panel" name. Move to the "Image" tab, check the "Material" option, and type "cakestatus/panel" as the material name.&#13;
+<br/><br/>
+Something important to remember: even though the .gui file is at the same directory as the material itself, all file access is still relative to DOOM 3's current game base directory - in this case, "&lt;doom3&gt;/base". So "cakestatus/panel" will refer to "&lt;doom3&gt;/base/cakestatus/panel.tga".&#13;
+<br/><br/>
+Click OK and see the result. The new windowDef is created, and sure enough it has our panel as a background. The size is wrong, though; what have to do is to manually set the windowDef size to match the original size - since the PSD was created as a 1024x512 screen, this is rather easy...&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_15.jpg" border="0"/><br/><br/>
+...just go to the "transformer" window and use the original image sizes as values (1024x512). Also, "center" it on screen - 20x20 in our case, simple math considering 640-600=40 (20 to each size), and 480-440=40 (20 to top/bottom).&#13;
+<br/><br/>
+Do it again now for our blood/broken glass overlay. Create a new windowDef, double-click to open its properties, and give it the "blood" name, and use "cakestatus/blood" as a material to it on (of course, you could set all these properties on the "Properties" window itself, if you already knew the property names). Resize it to 1024x512 and position it at 0x0, and our cake status panel is starting to take shape.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_16.jpg" border="0"/><br/><br/>
+Now we will finally add text. Simply create new windowDefs, double-clicking them, adding text, setting the size accordingly, and moving them to the right position and sizes. This is kind of a boring task and must be pretty basic for you now, so I won't get into it much; here's the result though.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_17.jpg" border="0"/><br/><br/>
+Nice, but something looks weird. What's it?&#13;
+<br/><br/>
+The thing is, our new text is showing on top of the blood overlay. It has to be below it so it can also be tainted with blood and by the brightness created by the broken glass... and look natural, of course.&#13;
+<br/><br/>
+Look at the "Navigator" window, showing the windowDef items; since button_bad was the last one we created, its the last on the list, on the bottom. This is because the navigator window use the same system as the GUI code itself: new items are positioned on top of the other items, so items on the topmost position are shown on the end of the list.&#13;
+<br/><br/>
+This is easy to fix, though. On the navigator window (or on the editing area itself), right-click on the "blood" windowDef, and on the menu that pops up, select "Arrange &gt; Bring to Front" or simply CTRL+SHIFT+], something Adobe Illustrator users will recognize. Sure enough, after doing this, our text windowDefs are now below the blood overlay, so the text looks like it has been painted with blood.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_18.jpg" border="0"/><br/><br/>
+Now we'll create the buttons. Create a new windowDef, edit it and name it "button_bad", set its material to "cakestatus/button_bad", use "BAD" as its text, and press OK. Set its size (82x37) and set its position (you can simply move it).&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_19.jpg" border="0"/><br/><br/>
+Two things to notice on this screenshot: first, I already moved the "blood" windowDef to the 'top' again, so remember to do this on this and on the following steps. Second, Remember we resized our button material to 128x64? We're now back at using the original size (82x37), and it looks good.&#13;
+<br/><br/>
+Also, we're finally using a windowDef with a background image AND a text.&#13;
+<br/><br/>
+Now do the same with the "button_soso" and "button_ok" materials: create a new windowDef, name them, set those images as material, set its text, and position and resize them. You may also just copy the "button_bad" windowDef and then paste it again (to duplicate), changing its name, material, and position. This is easier, of course, so I'd recommend that.&#13;
+<br/><br/>
+After doing this, remember to send the "blood" windowDef to the bottom of the list again, so it'll display on top of everything.&#13;
+<br/><br/>
+Also, just like in Photoshop, you may also wish to make the "blood" windowDef invisible (clicking on the little eye icon on the navigator window) so you can work with the other windowDefs without having to worry with the overlay getting in the way. Turning it on or off doesn't change the "visible" property of the windowDef, so this is a editing-time only feature. On the screenshot below, I've turned it off so I can see what I'm doing better.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_20.jpg" border="0"/><br/><br/>
+Time to move on. Now, we'll create the status panels. Create a new windowDef, name it "status_ok", and position it roughly on the middle of the screen, as below. Position or size is not that important, since this windowDef's boundaries won't be shown, but be sure to include the area that will be used by the cake status messages (the whole middle area).&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_21.jpg" border="0"/><br/><br/>
+Now create other windowDef again. Name it "symbol_ok", and set its material to, sure enough, "cakestatus/symbol_ok". Set its width and height (128x128) and position it roughly at the left-hand side of the "status_ok" windowDef we created earlier.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_22.jpg" border="0"/><br/><br/>
+I'll tell something in advance: we're doing this all because, in the next lesson, we will be able to turn the status windowDefs on and off, so it's better for us to have everything organized and correctly nested. We will, then, nest the "symbol_ok" windowDef inside of the "status_ok" windowDef.&#13;
+<br/><br/>
+To do this, either on the editing window or in the navigator window, select both "status_ok" and "symbol_ok" windowDefs. One *important thing* to remember: it doesn't take the windowDef order into account, but rather the order you selected them. The first windowDef you selected will always be the parent, and the rest, the children. So select the "status_ok" windowDef first.&#13;
+<br/><br/>
+Next, right-click, and select "Arrange &gt; Make Child" in the menu that pops up. &#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_23.jpg" border="0"/><br/><br/>
+Doing this, the symbol windowDef is into the status windowDef, and the navigator list update showing the children hidden (you have to open the parent windowDef by clicking on arrow to see the rest of the children). This is very similar to Photoshop's "Group with previous" (CTRL+G) action, and it works in the same way in the meaning that child windowDefs are now part of the parent windowDef and are masked by this parent.&#13;
+<br/><br/>
+Now, to create more text.&#13;
+<br/><br/>
+Create a new windowDef, and name it "text_ok". This will contain a description of the current status. I've used the "english" font, with scale 0.3, and the text "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team.". Also, give it a good position next to the "status_ok" picture.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_24.jpg" border="0"/><br/><br/>
+Great. Now it's time to make it also a child of the "status_ok" windowDef. Select both "status_ok" and "text_ok" windowDefs, in this order, and again, do right-click and select "Arrange &gt; Make Child". The "text_ok" windowDef will be nested into status_ok.&#13;
+<br/><br/>
+After this, we're almost ready to do the next step, so let's test this thing. First, select the "blood" windowDef again, move it to the bottom of the list either by using the "Arrange" menu or the keyboard shortcuts. This will be the end layout of the windowDef list...&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_25.jpg" border="0"/><br/><br/>
+Now, save the GUI file (save always and save often), and press CTRL+T or use the "Tools &gt; Viewer" menu to test it on the viewer.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_26.jpg" border="0"/><br/><br/>
+Is this looking good or what?&#13;
+<br/><br/>
+Well, we're ready to move on. What we have to do is to create the remaining status windowDefs, for the "soso" and the "bad" status. Now, do you remember - on the previous lesson - when I said that editing the code is sometimes better than doing anything on the GUI editor?&#13;
+<br/><br/>
+Well, this is one of those moments. While we could simply recreate and set all properties again for the remaining two windowDefs, this would be too repetitive. It's easier - even to maintain the same positions we used - to just open the GUI source code and do a little copy&amp;paste job.&#13;
+<br/><br/>
+Go to the GUI editor, save the GUI script file, and close it. Now, open this same file - &lt;doom3&gt;/base/cakestatus/cakestatus.gui - on any text editor, notepad if you wish. Look for the "status_ok" windowDef, and sure enough, there it is.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   windowDef status_ok&#13;
+<br/>
+   {&#13;
+<br/>
+      rect   64,159,512,147&#13;
+<br/>
+      visible   1&#13;
+<br/>
+      windowDef symbol_ok&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   16,6,128,128&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         background   "cakestatus/symbol_ok"&#13;
+<br/>
+         matcolor   1,1,1,1&#13;
+<br/>
+      }&#13;
+<br/>
+      windowDef text_ok&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   153,6,345,134&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         forecolor   1,1,1,1&#13;
+<br/>
+         text   "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team."&#13;
+<br/>
+         textscale   0.30000001&#13;
+<br/>
+      }&#13;
+<br/>
+   }</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now, simply copy this text and paste it twice, making sure you're not mixing any lines. Leave the original untouched, and modify the other two - renaming all "_ok" names (the three windowDef names and the material name) to "_soso" in the first copy, and to "_bad" in the second copy. Anyhow, this is the final result...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   windowDef status_ok&#13;
+<br/>
+   {&#13;
+<br/>
+      rect   64,159,512,147&#13;
+<br/>
+      visible   1&#13;
+<br/>
+      windowDef symbol_ok&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   16,6,128,128&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         background   "cakestatus/symbol_ok"&#13;
+<br/>
+         matcolor   1,1,1,1&#13;
+<br/>
+      }&#13;
+<br/>
+      windowDef text_ok&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   153,6,345,134&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         forecolor   1,1,1,1&#13;
+<br/>
+         text   "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team."&#13;
+<br/>
+         textscale   0.30000001&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   windowDef status_soso&#13;
+<br/>
+   {&#13;
+<br/>
+      rect   64,159,512,147&#13;
+<br/>
+      visible   1&#13;
+<br/>
+      windowDef symbol_soso&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   16,6,128,128&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         background   "cakestatus/symbol_soso"&#13;
+<br/>
+         matcolor   1,1,1,1&#13;
+<br/>
+      }&#13;
+<br/>
+      windowDef text_soso&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   153,6,345,134&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         forecolor   1,1,1,1&#13;
+<br/>
+         text   "Cake is not very poisonous. Use in case of profound starvation and report to the medical crew immediately after consumption."&#13;
+<br/>
+         textscale   0.30000001&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   windowDef status_bad&#13;
+<br/>
+   {&#13;
+<br/>
+      rect   64,159,512,147&#13;
+<br/>
+      visible   1&#13;
+<br/>
+      windowDef symbol_bad&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   16,6,128,128&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         background   "cakestatus/symbol_bad"&#13;
+<br/>
+         matcolor   1,1,1,1&#13;
+<br/>
+      }&#13;
+<br/>
+      windowDef text_bad&#13;
+<br/>
+      {&#13;
+<br/>
+         rect   153,6,345,134&#13;
+<br/>
+         visible   1&#13;
+<br/>
+         forecolor   1,1,1,1&#13;
+<br/>
+         text   "Eating this cake means certain and immediate death. Please seal the area and start decontamination process AH2-B."&#13;
+<br/>
+         textscale   0.30000001&#13;
+<br/>
+      }&#13;
+<br/>
+   }</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Notice I've also changed the text messages to a new proper description.&#13;
+<br/><br/>
+After changing the GUI script, save it, close the text editor, and open it again on the GUI editor. If you have messed up and made an invalid GUI script, the GUI editor will pretty much blow up when opening the file, probably killing you and everybody in a 1-kilometer range. If that happens, open the source code again and check if every windowDef is correctly opened and closed, and brackets are placed correctly.&#13;
+<br/><br/>
+If it doesn't blow up, this will be the final result, with status windowDefs displayed on top of each other.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_27.jpg" border="0"/><br/><br/>
+Well, that was long - but it's done! Our real-world GUI is created, and ready to be scripted. The next lesson will cover some basic coding on this same GUI script. See you there.&#13;
+<br/><br/><a href="/web/20060927002335/http://hosted.zeh.com.br/doom3/tutorials/tut3.zip" target="_blank" class="postlink">Download source and example files</a> (1.4mb)<br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a> | <a href="/web/20060927002335/http://www.modwiki.net/" target="_blank" class="postlink">Join the ModWiki project</a></span><span class="gensmall"><br/><br/>Last edited by zeh on Thu Aug 12, 2004 12:53 am; edited 7 times in total</span></td>
+			</tr>]]></body></post><post id="30823" date="Posted: Sun Aug 08, 2004 9:01 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Very nice zeh. <img src="/web/20060927002335im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20060927002335/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="31431" date="Posted: Mon Aug 09, 2004 5:23 pm    Post subject: "><author>patd</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A couple things to add:&#13;
+<br/><br/>
+Images should always be power of 2...8x8, 16x16, 32x32, 64x64, 128x128 etc. Width and height can differ, but both should be power of 2. If you create nonstandard sizes the engine will resize them during load, but the results aren't nearly as good as an image editing program will do, and you are adding in extra work for the game to do while loading the map.&#13;
+<br/><br/>
+Whenever possible, use gui text instead of text in an image for 2 reasons: 1- localizations. Making the gui  for alternate languages is much more difficult when images have to be edited. When using text, its a simple string table lookup to the appropriate lang file. 2- Text can look really bad in the medium/low image compression. Gui text will always be clear regardless of compression.&#13;
+<br/><br/>
+Reuse images whenever you can. Gui images count with loading the map textures, so the more images used the more memory you use and the longer the load times. One of the easiest ways is to mirror images with negative rects. If you remove the text from the tutorial image, you can cut it in half then flip it to create both halves. Many guis use a series of small images to create boxes (one small image for each corner and side, and a backcolor fill for the center) which is great for its low memory useage, and it allows for quick rescaling of the boxes for use in different guis.&#13;
+<br/><br/>
+Overall good tutorials, I haven't had time to write up proper documentation so it's good to see someone jumping in to put something together.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="31444" date="Posted: Mon Aug 09, 2004 5:48 pm    Post subject: "><author>zeh</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Images should always be power of 2...8x8, 16x16, 32x32, 64x64, 128x128 etc. Width and height can differ, but both should be power of 2. If you create nonstandard sizes the engine will resize them during load, but the results aren't nearly as good as an image editing program will do, and you are adding in extra work for the game to do while loading the map.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+You know, I was suspecting something like this was true - I could only use images with dimensions with power of 2 on the ut2k4 engine - but I tested and it seemed to work, so I didn't worry about it anymore, even though I haven't tested it in-game yet.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Whenever possible, use gui text instead of text in an image for 2 reasons: 1- localizations. Making the gui  for alternate languages is much more difficult when images have to be edited. When using text, its a simple string table lookup to the appropriate lang file. 2- Text can look really bad in the medium/low image compression. Gui text will always be clear regardless of compression.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+That got me thinking too - in the end I used way too much text and kind of justified it to myself because I was using some effects on the layers and all that. But I failed to mention that, that's right. And I hadn't tested the effect of quality changes on text rendering, great to know it still uses the original resolution.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Reuse images whenever you can. Gui images count with loading the map textures, so the more images used the more memory you use and the longer the load times. One of the easiest ways is to mirror images with negative rects. If you remove the text from the tutorial image, you can cut it in half then flip it to create both halves. Many guis use a series of small images to create boxes (one small image for each corner and side, and a backcolor fill for the center) which is great for its low memory useage, and it allows for quick rescaling of the boxes for use in different guis.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Great. That's what I do when I want to create resizeable windows in Flash too, but judging from the original GUI scripts, I just figured it'd be ok to have a flatten background (even though some of them DID have the separated corners). It may be on some cases, but your point is valid.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Overall good tutorials, I haven't had time to write up proper documentation so it's good to see someone jumping in to put something together.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Thanks a lot, man. I really appreciate it. I'm rethinking this tutorial and I'll update it with some of the things you mentioned before finishing the next one.. it really got me thinking, specially the image dimension thing.<br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a> | <a href="/web/20060927002335/http://www.modwiki.net/" target="_blank" class="postlink">Join the ModWiki project</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="47645" date="Posted: Mon Sep 06, 2004 6:58 pm    Post subject: "><author>b0ksah</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Bump bumpy bump .. llalla la Bumpyy<br/>_________________<br/>b<span style="color: blue">0</span>ksah&#13;
+<br/><span style="font-size: 8px; line-height: normal">&lt;dimzbimz&gt;</span>Dumdidum<span style="font-size: 8px; line-height: normal">&lt;/dimzbimz&gt;</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="47665" date="Posted: Mon Sep 06, 2004 7:33 pm    Post subject: "><author>zeh</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">b0ksah, you don't need to bump anything; these tutorials are listed on the tutorial listing which is a sticky on the forum. If we were to bump all threads that are worth reading, the first few pages of the forum list would all consist of bumps. Believe me, it's not necessary.<br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a> | <a href="/web/20060927002335/http://www.modwiki.net/" target="_blank" class="postlink">Join the ModWiki project</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="47813" date="Posted: Tue Sep 07, 2004 7:25 am    Post subject: "><author>b0ksah</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I just got bored <img src="/web/20060927002335im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> ...and they are so nicely done .. I just had to  <img src="/web/20060927002335im_/http://www.doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/><br/>_________________<br/>b<span style="color: blue">0</span>ksah&#13;
+<br/><span style="font-size: 8px; line-height: normal">&lt;dimzbimz&gt;</span>Dumdidum<span style="font-size: 8px; line-height: normal">&lt;/dimzbimz&gt;</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53083" date="Posted: Sat Sep 25, 2004 4:00 am    Post subject: "><author>Reid</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Would like some help with saving the images out to .TGA.&#13;
+<br/><br/>
+I have photoshop 7.0 and when I go to Save As... I click the "as copy" check box so then I have&#13;
+<br/><br/>
+[X] as copy&#13;
+<br/>
+[X] alpha channels&#13;
+<br/>
+[  ] layers&#13;
+<br/><br/>
+checked&#13;
+<br/><br/>
+Then I select .TGA format and the options change to being grayed out and&#13;
+<br/><br/>
+[X] as copy&#13;
+<br/>
+[  ] alpha channels&#13;
+<br/>
+[  ] layers&#13;
+<br/><br/>
+I can't re-check the alpha channels options anymore because it's grayed out now. Help please?&#13;
+<br/><br/>
+-Reid</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53086" date="Posted: Sat Sep 25, 2004 4:12 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I believe there was a patch or plugin or something you had to download to give PS 7 the ability to save targa images with an alpha channel.&#13;
+<br/><br/>
+Also, I can't remember if the dialog comes up before or after the point your at now but when it asks you what bit depth to save the image as, select 32 bit if the image has an alpha channel. If you select 24 bit the alpha channel will be disgarded.<br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20060927002335/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53189" date="Posted: Sat Sep 25, 2004 6:34 pm    Post subject: "><author>Dk</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Reid wrote:</b></span></td>	</tr><tr><td class="quote">Would like some help with saving the images out to .TGA. &#13;
+<br/><br/>
+I have photoshop 7.0 and when I go to Save As... I click the "as copy" check box so then I have &#13;
+<br/><br/>
+[X] as copy &#13;
+<br/>
+[X] alpha channels &#13;
+<br/>
+[ ] layers &#13;
+<br/><br/>
+checked &#13;
+<br/><br/>
+Then I select .TGA format and the options change to being grayed out and &#13;
+<br/><br/>
+[X] as copy &#13;
+<br/>
+[ ] alpha channels &#13;
+<br/>
+[ ] layers &#13;
+<br/><br/>
+I can't re-check the alpha channels options anymore because it's grayed out now. Help please? &#13;
+<br/><br/>
+-Reid</td>	</tr></table><span class="postbody">&#13;
+<br/>
+All you need to do is save the alpha channel first.&#13;
+<br/><br/><img src="/web/20060927002335im_/http://home.woh.rr.com/dwksplace/alpha01.jpg" border="0"/><br/><br/>
+Then save the tga.  It will probably give you a warning that it will only save one of the channels but luckily that's all you need <img src="/web/20060927002335im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53829" date="Posted: Tue Sep 28, 2004 9:30 pm    Post subject: "><author>jsadler</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ummm....same problem.  Where the hell did you get a Mask menu from?  The menus I have are file, edit, image, layer, select, filter, view, window, and help.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53845" date="Posted: Tue Sep 28, 2004 10:37 pm    Post subject: "><author>zeh</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">jsadler: I believe he's using other software -- that's not a photoshop menu.&#13;
+<br/><br/>
+I hope you haven't missed this part of the tut --&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Now, select the "Select &gt; Save Selection" menu, and use whatever name you want as the new channel.&#13;
+<br/><br/>
+This creates a new alpha channel on your document file. You can find it in the "Channels" window in Photoshop; it's a just grayscale mask of your opacity, where whites means total opacity and black means total transparency.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Applies to any photoshop I recall, at least from 4 and above. You don't need anything to save alpha channels on tga files on photoshop -- I think mentioned a plugin that would convert the transparency to an alpha channel automatically (like you do when saving png files), that'd be the ideal.<br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a> | <a href="/web/20060927002335/http://www.modwiki.net/" target="_blank" class="postlink">Join the ModWiki project</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53877" date="Posted: Wed Sep 29, 2004 12:19 am    Post subject: "><author>jsadler</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No I definitely did that part, and there is an extra channel now in the channel box.  It just won't let me check the box.  Which is odd, because the reason Photoshop gives for the "alpha channels" checkbox being grayed out is that it must be saved as a copy, but that checkbox is clearly checked above it, as Reid pointed out.&#13;
+<br/><br/>
+I'll look into the plugin thing...but you're not using it, are you?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53893" date="Posted: Wed Sep 29, 2004 1:40 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20060927002335/http://www.adobe.com/support/downloads/detail.jsp?ftpID=1544" target="_blank">http://www.adobe.com/support/downloads/detail.jsp?ftpID=1544</a><br/>_________________<br/><a href="/web/20060927002335/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20060927002335im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20060927002335/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53895" date="Posted: Wed Sep 29, 2004 1:47 am    Post subject: "><author>-bluebox-</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">where will the gui be in the editor? i just made one and want it in my map but cannot find it in the editor! help needed!<br/>_________________<br/>Lionel Hutz: Well, he's kind of had it in for me ever since I accidentally ran over his dog. Actually, replace "accidentally" with "repeatedly," and replace "dog" with "son."</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53901" date="Posted: Wed Sep 29, 2004 2:07 am    Post subject: "><author>-bluebox-</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i need to show you a screenshot but don't know how!<br/>_________________<br/>Lionel Hutz: Well, he's kind of had it in for me ever since I accidentally ran over his dog. Actually, replace "accidentally" with "repeatedly," and replace "dog" with "son."</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53902" date="Posted: Wed Sep 29, 2004 2:12 am    Post subject: "><author>jsadler</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok thanks everyone I got the tga thing fixed.&#13;
+<br/><br/>
+Bluebox: you need to take a screenshot (hit printscreen and paste it into photoshop) and then get it hosted elsewhere, then link to it from the forum.&#13;
+<br/><br/>
+Thanks a lot for the tutorials, man, I think they're awesome!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53903" date="Posted: Wed Sep 29, 2004 2:15 am    Post subject: "><author>-bluebox-</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i know how to get screenshots i just couldn't find a place to host it! i got one now though  <a href="/web/20060927002335/http://img44.exs.cx/img44/4973/guiproblem.jpg" target="_blank">http://img44.exs.cx/img44/4973/guiproblem.jpg</a>  &#13;
+<br/>
+i want the bluebox picture stretched out so its not bunched up!<br/>_________________<br/>Lionel Hutz: Well, he's kind of had it in for me ever since I accidentally ran over his dog. Actually, replace "accidentally" with "repeatedly," and replace "dog" with "son."</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53904" date="Posted: Wed Sep 29, 2004 2:17 am    Post subject: "><author>SyPHer_</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">They entire GUI is squished because the model you've applied it to isnt wide, its narrow. If had to use that model, just make  the gui wider, or, if you dont have to use that model with that gui applied, change it,</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="53906" date="Posted: Wed Sep 29, 2004 2:19 am    Post subject: "><author>-bluebox-</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">how do i widen the gui?<br/>_________________<br/>Lionel Hutz: Well, he's kind of had it in for me ever since I accidentally ran over his dog. Actually, replace "accidentally" with "repeatedly," and replace "dog" with "son."</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p30810" date="Posted: Sun Aug 08, 2004 8:32 pm "><author>zeh</author><body><![CDATA[<div class="postbody">Welcome to the fourth (#3 as any programmer would know) in the complete GUI scripting tutorials. This lesson won't cover much low-level scripting; it will, rather, show you how to prepare your external assets (materials) and use them on your GUI script. I'll use Adobe Photoshop CS in this lesson, but every technique used in this program can be easily reproduced on other graphic editing packages, including older Photoshop versions. We will transform a PSD file into a GUI script, and this GUI script will be used in later lessons; see this as a workflow tutorial rather then a scripting one.
+<br /><br /><span style="font-weight: bold">Notice:</span> this is version 2 of this lesson. I've rewritten most of it and redone all screens and files from scratch after some corrections/advices from patd (on reply, below).
+<br /><br /><span style="font-size: 167%; line-height: normal"><span style="font-weight: bold">Complete GUI Scripting - 3: Preparing and importing assets</span></span>
+<br /><br />When designing interfaces, no matter which media is the target, it's common for designers to just work on Photoshop (or a similar program) to create the basic layout, then import (or recreate) it in the final production tool. Creating Flash content works like that, creating After Effects content works like that, and GUI scripting couldn't be different; usually, the first step to creating an interface for the DOOM 3 engine would be to create it on your graphics editing package of choice than exporting images to be used by your GUI script.
+<br /><br />While creating the general design of an interface is something much bigger and that is beyond the scope of these tutorials, there's a lot that can be said about exporting materials correctly from Photoshop then using them on the DOOM 3 engine. This tutorial will start from a finished PSD file, then we'll export all materials thinking about how they should work, then reassemble them on the GUI editor.
+<br /><br />For this lesson, there's a little background that I have to add, to explain the sample PSD we'll be working with. Please bare with me while I go a bit off topic now...
+<br /><br />...before the alien/demon invasion, the UAC officials on the UAC base on Mars were very worried about the staff morale. After all, being slayed by HellKnights and turning into zombies can put anyone down. To help bringing staff morale up, the UAC officials created a weekly cake celebration - basically, the kitchen staff would create a cake using brand-new UAC technology and put it on the kitchen for everyone to eat and feel happy.
+<br /><br />However, the situation on Mars kitchens aren't exactly top-notch, and after complaints about people feeling ill after eating the weekly cake, the UAC decided to put a panel next to the cake indicating the current cake quality. Everybody could get on the cake status panel and look at the current cake quality before trying to eat it. Also, if they think the status is wrong, they can simply click a button and change the current cake quality, so anyone approaching the cake status panel later will also notice the current cake quality.
+<br /><br />On the next few lessons, we'll be building the cake status panel. Here's a preview of how it will look like after we're finished.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_26.jpg" alt="Image" /><br /><br />With that said, this is the *complete* cake status PSD, opened in Photoshop (again, all files are available for download on a link at the end of this tutorial, so download to try yourself). This is just a quick design I created for this lesson, but it illustrates well what GUIs usually need.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_01.jpg" alt="Image" /><br /><br />All layers are shown on this screenshot, and some content will be created on the GUI editor itself. Also, notice I created the PSD file using a 640x480 size - this will help when I have to resize and position windowDefs on the GUI editor, so I just need to see their original values and positions.
+<br /><br />Before we start exporting everything to materials, one word of advice: while GUI scripts works a lot like Photoshop - windowDefs work like layers, being stacked and all that - creating one windowDef/material for each PSD layer is not a good idea. If you use shared assets (like materials that are common and used on other GUIs too), this is fine, but other than that, it's a good idea to stack as many layers as possible on one single material file. This is what I'll do here, so even though this is a semi-complex PSD file with folders and a couple dozen layers, it'll be a pretty simple GUI script in the end.
+<br /><br />Okey, let's start. The first thing to do here is to turn everything you don't want off, while seeing what you want to export as one material. In our case, we will first export the background; so we hide everything (including the background) and let the panelBack layer (and its grouped layers) visible only.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_02.jpg" alt="Image" /><br /><br />Now, select all (CTRL+A), make sure you have a visible layer selected (worst Photoshop usability bug ever), and select the menu "Edit &gt; Copy Merged" (SHIFT+CTRL+C) to create a flatten copy of everything on the clipboard.
+<br /><br />Now, select the "File &gt; New" menu (CTRL+N). You'll notice it uses the values of the visible clipboard width and height in the new image properties, so just click OK or press enter to create a new image.
+<br /><br />With that image created, select "Edit &gt; Paste" (CTRL+V), delete the default "background" layer on the layers panel, and you'll have a new material ready to be exported.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_03.jpg" alt="Image" /><br /><br />Before saving, however, there's are two catches.
+<br /><br />The first catch is related to the image size. As you'll notice on the "Image &gt; Canvas Size" menu, our image has a 600x440 size. We will transform this on an image to be used by the DOOM 3 engine; and 3D video cards only use images with dimensions that are a number which is a power of two - that means using dimensions like 64, 128, 256, 512 and so on, so we have to conform to those rules.
+<br /><br />Even though we *could* create images with custom sizes - in fact, I did that, in the first version of the article, but the result was pretty bad - it would mean that the engine would resize the image to a given size (256x256, or something similar) before using it, then resize it again when displaying it.
+<br /><br />With that said, we have three choices now. We can:
+<br /><br />1. Grab our 600x440 image and resize it to a valid size on Photoshop, like 512x256, then export it at that size and simply use it with the original 600x440 size on the GUI script; or
+<br />2. Add some transparent areas to our image to make it big enough to fit into a valid image size, like 1024x512, then export it and use it at this same size on the GUI script; or
+<br />3. Build our image from several small images (corners, top, sides, center), each one a separate image with a valid size.
+<br /><br />Memory wise, the first choice is the better one; we would use the whole area for our image. It would result in resizing, though, and in the end the image would never be crisp, even at the original 640x480 size.
+<br /><br />The second choice is a good one because you would have the image be as crisp as possible, but you would be wasting texture space.
+<br /><br />The third choice is overall the best one; however, it would be harder to implement since you'll have to develop a whole user interface system that makes sense. This is the good choice to make when building a complex window-like system, or several different GUI scripts that would share the same assets and have different sizes, but for our example which is a lone GUI script, it would be overkill.
+<br /><br />With that said, I'll stick to the second option for now. Keep in mind, however, that in the future, you will have to decide which is the best option, and it will vary according to several different factors.
+<br /><br />Okey. So we will add some little unused space to our image; call the "Image &gt; Canvas Size" menu, and resize it to the next big sizes which are valid numbers. In this case, 1024x512. Also, be sure to click on the top left anchor button, so our image will stay at the top left corner of the document. Like so:
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_04.jpg" alt="Image" /><br /><br />It will resize the canvas without touching the image.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_05.jpg" alt="Image" /><br /><br />Now, the second catch. Since this material will have a transparency, we have to make sure an alpha channel gets exported. Now, if we were exporting this image to a PNG file, we could simply export/save it now. But since this is a TGA file, there's something we need to do: create an alpha channel manually.
+<br /><br />Press CTRL and click on the name of the layer on the layers panel. This will create a selection that matches the current layer's alpha mask, so you'll see the so-called walking ants on top of the layer's opacity edges.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_06.jpg" alt="Image" /><br /><br />Now, select the "Select &gt; Save Selection" menu, and use whatever name you want as the new channel.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_07.jpg" alt="Image" /><br /><br />This creates a new alpha channel on your document file. You can find it in the "Channels" window in Photoshop; it's a just grayscale mask of your opacity, where whites means total opacity and black means total transparency.
+<br /><br />We're finally ready to save, wew. I hope that wasn't hard.
+<br /><br />To do this, select the "File &gt; Save As" menu (for other Photoshop versions, do "File &gt; Save as a copy"). On the screen that opens, be sure to select "As a copy", select the "Targa" (TGA) format, and make sure that "Alpha Channels" is also selected.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_08.jpg" alt="Image" /><br /><br />Also, this time, instead of saving everything into DOOM 3's /base dir, we'll get a bit more organized. Create a new "cakestatus" directory on the &lt;doom3&gt;/base directory, and save this new tga file there, with the name "panel.tga".
+<br /><br />When the bit options window pops up, be sure to select "32 bits" as the exporting option, or else the alpha channel won't be exported.
+<br /><br />Great, this first material is exported and ready to use. Before we can jump into the GUI editor, however, we have other materials to export. So close this new file (and don't save it - you don't have to) and we're back to the original PSD file.
+<br /><br />Hide all layers, and turn on the "_noisegore" folder and all layers inside of it so we can export the blood and broken glass overlay materials.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_09.jpg" alt="Image" /><br /><br />With that done, the process is pretty much the same as the previous one, and I'm using the "blood.tga" name. Once again...
+<br /><br />1. Select everything (CTRL+A)
+<br />2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)
+<br />3. Create a new image document (CTRL+N)
+<br />4. Accept the default properties (ENTER)
+<br />5. Paste the flatten material (CTRL+V)
+<br />6. Delete the default "background" layer
+<br />7. Resize the canvas ("Image &gt; Canvas Size") using an 1024x512 size and at the top left corner
+<br />8. CTRL+Click on the only layer on the layers list to select its transparency
+<br />9. Use the menu "Select &gt; Save Selection", use any name
+<br />10. Save as a copy, format TGA, with Alpha Channels, with 32 bit/pixel
+<br />11. Close the image document, don't save
+<br /><br />Nice! We're *almost* ready to get to edit the GUI (of course, we could have both editors opened at the same time, exporting and importing, but I'm doing these things one step at a time).
+<br /><br />We still have a few images to export: our buttons, and the status icons. So get back to the original PSD file, hide everything, and show the "_buttons" folder only.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_10.jpg" alt="Image" /><br /><br />We'll export them in a different way now. Also, even though some of these buttons assets belong to the same layer (the background), we'll export three different images. Also, this time we don't need an alpha channel, so it'll be a bit easier. We will do the "valid sizes" thingy a bit different, though.
+<br /><br />First, use the marquee tool and drag a box around the first button to select it. Don't worry about the box size; when you copy, the transparent areas are subtracted. Just make sure the entire first button is selected, and no areas from the other buttons are.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_11.jpg" alt="Image" /><br /><br />Now, do the same you did with the other materials, but stop on step 6...
+<br /><br />1. Select everything (CTRL+A)
+<br />2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)
+<br />3. Create a new image document (CTRL+N)
+<br />4. Accept the default properties (ENTER)
+<br />5. Paste the flatten material (CTRL+V)
+<br />6. Delete the default "background" layer
+<br /><br />Now, we would usually resize the canvas to a valid size - probably 128x64 in this case - but since we're dealing with a very simple box button and crispness is not a real issue, we will resize the image, as I mentioned in the first "type" of solution we had. This will provide a good example of the "other" kind of export.
+<br /><br />So call the "Image &gt; Image Size" menu. This works like the "Canvas Size" window, but it will resize the image inside the document properly. When the window opens, turn off the "Constrain Proportions" option - we want the image to be resizeable with no respect to ratio. Also, use width and height values that are valid power of two numbers - 128 and 64, respectively.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_12.jpg" alt="Image" /><br /><br />Press OK and the image will get a bit bigger.
+<br /><br />Now, to save. Since we're not using any transparency - it's a box button after all - we don't have to worry about alpha channels. So we just do the "File &gt; Save as" or "File &gt; Save as a copy" directly. In the window that pops up, make sure you don't have the "Alpha channels" check on (it's off if you don't have any additional channel anyway). Save it on the same "cakestatus" directory, this time with the "button_bad.tga" name. On the window that pops up, select 24 bits per pixel - again, we're not using alpha channels, so we only need RGB values.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_13.jpg" alt="Image" /><br /><br />Close this new document, don't save, and get back to the original PSD file.
+<br /><br />Now, I don't want to sound repetitive, so I'll just be brief and say to you to do the same thing with the other buttons. Save them as "button_soso.tga" and "button_ok.tga", on the same "cakestatus" directory.
+<br /><br />With that done, we're almost there. There are a few other layers to export: the status symbols. Like the first materials we exported, these ones also have transparency settings, so we'll need to do all the channel process again.
+<br /><br />So get to the original PSD file, hide everything, open up the "_status" folder, and show one of the layers. Now, repeat the exporting process (notice step 7 is different)...
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_14.jpg" alt="Image" /><br /><br />1. Select everything (CTRL+A)
+<br />2. Copy merged (SHIFT+CTRL+C when a visible layer is selected)
+<br />3. Create a new image document (CTRL+N)
+<br />4. Accept the default properties (ENTER)
+<br />5. Paste the flatten material (CTRL+V)
+<br />6. Delete the default "background" layer
+<br />7. Resize the canvas ("Image &gt; Canvas Size") using an 128x128 size and at the center/middle
+<br />8. CTRL+Click on the only layer on the layers list to select its transparency
+<br />9. Use the menu "Select &gt; Save Selection", use any name
+<br />10. Save as a copy, format TGA, with Alpha Channels, with 32 bit color
+<br />11. Close the image document, don't save
+<br /><br />Do this for all three "_status" layers, saving them to the "cakestatus" folder. I saved them as "symbol_ok.tga", "symbol_soso.tga", and "symbol_bad.tga".
+<br /><br />One note about step 7: I used the 128x128 size, which is the nearest bigger valid size for images that size. Also, instead of using the top left corner, I centered it; this makes it easier to position this type of windowDef in the GUI script later.. or else we would have to manually center the symbols later in relation to each other. This way, we just place them at the same position.
+<br /><br />And now, after we have exported everything, we're *finally* ready to create the GUI itself. Close Photoshop (you don't need to save the original PSD file since we didn't modify it) and we're ready to move.
+<br /><br />Open up the GUI editor we've setup on the previous lesson, and create a new blank GUI document. Before anything, save it as "cakestatus.gui" on the same "&lt;doom3&gt;/base/cakestatus" directory we created earlier and placed our materials.
+<br /><br />Let's start from the bottom levels: create a new windowDef (menu "Item &gt; New &gt; windowDef"), and double-click it to edit its properties. On the "General" tab, give it the "panel" name. Move to the "Image" tab, check the "Material" option, and type "cakestatus/panel" as the material name.
+<br /><br />Something important to remember: even though the .gui file is at the same directory as the material itself, all file access is still relative to DOOM 3's current game base directory - in this case, "&lt;doom3&gt;/base". So "cakestatus/panel" will refer to "&lt;doom3&gt;/base/cakestatus/panel.tga".
+<br /><br />Click OK and see the result. The new windowDef is created, and sure enough it has our panel as a background. The size is wrong, though; what have to do is to manually set the windowDef size to match the original size - since the PSD was created as a 1024x512 screen, this is rather easy...
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_15.jpg" alt="Image" /><br /><br />...just go to the "transformer" window and use the original image sizes as values (1024x512). Also, "center" it on screen - 20x20 in our case, simple math considering 640-600=40 (20 to each size), and 480-440=40 (20 to top/bottom).
+<br /><br />Do it again now for our blood/broken glass overlay. Create a new windowDef, double-click to open its properties, and give it the "blood" name, and use "cakestatus/blood" as a material to it on (of course, you could set all these properties on the "Properties" window itself, if you already knew the property names). Resize it to 1024x512 and position it at 0x0, and our cake status panel is starting to take shape.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_16.jpg" alt="Image" /><br /><br />Now we will finally add text. Simply create new windowDefs, double-clicking them, adding text, setting the size accordingly, and moving them to the right position and sizes. This is kind of a boring task and must be pretty basic for you now, so I won't get into it much; here's the result though.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_17.jpg" alt="Image" /><br /><br />Nice, but something looks weird. What's it?
+<br /><br />The thing is, our new text is showing on top of the blood overlay. It has to be below it so it can also be tainted with blood and by the brightness created by the broken glass... and look natural, of course.
+<br /><br />Look at the "Navigator" window, showing the windowDef items; since button_bad was the last one we created, its the last on the list, on the bottom. This is because the navigator window use the same system as the GUI code itself: new items are positioned on top of the other items, so items on the topmost position are shown on the end of the list.
+<br /><br />This is easy to fix, though. On the navigator window (or on the editing area itself), right-click on the "blood" windowDef, and on the menu that pops up, select "Arrange &gt; Bring to Front" or simply CTRL+SHIFT+], something Adobe Illustrator users will recognize. Sure enough, after doing this, our text windowDefs are now below the blood overlay, so the text looks like it has been painted with blood.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_18.jpg" alt="Image" /><br /><br />Now we'll create the buttons. Create a new windowDef, edit it and name it "button_bad", set its material to "cakestatus/button_bad", use "BAD" as its text, and press OK. Set its size (82x37) and set its position (you can simply move it).
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_19.jpg" alt="Image" /><br /><br />Two things to notice on this screenshot: first, I already moved the "blood" windowDef to the 'top' again, so remember to do this on this and on the following steps. Second, Remember we resized our button material to 128x64? We're now back at using the original size (82x37), and it looks good.
+<br /><br />Also, we're finally using a windowDef with a background image AND a text.
+<br /><br />Now do the same with the "button_soso" and "button_ok" materials: create a new windowDef, name them, set those images as material, set its text, and position and resize them. You may also just copy the "button_bad" windowDef and then paste it again (to duplicate), changing its name, material, and position. This is easier, of course, so I'd recommend that.
+<br /><br />After doing this, remember to send the "blood" windowDef to the bottom of the list again, so it'll display on top of everything.
+<br /><br />Also, just like in Photoshop, you may also wish to make the "blood" windowDef invisible (clicking on the little eye icon on the navigator window) so you can work with the other windowDefs without having to worry with the overlay getting in the way. Turning it on or off doesn't change the "visible" property of the windowDef, so this is a editing-time only feature. On the screenshot below, I've turned it off so I can see what I'm doing better.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_20.jpg" alt="Image" /><br /><br />Time to move on. Now, we'll create the status panels. Create a new windowDef, name it "status_ok", and position it roughly on the middle of the screen, as below. Position or size is not that important, since this windowDef's boundaries won't be shown, but be sure to include the area that will be used by the cake status messages (the whole middle area).
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_21.jpg" alt="Image" /><br /><br />Now create other windowDef again. Name it "symbol_ok", and set its material to, sure enough, "cakestatus/symbol_ok". Set its width and height (128x128) and position it roughly at the left-hand side of the "status_ok" windowDef we created earlier.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_22.jpg" alt="Image" /><br /><br />I'll tell something in advance: we're doing this all because, in the next lesson, we will be able to turn the status windowDefs on and off, so it's better for us to have everything organized and correctly nested. We will, then, nest the "symbol_ok" windowDef inside of the "status_ok" windowDef.
+<br /><br />To do this, either on the editing window or in the navigator window, select both "status_ok" and "symbol_ok" windowDefs. One *important thing* to remember: it doesn't take the windowDef order into account, but rather the order you selected them. The first windowDef you selected will always be the parent, and the rest, the children. So select the "status_ok" windowDef first.
+<br /><br />Next, right-click, and select "Arrange &gt; Make Child" in the menu that pops up. 
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_23.jpg" alt="Image" /><br /><br />Doing this, the symbol windowDef is into the status windowDef, and the navigator list update showing the children hidden (you have to open the parent windowDef by clicking on arrow to see the rest of the children). This is very similar to Photoshop's "Group with previous" (CTRL+G) action, and it works in the same way in the meaning that child windowDefs are now part of the parent windowDef and are masked by this parent.
+<br /><br />Now, to create more text.
+<br /><br />Create a new windowDef, and name it "text_ok". This will contain a description of the current status. I've used the "english" font, with scale 0.3, and the text "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team.". Also, give it a good position next to the "status_ok" picture.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_24.jpg" alt="Image" /><br /><br />Great. Now it's time to make it also a child of the "status_ok" windowDef. Select both "status_ok" and "text_ok" windowDefs, in this order, and again, do right-click and select "Arrange &gt; Make Child". The "text_ok" windowDef will be nested into status_ok.
+<br /><br />After this, we're almost ready to do the next step, so let's test this thing. First, select the "blood" windowDef again, move it to the bottom of the list either by using the "Arrange" menu or the keyboard shortcuts. This will be the end layout of the windowDef list...
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_25.jpg" alt="Image" /><br /><br />Now, save the GUI file (save always and save often), and press CTRL+T or use the "Tools &gt; Viewer" menu to test it on the viewer.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_26.jpg" alt="Image" /><br /><br />Is this looking good or what?
+<br /><br />Well, we're ready to move on. What we have to do is to create the remaining status windowDefs, for the "soso" and the "bad" status. Now, do you remember - on the previous lesson - when I said that editing the code is sometimes better than doing anything on the GUI editor?
+<br /><br />Well, this is one of those moments. While we could simply recreate and set all properties again for the remaining two windowDefs, this would be too repetitive. It's easier - even to maintain the same positions we used - to just open the GUI source code and do a little copy&amp;paste job.
+<br /><br />Go to the GUI editor, save the GUI script file, and close it. Now, open this same file - &lt;doom3&gt;/base/cakestatus/cakestatus.gui - on any text editor, notepad if you wish. Look for the "status_ok" windowDef, and sure enough, there it is.
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">   windowDef status_ok<br />   {<br />      rect   64,159,512,147<br />      visible   1<br />      windowDef symbol_ok<br />      {<br />         rect   16,6,128,128<br />         visible   1<br />         background   "cakestatus/symbol_ok"<br />         matcolor   1,1,1,1<br />      }<br />      windowDef text_ok<br />      {<br />         rect   153,6,345,134<br />         visible   1<br />         forecolor   1,1,1,1<br />         text   "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team."<br />         textscale   0.30000001<br />      }<br />   }</div><br /><br />Now, simply copy this text and paste it twice, making sure you're not mixing any lines. Leave the original untouched, and modify the other two - renaming all "_ok" names (the three windowDef names and the material name) to "_soso" in the first copy, and to "_bad" in the second copy. Anyhow, this is the final result...<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">   windowDef status_ok<br />   {<br />      rect   64,159,512,147<br />      visible   1<br />      windowDef symbol_ok<br />      {<br />         rect   16,6,128,128<br />         visible   1<br />         background   "cakestatus/symbol_ok"<br />         matcolor   1,1,1,1<br />      }<br />      windowDef text_ok<br />      {<br />         rect   153,6,345,134<br />         visible   1<br />         forecolor   1,1,1,1<br />         text   "Cake is proper for eating. Observation is advised up to 4 hours after consumption. Adverse symptoms should be reported at once to the cake status updater team."<br />         textscale   0.30000001<br />      }<br />   }<br />   windowDef status_soso<br />   {<br />      rect   64,159,512,147<br />      visible   1<br />      windowDef symbol_soso<br />      {<br />         rect   16,6,128,128<br />         visible   1<br />         background   "cakestatus/symbol_soso"<br />         matcolor   1,1,1,1<br />      }<br />      windowDef text_soso<br />      {<br />         rect   153,6,345,134<br />         visible   1<br />         forecolor   1,1,1,1<br />         text   "Cake is not very poisonous. Use in case of profound starvation and report to the medical crew immediately after consumption."<br />         textscale   0.30000001<br />      }<br />   }<br />   windowDef status_bad<br />   {<br />      rect   64,159,512,147<br />      visible   1<br />      windowDef symbol_bad<br />      {<br />         rect   16,6,128,128<br />         visible   1<br />         background   "cakestatus/symbol_bad"<br />         matcolor   1,1,1,1<br />      }<br />      windowDef text_bad<br />      {<br />         rect   153,6,345,134<br />         visible   1<br />         forecolor   1,1,1,1<br />         text   "Eating this cake means certain and immediate death. Please seal the area and start decontamination process AH2-B."<br />         textscale   0.30000001<br />      }<br />   }</div>
+<br /><br />Notice I've also changed the text messages to a new proper description.
+<br /><br />After changing the GUI script, save it, close the text editor, and open it again on the GUI editor. If you have messed up and made an invalid GUI script, the GUI editor will pretty much blow up when opening the file, probably killing you and everybody in a 1-kilometer range. If that happens, open the source code again and check if every windowDef is correctly opened and closed, and brackets are placed correctly.
+<br /><br />If it doesn't blow up, this will be the final result, with status windowDefs displayed on top of each other.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://hosted.zeh.com.br/doom3/tutorials/tut3_27.jpg" alt="Image" /><br /><br />Well, that was long - but it's done! Our real-world GUI is created, and ready to be scripted. The next lesson will cover some basic coding on this same GUI script. See you there.
+<br /><br /><a href="https://web.archive.org/web/20121105170757/http://hosted.zeh.com.br/doom3/tutorials/tut3.zip" class="postlink">Download source and example files</a> (1.4mb)</div>]]></body></post><post id="p30823" date="Posted: Sun Aug 08, 2004 9:01 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Very nice zeh. <img src="https://web.archive.org/web/20121105170757im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p31431" date="Posted: Mon Aug 09, 2004 5:23 pm "><author>patd</author><body><![CDATA[<div class="postbody">A couple things to add:
+<br /><br />Images should always be power of 2...8x8, 16x16, 32x32, 64x64, 128x128 etc. Width and height can differ, but both should be power of 2. If you create nonstandard sizes the engine will resize them during load, but the results aren't nearly as good as an image editing program will do, and you are adding in extra work for the game to do while loading the map.
+<br /><br />Whenever possible, use gui text instead of text in an image for 2 reasons: 1- localizations. Making the gui  for alternate languages is much more difficult when images have to be edited. When using text, its a simple string table lookup to the appropriate lang file. 2- Text can look really bad in the medium/low image compression. Gui text will always be clear regardless of compression.
+<br /><br />Reuse images whenever you can. Gui images count with loading the map textures, so the more images used the more memory you use and the longer the load times. One of the easiest ways is to mirror images with negative rects. If you remove the text from the tutorial image, you can cut it in half then flip it to create both halves. Many guis use a series of small images to create boxes (one small image for each corner and side, and a backcolor fill for the center) which is great for its low memory useage, and it allows for quick rescaling of the boxes for use in different guis.
+<br /><br />Overall good tutorials, I haven't had time to write up proper documentation so it's good to see someone jumping in to put something together.</div>]]></body></post><post id="p31444" date="Posted: Mon Aug 09, 2004 5:48 pm "><author>zeh</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Images should always be power of 2...8x8, 16x16, 32x32, 64x64, 128x128 etc. Width and height can differ, but both should be power of 2. If you create nonstandard sizes the engine will resize them during load, but the results aren't nearly as good as an image editing program will do, and you are adding in extra work for the game to do while loading the map.</div><br /><br />You know, I was suspecting something like this was true - I could only use images with dimensions with power of 2 on the ut2k4 engine - but I tested and it seemed to work, so I didn't worry about it anymore, even though I haven't tested it in-game yet.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Whenever possible, use gui text instead of text in an image for 2 reasons: 1- localizations. Making the gui  for alternate languages is much more difficult when images have to be edited. When using text, its a simple string table lookup to the appropriate lang file. 2- Text can look really bad in the medium/low image compression. Gui text will always be clear regardless of compression.</div><br /><br />That got me thinking too - in the end I used way too much text and kind of justified it to myself because I was using some effects on the layers and all that. But I failed to mention that, that's right. And I hadn't tested the effect of quality changes on text rendering, great to know it still uses the original resolution.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Reuse images whenever you can. Gui images count with loading the map textures, so the more images used the more memory you use and the longer the load times. One of the easiest ways is to mirror images with negative rects. If you remove the text from the tutorial image, you can cut it in half then flip it to create both halves. Many guis use a series of small images to create boxes (one small image for each corner and side, and a backcolor fill for the center) which is great for its low memory useage, and it allows for quick rescaling of the boxes for use in different guis.</div><br /><br />Great. That's what I do when I want to create resizeable windows in Flash too, but judging from the original GUI scripts, I just figured it'd be ok to have a flatten background (even though some of them DID have the separated corners). It may be on some cases, but your point is valid.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Overall good tutorials, I haven't had time to write up proper documentation so it's good to see someone jumping in to put something together.</div>
+<br /><br />Thanks a lot, man. I really appreciate it. I'm rethinking this tutorial and I'll update it with some of the things you mentioned before finishing the next one.. it really got me thinking, specially the image dimension thing.</div>]]></body></post><post id="p47645" date="Posted: Mon Sep 06, 2004 6:58 pm "><author>b0ksah</author><body><![CDATA[<div class="postbody">Bump bumpy bump .. llalla la Bumpyy</div>]]></body></post><post id="p47665" date="Posted: Mon Sep 06, 2004 7:33 pm "><author>zeh</author><body><![CDATA[<div class="postbody">b0ksah, you don't need to bump anything; these tutorials are listed on the tutorial listing which is a sticky on the forum. If we were to bump all threads that are worth reading, the first few pages of the forum list would all consist of bumps. Believe me, it's not necessary.</div>]]></body></post><post id="p47813" date="Posted: Tue Sep 07, 2004 7:25 am "><author>b0ksah</author><body><![CDATA[<div class="postbody">I just got bored <img src="https://web.archive.org/web/20121105170757im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ...and they are so nicely done .. I just had to  <img src="https://web.archive.org/web/20121105170757im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /></div>]]></body></post><post id="p53083" date="Posted: Sat Sep 25, 2004 4:00 am "><author>Reid</author><body><![CDATA[<div class="postbody">Would like some help with saving the images out to .TGA.
+<br /><br />I have photoshop 7.0 and when I go to Save As... I click the "as copy" check box so then I have
+<br /><br />[X] as copy
+<br />[X] alpha channels
+<br />[  ] layers
+<br /><br />checked
+<br /><br />Then I select .TGA format and the options change to being grayed out and
+<br /><br />[X] as copy
+<br />[  ] alpha channels
+<br />[  ] layers
+<br /><br />I can't re-check the alpha channels options anymore because it's grayed out now. Help please?
+<br /><br />-Reid</div>]]></body></post><post id="p53086" date="Posted: Sat Sep 25, 2004 4:12 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I believe there was a patch or plugin or something you had to download to give PS 7 the ability to save targa images with an alpha channel.
+<br /><br />Also, I can't remember if the dialog comes up before or after the point your at now but when it asks you what bit depth to save the image as, select 32 bit if the image has an alpha channel. If you select 24 bit the alpha channel will be disgarded.</div>]]></body></post><post id="p53189" date="Posted: Sat Sep 25, 2004 6:34 pm "><author>Dk</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Reid wrote:</div><div class="quotecontent">Would like some help with saving the images out to .TGA. <br /><br />I have photoshop 7.0 and when I go to Save As... I click the "as copy" check box so then I have <br /><br />[X] as copy <br />[X] alpha channels <br />[ ] layers <br /><br />checked <br /><br />Then I select .TGA format and the options change to being grayed out and <br /><br />[X] as copy <br />[ ] alpha channels <br />[ ] layers <br /><br />I can't re-check the alpha channels options anymore because it's grayed out now. Help please? <br /><br />-Reid</div>
+<br />All you need to do is save the alpha channel first.
+<br /><br /><img src="https://web.archive.org/web/20121105170757im_/http://home.woh.rr.com/dwksplace/alpha01.jpg" alt="Image" /><br /><br />Then save the tga.  It will probably give you a warning that it will only save one of the channels but luckily that's all you need <img src="https://web.archive.org/web/20121105170757im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p53829" date="Posted: Tue Sep 28, 2004 9:30 pm "><author>jsadler</author><body><![CDATA[<div class="postbody">Ummm....same problem.  Where the hell did you get a Mask menu from?  The menus I have are file, edit, image, layer, select, filter, view, window, and help.</div>]]></body></post><post id="p53845" date="Posted: Tue Sep 28, 2004 10:37 pm "><author>zeh</author><body><![CDATA[<div class="postbody">jsadler: I believe he's using other software -- that's not a photoshop menu.
+<br /><br />I hope you haven't missed this part of the tut --
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Now, select the "Select &gt; Save Selection" menu, and use whatever name you want as the new channel.<br /><br />This creates a new alpha channel on your document file. You can find it in the "Channels" window in Photoshop; it's a just grayscale mask of your opacity, where whites means total opacity and black means total transparency.</div>
+<br /><br />Applies to any photoshop I recall, at least from 4 and above. You don't need anything to save alpha channels on tga files on photoshop -- I think mentioned a plugin that would convert the transparency to an alpha channel automatically (like you do when saving png files), that'd be the ideal.</div>]]></body></post><post id="p53877" date="Posted: Wed Sep 29, 2004 12:19 am "><author>jsadler</author><body><![CDATA[<div class="postbody">No I definitely did that part, and there is an extra channel now in the channel box.  It just won't let me check the box.  Which is odd, because the reason Photoshop gives for the "alpha channels" checkbox being grayed out is that it must be saved as a copy, but that checkbox is clearly checked above it, as Reid pointed out.
+<br /><br />I'll look into the plugin thing...but you're not using it, are you?</div>]]></body></post><post id="p53893" date="Posted: Wed Sep 29, 2004 1:40 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">
+<!-- m -->
+  <a class="postlink" href="https://web.archive.org/web/20121105170757/http://www.adobe.com/support/downloads/detail.jsp?ftpID=1544">http://www.adobe.com/support/downloads/ ... ftpID=1544</a>
+<!-- m -->
+</div>]]></body></post><post id="p53895" date="Posted: Wed Sep 29, 2004 1:47 am "><author>-bluebox-</author><body><![CDATA[<div class="postbody">where will the gui be in the editor? i just made one and want it in my map but cannot find it in the editor! help needed!</div>]]></body></post><post id="p53901" date="Posted: Wed Sep 29, 2004 2:07 am "><author>-bluebox-</author><body><![CDATA[<div class="postbody">i need to show you a screenshot but don't know how!</div>]]></body></post><post id="p53902" date="Posted: Wed Sep 29, 2004 2:12 am "><author>jsadler</author><body><![CDATA[<div class="postbody">Ok thanks everyone I got the tga thing fixed.
+<br /><br />Bluebox: you need to take a screenshot (hit printscreen and paste it into photoshop) and then get it hosted elsewhere, then link to it from the forum.
+<br /><br />Thanks a lot for the tutorials, man, I think they're awesome!</div>]]></body></post><post id="p53903" date="Posted: Wed Sep 29, 2004 2:15 am "><author>-bluebox-</author><body><![CDATA[<div class="postbody">i know how to get screenshots i just couldn't find a place to host it! i got one now though  <!-- m --><a class="postlink" href="https://web.archive.org/web/20121105170757/http://img44.exs.cx/img44/4973/guiproblem.jpg">http://img44.exs.cx/img44/4973/guiproblem.jpg</a><!-- m -->  
+<br />i want the bluebox picture stretched out so its not bunched up!</div>]]></body></post><post id="p53904" date="Posted: Wed Sep 29, 2004 2:17 am "><author>SyPHer_</author><body><![CDATA[<div class="postbody">They entire GUI is squished because the model you've applied it to isnt wide, its narrow. If had to use that model, just make  the gui wider, or, if you dont have to use that model with that gui applied, change it,</div>]]></body></post><post id="p53906" date="Posted: Wed Sep 29, 2004 2:19 am "><author>-bluebox-</author><body><![CDATA[<div class="postbody">how do i widen the gui?</div>]]></body></post></posts></thread></xml>

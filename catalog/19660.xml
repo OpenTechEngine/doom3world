@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="19660"><title>Moving ladder without script</title><posts><post id="p179414" date="Posted: Thu May 31, 2007 2:02 pm "><author>tory2</author><body><![CDATA[<div class="postbody">Hey this is my first tutorial but I hope it helps
+<br /><br /><span style="font-weight: bold">Moving Ladder without script</span>
+<br /><br />This tutorial aims to show how to make a ladder come down without using scripts.
+<br /><br />1) Make a x=384 y=384 z=256 box room, with a platform half way up, a light and a player start
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img467.imageshack.us/my.php?image=d3pic1sv8.jpg" class="postlink">http://img467.imageshack.us/my.php?image=d3pic1sv8.jpg</a>
+<br /><br />2) Make a ladder with cylinders, using any texture you want, and place it next to the platform
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img467.imageshack.us/my.php?image=d3pic2eq3.jpg" class="postlink">http://img467.imageshack.us/my.php?image=d3pic2eq3.jpg</a>
+<br /><br />3) Select all the parts, go to the entity window, select func_door from the list and click create. This turns it into a door. Move it up so it is out of the reach of the player, and add these key/val pairs:
+<br /><br />movedir -2
+<br />time 1
+<br />locked 1
+<br />wait -1
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img356.imageshack.us/my.php?image=d3pic3zp8.jpg" class="postlink">http://img356.imageshack.us/my.php?image=d3pic3zp8.jpg</a>
+<br /><br />4) Creat a brush the same size as the ladder. Then put the grid to 1, and make the front of the brush (the side the player will climb) 1 unit infront of the ladder. This is so when it comes down you can still climb the ladder.
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img356.imageshack.us/my.php?image=d3pic4gn8.jpg" class="postlink">http://img356.imageshack.us/my.php?image=d3pic4gn8.jpg</a>
+<br /><br />5) Give this brush the ladder texture and bind it to the ladder.
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img356.imageshack.us/my.php?image=d3pic5it0.jpg" class="postlink">http://img356.imageshack.us/my.php?image=d3pic5it0.jpg</a>
+<br /><br />6) Make a func static with the model <span style="font-weight: bold">models/mapobjects/guiobjects/techdrpanel1/techdrpanel1.lwo</span>
+<br />and with the gui
+<br /><span style="font-weight: bold">guis/alphalabs2/ladder.gui</span>
+<br />and place it on a wall near the ladder.
+<br />Deselect everything, then select the panel followed by the ladder and press Shift + k. This then targets the panel at the ladder.
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img162.imageshack.us/my.php?image=d3pic6wq5.jpg" class="postlink">http://img162.imageshack.us/my.php?image=d3pic6wq5.jpg</a>
+<br /><br />7) Save and compile the map. Then run it. At first the player cant reach the ladder.
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img162.imageshack.us/my.php?image=d3pic7ud9.jpg" class="postlink">http://img162.imageshack.us/my.php?image=d3pic7ud9.jpg</a>
+<br /><br />But then you press the button on the panel, and the ladder comes down.
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img162.imageshack.us/my.php?image=d3pic8sx3.jpg" class="postlink">http://img162.imageshack.us/my.php?image=d3pic8sx3.jpg</a>
+<br /><br />And then you can climb up it!
+<br /><br /><a href="https://web.archive.org/web/20071110230109/http://img162.imageshack.us/my.php?image=d3pic9qx4.jpg" class="postlink">http://img162.imageshack.us/my.php?image=d3pic9qx4.jpg</a></div>]]></body></post><post id="p187862" date="Posted: Tue Sep 04, 2007 8:19 pm "><author>tory2</author><body><![CDATA[<div class="postbody">anyone got any comments?</div>]]></body></post><post id="p187921" date="Posted: Thu Sep 06, 2007 9:46 am "><author>Tetzlaff</author><body><![CDATA[<div class="postbody">Thanks for the tutorial!</div>]]></body></post><post id="p187922" date="Posted: Thu Sep 06, 2007 9:47 am "><author>BloodRayne</author><body><![CDATA[<div class="postbody"><div class="quotetitle">tory2 wrote:</div><div class="quotecontent">anyone got any comments?</div><br />Yes, that's a very smart way of doing things. I wouldn't have come up with that. Nice find!  <img src="https://web.archive.org/web/20071110230109im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p187924" date="Posted: Thu Sep 06, 2007 11:56 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I wouldn't have suspected that sort of thing would work. I thought things like ladder brushes were inherently static.</div>]]></body></post></posts></thread></xml>

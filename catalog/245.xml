@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="245"><title>How to aproach a new level</title><posts><post id="p1797" date="Posted: Sat Nov 16, 2002 10:39 am "><author>3dioot</author><body><![CDATA[<div class="postbody">Hello all,
+<br /><br />Ive been digging around in the doom editor and i think i have a good enough base to start creating a 'real' level. Im back where i was with quake3 though. Quit frankly i dont know how to go about it. The amount of textures i can choose from absolutely baffles me. I know creativity cant be teached but how do you more experienced mappers approach a new map design?
+<br /><br />Do you choose a theme?
+<br />A limited set of textures perhaps?
+<br />Do you rough out the level first?
+<br />Do you sketch out a design first?
+<br />Do you use base textures first? (like only one floor, wall and ceiling texture)
+<br /><br />To me the only way i feel i can get a feel for the textures and their 'purpose' is to look at the allready existing levels and start replicating some objects and architecture. Im not talking about simply copying some brushes and pasting these in my own level (thats lame imho) but looking how textures are used. What textures are used in what kind of environments. Working with the media browser allready helps a lot (finally a directory structure; bless them!) but its still hard. The textures often have prefixes but (at least in this state) they dont seem to make much sense to me. I realise (coming from 3d) that you can pick some of the textures by common sense. For example, worn plating or with an anti slip profile on it shouldnt be on the ceiling or walls. Its a floor. Dirt streaks that run down a texture means its a wall. Vent grids or sensitive stuff shouldnt be on the ground. And so forth...
+<br /><br />I quess i just need some reassurance? Is it okay/good to start by 'replicating' basic building blocks? Do you guys create a set of prefabs to rough out levels? Just give me some hints please  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /><br /><br />Thanx, 3dioot
+<br /><br /><br />PS
+<br />I cant find any tutorials on this topic either. They all deal with one small tech bit of the editor. The tech bits are what i have down pretty well. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p1798" date="Posted: Sat Nov 16, 2002 11:09 am "><author>Ease</author><body><![CDATA[<div class="postbody">the truth is I dont really dont know
+<br /><br />Everytime i make a level bymyself i go through the same thing.  I never know how to start but i force myself to anyway.  But the process is differn't depending on the level and how I feel.
+<br /><br />Sometimes, specially if it is a single player level i will either sketch out a layout from a top down view and try to plan out the size of all the areas, plan out whats visible from where so i dont design myself into a corner with too many polygons (low framerate), and try and figure out what kind of enimies go where, what kind of situation do i want and how big should the room be for that situation, where is a scripted sequence/cinimatic, etc.  This can be as detailed as you want it to be, writing down how many enimies, and where to put ammo and health etc.  But I never go into tha tmuch detail.  im pretty much just keep everything in my head as far as what happens in each area and just use the drawing to help me understand exactly what i want before i do it or write down one or two word hints for myself like "generator puzzle, switch, computer room, storage, crazy machines, pipes, vents, soldiers, ammo room, helicopter pad, trap door, imp behind.  etc
+<br /><br />Another thing I do for single player (specially when working with a group) is to write down in words on a paper just a list of things I or other want to see in the level, but i dont draw it out.  liek sneaking section, mine carts, fight with friends, vehicle section, creepy section, jump pads, large bridges, slave rooms.    Sometimes it easiest to start with this first and then start making the level and just start crossing these things off the list as I go or sometimes I then draw all these out liek above in some sort of top down layout
+<br /><br />Sometimes I just have an idea like a hallway flooded with water with floating boxes and a bunch of enimies.  The player can push the floating boxes around easily to create his or her own barracade and cover.  So then i just go and make it and as i make it just sort of takes on a life of its own and that one hallway turn into a hallway to a staircase that leads up to a dining area that has been trashed with tables turned over and that area leads to an office area which has access to an elevator.... and sometimes levels just make themselvs
+<br /><br />one thing I always try to do if I have the chance to is to FIRST before anything look at all the textures a few times and thing about what kinds of things I can build with those textures so i dont design some area that is impossible to make with the texture i have availible and get screwd.  Looking at the textures also help inspire me sometimes and gives me ideas like "oh wow, i bet that would look really cool on a column, i better put columns in this level.
+<br /><br />when I actually start making a level in the editor if I have a clear picture of what I want i usually go through areas quickly and rough them out and then later come back and make them look better and better after lots of tweeking.  If I start and i don't have a clear idea of what I want i usually make the first room or hall i make look as best as I can make it until I think it looks right and then I use that as a visual prototype for what the rest of the level should be based on
+<br /><br />for multiplayer levels i tend to be more daring and am more likly to just start making the level without writing anything down first and just let the level happen
+<br /><br />I know some people will pick one texture and make all the archetecture first and detail it later but i can't stand making the first version of the level look crappy.
+<br /><br />back when all I did was CSG editing I would use custom geometry for almost everything.  But recently I have been in another situation and been using 3d studio max.  One style of level making is to make a set of prefabs.  hall pieces, hall bends, small room, big room, things you can plug into the room, doors, doorframes, ramp up/down pieces, columns, cover,machines, pipes, computer, desk, etc that all connect together.  As levels need more geometry detail and computer get faster I think we will start seeing more of this method of cunstruction because #1 The new unreal Tech is very heavly based on instanced prefabs #2 level designers and Artist are or are becoming seperate jobs and artist don't want to deatl with editors but already know a 3d package.  Then when they change the prefab all of the instances of it will change in the level without the artist having to do anything #3 easier to share resource #4 easier on memory #quicker to make a game with lots of detail this way.  of course this system is not as flexible.
+<br /><br />anywho the minimum of what i need to start a level is a theme, and some textures I like.  Sometimes you have to just start building and see if cool ideas come to you, in my expierance the coolest things are ideas that come up in the middle of designing the level</div>]]></body></post><post id="p1801" date="Posted: Sat Nov 16, 2002 11:29 am "><author>BNA!</author><body><![CDATA[<div class="postbody">I think this topic belongs to the very quick or very long answer section, I'll go with a quick one:
+<br /><br />You need to have a vision of what you want to achieve with your level. No matter whether this vision exits as a picture of a certain stage shot, as a whole episode, as a bit of a "wouldn't it be cool if" section or an accurate scetched out floor plan.
+<br /><br />Once you get your level going, things will flow, but you need to have a solid idea first. Solid ideas define the rough space you build and give you the ability to stay within certain scales. If you approach it from a decorators point of view you'll find yourself constantly rebuilding and rescailing large sections. That's nothing but annoying.</div>]]></body></post><post id="p1804" date="Posted: Sat Nov 16, 2002 1:29 pm "><author>3dioot</author><body><![CDATA[<div class="postbody">Thanx alot you both <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I quess its time to get my hands dirty then. I have a pretty clear idea of what i want to make so ill go write some stuff down and maybe sketch a little bit (eek). Im also going to take some screenshots of cool level geometry in the existing e3 levels so i have some 'reference' to work from. About the texture theme, i even have a pretty good idea about that (colors and kind of material) but to be honest i dont know how im going to give that hands and feet yet. I have browsed through all the materials (thanx bna for that tip of loading all materials instead of working in the texture tab only!) so maybe im going to write some texture sets down on paper. See if i can find a set with a certain prefix that i like.
+<br /><br />And ease, im going to reply on your sound speaker topic now. I think i have something that is quite handy.
+<br /><br />Thanx again, 3dioot</div>]]></body></post><post id="p1807" date="Posted: Sat Nov 16, 2002 1:54 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Glad I could help you.
+<br /><br />This might be nitpicky, but I'd highly preferr it if you could stay away from speaking wide open what you're going to do with software you're not supposed to have.
+<br /><br />I really can't stress it enough:
+<br />Until the final version is out, this forum only exists from pure goodwill of people we don't know. This goodwill may vanish if the forum turns too much from a "prepare yourself for Doom3 mapping" into a "how to map today for Doom" place.
+<br /><br />If you want to talk about the concepts of mapping, level geometry and so on, you're very welcome to do this here, but you can do this very good without mentioning doom. Sketching out concepts for next year can be done very good and legit in GTKradiant. Also discussions about creating atmos"fear", world scaling, detailing out levels and so on flow very well in a more general discussion.
+<br /><br />Doom, of course, is overwhelming, but so are the restrictions we all have to accept. I know you're posting on some other place which handles things different, so please honor the time I always spend to keep thing in order instead of me going over the forums every once in a while and do random topic deleting.
+<br /><br />This place was never intended to enter a popularity race. It's about quality and such places are rare to find on the web. Every user who posts here has the chance, to lift the quality bar higher with every single post.
+<br />This said I recommend you to watch ALIEN for good level design ideas.
+<br /><br />I know I'm a bit too sensible on this, but hey - it's DOOM!
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p1808" date="Posted: Sat Nov 16, 2002 2:08 pm "><author>3dioot</author><body><![CDATA[<div class="postbody">Remember the reply i wrote in the topic 'new to the boards?". I wasnt planning on posting screenshots, pimping my level, giving away download url's or anything similairly stupid. Hell, i didnt even mention how my level was going to look like, what it was based on and what the texture theme looks like that ive chosen. Im well aware of the rules of this forum and if i (accidently) step over the line your free to point that out to me. Hell, its your forum <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />I have been interested in mapping before but especially with the mulitplayer theme (i.e. no theme at all) of quake3 that enthousiasm was quickly blown out. I love creating atmosphere; building a believable alternative world that you can actually walk around in and interact. This is why i picked it up again. Now with d3 it has become a lot more like the stuff i do in 3dsmax (only realtime!). The flexibility that (for example) decals offer you is very exciting. So this is more of a personal project then anything else.
+<br /><br />Just thought i'd clear that up.   <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br />3dioot</div>]]></body></post><post id="p1809" date="Posted: Sat Nov 16, 2002 2:24 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">3dioot wrote:</div><div class="quotecontent">Just thought i'd clear that up.   <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br />3dioot</div>
+<br /><br />All cool here - I've mentioned that I'm nitpicky and just take it as that.
+<br />No warning of any kind was issued out to no one.
+<br /><br />When dayX has arrived, this forum will offer any tutorial possible, but for now, well, it's what it is <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />As you've mapped for Q3 before like me, I have to agree on everything you've said above.
+<br />Just wanted to add, that IMHO it'll be a big task to create real good content for Doom. In Q3 you could get away with a few mismatching textures as long as there was a camping spot and a rocketlauncher to "de-camp" that spot.
+<br /><br />Looking very much forward to what the community will create!</div>]]></body></post><post id="p1811" date="Posted: Sat Nov 16, 2002 2:44 pm "><author>bb_matt</author><body><![CDATA[<div class="postbody">I am daunted by the prospect.
+<br /><br />Daunted by the prospect of creating a Single Player level as good as one of the levels that it takes a team to create - namely, id softwares levels for doom3.
+<br /><br />That's my answer - it will take a team to create a decent SP experience for doom3. One level just isn't going to be good enough. 4 medium size levels will just about cut it.
+<br /><br />There will be a lot of "copycat" levels - a reshuffling of the id levels - some of which may be fun, but none of which will be remembered.
+<br /><br />One thing though - I think the interest to create SP levels will be there for the first time in ages.
+<br /><br />I watched the RTCW editing scene for a while - participated a bit - but as far as I know, not a single community SP level has been released that matches the original - in fact, I'm not even aware of an SP release - I stopped looking months ago. Please point me to any if you know of them.
+<br /><br />I played some community half-life full TC SP missions a ways back and although they were highly praised, I could never understand why - they were for the most part, sub-standard. Amazing, sure, better than any other community effort, yes - as good as the original - not even close.
+<br /><br /><br />Daunted.
+<br /><br />Teamwork for sure - that's the only way to do it.</div>]]></body></post><post id="p1819" date="Posted: Sat Nov 16, 2002 7:06 pm "><author>JustinBailey</author><body><![CDATA[<div class="postbody">I've never rleeased a Quake 3 map, but I"ve been mapping for about 2 years now.  I only did ctf maps, which are very different from single player and dm maps, but I guess they're more closely related to single player because you have to think about specific paths people are going to take as opposed to worrying about coming into the same area from multiple angles (vertically and horizontally).
+<br /><br />BUT anyhow.. I usually figure out what type of them I want to use first: industrial, gothic, natural, etc.  Once I attempt to decide on a theme, I usually find a nice looking floor texture and draw out the floor of a room.  I throw up a few walls after that which usually consist of two pieces: trim running along where the wall meets the floor, and then an actual wall texture on top of the trim.  Throw in a light, see how the textures look together, if they look bad, figure out which ones you like the most, and change the others until you find something that looks good to YOU.  Once you've got a basic layout, go back and add some details: a few pipes here, broken floor over there, wires hanging from the ceiling, light fixtures, guard rails, etc.  It's also usually a good idea not to have perfectly flat walls the entire time.  The more variety you can add to your level, the better it will look in most cases (some extreme texturing jobs don't <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> ).
+<br /><br />I guess it's just up to you how you want to texture your map, though.  Pick a theme and try to stick with it.  There are cases when you can change the theme a bit though.  If you're going with a tech style of texture, you can have a hallway that leads down into a lower area, almost a basement or underground storage maybe, and you could switch the texture style to beat up industrial with rust and dirt everywhere.
+<br /><br />I think it will almost be easier to texture in Doom 3 maps than Quake 3 maps because Doom 3 is somewhat based on reality.  Everyone has seen science reasearch labs/bases/stations in television shows, so everyone will has some sort of expectation of what the walls and floor tiles will look like.  You can always stand out, but there will probably always be similarities in all texture setups.
+<br /><br />So in a nuttshell: pick a theme, try to stick with it, and if you need to change the texture style, don't go too far away from your original selection, and try make the texture change make sense (ie, no wooden floors in a space station).
+<br /><br />This message wasn't supposed to be that long, but I sort of went off on a rant I guess.  I don't know if that helped or not, but have fun reading. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p1826" date="Posted: Sun Nov 17, 2002 12:40 am "><author>kat</author><body><![CDATA[<div class="postbody"><div class="quotetitle">bushboy wrote:</div><div class="quotecontent">....I watched the RTCW editing scene for a while - participated a bit - but as far as I know, not a single community SP level has been released that matches the original - in fact, I'm not even aware of an SP release - I stopped looking months ago. Please point me to any if you know of them.....</div>
+<br /><br />[self pimp] 
+<br />ok.. <a href="https://web.archive.org/web/20070509181516/http://www.cpdt.com/rtcw" class="postlink">here..!</a>  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br />[self pimp never switched off..!]
+<br /><br />I think there's alway been interest in SP stuff, the problem has been lack of documantation to feed the initial flames of the fire, if that isn't there by the time people do figure it all out and get round to making anything it's far too late (which is really what happened to the RtCW scene)... what will make or break D3 from a TC etc point of view is the documentation that comes with it...
+<br /><br />I think Ease hit it on the head, if it's an SP experience you really do need to plan ahead and have a good idea of what you want to happen in the map (not just locations, but things like the kind of conversations the AI's have, are they part of the story, are the objects around the map going to help the player finish the game - the smaller general details), not to the point that you can't deviate or change things, but have a story that is adaptable so you can if things don't quite work how you're expecting them to. Once you've got that you can then pad out the idea physically in sketches, they at least give you a general direction (as Ease hinted at) and keep you focused, otherwise you can waste a lot of time going off-track to the extent of loosing the plot completely.</div>]]></body></post><post id="p2003" date="Posted: Tue Nov 19, 2002 5:15 am "><author>demonspawn</author><body><![CDATA[<div class="postbody">Did someone say pimp??
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://old.fileplanet.com/dl/dl.asp?/planetwolfenstein/tramdesign/operation_evil_eye.zip">http://old.fileplanet.com/dl/dl.asp?/pl ... il_eye.zip</a><!-- m -->
+<br /><br />This is the first map in the series, I hope you enjoy it.
+<br /><br />But as to the threads focus.
+<br />Grab a pencil
+<br />Plan, plan plan.
+<br />Every story has conflict.
+<br />Conflict is established through a progressive buildup of antagonisms.
+<br />Antagonism are defined through perceived hardships.
+<br />Hardships are created through individual challenges.
+<br /><br />Define the main conflict.
+<br />Define the challenges needed to achieve resolution to the main conflict.
+<br /><br />Character Bible
+<br />Write a small Bio on your main villain, who it is, why their so bad, what their going to do destroy the world, how their going to destroy the world.
+<br />9 times out of 10 this simple paragraph of text will define your world for you as the environment that surrounds your antagonist will directly relate and define their appearance. (Evil scientist, dreary lab)
+<br />Henchmen bible
+<br />Make a list of the henchmen that will be present and what their purposes will be. This will help in defining what type of areas you'll need to have and specific dimensions that will be needed.
+<br />Read/write, re-read/re-write, sleep on it....repeat as needed until everything makes sense even to your dog. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />NOW start-up the editor!
+<br /><br />Feel the Flow with simple blocks
+<br />It starts here!
+<br />It ends here!
+<br />Build the branches of the adventure tree
+<br />Here are the challenge points that start easy and end up difficult.
+<br />Here is where the story points are presented.
+<br />Here are the breather points are needed.
+<br />Testing the Pacing.....
+<br />Texture theme is established. (Cold to Hot--New to Old etc..)
+<br />First pass light test
+<br />Add the AI and relevant paths.
+<br />Add the interactive elements.
+<br />Test the functionality 
+<br />Add the crucial geometry.(This is a major cinematic element, this is the secret chamber etc...)
+<br />Second pass light test
+<br />Fill in the needed geometry details.
+<br />Take it for a test spin.
+<br />Tune and adjust as needed.
+<br />Lend the keys to your friends for a test spin.
+<br />Tune and test as needed.
+<br /><br />This is what i do and it seems to help me focus on the areas that need my attention in the right order.
+<br />Hope it helps.</div>]]></body></post><post id="p2017" date="Posted: Tue Nov 19, 2002 9:00 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">demonspawn wrote:</div><div class="quotecontent">Did someone say pimp??</div>
+<br /><br />Try: <a href="https://web.archive.org/web/20070509181516/http://www.planetpimp.net/" class="postlink"><span style="font-weight: bold">PlanetPimp.net</span></a> - now tell me this wont be the perfect platform to pimp you Doomy map next year <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p2020" date="Posted: Tue Nov 19, 2002 9:05 am "><author>bb_matt</author><body><![CDATA[<div class="postbody">Hehe - nice URL there BNA - did you just register that, or have you had it for a while ?</div>]]></body></post><post id="p2023" date="Posted: Tue Nov 19, 2002 9:16 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">bushboy wrote:</div><div class="quotecontent">Hehe - nice URL there BNA - did you just register that, or have you had it for a while ?</div>
+<br /><br />Had it for quite a while.
+<br />Here's an elder overview of which domains I've had registered a while back: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/site/about.htm">http://www.doom3world.org/site/about.htm</a><!-- m --></div>]]></body></post><post id="p2024" date="FIXME failed to extract"><author>bb_matt</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - How to aproach a new level</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=1&amp;t=245&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app0.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.doom3world.org\/phpbb2\/viewtopic.php?t=245";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://www.doom3world.org/phpbb2/viewtopic.php?t=245" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://www.doom3world.org/phpbb2/viewtopic.php?t=245" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?t=245" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/faq.php?sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Fri Dec 28, 2007 8:05 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=06e20d44bf7ef5c03fa1dfded82358e1">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=73&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">Doom 3</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=1&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">Doom 3 level editing</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=245&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">How to aproach a new level</a></h2>
+
+	<p class="moderators">Moderators: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1" style="color: #AA0000;" class="username-coloured">BNA!</a>, <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=post&amp;f=1&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=reply&amp;f=1&amp;t=245&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>2</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 21 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?t=245#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=245&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1&amp;start=20">2</a>  <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=245&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=245&amp;view=previous&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=245&amp;view=next&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p1797" id="p1797"></a>
+				<b class="postauthor">3dioot</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> How to aproach a new level</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1797&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1797"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 10:39 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Nov 10, 2002 9:42 am<br /><b>Posts:</b> 34				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hello all,
+<br /><br />Ive been digging around in the doom editor and i think i have a good enough base to start creating a 'real' level. Im back where i was with quake3 though. Quit frankly i dont know how to go about it. The amount of textures i can choose from absolutely baffles me. I know creativity cant be teached but how do you more experienced mappers approach a new map design?
+<br /><br />Do you choose a theme?
+<br />A limited set of textures perhaps?
+<br />Do you rough out the level first?
+<br />Do you sketch out a design first?
+<br />Do you use base textures first? (like only one floor, wall and ceiling texture)
+<br /><br />To me the only way i feel i can get a feel for the textures and their 'purpose' is to look at the allready existing levels and start replicating some objects and architecture. Im not talking about simply copying some brushes and pasting these in my own level (thats lame imho) but looking how textures are used. What textures are used in what kind of environments. Working with the media browser allready helps a lot (finally a directory structure; bless them!) but its still hard. The textures often have prefixes but (at least in this state) they dont seem to make much sense to me. I realise (coming from 3d) that you can pick some of the textures by common sense. For example, worn plating or with an anti slip profile on it shouldnt be on the ceiling or walls. Its a floor. Dirt streaks that run down a texture means its a wall. Vent grids or sensitive stuff shouldnt be on the ground. And so forth...
+<br /><br />I quess i just need some reassurance? Is it okay/good to start by 'replicating' basic building blocks? Do you guys create a set of prefabs to rough out levels? Just give me some hints please  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /><br /><br />Thanx, 3dioot
+<br /><br /><br />PS
+<br />I cant find any tutorials on this topic either. They all deal with one small tech bit of the editor. The tech bits are what i have down pretty well. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=232&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p1798" id="p1798"></a>
+				<b class="postauthor">Ease</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1798&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1798"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 11:09 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 100 armour</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Nov 06, 2002 5:23 am<br /><b>Posts:</b> 142				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">the truth is I dont really dont know
+<br /><br />Everytime i make a level bymyself i go through the same thing.  I never know how to start but i force myself to anyway.  But the process is differn't depending on the level and how I feel.
+<br /><br />Sometimes, specially if it is a single player level i will either sketch out a layout from a top down view and try to plan out the size of all the areas, plan out whats visible from where so i dont design myself into a corner with too many polygons (low framerate), and try and figure out what kind of enimies go where, what kind of situation do i want and how big should the room be for that situation, where is a scripted sequence/cinimatic, etc.  This can be as detailed as you want it to be, writing down how many enimies, and where to put ammo and health etc.  But I never go into tha tmuch detail.  im pretty much just keep everything in my head as far as what happens in each area and just use the drawing to help me understand exactly what i want before i do it or write down one or two word hints for myself like "generator puzzle, switch, computer room, storage, crazy machines, pipes, vents, soldiers, ammo room, helicopter pad, trap door, imp behind.  etc
+<br /><br />Another thing I do for single player (specially when working with a group) is to write down in words on a paper just a list of things I or other want to see in the level, but i dont draw it out.  liek sneaking section, mine carts, fight with friends, vehicle section, creepy section, jump pads, large bridges, slave rooms.    Sometimes it easiest to start with this first and then start making the level and just start crossing these things off the list as I go or sometimes I then draw all these out liek above in some sort of top down layout
+<br /><br />Sometimes I just have an idea like a hallway flooded with water with floating boxes and a bunch of enimies.  The player can push the floating boxes around easily to create his or her own barracade and cover.  So then i just go and make it and as i make it just sort of takes on a life of its own and that one hallway turn into a hallway to a staircase that leads up to a dining area that has been trashed with tables turned over and that area leads to an office area which has access to an elevator.... and sometimes levels just make themselvs
+<br /><br />one thing I always try to do if I have the chance to is to FIRST before anything look at all the textures a few times and thing about what kinds of things I can build with those textures so i dont design some area that is impossible to make with the texture i have availible and get screwd.  Looking at the textures also help inspire me sometimes and gives me ideas like "oh wow, i bet that would look really cool on a column, i better put columns in this level.
+<br /><br />when I actually start making a level in the editor if I have a clear picture of what I want i usually go through areas quickly and rough them out and then later come back and make them look better and better after lots of tweeking.  If I start and i don't have a clear idea of what I want i usually make the first room or hall i make look as best as I can make it until I think it looks right and then I use that as a visual prototype for what the rest of the level should be based on
+<br /><br />for multiplayer levels i tend to be more daring and am more likly to just start making the level without writing anything down first and just let the level happen
+<br /><br />I know some people will pick one texture and make all the archetecture first and detail it later but i can't stand making the first version of the level look crappy.
+<br /><br />back when all I did was CSG editing I would use custom geometry for almost everything.  But recently I have been in another situation and been using 3d studio max.  One style of level making is to make a set of prefabs.  hall pieces, hall bends, small room, big room, things you can plug into the room, doors, doorframes, ramp up/down pieces, columns, cover,machines, pipes, computer, desk, etc that all connect together.  As levels need more geometry detail and computer get faster I think we will start seeing more of this method of cunstruction because #1 The new unreal Tech is very heavly based on instanced prefabs #2 level designers and Artist are or are becoming seperate jobs and artist don't want to deatl with editors but already know a 3d package.  Then when they change the prefab all of the instances of it will change in the level without the artist having to do anything #3 easier to share resource #4 easier on memory #quicker to make a game with lots of detail this way.  of course this system is not as flexible.
+<br /><br />anywho the minimum of what i need to start a level is a theme, and some textures I like.  Sometimes you have to just start building and see if cool ideas come to you, in my expierance the coolest things are ideas that come up in the middle of designing the level</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=119&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p1801" id="p1801"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1801&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1801"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 11:29 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8962<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I think this topic belongs to the very quick or very long answer section, I'll go with a quick one:
+<br /><br />You need to have a vision of what you want to achieve with your level. No matter whether this vision exits as a picture of a certain stage shot, as a whole episode, as a bit of a "wouldn't it be cool if" section or an accurate scetched out floor plan.
+<br /><br />Once you get your level going, things will flow, but you need to have a solid idea first. Solid ideas define the rough space you build and give you the ability to stay within certain scales. If you approach it from a decorators point of view you'll find yourself constantly rebuilding and rescailing large sections. That's nothing but annoying.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p1804" id="p1804"></a>
+				<b class="postauthor">3dioot</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1804&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1804"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 1:29 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Nov 10, 2002 9:42 am<br /><b>Posts:</b> 34				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Thanx alot you both <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I quess its time to get my hands dirty then. I have a pretty clear idea of what i want to make so ill go write some stuff down and maybe sketch a little bit (eek). Im also going to take some screenshots of cool level geometry in the existing e3 levels so i have some 'reference' to work from. About the texture theme, i even have a pretty good idea about that (colors and kind of material) but to be honest i dont know how im going to give that hands and feet yet. I have browsed through all the materials (thanx bna for that tip of loading all materials instead of working in the texture tab only!) so maybe im going to write some texture sets down on paper. See if i can find a set with a certain prefix that i like.
+<br /><br />And ease, im going to reply on your sound speaker topic now. I think i have something that is quite handy.
+<br /><br />Thanx again, 3dioot</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=232&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p1807" id="p1807"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1807&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1807"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 1:54 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8962<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Glad I could help you.
+<br /><br />This might be nitpicky, but I'd highly preferr it if you could stay away from speaking wide open what you're going to do with software you're not supposed to have.
+<br /><br />I really can't stress it enough:
+<br />Until the final version is out, this forum only exists from pure goodwill of people we don't know. This goodwill may vanish if the forum turns too much from a "prepare yourself for Doom3 mapping" into a "how to map today for Doom" place.
+<br /><br />If you want to talk about the concepts of mapping, level geometry and so on, you're very welcome to do this here, but you can do this very good without mentioning doom. Sketching out concepts for next year can be done very good and legit in GTKradiant. Also discussions about creating atmos"fear", world scaling, detailing out levels and so on flow very well in a more general discussion.
+<br /><br />Doom, of course, is overwhelming, but so are the restrictions we all have to accept. I know you're posting on some other place which handles things different, so please honor the time I always spend to keep thing in order instead of me going over the forums every once in a while and do random topic deleting.
+<br /><br />This place was never intended to enter a popularity race. It's about quality and such places are rare to find on the web. Every user who posts here has the chance, to lift the quality bar higher with every single post.
+<br />This said I recommend you to watch ALIEN for good level design ideas.
+<br /><br />I know I'm a bit too sensible on this, but hey - it's DOOM!
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p1808" id="p1808"></a>
+				<b class="postauthor">3dioot</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1808&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1808"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 2:08 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Nov 10, 2002 9:42 am<br /><b>Posts:</b> 34				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Remember the reply i wrote in the topic 'new to the boards?". I wasnt planning on posting screenshots, pimping my level, giving away download url's or anything similairly stupid. Hell, i didnt even mention how my level was going to look like, what it was based on and what the texture theme looks like that ive chosen. Im well aware of the rules of this forum and if i (accidently) step over the line your free to point that out to me. Hell, its your forum <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />I have been interested in mapping before but especially with the mulitplayer theme (i.e. no theme at all) of quake3 that enthousiasm was quickly blown out. I love creating atmosphere; building a believable alternative world that you can actually walk around in and interact. This is why i picked it up again. Now with d3 it has become a lot more like the stuff i do in 3dsmax (only realtime!). The flexibility that (for example) decals offer you is very exciting. So this is more of a personal project then anything else.
+<br /><br />Just thought i'd clear that up.   <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br />3dioot</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=232&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p1809" id="p1809"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1809&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1809"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 2:24 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8962<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">3dioot wrote:</div><div class="quotecontent">Just thought i'd clear that up.   <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br />3dioot</div>
+<br /><br />All cool here - I've mentioned that I'm nitpicky and just take it as that.
+<br />No warning of any kind was issued out to no one.
+<br /><br />When dayX has arrived, this forum will offer any tutorial possible, but for now, well, it's what it is <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />As you've mapped for Q3 before like me, I have to agree on everything you've said above.
+<br />Just wanted to add, that IMHO it'll be a big task to create real good content for Doom. In Q3 you could get away with a few mismatching textures as long as there was a camping spot and a rocketlauncher to "de-camp" that spot.
+<br /><br />Looking very much forward to what the community will create!</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p1811" id="p1811"></a>
+				<b class="postauthor">bb_matt</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1811&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1811"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 2:44 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">pixel pusher</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=45.gif" width="50" height="45" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 05, 2002 10:20 am<br /><b>Posts:</b> 3258<br /><b>Location:</b> London				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I am daunted by the prospect.
+<br /><br />Daunted by the prospect of creating a Single Player level as good as one of the levels that it takes a team to create - namely, id softwares levels for doom3.
+<br /><br />That's my answer - it will take a team to create a decent SP experience for doom3. One level just isn't going to be good enough. 4 medium size levels will just about cut it.
+<br /><br />There will be a lot of "copycat" levels - a reshuffling of the id levels - some of which may be fun, but none of which will be remembered.
+<br /><br />One thing though - I think the interest to create SP levels will be there for the first time in ages.
+<br /><br />I watched the RTCW editing scene for a while - participated a bit - but as far as I know, not a single community SP level has been released that matches the original - in fact, I'm not even aware of an SP release - I stopped looking months ago. Please point me to any if you know of them.
+<br /><br />I played some community half-life full TC SP missions a ways back and although they were highly praised, I could never understand why - they were for the most part, sub-standard. Amazing, sure, better than any other community effort, yes - as good as the original - not even close.
+<br /><br /><br />Daunted.
+<br /><br />Teamwork for sure - that's the only way to do it.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=45&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p1819" id="p1819"></a>
+				<b class="postauthor">JustinBailey</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1819&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1819"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Nov 16, 2002 7:06 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 100 armour</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Nov 10, 2002 3:06 am<br /><b>Posts:</b> 133				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I've never rleeased a Quake 3 map, but I"ve been mapping for about 2 years now.  I only did ctf maps, which are very different from single player and dm maps, but I guess they're more closely related to single player because you have to think about specific paths people are going to take as opposed to worrying about coming into the same area from multiple angles (vertically and horizontally).
+<br /><br />BUT anyhow.. I usually figure out what type of them I want to use first: industrial, gothic, natural, etc.  Once I attempt to decide on a theme, I usually find a nice looking floor texture and draw out the floor of a room.  I throw up a few walls after that which usually consist of two pieces: trim running along where the wall meets the floor, and then an actual wall texture on top of the trim.  Throw in a light, see how the textures look together, if they look bad, figure out which ones you like the most, and change the others until you find something that looks good to YOU.  Once you've got a basic layout, go back and add some details: a few pipes here, broken floor over there, wires hanging from the ceiling, light fixtures, guard rails, etc.  It's also usually a good idea not to have perfectly flat walls the entire time.  The more variety you can add to your level, the better it will look in most cases (some extreme texturing jobs don't <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> ).
+<br /><br />I guess it's just up to you how you want to texture your map, though.  Pick a theme and try to stick with it.  There are cases when you can change the theme a bit though.  If you're going with a tech style of texture, you can have a hallway that leads down into a lower area, almost a basement or underground storage maybe, and you could switch the texture style to beat up industrial with rust and dirt everywhere.
+<br /><br />I think it will almost be easier to texture in Doom 3 maps than Quake 3 maps because Doom 3 is somewhat based on reality.  Everyone has seen science reasearch labs/bases/stations in television shows, so everyone will has some sort of expectation of what the walls and floor tiles will look like.  You can always stand out, but there will probably always be similarities in all texture setups.
+<br /><br />So in a nuttshell: pick a theme, try to stick with it, and if you need to change the texture style, don't go too far away from your original selection, and try make the texture change make sense (ie, no wooden floors in a space station).
+<br /><br />This message wasn't supposed to be that long, but I sort of went off on a rant I guess.  I don't know if that helped or not, but have fun reading. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=216&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p1826" id="p1826"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=1826&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p1826"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Nov 17, 2002 12:40 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">bushboy wrote:</div><div class="quotecontent">....I watched the RTCW editing scene for a while - participated a bit - but as far as I know, not a single community SP level has been released that matches the original - in fact, I'm not even aware of an SP release - I stopped looking months ago. Please point me to any if you know of them.....</div>
+<br /><br />[self pimp] 
+<br />ok.. <a href="https://web.archive.org/web/20070509181516/http://www.cpdt.com/rtcw" class="postlink">here..!</a>  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br />[self pimp never switched off..!]
+<br /><br />I think there's alway been interest in SP stuff, the problem has been lack of documantation to feed the initial flames of the fire, if that isn't there by the time people do figure it all out and get round to making anything it's far too late (which is really what happened to the RtCW scene)... what will make or break D3 from a TC etc point of view is the documentation that comes with it...
+<br /><br />I think Ease hit it on the head, if it's an SP experience you really do need to plan ahead and have a good idea of what you want to happen in the map (not just locations, but things like the kind of conversations the AI's have, are they part of the story, are the objects around the map going to help the player finish the game - the smaller general details), not to the point that you can't deviate or change things, but have a story that is adaptable so you can if things don't quite work how you're expecting them to. Once you've got that you can then pad out the idea physically in sketches, they at least give you a general direction (as Ease hinted at) and keep you focused, otherwise you can waste a lot of time going off-track to the extent of loosing the plot completely.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p2003" id="p2003"></a>
+				<b class="postauthor">demonspawn</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=2003&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p2003"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 19, 2002 5:15 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">pure</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=18.jpg" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 18, 2002 10:47 pm<br /><b>Posts:</b> 153				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Did someone say pimp??
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://old.fileplanet.com/dl/dl.asp?/planetwolfenstein/tramdesign/operation_evil_eye.zip">http://old.fileplanet.com/dl/dl.asp?/pl ... il_eye.zip</a><!-- m -->
+<br /><br />This is the first map in the series, I hope you enjoy it.
+<br /><br />But as to the threads focus.
+<br />Grab a pencil
+<br />Plan, plan plan.
+<br />Every story has conflict.
+<br />Conflict is established through a progressive buildup of antagonisms.
+<br />Antagonism are defined through perceived hardships.
+<br />Hardships are created through individual challenges.
+<br /><br />Define the main conflict.
+<br />Define the challenges needed to achieve resolution to the main conflict.
+<br /><br />Character Bible
+<br />Write a small Bio on your main villain, who it is, why their so bad, what their going to do destroy the world, how their going to destroy the world.
+<br />9 times out of 10 this simple paragraph of text will define your world for you as the environment that surrounds your antagonist will directly relate and define their appearance. (Evil scientist, dreary lab)
+<br />Henchmen bible
+<br />Make a list of the henchmen that will be present and what their purposes will be. This will help in defining what type of areas you'll need to have and specific dimensions that will be needed.
+<br />Read/write, re-read/re-write, sleep on it....repeat as needed until everything makes sense even to your dog. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />NOW start-up the editor!
+<br /><br />Feel the Flow with simple blocks
+<br />It starts here!
+<br />It ends here!
+<br />Build the branches of the adventure tree
+<br />Here are the challenge points that start easy and end up difficult.
+<br />Here is where the story points are presented.
+<br />Here are the breather points are needed.
+<br />Testing the Pacing.....
+<br />Texture theme is established. (Cold to Hot--New to Old etc..)
+<br />First pass light test
+<br />Add the AI and relevant paths.
+<br />Add the interactive elements.
+<br />Test the functionality 
+<br />Add the crucial geometry.(This is a major cinematic element, this is the secret chamber etc...)
+<br />Second pass light test
+<br />Fill in the needed geometry details.
+<br />Take it for a test spin.
+<br />Tune and adjust as needed.
+<br />Lend the keys to your friends for a test spin.
+<br />Tune and test as needed.
+<br /><br />This is what i do and it seems to help me focus on the areas that need my attention in the right order.
+<br />Hope it helps.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=18&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p2017" id="p2017"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=2017&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p2017"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 19, 2002 9:00 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8962<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">demonspawn wrote:</div><div class="quotecontent">Did someone say pimp??</div>
+<br /><br />Try: <a href="https://web.archive.org/web/20070509181516/http://www.planetpimp.net/" class="postlink"><span style="font-weight: bold">PlanetPimp.net</span></a> - now tell me this wont be the perfect platform to pimp you Doomy map next year <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p2020" id="p2020"></a>
+				<b class="postauthor">bb_matt</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=2020&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p2020"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 19, 2002 9:05 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">pixel pusher</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=45.gif" width="50" height="45" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 05, 2002 10:20 am<br /><b>Posts:</b> 3258<br /><b>Location:</b> London				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hehe - nice URL there BNA - did you just register that, or have you had it for a while ?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=45&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p2023" id="p2023"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=2023&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1#p2023"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 19, 2002 9:16 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8962<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">bushboy wrote:</div><div class="quotecontent">Hehe - nice URL there BNA - did you just register that, or have you had it for a while ?</div>
+<br /><br />Had it for quite a while.
+<br />Here's an elder overview of which domains I've had registered a while back: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/site/about.htm">http://www.doom3world.org/site/about.htm</a><!-- m --></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=245#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=06e20d44bf7ef5c03fa1dfded82358e1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p2024" id="p2024"></a>
+				<b class="postauthor">bb_matt</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post s
+
+
+
+
+<!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 4:14:21 Sep 26, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></b></div></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

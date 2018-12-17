@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17022"><title>Low rez menu background</title><posts><post id="155670" date="Posted: Fri Sep 01, 2006 7:52 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Manc wrote:</b></span></td>	</tr><tr><td class="quote">along with adding a bit of monochromatic gaussian noise will defnitely help the banding.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+?<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155674" date="Posted: Fri Sep 01, 2006 8:12 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Manc wrote:&#13;
+<br/>
+along with adding a bit of monochromatic gaussian noise will defnitely help the banding.&#13;
+<br/><br/>
+?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Adding a slight bit of noise will give the image resizing something less "smooth" to determine color within the gradient.  It usually helps prevent banding and also helps the eye to not be so quick to notice it.  It's sort of a cheap trick.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155426" date="Posted: Wed Aug 30, 2006 8:33 pm    Post subject: Low rez menu background"><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Menu background texture is so low rez. How could I fix it? I took a look at that texture in Windows and it looks perfect. Any ideas?<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155428" date="Posted: Wed Aug 30, 2006 8:38 pm    Post subject: "><author>Skutarth</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">image_downsize 0&#13;
+<br/>
+image_useprecompressedtextures 0</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155431" date="Posted: Wed Aug 30, 2006 8:44 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Skutarth wrote:</b></span></td>	</tr><tr><td class="quote">image_downsize 0&#13;
+<br/>
+image_useprecompressedtextures 0</td>	</tr></table><span class="postbody">That did nothing. Still low rez.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155443" date="Posted: Wed Aug 30, 2006 10:24 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By "low res" what are you considering low and what about it looks bad?  Banding?  Pixelation?  All of the above?  Also what is the resolution of the image stock?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155461" date="Posted: Thu Aug 31, 2006 1:00 am    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ooops sorry I meant it looks like this:&#13;
+<br/><img src="/web/20061013023433im_/http://img177.imageshack.us/img177/9607/untitledwp5.jpg" border="0"/><br/>
+Its supposed to be clouds, but looks raped after D3 compression.&#13;
+<br/>
+The image is 1024X768 tga 24bit.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155486" date="Posted: Thu Aug 31, 2006 4:28 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That screen you've posted doesn't really doesn't show us anything.&#13;
+<br/><br/>
+You say that it's a menu screen so I assume it's a GUI of some sort but what kind of graphical element are we looking at? It looks to me like a 3D renderDef.&#13;
+<br/><br/>
+And if that's the case, you can't get rid of that. That's just the way lighting renders in the game.&#13;
+<br/><br/>
+Generally, that problem is only noticeable when your dealing with a completely flat solid colored surface...&#13;
+<br/><br/><img src="/web/20061013023433im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Light%20Banding/shot00007.jpg" border="0"/><br/><img src="/web/20061013023433im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Light%20Banding/shot00008.jpg" border="0"/><br/><br/>
+I'm pretty sure it has to do with a lack of precision in regards to lighting calculations. I'm not sure if it can be fixed without access to the render code.<br/>_________________<br/><a href="/web/20061013023433/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023433im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023433/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155492" date="Posted: Thu Aug 31, 2006 4:46 am    Post subject: "><author>Marineofuac</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sounds like a DDS export problem, when you export did you use the "Generate Mip Maps" option?<br/>_________________<br/>Marines Of Uac - Where marines can be marines... (Coming not too soon!)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155499" date="Posted: Thu Aug 31, 2006 5:27 am    Post subject: "><author>Chapel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hate to get off topic but, what's with the Marine's fists rich_is_bored?<br/>_________________<br/>Life is complex. It has both real and imaginary components.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155507" date="Posted: Thu Aug 31, 2006 6:27 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013023433/http://www.modwiki.net/wiki/R_materialOverride_%28cvar%29" target="_blank">http://www.modwiki.net/wiki/R_materialOverride_%28cvar%29</a><br/>_________________<br/><a href="/web/20061013023433/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023433im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023433/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155572" date="Posted: Thu Aug 31, 2006 6:49 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've applied clouds and blur filters, exported to tga and here it is:&#13;
+<br/><a href="/web/20061013023433/http://img318.imageshack.us/img318/9965/untitledcq0.jpg" target="_blank">http://img318.imageshack.us/img318/9965/untitledcq0.jpg</a>&#13;
+<br/>
+looks nasty.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155582" date="Posted: Thu Aug 31, 2006 10:30 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">That screen you've posted doesn't really doesn't show us anything.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I think he means that the image appears in say, 8 bit, when actually in 32bit?&#13;
+<br/>
+Hence the "steppy" color transitions on the above picture.<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155591" date="Posted: Fri Sep 01, 2006 12:20 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That's banding and that's most likely being caused by the renderer dropping the image to a lower resolution.  No amount of blurring will fix it however you might try adding a tiny amount of noise and see if that helps minimize it.  You also may find that avoiding "cloud-like" patterns is really best because they tend to accent the errors of low resoultion or bit images.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155627" date="Posted: Fri Sep 01, 2006 1:33 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What a rtrd engine.  <img src="/web/20061013023433im_/http://doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155631" date="Posted: Fri Sep 01, 2006 1:56 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well ultimately it's less the engine's fault and more a fault of image resolution used.  Even at 24 bit banding will be accented with such strong gradients like those in a cloud pattern.  The renderer is just making them worse because of it's own internal image manipulation.  That's why it's usually a good idea to not use short gradients with maximum contrast.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155632" date="Posted: Fri Sep 01, 2006 2:02 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In FC i can make anything I want for example 8:8:8     RGB     (24 bit) as a background dds with no mip maps and it looks perfect.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155637" date="Posted: Fri Sep 01, 2006 2:28 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Regulator wrote:</b></span></td>	</tr><tr><td class="quote">In FC i can make anything I want for example 8:8:8     RGB     (24 bit) as a background dds with no mip maps and it looks perfect.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+But... that's not Doom 3...  <img src="/web/20061013023433im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155649" date="Posted: Fri Sep 01, 2006 4:27 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BlackArmsShadow wrote:</b></span></td>	</tr><tr><td class="quote">But... that's not Doom 3...  <img src="/web/20061013023433im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">Thank god. <img src="/web/20061013023433im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155653" date="Posted: Fri Sep 01, 2006 4:43 pm    Post subject: "><author>zl1corvette</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">The image is 1024X768 tga 24bit.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+D3 is going to resize your image to the nearest power of two, you might want to try doing that externally of d3 and see if the results look any different.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155659" date="Posted: Fri Sep 01, 2006 5:41 pm    Post subject: "><author>Manc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Dimensions in a power of 2 along with adding a bit of monochromatic gaussian noise will defnitely help the banding.<br/>_________________<br/><a href="/web/20061013023433/http://mike.mancubus.net/" target="_blank" class="postlink">Mike @ MancuNET</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155662" date="Posted: Fri Sep 01, 2006 6:12 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nothing helps. Tried 16, 24 bit tga's with 1024X768, 256X256, 512X512, 1024X1024 dimensions and with grayscale on and off.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023433/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155426" date="Posted: Wed Aug 30, 2006 8:33 pm    Post subject: Low rez menu background"><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Menu background texture is so low rez. How could I fix it? I took a look at that texture in Windows and it looks perfect. Any ideas?<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155428" date="Posted: Wed Aug 30, 2006 8:38 pm    Post subject: "><author>Skutarth</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">image_downsize 0&#13;
+<br/>
+image_useprecompressedtextures 0</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155431" date="Posted: Wed Aug 30, 2006 8:44 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Skutarth wrote:</b></span></td>	</tr><tr><td class="quote">image_downsize 0&#13;
+<br/>
+image_useprecompressedtextures 0</td>	</tr></table><span class="postbody">That did nothing. Still low rez.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155443" date="Posted: Wed Aug 30, 2006 10:24 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By "low res" what are you considering low and what about it looks bad?  Banding?  Pixelation?  All of the above?  Also what is the resolution of the image stock?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155461" date="Posted: Thu Aug 31, 2006 1:00 am    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ooops sorry I meant it looks like this:&#13;
+<br/><img src="/web/20061013023227im_/http://img177.imageshack.us/img177/9607/untitledwp5.jpg" border="0"/><br/>
+Its supposed to be clouds, but looks raped after D3 compression.&#13;
+<br/>
+The image is 1024X768 tga 24bit.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155486" date="Posted: Thu Aug 31, 2006 4:28 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That screen you've posted doesn't really doesn't show us anything.&#13;
+<br/><br/>
+You say that it's a menu screen so I assume it's a GUI of some sort but what kind of graphical element are we looking at? It looks to me like a 3D renderDef.&#13;
+<br/><br/>
+And if that's the case, you can't get rid of that. That's just the way lighting renders in the game.&#13;
+<br/><br/>
+Generally, that problem is only noticeable when your dealing with a completely flat solid colored surface...&#13;
+<br/><br/><img src="/web/20061013023227im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Light%20Banding/shot00007.jpg" border="0"/><br/><img src="/web/20061013023227im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Light%20Banding/shot00008.jpg" border="0"/><br/><br/>
+I'm pretty sure it has to do with a lack of precision in regards to lighting calculations. I'm not sure if it can be fixed without access to the render code.<br/>_________________<br/><a href="/web/20061013023227/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023227im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023227/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155492" date="Posted: Thu Aug 31, 2006 4:46 am    Post subject: "><author>Marineofuac</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sounds like a DDS export problem, when you export did you use the "Generate Mip Maps" option?<br/>_________________<br/>Marines Of Uac - Where marines can be marines... (Coming not too soon!)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155499" date="Posted: Thu Aug 31, 2006 5:27 am    Post subject: "><author>Chapel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hate to get off topic but, what's with the Marine's fists rich_is_bored?<br/>_________________<br/>Life is complex. It has both real and imaginary components.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155507" date="Posted: Thu Aug 31, 2006 6:27 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013023227/http://www.modwiki.net/wiki/R_materialOverride_%28cvar%29" target="_blank">http://www.modwiki.net/wiki/R_materialOverride_%28cvar%29</a><br/>_________________<br/><a href="/web/20061013023227/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023227im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023227/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155572" date="Posted: Thu Aug 31, 2006 6:49 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've applied clouds and blur filters, exported to tga and here it is:&#13;
+<br/><a href="/web/20061013023227/http://img318.imageshack.us/img318/9965/untitledcq0.jpg" target="_blank">http://img318.imageshack.us/img318/9965/untitledcq0.jpg</a>&#13;
+<br/>
+looks nasty.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155582" date="Posted: Thu Aug 31, 2006 10:30 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">That screen you've posted doesn't really doesn't show us anything.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I think he means that the image appears in say, 8 bit, when actually in 32bit?&#13;
+<br/>
+Hence the "steppy" color transitions on the above picture.<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155591" date="Posted: Fri Sep 01, 2006 12:20 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That's banding and that's most likely being caused by the renderer dropping the image to a lower resolution.  No amount of blurring will fix it however you might try adding a tiny amount of noise and see if that helps minimize it.  You also may find that avoiding "cloud-like" patterns is really best because they tend to accent the errors of low resoultion or bit images.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155627" date="Posted: Fri Sep 01, 2006 1:33 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What a rtrd engine.  <img src="/web/20061013023227im_/http://doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155631" date="Posted: Fri Sep 01, 2006 1:56 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well ultimately it's less the engine's fault and more a fault of image resolution used.  Even at 24 bit banding will be accented with such strong gradients like those in a cloud pattern.  The renderer is just making them worse because of it's own internal image manipulation.  That's why it's usually a good idea to not use short gradients with maximum contrast.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155632" date="Posted: Fri Sep 01, 2006 2:02 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In FC i can make anything I want for example 8:8:8     RGB     (24 bit) as a background dds with no mip maps and it looks perfect.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155637" date="Posted: Fri Sep 01, 2006 2:28 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Regulator wrote:</b></span></td>	</tr><tr><td class="quote">In FC i can make anything I want for example 8:8:8     RGB     (24 bit) as a background dds with no mip maps and it looks perfect.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+But... that's not Doom 3...  <img src="/web/20061013023227im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155649" date="Posted: Fri Sep 01, 2006 4:27 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BlackArmsShadow wrote:</b></span></td>	</tr><tr><td class="quote">But... that's not Doom 3...  <img src="/web/20061013023227im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">Thank god. <img src="/web/20061013023227im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155653" date="Posted: Fri Sep 01, 2006 4:43 pm    Post subject: "><author>zl1corvette</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">The image is 1024X768 tga 24bit.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+D3 is going to resize your image to the nearest power of two, you might want to try doing that externally of d3 and see if the results look any different.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155659" date="Posted: Fri Sep 01, 2006 5:41 pm    Post subject: "><author>Manc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Dimensions in a power of 2 along with adding a bit of monochromatic gaussian noise will defnitely help the banding.<br/>_________________<br/><a href="/web/20061013023227/http://mike.mancubus.net/" target="_blank" class="postlink">Mike @ MancuNET</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155662" date="Posted: Fri Sep 01, 2006 6:12 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nothing helps. Tried 16, 24 bit tga's with 1024X768, 256X256, 512X512, 1024X1024 dimensions and with grayscale on and off.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013023227/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155670" date="Posted: Fri Sep 01, 2006 7:52 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Manc wrote:</b></span></td>	</tr><tr><td class="quote">along with adding a bit of monochromatic gaussian noise will defnitely help the banding.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+?<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155674" date="Posted: Fri Sep 01, 2006 8:12 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Manc wrote:&#13;
+<br/>
+along with adding a bit of monochromatic gaussian noise will defnitely help the banding.&#13;
+<br/><br/>
+?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Adding a slight bit of noise will give the image resizing something less "smooth" to determine color within the gradient.  It usually helps prevent banding and also helps the eye to not be so quick to notice it.  It's sort of a cheap trick.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

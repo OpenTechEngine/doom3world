@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16521"><title>Getting Static Lightwave models textured and into Doom3?</title><posts><post id="150618" date="Posted: Fri Jul 21, 2006 9:28 pm    Post subject: Getting Static Lightwave models textured and into Doom3?"><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Links here are dead...  &#13;
+<br/><br/>
+the instuructions on idDevNet are..  well..  HAAHAH!&#13;
+<br/><br/>
+"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  &#13;
+<br/><br/>
+...  oh, its easy...  nice guys, "is really easy" is not an explanation.  &#13;
+<br/><br/>
+Where do the files need to be and how do I bring them into QuakeEdit?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150638" date="Posted: Sat Jul 22, 2006 1:46 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.&#13;
+<br/><br/>
+It's a good idea to save your models somewhere in the "baseq4/models" directory.<br/>_________________<br/><a href="/web/20061012182634/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182634im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182634/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150652" date="Posted: Sat Jul 22, 2006 6:59 am    Post subject: "><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.&#13;
+<br/><br/>
+I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.&#13;
+<br/><br/>
+now the guessing game of figuring out why these shaders are not working so my textures will appear...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150664" date="Posted: Sat Jul 22, 2006 10:35 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ensure the surface name is the same as the material shader name.&#13;
+<br/><br/>
+For instance, if the material shader looks like this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/example/foo&#13;
+<br/>
+{&#13;
+<br/>
+...&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Then the surface name in Lightwave should be "textures/example/foo".<br/>_________________<br/><a href="/web/20061012182634/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182634im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182634/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150686" date="Posted: Sat Jul 22, 2006 4:33 pm    Post subject: "><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.&#13;
+<br/><br/>
+A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:&#13;
+<br/><br/>
+1 meter in LW = 1 unit in QuakeEditor</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150618" date="Posted: Fri Jul 21, 2006 9:28 pm    Post subject: Getting Static Lightwave models textured and into Doom3?"><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Links here are dead...  &#13;
+<br/><br/>
+the instuructions on idDevNet are..  well..  HAAHAH!&#13;
+<br/><br/>
+"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  &#13;
+<br/><br/>
+...  oh, its easy...  nice guys, "is really easy" is not an explanation.  &#13;
+<br/><br/>
+Where do the files need to be and how do I bring them into QuakeEdit?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150638" date="Posted: Sat Jul 22, 2006 1:46 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.&#13;
+<br/><br/>
+It's a good idea to save your models somewhere in the "baseq4/models" directory.<br/>_________________<br/><a href="/web/20061012183717/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183717im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183717/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150652" date="Posted: Sat Jul 22, 2006 6:59 am    Post subject: "><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.&#13;
+<br/><br/>
+I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.&#13;
+<br/><br/>
+now the guessing game of figuring out why these shaders are not working so my textures will appear...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150664" date="Posted: Sat Jul 22, 2006 10:35 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ensure the surface name is the same as the material shader name.&#13;
+<br/><br/>
+For instance, if the material shader looks like this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/example/foo&#13;
+<br/>
+{&#13;
+<br/>
+...&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Then the surface name in Lightwave should be "textures/example/foo".<br/>_________________<br/><a href="/web/20061012183717/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183717im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183717/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="150686" date="Posted: Sat Jul 22, 2006 4:33 pm    Post subject: "><author>JBmonies</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.&#13;
+<br/><br/>
+A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:&#13;
+<br/><br/>
+1 meter in LW = 1 unit in QuakeEditor</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 9:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 1:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 6:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 10:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 4:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 10:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 2:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 7:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 11:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 5:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 10:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 2:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 7:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 11:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 5:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 9:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  &#13;<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!&#13;<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  &#13;<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  &#13;<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 1:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.&#13;<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 6:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.&#13;<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.&#13;<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 10:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.&#13;<br /><br />For instance, if the material shader looks like this...&#13;<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>&#13;<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 4:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.&#13;<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:&#13;<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 9:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 1:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 6:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 10:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 4:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 9:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 1:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 6:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 10:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 4:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post><post id="p150618" date="Posted: Fri Jul 21, 2006 9:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">Links here are dead...  
+<br /><br />the instuructions on idDevNet are..  well..  HAAHAH!
+<br /><br />"Getting a static model (like a trash can or a shrubery) in to the game is really easy. Doom 3 reads lwo (lightwave) and ase (3dsmax) files natively so you simply save out the model in one of those two formats and you can use it in the game."  
+<br /><br />...  oh, its easy...  nice guys, "is really easy" is not an explanation.  
+<br /><br />Where do the files need to be and how do I bring them into QuakeEdit?</div>]]></body></post><post id="p150638" date="Posted: Sat Jul 22, 2006 1:46 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Static models are assigned to entities via the "model" key/value pair. There is a button for this on the entity inspector. It brings up a dialogue and you simply point it to a model.
+<br /><br />It's a good idea to save your models somewhere in the "baseq4/models" directory.</div>]]></body></post><post id="p150652" date="Posted: Sat Jul 22, 2006 6:59 am "><author>JBmonies</author><body><![CDATA[<div class="postbody">thanks Rich. Learning this map editor is very aggravating. My mouse has been in my hand, arm wound up, aimed at my LCD several times now. So far my LCD has been saved by shouting a few curse words.
+<br /><br />I did find the answer I was looking for, you right click in the top view port and select 'New Model' then navigate to the path under q4base to where the model is saved.  Seems like what you said brings up the same window.
+<br /><br />now the guessing game of figuring out why these shaders are not working so my textures will appear...</div>]]></body></post><post id="p150664" date="Posted: Sat Jul 22, 2006 10:35 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Ensure the surface name is the same as the material shader name.
+<br /><br />For instance, if the material shader looks like this...
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/example/foo<br />{<br />...<br />}</div>
+<br /><br />Then the surface name in Lightwave should be "textures/example/foo".</div>]]></body></post><post id="p150686" date="Posted: Sat Jul 22, 2006 4:33 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">i pieced bits of info from other people having problems together got some sleep, woke up and figured it out pretty easy.  Thanks for you help Rich.
+<br /><br />A bit of handy info I havent seen written yet but opened models and created boxes to figure out is:
+<br /><br />1 meter in LW = 1 unit in QuakeEditor</div>]]></body></post></posts></thread></xml>

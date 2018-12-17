@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10645"><title>problem UV mapping/texturing</title><posts><post id="95644" date="Posted: Mon May 23, 2005 4:01 am    Post subject: problem UV mapping/texturing"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi, please take a look at this screenshot&#13;
+<br/><br/><a href="/web/20061012183147/http://img239.echo.cx/my.php?image=screenshot9vx.jpg" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://img239.echo.cx/img239/4756/screenshot9vx.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+I've got 2 problems right now, the first problem is that the test texture I put on to my UV map is extremely low-res, as you can see in the top circle. I'd like to make it more high-res, how do I do this?&#13;
+<br/><br/>
+Secondly, in the bottom circle, the edges of the polygons look extremely disturbing and fake. How do I smoothen them out?&#13;
+<br/><br/>
+Sorry if my post sounds rude, I just woke up  <img src="/web/20061012183147im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95647" date="Posted: Mon May 23, 2005 4:52 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">To smooth the edges ensure the points are welded and then enable smoothing in the surface properties.&#13;
+<br/><br/>
+If you want to increase the amount of texture data in those areas then you need to make them larger in the UV map.<br/>_________________<br/><a href="/web/20061012183147/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183147/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95654" date="Posted: Mon May 23, 2005 6:28 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">k I resized the polygons in the UV map, but they will exceed the grid size, is that a problem?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95656" date="Posted: Mon May 23, 2005 6:44 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Try to picture the grid as one instance of your texture. Anything that exceeds the boundries of the grid will wrap around to the other side.&#13;
+<br/><br/>
+This isnt a problem provided your texture is seamless. Infact, this is how you repeat a texture on a terrain model for instance.&#13;
+<br/><br/>
+In your case however, since the texture is for a weapon it doesn't make sense to use a seamless texture. It's best to stay within the grid.&#13;
+<br/><br/>
+Keep in mind you're not limited to just scaling and moving pieces. You can also rotate pieces. The goal to take up as much space within the grid as possible.&#13;
+<br/><br/>
+You can also scale down sections that don't need as much detail to make room for the pieces that do.&#13;
+<br/><br/>
+Finally after all the tweaking you can possibly do, if you still don't find the results satisfactory, as a last resort you can just use a larger texture.<br/>_________________<br/><a href="/web/20061012183147/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183147/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96017" date="Posted: Tue May 24, 2005 10:12 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks man i get the idea now</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96613" date="Posted: Fri May 27, 2005 6:44 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm I still can't figure out how to smoothen this part&#13;
+<br/><br/><a href="/web/20061012183147/http://img71.echo.cx/my.php?image=screenshot4ek.jpg" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://img71.echo.cx/img71/7567/screenshot4ek.th.jpg" border="0"/></a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96624" date="Posted: Fri May 27, 2005 7:36 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are all those polys the same surface? Have you checked smoothing in the surface properties? What's your smooth threshold set at?&#13;
+<br/><br/><img src="/web/20061012183147im_/http://www.newtek.com/products/lightwave/tutorials/modeling/cathedral/images/Cath_017.jpg" border="0"/><br/>_________________<br/><a href="/web/20061012183147/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183147/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96626" date="Posted: Fri May 27, 2005 7:43 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">-edit-&#13;
+<br/><br/>
+I welded the points, but now the polygons have become triangles and look strange&#13;
+<br/><br/>
+-edit again-&#13;
+<br/><br/>
+Nvm I realised where I'd gone wrong. Solved my problem, thanks <img src="/web/20061012183147im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96678" date="Posted: Sat May 28, 2005 1:56 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've got one more question, my model is currently at 3000+ polys, how do I change it into a super-low poly version? I tried reducing polys+, but it screws up the whole model</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96686" date="Posted: Sat May 28, 2005 3:07 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Um... carefully.&#13;
+<br/><br/>
+There are numerous tools you can use to reduce the polycount of your model.&#13;
+<br/><br/>
+My guess is you're looking for an automated type deal like qemmloss although I think you get better results by manually reducing the polycount by using tools like bandglue and remove edges.&#13;
+<br/><br/>
+You really ought to read through this site page by page...&#13;
+<br/><br/><a href="/web/20061012183147/http://www.suture.net/tutorials/modeling/index.php" target="_blank">http://www.suture.net/tutorials/modeling/index.php</a><br/>_________________<br/><a href="/web/20061012183147/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183147im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183147/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95644" date="Posted: Mon May 23, 2005 4:01 am    Post subject: problem UV mapping/texturing"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi, please take a look at this screenshot&#13;
+<br/><br/><a href="/web/20061012183811/http://img239.echo.cx/my.php?image=screenshot9vx.jpg" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://img239.echo.cx/img239/4756/screenshot9vx.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+I've got 2 problems right now, the first problem is that the test texture I put on to my UV map is extremely low-res, as you can see in the top circle. I'd like to make it more high-res, how do I do this?&#13;
+<br/><br/>
+Secondly, in the bottom circle, the edges of the polygons look extremely disturbing and fake. How do I smoothen them out?&#13;
+<br/><br/>
+Sorry if my post sounds rude, I just woke up  <img src="/web/20061012183811im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95647" date="Posted: Mon May 23, 2005 4:52 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">To smooth the edges ensure the points are welded and then enable smoothing in the surface properties.&#13;
+<br/><br/>
+If you want to increase the amount of texture data in those areas then you need to make them larger in the UV map.<br/>_________________<br/><a href="/web/20061012183811/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183811/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95654" date="Posted: Mon May 23, 2005 6:28 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">k I resized the polygons in the UV map, but they will exceed the grid size, is that a problem?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95656" date="Posted: Mon May 23, 2005 6:44 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Try to picture the grid as one instance of your texture. Anything that exceeds the boundries of the grid will wrap around to the other side.&#13;
+<br/><br/>
+This isnt a problem provided your texture is seamless. Infact, this is how you repeat a texture on a terrain model for instance.&#13;
+<br/><br/>
+In your case however, since the texture is for a weapon it doesn't make sense to use a seamless texture. It's best to stay within the grid.&#13;
+<br/><br/>
+Keep in mind you're not limited to just scaling and moving pieces. You can also rotate pieces. The goal to take up as much space within the grid as possible.&#13;
+<br/><br/>
+You can also scale down sections that don't need as much detail to make room for the pieces that do.&#13;
+<br/><br/>
+Finally after all the tweaking you can possibly do, if you still don't find the results satisfactory, as a last resort you can just use a larger texture.<br/>_________________<br/><a href="/web/20061012183811/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183811/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96017" date="Posted: Tue May 24, 2005 10:12 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks man i get the idea now</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96613" date="Posted: Fri May 27, 2005 6:44 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm I still can't figure out how to smoothen this part&#13;
+<br/><br/><a href="/web/20061012183811/http://img71.echo.cx/my.php?image=screenshot4ek.jpg" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://img71.echo.cx/img71/7567/screenshot4ek.th.jpg" border="0"/></a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96624" date="Posted: Fri May 27, 2005 7:36 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are all those polys the same surface? Have you checked smoothing in the surface properties? What's your smooth threshold set at?&#13;
+<br/><br/><img src="/web/20061012183811im_/http://www.newtek.com/products/lightwave/tutorials/modeling/cathedral/images/Cath_017.jpg" border="0"/><br/>_________________<br/><a href="/web/20061012183811/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183811/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96626" date="Posted: Fri May 27, 2005 7:43 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">-edit-&#13;
+<br/><br/>
+I welded the points, but now the polygons have become triangles and look strange&#13;
+<br/><br/>
+-edit again-&#13;
+<br/><br/>
+Nvm I realised where I'd gone wrong. Solved my problem, thanks <img src="/web/20061012183811im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96678" date="Posted: Sat May 28, 2005 1:56 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've got one more question, my model is currently at 3000+ polys, how do I change it into a super-low poly version? I tried reducing polys+, but it screws up the whole model</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96686" date="Posted: Sat May 28, 2005 3:07 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Um... carefully.&#13;
+<br/><br/>
+There are numerous tools you can use to reduce the polycount of your model.&#13;
+<br/><br/>
+My guess is you're looking for an automated type deal like qemmloss although I think you get better results by manually reducing the polycount by using tools like bandglue and remove edges.&#13;
+<br/><br/>
+You really ought to read through this site page by page...&#13;
+<br/><br/><a href="/web/20061012183811/http://www.suture.net/tutorials/modeling/index.php" target="_blank">http://www.suture.net/tutorials/modeling/index.php</a><br/>_________________<br/><a href="/web/20061012183811/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183811im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183811/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

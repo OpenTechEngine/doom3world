@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17429"><title>Cannot view heightmap</title><posts><post id="158995" date="Posted: Sat Oct 07, 2006 12:09 am    Post subject: Cannot view heightmap"><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cannot view these textures:&#13;
+<br/>
+pak001.pk4\dds\addnormals\models\monsters\imp\imp_local heightmap  models monsters imp a_imp_b08a 10.dds&#13;
+<br/>
+pak001.pk4\dds\addnormals\models\monsters\imp\imp_local heightmap  models monsters imp imp_bmp 6.dds&#13;
+<br/>
+tried Photoshop + dds plugin and WTV. None recognizes them.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013024217/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158997" date="Posted: Sat Oct 07, 2006 12:20 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You need the ATI Compressonator for those because they use an ATI only compression filter (all the normalmaps do).&#13;
+<br/><br/><a href="/web/20061013024217/http://www.quake3bits.com/htm/tools_utilities.htm#misc" target="_blank">http://www.quake3bits.com/htm/tools_utilities.htm#misc</a><br/>_________________<br/><a href="/web/20061013024217/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024217im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013024217/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158999" date="Posted: Sat Oct 07, 2006 12:32 am    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok thanks, that was a quick answer.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013024217/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158995" date="Posted: Sat Oct 07, 2006 12:09 am    Post subject: Cannot view heightmap"><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cannot view these textures:&#13;
+<br/>
+pak001.pk4\dds\addnormals\models\monsters\imp\imp_local heightmap  models monsters imp a_imp_b08a 10.dds&#13;
+<br/>
+pak001.pk4\dds\addnormals\models\monsters\imp\imp_local heightmap  models monsters imp imp_bmp 6.dds&#13;
+<br/>
+tried Photoshop + dds plugin and WTV. None recognizes them.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013021856/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158997" date="Posted: Sat Oct 07, 2006 12:20 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You need the ATI Compressonator for those because they use an ATI only compression filter (all the normalmaps do).&#13;
+<br/><br/><a href="/web/20061013021856/http://www.quake3bits.com/htm/tools_utilities.htm#misc" target="_blank">http://www.quake3bits.com/htm/tools_utilities.htm#misc</a><br/>_________________<br/><a href="/web/20061013021856/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013021856im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013021856/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158999" date="Posted: Sat Oct 07, 2006 12:32 am    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok thanks, that was a quick answer.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013021856/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

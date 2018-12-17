@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16801"><title>Making light textures</title><posts><post id="p153438" date="Posted: Sun Aug 13, 2006 6:57 pm "><author>Infernis</author><body><![CDATA[<div class="postbody">I'm working on editing some textures. I'm knew at this so there is much to learn. I understand what needs to be done to get Quake 3 textures properly converted to Doom 3. But, if I have a Quake 3 texture which resembles a light and has a shader. How can I make a material file that does the same in Doom 3?
+<br /><br />I've opened up some stuff from Doom 3. But I'm not sure what I'm looking at. Found a couple of tutorials but nothing like the shadermanual for Quake 3. A push it the right direction would be appreciated.</div>]]></body></post><post id="p153446" date="Posted: Sun Aug 13, 2006 7:55 pm "><author>Bittoman</author><body><![CDATA[<div class="postbody">
+         <div class="content" style="text-align: center; margin-top: auto; margin-bottom: auto;">
+         
+<script type="text/javascript"><![CDATA[<!--
+google_ad_client = "pub-9445709839432880";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text";
+//2007-11-01: D3WForums
+google_ad_channel = "7364535659";
+google_color_border = "FFFFFF";
+google_color_bg = "C3D9FF";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+google_ui_features = "rc:0";
+//-->
+]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+]] ></script></div>
+      </div>]]></body></post><post id="p153448" date="Posted: Sun Aug 13, 2006 8:03 pm "><author>Infernis</author><body><![CDATA[<div class="postbody">Textures in the D3 engine cannot emit light like in Quake 1/2/3 engine games.  What they've done in D3 was to add a pass that sets all pixels to full bright.  You can control which areas will be lit like this as well as the color and even cause it to flicker or pulse or change colors (like say a Disco) using other passes.  Ultimately here's what you do:
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/mytextures/light01<br />{<br />   qer_editorimage   textures/mytextures/light01_d.tga<br />   noShadows<br />   noimpact<br /><br />   {<br />             blend       diffuseMap<br />      Map       textures/mytextures/light01_d.tga<br />      alphatest   .5<br />   }<br />   {<br />      blend           add<br />      map             textures/mytextures/light01_add.tga<br />   }<br />}<br /></div>
+<br /><br />Now the _d.tga is the actual diffusemap, the image you'll see in the editor and in game.  This will be pretty much left alone however the _add.tga is the image that will dictate what pixels within the diffusemap will be set to full bright and what color they'll be (the brighter the pixel on the add image the brighter the pixel will render in game).  For a visual example open up pak10.pk4 and go into textures/common_lights and find these two textures:
+<br /><br />light1_1_d.tga
+<br />light1_1_add.tga
+<br /><br />This will show you how the "add" stage will render on top of the diffusemap.</div>]]></body></post><post id="p153535" date="Posted: Mon Aug 14, 2006 5:45 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Excellent, thanks!</div>]]></body></post><post id="p153714" date="Posted: Tue Aug 15, 2006 5:24 pm "><author>Infernis</author><body><![CDATA[<div class="postbody">The closest thing to an shader manual out there...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Texturing">http://www.modwiki.net/wiki/Texturing</a><!-- m -->
+<br /><br />It's not quite as fleshed out as Q3's shader manual, but considering that anyone who bothers to create an account can contribute, there's no reason why it couldn't be.</div>]]></body></post></posts></thread></xml>

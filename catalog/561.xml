@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="561"><title>Tutorial: Renderbump flat</title><posts><post id="p3989" date="Posted: Sun Jan 26, 2003 6:29 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">So here we are with a quick and short tutorial how to create that amazing looking textures for Doom3 from 3D models.
+<br /><br />Here are all the surce files you need:
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/files/renderbumpflat.zip" class="postlink">Souce file download - 110kb</a>
+<br /><br />The download contains:
+<br />- a simple 3D modelled panel with approx 11k polys
+<br />- a material file for it to spare you writing one of your own
+<br />- a grey tga texture I usually use for specular map testing
+<br /><br />Now let's go with step 1:
+<br />Create a folder structure below the base folder:
+<br />bna/panels/
+<br /><br />Step 2:
+<br />Unzip the contents of the file in the panels folder and move the "bna.mtr" to the materials folder in your Doom directory - the rest will sit happy where it is now.
+<br /><br />Step 3:
+<br />Open Doom, lower the console and type:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">renderbumpflat bna/panels/panel_3_trip.lwo</div><br /><br />Doom will load the 3D file "panel_3_trip.lwo" into memory and renderbump it with the default settings, which will leave you with two 256 * 256 .tga's.<br /><br />The normal map will be named:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">panel_3_trip_local.tga</div><br /><br />And the diffuse map will be named:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">panel_3_trip_color.tga</div>
+<br /><br />Now what happened?
+<br /><br />The Doom engine took the model, extracted the color information from the polygons and rendered it to a flat color map (which will look even more unimpressive as the underlying 3D model used).
+<br /><br />At the same time the engine computed the surface normals in our newly toy - the beloved fancy looking normal map.
+<br /><br />When you open up DoomEd and go to the media browser you should find a folder called "bna" and a subfolder called "panels" with one material called "panel_3_flat" in it.
+<br />Make a brush, apply the texture, compile the map and see how it's looking.
+<br />Well, not overly exciting I know, but you've successfully accomplished the task of rendering a 3D model into a flat texture <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />So far so good.
+<br /><br />What are the common pitfalls?
+<br /><br />1st:
+<br />The 3D model has face towards the Z - axis (= looking at you in a front view camera perspective) in your 3D mesh modelling program of choice when you save it.
+<br /><br />2nd:
+<br />Make sure you have converted all your polygons into triangles (watch out for these little 1 and 2 vertex polygons)
+<br /><br />3rd:
+<br />I had some problems when I did set up a UV map, but don't quote me on that.
+<br /><br />What else can you do?
+<br /><br />The most important thing is the ability change the resolution of the rendered images.
+<br /><br />When you type "renderbumpflat <span style="font-weight: bold">-size 1024 1024</span> yourmodelfile" you'll get a 1024*1024 resolution image which may be a better source file for building a texture upon it.
+<br /><br />For other options just type "renderbumpflat" and Doom will show you the common use of the command with additional options.
+<br /><br />Have fun and leave your questions here...</div>]]></body></post></posts></thread></xml>

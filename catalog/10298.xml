@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10298"><title>Rounding the edges (increasing poly count)</title><posts><post id="92074" date="Posted: Mon May 02, 2005 9:58 am    Post subject: Rounding the edges (increasing poly count)"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi guys, sorry here's another question, please bear with me&#13;
+<br/><br/><img src="/web/20061012183016im_/http://img24.echo.cx/img24/117/dbshotgun7mh.jpg" border="0"/><br/><br/>
+I'm working on the grip underneath the barrel, but it looks fugly because it is very low poly. What are the possible ways to turn it into a round-edged object? I can't use subdivision because it has more than 4 vertices on that one particular polygon (the one that looks like a 'W' in the Perspective window). All help appreciated thanks!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92092" date="Posted: Mon May 02, 2005 1:15 pm    Post subject: "><author>aph0x``</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey ho&#13;
+<br/><br/>
+First you can apply the "Triple" command to your surface.. after you did that you should be able to subdivide. &#13;
+<br/><br/>
+another method would be to build your part direct in detail ... &#13;
+<br/><br/>
+c&#13;
+<br/>
+y&#13;
+<br/>
+a</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92098" date="Posted: Mon May 02, 2005 2:30 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>aph0x`` wrote:</b></span></td>	</tr><tr><td class="quote">hey ho&#13;
+<br/><br/>
+First you can apply the "Triple" command to your surface.. after you did that you should be able to subdivide. &#13;
+<br/><br/>
+another method would be to build your part direct in detail ... &#13;
+<br/><br/>
+c&#13;
+<br/>
+y&#13;
+<br/>
+a</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'd say you better don't triple the polys before you subdivide them - it works best with quads rather than triangles.&#13;
+<br/>
+Just make sure you don't have polys with more than four vertices.<br/>_________________<br/><a href="/web/20061012183016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012183016/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92113" date="Posted: Mon May 02, 2005 4:34 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'd try to subdivide, but I don't know which ways to cut the poly in order to achieve the curve I want when I go into subdivision mode. I always achieve some weird-arsed shape that has polygons clipping n lumping together</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92191" date="Posted: Tue May 03, 2005 4:20 am    Post subject: "><author>1eyed</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ligthwave can only subdivide quads and triangles? &#13;
+<br/><br/>
+that sucks <img src="/web/20061012183016im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> I like to work with x sided non planar subdivided polys in XSI, that do I add edges in.&#13;
+<br/><br/>
+like the lower part of a high res face is just 1 subdivided polygon, then I can just add all edge loops for all the detail on that subdiveded polygon.&#13;
+<br/><br/>
+If i'm not happy, i just delete the edges I don't need and redo it&#13;
+<br/><br/>
+in the end I will ofcourse try to end up with only quads <img src="/web/20061012183016im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/><br/>
+Ok, now for something usefull &#13;
+<br/><br/><br/><a href="/web/20061012183016/http://maxrovat.sns.hu/subdiv/" target="_blank">http://maxrovat.sns.hu/subdiv/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92799" date="Posted: Fri May 06, 2005 7:48 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Use the extender tool to bevel out the polys a side at a time. You can just extendter like bevel except it will take all the polys on each side like a group instead of breaking them into individual polys.&#13;
+<br/>
+ You could have modeled that with a box, using the edge chamfer you wanted to start with, or used splines.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183016/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="104927" date="Posted: Thu Jul 21, 2005 6:27 am    Post subject: "><author>EarthQuake</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Whoops i read the thread but didnt really pay too much attention to the picture, anyway i guess i can show you how to make much nice barrels lol(asuming you are doing this high-poly)&#13;
+<br/><br/>
+Like most things in life it can all be done with the bevel tool.&#13;
+<br/><img src="/web/20061012183016im_/http://img332.imageshack.us/img332/9426/bevel4sk.gif" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="104951" date="Posted: Thu Jul 21, 2005 1:08 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Extender is far superior to bevel.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183016/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92074" date="Posted: Mon May 02, 2005 9:58 am    Post subject: Rounding the edges (increasing poly count)"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi guys, sorry here's another question, please bear with me&#13;
+<br/><br/><img src="/web/20061012183552im_/http://img24.echo.cx/img24/117/dbshotgun7mh.jpg" border="0"/><br/><br/>
+I'm working on the grip underneath the barrel, but it looks fugly because it is very low poly. What are the possible ways to turn it into a round-edged object? I can't use subdivision because it has more than 4 vertices on that one particular polygon (the one that looks like a 'W' in the Perspective window). All help appreciated thanks!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92092" date="Posted: Mon May 02, 2005 1:15 pm    Post subject: "><author>aph0x``</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey ho&#13;
+<br/><br/>
+First you can apply the "Triple" command to your surface.. after you did that you should be able to subdivide. &#13;
+<br/><br/>
+another method would be to build your part direct in detail ... &#13;
+<br/><br/>
+c&#13;
+<br/>
+y&#13;
+<br/>
+a</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92098" date="Posted: Mon May 02, 2005 2:30 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>aph0x`` wrote:</b></span></td>	</tr><tr><td class="quote">hey ho&#13;
+<br/><br/>
+First you can apply the "Triple" command to your surface.. after you did that you should be able to subdivide. &#13;
+<br/><br/>
+another method would be to build your part direct in detail ... &#13;
+<br/><br/>
+c&#13;
+<br/>
+y&#13;
+<br/>
+a</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'd say you better don't triple the polys before you subdivide them - it works best with quads rather than triangles.&#13;
+<br/>
+Just make sure you don't have polys with more than four vertices.<br/>_________________<br/><a href="/web/20061012183552/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183552im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012183552/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92113" date="Posted: Mon May 02, 2005 4:34 pm    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'd try to subdivide, but I don't know which ways to cut the poly in order to achieve the curve I want when I go into subdivision mode. I always achieve some weird-arsed shape that has polygons clipping n lumping together</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92191" date="Posted: Tue May 03, 2005 4:20 am    Post subject: "><author>1eyed</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ligthwave can only subdivide quads and triangles? &#13;
+<br/><br/>
+that sucks <img src="/web/20061012183552im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> I like to work with x sided non planar subdivided polys in XSI, that do I add edges in.&#13;
+<br/><br/>
+like the lower part of a high res face is just 1 subdivided polygon, then I can just add all edge loops for all the detail on that subdiveded polygon.&#13;
+<br/><br/>
+If i'm not happy, i just delete the edges I don't need and redo it&#13;
+<br/><br/>
+in the end I will ofcourse try to end up with only quads <img src="/web/20061012183552im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/><br/>
+Ok, now for something usefull &#13;
+<br/><br/><br/><a href="/web/20061012183552/http://maxrovat.sns.hu/subdiv/" target="_blank">http://maxrovat.sns.hu/subdiv/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92799" date="Posted: Fri May 06, 2005 7:48 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Use the extender tool to bevel out the polys a side at a time. You can just extendter like bevel except it will take all the polys on each side like a group instead of breaking them into individual polys.&#13;
+<br/>
+ You could have modeled that with a box, using the edge chamfer you wanted to start with, or used splines.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183552/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="104927" date="Posted: Thu Jul 21, 2005 6:27 am    Post subject: "><author>EarthQuake</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Whoops i read the thread but didnt really pay too much attention to the picture, anyway i guess i can show you how to make much nice barrels lol(asuming you are doing this high-poly)&#13;
+<br/><br/>
+Like most things in life it can all be done with the bevel tool.&#13;
+<br/><img src="/web/20061012183552im_/http://img332.imageshack.us/img332/9426/bevel4sk.gif" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="104951" date="Posted: Thu Jul 21, 2005 1:08 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Extender is far superior to bevel.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183552/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

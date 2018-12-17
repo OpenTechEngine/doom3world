@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="1884"><title>Modeling _ Texturing Tutorial - Lightwave * Updated *</title><posts><post id="p17647" date="Posted: Sat Jan 24, 2004 8:21 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Our member goliath took the time to compile a very nice tutorial for all of us.
+<br /><br />Many thanks !
+<br /><br />Now don't waste any time and have fun with it:
+<br /><br />Edit by Goliath:
+<br /><br />This tutorial is for Lightwave, not Maya.  Most of the replies in this thread deal with my <span style="font-weight: bold">Maya</span> tutorial, not this <span style="font-weight: bold">Lightwave</span> one.  
+<br /><br /><span style="font-weight: bold">Quick Note</span>
+<br /><br />For ensuring that your model is prorperly textured in Doom3, all that is required is that the <span style="font-weight: bold">Doom 3 material path/name = the Lightwave Surface Name</span>.  That's how Doom 3 gets its material info applied to your model.  That means that you can have whatever settings you want for that surface (color, luminosity, diffuse, specularity, reflection, bump, etc.) within Lightwave without impacting the way the model will look in the game.  For example, if you wanted your diffuse map to be applied to your model in Lightwave to make it look more like what you'd see in Doom 3:
+<br /><br />Once you've created your UV map and diffuse texture, open up the Surface Editor.  You should have only one surface, and its name should equal the D3 material path/name (see the tutorial for more details on this).  
+<br /><br />Click on the T (texture) button for the color channel.  
+<br /><br />Under Layer Type, choose "Image Map"
+<br /><br />Projection:  UV
+<br /><br />UVMap: nameOfYourUVMap
+<br /><br />Image: (load texture / browse to your diffuse texture)
+<br /><br />Click "Use Texture"
+<br /><br />That will apply your diffuse texture to your model to the Color channel of your surface within Lightwave.  You can repeat this process for the Specularity and Bump channels to apply your spec and local (normal) maps.  Keep in mind that this doesn't affect the model in Doom 3 in any way (as long as the surface name = the full material path), but it's always a nice thing to get your model looking similar across apps.
+<br /><br />Updated Lightwave tutorial and working link:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20080418194945/http://www.pcgamemods.com/6659/">http://www.pcgamemods.com/6659/</a><!-- m -->
+<br /><br />Enjoy!
+<br /><br />Goliath</div>]]></body></post><post id="p32376" date="Posted: Tue Aug 10, 2004 10:40 pm "><author>jokko</author><body><![CDATA[<div class="postbody">Hey bna !
+<br /><br />Do you know if this guide will back online soon ?
+<br />I'm highly interested in reading it, i'm having issues in skining and wish this could help me a lot!</div>]]></body></post><post id="p32413" date="Posted: Tue Aug 10, 2004 11:35 pm "><author>Hoffs</author><body><![CDATA[<div class="postbody">[edit]
+<br /><br />Forgot I had this already: <a href="https://web.archive.org/web/20080418194945/http://www.doom3world.org/phpbb2/viewtopic.php?t=741" class="postlink">Exporting From Maya To MD5</a>
+<br /><br /><img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post><post id="p32506" date="Posted: Wed Aug 11, 2004 2:12 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Has anyone tried this tutorial since the offical Doom 3 release?  
+<br /><br />I'm not having the easiest time, but it could be due to how I built my model.  Some of the instructions reguarding the .def and .state files are a bit confusing.
+<br /><br />Also, I was using the newer exporting tool for Maya 6, which could have something todo with it as well.
+<br /><br />Is there an updated tutorial for getting models into D3 since it's release?  I haven't noticed, been looking through the forms.
+<br /><br />I also tried Onan's Rottenpunk model posted in <a href="https://web.archive.org/web/20080418194945/http://www.doom3world.org/phpbb2/viewtopic.php?t=1131&amp;highlight=rottenpunk" class="postlink">here</a> but I got an error of "ERROR: file d:\Games\Doom3\base\models\eigene\rottenpunk\rp3_hurt.md5mesh.  line 1: Invalid version 6.  Should be version 10"
+<br /><br />I'm assuming the final release of Doom 3 uses version 10, of something in that md5mesh and the alpha used version 6.</div>]]></body></post><post id="p32548" date="Posted: Wed Aug 11, 2004 3:28 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">It's outdated information. Version 6 was the old MD5 format.
+<br /><br />I don't believe anyone has made a conversion tool yet that will work with version 10.
+<br /><br />Sorry. It will all get sorted out soon enough.</div>]]></body></post><post id="p32561" date="Posted: Wed Aug 11, 2004 3:37 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Ahhh thanks!  Thought I was loose'n my mind.</div>]]></body></post><post id="p33144" date="Posted: Wed Aug 11, 2004 6:52 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Updated the tutorial and fixed the link.  This tutorial helps you get a static Lightwave model (that is, a .lwo) into Doom3 properly textured... it's NOT the Maya / animations one where you create md5mesh/md5anims.
+<br /><br />Please send questions regarding the Maya version here:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20080418194945/http://www.doom3world.org/phpbb2/viewtopic.php?t=2487">http://www.doom3world.org/phpbb2/viewtopic.php?t=2487</a><!-- m -->
+<br /><br />The Maya tutorial is currently being reworked because the exporting options and format in the def files has changed with the final release.  As soon as I have the time to sort those out, I'll update that tutorial as well.
+<br /><br />Goliath</div>]]></body></post><post id="p40009" date="Posted: Sun Aug 22, 2004 12:04 pm "><author>CDog</author><body><![CDATA[<div class="postbody">After making the model, textures etc - I'm able to view it in the editor ((the little preview window)). I was able to get it into my map one time I tried it, as a mover, however having changed nothing - every time I try getting the object into the map since then, doesn't work.
+<br /><br />If I were to model a box - didn't want it to do anything but sit there - how would I go about achieving this? Turning out to be easier getting LightWave objects into UnrealEd than doom.......
+<br /><br />*pulling out hair*
+<br /><br /><span style="font-style: italic"><span style="font-weight: bold">EDIT: Forget that - I've just worked it out and feel silly - it was so easy...guess it always is once you know how</span></span> <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p60497" date="Posted: Mon Nov 01, 2004 9:59 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Damnit! I still can't get any textures to show up! I'm not really worried yet about normal maps, I can't even get my regular flat maps to show up!
+<br /><br />I have an LWO model in a folder in my models folder under base...
+<br />I have an MTR file in that folder named the same as my model (but .mtr not .lwo of course)...
+<br />I've got the textures I want in this same folder. They are 24bit Targa files...
+<br />These textures are those indicated in the MTR file...
+<br />I have UV mapped the model in LW and it uses those texture files for it's textures in the surface editor under colour AND diffuse just in case...
+<br /><br />Anything wrong in what I've just said? I've tried to follow Goliath's tutorial to the letter, but it just isn't working. My model is black, in the editor, in the game... But it shows up fine in LW.
+<br /><br />Anybody else got a LW texturing tute I can cross check against?</div>]]></body></post><post id="p60500" date="Posted: Mon Nov 01, 2004 10:19 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Make sure your model is constructed of nothing but triangles.
+<br /><br />Name the surface(s) in Lightwave according to the name of your individual material shaders, not the name of the *.mtr files themselves.
+<br /><br />The filename of the custom *.mtr is irrelevant. It's the shader names contained within it that matter. You can have multiple shaders in one *.mtr.
+<br /><br />It would be in your best interest to read my material shader primer...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20080418194945/http://www.doom3world.org/phpbb2/viewtopic.php?t=6617">http://www.doom3world.org/phpbb2/viewtopic.php?t=6617</a><!-- m --></div>]]></body></post><post id="p60588" date="Posted: Tue Nov 02, 2004 9:19 am "><author>Godsbane</author><body><![CDATA[<div class="postbody">Wow, thats a good little tute, I feel like I've gotten further along... But I still can't get it to show my textures.
+<br /><br />Here's the .mtr file I've written:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">models/EventHorizon/EH_Core<br />{ <br />    bumpmap    models/EventHorizon/EngineCoreUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineCoreUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}<br /><br />models/EventHorizon/EH_Rings<br />{ <br />    bumpmap    models/EventHorizon/EngineRingsUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineRingsUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}</div>
+<br /><br />In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.
+<br /><br />The .tga files listed in the .mtr file above are in my base\models\EventHorizon\ folder.
+<br /><br />My model is triangled and loads in, it's just untextured. I think the problem is with the material itself, I can't even find it in the media browser.
+<br /><br />So what am I noobing up here?</div>]]></body></post><post id="p60621" date="Posted: Tue Nov 02, 2004 4:52 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, now I got my materials to show up in the media browser (Nobody says you have to save the .mtr file in the materials folder in the tutorials, I guess it's just assumed "well, duh! Where else would you put it?")...
+<br /><br />Still not on my model though. Black in the editor (F3 and F7 modes) and black in the game, doesn't reflect and flashlight or anything else!
+<br /><br />Damn this is annoying... I keep taking tiny steps towards completion however, thanks to everyone here at D3W.</div>]]></body></post><post id="p60625" date="Posted: Tue Nov 02, 2004 5:00 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Godsbane wrote:</div><div class="quotecontent">In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.</div>
+<br /><br />Rename those surfaces so they match the full name of your material shaders...
+<br /><br />EH_Core -becomes- models/EventHorizon/EH_Core 
+<br />EH_Rings -becomes- models/EventHorizon/EH_Rings</div>]]></body></post><post id="p60645" date="Posted: Tue Nov 02, 2004 6:23 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Yeah, how you define the surfaces in Lightwave is the key to getting your model to show up properly textured in D3.  rich's suggestions should work.  If not, go back through my tutorial and look for the pink-ish/magenta text that highlights how to set up your model's materials for use in Doom3.
+<br /><br />Good luck!
+<br /><br />Goliath</div>]]></body></post><post id="p60654" date="Posted: Tue Nov 02, 2004 6:32 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Rich, you're beautiful. You did it.
+<br /><br />IT WORKS! WOOHOO!
+<br /><br /><img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It's nasty looking, the textures need tweeking for colour and contrast, the UV's are a bit ugly but, hell... Now it can be done!
+<br /><br />Thank you. 
+<br /><br />(BTW whenever I read your posts I always hear the voice of Strong_Bad in my head for some reason. <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> )
+<br /><br />I'll post some screenies when I have something decent enought to share. You get credits in my readme for this map man... Woooooohooo... 
+<br /><br />[EDIT]
+<br /><br />You too Goliath, your tutorial was half the reason I got this far anyway.
+<br /><br />Man, it's 4:30 am and now I can finally go to SLEEP!
+<br /><img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /></div>]]></body></post><post id="p60711" date="Posted: Tue Nov 02, 2004 9:11 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, I didn't get to sleep after all.  <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />So I fiddled around with the textures (still not perfect) and set up a test of the model setup that's been haunting me for the last couple of days.
+<br /><br /><img src="https://web.archive.org/web/20080418194945im_/http://users.tpg.com.au/adslpmp0/Doom3_EH01.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20080418194945im_/http://users.tpg.com.au/adslpmp0/Doom3_EH02.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20080418194945im_/http://users.tpg.com.au/adslpmp0/Doom3_EH03.jpg" alt="Image" /><br /><br />Well, was it worth it? Maybe not yet... But it's a start!
+<br /><br />Thanks again. <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p60756" date="Posted: Wed Nov 03, 2004 2:22 am "><author>Rayne</author><body><![CDATA[<div class="postbody">Event Horizon!  <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div>]]></body></post><post id="p60883" date="Posted: Wed Nov 03, 2004 4:28 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Oh yeah... Hell yeah!
+<br /><br />Can you imagine Event Horizon as a Doom3 map? I'm pretty sure some of the ideas in Doom3's design came from that movie. So I'm gonna make a map... Maybe a mini mod if I can get some help.
+<br /><br />Working on the set decoration now... Now that I know what I'm doing more or less <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></div>]]></body></post><post id="p145246" date="Posted: Thu Jun 08, 2006 4:19 am "><author>wviperw</author><body><![CDATA[<div class="postbody">Tutorial link doesn't seem to be working. <img src="https://web.archive.org/web/20080418194945im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /><br /><br />EDIT: Found a working link at: <!-- m --><a class="postlink" href="https://web.archive.org/web/20080418194945/http://www.pcgamemods.com/mod/6659.html">http://www.pcgamemods.com/mod/6659.html</a><!-- m --></div>]]></body></post><post id="p150601" date="Posted: Fri Jul 21, 2006 7:28 pm "><author>JBmonies</author><body><![CDATA[<div class="postbody">that new link doesnt work either.  I am looking for the scale to use...</div>]]></body></post><post id="p17647" date="Posted: Sat Jan 24, 2004 8:21 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Our member goliath took the time to compile a very nice tutorial for all of us.
+<br /><br />Many thanks !
+<br /><br />Now don't waste any time and have fun with it:
+<br /><br />Edit by Goliath:
+<br /><br />This tutorial is for Lightwave, not Maya.  Most of the replies in this thread deal with my <span style="font-weight: bold">Maya</span> tutorial, not this <span style="font-weight: bold">Lightwave</span> one.  
+<br /><br /><span style="font-weight: bold">Quick Note</span>
+<br /><br />For ensuring that your model is prorperly textured in Doom3, all that is required is that the <span style="font-weight: bold">Doom 3 material path/name = the Lightwave Surface Name</span>.  That's how Doom 3 gets its material info applied to your model.  That means that you can have whatever settings you want for that surface (color, luminosity, diffuse, specularity, reflection, bump, etc.) within Lightwave without impacting the way the model will look in the game.  For example, if you wanted your diffuse map to be applied to your model in Lightwave to make it look more like what you'd see in Doom 3:
+<br /><br />Once you've created your UV map and diffuse texture, open up the Surface Editor.  You should have only one surface, and its name should equal the D3 material path/name (see the tutorial for more details on this).  
+<br /><br />Click on the T (texture) button for the color channel.  
+<br /><br />Under Layer Type, choose "Image Map"
+<br /><br />Projection:  UV
+<br /><br />UVMap: nameOfYourUVMap
+<br /><br />Image: (load texture / browse to your diffuse texture)
+<br /><br />Click "Use Texture"
+<br /><br />That will apply your diffuse texture to your model to the Color channel of your surface within Lightwave.  You can repeat this process for the Specularity and Bump channels to apply your spec and local (normal) maps.  Keep in mind that this doesn't affect the model in Doom 3 in any way (as long as the surface name = the full material path), but it's always a nice thing to get your model looking similar across apps.
+<br /><br />Updated Lightwave tutorial and working link:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/6659/">http://www.pcgamemods.com/6659/</a><!-- m -->
+<br /><br />Enjoy!
+<br /><br />Goliath</div>]]></body></post><post id="p32376" date="Posted: Tue Aug 10, 2004 10:40 pm "><author>jokko</author><body><![CDATA[<div class="postbody">Hey bna !
+<br /><br />Do you know if this guide will back online soon ?
+<br />I'm highly interested in reading it, i'm having issues in skining and wish this could help me a lot!</div>]]></body></post><post id="p32413" date="Posted: Tue Aug 10, 2004 11:35 pm "><author>Hoffs</author><body><![CDATA[<div class="postbody">[edit]
+<br /><br />Forgot I had this already: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=741" class="postlink">Exporting From Maya To MD5</a>
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post><post id="p32506" date="Posted: Wed Aug 11, 2004 2:12 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Has anyone tried this tutorial since the offical Doom 3 release?  
+<br /><br />I'm not having the easiest time, but it could be due to how I built my model.  Some of the instructions reguarding the .def and .state files are a bit confusing.
+<br /><br />Also, I was using the newer exporting tool for Maya 6, which could have something todo with it as well.
+<br /><br />Is there an updated tutorial for getting models into D3 since it's release?  I haven't noticed, been looking through the forms.
+<br /><br />I also tried Onan's Rottenpunk model posted in <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1131&amp;highlight=rottenpunk" class="postlink">here</a> but I got an error of "ERROR: file d:\Games\Doom3\base\models\eigene\rottenpunk\rp3_hurt.md5mesh.  line 1: Invalid version 6.  Should be version 10"
+<br /><br />I'm assuming the final release of Doom 3 uses version 10, of something in that md5mesh and the alpha used version 6.</div>]]></body></post><post id="p32548" date="Posted: Wed Aug 11, 2004 3:28 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">It's outdated information. Version 6 was the old MD5 format.
+<br /><br />I don't believe anyone has made a conversion tool yet that will work with version 10.
+<br /><br />Sorry. It will all get sorted out soon enough.</div>]]></body></post><post id="p32561" date="Posted: Wed Aug 11, 2004 3:37 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Ahhh thanks!  Thought I was loose'n my mind.</div>]]></body></post><post id="p33144" date="Posted: Wed Aug 11, 2004 6:52 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Updated the tutorial and fixed the link.  This tutorial helps you get a static Lightwave model (that is, a .lwo) into Doom3 properly textured... it's NOT the Maya / animations one where you create md5mesh/md5anims.
+<br /><br />Please send questions regarding the Maya version here:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2487">http://www.doom3world.org/phpbb2/viewtopic.php?t=2487</a><!-- m -->
+<br /><br />The Maya tutorial is currently being reworked because the exporting options and format in the def files has changed with the final release.  As soon as I have the time to sort those out, I'll update that tutorial as well.
+<br /><br />Goliath</div>]]></body></post><post id="p40009" date="Posted: Sun Aug 22, 2004 12:04 pm "><author>CDog</author><body><![CDATA[<div class="postbody">After making the model, textures etc - I'm able to view it in the editor ((the little preview window)). I was able to get it into my map one time I tried it, as a mover, however having changed nothing - every time I try getting the object into the map since then, doesn't work.
+<br /><br />If I were to model a box - didn't want it to do anything but sit there - how would I go about achieving this? Turning out to be easier getting LightWave objects into UnrealEd than doom.......
+<br /><br />*pulling out hair*
+<br /><br /><span style="font-style: italic"><span style="font-weight: bold">EDIT: Forget that - I've just worked it out and feel silly - it was so easy...guess it always is once you know how</span></span> <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p60497" date="Posted: Mon Nov 01, 2004 9:59 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Damnit! I still can't get any textures to show up! I'm not really worried yet about normal maps, I can't even get my regular flat maps to show up!
+<br /><br />I have an LWO model in a folder in my models folder under base...
+<br />I have an MTR file in that folder named the same as my model (but .mtr not .lwo of course)...
+<br />I've got the textures I want in this same folder. They are 24bit Targa files...
+<br />These textures are those indicated in the MTR file...
+<br />I have UV mapped the model in LW and it uses those texture files for it's textures in the surface editor under colour AND diffuse just in case...
+<br /><br />Anything wrong in what I've just said? I've tried to follow Goliath's tutorial to the letter, but it just isn't working. My model is black, in the editor, in the game... But it shows up fine in LW.
+<br /><br />Anybody else got a LW texturing tute I can cross check against?</div>]]></body></post><post id="p60500" date="Posted: Mon Nov 01, 2004 10:19 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Make sure your model is constructed of nothing but triangles.
+<br /><br />Name the surface(s) in Lightwave according to the name of your individual material shaders, not the name of the *.mtr files themselves.
+<br /><br />The filename of the custom *.mtr is irrelevant. It's the shader names contained within it that matter. You can have multiple shaders in one *.mtr.
+<br /><br />It would be in your best interest to read my material shader primer...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=6617">http://www.doom3world.org/phpbb2/viewtopic.php?t=6617</a><!-- m --></div>]]></body></post><post id="p60588" date="Posted: Tue Nov 02, 2004 9:19 am "><author>Godsbane</author><body><![CDATA[<div class="postbody">Wow, thats a good little tute, I feel like I've gotten further along... But I still can't get it to show my textures.
+<br /><br />Here's the .mtr file I've written:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">models/EventHorizon/EH_Core<br />{ <br />    bumpmap    models/EventHorizon/EngineCoreUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineCoreUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}<br /><br />models/EventHorizon/EH_Rings<br />{ <br />    bumpmap    models/EventHorizon/EngineRingsUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineRingsUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}</div>
+<br /><br />In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.
+<br /><br />The .tga files listed in the .mtr file above are in my base\models\EventHorizon\ folder.
+<br /><br />My model is triangled and loads in, it's just untextured. I think the problem is with the material itself, I can't even find it in the media browser.
+<br /><br />So what am I noobing up here?</div>]]></body></post><post id="p60621" date="Posted: Tue Nov 02, 2004 4:52 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, now I got my materials to show up in the media browser (Nobody says you have to save the .mtr file in the materials folder in the tutorials, I guess it's just assumed "well, duh! Where else would you put it?")...
+<br /><br />Still not on my model though. Black in the editor (F3 and F7 modes) and black in the game, doesn't reflect and flashlight or anything else!
+<br /><br />Damn this is annoying... I keep taking tiny steps towards completion however, thanks to everyone here at D3W.</div>]]></body></post><post id="p60625" date="Posted: Tue Nov 02, 2004 5:00 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Godsbane wrote:</div><div class="quotecontent">In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.</div>
+<br /><br />Rename those surfaces so they match the full name of your material shaders...
+<br /><br />EH_Core -becomes- models/EventHorizon/EH_Core 
+<br />EH_Rings -becomes- models/EventHorizon/EH_Rings</div>]]></body></post><post id="p60645" date="Posted: Tue Nov 02, 2004 6:23 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Yeah, how you define the surfaces in Lightwave is the key to getting your model to show up properly textured in D3.  rich's suggestions should work.  If not, go back through my tutorial and look for the pink-ish/magenta text that highlights how to set up your model's materials for use in Doom3.
+<br /><br />Good luck!
+<br /><br />Goliath</div>]]></body></post><post id="p60654" date="Posted: Tue Nov 02, 2004 6:32 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Rich, you're beautiful. You did it.
+<br /><br />IT WORKS! WOOHOO!
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It's nasty looking, the textures need tweeking for colour and contrast, the UV's are a bit ugly but, hell... Now it can be done!
+<br /><br />Thank you. 
+<br /><br />(BTW whenever I read your posts I always hear the voice of Strong_Bad in my head for some reason. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> )
+<br /><br />I'll post some screenies when I have something decent enought to share. You get credits in my readme for this map man... Woooooohooo... 
+<br /><br />[EDIT]
+<br /><br />You too Goliath, your tutorial was half the reason I got this far anyway.
+<br /><br />Man, it's 4:30 am and now I can finally go to SLEEP!
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /></div>]]></body></post><post id="p60711" date="Posted: Tue Nov 02, 2004 9:11 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, I didn't get to sleep after all.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />So I fiddled around with the textures (still not perfect) and set up a test of the model setup that's been haunting me for the last couple of days.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH01.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH02.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH03.jpg" alt="Image" /><br /><br />Well, was it worth it? Maybe not yet... But it's a start!
+<br /><br />Thanks again. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p60756" date="Posted: Wed Nov 03, 2004 2:22 am "><author>Rayne</author><body><![CDATA[<div class="postbody">Event Horizon!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div>]]></body></post><post id="p60883" date="Posted: Wed Nov 03, 2004 4:28 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Oh yeah... Hell yeah!
+<br /><br />Can you imagine Event Horizon as a Doom3 map? I'm pretty sure some of the ideas in Doom3's design came from that movie. So I'm gonna make a map... Maybe a mini mod if I can get some help.
+<br /><br />Working on the set decoration now... Now that I know what I'm doing more or less <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></div>]]></body></post><post id="p145246" date="Posted: Thu Jun 08, 2006 4:19 am "><author>wviperw</author><body><![CDATA[<div class="postbody">Tutorial link doesn't seem to be working. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /><br /><br />EDIT: Found a working link at: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/mod/6659.html">http://www.pcgamemods.com/mod/6659.html</a><!-- m --></div>]]></body></post><post id="p150601" date="Posted: Fri Jul 21, 2006 7:28 pm "><author>JBmonies</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom 3 world • View topic - Modeling &amp; Texturing Tutorial - Lightwave * Updated *</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '';
+	var base_url = '';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app3.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.doom3world.org\/phpbb2\/viewtopic.php?t=1884&highlight=goliath+modeling";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://www.doom3world.org/phpbb2/viewtopic.php?t=1884&amp;highlight=goliath+modeling" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://www.doom3world.org/phpbb2/viewtopic.php?t=1884&amp;highlight=goliath+modeling" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?t=1884&amp;highlight=goliath+modeling" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom 3 world</h1><span class="gen">Doom3world.org - the world is yours, soon in 6 degrees of freedom!</span></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/faq.php?sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Sat Nov 03, 2007 11:39 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+
+
+
+
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><br /><center>
+<script type="text/javascript"><![CDATA[<!--
+google_ad_client = "pub-9445709839432880";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_cpa_choice = "CAEaCPyuS87E_NDTUB5QH1AgUE5QKVC_AVArUK4CUDU";
+google_ad_channel = "5974365324";
+//-->
+]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+]] ></script></center>
+
+<table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=cedec7aa8eaf2769b73a519dda1e1978">Board index</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=73&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">Doom 3</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=3&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">Doom3 Modeling and Animations</a></p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=3&amp;t=1884&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">Modeling &amp; Texturing Tutorial - Lightwave * Updated *</a></h2>
+
+	<p class="moderators">Moderators: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=cedec7aa8eaf2769b73a519dda1e1978" style="color: #AA0000;" class="username-coloured">BNA!</a>, <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=post&amp;f=3&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=reply&amp;f=3&amp;t=1884&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>1</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 20 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=3&amp;t=1884&amp;view=previous&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=3&amp;t=1884&amp;view=next&amp;sid=cedec7aa8eaf2769b73a519dda1e1978">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p17647" id="p17647"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Modeling &amp; Texturing Tutorial - Lightwave * Updated *</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=17647&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p17647"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jan 24, 2004 8:21 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8854<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Our member goliath took the time to compile a very nice tutorial for all of us.
+<br /><br />Many thanks !
+<br /><br />Now don't waste any time and have fun with it:
+<br /><br />Edit by Goliath:
+<br /><br />This tutorial is for Lightwave, not Maya.  Most of the replies in this thread deal with my <span style="font-weight: bold">Maya</span> tutorial, not this <span style="font-weight: bold">Lightwave</span> one.  
+<br /><br /><span style="font-weight: bold">Quick Note</span>
+<br /><br />For ensuring that your model is prorperly textured in Doom3, all that is required is that the <span style="font-weight: bold">Doom 3 material path/name = the Lightwave Surface Name</span>.  That's how Doom 3 gets its material info applied to your model.  That means that you can have whatever settings you want for that surface (color, luminosity, diffuse, specularity, reflection, bump, etc.) within Lightwave without impacting the way the model will look in the game.  For example, if you wanted your diffuse map to be applied to your model in Lightwave to make it look more like what you'd see in Doom 3:
+<br /><br />Once you've created your UV map and diffuse texture, open up the Surface Editor.  You should have only one surface, and its name should equal the D3 material path/name (see the tutorial for more details on this).  
+<br /><br />Click on the T (texture) button for the color channel.  
+<br /><br />Under Layer Type, choose "Image Map"
+<br /><br />Projection:  UV
+<br /><br />UVMap: nameOfYourUVMap
+<br /><br />Image: (load texture / browse to your diffuse texture)
+<br /><br />Click "Use Texture"
+<br /><br />That will apply your diffuse texture to your model to the Color channel of your surface within Lightwave.  You can repeat this process for the Specularity and Bump channels to apply your spec and local (normal) maps.  Keep in mind that this doesn't affect the model in Doom 3 in any way (as long as the surface name = the full material path), but it's always a nice thing to get your model looking similar across apps.
+<br /><br />Updated Lightwave tutorial and working link:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/6659/">http://www.pcgamemods.com/6659/</a><!-- m -->
+<br /><br />Enjoy!
+<br /><br />Goliath</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p32376" id="p32376"></a>
+				<b class="postauthor">jokko</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=32376&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p32376"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Aug 10, 2004 10:40 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Aug 10, 2004 10:38 pm<br /><b>Posts:</b> 2				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hey bna !
+<br /><br />Do you know if this guide will back online soon ?
+<br />I'm highly interested in reading it, i'm having issues in skining and wish this could help me a lot!</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2800&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p32413" id="p32413"></a>
+				<b class="postauthor">Hoffs</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=32413&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p32413"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Aug 10, 2004 11:35 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 20, 2003 2:57 pm<br /><b>Posts:</b> 30<br /><b>Location:</b> Grand Rapids, MI				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">[edit]
+<br /><br />Forgot I had this already: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=741" class="postlink">Exporting From Maya To MD5</a>
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1174&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p32506" id="p32506"></a>
+				<b class="postauthor">Hoffs</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=32506&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p32506"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Aug 11, 2004 2:12 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 20, 2003 2:57 pm<br /><b>Posts:</b> 30<br /><b>Location:</b> Grand Rapids, MI				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Has anyone tried this tutorial since the offical Doom 3 release?  
+<br /><br />I'm not having the easiest time, but it could be due to how I built my model.  Some of the instructions reguarding the .def and .state files are a bit confusing.
+<br /><br />Also, I was using the newer exporting tool for Maya 6, which could have something todo with it as well.
+<br /><br />Is there an updated tutorial for getting models into D3 since it's release?  I haven't noticed, been looking through the forms.
+<br /><br />I also tried Onan's Rottenpunk model posted in <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1131&amp;highlight=rottenpunk" class="postlink">here</a> but I got an error of "ERROR: file d:\Games\Doom3\base\models\eigene\rottenpunk\rp3_hurt.md5mesh.  line 1: Invalid version 6.  Should be version 10"
+<br /><br />I'm assuming the final release of Doom 3 uses version 10, of something in that md5mesh and the alpha used version 6.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1174&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p32548" id="p32548"></a>
+				<b class="postauthor" style="color: #AA0000">rich_is_bored</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=32548&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p32548"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Aug 11, 2004 3:28 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">a gun &amp; a nice word</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=517.gif" width="54" height="54" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jan 11, 2003 8:30 pm<br /><b>Posts:</b> 7514<br /><b>Location:</b> Orlando, FL				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">It's outdated information. Version 6 was the old MD5 format.
+<br /><br />I don't believe anyone has made a conversion tool yet that will work with version 10.
+<br /><br />Sorry. It will all get sorted out soon enough.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />  Staff</a>
+<br />Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=517&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p32561" id="p32561"></a>
+				<b class="postauthor">Hoffs</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=32561&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p32561"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Aug 11, 2004 3:37 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 20, 2003 2:57 pm<br /><b>Posts:</b> 30<br /><b>Location:</b> Grand Rapids, MI				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Ahhh thanks!  Thought I was loose'n my mind.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1174&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p33144" id="p33144"></a>
+				<b class="postauthor">goliathvt</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=33144&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p33144"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Aug 11, 2004 6:52 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">In trouble with the feds</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=1204.jpg" width="64" height="52" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 18, 2004 9:41 pm<br /><b>Posts:</b> 2198				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Updated the tutorial and fixed the link.  This tutorial helps you get a static Lightwave model (that is, a .lwo) into Doom3 properly textured... it's NOT the Maya / animations one where you create md5mesh/md5anims.
+<br /><br />Please send questions regarding the Maya version here:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2487">http://www.doom3world.org/phpbb2/viewtopic.php?t=2487</a><!-- m -->
+<br /><br />The Maya tutorial is currently being reworked because the exporting options and format in the def files has changed with the final release.  As soon as I have the time to sort those out, I'll update that tutorial as well.
+<br /><br />Goliath</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1204&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p40009" id="p40009"></a>
+				<b class="postauthor">CDog</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> little help</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=40009&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p40009"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 22, 2004 12:04 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Aug 03, 2004 3:19 pm<br /><b>Posts:</b> 6<br /><b>Location:</b> United Kingdom				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">After making the model, textures etc - I'm able to view it in the editor ((the little preview window)). I was able to get it into my map one time I tried it, as a mover, however having changed nothing - every time I try getting the object into the map since then, doesn't work.
+<br /><br />If I were to model a box - didn't want it to do anything but sit there - how would I go about achieving this? Turning out to be easier getting LightWave objects into UnrealEd than doom.......
+<br /><br />*pulling out hair*
+<br /><br /><span style="font-style: italic"><span style="font-weight: bold">EDIT: Forget that - I've just worked it out and feel silly - it was so easy...guess it always is once you know how</span></span> <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1692&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p60497" id="p60497"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60497&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60497"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Nov 01, 2004 9:59 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Damnit! I still can't get any textures to show up! I'm not really worried yet about normal maps, I can't even get my regular flat maps to show up!
+<br /><br />I have an LWO model in a folder in my models folder under base...
+<br />I have an MTR file in that folder named the same as my model (but .mtr not .lwo of course)...
+<br />I've got the textures I want in this same folder. They are 24bit Targa files...
+<br />These textures are those indicated in the MTR file...
+<br />I have UV mapped the model in LW and it uses those texture files for it's textures in the surface editor under colour AND diffuse just in case...
+<br /><br />Anything wrong in what I've just said? I've tried to follow Goliath's tutorial to the letter, but it just isn't working. My model is black, in the editor, in the game... But it shows up fine in LW.
+<br /><br />Anybody else got a LW texturing tute I can cross check against?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p60500" id="p60500"></a>
+				<b class="postauthor" style="color: #AA0000">rich_is_bored</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60500&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60500"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Nov 01, 2004 10:19 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">a gun &amp; a nice word</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=517.gif" width="54" height="54" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jan 11, 2003 8:30 pm<br /><b>Posts:</b> 7514<br /><b>Location:</b> Orlando, FL				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Make sure your model is constructed of nothing but triangles.
+<br /><br />Name the surface(s) in Lightwave according to the name of your individual material shaders, not the name of the *.mtr files themselves.
+<br /><br />The filename of the custom *.mtr is irrelevant. It's the shader names contained within it that matter. You can have multiple shaders in one *.mtr.
+<br /><br />It would be in your best interest to read my material shader primer...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=6617">http://www.doom3world.org/phpbb2/viewtopic.php?t=6617</a><!-- m --></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />  Staff</a>
+<br />Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=517&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p60588" id="p60588"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60588&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60588"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 9:19 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Wow, thats a good little tute, I feel like I've gotten further along... But I still can't get it to show my textures.
+<br /><br />Here's the .mtr file I've written:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">models/EventHorizon/EH_Core<br />{ <br />    bumpmap    models/EventHorizon/EngineCoreUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineCoreUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}<br /><br />models/EventHorizon/EH_Rings<br />{ <br />    bumpmap    models/EventHorizon/EngineRingsUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineRingsUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}</div>
+<br /><br />In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.
+<br /><br />The .tga files listed in the .mtr file above are in my base\models\EventHorizon\ folder.
+<br /><br />My model is triangled and loads in, it's just untextured. I think the problem is with the material itself, I can't even find it in the media browser.
+<br /><br />So what am I noobing up here?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p60621" id="p60621"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60621&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60621"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 4:52 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Okay, now I got my materials to show up in the media browser (Nobody says you have to save the .mtr file in the materials folder in the tutorials, I guess it's just assumed "well, duh! Where else would you put it?")...
+<br /><br />Still not on my model though. Black in the editor (F3 and F7 modes) and black in the game, doesn't reflect and flashlight or anything else!
+<br /><br />Damn this is annoying... I keep taking tiny steps towards completion however, thanks to everyone here at D3W.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p60625" id="p60625"></a>
+				<b class="postauthor" style="color: #AA0000">rich_is_bored</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60625&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60625"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 5:00 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">a gun &amp; a nice word</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=517.gif" width="54" height="54" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jan 11, 2003 8:30 pm<br /><b>Posts:</b> 7514<br /><b>Location:</b> Orlando, FL				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Godsbane wrote:</div><div class="quotecontent">In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.</div>
+<br /><br />Rename those surfaces so they match the full name of your material shaders...
+<br /><br />EH_Core -becomes- models/EventHorizon/EH_Core 
+<br />EH_Rings -becomes- models/EventHorizon/EH_Rings</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />  Staff</a>
+<br />Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=517&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p60645" id="p60645"></a>
+				<b class="postauthor">goliathvt</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60645&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60645"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 6:23 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">In trouble with the feds</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=1204.jpg" width="64" height="52" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 18, 2004 9:41 pm<br /><b>Posts:</b> 2198				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Yeah, how you define the surfaces in Lightwave is the key to getting your model to show up properly textured in D3.  rich's suggestions should work.  If not, go back through my tutorial and look for the pink-ish/magenta text that highlights how to set up your model's materials for use in Doom3.
+<br /><br />Good luck!
+<br /><br />Goliath</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1204&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p60654" id="p60654"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60654&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60654"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 6:32 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Rich, you're beautiful. You did it.
+<br /><br />IT WORKS! WOOHOO!
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It's nasty looking, the textures need tweeking for colour and contrast, the UV's are a bit ugly but, hell... Now it can be done!
+<br /><br />Thank you. 
+<br /><br />(BTW whenever I read your posts I always hear the voice of Strong_Bad in my head for some reason. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> )
+<br /><br />I'll post some screenies when I have something decent enought to share. You get credits in my readme for this map man... Woooooohooo... 
+<br /><br />[EDIT]
+<br /><br />You too Goliath, your tutorial was half the reason I got this far anyway.
+<br /><br />Man, it's 4:30 am and now I can finally go to SLEEP!
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p60711" id="p60711"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60711&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60711"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Nov 02, 2004 9:11 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Okay, I didn't get to sleep after all.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />So I fiddled around with the textures (still not perfect) and set up a test of the model setup that's been haunting me for the last couple of days.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH01.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH02.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH03.jpg" alt="Image" /><br /><br />Well, was it worth it? Maybe not yet... But it's a start!
+<br /><br />Thanks again. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p60756" id="p60756"></a>
+				<b class="postauthor">Rayne</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60756&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60756"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Nov 03, 2004 2:22 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">respawned 1350 times</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=464.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Dec 05, 2002 1:08 pm<br /><b>Posts:</b> 1365				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Event Horizon!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div>
+
+											<span class="postbody"><br />_________________<br />theRev is coming...</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=464&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p60883" id="p60883"></a>
+				<b class="postauthor">Godsbane</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=60883&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p60883"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Nov 03, 2004 4:28 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is connecting to Doom3world.org</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 01, 2004 9:41 pm<br /><b>Posts:</b> 8				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Oh yeah... Hell yeah!
+<br /><br />Can you imagine Event Horizon as a Doom3 map? I'm pretty sure some of the ideas in Doom3's design came from that movie. So I'm gonna make a map... Maybe a mini mod if I can get some help.
+<br /><br />Working on the set decoration now... Now that I know what I'm doing more or less <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5984&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p145246" id="p145246"></a>
+				<b class="postauthor">wviperw</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=145246&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p145246"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jun 08, 2006 4:19 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=722.gif" width="40" height="41" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri May 02, 2003 1:23 am<br /><b>Posts:</b> 261				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Tutorial link doesn't seem to be working. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /><br /><br />EDIT: Found a working link at: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/mod/6659.html">http://www.pcgamemods.com/mod/6659.html</a><!-- m --></div>
+
+											<span class="postbody"><br />_________________<br /><span style="font-size: 92%; line-height: normal"><span style="font-style: italic">"My dream would be a mod where you wander around in a sunlit forest buzzing with insects that glow in the light, talking to friendly NPC people about their problems with gardening."</span> -der_ton</span></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?t=1884&amp;highlight=goliath+modeling#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=722&amp;sid=cedec7aa8eaf2769b73a519dda1e1978"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p150601" id="p150601"></a>
+				<b class="postauthor">JBmonies</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=150601&amp;sid=cedec7aa8eaf2769b73a519dda1e1978#p150601"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jul 21, 2006 7:28 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user" /><!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 23:44:16 Sep 25, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post><post id="p17647" date="Posted: Sat Jan 24, 2004 8:21 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Our member goliath took the time to compile a very nice tutorial for all of us.
+<br /><br />Many thanks !
+<br /><br />Now don't waste any time and have fun with it:
+<br /><br />Edit by Goliath:
+<br /><br />This tutorial is for Lightwave, not Maya.  Most of the replies in this thread deal with my <span style="font-weight: bold">Maya</span> tutorial, not this <span style="font-weight: bold">Lightwave</span> one.  
+<br /><br /><span style="font-weight: bold">Quick Note</span>
+<br /><br />For ensuring that your model is prorperly textured in Doom3, all that is required is that the <span style="font-weight: bold">Doom 3 material path/name = the Lightwave Surface Name</span>.  That's how Doom 3 gets its material info applied to your model.  That means that you can have whatever settings you want for that surface (color, luminosity, diffuse, specularity, reflection, bump, etc.) within Lightwave without impacting the way the model will look in the game.  For example, if you wanted your diffuse map to be applied to your model in Lightwave to make it look more like what you'd see in Doom 3:
+<br /><br />Once you've created your UV map and diffuse texture, open up the Surface Editor.  You should have only one surface, and its name should equal the D3 material path/name (see the tutorial for more details on this).  
+<br /><br />Click on the T (texture) button for the color channel.  
+<br /><br />Under Layer Type, choose "Image Map"
+<br /><br />Projection:  UV
+<br /><br />UVMap: nameOfYourUVMap
+<br /><br />Image: (load texture / browse to your diffuse texture)
+<br /><br />Click "Use Texture"
+<br /><br />That will apply your diffuse texture to your model to the Color channel of your surface within Lightwave.  You can repeat this process for the Specularity and Bump channels to apply your spec and local (normal) maps.  Keep in mind that this doesn't affect the model in Doom 3 in any way (as long as the surface name = the full material path), but it's always a nice thing to get your model looking similar across apps.
+<br /><br />Updated Lightwave tutorial and working link:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/6659/">http://www.pcgamemods.com/6659/</a><!-- m -->
+<br /><br />Enjoy!
+<br /><br />Goliath</div>]]></body></post><post id="p32376" date="Posted: Tue Aug 10, 2004 10:40 pm "><author>jokko</author><body><![CDATA[<div class="postbody">Hey bna !
+<br /><br />Do you know if this guide will back online soon ?
+<br />I'm highly interested in reading it, i'm having issues in skining and wish this could help me a lot!</div>]]></body></post><post id="p32413" date="Posted: Tue Aug 10, 2004 11:35 pm "><author>Hoffs</author><body><![CDATA[<div class="postbody">[edit]
+<br /><br />Forgot I had this already: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=741" class="postlink">Exporting From Maya To MD5</a>
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post><post id="p32506" date="Posted: Wed Aug 11, 2004 2:12 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Has anyone tried this tutorial since the offical Doom 3 release?  
+<br /><br />I'm not having the easiest time, but it could be due to how I built my model.  Some of the instructions reguarding the .def and .state files are a bit confusing.
+<br /><br />Also, I was using the newer exporting tool for Maya 6, which could have something todo with it as well.
+<br /><br />Is there an updated tutorial for getting models into D3 since it's release?  I haven't noticed, been looking through the forms.
+<br /><br />I also tried Onan's Rottenpunk model posted in <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1131&amp;highlight=rottenpunk" class="postlink">here</a> but I got an error of "ERROR: file d:\Games\Doom3\base\models\eigene\rottenpunk\rp3_hurt.md5mesh.  line 1: Invalid version 6.  Should be version 10"
+<br /><br />I'm assuming the final release of Doom 3 uses version 10, of something in that md5mesh and the alpha used version 6.</div>]]></body></post><post id="p32548" date="Posted: Wed Aug 11, 2004 3:28 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">It's outdated information. Version 6 was the old MD5 format.
+<br /><br />I don't believe anyone has made a conversion tool yet that will work with version 10.
+<br /><br />Sorry. It will all get sorted out soon enough.</div>]]></body></post><post id="p32561" date="Posted: Wed Aug 11, 2004 3:37 am "><author>Hoffs</author><body><![CDATA[<div class="postbody">Ahhh thanks!  Thought I was loose'n my mind.</div>]]></body></post><post id="p33144" date="Posted: Wed Aug 11, 2004 6:52 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Updated the tutorial and fixed the link.  This tutorial helps you get a static Lightwave model (that is, a .lwo) into Doom3 properly textured... it's NOT the Maya / animations one where you create md5mesh/md5anims.
+<br /><br />Please send questions regarding the Maya version here:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2487">http://www.doom3world.org/phpbb2/viewtopic.php?t=2487</a><!-- m -->
+<br /><br />The Maya tutorial is currently being reworked because the exporting options and format in the def files has changed with the final release.  As soon as I have the time to sort those out, I'll update that tutorial as well.
+<br /><br />Goliath</div>]]></body></post><post id="p40009" date="Posted: Sun Aug 22, 2004 12:04 pm "><author>CDog</author><body><![CDATA[<div class="postbody">After making the model, textures etc - I'm able to view it in the editor ((the little preview window)). I was able to get it into my map one time I tried it, as a mover, however having changed nothing - every time I try getting the object into the map since then, doesn't work.
+<br /><br />If I were to model a box - didn't want it to do anything but sit there - how would I go about achieving this? Turning out to be easier getting LightWave objects into UnrealEd than doom.......
+<br /><br />*pulling out hair*
+<br /><br /><span style="font-style: italic"><span style="font-weight: bold">EDIT: Forget that - I've just worked it out and feel silly - it was so easy...guess it always is once you know how</span></span> <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p60497" date="Posted: Mon Nov 01, 2004 9:59 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Damnit! I still can't get any textures to show up! I'm not really worried yet about normal maps, I can't even get my regular flat maps to show up!
+<br /><br />I have an LWO model in a folder in my models folder under base...
+<br />I have an MTR file in that folder named the same as my model (but .mtr not .lwo of course)...
+<br />I've got the textures I want in this same folder. They are 24bit Targa files...
+<br />These textures are those indicated in the MTR file...
+<br />I have UV mapped the model in LW and it uses those texture files for it's textures in the surface editor under colour AND diffuse just in case...
+<br /><br />Anything wrong in what I've just said? I've tried to follow Goliath's tutorial to the letter, but it just isn't working. My model is black, in the editor, in the game... But it shows up fine in LW.
+<br /><br />Anybody else got a LW texturing tute I can cross check against?</div>]]></body></post><post id="p60500" date="Posted: Mon Nov 01, 2004 10:19 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Make sure your model is constructed of nothing but triangles.
+<br /><br />Name the surface(s) in Lightwave according to the name of your individual material shaders, not the name of the *.mtr files themselves.
+<br /><br />The filename of the custom *.mtr is irrelevant. It's the shader names contained within it that matter. You can have multiple shaders in one *.mtr.
+<br /><br />It would be in your best interest to read my material shader primer...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=6617">http://www.doom3world.org/phpbb2/viewtopic.php?t=6617</a><!-- m --></div>]]></body></post><post id="p60588" date="Posted: Tue Nov 02, 2004 9:19 am "><author>Godsbane</author><body><![CDATA[<div class="postbody">Wow, thats a good little tute, I feel like I've gotten further along... But I still can't get it to show my textures.
+<br /><br />Here's the .mtr file I've written:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">models/EventHorizon/EH_Core<br />{ <br />    bumpmap    models/EventHorizon/EngineCoreUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineCoreUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}<br /><br />models/EventHorizon/EH_Rings<br />{ <br />    bumpmap    models/EventHorizon/EngineRingsUVBump2.tga <br />    diffusemap    models/EventHorizon/EngineRingsUVColour2.tga <br />    specularmap   models/EventHorizon/SpecTest.tga <br />}</div>
+<br /><br />In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.
+<br /><br />The .tga files listed in the .mtr file above are in my base\models\EventHorizon\ folder.
+<br /><br />My model is triangled and loads in, it's just untextured. I think the problem is with the material itself, I can't even find it in the media browser.
+<br /><br />So what am I noobing up here?</div>]]></body></post><post id="p60621" date="Posted: Tue Nov 02, 2004 4:52 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, now I got my materials to show up in the media browser (Nobody says you have to save the .mtr file in the materials folder in the tutorials, I guess it's just assumed "well, duh! Where else would you put it?")...
+<br /><br />Still not on my model though. Black in the editor (F3 and F7 modes) and black in the game, doesn't reflect and flashlight or anything else!
+<br /><br />Damn this is annoying... I keep taking tiny steps towards completion however, thanks to everyone here at D3W.</div>]]></body></post><post id="p60625" date="Posted: Tue Nov 02, 2004 5:00 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Godsbane wrote:</div><div class="quotecontent">In Lightwave, my model has two surfaces, named in the surface editor as EH_Core and EH_Rings respectively.</div>
+<br /><br />Rename those surfaces so they match the full name of your material shaders...
+<br /><br />EH_Core -becomes- models/EventHorizon/EH_Core 
+<br />EH_Rings -becomes- models/EventHorizon/EH_Rings</div>]]></body></post><post id="p60645" date="Posted: Tue Nov 02, 2004 6:23 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Yeah, how you define the surfaces in Lightwave is the key to getting your model to show up properly textured in D3.  rich's suggestions should work.  If not, go back through my tutorial and look for the pink-ish/magenta text that highlights how to set up your model's materials for use in Doom3.
+<br /><br />Good luck!
+<br /><br />Goliath</div>]]></body></post><post id="p60654" date="Posted: Tue Nov 02, 2004 6:32 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Rich, you're beautiful. You did it.
+<br /><br />IT WORKS! WOOHOO!
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It's nasty looking, the textures need tweeking for colour and contrast, the UV's are a bit ugly but, hell... Now it can be done!
+<br /><br />Thank you. 
+<br /><br />(BTW whenever I read your posts I always hear the voice of Strong_Bad in my head for some reason. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> )
+<br /><br />I'll post some screenies when I have something decent enought to share. You get credits in my readme for this map man... Woooooohooo... 
+<br /><br />[EDIT]
+<br /><br />You too Goliath, your tutorial was half the reason I got this far anyway.
+<br /><br />Man, it's 4:30 am and now I can finally go to SLEEP!
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /></div>]]></body></post><post id="p60711" date="Posted: Tue Nov 02, 2004 9:11 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Okay, I didn't get to sleep after all.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />So I fiddled around with the textures (still not perfect) and set up a test of the model setup that's been haunting me for the last couple of days.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH01.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH02.jpg" alt="Image" /><br /><img src="https://web.archive.org/web/20070509181516im_/http://users.tpg.com.au/adslpmp0/Doom3_EH03.jpg" alt="Image" /><br /><br />Well, was it worth it? Maybe not yet... But it's a start!
+<br /><br />Thanks again. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p60756" date="Posted: Wed Nov 03, 2004 2:22 am "><author>Rayne</author><body><![CDATA[<div class="postbody">Event Horizon!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div>]]></body></post><post id="p60883" date="Posted: Wed Nov 03, 2004 4:28 pm "><author>Godsbane</author><body><![CDATA[<div class="postbody">Oh yeah... Hell yeah!
+<br /><br />Can you imagine Event Horizon as a Doom3 map? I'm pretty sure some of the ideas in Doom3's design came from that movie. So I'm gonna make a map... Maybe a mini mod if I can get some help.
+<br /><br />Working on the set decoration now... Now that I know what I'm doing more or less <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></div>]]></body></post><post id="p145246" date="Posted: Thu Jun 08, 2006 4:19 am "><author>wviperw</author><body><![CDATA[<div class="postbody">Tutorial link doesn't seem to be working. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /><br /><br />EDIT: Found a working link at: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/mod/6659.html">http://www.pcgamemods.com/mod/6659.html</a><!-- m --></div>]]></body></post></posts></thread></xml>

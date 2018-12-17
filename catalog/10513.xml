@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10513"><title>Here's a newbie question</title><posts><post id="94188" date="Posted: Sat May 14, 2005 3:10 pm    Post subject: Here's a newbie question"><author>ajm</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hello Doom people,&#13;
+<br/><br/>
+I'm attempting to modle some objects in lightwave then place them in doom, pretty straight forward you'd think. However, I'm doing my modelling on a seperate machine (in this case a Mac) and trying to bring the objects across. My problem is that no matter what I try I can't seem to get the objects to use their UV maps, which leaves me with light absorbing black shapes, which isn'tt really the look I'm going for&#13;
+<br/><br/>
+Anybody able to shed some light on this for me?&#13;
+<br/><br/>
+A</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94291" date="Posted: Sun May 15, 2005 4:19 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are there compatablity issues between the PC and Mac versions of Lightwave? I wasn't aware of any.&#13;
+<br/><br/>
+A black object suggests a problem with your material shader or the reference to the material shader.&#13;
+<br/><br/>
+Just for shits and giggles make sure you name your surfaces to match the corrisponding material shader.&#13;
+<br/><br/>
+For instance, if I want to apply the material "textures\custom\foo" to my model, the surface name in Lightwave should read "textures\custom\foo".<br/>_________________<br/><a href="/web/20061012184010/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012184010im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012184010/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94353" date="Posted: Sun May 15, 2005 2:24 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What do you mean by 'bring them across'?&#13;
+<br/>
+ Do you mean you have a copy of lightwave on the PC as well, or are you just using the lwo you saved out from the mac and putting it in Doom?&#13;
+<br/>
+ What I do to sort out glitches in UV maps, since sometimes doom will show errors that don't show up in lightwave, is I open them with Deep Exploration, save them out as a .mb file, open the .mb file and export it to lwo again. This always solves any UV map problems in doom.&#13;
+<br/>
+ You can get a free trial of Deep Expolration at <a href="/web/20061012184010/http://www.righthemisphere.com/" target="_blank">www.righthemisphere.com.</a><br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012184010/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94457" date="Posted: Mon May 16, 2005 5:13 am    Post subject: "><author>ajm</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oddity:&#13;
+<br/>
+I'm just saving the object files out of the Mac and dropping them into doom on a Windows box.&#13;
+<br/>
+I'll try rich's suggestion, if that fails I'll give deep exploration a go, thank you.&#13;
+<br/><br/>
+Rich;&#13;
+<br/>
+If there are compatibility issues between Mac and PC lightwave I'm unaware of them too.  When I said "bringing them across" I didn't mean from lightwave to lightwave, just from lightwave (Mac) to Doom (PC).&#13;
+<br/>
+The only reason I'm doing it this way is because I know how to model in lightwave and the only version I have access to is on a Mac.&#13;
+<br/><br/>
+I wouldn't be at all surprised if it's naming issue (this is my first attempt at this), I'll try renaming the surfaces and see what I get.&#13;
+<br/><br/>
+Thanks, both of you.&#13;
+<br/><br/>
+A</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94188" date="Posted: Sat May 14, 2005 3:10 pm    Post subject: Here's a newbie question"><author>ajm</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hello Doom people,&#13;
+<br/><br/>
+I'm attempting to modle some objects in lightwave then place them in doom, pretty straight forward you'd think. However, I'm doing my modelling on a seperate machine (in this case a Mac) and trying to bring the objects across. My problem is that no matter what I try I can't seem to get the objects to use their UV maps, which leaves me with light absorbing black shapes, which isn'tt really the look I'm going for&#13;
+<br/><br/>
+Anybody able to shed some light on this for me?&#13;
+<br/><br/>
+A</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94291" date="Posted: Sun May 15, 2005 4:19 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are there compatablity issues between the PC and Mac versions of Lightwave? I wasn't aware of any.&#13;
+<br/><br/>
+A black object suggests a problem with your material shader or the reference to the material shader.&#13;
+<br/><br/>
+Just for shits and giggles make sure you name your surfaces to match the corrisponding material shader.&#13;
+<br/><br/>
+For instance, if I want to apply the material "textures\custom\foo" to my model, the surface name in Lightwave should read "textures\custom\foo".<br/>_________________<br/><a href="/web/20061012181344/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181344im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181344/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94353" date="Posted: Sun May 15, 2005 2:24 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What do you mean by 'bring them across'?&#13;
+<br/>
+ Do you mean you have a copy of lightwave on the PC as well, or are you just using the lwo you saved out from the mac and putting it in Doom?&#13;
+<br/>
+ What I do to sort out glitches in UV maps, since sometimes doom will show errors that don't show up in lightwave, is I open them with Deep Exploration, save them out as a .mb file, open the .mb file and export it to lwo again. This always solves any UV map problems in doom.&#13;
+<br/>
+ You can get a free trial of Deep Expolration at <a href="/web/20061012181344/http://www.righthemisphere.com/" target="_blank">www.righthemisphere.com.</a><br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012181344/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94457" date="Posted: Mon May 16, 2005 5:13 am    Post subject: "><author>ajm</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oddity:&#13;
+<br/>
+I'm just saving the object files out of the Mac and dropping them into doom on a Windows box.&#13;
+<br/>
+I'll try rich's suggestion, if that fails I'll give deep exploration a go, thank you.&#13;
+<br/><br/>
+Rich;&#13;
+<br/>
+If there are compatibility issues between Mac and PC lightwave I'm unaware of them too.  When I said "bringing them across" I didn't mean from lightwave to lightwave, just from lightwave (Mac) to Doom (PC).&#13;
+<br/>
+The only reason I'm doing it this way is because I know how to model in lightwave and the only version I have access to is on a Mac.&#13;
+<br/><br/>
+I wouldn't be at all surprised if it's naming issue (this is my first attempt at this), I'll try renaming the surfaces and see what I get.&#13;
+<br/><br/>
+Thanks, both of you.&#13;
+<br/><br/>
+A</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="4861"><title>TUTORIAL:How to make the robot that help you in the game</title><posts><post id="p42040" date="Posted: Thu Aug 26, 2004 8:36 am "><author>mcrat</author><body><![CDATA[<div class="postbody">TUTORIAL BY MC RaT
+<br /><br />How to make a "Sentry", the little robot you help you during the game...
+<br /><br />Add the entity:   CHAR_SENTRY
+<br /><br />Add a trigger_once
+<br />Connect the entities, select the trigger, after, select the CHAR_SENTRY, and connect with CTRL+K.
+<br /><br />After the entity are connected, go to the Char_sentry entity parameters, and add this commands:
+<br /><br />"unfolded" = "1"
+<br />"lead_player" = "1"
+<br />"never_dormant" = "1"
+<br /><br />Delete the anim key.
+<br /><br />Make a path with the PATH_CORNER.
+<br /><br />Connect all the path, in the order that you want.
+<br /><br />Finally, connect the CHAR_SENTRY with the first path corner.
+<br /><br />That's all !!
+<br /><br />Now, you have made your own sentry.
+<br />This sentry wait the player to go to next path, attack monsters...
+<br /><br /><br />It was a tutorial by MC_RaT
+<br /><br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/" class="postlink">http://nicosoftgames.free.fr</a>
+<br /><br />**** Edited by eskimo roll. To retype the mistake that was in this walkthrough, could everyone please make sure the information that they type is correct as otherwise it leads to the confusion of many.</div>]]></body></post><post id="p42041" date="Posted: Thu Aug 26, 2004 8:39 am "><author>Dravos</author><body><![CDATA[<div class="postbody">Nice one!  <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p42043" date="Posted: Thu Aug 26, 2004 8:42 am "><author>The_Hell</author><body><![CDATA[<div class="postbody">This tutorial looks good, I have a little problem with doom 3 now, so I can't make a sentry <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />. A little tip: Try to explain a little bit more how to do the stuff you wrote in the tutorial. Your tutorial looks like its been written only to the veterans in the editor. If a noob (like me) will read the tutorial, it will be hard for him to understand what to do.
+<br /><br /><br />EDIT: Maybe it's only hard to me because English is my second language.</div>]]></body></post><post id="p42046" date="Posted: Thu Aug 26, 2004 9:01 am "><author>mcrat</author><body><![CDATA[<div class="postbody">If you don't understand what i say (i am not english), here, you can download the test map to show you how to make a sentry...
+<br /><br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/dw2/maps2.zip" class="postlink">http://nicosoftgames.free.fr/dw2/maps2.zip</a>
+<br /><br />It's my first tutorial...</div>]]></body></post><post id="p42060" date="Posted: Thu Aug 26, 2004 9:41 am "><author>The_Hell</author><body><![CDATA[<div class="postbody"><div class="quotetitle">mcrat wrote:</div><div class="quotecontent">If you don't understand what i say (i am not english), here, you can download the test map to show you how to make a sentry...<br /><br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/dw2/maps2.zip" class="postlink">http://nicosoftgames.free.fr/dw2/maps2.zip</a><br /><br />It's my first tutorial...</div>
+<br /><br />Cool <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />For the first tutorial - it's good.</div>]]></body></post><post id="p42062" date="Posted: Thu Aug 26, 2004 9:45 am "><author>mcrat</author><body><![CDATA[<div class="postbody">Thanks..
+<br /><img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p42063" date="Posted: Thu Aug 26, 2004 9:48 am "><author>The_Hell</author><body><![CDATA[<div class="postbody">I tried your tutorial now, and my sentry doesn't move...</div>]]></body></post><post id="p42064" date="Posted: Thu Aug 26, 2004 9:51 am "><author>mcrat</author><body><![CDATA[<div class="postbody">The sentry start moving when the player go to the trigger_once</div>]]></body></post><post id="p42067" date="Posted: Thu Aug 26, 2004 9:52 am "><author>The_Hell</author><body><![CDATA[<div class="postbody"><div class="quotetitle">mcrat wrote:</div><div class="quotecontent">The sentry start moving when the player go to the trigger_once</div>
+<br /><br />It still doesn't work</div>]]></body></post><post id="p42068" date="Posted: Thu Aug 26, 2004 9:53 am "><author>mcrat</author><body><![CDATA[<div class="postbody">Download the map, to see what's the different between our maps.
+<br /><br />the link is :
+<br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/dw2/maps2.zip" class="postlink">http://nicosoftgames.free.fr/dw2/maps2.zip</a></div>]]></body></post><post id="p42071" date="Posted: Thu Aug 26, 2004 10:02 am "><author>The_Hell</author><body><![CDATA[<div class="postbody">I found the error:
+<br />You said that we need to write "neverDormant" in the sentry "Entities" Tab. This is supposed to be "never_dormant".</div>]]></body></post><post id="p42072" date="Posted: Thu Aug 26, 2004 10:03 am "><author>mcrat</author><body><![CDATA[<div class="postbody">Oh, sorry!
+<br /><img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /></div>]]></body></post><post id="p42073" date="Posted: Thu Aug 26, 2004 10:04 am "><author>mcrat</author><body><![CDATA[<div class="postbody">So, to make is own sentry, (thanx The_hell):
+<br />Add the entity:   CHAR_SENTRY
+<br /><br />Add a trigger_once
+<br />Connect the entities, select the trigger, after, select the CHAR_SENTRY, and connect with CTRL+K.
+<br /><br />After the entity are connected, go to the Char_sentry entity parameters, and add this commands:
+<br /><br />"unfolded" = "1"
+<br />"lead_player" = "1"
+<br />"never_Dormant" = "1"
+<br /><br />Delete the anim key.
+<br /><br />Make a path with the PATH_CORNER.
+<br /><br />Connect all the path, in the order that you want.
+<br /><br />Finally, connect the CHAR_SENTRY with the first path corner.
+<br /><br />That's all !!
+<br /><br />Now, you have made your own sentry.
+<br />This sentry wait the player to go to next path, attack monsters...
+<br /><br /><br />It was a tutorial by MC_RaT
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/">http://nicosoftgames.free.fr</a><!-- m --></div>]]></body></post><post id="p42074" date="Posted: Thu Aug 26, 2004 10:05 am "><author>The_Hell</author><body><![CDATA[<div class="postbody"><div class="quotetitle">mcrat wrote:</div><div class="quotecontent">Oh, sorry!<br /><img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /></div>
+<br /><br />Nevermind... The important thing is that it's working now... <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p42076" date="Posted: Thu Aug 26, 2004 10:06 am "><author>mcrat</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /> ,  <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /> ,  <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p42080" date="Posted: Thu Aug 26, 2004 10:14 am "><author>The_Hell</author><body><![CDATA[<div class="postbody">So fix the tutorial <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p42081" date="Posted: Thu Aug 26, 2004 10:15 am "><author>mcrat</author><body><![CDATA[<div class="postbody">
+  <img src="https://web.archive.org/web/20100522163810im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" />
+</div>]]></body></post><post id="p42086" date="Posted: Thu Aug 26, 2004 10:28 am "><author>bb_matt</author><body><![CDATA[<div class="postbody">If possible, some more info and a screenshot or two and an example map would make this tutorial more useful.  In addition, indicate how you layed out your path_corners - how did you make them, what did you name them ? How did you put the entities in your map ?
+<br /><br />You have to put yourself in the position of somebody who doesn't have a clue about the editor, because, to be honest, anyone who has knowledge of the editor will simply look at the id software maps to get info on sentries.
+<br /><br />For screenshots, there are free screenshot hosting services out there :-
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522163810/http://www.imageshack.us/">http://www.imageshack.us/</a><!-- m -->
+<br /><br />I can't link in a tutorial like this to the tutorial listings until it can be followed by an absolute beginner at editing.</div>]]></body></post><post id="p42091" date="Posted: Thu Aug 26, 2004 10:34 am "><author>mcrat</author><body><![CDATA[<div class="postbody">Hey, you can download the test map here:
+<br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/dw2/maps2.zip" class="postlink">http://nicosoftgames.free.fr/dw2/maps2.zip</a>
+<br /><br />And a video who show you that's this tutorial work:
+<br /><a href="https://web.archive.org/web/20100522163810/http://nicosoftgames.free.fr/dw2/sentry.zip" class="postlink">http://nicosoftgames.free.fr/dw2/sentry.zip</a></div>]]></body></post><post id="p42095" date="Posted: Thu Aug 26, 2004 10:46 am "><author>bb_matt</author><body><![CDATA[<div class="postbody">The video is not needed - we all know how the sentries look and work ingame. What I meant is a clear indication of how it's built.
+<br /><br />Nevermind, it doesn't matter.</div>]]></body></post></posts></thread></xml>

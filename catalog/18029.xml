@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18029"><title>platform dmg value</title><posts><post id="164002" date="Posted: Thu Dec 07, 2006 12:08 am    Post subject: platform dmg value"><author>MelGibbsome</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, first off i apologize for asking this cuz its probably somewhere on this site...........HOWEVER the site is screwed up as after i look at one search hit, find its not the answer, I click on the back button to take me back to the list of hits and EVERYTIME it says page has expired......so NO, I'm NOT retyping the search once per page look up!&#13;
+<br/><br/>
+OK, I have a platform and I want to set the value of DMG which is the value of damage to inflict when the platform is blocked.  NOTHING entered here works.&#13;
+<br/><br/>
+I tried just a number, I tried dmg_# and damage_#.&#13;
+<br/><br/>
+Does anyone know what the format of this value is? I know for triggerhurts, its like damage_triggerhurt_# (and stupid quake doesn't take just any number here either...10, 100 and a few others work, but not just any number will work).&#13;
+<br/><br/>
+Also, some of the posts I did manage to read, suggested jury rigging the plat with a trigger hurt thats triggered on and off, blah blah blah.&#13;
+<br/><br/>
+I don't want jury rigs.............I want the platform to work THE WAY ITS SUPPOSED TO.&#13;
+<br/><br/>
+thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164324" date="Posted: Mon Dec 11, 2006 1:53 am    Post subject: "><author>MelGibbsome</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't believe no one here knows the answer to this question.&#13;
+<br/><br/>
+oh well...........I ended up putting a lava pit underneath the platform and so at least having a trigger hurt under there makes sense.&#13;
+<br/><br/>
+thanks for nothing.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164347" date="Posted: Mon Dec 11, 2006 6:20 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I personally have never toyed with a func_plat entity so I can't speak for the "dmg" key/value pair.&#13;
+<br/><br/>
+According to the entity declaration...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef func_plat {&#13;
+<br/>
+    "editor_color"                "0 .5 .8"&#13;
+<br/>
+    "editor_mins"                "?"&#13;
+<br/>
+    "editor_maxs"                "?"&#13;
+<br/>
+    "editor_mover"                "1"&#13;
+<br/><br/>
+    "editor_usage"                "Standard Quake-style platform."&#13;
+<br/>
+    "editor_bool no_touch"        "the plat should not be triggered by the player touching it, only by another trigger."&#13;
+<br/>
+    "editor_var lip"            "protrusion above rest position."&#13;
+<br/>
+    "editor_var height"            "total height of movement, defaults to model height."&#13;
+<br/>
+    "editor_var speed"            "speed to move up and down at."&#13;
+<br/>
+    "editor_var dmg"            "damage to inflict when blocked."&#13;
+<br/>
+    "editor_snd snd_open"        "sound to play when opening."&#13;
+<br/>
+    "editor_snd snd_close"        "sound to play when closing."&#13;
+<br/>
+    "editor_snd snd_opened"        "looping sound for it's opened state."&#13;
+<br/><br/>
+    "spawnclass"                "idPlat"&#13;
+<br/><br/>
+    "no_touch"                    "0"&#13;
+<br/>
+    "lip"                        "8"&#13;
+<br/>
+    "speed"                        "200"&#13;
+<br/>
+    "dmg"                        "2"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... it's already set to 2 so if it doesn't have any effect in game it's probably safe to assume that it doesn't work.&#13;
+<br/><br/>
+But that's beside the point. I didn't respond to help you. I'm responding because a statement like "thanks for nothing" pisses me off.&#13;
+<br/><br/>
+The community here is very altruistic so you can rest assured that if a thread you author doesn't receive any response it's either because nobody can provide suitable answers to your questions or the answers are already well documented.&#13;
+<br/><br/>
+You have a forum full of knowledgeable, friendly people and a wiki at your disposal. None of it cost you a dime but you can trust me when I tell you it wasn't free.&#13;
+<br/><br/>
+You say thanks for nothing yet I wonder how far you would have come if you truly were flying solo. I call bullshit.<br/>_________________<br/><a href="/web/20070217145306/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20070217145306im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20070217145306/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

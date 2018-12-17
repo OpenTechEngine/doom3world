@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="15863"><title>Create Moveable Objects</title><posts><post id="155912" date="Posted: Mon Sep 04, 2006 8:32 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Be careful using that, when I played the Q3 version that bridge ended up being more frustating then a monkey pondering the meaning of life.&#13;
+<br/><br/>
+But yes, this is taking shape very nicely. Keep up the good work<br/>_________________<br/><a href="/web/20061013054210/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054210im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054210/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155918" date="Posted: Mon Sep 04, 2006 9:23 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Agree with you: The Q3 bridge was pretty annoying. That map it is in was more a compilation of ideas than really balanced for good gameplay.&#13;
+<br/><br/>
+(To be honest: I never played it against anyone <img src="/web/20061013054210im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/> )<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013054210/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155978" date="Posted: Mon Sep 04, 2006 5:45 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">(To be honest: I never played it against anyone <img src="/web/20061013054210im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/> )</td>	</tr></table><span class="postbody">I have to confess to you thta monkeyMod has been the only mod that I've played because *I* wanted to, so hang in there with it, it's so different that once you get all the core stuff sorted out it'll be 'fun'.<br/>_________________<br/><a href="/web/20061013054210/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054210im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054210/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156045" date="Posted: Tue Sep 05, 2006 7:23 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">One idea is to put all single parts of the map on my website as prefabs. Maybe some guys have fun building new/better balanced maps of them. &#13;
+<br/><br/>
+The most important thing to me: Seeing my comic-people in action <img src="/web/20061013054210im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013054210/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144333" date="Posted: Mon May 29, 2006 12:45 pm    Post subject: Create Moveable Objects"><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Howdi, I'd greatly appreciate any help with that because Im struggling to find a tutorial and im not getting very far reading the existing moveable objects scripts either.&#13;
+<br/><br/>
+Basically, i've built a model in Maya, exported it to ASE, its textures work, its fine as a static mesh yada yada yada, but when I use the model as a moveable object I just get the message &#13;
+<br/><br/>
+Can't load collision model 'model name'&#13;
+<br/><br/>
+I had a look in moveable object scripts to see if there was anything that reference each to a specfic collision model but had no luck. Sorry this is pretty dum but it's got me pretty stuck. Cheers to anyone for help!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144348" date="Posted: Mon May 29, 2006 4:28 pm    Post subject: "><author>Brain Trepaning</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">bring the static mesh into DoomEd&#13;
+<br/><br/>
+Selection/Export/CM (collision model)&#13;
+<br/><br/>
+Browse for folder and model type&#13;
+<br/><br/>
+Save&#13;
+<br/><br/>
+Now ASE/LWO plus CM are in model folder&#13;
+<br/><br/>
+Make moveable DEF for ASE (no example here, sorry)<br/>_________________<br/><a href="/web/20061013055242/http://trepaning.com/" target="_blank" class="postlink">Good Bye!</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144386" date="Posted: Mon May 29, 2006 11:31 pm    Post subject: "><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">fantastic as always man!&#13;
+<br/><br/>
+cheers again</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144695" date="Posted: Fri Jun 02, 2006 4:41 am    Post subject: "><author>Kaiser</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've been trying to do this as well.&#13;
+<br/>
+But when I do selection-&gt;export-&gt;to cm, I type the name of my .lwo file and hit save but nothing happens, no file is saved at all.&#13;
+<br/><br/>
+Any idea what I could be doing wrong?<br/>_________________<br/><a href="/web/20061013055242/http://dsv.newdoom.com/" target="_blank">http://dsv.newdoom.com/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144721" date="Posted: Fri Jun 02, 2006 3:26 pm    Post subject: "><author>Brain Trepaning</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You are browsing for the folder with your LWO/ASE in it, searching by the model type option. When you see your model in its folder, you click on it, then press SAVE. Now your ASE/LWO and CM are in the model's folder.<br/>_________________<br/><a href="/web/20061013055242/http://trepaning.com/" target="_blank" class="postlink">Good Bye!</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144722" date="Posted: Fri Jun 02, 2006 3:53 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can also make a separate layer in your lwo textured with common/collision (I think, can't check right now).<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055242/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144757" date="Posted: Fri Jun 02, 2006 10:09 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually I don't think Doom 3 can read LWOs with multiple layers.<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055242/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144760" date="Posted: Fri Jun 02, 2006 10:47 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/> Right, forget about that stuff, just texture it with "textures/common/collision".<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055242/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144837" date="Posted: Sat Jun 03, 2006 5:35 pm    Post subject: "><author>jlamb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It threw me off a little when I had launched the editor from the console while running a mod, and then exported a .cm; it created the .cm in a new base folder in the plugin folder. I was really baffled at first when no new file was being created on the desktop  <img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155530" date="Posted: Thu Aug 31, 2006 9:46 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I tried to make a collision model for that cartoon-ey barrel you can see below, but failed with both methods, Brain's and iceheart's.&#13;
+<br/><br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/collision.jpg" border="0"/><br/><br/>
+My first guess was that this is caused by the upper, open side of the mesh,&#13;
+<br/>
+but even if I build a new collision geometry around the whole thing (and put "textures/common/collision" in the .ase's material path), it's only the lower part you can hit. <img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Hm... Is there something wrong with the .def file?!&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/><br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155562" date="Posted: Thu Aug 31, 2006 3:41 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">I tried to make a collision model for that cartoon-ey barrel you can see below, but failed with both methods, Brain's and iceheart's.&#13;
+<br/><br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/collision.jpg" border="0"/><br/><br/>
+My first guess was that this is caused by the upper, open side of the mesh,&#13;
+<br/>
+but even if I build a new collision geometry around the whole thing (and put "textures/common/collision" in the .ase's material path), it's only the lower part you can hit. <img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Hm... Is there something wrong with the .def file?!&#13;
+<br/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/><br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"/></td>	</tr></table><span class="postbody">Hmm, ok bear with me on this because I'm not 100% sure about it, but;&#13;
+<br/><br/>
+There are two 'types' of collision;&#13;
+<br/><br/>
+1 : Impacts&#13;
+<br/>
+2 : Movement&#13;
+<br/><br/>
+You want No.2 by the looks of things which means that the object needs to be an MD5 and have bones, in your case an origin and 'body' bone, because that's what the ragdoll tags itself onto (which it looks like your using based on the shot you have there).&#13;
+<br/><br/>
+I'm seriosuly guessing here so check through the game for similar objects, I *think* you'll find they're MD5s (all the env_ entities etc.).&#13;
+<br/><br/>
+In other words, the open side of the mesh has no effect because it should be using the collision box; technically (and this is without seeing the inside of the mesh) it looks like your actual mesh *is* closed, it's just been designed in the shape of a barrel.<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055242/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155608" date="Posted: Fri Sep 01, 2006 8:16 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the quick reply, kat!&#13;
+<br/><br/>
+I checked moveable.def and found that most of the objects in it are .ASEs or .LWOs, for example this two barrels next to mine:&#13;
+<br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/barrels.jpg" border="0"/><br/>
+Their .defs look like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef moveable_barrel2 {&#13;
+<br/>
+   "inherit"               "moveable_base_fixed"&#13;
+<br/>
+   "model"                  "models/mapobjects/fuel_barrel/p_barrel.ase"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "metal_barrel_impact"&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef moveable_barrel3 {&#13;
+<br/>
+   "inherit"               "moveable_base_barrel"&#13;
+<br/>
+   "model"                  "models/mapobjects/fuel_barrel/exp_barrel.lwo"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.2"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "networksync"            "1"&#13;
+<br/><br/>
+   "snd_bounce"            "metal_barrel_impact"&#13;
+<br/><br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... and they behave exactly the way I would like mine to do. &#13;
+<br/><br/>
+I guess I have to try around with the collision model a little more. As you can see from the first screenshot, it doesn't fit the size an shape of my model at all.<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155609" date="Posted: Fri Sep 01, 2006 8:22 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">How 'complex' is your collision hull on your barrel? They can't have more than 16 faces or something iirc, so you're basically stuck with a 'box' for that barrel.&#13;
+<br/><br/>
+Also, make sure that the point of origin (POO get it! 'POOO') isn't actually at the bottom of the barrel, centre the object on Max's grid at it's centre of mass. You may be casuing problems becasue the models POO is clipping the surface it's sitting on.&#13;
+<br/><br/>
+Also, also, make sure you export the CM *with* the ASE and that it's a separate object.&#13;
+<br/><br/>
+Thanks all I can think for now.. need sleep.....<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055242/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155611" date="Posted: Fri Sep 01, 2006 8:44 am    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">My personal way of doing it is to make a playerclip func_static on where I want the model's clipping to be, and set that as bind(ed) and the collision model. Yeah, sure, it's not <span style="font-style: italic">really</span> the proper way of doing it, but it works jus' fine.  <img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155615" date="Posted: Fri Sep 01, 2006 10:16 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I finally got it! The way it works for me is building a separate, low-poly model and define that as "clipmodel" (in the barrels .def file).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "clipmodel"            "models/mapobjects/bb2/fass_01cm.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Was absolutely worth spending time on that. - Look how cool the barrels swim on Lloyd's water-physics water! <img src="/web/20061013055242im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/barrels2.jpg" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155616" date="Posted: Fri Sep 01, 2006 10:26 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hey! That could be a great method for my bridge, too!!!&#13;
+<br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/bb_screen_q4.jpg" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155652" date="Posted: Fri Sep 01, 2006 4:36 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Make sure you add a clipbrush around the island otherwise those thing will float off into the sunset!<br/>_________________<br/><a href="/web/20061013055242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055242/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155718" date="Posted: Sat Sep 02, 2006 10:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Make sure you add a clipbrush around the island otherwise those thing will float off into the sunset!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Done!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155733" date="Posted: Sat Sep 02, 2006 5:19 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That looks so fun!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155911" date="Posted: Mon Sep 04, 2006 8:25 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">... And I hope, the new "physics-" bridge will add some fun to the gameplay:&#13;
+<br/><img src="/web/20061013055242im_/http://monkeykombat.planetquake.gamespy.com/bridge.jpg" border="0"/><br/>
+- Inspiring confidence, isn't it?!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055242/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144333" date="Posted: Mon May 29, 2006 12:45 pm    Post subject: Create Moveable Objects"><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Howdi, I'd greatly appreciate any help with that because Im struggling to find a tutorial and im not getting very far reading the existing moveable objects scripts either.&#13;
+<br/><br/>
+Basically, i've built a model in Maya, exported it to ASE, its textures work, its fine as a static mesh yada yada yada, but when I use the model as a moveable object I just get the message &#13;
+<br/><br/>
+Can't load collision model 'model name'&#13;
+<br/><br/>
+I had a look in moveable object scripts to see if there was anything that reference each to a specfic collision model but had no luck. Sorry this is pretty dum but it's got me pretty stuck. Cheers to anyone for help!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144348" date="Posted: Mon May 29, 2006 4:28 pm    Post subject: "><author>Brain Trepaning</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">bring the static mesh into DoomEd&#13;
+<br/><br/>
+Selection/Export/CM (collision model)&#13;
+<br/><br/>
+Browse for folder and model type&#13;
+<br/><br/>
+Save&#13;
+<br/><br/>
+Now ASE/LWO plus CM are in model folder&#13;
+<br/><br/>
+Make moveable DEF for ASE (no example here, sorry)<br/>_________________<br/><a href="/web/20061013061025/http://trepaning.com/" target="_blank" class="postlink">Good Bye!</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144386" date="Posted: Mon May 29, 2006 11:31 pm    Post subject: "><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">fantastic as always man!&#13;
+<br/><br/>
+cheers again</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144695" date="Posted: Fri Jun 02, 2006 4:41 am    Post subject: "><author>Kaiser</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've been trying to do this as well.&#13;
+<br/>
+But when I do selection-&gt;export-&gt;to cm, I type the name of my .lwo file and hit save but nothing happens, no file is saved at all.&#13;
+<br/><br/>
+Any idea what I could be doing wrong?<br/>_________________<br/><a href="/web/20061013061025/http://dsv.newdoom.com/" target="_blank">http://dsv.newdoom.com/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144721" date="Posted: Fri Jun 02, 2006 3:26 pm    Post subject: "><author>Brain Trepaning</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You are browsing for the folder with your LWO/ASE in it, searching by the model type option. When you see your model in its folder, you click on it, then press SAVE. Now your ASE/LWO and CM are in the model's folder.<br/>_________________<br/><a href="/web/20061013061025/http://trepaning.com/" target="_blank" class="postlink">Good Bye!</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144722" date="Posted: Fri Jun 02, 2006 3:53 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can also make a separate layer in your lwo textured with common/collision (I think, can't check right now).<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061025/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144757" date="Posted: Fri Jun 02, 2006 10:09 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually I don't think Doom 3 can read LWOs with multiple layers.<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061025/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144760" date="Posted: Fri Jun 02, 2006 10:47 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/> Right, forget about that stuff, just texture it with "textures/common/collision".<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061025/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="144837" date="Posted: Sat Jun 03, 2006 5:35 pm    Post subject: "><author>jlamb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It threw me off a little when I had launched the editor from the console while running a mod, and then exported a .cm; it created the .cm in a new base folder in the plugin folder. I was really baffled at first when no new file was being created on the desktop  <img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155530" date="Posted: Thu Aug 31, 2006 9:46 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I tried to make a collision model for that cartoon-ey barrel you can see below, but failed with both methods, Brain's and iceheart's.&#13;
+<br/><br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/collision.jpg" border="0"/><br/><br/>
+My first guess was that this is caused by the upper, open side of the mesh,&#13;
+<br/>
+but even if I build a new collision geometry around the whole thing (and put "textures/common/collision" in the .ase's material path), it's only the lower part you can hit. <img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Hm... Is there something wrong with the .def file?!&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/><br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155562" date="Posted: Thu Aug 31, 2006 3:41 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">I tried to make a collision model for that cartoon-ey barrel you can see below, but failed with both methods, Brain's and iceheart's.&#13;
+<br/><br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/collision.jpg" border="0"/><br/><br/>
+My first guess was that this is caused by the upper, open side of the mesh,&#13;
+<br/>
+but even if I build a new collision geometry around the whole thing (and put "textures/common/collision" in the .ase's material path), it's only the lower part you can hit. <img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Hm... Is there something wrong with the .def file?!&#13;
+<br/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/><br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"/></td>	</tr></table><span class="postbody">Hmm, ok bear with me on this because I'm not 100% sure about it, but;&#13;
+<br/><br/>
+There are two 'types' of collision;&#13;
+<br/><br/>
+1 : Impacts&#13;
+<br/>
+2 : Movement&#13;
+<br/><br/>
+You want No.2 by the looks of things which means that the object needs to be an MD5 and have bones, in your case an origin and 'body' bone, because that's what the ragdoll tags itself onto (which it looks like your using based on the shot you have there).&#13;
+<br/><br/>
+I'm seriosuly guessing here so check through the game for similar objects, I *think* you'll find they're MD5s (all the env_ entities etc.).&#13;
+<br/><br/>
+In other words, the open side of the mesh has no effect because it should be using the collision box; technically (and this is without seeing the inside of the mesh) it looks like your actual mesh *is* closed, it's just been designed in the shape of a barrel.<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013061025/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155608" date="Posted: Fri Sep 01, 2006 8:16 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the quick reply, kat!&#13;
+<br/><br/>
+I checked moveable.def and found that most of the objects in it are .ASEs or .LWOs, for example this two barrels next to mine:&#13;
+<br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/barrels.jpg" border="0"/><br/>
+Their .defs look like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef moveable_barrel2 {&#13;
+<br/>
+   "inherit"               "moveable_base_fixed"&#13;
+<br/>
+   "model"                  "models/mapobjects/fuel_barrel/p_barrel.ase"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "metal_barrel_impact"&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef moveable_barrel3 {&#13;
+<br/>
+   "inherit"               "moveable_base_barrel"&#13;
+<br/>
+   "model"                  "models/mapobjects/fuel_barrel/exp_barrel.lwo"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.2"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "networksync"            "1"&#13;
+<br/><br/>
+   "snd_bounce"            "metal_barrel_impact"&#13;
+<br/><br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... and they behave exactly the way I would like mine to do. &#13;
+<br/><br/>
+I guess I have to try around with the collision model a little more. As you can see from the first screenshot, it doesn't fit the size an shape of my model at all.<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155609" date="Posted: Fri Sep 01, 2006 8:22 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">How 'complex' is your collision hull on your barrel? They can't have more than 16 faces or something iirc, so you're basically stuck with a 'box' for that barrel.&#13;
+<br/><br/>
+Also, make sure that the point of origin (POO get it! 'POOO') isn't actually at the bottom of the barrel, centre the object on Max's grid at it's centre of mass. You may be casuing problems becasue the models POO is clipping the surface it's sitting on.&#13;
+<br/><br/>
+Also, also, make sure you export the CM *with* the ASE and that it's a separate object.&#13;
+<br/><br/>
+Thanks all I can think for now.. need sleep.....<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013061025/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155611" date="Posted: Fri Sep 01, 2006 8:44 am    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">My personal way of doing it is to make a playerclip func_static on where I want the model's clipping to be, and set that as bind(ed) and the collision model. Yeah, sure, it's not <span style="font-style: italic">really</span> the proper way of doing it, but it works jus' fine.  <img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155615" date="Posted: Fri Sep 01, 2006 10:16 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I finally got it! The way it works for me is building a separate, low-poly model and define that as "clipmodel" (in the barrels .def file).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herr_ws_fass&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "moveable_base_fixed"&#13;
+<br/>
+   "editor_color"            "1 .5 0"&#13;
+<br/>
+   "spawnclass"            "idBarrel"&#13;
+<br/>
+   "model"               "models/mapobjects/bb2/fass_01.ASE"&#13;
+<br/>
+   "clipmodel"            "models/mapobjects/bb2/fass_01cm.ASE"&#13;
+<br/>
+   "density"               "0.005"&#13;
+<br/>
+   "friction"               "0.1"&#13;
+<br/>
+   "bouncyness"            "0.2"&#13;
+<br/>
+   "snd_bounce"            "barrel_impact"&#13;
+<br/>
+//   "explode"            "0"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Was absolutely worth spending time on that. - Look how cool the barrels swim on Lloyd's water-physics water! <img src="/web/20061013061025im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/barrels2.jpg" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155616" date="Posted: Fri Sep 01, 2006 10:26 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hey! That could be a great method for my bridge, too!!!&#13;
+<br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/bb_screen_q4.jpg" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155652" date="Posted: Fri Sep 01, 2006 4:36 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Make sure you add a clipbrush around the island otherwise those thing will float off into the sunset!<br/>_________________<br/><a href="/web/20061013061025/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061025im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013061025/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155718" date="Posted: Sat Sep 02, 2006 10:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Make sure you add a clipbrush around the island otherwise those thing will float off into the sunset!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Done!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155733" date="Posted: Sat Sep 02, 2006 5:19 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That looks so fun!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155911" date="Posted: Mon Sep 04, 2006 8:25 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">... And I hope, the new "physics-" bridge will add some fun to the gameplay:&#13;
+<br/><img src="/web/20061013061025im_/http://monkeykombat.planetquake.gamespy.com/bridge.jpg" border="0"/><br/>
+- Inspiring confidence, isn't it?!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013061025/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155912" date="Posted: Mon Sep 04, 2006 8:32 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Be careful using that, when I played the Q3 version that bridge ended up being more frustating then a monkey pondering the meaning of life.&#13;
+<br/><br/>
+But yes, this is taking shape very nicely. Keep up the good work<br/>_________________<br/><a href="/web/20061013055326/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055326im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055326/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155918" date="Posted: Mon Sep 04, 2006 9:23 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Agree with you: The Q3 bridge was pretty annoying. That map it is in was more a compilation of ideas than really balanced for good gameplay.&#13;
+<br/><br/>
+(To be honest: I never played it against anyone <img src="/web/20061013055326im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/> )<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055326/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155978" date="Posted: Mon Sep 04, 2006 5:45 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">(To be honest: I never played it against anyone <img src="/web/20061013055326im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/> )</td>	</tr></table><span class="postbody">I have to confess to you thta monkeyMod has been the only mod that I've played because *I* wanted to, so hang in there with it, it's so different that once you get all the core stuff sorted out it'll be 'fun'.<br/>_________________<br/><a href="/web/20061013055326/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055326im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055326/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156045" date="Posted: Tue Sep 05, 2006 7:23 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">One idea is to put all single parts of the map on my website as prefabs. Maybe some guys have fun building new/better balanced maps of them. &#13;
+<br/><br/>
+The most important thing to me: Seeing my comic-people in action <img src="/web/20061013055326im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013055326/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="3603"><title>Quick question on sound looping</title><posts><post id="p33903" date="Posted: Thu Aug 12, 2004 5:01 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">write a sound shader and include "looping" as parameter</div>]]></body></post><post id="p33916" date="Posted: Thu Aug 12, 2004 5:12 pm "><author>Crevalle</author><body><![CDATA[<div class="postbody">Guys, I've been editing for three days.  What's a sound shader, and how to do I "write" one?</div>]]></body></post><post id="p33975" date="Posted: Thu Aug 12, 2004 6:17 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">They are text files that explain to the game what files should be associated with a sound.
+<br /><br />For instance, a bullet ricochete may have a few different files associated with it because not all ricochetes sound the same and it would be kinda stupid if you heard the exact same noise everytime it happened in the game.
+<br /><br />Basically the shader provides the game with a list of sounds to choose from so that there is some variety.
+<br /><br />You can take a look at some examples in pak003.pk4.</div>]]></body></post><post id="p34225" date="Posted: Thu Aug 12, 2004 11:17 pm "><author>Crevalle</author><body><![CDATA[<div class="postbody">Someone mentioned putting S_Looping in the "key" field and "1" in the "Value" field.  Well, the "Value" field is where you put the name of the sound file, not a number.  Am I missing something?  I'm getting really pissed off.</div>]]></body></post><post id="p34248" date="Posted: Thu Aug 12, 2004 11:40 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">It should be as simple as placing a speaker in your map, going to the entity tab of the inspector, clicking the sound button, selecting a sound, and pressing okay.</div>]]></body></post><post id="p34251" date="Posted: Thu Aug 12, 2004 11:43 pm "><author>Crevalle</author><body><![CDATA[<div class="postbody">That works for a single sound, not looping.  I'm looking to loop.</div>]]></body></post><post id="p34278" date="Posted: Fri Aug 13, 2004 12:06 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">If the sound plays in the preview but does not in game it's because you need to set the key/value pair s_waitfortrigger to 0. Don't ask why I dunno. It should be 0 by default but I guess not.
+<br /><br />The key/value pair s_looping works. I just tested it with sound/ambient/loop_rumble_01.wav</div>]]></body></post><post id="p34288" date="Posted: Fri Aug 13, 2004 12:20 am "><author>Crevalle</author><body><![CDATA[<div class="postbody">Rich, that is exactly the .wav file I am attempting to loop.  What I've been doing is:
+<br /><br />- Insert speaker
+<br />- Go to "entity" tab
+<br />- click "sound"
+<br />- select "loop_rumble01.wav"
+<br />- In the "Key" field I type "s_looping"
+<br />- I leave the "Val" field the way it is (with sound/ambient/loop_rumble01.wav)
+<br />- Then I BSP and run the map
+<br /><br />The sound plays through once, then stops.  I'm missing something aren't I?</div>]]></body></post><post id="p34306" date="Posted: Fri Aug 13, 2004 12:41 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I did almost the exact same thing...
+<br /><br />- Insert speaker
+<br />- Go to "entity" tab
+<br />- click "sound"
+<br />- select "loop_rumble01.wav"
+<br />- In the "Key" field I type "s_looping"
+<br />- I set the "Val" field to 1.
+<br />- In the "Key" field I type "s_waitfortrigger"
+<br />- I set the "Val" field to 0.
+<br />- Then I BSP and run the map</div>]]></body></post><post id="p34317" date="Posted: Fri Aug 13, 2004 12:58 am "><author>Crevalle</author><body><![CDATA[<div class="postbody">You're losing me man.  Where do you see two "Key" fields and two "Val" fields?  I only see one of each.  Do you have a screenshot of what you mean?  
+<br /><br />Are you saying you over-write the "loop_rumble01.wav" with "1"?
+<br /><br />I hate to be a bother, but I feel that I'm on the cusp of understanding you.  
+<br /><br />Do you ever hit that "X" by the "Val" line?  Or "Create?"</div>]]></body></post><post id="p34506" date="Posted: Fri Aug 13, 2004 6:58 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">You're having trouble with Key/Value pairs so this is the simplest way I can explain it...
+<br /><br />I start with a speaker in the map and goto the entity tab in the inspector. I type in the name of the key I'd like to add in the key field and the value in the value field. Now pay attetion to the highlighted part of this picture...
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Quick%20Question%20on%20Sound%20Looping/speaker_default.jpg" alt="Image" /><br /><br />When I press enter, the key/value pair is added to the list. At this point I can type new values in the key and value textboxes.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Quick%20Question%20on%20Sound%20Looping/speaker_added.jpg" alt="Image" /><br /><br />So, I repeat the process for the next Key/Value pair overwritting the textboxes with new information, press enter and again...
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Quick%20Question%20on%20Sound%20Looping/speaker_final.jpg" alt="Image" /><br /><br />... a new Key/Value pair shows up in the list.
+<br /><br />Now, keep in mind that the Curve, Model, Sound, Skin, Gui and Particle buttons also add keys to the list. In a sense they are just shortcuts that do the same thing. So when I add a sound using the button it will look like this...
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://img.photobucket.com/albums/v36/rich_is_bored/D3W%20-%20Quick%20Question%20on%20Sound%20Looping/speaker_complete.jpg" alt="Image" /><br /><br />And I could have got the same result if I typed those values in the key and value textboxes and pressed enter.
+<br /><br />As you can see it also doesn't matter what order you add the key/value pairs.</div>]]></body></post><post id="p34754" date="Posted: Fri Aug 13, 2004 2:37 pm "><author>Crevalle</author><body><![CDATA[<div class="postbody">Perfect tutorial man!  Thanks--works like a charm.  I was never pressing enter, either.  Thanks again!</div>]]></body></post><post id="p34866" date="Posted: Fri Aug 13, 2004 6:20 pm "><author>DumpTruck</author><body><![CDATA[<div class="postbody">OT but Rich - how did you get your windows to look like that?  Is that Windowshade?</div>]]></body></post><post id="p35108" date="Posted: Sat Aug 14, 2004 1:42 am "><author>kabe69</author><body><![CDATA[<div class="postbody">i dont wanna make a new topic inless i have to but maybe some one can answer this.
+<br />im makeing a unreal turnament type MP map for D3,
+<br />but wanna have music, but very low music, and i want it all over the map...
+<br />posible or no?</div>]]></body></post><post id="p40302" date="Posted: Mon Aug 23, 2004 1:22 am "><author>Eutectic</author><body><![CDATA[<div class="postbody">Rich, if I may make a suggestion...
+<br />Here's a tip to save you a bit of typing :
+<br /><br />Instead of typing the Key name in the "Key" field from scratch every time, you can simply double-click on the Key name in the upper portion of the window. This will automatically fill in the Key field with the key name.
+<br /><br />You still have to fill in the Key value manually of course <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post></posts></thread></xml>

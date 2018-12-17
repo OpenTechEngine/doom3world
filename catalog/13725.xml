@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="13725"><title>Remove a weapon from player in MP....</title><posts><post id="p123900" date="Posted: Fri Dec 02, 2005 6:55 am "><author>CrUsH</author><body><![CDATA[<div class="postbody">I have come accross another thread on this and tried a couple things. 
+<br /><br />I want to remove the rocket launcher from a player when they go through a teleport. I have tried the following keys and values in the trigger multi that the teleporter uses....
+<br /><br />key: removeItem
+<br />Value: def_weapon7
+<br /><br />and also.
+<br /><br />key: removeItem
+<br />Value: weapon_rocketlauncher_mp
+<br /><br /><br />Both dont work <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" />  There is a way to do this correct?</div>]]></body></post><post id="p123939" date="Posted: Fri Dec 02, 2005 5:46 pm "><author>CrUsH</author><body><![CDATA[<div class="postbody">Im sure sombody has done this lol.</div>]]></body></post></posts></thread></xml>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17254"><title>Are boneless animations possible in Doom 3?</title><posts><post id="157634" date="Posted: Wed Sep 20, 2006 5:57 pm    Post subject: Are boneless animations possible in Doom 3?"><author>gleeful</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Greetings!&#13;
+<br/><br/>
+I'm giving animated models a try for the first time and it seems to me from the tutorials that bones are unavoidable, but I thought I'd ask.&#13;
+<br/><br/>
+I want to make a mesh simulating ocean-waves and 3DS Max offers a very nice animation function for the Noise modifier that'd be perfect but which I can't seem to export as a .md5 file.&#13;
+<br/><br/>
+Any ideas how this could be accomplished (or how to make waves with bones for that matter).&#13;
+<br/><br/>
+Thank you and kind regards&#13;
+<br/>
+gleeful</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157635" date="Posted: Wed Sep 20, 2006 6:04 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i thought you only needed bones for character models, but i'm probley wrong.<br/>_________________<br/>Things I've <a href="/web/20061013055903/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157641" date="Posted: Wed Sep 20, 2006 7:00 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think you dont need to actually animate it with bones but you need atleast one bone (the origin). Unless your working with characters.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157642" date="Posted: Wed Sep 20, 2006 7:31 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Really? I was under the impression that vertex animation was not supported in doom 3... though I could be wrong. Isnt that why a user(forgot exactly who) made a plugin which created a bone driven animation from a vertex driven one in order to work in doom 3?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157670" date="Posted: Thu Sep 21, 2006 4:41 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The only kind of animated mesh you can import into Doom 3 is MD5. MD5 only supports skeletal animation.<br/>_________________<br/><a href="/web/20061013055903/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055903im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055903/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157679" date="Posted: Thu Sep 21, 2006 6:17 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Anonymousalias wrote:</b></span></td>	</tr><tr><td class="quote">Really? I was under the impression that vertex animation was not supported in doom 3... though I could be wrong. Isnt that why a user(forgot exactly who) made a plugin which created a bone driven animation from a vertex driven one in order to work in doom 3?</td>	</tr></table><span class="postbody">Vert anims aren't directly supported no, you have to basically work around it and export a mesh that gives the impression it's been vertex animated.&#13;
+<br/><br/>
+der_ton wrote a 'general exporter' for Max (only iirc) but whilst the game can handle that amount of bones in a single object without too many problems, add collision and IK to that and you've got the potential for some serious slow downs due to the way the game works with physics.&#13;
+<br/><br/>
+So "yes" you can have tones of bones, but "no", it's not recommened.<br/>_________________<br/><a href="/web/20061013055903/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055903im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013055903/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157680" date="Posted: Thu Sep 21, 2006 7:01 am    Post subject: "><author>gleeful</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Excellent - der_ton's general exporter works like a charm. For some reason I  only found his other exporter before which doesn't work without bones.&#13;
+<br/><br/>
+Thanks a lot everyone!  <img src="/web/20061013055903im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157634" date="Posted: Wed Sep 20, 2006 5:57 pm    Post subject: Are boneless animations possible in Doom 3?"><author>gleeful</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Greetings!&#13;
+<br/><br/>
+I'm giving animated models a try for the first time and it seems to me from the tutorials that bones are unavoidable, but I thought I'd ask.&#13;
+<br/><br/>
+I want to make a mesh simulating ocean-waves and 3DS Max offers a very nice animation function for the Noise modifier that'd be perfect but which I can't seem to export as a .md5 file.&#13;
+<br/><br/>
+Any ideas how this could be accomplished (or how to make waves with bones for that matter).&#13;
+<br/><br/>
+Thank you and kind regards&#13;
+<br/>
+gleeful</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157635" date="Posted: Wed Sep 20, 2006 6:04 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i thought you only needed bones for character models, but i'm probley wrong.<br/>_________________<br/>Things I've <a href="/web/20061013054319/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157641" date="Posted: Wed Sep 20, 2006 7:00 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think you dont need to actually animate it with bones but you need atleast one bone (the origin). Unless your working with characters.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157642" date="Posted: Wed Sep 20, 2006 7:31 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Really? I was under the impression that vertex animation was not supported in doom 3... though I could be wrong. Isnt that why a user(forgot exactly who) made a plugin which created a bone driven animation from a vertex driven one in order to work in doom 3?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157670" date="Posted: Thu Sep 21, 2006 4:41 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The only kind of animated mesh you can import into Doom 3 is MD5. MD5 only supports skeletal animation.<br/>_________________<br/><a href="/web/20061013054319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013054319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157679" date="Posted: Thu Sep 21, 2006 6:17 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Anonymousalias wrote:</b></span></td>	</tr><tr><td class="quote">Really? I was under the impression that vertex animation was not supported in doom 3... though I could be wrong. Isnt that why a user(forgot exactly who) made a plugin which created a bone driven animation from a vertex driven one in order to work in doom 3?</td>	</tr></table><span class="postbody">Vert anims aren't directly supported no, you have to basically work around it and export a mesh that gives the impression it's been vertex animated.&#13;
+<br/><br/>
+der_ton wrote a 'general exporter' for Max (only iirc) but whilst the game can handle that amount of bones in a single object without too many problems, add collision and IK to that and you've got the potential for some serious slow downs due to the way the game works with physics.&#13;
+<br/><br/>
+So "yes" you can have tones of bones, but "no", it's not recommened.<br/>_________________<br/><a href="/web/20061013054319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054319/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157680" date="Posted: Thu Sep 21, 2006 7:01 am    Post subject: "><author>gleeful</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Excellent - der_ton's general exporter works like a charm. For some reason I  only found his other exporter before which doesn't work without bones.&#13;
+<br/><br/>
+Thanks a lot everyone!  <img src="/web/20061013054319im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18555"><title>walker skinning</title><posts><post id="p168989" date="Posted: Thu Feb 01, 2007 4:46 am "><author>Morte</author><body><![CDATA[<div class="postbody">i made a semi-custom skin for the walker, how would i implement it, and replace the old skin file?</div>]]></body></post><post id="p168994" date="Posted: Thu Feb 01, 2007 6:52 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I hate the term "skin". It's too ambiguous.
+<br /><br />People use it when they're talking about texturing models and when they're talking about UV mapping. And to make matters worse, Doom 3 engine based games use skin declarations.
+<br /><br />So, just for clarification, which type of skinning are you talking about?
+<br /><br />I assume you're referring to texturing a model and by that I mean crafting the images you intend to use as textures.
+<br /><br />Generally speaking, if all you want to do is replace a texture, you simply replace the images. But in reality it could prove a bit more complex than that.
+<br /><br />Here's just a quick run through of the steps involved...
+<br /><br /><ul><li>Determine the name of the material shader used by the entity in question by either using the CVar <a href="https://web.archive.org/web/20081203103510/http://www.modwiki.net/wiki/R_showSurfaceInfo_%28cvar%29" class="postlink">r_showSurfaceInfo</a>or by examining the reference made by the model file itself</li><li>Examine this material shader in a text editor to determine what images are used.</li><li>Create custom images with matching names and place them in a folder structure that matches the path used in the PK4s</li><li>Check the entity's declaration for a skin key/value pair.</li><li>Examine the skin declaration in a text editor to ensure it does not impact the material shader in question.</li><li>If it does, examine the new material shader and rename and locate your files to accommodate the changes.</li></ul></div>]]></body></post><post id="p169013" date="Posted: Thu Feb 01, 2007 2:22 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">Hey rich!
+<br />You're not changing skin here, but textures! (i know, i play on words)  <img src="https://web.archive.org/web/20081203103510im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p169014" date="Posted: Thu Feb 01, 2007 2:40 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I know I'm not helping here, but "skinning" in 3d graphics terminology means the binding of a mesh to a skeleton to define how it deforms in animation. <img src="https://web.archive.org/web/20081203103510im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p169035" date="Posted: Thu Feb 01, 2007 6:59 pm "><author>Morte</author><body><![CDATA[<div class="postbody">sorry for any ambiguity, i dont really model, more of a coder, but heres a refined version;
+<br /><br />the name of the walker's skin is models/vehicles/walker/body
+<br /><br />the name of the file used by the walker is models/vehicles/walker/body_d.tga
+<br /><br />in the walker.Def file, the code never declares a skin, rather it just defines the model and somehow the skin comes with it
+<br /><br />i modified the body_d.tga file in my mod but  the skin command confused me and i think i did it wrong, so i need some help
+<br /><br />is that more clear guys, thanks! 
+<br /><img src="https://web.archive.org/web/20081203103510im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169037" date="Posted: Thu Feb 01, 2007 7:20 pm "><author>Rayne</author><body><![CDATA[<div class="postbody">Let's go dead rotten...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081203103510/http://www.doom3world.org/phpbb2/viewtopic.php?t=16341&amp;highlight=skinning">http://www.doom3world.org/phpbb2/viewto ... t=skinning</a><!-- m -->
+<br /><br /><br />I opened this thread really a long time ago, but seems that someone agree with me at last <img src="https://web.archive.org/web/20081203103510im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169054" date="Posted: Thu Feb 01, 2007 11:41 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">One more time...
+<br /><br />I open the file walker.def because I want to examine the entity declaration and see what model is used for the walker entity and possibly the name of any skins applied. I find that the model is called model_vehicle_walker and there is no skin key/value pair so skins are not a concern.
+<br /><br />The model declaration points to an md5mesh at models/vehicles/walker/walker_base.md5mesh so I look to this file to gather what material shader is being referenced. I find quite a few shaders...
+<br /><br />models/vehicles/flare
+<br />textures/common/entityGui
+<br />models/vehicles/walker/body
+<br />models/vehicles/walker/console
+<br />models/vehicles/walker/maingun
+<br />models/vehicles/walker/walker_decal1
+<br /><br />I assume you want to skin the walker itself so I'm going to run with the shader models/vehicles/walker/body because it's name is a tipoff.
+<br /><br />So, upon examining this material shader I find it references the images...
+<br /><br />models/vehicles/walker/body_local.tga
+<br />models/vehicles/walker/body_h.tga
+<br />models/vehicles/walker/body_d.tga
+<br />models/vehicles/walker/body_s.tga
+<br />models/vehicles/walker/body_mask.tga
+<br />models/monsters/burnout_misc.tga
+<br /><br />models/vehicles/walker/body_d.tga is the diffuse image and is probably the one you're interested in.
+<br /><br />Now, because Doom 3 engine based games use Targa images for High end settings and DDS images for Low end settings, it's critical that you replace both the TGA and DDS version of this image in order for the change to take effect irrespective of video settings.
+<br /><br />So your files should be named and stored as ...
+<br /><br />C:\Quake4\q4base\models\vehicles\walker\body_d.tga
+<br />C:\Quake4\q4base\models\vehicles\walker\body_d.dds
+<br /><br />If any of this information is new to you I highly suggest you read over the texturing section on <!-- w --><a class="postlink" href="https://web.archive.org/web/20081203103510/http://www.modwiki.net/">http://www.modwiki.net</a><!-- w --> because all of this is covered there.
+<br /><br />On a side note, it's bad practice to override the game's stock assets and work from within the base directory. It's much more professional to work from within a custom mod folder and create new assets altogether.
+<br /><br />It's a relatively simple matter to write the necessary skin declaration, material shader, and entity declaration so that you have an additional version of the walker listed from within the level editor.
+<br /><br />But I'm not going to elaborate on the details here. At least not at this point because you have quite a bit of information to absorb as it is.</div>]]></body></post><post id="p169303" date="Posted: Sat Feb 03, 2007 10:33 pm "><author>Morte</author><body><![CDATA[<div class="postbody">i know, i am doing a mod for quake 4, and have a directory, called Red Ridge, which is the name of the mod lol, thanks for the help! <img src="https://web.archive.org/web/20081203103510im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p168989" date="Posted: Thu Feb 01, 2007 4:46 am "><author>Morte</author><body><![CDATA[<div class="postbody">i made a semi-custom skin for the walker, how would i implement it, and replace the old skin file?</div>]]></body></post><post id="p168994" date="Posted: Thu Feb 01, 2007 6:52 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I hate the term "skin". It's too ambiguous.
+<br /><br />People use it when they're talking about texturing models and when they're talking about UV mapping. And to make matters worse, Doom 3 engine based games use skin declarations.
+<br /><br />So, just for clarification, which type of skinning are you talking about?
+<br /><br />I assume you're referring to texturing a model and by that I mean crafting the images you intend to use as textures.
+<br /><br />Generally speaking, if all you want to do is replace a texture, you simply replace the images. But in reality it could prove a bit more complex than that.
+<br /><br />Here's just a quick run through of the steps involved...
+<br /><br /><ul><li>Determine the name of the material shader used by the entity in question by either using the CVar <a href="https://web.archive.org/web/20081203062450/http://www.modwiki.net/wiki/R_showSurfaceInfo_%28cvar%29" class="postlink">r_showSurfaceInfo</a>or by examining the reference made by the model file itself</li><li>Examine this material shader in a text editor to determine what images are used.</li><li>Create custom images with matching names and place them in a folder structure that matches the path used in the PK4s</li><li>Check the entity's declaration for a skin key/value pair.</li><li>Examine the skin declaration in a text editor to ensure it does not impact the material shader in question.</li><li>If it does, examine the new material shader and rename and locate your files to accommodate the changes.</li></ul></div>]]></body></post><post id="p169013" date="Posted: Thu Feb 01, 2007 2:22 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">Hey rich!
+<br />You're not changing skin here, but textures! (i know, i play on words)  <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p169014" date="Posted: Thu Feb 01, 2007 2:40 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I know I'm not helping here, but "skinning" in 3d graphics terminology means the binding of a mesh to a skeleton to define how it deforms in animation. <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p169035" date="Posted: Thu Feb 01, 2007 6:59 pm "><author>Morte</author><body><![CDATA[<div class="postbody">sorry for any ambiguity, i dont really model, more of a coder, but heres a refined version;
+<br /><br />the name of the walker's skin is models/vehicles/walker/body
+<br /><br />the name of the file used by the walker is models/vehicles/walker/body_d.tga
+<br /><br />in the walker.Def file, the code never declares a skin, rather it just defines the model and somehow the skin comes with it
+<br /><br />i modified the body_d.tga file in my mod but  the skin command confused me and i think i did it wrong, so i need some help
+<br /><br />is that more clear guys, thanks! 
+<br /><img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169037" date="Posted: Thu Feb 01, 2007 7:20 pm "><author>Rayne</author><body><![CDATA[<div class="postbody">Let's go dead rotten...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081203062450/http://www.doom3world.org/phpbb2/viewtopic.php?t=16341&amp;highlight=skinning">http://www.doom3world.org/phpbb2/viewto ... t=skinning</a><!-- m -->
+<br /><br /><br />I opened this thread really a long time ago, but seems that someone agree with me at last <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169054" date="Posted: Thu Feb 01, 2007 11:41 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">One more time...
+<br /><br />I open the file walker.def because I want to examine the entity declaration and see what model is used for the walker entity and possibly the name of any skins applied. I find that the model is called model_vehicle_walker and there is no skin key/value pair so skins are not a concern.
+<br /><br />The model declaration points to an md5mesh at models/vehicles/walker/walker_base.md5mesh so I look to this file to gather what material shader is being referenced. I find quite a few shaders...
+<br /><br />models/vehicles/flare
+<br />textures/common/entityGui
+<br />models/vehicles/walker/body
+<br />models/vehicles/walker/console
+<br />models/vehicles/walker/maingun
+<br />models/vehicles/walker/walker_decal1
+<br /><br />I assume you want to skin the walker itself so I'm going to run with the shader models/vehicles/walker/body because it's name is a tipoff.
+<br /><br />So, upon examining this material shader I find it references the images...
+<br /><br />models/vehicles/walker/body_local.tga
+<br />models/vehicles/walker/body_h.tga
+<br />models/vehicles/walker/body_d.tga
+<br />models/vehicles/walker/body_s.tga
+<br />models/vehicles/walker/body_mask.tga
+<br />models/monsters/burnout_misc.tga
+<br /><br />models/vehicles/walker/body_d.tga is the diffuse image and is probably the one you're interested in.
+<br /><br />Now, because Doom 3 engine based games use Targa images for High end settings and DDS images for Low end settings, it's critical that you replace both the TGA and DDS version of this image in order for the change to take effect irrespective of video settings.
+<br /><br />So your files should be named and stored as ...
+<br /><br />C:\Quake4\q4base\models\vehicles\walker\body_d.tga
+<br />C:\Quake4\q4base\models\vehicles\walker\body_d.dds
+<br /><br />If any of this information is new to you I highly suggest you read over the texturing section on <!-- w --><a class="postlink" href="https://web.archive.org/web/20081203062450/http://www.modwiki.net/">http://www.modwiki.net</a><!-- w --> because all of this is covered there.
+<br /><br />On a side note, it's bad practice to override the game's stock assets and work from within the base directory. It's much more professional to work from within a custom mod folder and create new assets altogether.
+<br /><br />It's a relatively simple matter to write the necessary skin declaration, material shader, and entity declaration so that you have an additional version of the walker listed from within the level editor.
+<br /><br />But I'm not going to elaborate on the details here. At least not at this point because you have quite a bit of information to absorb as it is.</div>]]></body></post><post id="p169303" date="Posted: Sat Feb 03, 2007 10:33 pm "><author>Morte</author><body><![CDATA[<div class="postbody">i know, i am doing a mod for quake 4, and have a directory, called Red Ridge, which is the name of the mod lol, thanks for the help! <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p168989" date="Posted: Thu Feb 01, 2007 4:46 am "><author>Morte</author><body><![CDATA[<div class="postbody">i made a semi-custom skin for the walker, how would i implement it, and replace the old skin file?</div>]]></body></post><post id="p168994" date="Posted: Thu Feb 01, 2007 6:52 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">I hate the term "skin". It's too ambiguous.
+<br /><br />People use it when they're talking about texturing models and when they're talking about UV mapping. And to make matters worse, Doom 3 engine based games use skin declarations.
+<br /><br />So, just for clarification, which type of skinning are you talking about?
+<br /><br />I assume you're referring to texturing a model and by that I mean crafting the images you intend to use as textures.
+<br /><br />Generally speaking, if all you want to do is replace a texture, you simply replace the images. But in reality it could prove a bit more complex than that.
+<br /><br />Here's just a quick run through of the steps involved...
+<br /><br /><ul><li>Determine the name of the material shader used by the entity in question by either using the CVar <a href="https://web.archive.org/web/20081203062450/http://www.modwiki.net/wiki/R_showSurfaceInfo_%28cvar%29" class="postlink">r_showSurfaceInfo</a>or by examining the reference made by the model file itself</li><li>Examine this material shader in a text editor to determine what images are used.</li><li>Create custom images with matching names and place them in a folder structure that matches the path used in the PK4s</li><li>Check the entity's declaration for a skin key/value pair.</li><li>Examine the skin declaration in a text editor to ensure it does not impact the material shader in question.</li><li>If it does, examine the new material shader and rename and locate your files to accommodate the changes.</li></ul></div>]]></body></post><post id="p169013" date="Posted: Thu Feb 01, 2007 2:22 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">Hey rich!
+<br />You're not changing skin here, but textures! (i know, i play on words)  <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p169014" date="Posted: Thu Feb 01, 2007 2:40 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I know I'm not helping here, but "skinning" in 3d graphics terminology means the binding of a mesh to a skeleton to define how it deforms in animation. <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p169035" date="Posted: Thu Feb 01, 2007 6:59 pm "><author>Morte</author><body><![CDATA[<div class="postbody">sorry for any ambiguity, i dont really model, more of a coder, but heres a refined version;
+<br /><br />the name of the walker's skin is models/vehicles/walker/body
+<br /><br />the name of the file used by the walker is models/vehicles/walker/body_d.tga
+<br /><br />in the walker.Def file, the code never declares a skin, rather it just defines the model and somehow the skin comes with it
+<br /><br />i modified the body_d.tga file in my mod but  the skin command confused me and i think i did it wrong, so i need some help
+<br /><br />is that more clear guys, thanks! 
+<br /><img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169037" date="Posted: Thu Feb 01, 2007 7:20 pm "><author>Rayne</author><body><![CDATA[<div class="postbody">Let's go dead rotten...
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081203062450/http://www.doom3world.org/phpbb2/viewtopic.php?t=16341&amp;highlight=skinning">http://www.doom3world.org/phpbb2/viewto ... t=skinning</a><!-- m -->
+<br /><br /><br />I opened this thread really a long time ago, but seems that someone agree with me at last <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p169054" date="Posted: Thu Feb 01, 2007 11:41 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">One more time...
+<br /><br />I open the file walker.def because I want to examine the entity declaration and see what model is used for the walker entity and possibly the name of any skins applied. I find that the model is called model_vehicle_walker and there is no skin key/value pair so skins are not a concern.
+<br /><br />The model declaration points to an md5mesh at models/vehicles/walker/walker_base.md5mesh so I look to this file to gather what material shader is being referenced. I find quite a few shaders...
+<br /><br />models/vehicles/flare
+<br />textures/common/entityGui
+<br />models/vehicles/walker/body
+<br />models/vehicles/walker/console
+<br />models/vehicles/walker/maingun
+<br />models/vehicles/walker/walker_decal1
+<br /><br />I assume you want to skin the walker itself so I'm going to run with the shader models/vehicles/walker/body because it's name is a tipoff.
+<br /><br />So, upon examining this material shader I find it references the images...
+<br /><br />models/vehicles/walker/body_local.tga
+<br />models/vehicles/walker/body_h.tga
+<br />models/vehicles/walker/body_d.tga
+<br />models/vehicles/walker/body_s.tga
+<br />models/vehicles/walker/body_mask.tga
+<br />models/monsters/burnout_misc.tga
+<br /><br />models/vehicles/walker/body_d.tga is the diffuse image and is probably the one you're interested in.
+<br /><br />Now, because Doom 3 engine based games use Targa images for High end settings and DDS images for Low end settings, it's critical that you replace both the TGA and DDS version of this image in order for the change to take effect irrespective of video settings.
+<br /><br />So your files should be named and stored as ...
+<br /><br />C:\Quake4\q4base\models\vehicles\walker\body_d.tga
+<br />C:\Quake4\q4base\models\vehicles\walker\body_d.dds
+<br /><br />If any of this information is new to you I highly suggest you read over the texturing section on <!-- w --><a class="postlink" href="https://web.archive.org/web/20081203062450/http://www.modwiki.net/">http://www.modwiki.net</a><!-- w --> because all of this is covered there.
+<br /><br />On a side note, it's bad practice to override the game's stock assets and work from within the base directory. It's much more professional to work from within a custom mod folder and create new assets altogether.
+<br /><br />It's a relatively simple matter to write the necessary skin declaration, material shader, and entity declaration so that you have an additional version of the walker listed from within the level editor.
+<br /><br />But I'm not going to elaborate on the details here. At least not at this point because you have quite a bit of information to absorb as it is.</div>]]></body></post><post id="p169303" date="Posted: Sat Feb 03, 2007 10:33 pm "><author>Morte</author><body><![CDATA[<div class="postbody">i know, i am doing a mod for quake 4, and have a directory, called Red Ridge, which is the name of the mod lol, thanks for the help! <img src="https://web.archive.org/web/20081203062450im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post></posts></thread></xml>

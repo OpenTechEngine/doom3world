@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16885"><title>banding fixed! *but new problem inside :( *</title><posts><post id="156452" date="Posted: Sat Sep 09, 2006 8:09 am    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thats weird for the model to have those dots in only q4 as its the same engine, well i cant realy think of anything else&#13;
+<br/><br/>
+maybe some else all togethor</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156510" date="Posted: Sat Sep 09, 2006 4:48 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">   bumpmap    addnormals(textures/efxBarrell_local.tga, heightmap(textures/efxBarrell_h.tga, 2)) </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Why did you addnormals if the heightmap is a 1 color grey one?&#13;
+<br/>
+I mean, heightmaps are used to add some extra details on the bumpmap, or to create a bumpmap with a black &amp; white image.&#13;
+<br/>
+Your not forced to put an heightmap when you don't need one.&#13;
+<br/><br/>
+So maybe the engine "bug" with a blank 1 color grey image, just try to make your heightmap a noisy grey one, just to see if the problem disapear...&#13;
+<br/><br/>
+or just try:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   bumpmap    textures/efxBarrell_local.tga </td>	</tr></table><span class="postbody">&#13;
+<br/>
+...to see. <img src="/web/20061013024354im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154176" date="Posted: Sat Aug 19, 2006 4:58 am    Post subject: banding fixed! *but new problem inside :( *"><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have started to mess around a bit with modeling simple things and texturing them after taking a bit of a break from it and while I'm definately learning alot of stuff there's this issue/problem I can't figure out.&#13;
+<br/><br/>
+Now, this is just a test-box I threw together to show you guys what I mean, it's just a box with a slight normalmap indent in the middle.&#13;
+<br/><br/><a href="/web/20061013022219/http://img87.imageshack.us/my.php?image=band1uo7.jpg" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img87.imageshack.us/img87/1599/band1uo7.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+The diffuse map for this box is just a solid block of color yet you can see how the color has these stretches and banding issues all over it.&#13;
+<br/><br/>
+Here's another picture of it:&#13;
+<br/><br/><a href="/web/20061013022219/http://img204.imageshack.us/my.php?image=band2ec9.jpg" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img204.imageshack.us/img204/5922/band2ec9.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+The UV map is a simple planar map, though I've also tried other methods with pretty much the same result.&#13;
+<br/><br/>
+Does anyone have any idea how to approach this the right way?&#13;
+<br/><br/>
+Any help is greatly appreciated.&#13;
+<br/><br/>
+regards:&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"><br/><br/>Last edited by efx on Sun Aug 27, 2006 6:38 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="154179" date="Posted: Sat Aug 19, 2006 5:27 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, it seems it's related to the normal map because when I remove that it's fine in a sense.&#13;
+<br/><br/>
+Here's the normalmap:&#13;
+<br/><br/><a href="/web/20061013022219/http://img237.imageshack.us/my.php?image=ventlocalcopyof1.jpg" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img237.imageshack.us/img237/3462/ventlocalcopyof1.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Looking at it I can see it looks a bit strange I guess. Here's the .mtr snippet I used to renderbump:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">renderbump    -size 512 512 -aa 2 -colorMap textures/box_local.tga models/box_HI.ase</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Any thoughts? Am I using the renderbump wrong or could it be related to how I laid out the uv's?&#13;
+<br/><br/>
+Thank in advance guys<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154217" date="Posted: Sat Aug 19, 2006 1:31 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Is the indention on the second face part of the high poly cube (hehe) you rendered?  Also did you use D3/Q4 to renderbump or something else?  Is the file format you're using for the normalmap in TGA format?  And last are you using a heightmap as well as a normalmap or just using the renderbumped normalmap?&#13;
+<br/><br/>
+Sorry for the questions, just trying to narrow down some reasons why.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154220" date="Posted: Sat Aug 19, 2006 2:00 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Is the indention on the second face part of the high poly cube (hehe) you rendered? &#13;
+<br/><span style="font-style: italic">yes</span>&#13;
+<br/><br/>
+I used renderbump.&#13;
+<br/><br/>
+The format is in TGA.&#13;
+<br/><br/>
+And I'm only using the normalmap for now.&#13;
+<br/><br/>
+Sorry, I should have been more specific perhaps.&#13;
+<br/><br/>
+Thanks again <img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154227" date="Posted: Sat Aug 19, 2006 2:32 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nah you were specific enough, I was just looking for the simple and typically overlooked possibilities hehe.  The only thing I can think of right off hand is that the normalmap is of extremely low resolution, perhaps 128x128 or maybe no more than 256x256.  Pretty much anything less than 256x256 on a gradient like that raised section will probably produce noticeable banding when rendered.  Maybe experiment with higher resolutions (actual image resolution, not screen and be sure to re-render it at the higher res rather than resizing in photoshop or whatever image editor you might use) in renderbumping and see if that makes any difference to the problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154230" date="Posted: Sat Aug 19, 2006 3:41 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, I tried it with the renderbump set to 1024 by 1024 and it still produces the same effect.&#13;
+<br/><br/>
+Any other ideas, I'm totally stumped here.&#13;
+<br/><br/>
+Thanks for your input though Bittoman, I do appreciate it.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154231" date="Posted: Sat Aug 19, 2006 3:55 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can only think of one last alternative.  Try setting your game settings to ultra and then viewing the model in modview.  It's possible that the game compressing the normalmap at load time might also be causing a problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154232" date="Posted: Sat Aug 19, 2006 4:00 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">According to the material file above the resolution is more than sufficient - a 512* texture will do more than a cube.&#13;
+<br/><br/>
+The color banding is the monocolored diffuse map. Add a little more noise and you wont notice the inevitable banding, supposedly resulting from the light information for each pixel + normal mapping. (just a guess as explanation).<br/>_________________<br/><a href="/web/20061013022219/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013022219/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154234" date="Posted: Sat Aug 19, 2006 4:08 pm    Post subject: "><author>lavaman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i dont know if this is the same problem i had with normal maps banding(its difficult to tell from your screenshot_&#13;
+<br/>
+It sounds like it though, i never found a real fix apart from blowing up the size of my normal or turning all compression off from the console &#13;
+<br/>
+seta image_useCompression "0"</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154270" date="Posted: Sat Aug 19, 2006 9:16 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BNA! wrote:</b></span></td>	</tr><tr><td class="quote">According to the material file above the resolution is more than sufficient - a 512* texture will do more than a cube.&#13;
+<br/><br/>
+The color banding is the monocolored diffuse map. Add a little more noise and you wont notice the inevitable banding, supposedly resulting from the light information for each pixel + normal mapping. (just a guess as explanation).</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Ok, that actually helped quite a bit but I'm still a bit lost.&#13;
+<br/><br/>
+I can't seem to get rid of the banding unless I apply a fair amount of noise and I'd like to be able to have a "flat" representation without those artifacts.&#13;
+<br/><br/>
+Here are some images of my test-object I made to try and prove my point:&#13;
+<br/><br/><a href="/web/20061013022219/http://img113.imageshack.us/my.php?image=boxkittenjp8.jpg" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img113.imageshack.us/img113/3168/boxkittenjp8.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+yes, it's a kitten heh.&#13;
+<br/>
+There you can see the banding going beneath the kitten horizontally and then straight down. This is a pattern I see in pretty much all my models.&#13;
+<br/><br/><a href="/web/20061013022219/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img152.imageshack.us/img152/3269/kittennormaljt5.jpg" border="0"/></a>&#13;
+<br/><br/>
+This is the normal for the face with the kitten.&#13;
+<br/><br/>
+Just looking through objects in modview I see tons of objects that don't have anywhere near the artifacts mine does and some of them are very "flat".&#13;
+<br/><br/>
+Any other ideas?&#13;
+<br/><br/>
+Thanks again guys,&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154273" date="Posted: Sat Aug 19, 2006 9:27 pm    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">make sure you have both your lowpoly and highpoly models all triangulated before renderbumping them&#13;
+<br/><br/>
+i used to forget and get nasty looking normalmaps <img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_surprised.gif" alt="Surprised" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154275" date="Posted: Sat Aug 19, 2006 9:57 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>efx wrote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/><br/><a href="/web/20061013022219/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://img152.imageshack.us/img152/3269/kittennormaljt5.jpg" border="0"/></a>&#13;
+<br/><br/>
+Any other ideas?&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Your image above is not "flat".&#13;
+<br/><br/>
+Is it possible your cube model or the material attached as some sort of "smoothing" applied?&#13;
+<br/><br/>
+What I did in the past to get real flat normal maps is to separate the normal map detail from the flat cube.&#13;
+<br/>
+So for a high poly model i made a flat cube with 12 triangles and unwelded edges to disallow the engine any sort of smooth shading.&#13;
+<br/><br/>
+The detail you can simply map on top of the flat cube (so our inset basically hovers above the cube). The engine doesn't care as it always looks straight on top of every polygon.&#13;
+<br/><br/>
+Like this:&#13;
+<br/><a href="/web/20061013022219/http://www.doom3world.org/phpbb2/viewtopic.php?t=1007" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=1007</a>&#13;
+<br/><br/>
+If you take the example above but make the face of the square background polygon face the view you'll get a nice total flat normal map background.&#13;
+<br/><br/>
+I did loads of normal maps with this method and it never posed a problem.&#13;
+<br/><a href="/web/20061013022219/http://www.doom3world.org/phpbb2/viewtopic.php?t=724" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=724</a>&#13;
+<br/>
+(no download atm but images).&#13;
+<br/><br/>
+To create perfect flatness in an image editing program use:&#13;
+<br/>
+R: 128 G: 128 B: 255&#13;
+<br/><br/>
+I've always used this method to get along with normal map creation and the outcome usually is pretty good:&#13;
+<br/><br/><img src="/web/20061013022219im_/http://www.3r.co.za/bushboy/bb_logo_spin1.jpg" border="0"/><br/>_________________<br/><a href="/web/20061013022219/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013022219/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154277" date="Posted: Sat Aug 19, 2006 10:21 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ahahah Nice one BNA!   The good old "alpha" days <img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154280" date="Posted: Sat Aug 19, 2006 10:51 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Rayne wrote:</b></span></td>	</tr><tr><td class="quote">ahahah Nice one BNA!   The good old "alpha" days <img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/><a href="/web/20061013022219/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013022219/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154281" date="Posted: Sat Aug 19, 2006 11:53 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks BNA &amp; co.&#13;
+<br/><br/>
+It's alot to take in for me for some reason. As to your question of wheter some smoothing was involved I have to say I don't think so.&#13;
+<br/><br/>
+But I tried to do the simplest thing possible which was just have a regular box with no indentions whatsoever and renderbump that. No real point I know but I wanted to see the results and the faces are still all have the gradient shade that messes up the textures for me. I took your suggestion of using the "flat" r g b color and that of course made the texture look great.&#13;
+<br/><br/>
+So now I'm stuck on why I can't get even the flattest faces to render out flat in the renderbump.&#13;
+<br/><br/>
+I'm probably coming across as dumb here but any help would thrill me immensely.&#13;
+<br/><br/>
+TIA,&#13;
+<br/><br/>
+-efx-&#13;
+<br/><br/>
+* edit * And to sound even more ignorant, how do I unweld the vertices exactly? I understand it's something I do in the uv-editor but I can't seem to figure out how.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154285" date="Posted: Sun Aug 20, 2006 2:56 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually from the first normalmap you show as a screenshot I can tell you that smoothing is enabled.  In fact I can tell you how many polys you have from looking at it heh, 48.  You can see the edge drawn in the normalmap and the beveling caused by the smoothing over the edges.  In any case you just have to split the faces from each other to break up the smoothing and generate perfectly flat normalmaps.  For blender just select the polygons of one face of the cube and then hit the Y key and confirm you want to split it.  I'm only assuming you're using blender, but either way you just have to split the faces from each other.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154286" date="Posted: Sun Aug 20, 2006 3:05 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oh wierd, I thought it was off for some reason.&#13;
+<br/><br/>
+I'm actually using MAX, so any thoughts on how to apply the method you specified for Blender in MAX?&#13;
+<br/><br/>
+regards:&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154288" date="Posted: Sun Aug 20, 2006 3:18 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">is this your problem?&#13;
+<br/><br/><a href="/web/20061013022219/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154307" date="Posted: Sun Aug 20, 2006 5:30 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">is this your problem?&#13;
+<br/><br/><a href="/web/20061013022219/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No - he's got a smoothed surface property somewhere so it's trying to render the cube almost as a sphere.<br/>_________________<br/><a href="/web/20061013022219/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022219im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013022219/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154308" date="Posted: Sun Aug 20, 2006 5:33 am    Post subject: "><author>stabinbac</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">is this your problem?&#13;
+<br/><br/><a href="/web/20061013022219/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Indeed, it does look like the same thing.&#13;
+<br/><br/>
+Seems like a simple lack of precision or a compression issue. Something isn't handling the transitioning colors well, and grouping them into clumps. It looks like compressed video, or what happens if you drop your desktop bits to 16 or lower.&#13;
+<br/><br/>
+Sadly, I have no idea where in the process it might be happening. (I'm a little bit useless on most things artistic.)&#13;
+<br/><br/>
+Oh, and jpeg isn't the best format to use when showing details like this. It compresses things using a similar method to what the problem looks like.  <img src="/web/20061013022219im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+edit: of course I may be totally wrong.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154176" date="Posted: Sat Aug 19, 2006 4:58 am    Post subject: banding fixed! *but new problem inside :( *"><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have started to mess around a bit with modeling simple things and texturing them after taking a bit of a break from it and while I'm definately learning alot of stuff there's this issue/problem I can't figure out.&#13;
+<br/><br/>
+Now, this is just a test-box I threw together to show you guys what I mean, it's just a box with a slight normalmap indent in the middle.&#13;
+<br/><br/><a href="/web/20061013024332/http://img87.imageshack.us/my.php?image=band1uo7.jpg" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img87.imageshack.us/img87/1599/band1uo7.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+The diffuse map for this box is just a solid block of color yet you can see how the color has these stretches and banding issues all over it.&#13;
+<br/><br/>
+Here's another picture of it:&#13;
+<br/><br/><a href="/web/20061013024332/http://img204.imageshack.us/my.php?image=band2ec9.jpg" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img204.imageshack.us/img204/5922/band2ec9.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+The UV map is a simple planar map, though I've also tried other methods with pretty much the same result.&#13;
+<br/><br/>
+Does anyone have any idea how to approach this the right way?&#13;
+<br/><br/>
+Any help is greatly appreciated.&#13;
+<br/><br/>
+regards:&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"><br/><br/>Last edited by efx on Sun Aug 27, 2006 6:38 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="154179" date="Posted: Sat Aug 19, 2006 5:27 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, it seems it's related to the normal map because when I remove that it's fine in a sense.&#13;
+<br/><br/>
+Here's the normalmap:&#13;
+<br/><br/><a href="/web/20061013024332/http://img237.imageshack.us/my.php?image=ventlocalcopyof1.jpg" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img237.imageshack.us/img237/3462/ventlocalcopyof1.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Looking at it I can see it looks a bit strange I guess. Here's the .mtr snippet I used to renderbump:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">renderbump    -size 512 512 -aa 2 -colorMap textures/box_local.tga models/box_HI.ase</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Any thoughts? Am I using the renderbump wrong or could it be related to how I laid out the uv's?&#13;
+<br/><br/>
+Thank in advance guys<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154217" date="Posted: Sat Aug 19, 2006 1:31 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Is the indention on the second face part of the high poly cube (hehe) you rendered?  Also did you use D3/Q4 to renderbump or something else?  Is the file format you're using for the normalmap in TGA format?  And last are you using a heightmap as well as a normalmap or just using the renderbumped normalmap?&#13;
+<br/><br/>
+Sorry for the questions, just trying to narrow down some reasons why.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154220" date="Posted: Sat Aug 19, 2006 2:00 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Is the indention on the second face part of the high poly cube (hehe) you rendered? &#13;
+<br/><span style="font-style: italic">yes</span>&#13;
+<br/><br/>
+I used renderbump.&#13;
+<br/><br/>
+The format is in TGA.&#13;
+<br/><br/>
+And I'm only using the normalmap for now.&#13;
+<br/><br/>
+Sorry, I should have been more specific perhaps.&#13;
+<br/><br/>
+Thanks again <img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154227" date="Posted: Sat Aug 19, 2006 2:32 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nah you were specific enough, I was just looking for the simple and typically overlooked possibilities hehe.  The only thing I can think of right off hand is that the normalmap is of extremely low resolution, perhaps 128x128 or maybe no more than 256x256.  Pretty much anything less than 256x256 on a gradient like that raised section will probably produce noticeable banding when rendered.  Maybe experiment with higher resolutions (actual image resolution, not screen and be sure to re-render it at the higher res rather than resizing in photoshop or whatever image editor you might use) in renderbumping and see if that makes any difference to the problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154230" date="Posted: Sat Aug 19, 2006 3:41 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, I tried it with the renderbump set to 1024 by 1024 and it still produces the same effect.&#13;
+<br/><br/>
+Any other ideas, I'm totally stumped here.&#13;
+<br/><br/>
+Thanks for your input though Bittoman, I do appreciate it.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154231" date="Posted: Sat Aug 19, 2006 3:55 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can only think of one last alternative.  Try setting your game settings to ultra and then viewing the model in modview.  It's possible that the game compressing the normalmap at load time might also be causing a problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154232" date="Posted: Sat Aug 19, 2006 4:00 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">According to the material file above the resolution is more than sufficient - a 512* texture will do more than a cube.&#13;
+<br/><br/>
+The color banding is the monocolored diffuse map. Add a little more noise and you wont notice the inevitable banding, supposedly resulting from the light information for each pixel + normal mapping. (just a guess as explanation).<br/>_________________<br/><a href="/web/20061013024332/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024332/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154234" date="Posted: Sat Aug 19, 2006 4:08 pm    Post subject: "><author>lavaman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i dont know if this is the same problem i had with normal maps banding(its difficult to tell from your screenshot_&#13;
+<br/>
+It sounds like it though, i never found a real fix apart from blowing up the size of my normal or turning all compression off from the console &#13;
+<br/>
+seta image_useCompression "0"</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154270" date="Posted: Sat Aug 19, 2006 9:16 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BNA! wrote:</b></span></td>	</tr><tr><td class="quote">According to the material file above the resolution is more than sufficient - a 512* texture will do more than a cube.&#13;
+<br/><br/>
+The color banding is the monocolored diffuse map. Add a little more noise and you wont notice the inevitable banding, supposedly resulting from the light information for each pixel + normal mapping. (just a guess as explanation).</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Ok, that actually helped quite a bit but I'm still a bit lost.&#13;
+<br/><br/>
+I can't seem to get rid of the banding unless I apply a fair amount of noise and I'd like to be able to have a "flat" representation without those artifacts.&#13;
+<br/><br/>
+Here are some images of my test-object I made to try and prove my point:&#13;
+<br/><br/><a href="/web/20061013024332/http://img113.imageshack.us/my.php?image=boxkittenjp8.jpg" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img113.imageshack.us/img113/3168/boxkittenjp8.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+yes, it's a kitten heh.&#13;
+<br/>
+There you can see the banding going beneath the kitten horizontally and then straight down. This is a pattern I see in pretty much all my models.&#13;
+<br/><br/><a href="/web/20061013024332/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img152.imageshack.us/img152/3269/kittennormaljt5.jpg" border="0"/></a>&#13;
+<br/><br/>
+This is the normal for the face with the kitten.&#13;
+<br/><br/>
+Just looking through objects in modview I see tons of objects that don't have anywhere near the artifacts mine does and some of them are very "flat".&#13;
+<br/><br/>
+Any other ideas?&#13;
+<br/><br/>
+Thanks again guys,&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154273" date="Posted: Sat Aug 19, 2006 9:27 pm    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">make sure you have both your lowpoly and highpoly models all triangulated before renderbumping them&#13;
+<br/><br/>
+i used to forget and get nasty looking normalmaps <img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_surprised.gif" alt="Surprised" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154275" date="Posted: Sat Aug 19, 2006 9:57 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>efx wrote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/><br/><a href="/web/20061013024332/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://img152.imageshack.us/img152/3269/kittennormaljt5.jpg" border="0"/></a>&#13;
+<br/><br/>
+Any other ideas?&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Your image above is not "flat".&#13;
+<br/><br/>
+Is it possible your cube model or the material attached as some sort of "smoothing" applied?&#13;
+<br/><br/>
+What I did in the past to get real flat normal maps is to separate the normal map detail from the flat cube.&#13;
+<br/>
+So for a high poly model i made a flat cube with 12 triangles and unwelded edges to disallow the engine any sort of smooth shading.&#13;
+<br/><br/>
+The detail you can simply map on top of the flat cube (so our inset basically hovers above the cube). The engine doesn't care as it always looks straight on top of every polygon.&#13;
+<br/><br/>
+Like this:&#13;
+<br/><a href="/web/20061013024332/http://www.doom3world.org/phpbb2/viewtopic.php?t=1007" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=1007</a>&#13;
+<br/><br/>
+If you take the example above but make the face of the square background polygon face the view you'll get a nice total flat normal map background.&#13;
+<br/><br/>
+I did loads of normal maps with this method and it never posed a problem.&#13;
+<br/><a href="/web/20061013024332/http://www.doom3world.org/phpbb2/viewtopic.php?t=724" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=724</a>&#13;
+<br/>
+(no download atm but images).&#13;
+<br/><br/>
+To create perfect flatness in an image editing program use:&#13;
+<br/>
+R: 128 G: 128 B: 255&#13;
+<br/><br/>
+I've always used this method to get along with normal map creation and the outcome usually is pretty good:&#13;
+<br/><br/><img src="/web/20061013024332im_/http://www.3r.co.za/bushboy/bb_logo_spin1.jpg" border="0"/><br/>_________________<br/><a href="/web/20061013024332/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024332/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154277" date="Posted: Sat Aug 19, 2006 10:21 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ahahah Nice one BNA!   The good old "alpha" days <img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154280" date="Posted: Sat Aug 19, 2006 10:51 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Rayne wrote:</b></span></td>	</tr><tr><td class="quote">ahahah Nice one BNA!   The good old "alpha" days <img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/><a href="/web/20061013024332/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024332/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154281" date="Posted: Sat Aug 19, 2006 11:53 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks BNA &amp; co.&#13;
+<br/><br/>
+It's alot to take in for me for some reason. As to your question of wheter some smoothing was involved I have to say I don't think so.&#13;
+<br/><br/>
+But I tried to do the simplest thing possible which was just have a regular box with no indentions whatsoever and renderbump that. No real point I know but I wanted to see the results and the faces are still all have the gradient shade that messes up the textures for me. I took your suggestion of using the "flat" r g b color and that of course made the texture look great.&#13;
+<br/><br/>
+So now I'm stuck on why I can't get even the flattest faces to render out flat in the renderbump.&#13;
+<br/><br/>
+I'm probably coming across as dumb here but any help would thrill me immensely.&#13;
+<br/><br/>
+TIA,&#13;
+<br/><br/>
+-efx-&#13;
+<br/><br/>
+* edit * And to sound even more ignorant, how do I unweld the vertices exactly? I understand it's something I do in the uv-editor but I can't seem to figure out how.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154285" date="Posted: Sun Aug 20, 2006 2:56 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually from the first normalmap you show as a screenshot I can tell you that smoothing is enabled.  In fact I can tell you how many polys you have from looking at it heh, 48.  You can see the edge drawn in the normalmap and the beveling caused by the smoothing over the edges.  In any case you just have to split the faces from each other to break up the smoothing and generate perfectly flat normalmaps.  For blender just select the polygons of one face of the cube and then hit the Y key and confirm you want to split it.  I'm only assuming you're using blender, but either way you just have to split the faces from each other.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154286" date="Posted: Sun Aug 20, 2006 3:05 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oh wierd, I thought it was off for some reason.&#13;
+<br/><br/>
+I'm actually using MAX, so any thoughts on how to apply the method you specified for Blender in MAX?&#13;
+<br/><br/>
+regards:&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154288" date="Posted: Sun Aug 20, 2006 3:18 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">is this your problem?&#13;
+<br/><br/><a href="/web/20061013024332/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154307" date="Posted: Sun Aug 20, 2006 5:30 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">is this your problem?&#13;
+<br/><br/><a href="/web/20061013024332/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No - he's got a smoothed surface property somewhere so it's trying to render the cube almost as a sphere.<br/>_________________<br/><a href="/web/20061013024332/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024332im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024332/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154308" date="Posted: Sun Aug 20, 2006 5:33 am    Post subject: "><author>stabinbac</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">is this your problem?&#13;
+<br/><br/><a href="/web/20061013024332/http://www.doom3world.org/phpbb2/viewtopic.php?t=12176" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=12176</a></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Indeed, it does look like the same thing.&#13;
+<br/><br/>
+Seems like a simple lack of precision or a compression issue. Something isn't handling the transitioning colors well, and grouping them into clumps. It looks like compressed video, or what happens if you drop your desktop bits to 16 or lower.&#13;
+<br/><br/>
+Sadly, I have no idea where in the process it might be happening. (I'm a little bit useless on most things artistic.)&#13;
+<br/><br/>
+Oh, and jpeg isn't the best format to use when showing details like this. It compresses things using a similar method to what the problem looks like.  <img src="/web/20061013024332im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+edit: of course I may be totally wrong.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154310" date="Posted: Sun Aug 20, 2006 5:49 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">well it seems, according to ATI, that that problem is caused by 8 bits per channel simply not being enough for normals maps. it doesn't help either that it seems there's no scale &amp; bias or gamma adjustment for textures in Doom3.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154330" date="Posted: Sun Aug 20, 2006 1:14 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>efx wrote:</b></span></td>	</tr><tr><td class="quote">Oh wierd, I thought it was off for some reason.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Personally I've never been able to get the D3 engine to turn off smoothing without splitting off faces so I've gotten into a habit (and probably a bad one) of just splitting them rather than dealing with smooth groups.&#13;
+<br/><br/>
+Anyway the closest to Max I have is gmax because I'm a broke bastard (hey, I'm still using Photoshop 5.5!) so I don't think I can be much use but in case it's the same in your version as gmax the smooth groups are located under the Modify tab and click the Modifier list dropdown box and select smooth.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154343" date="Posted: Sun Aug 20, 2006 3:54 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Bittoman wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>efx wrote:</b></span></td>	</tr><tr><td class="quote">Oh wierd, I thought it was off for some reason.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Personally I've never been able to get the D3 engine to turn off smoothing without splitting off faces so I've gotten into a habit (and probably a bad one) of just splitting them rather than dealing with smooth groups.&#13;
+<br/><br/>
+Anyway the closest to Max I have is gmax because I'm a broke bastard (hey, I'm still using Photoshop 5.5!) so I don't think I can be much use but in case it's the same in your version as gmax the smooth groups are located under the Modify tab and click the Modifier list dropdown box and select smooth.</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+When you split off the faces is that on the low-poly or hi-poly object?<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154352" date="Posted: Sun Aug 20, 2006 4:21 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>efx wrote:</b></span></td>	</tr><tr><td class="quote">When you split off the faces is that on the low-poly or hi-poly object?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+IIRC the low poly.<br/>_________________<br/><a href="/web/20061013024559/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024559/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154376" date="Posted: Sun Aug 20, 2006 7:19 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah, the low poly model for renderbumping, that will produce perfectly flat faces.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154387" date="Posted: Sun Aug 20, 2006 9:10 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, thanks guys.&#13;
+<br/><br/>
+Well, I detached the faces of the box as well as cutting out some of the uncesseary edges on said faces.&#13;
+<br/><br/>
+I can see a little bit of a difference but it's still off. I also had smoothing off afaik.&#13;
+<br/><br/>
+Here's a before and after image of what I got. The first is the normalmap with before the split off and the second is the result after that.&#13;
+<br/><br/><a href="/web/20061013024559/http://-efx-.shackspace.com/leveldesign/simple_local.jpg" target="_blank" class="postlink">http://-efx-.shackspace.com/leveldesign/simple_local.jpg</a>&#13;
+<br/><a href="/web/20061013024559/http://-efx-.shackspace.com/leveldesign/simple_local_2.jpg" target="_blank" class="postlink">http://-efx-.shackspace.com/leveldesign/simple_local_2.jpg</a>&#13;
+<br/><br/>
+Again I thank you guys, all of this is probably very helpful for me.&#13;
+<br/><br/>
+-efx-</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154388" date="Posted: Sun Aug 20, 2006 9:35 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">There is still some smooting on, that's why it's off.&#13;
+<br/><br/>
+Unless the color comes out simply blue on flat faces there's still smooting applied.<br/>_________________<br/><a href="/web/20061013024559/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024559/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154392" date="Posted: Sun Aug 20, 2006 10:35 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BNA! wrote:</b></span></td>	</tr><tr><td class="quote">There is still some smooting on, that's why it's off.&#13;
+<br/><br/>
+Unless the color comes out simply blue on flat faces there's still smooting applied.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Yeah, that's what I don't understand. I've tried everything within my limited knowledge and I really have no idea anymore what I could do. This is so dissapointing.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154424" date="Posted: Mon Aug 21, 2006 4:09 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What modeling application are you using?<br/>_________________<br/><a href="/web/20061013024559/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024559/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154427" date="Posted: Mon Aug 21, 2006 4:21 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">doesn't he have to split the edges on both the high and low poly models if he wants no gradients in the normal map? and wouldn't the bevel details on the high poly model have to have their edges split also?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154428" date="Posted: Mon Aug 21, 2006 4:33 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">What modeling application are you using?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+MAX<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154433" date="Posted: Mon Aug 21, 2006 5:27 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">And this is the part where I step out and someone who knows and uses MAX steps in and explains how to fix your smoothing issues.<br/>_________________<br/><a href="/web/20061013024559/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024559/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154470" date="Posted: Mon Aug 21, 2006 1:07 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I goofed last time because I was half asleep but you can try selecting a face and then rightclicking on it and using "break vertices".  It has to be an editible mesh first.&#13;
+<br/><br/>
+Outside of that I'm with rich, my Max skills are extremely limited  <img src="/web/20061013024559im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154491" date="Posted: Mon Aug 21, 2006 6:15 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I notice that if I use unsmoothedtangents in .mtr file I do get them smooth and nice. I thought I had tried that yesterday with no real results but now it seems to work fine.&#13;
+<br/><br/>
+But I have to ask I guess, is there ever a disadvantage to using that or should I be able somehow to get them flat without using it?&#13;
+<br/><br/>
+Thanks again guys, I feel like I'm getting closer here heh.<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155123" date="Posted: Sun Aug 27, 2006 6:34 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hey again guys,&#13;
+<br/><br/>
+Well, after much ado (and patience on the part of obihb, thanks again buddy <img src="/web/20061013024559im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> ) I did a little experimenting with Max's render to texture and managed to render some normalmaps that looks fine to me. &#13;
+<br/><br/>
+However, when I add a heightmap into the equation the random "dots" appear again. Let me try and explain using my very basic testmodel.&#13;
+<br/><br/>
+This is the image with both the normalmap, heightmap and specularmap all at once.  As you can see there are these "dots" over alot of the image.&#13;
+<br/><a href="/web/20061013024559/http://img238.imageshack.us/my.php?image=heightwspecza6.jpg" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://img238.imageshack.us/img238/2006/heightwspecza6.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Now, if I take the specmap out it's a little less obvious but still there:&#13;
+<br/><a href="/web/20061013024559/http://img179.imageshack.us/my.php?image=heightwithoutspecwn9.jpg" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://img179.imageshack.us/img179/2861/heightwithoutspecwn9.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+But if I take the heightmap out of the equation those artifacts do go away:&#13;
+<br/><a href="/web/20061013024559/http://img79.imageshack.us/my.php?image=normalwspecxz8.jpg" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://img79.imageshack.us/img79/4076/normalwspecxz8.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Here's the normalmap, the heightmap and specmap are just base-gray images. I've tried changing them around a bit but it seems just having them there creates this issue for me.&#13;
+<br/><br/><a href="/web/20061013024559/http://img109.imageshack.us/my.php?image=normalmapdv7.jpg" target="_blank" class="postlink"><img src="/web/20061013024559im_/http://img109.imageshack.us/img109/2819/normalmapdv7.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Here is my mtr file&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/efx/efxBarrell&#13;
+<br/>
+{&#13;
+<br/>
+   noselfshadow&#13;
+<br/>
+   bumpmap    addnormals(textures/efxBarrell_local.tga, heightmap(textures/efxBarrell_h.tga, 2))&#13;
+<br/>
+   diffusemap   textures/efxBarrell_d.tga&#13;
+<br/>
+   specularmap  textures/efxBarrell_s.tga&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, I hope I have provided enough info!&#13;
+<br/><br/>
+Any help is appreciated as always!&#13;
+<br/><br/>
+Regards:&#13;
+<br/><br/>
+-efx-<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155142" date="Posted: Mon Aug 28, 2006 2:32 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Post your heightmap, I'm betting the heightmap has some extreme blacks in "clumps" which are causing the "dots" on the surface that you see when it's rendered.  If they go away entirely when the heightmap is disabled then no matter what is causing it it's coming from the heightmap.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155151" date="Posted: Mon Aug 28, 2006 6:39 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The heightmap is a just a plain grey image with the rgb values of 112 112 112. Even if I have a blank image as a heightmap it still does it. I must have tried a million different images.&#13;
+<br/><br/>
+If someone is interested this .rar file contains the mtr file, heightmap, local map, diffuse map and the actual model.&#13;
+<br/><br/><a href="/web/20061013024559/http://-efx-.shackspace.com/leveldesign/efxBarrell.rar" target="_blank">http://-efx-.shackspace.com/leveldesign/efxBarrell.rar</a>&#13;
+<br/><br/>
+Thanks again <img src="/web/20061013024559im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155154" date="Posted: Mon Aug 28, 2006 11:22 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't remember the topic, but there is a post written by Brian of Id software which said that Id artist added always a small percentual of noise to avoid those banding problems...<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155166" date="Posted: Mon Aug 28, 2006 3:35 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey efx i think i've seen those things you call dots in F.E.A.R. also. they are like squares though. like textures' point sampled squares. i'm assuming its a graphic card or driver problem or something. i used to see old crap graphic cards using point sampling instead of bilinear a lot of times here and there and i always assumed it was the graphic cards way of cheating in order to keep-up in speed except i have a geforce 6800 which is not really classified as low end just yet so i don't get why it's doing that. anyone else have some ideas on what it could actually be?&#13;
+<br/><br/>
+BTW it seems in F.E.A.R. that the normals on basically almost everything are really screwed up. i mean they are all warped.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155175" date="Posted: Mon Aug 28, 2006 5:38 pm    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, I just ran it in doom 3 as opposed to quake 4 and I didn't get any artifacts. So it's related to quake 4 then for some reason.&#13;
+<br/><br/>
+I wonder what the heck it could be. Does anyone know if quake 4 approaches this differently than doom 3 did?<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156452" date="Posted: Sat Sep 09, 2006 8:09 am    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thats weird for the model to have those dots in only q4 as its the same engine, well i cant realy think of anything else&#13;
+<br/><br/>
+maybe some else all togethor</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156510" date="Posted: Sat Sep 09, 2006 4:48 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">   bumpmap    addnormals(textures/efxBarrell_local.tga, heightmap(textures/efxBarrell_h.tga, 2)) </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Why did you addnormals if the heightmap is a 1 color grey one?&#13;
+<br/>
+I mean, heightmaps are used to add some extra details on the bumpmap, or to create a bumpmap with a black &amp; white image.&#13;
+<br/>
+Your not forced to put an heightmap when you don't need one.&#13;
+<br/><br/>
+So maybe the engine "bug" with a blank 1 color grey image, just try to make your heightmap a noisy grey one, just to see if the problem disapear...&#13;
+<br/><br/>
+or just try:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   bumpmap    textures/efxBarrell_local.tga </td>	</tr></table><span class="postbody">&#13;
+<br/>
+...to see. <img src="/web/20061013022134im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

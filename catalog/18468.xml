@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18468"><title>problem to md5 with biped</title><posts><post id="p168188" date="Posted: Wed Jan 24, 2007 3:39 am "><author>kookoopapa</author><body><![CDATA[<div class="postbody">I'm glad to find the exporter to md5. However, my model still cannot export to md5 and I try to find and read through the forum.
+<br /><br />I use 3ds Max 7, the problem is that cannot export md5 if my model using biped although using all convertor, exporter.
+<br /><br />anyone can provide me any tutorial or any information
+<br /><br />thanks in advance</div>]]></body></post><post id="p168270" date="Posted: Wed Jan 24, 2007 12:20 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">If nothing else works perhaps the following will help. Note that i haven´t tried this myself:
+<br />You can turn your Biped into normal animated bones by exporting to fbx and importing again. There´s a tutorial in the Max online reference on how to do this exactly. It´s called "Creating Animated Bones with Bipeds".</div>]]></body></post></posts></thread></xml>

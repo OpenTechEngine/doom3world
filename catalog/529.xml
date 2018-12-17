@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="529"><title>D3 - renderbump</title><posts><post id="153754" date="Posted: Tue Aug 15, 2006 11:30 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I cant get it to renderbump right.. I have my mesh in md5mesh format and the high poly mesh in .ase because i tried it as .md5mesh and it hella didnt work. This time it says ti took .36 seconds to complete the renderbump but I don't see anything in the target filepath. heres my material def&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/marine/boonemarine&#13;
+<br/>
+{&#13;
+<br/>
+	renderbump -size 1024 1024 -aa 2 -colorMap textures/marine/marine_local.tga models/marine/marine_hp.ase&#13;
+<br/>
+	"qer_editorimage"		"textures/marine/marine_d.tga"&#13;
+<br/>
+	"diffusemap"			"textures/marine/marine_d.tga"&#13;
+<br/>
+	"bumpmap"			"textures/marine/marine_h.tga"&#13;
+<br/>
+	noSelfShadow&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013054501im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/>
+exported the ase using the exporter for blender posted in the forums with material, vert and uv unselected.&#13;
+<br/><br/>
+can't find a *BITMAP line to change to a material but I guess that shouldn't matter</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153761" date="Posted: Wed Aug 16, 2006 12:00 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well there's no trace value set (probably just defaults to something if one isn't set in the material file so this may not be a big deal) and I've no clue what the colorMap declaration is for, I've never seen it used and iddevnet doesn't explain what the function does.&#13;
+<br/><br/>
+As for the problems with rendering, did you apply a material to the low poly model?  Did you UV map it?  Both of these are required for the low poly model (presumably the md5mesh model in your case) but make sure that you don't add them to the high poly one.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153762" date="Posted: Wed Aug 16, 2006 12:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yeah, the low poly md5mesh has a material and is uvmapped and just ran a testModel on the high poly .ase and it loads ok, i unchecked exporting uv material and vertex color when i exported the .ase but there were uv coordinates in there because its based off the low poly that I had already uv'd and I'm not sure how to delete uv maps. I took out the -colorMap option but I still get that renderbump took .18 seconds rendrbump completed with no actual rendering hapening or files created. &#13;
+<br/><br/>
+Command I'm using in the console is&#13;
+<br/><br/>
+renderbump models/marine/marine.md5mesh&#13;
+<br/><br/>
+marine.md5mesh points to boonemarine</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153775" date="Posted: Wed Aug 16, 2006 2:24 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Something just hit me that might be the problem.  Did you freeze the mesh's size and rotation before you exported it for both the low and the hi poly?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153781" date="Posted: Wed Aug 16, 2006 3:24 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i froze it on the .ase but not the md5mesh, just tried freezing that and still wont actually renderbump anything... I'll at it to the .ase along with the rest of the files at&#13;
+<br/><br/><a href="/web/20061013054501/http://fuag.is-a-geek.com/filez/Marine/" target="_blank">http://fuag.is-a-geek.com/filez/Marine/</a>&#13;
+<br/><br/><img src="/web/20061013054501im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153782" date="Posted: Wed Aug 16, 2006 3:53 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ahh I see what's wrong.  You didn't apply an image but rather a series of blends within Blender to try to, what I'd assume, is render a normalmap using Blender.  Delete the Red, Green, Blue links in the Textures tab (F6) and then add one "Image".  Then click the "Load Image" and just choose the skin you're applying (any image will work fine if you plan on going back and manually editing the link).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153787" date="Posted: Wed Aug 16, 2006 6:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sorry, the materials were left over from my first attempt at normal mapping before i realized doom3 had renderbump, I took them out though. The marine.blend is just bieng used to export marine.md5mesh and marine.md5anim so I only set up the uv coordinates in the uv image editor so that they would work when I linked a .mtr to the md5mesh. the marine_hp.blend is the one i'm tryingto use as a high poly model for the renderbump.&#13;
+<br/><br/>
+I've been told to not include uvmapping or texturing in the ase file. I wanted to just use a higher poly md5mesh file for the renderbump because I've already figured them out but it doesnt take md5mesh's for high poly models I'm guessing.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153806" date="Posted: Wed Aug 16, 2006 12:57 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">The marine.blend is just bieng used to export marine.md5mesh and marine.md5anim so I only set up the uv coordinates in the uv image editor so that they would work when I linked a .mtr to the md5mesh.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+For the low poly model you still have to reference an image, otherwise when it's exported it'll export UV coordinates but it won't export properly.  It'll export error free but if you try to force a material on it afterwards it may not actually render the material, UV coordinates or not (I made this mistake many times when I first started hehe).  This very well may still be the problem you're having though. &#13;
+<br/><br/>
+I'll try and renderbump it using static models and see what happens.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153814" date="Posted: Wed Aug 16, 2006 1:48 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, here's some problems:&#13;
+<br/><br/>
+-the high poly model still has an image reference and UV coordinates attatched.  To fix this just delete the material and TexFace&#13;
+<br/>
+-the material file is saved in rich text format instead of simple text (just use Notepad and create a new txt file then change the extension)&#13;
+<br/>
+-Also you had noselfshadow at the bottom of the shader rather than at the top.  Declarations like these should be at the top&#13;
+<br/>
+-There was also no trace value set.  I added one and started at .02 (it may need to be set higher, there were some render errors with it at .02 so this is a heavily experimental setting)&#13;
+<br/>
+-Quotes were used around the texture links and functions, it may actually ignore these but I've never done it so I don't know for sure.  It's best to not add them though and save yourself some troubleshooting <img src="/web/20061013054501im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+After correcting all of these it rendered fine (it's still baking atm).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153871" date="Posted: Wed Aug 16, 2006 11:03 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">cool, thnx for looking at em! It worked over here 2.  <img src="/web/20061013054501im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  Now on to animating md5meshes  <img src="/web/20061013054501im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3732" date="Posted: Sun Jan 12, 2003 7:36 pm    Post subject: D3 - renderbump"><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><span style="font-weight: bold">Doom3 renderbump:</span>&#13;
+<br/><br/>
+_______________________&#13;
+<br/><br/>
+if you don't know what renderbumbing is, search google for it ("renderbump")and read what the developers say about it. Alternatively search for "polybump"&#13;
+<br/>
+_______________________&#13;
+<br/><br/>
+if you look through the material files you can find some materials defined for some models where the shader has an additional line with "renderbump..." in it. I tried to figure out what it can be used for and how to do it.&#13;
+<br/><br/>
+What i know so far:&#13;
+<br/><br/>
+if i had a model:&#13;
+<br/>
+"model/juve/sphere1/sphere1.lwo"&#13;
+<br/>
+(the ligthwave-material in the lwo-file would be named "surface2")&#13;
+<br/><br/>
+and had defined a shader named:&#13;
+<br/>
+"surface2"&#13;
+<br/><br/>
+looking like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+surface2&#13;
+<br/>
+{&#13;
+<br/>
+renderbump  -size 256 256 -trace 0.03 -colorMap -aa 1  models/juve/sphere1/sphere1_local.tga models/juve/sphere1/sphere1_hp.lwo&#13;
+<br/><br/>
+diffusemap models/juve/sphere1/sphere1_d.tga&#13;
+<br/><br/>
+bumpmap models/juve/sphere1/sphere1_local.tga,&#13;
+<br/><br/>
+specularmap models/juve/sphere1/sphere1_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and if had a high-poly "mooncrater"-detailed model of my sphere named:&#13;
+<br/>
+"models/juve/sphere1/sphere1_hp.lwo"&#13;
+<br/><br/>
+i can now use the command renderbump like this:&#13;
+<br/><br/>
+renderbump models/juve/sphere1/sphere1.lwo&#13;
+<br/><br/>
+Doom3 would load the sphere1.lwo and the sphere1_hp.lwo and create a tga named: models/juve/sphere1/sphere1_local_color.tga &#13;
+<br/><br/>
+___________________________________________________&#13;
+<br/><br/>
+the Problem is, the output image is no normalmap-tga, has only 2 colors and doesn't help me much.&#13;
+<br/><br/>
+did anybody have more luck with doom's renderbump-cmd ?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3773" date="Posted: Thu Jan 16, 2003 1:48 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look in the folder you're keeping the model in - there will be two new tga's - one with the name you've specified in the headline of the shader along with the renderbump settings and a second one with the same name but a _color extension.&#13;
+<br/><br/>
+Rewrite your shader to use the correct tga's at the right places.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3810" date="Posted: Fri Jan 17, 2003 12:25 am    Post subject: "><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yes i know, but the one tga is simply gray and the other has only 2 colors: white and gray. ... <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> no normal-map-tga is produced</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3820" date="Posted: Fri Jan 17, 2003 7:33 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is one of my last shaders i used to renderbump models:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">bna/corridor/structure2&#13;
+<br/>
+{&#13;
+<br/>
+   renderbump     -size 512 512 -aa 2 -colorMap bna/corridor/structure2.tga bna/corridor/structure2_hp.lwo&#13;
+<br/>
+   bumpmap      bna/corridor/structure2.tga&#13;
+<br/>
+   diffusemap    bna/corridor/structure2_color.tga&#13;
+<br/>
+   //specularmap     models/bna/grey512.tga&#13;
+<br/>
+   translucent&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   //twoSided&#13;
+<br/>
+   //{&#13;
+<br/>
+   //   blend add&#13;
+<br/>
+   //   cubeMap      env/bland&#13;
+<br/>
+   //   texgen      reflect&#13;
+<br/>
+   //}&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+The only difference I see is that my -aa settings switch is located differently in the shader.&#13;
+<br/><br/>
+You can ignore the uncommented sections of course.&#13;
+<br/><br/>
+If it still doesn't work send me the two lwo models and I'll take a look.&#13;
+<br/><br/>
+It's also useful to dump the conole output after renderbump has completed.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3829" date="Posted: Fri Jan 17, 2003 1:33 pm    Post subject: "><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If you say doom3's renderbump works just fine,i think i'll give it another try.&#13;
+<br/><br/>
+btw. I'm looking forward to your renderbumptutorial.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7172" date="Posted: Sun May 04, 2003 7:20 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Juve, check to make sure your surface names in both your hi-poly and low-poly versions are different. That was what my problem was. Thanks BNA! <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Here is two new issues regarding renderbump...&#13;
+<br/><br/>
+First, I've been told time and time again that a UV map is not needed for the hi-poly model. It's only needed for the low-poly model.&#13;
+<br/><br/>
+Yet, when I open my hi-poly model and delete the UV map, then try to use the renderbump command I get this error...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">********************&#13;
+<br/>
+ERROR: Bad texcoord index in ase file rich/box_hi.lwo&#13;
+<br/>
+********************</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'm not trying to say your wrong BNA. I just need some form of explaination for why doom is insisting that I have a "texcoord" index on the high poly model when the UV on the low-poly model is sufficient. Would deleting the UV from the low-poly model work instead? That would mean that a UV map for the hi-poly model is necessary while a UV for the low-poly model is optional.&#13;
+<br/><br/>
+I'm having trouble trying to imagine how a bumpmap is projected on to a low-poly model without some form of UV coordinates on both models to link portions of the hi and low poly models together. Basically, How does the game know where to project those non-existant curves onto the low-poly model without a similar UV map present in the hi-poly model?&#13;
+<br/><br/>
+Second, When I have a UV present in both models and renderbump completes succesfully, I have what appears to be a perfect normalmap and colormap. (Other than the fact that my UVs suck. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )&#13;
+<br/><br/>
+But in game when the normalmap is applied to the object it doesn't look quite right. I can see the effect working properly however the normalmap does not look as smooth as it should. It almost looks bitmapped or pixely.&#13;
+<br/><br/>
+To illustrate my point I would post a screen but we all know the rules. Instead I am going to post my photoshop rendition of what the normalmap actually looks like and what it seems like in game.&#13;
+<br/><br/>
+The normalmap below is what renderbump outputs.&#13;
+<br/><img src="/web/20061013055533im_/http://www.geocities.com/rich_is_bored/normal.txt" border="0"/><br/><br/>
+And this is what it seems to render when applied to a model.&#13;
+<br/><img src="/web/20061013055533im_/http://www.geocities.com/rich_is_bored/ingame.txt" border="0"/><br/><br/>
+Notice how the second image looks pixellated or grainy. Try to imagine what the Welding Gun from my third scripting tutorial looks like with this second image as a normalmap.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7175" date="Posted: Sun May 04, 2003 8:13 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">First, I've been told time and time again that a UV map is not needed for the hi-poly model. It's only needed for the low-poly model.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Still true.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Yet, when I open my hi-poly model and delete the UV map, then try to use the renderbump command I get this error...&#13;
+<br/><br/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">********************&#13;
+<br/>
+ERROR: Bad texcoord index in ase file rich/box_hi.lwo&#13;
+<br/>
+********************</td>	</tr></table><span class="postbody"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I swear to god that something in your high poly model file is wrong.&#13;
+<br/>
+Try the following:&#13;
+<br/>
+- merge points&#13;
+<br/>
+- delete points with zero polys&#13;
+<br/>
+- make sure you have only 3 point polygons! (doom doesn't like 2 point polys)&#13;
+<br/>
+- if everything fails: run the model through qemLOSS2, keep the defaults but set the goal as 0.99999999&#13;
+<br/><br/>
+By deleting the UV map from you high poly model you <span style="font-weight: bold">may</span> end up with left over points or a few doubled polygons.&#13;
+<br/><br/>
+[quote]I'm not trying to say your wrong BNA. I just need some form of explaination for why doom is insisting that I have a "texcoord" index on the high poly model when the UV on the low-poly model is sufficient. Would deleting the UV from the low-poly model work instead? That would mean that a UV map for the hi-poly model is necessary while a UV for the low-poly model is optional.[quote]&#13;
+<br/><br/>
+You can't prove me wrong on this because I'm not <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+If you delete the UV map from your low poly model, the engine does not know how to project the image on the mesh. Imagine the vertex points as pins you use to apply/stretch a flat rubber poster to a soccer ball.&#13;
+<br/><br/>
+The UV map for the low poly model is mandatory, for the high poly model it's a crazy attempt to try to create a correct UV map for 500k polys.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I'm having trouble trying to imagine how a bumpmap is projected on to a low-poly model without some form of UV coordinates on both models to link portions of the hi and low poly models together. Basically, How does the game know where to project those non-existant curves onto the low-poly model without a similar UV map present in the hi-poly model?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+See above - no UV map, no projection.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Second, When I have a UV present in both models and renderbump completes succesfully, I have what appears to be a perfect normalmap and colormap. (Other than the fact that my UVs suck. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )&#13;
+<br/><br/>
+But in game when the normalmap is applied to the object it doesn't look quite right. I can see the effect working properly however the normalmap does not look as smooth as it should. It almost looks bitmapped or pixely.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Maybe you just have to up the resolution a little?&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">To illustrate my point I would post a screen but we all know the rules. Instead I am going to post my photoshop rendition of what the normalmap actually looks like and what it seems like in game.&#13;
+<br/><br/>
+And this is what it seems to render when applied to a model.&#13;
+<br/><img src="/web/20061013055533im_/http://www.geocities.com/rich_is_bored/ingame.txt" border="0"/><br/><br/>
+Notice how the second image looks pixellated or grainy. Try to imagine what the Welding Gun from my third scripting tutorial looks like with this second image as a normalmap.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+This looks like color banding to me and this could be considered as a diffuse map issue and not as a per pixel lighting issue.&#13;
+<br/>
+Take your diffuse map and give it a pattern overly in photoshop - use something cloudy.&#13;
+<br/><br/>
+This should help you to avoid banding.&#13;
+<br/><br/>
+If it helps you - everything flat colored I use ends up with heavy color banding.&#13;
+<br/><br/>
+This may be an graphics card internal floating point color value calculation rounding error when composing the images with the light overlay.&#13;
+<br/>
+You can reduce it even further by adding an additional slightly grainy heightmap to to the normal map in the material shader.&#13;
+<br/><br/>
+Another possibility could be that you use some lower quality setting in the DoomConfig.&#13;
+<br/><br/>
+To draw a conclusion:&#13;
+<br/>
+- Low poly = you need a UV map&#13;
+<br/>
+- High poly = you don't need a UV map&#13;
+<br/>
+- Color banding = break flat surfaces up with varying colors and heightmaps&#13;
+<br/>
+- BNA wrong on this issue = no&#13;
+<br/><br/><img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7191" date="Posted: Sun May 04, 2003 9:55 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Like I said earlier, I wasn't trying to prove you wrong. Why? Because you know what your talking about. Anyway, again you have solved the main problem. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Here I am, following all the specifications.&#13;
+<br/><br/>
+Nothing but triangle polys. No 2 point polys. No points floating in space. And yet I run qemLoss2 and for some odd reason removing a poly or two seems to fix things.&#13;
+<br/><br/>
+Why? Just a retorical question as I know that nobody not even god could explain it. I guess its one of those mysteries of the universe.&#13;
+<br/><br/>
+I'm still working on phasing out the color banding. BTW thanks for adding that term to my vocabulary. I always had trouble explaining that one.&#13;
+<br/><br/>
+So far it looks like I will be needing a heightmap to composite over the normal map to smooth things out. Even without it, it still looks sweet f***ed up. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7211" date="Posted: Mon May 05, 2003 6:18 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Like I said earlier, I wasn't trying to prove you wrong. Why? Because you know what your talking about. Anyway, again you have solved the main problem. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've been just joking on that <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Here I am, following all the specifications.&#13;
+<br/><br/>
+Nothing but triangle polys. No 2 point polys. No points floating in space. And yet I run qemLoss2 and for some odd reason removing a poly or two seems to fix things.&#13;
+<br/><br/>
+Why? Just a retorical question as I know that nobody not even god could explain it. I guess its one of those mysteries of the universe.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Yes, strange.&#13;
+<br/>
+I've encountered the problem many times but never found out which poly was the problem and why. I realized that while working in subdivision mode in Lightwave you can easily provoke a bad texcoord index when you shape your object by moving points around.&#13;
+<br/>
+If you move polygon planes instead there's a good chance you'll have a valid mesh later.&#13;
+<br/>
+I assume that dragging points in SDS mode can result in pretty strange placed points - looks good in Lightwave while SDS is turned on, but ...&#13;
+<br/><br/>
+Another good technique to model is spline cage modelling.&#13;
+<br/>
+I draw my curves and then a patch them one time with relatively few subdivisions and another time with as many as I feel like it looks good.&#13;
+<br/>
+This way you easily maintian the general outline shape without any difficulties.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I'm still working on phasing out the color banding. BTW thanks for adding that term to my vocabulary. I always had trouble explaining that one.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+My pleasure <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+Color banding was the reason why graphic card producers switched to 24bit (+alpha) rendering.&#13;
+<br/>
+You can still see it very eye poking when playing SOF2 and the whole scene is covered with fog.&#13;
+<br/>
+The pixels get blended many times for the final rendering output, but since the graphic cards calculate "only" with 32bit precision the final image may look worse than running an old game in 16 bit.&#13;
+<br/><br/>
+Carmack is begging for 64bit internal color precision in graphics cards for years to avoid that.&#13;
+<br/>
+Doom3 basically is the prime example why we need it - the pixels get recalculated many times for lights and surface property effects that the outcome easily looks screwed.&#13;
+<br/>
+I assume that's why you don't see any flat colored surface in the alpha.&#13;
+<br/>
+Detailing the textures more does not only look more interesting, but it's also neccessary to avoid this sort of image corruption.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">So far it looks like I will be needing a heightmap to composite over the normal map to smooth things out. Even without it, it still looks sweet f***ed up. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Side note about heightmaps:&#13;
+<br/>
+Just use any procedural texture of choice (I do it this way).&#13;
+<br/>
+Something grainy looks fine - play with the strength setting.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7219" date="Posted: Mon May 05, 2003 5:16 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Does anyone know what the maximum number of polys allowed on a single object are?&#13;
+<br/><br/>
+I've been getting good results with the following polycount:&#13;
+<br/><br/>
+High Poly Model: <span style="font-weight: bold">40,000</span>&#13;
+<br/>
+Low Poly Model: <span style="font-weight: bold">400</span>&#13;
+<br/><br/>
+At first I thought I could just make a 6 poly box, triple it, and save it as my low poly and then subpatch, and save it to create the high poly model. Hey, I'm new at modeling, give me a break. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+What happens then is you need to create a heightmap to compensate for color banding.&#13;
+<br/><br/>
+The best solution is just to increase the polycount. Then most times when you renderbump you won't even need a heightmap.&#13;
+<br/><br/>
+I also suggest you create a map in the editor with a light or two, a player start point, and a func_mover to load your model. Then you can create a script to rotate the object. This serves as a good way to view your object so you can make adjustments.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7220" date="Posted: Mon May 05, 2003 6:41 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Does anyone know what the maximum number of polys allowed on a single object are?&#13;
+<br/><br/>
+I've been getting good results with the following polycount:&#13;
+<br/><br/>
+High Poly Model: <span style="font-weight: bold">40,000</span>&#13;
+<br/>
+Low Poly Model: <span style="font-weight: bold">400</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've been getting good results with polycounts as high as 20,000 for low poly models and with over a million for high poly models <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Seriously, the RAM's the limit.&#13;
+<br/>
+I've also managed to load really high polygon models into the game engine, but that's not what it was meant for.&#13;
+<br/><br/>
+When halfway good renderbumped a character model with approx 15,000 polys looks 99% perfect to the high poly model.&#13;
+<br/>
+But with 1,500 polys it still looks almost 90% perfect to the high poly one - as long as you don't get angular heads in view...&#13;
+<br/><br/>
+To have better controll over my objects during renderbump I split the low and high poly parts up.&#13;
+<br/>
+Possible parts are head - eye(s) - ear(s) - teeth; &#13;
+<br/>
+torso - armor - fancy deco; &#13;
+<br/>
+arms - wristwatch - hands; &#13;
+<br/>
+pelvis - legs - feet - shoe details;&#13;
+<br/><br/>
+But I UV map them first as one model.&#13;
+<br/>
+When copying every part to a new object layer, the parts retain their UV map, so I just have to layer the individual tga's back together in photoshop.&#13;
+<br/>
+The same applies to the individual mesh parts (so make sure not to move them a single inch!).&#13;
+<br/><br/>
+It's a lot of work though - maybe that's why I avoid renderbumping right now...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">At first I thought I could just make a 6 poly box, triple it, and save it as my low poly and then subpatch, and save it to create the high poly model. Hey, I'm new at modeling, give me a break. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Don't triple it before you subpatch it!&#13;
+<br/>
+Tab the object into SDS mode and then subdivide it untill it looks good to you.&#13;
+<br/>
+When making a box give the edges a radius to allow Doom3 to interpolate at angles smaller than 90 degrees. A round cornder normal map looks bad on a sharp angle. Breaking it into an additional plane rotated to 45 degrees will do suffice to create the supension of a perfect round corner (if the normal looks right) .&#13;
+<br/><br/>
+[/quote]The best solution is just to increase the polycount. Then most times when you renderbump you won't even need a heightmap.[/quote]&#13;
+<br/><br/><a href="/web/20061013055533/http://www.doom3world.org/phpbb2/viewtopic.php?t=613" target="_blank" class="postlink">Creating high poly geometry</a>&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I also suggest you create a map in the editor with a light or two, a player start point, and a func_mover to load your model. Then you can create a script to rotate the object. This serves as a good way to view your object so you can make adjustments.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I do it this way:&#13;
+<br/><br/>
+I've made a huge box map with 1 fixed and 4 bobbing lights (a circle in top down view) each with a different color.&#13;
+<br/><br/>
+When I'm done with a few models, I load the map up and type "testmodel basfolderrelative_path/modelname.extension" and then "r_testmodelrotate 1".<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7222" date="Posted: Mon May 05, 2003 7:28 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The reason I mention 400 as a good polycount for the low poly model is that I use my objects in scripted events. There is a limit for scripted objects. I cannot remember what it is but I do remember having to cut back on the details so I could script movements for the object in game.&#13;
+<br/><br/>
+I suppose if your just rendering a texture for a flat panel or a static object then hey, bust your computer's balls by making it calculate an insane amount of polys. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7223" date="Posted: Mon May 05, 2003 8:11 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">The reason I mention 400 as a good polycount for the low poly model is that I use my objects in scripted events. There is a limit for scripted objects. I cannot remember what it is but I do remember having to cut back on the details so I could script movements for the object in game.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Ah thanks - another piece that falls into place.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I suppose if your just rendering a texture for a flat panel or a static object then hey, bust your computer's balls by making it calculate an insane amount of polys. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The same hold valid for 3D models, not only for renderbumpflat.&#13;
+<br/><br/>
+The high resolution models for Doom3's characters count in at over half a million polys.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7225" date="Posted: Mon May 05, 2003 10:27 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm going to have to test that limit out a little because I just made a 1000+ poly and it scripted fine. I'm in no rush to test this out so... I'll post it when I post it.<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7226" date="Posted: Mon May 05, 2003 10:40 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">I'm going to have to test that limit out a little because I just made a 1000+ poly and it scripted fine. I'm in no rush to test this out so... I'll post it when I post it.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hmm, just a thougt:&#13;
+<br/>
+Shouldn't the engine give a damn about the polycount of the model attached to a func_mover?&#13;
+<br/>
+Basically it's "only" handling the func_mover as null object and it only uses the pivot / origin point for calculations.&#13;
+<br/><br/>
+In my opinion the complexity of the model does not bother the scripting functions. All we do is push and rotate single points around while the renderer rewards us with the attached model as visual feedback.&#13;
+<br/><br/>
+When the engine has finished the repositioning of the null object according to the scripting variables it is using the newly constructed scene for collision detection and of course rendering (not to mention sound and such).<br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7227" date="Posted: Mon May 05, 2003 10:43 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Send me that landscape *.lwo you made a while back. I'll just stick it in a room and rotate it. HA! <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7228" date="Posted: Mon May 05, 2003 10:44 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Send me that landscape *.lwo you made a while back. I'll just stick it in a room and rotate it. HA! <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+That landscape had less then 1000 polys <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055533/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7229" date="Posted: Mon May 05, 2003 10:47 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">BAH! I'll subpatch and freeze it like 50 times. <img src="/web/20061013055533im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013055533/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055533im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055533/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153727" date="Posted: Tue Aug 15, 2006 7:12 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">wait, if the high poly models not getting uv'd where does renderbump get the diffuse map it generates from? wouldn't you have to uv the high poly to put the color map on it?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153736" date="Posted: Tue Aug 15, 2006 9:24 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The high poly model doesn't need a UV map, in fact it'll cause renderbump to flake out if you try to add one.  All the high poly model is being used for is to be traced using the low poly model like a lathe would use a template and a piece of wood (I hope you understand that analogy hehe).  No diffusemap is used during renderbumping and in many cases the diffusemap is created after renderbumping (I usually use the UV layout as a template after I've already creaed the normalmap).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3732" date="Posted: Sun Jan 12, 2003 7:36 pm    Post subject: D3 - renderbump"><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><span style="font-weight: bold">Doom3 renderbump:</span>&#13;
+<br/><br/>
+_______________________&#13;
+<br/><br/>
+if you don't know what renderbumbing is, search google for it ("renderbump")and read what the developers say about it. Alternatively search for "polybump"&#13;
+<br/>
+_______________________&#13;
+<br/><br/>
+if you look through the material files you can find some materials defined for some models where the shader has an additional line with "renderbump..." in it. I tried to figure out what it can be used for and how to do it.&#13;
+<br/><br/>
+What i know so far:&#13;
+<br/><br/>
+if i had a model:&#13;
+<br/>
+"model/juve/sphere1/sphere1.lwo"&#13;
+<br/>
+(the ligthwave-material in the lwo-file would be named "surface2")&#13;
+<br/><br/>
+and had defined a shader named:&#13;
+<br/>
+"surface2"&#13;
+<br/><br/>
+looking like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+surface2&#13;
+<br/>
+{&#13;
+<br/>
+renderbump  -size 256 256 -trace 0.03 -colorMap -aa 1  models/juve/sphere1/sphere1_local.tga models/juve/sphere1/sphere1_hp.lwo&#13;
+<br/><br/>
+diffusemap models/juve/sphere1/sphere1_d.tga&#13;
+<br/><br/>
+bumpmap models/juve/sphere1/sphere1_local.tga,&#13;
+<br/><br/>
+specularmap models/juve/sphere1/sphere1_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and if had a high-poly "mooncrater"-detailed model of my sphere named:&#13;
+<br/>
+"models/juve/sphere1/sphere1_hp.lwo"&#13;
+<br/><br/>
+i can now use the command renderbump like this:&#13;
+<br/><br/>
+renderbump models/juve/sphere1/sphere1.lwo&#13;
+<br/><br/>
+Doom3 would load the sphere1.lwo and the sphere1_hp.lwo and create a tga named: models/juve/sphere1/sphere1_local_color.tga &#13;
+<br/><br/>
+___________________________________________________&#13;
+<br/><br/>
+the Problem is, the output image is no normalmap-tga, has only 2 colors and doesn't help me much.&#13;
+<br/><br/>
+did anybody have more luck with doom's renderbump-cmd ?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3773" date="Posted: Thu Jan 16, 2003 1:48 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look in the folder you're keeping the model in - there will be two new tga's - one with the name you've specified in the headline of the shader along with the renderbump settings and a second one with the same name but a _color extension.&#13;
+<br/><br/>
+Rewrite your shader to use the correct tga's at the right places.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3810" date="Posted: Fri Jan 17, 2003 12:25 am    Post subject: "><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yes i know, but the one tga is simply gray and the other has only 2 colors: white and gray. ... <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> no normal-map-tga is produced</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3820" date="Posted: Fri Jan 17, 2003 7:33 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is one of my last shaders i used to renderbump models:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">bna/corridor/structure2&#13;
+<br/>
+{&#13;
+<br/>
+   renderbump     -size 512 512 -aa 2 -colorMap bna/corridor/structure2.tga bna/corridor/structure2_hp.lwo&#13;
+<br/>
+   bumpmap      bna/corridor/structure2.tga&#13;
+<br/>
+   diffusemap    bna/corridor/structure2_color.tga&#13;
+<br/>
+   //specularmap     models/bna/grey512.tga&#13;
+<br/>
+   translucent&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   //twoSided&#13;
+<br/>
+   //{&#13;
+<br/>
+   //   blend add&#13;
+<br/>
+   //   cubeMap      env/bland&#13;
+<br/>
+   //   texgen      reflect&#13;
+<br/>
+   //}&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+The only difference I see is that my -aa settings switch is located differently in the shader.&#13;
+<br/><br/>
+You can ignore the uncommented sections of course.&#13;
+<br/><br/>
+If it still doesn't work send me the two lwo models and I'll take a look.&#13;
+<br/><br/>
+It's also useful to dump the conole output after renderbump has completed.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="3829" date="Posted: Fri Jan 17, 2003 1:33 pm    Post subject: "><author>juve</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If you say doom3's renderbump works just fine,i think i'll give it another try.&#13;
+<br/><br/>
+btw. I'm looking forward to your renderbumptutorial.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7172" date="Posted: Sun May 04, 2003 7:20 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Juve, check to make sure your surface names in both your hi-poly and low-poly versions are different. That was what my problem was. Thanks BNA! <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Here is two new issues regarding renderbump...&#13;
+<br/><br/>
+First, I've been told time and time again that a UV map is not needed for the hi-poly model. It's only needed for the low-poly model.&#13;
+<br/><br/>
+Yet, when I open my hi-poly model and delete the UV map, then try to use the renderbump command I get this error...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">********************&#13;
+<br/>
+ERROR: Bad texcoord index in ase file rich/box_hi.lwo&#13;
+<br/>
+********************</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'm not trying to say your wrong BNA. I just need some form of explaination for why doom is insisting that I have a "texcoord" index on the high poly model when the UV on the low-poly model is sufficient. Would deleting the UV from the low-poly model work instead? That would mean that a UV map for the hi-poly model is necessary while a UV for the low-poly model is optional.&#13;
+<br/><br/>
+I'm having trouble trying to imagine how a bumpmap is projected on to a low-poly model without some form of UV coordinates on both models to link portions of the hi and low poly models together. Basically, How does the game know where to project those non-existant curves onto the low-poly model without a similar UV map present in the hi-poly model?&#13;
+<br/><br/>
+Second, When I have a UV present in both models and renderbump completes succesfully, I have what appears to be a perfect normalmap and colormap. (Other than the fact that my UVs suck. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )&#13;
+<br/><br/>
+But in game when the normalmap is applied to the object it doesn't look quite right. I can see the effect working properly however the normalmap does not look as smooth as it should. It almost looks bitmapped or pixely.&#13;
+<br/><br/>
+To illustrate my point I would post a screen but we all know the rules. Instead I am going to post my photoshop rendition of what the normalmap actually looks like and what it seems like in game.&#13;
+<br/><br/>
+The normalmap below is what renderbump outputs.&#13;
+<br/><img src="/web/20061013060738im_/http://www.geocities.com/rich_is_bored/normal.txt" border="0"/><br/><br/>
+And this is what it seems to render when applied to a model.&#13;
+<br/><img src="/web/20061013060738im_/http://www.geocities.com/rich_is_bored/ingame.txt" border="0"/><br/><br/>
+Notice how the second image looks pixellated or grainy. Try to imagine what the Welding Gun from my third scripting tutorial looks like with this second image as a normalmap.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7175" date="Posted: Sun May 04, 2003 8:13 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">First, I've been told time and time again that a UV map is not needed for the hi-poly model. It's only needed for the low-poly model.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Still true.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Yet, when I open my hi-poly model and delete the UV map, then try to use the renderbump command I get this error...&#13;
+<br/><br/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">********************&#13;
+<br/>
+ERROR: Bad texcoord index in ase file rich/box_hi.lwo&#13;
+<br/>
+********************</td>	</tr></table><span class="postbody"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I swear to god that something in your high poly model file is wrong.&#13;
+<br/>
+Try the following:&#13;
+<br/>
+- merge points&#13;
+<br/>
+- delete points with zero polys&#13;
+<br/>
+- make sure you have only 3 point polygons! (doom doesn't like 2 point polys)&#13;
+<br/>
+- if everything fails: run the model through qemLOSS2, keep the defaults but set the goal as 0.99999999&#13;
+<br/><br/>
+By deleting the UV map from you high poly model you <span style="font-weight: bold">may</span> end up with left over points or a few doubled polygons.&#13;
+<br/><br/>
+[quote]I'm not trying to say your wrong BNA. I just need some form of explaination for why doom is insisting that I have a "texcoord" index on the high poly model when the UV on the low-poly model is sufficient. Would deleting the UV from the low-poly model work instead? That would mean that a UV map for the hi-poly model is necessary while a UV for the low-poly model is optional.[quote]&#13;
+<br/><br/>
+You can't prove me wrong on this because I'm not <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+If you delete the UV map from your low poly model, the engine does not know how to project the image on the mesh. Imagine the vertex points as pins you use to apply/stretch a flat rubber poster to a soccer ball.&#13;
+<br/><br/>
+The UV map for the low poly model is mandatory, for the high poly model it's a crazy attempt to try to create a correct UV map for 500k polys.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I'm having trouble trying to imagine how a bumpmap is projected on to a low-poly model without some form of UV coordinates on both models to link portions of the hi and low poly models together. Basically, How does the game know where to project those non-existant curves onto the low-poly model without a similar UV map present in the hi-poly model?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+See above - no UV map, no projection.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Second, When I have a UV present in both models and renderbump completes succesfully, I have what appears to be a perfect normalmap and colormap. (Other than the fact that my UVs suck. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )&#13;
+<br/><br/>
+But in game when the normalmap is applied to the object it doesn't look quite right. I can see the effect working properly however the normalmap does not look as smooth as it should. It almost looks bitmapped or pixely.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Maybe you just have to up the resolution a little?&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">To illustrate my point I would post a screen but we all know the rules. Instead I am going to post my photoshop rendition of what the normalmap actually looks like and what it seems like in game.&#13;
+<br/><br/>
+And this is what it seems to render when applied to a model.&#13;
+<br/><img src="/web/20061013060738im_/http://www.geocities.com/rich_is_bored/ingame.txt" border="0"/><br/><br/>
+Notice how the second image looks pixellated or grainy. Try to imagine what the Welding Gun from my third scripting tutorial looks like with this second image as a normalmap.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+This looks like color banding to me and this could be considered as a diffuse map issue and not as a per pixel lighting issue.&#13;
+<br/>
+Take your diffuse map and give it a pattern overly in photoshop - use something cloudy.&#13;
+<br/><br/>
+This should help you to avoid banding.&#13;
+<br/><br/>
+If it helps you - everything flat colored I use ends up with heavy color banding.&#13;
+<br/><br/>
+This may be an graphics card internal floating point color value calculation rounding error when composing the images with the light overlay.&#13;
+<br/>
+You can reduce it even further by adding an additional slightly grainy heightmap to to the normal map in the material shader.&#13;
+<br/><br/>
+Another possibility could be that you use some lower quality setting in the DoomConfig.&#13;
+<br/><br/>
+To draw a conclusion:&#13;
+<br/>
+- Low poly = you need a UV map&#13;
+<br/>
+- High poly = you don't need a UV map&#13;
+<br/>
+- Color banding = break flat surfaces up with varying colors and heightmaps&#13;
+<br/>
+- BNA wrong on this issue = no&#13;
+<br/><br/><img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7191" date="Posted: Sun May 04, 2003 9:55 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Like I said earlier, I wasn't trying to prove you wrong. Why? Because you know what your talking about. Anyway, again you have solved the main problem. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Here I am, following all the specifications.&#13;
+<br/><br/>
+Nothing but triangle polys. No 2 point polys. No points floating in space. And yet I run qemLoss2 and for some odd reason removing a poly or two seems to fix things.&#13;
+<br/><br/>
+Why? Just a retorical question as I know that nobody not even god could explain it. I guess its one of those mysteries of the universe.&#13;
+<br/><br/>
+I'm still working on phasing out the color banding. BTW thanks for adding that term to my vocabulary. I always had trouble explaining that one.&#13;
+<br/><br/>
+So far it looks like I will be needing a heightmap to composite over the normal map to smooth things out. Even without it, it still looks sweet f***ed up. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7211" date="Posted: Mon May 05, 2003 6:18 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Like I said earlier, I wasn't trying to prove you wrong. Why? Because you know what your talking about. Anyway, again you have solved the main problem. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've been just joking on that <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Here I am, following all the specifications.&#13;
+<br/><br/>
+Nothing but triangle polys. No 2 point polys. No points floating in space. And yet I run qemLoss2 and for some odd reason removing a poly or two seems to fix things.&#13;
+<br/><br/>
+Why? Just a retorical question as I know that nobody not even god could explain it. I guess its one of those mysteries of the universe.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Yes, strange.&#13;
+<br/>
+I've encountered the problem many times but never found out which poly was the problem and why. I realized that while working in subdivision mode in Lightwave you can easily provoke a bad texcoord index when you shape your object by moving points around.&#13;
+<br/>
+If you move polygon planes instead there's a good chance you'll have a valid mesh later.&#13;
+<br/>
+I assume that dragging points in SDS mode can result in pretty strange placed points - looks good in Lightwave while SDS is turned on, but ...&#13;
+<br/><br/>
+Another good technique to model is spline cage modelling.&#13;
+<br/>
+I draw my curves and then a patch them one time with relatively few subdivisions and another time with as many as I feel like it looks good.&#13;
+<br/>
+This way you easily maintian the general outline shape without any difficulties.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I'm still working on phasing out the color banding. BTW thanks for adding that term to my vocabulary. I always had trouble explaining that one.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+My pleasure <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+Color banding was the reason why graphic card producers switched to 24bit (+alpha) rendering.&#13;
+<br/>
+You can still see it very eye poking when playing SOF2 and the whole scene is covered with fog.&#13;
+<br/>
+The pixels get blended many times for the final rendering output, but since the graphic cards calculate "only" with 32bit precision the final image may look worse than running an old game in 16 bit.&#13;
+<br/><br/>
+Carmack is begging for 64bit internal color precision in graphics cards for years to avoid that.&#13;
+<br/>
+Doom3 basically is the prime example why we need it - the pixels get recalculated many times for lights and surface property effects that the outcome easily looks screwed.&#13;
+<br/>
+I assume that's why you don't see any flat colored surface in the alpha.&#13;
+<br/>
+Detailing the textures more does not only look more interesting, but it's also neccessary to avoid this sort of image corruption.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">So far it looks like I will be needing a heightmap to composite over the normal map to smooth things out. Even without it, it still looks sweet f***ed up. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Side note about heightmaps:&#13;
+<br/>
+Just use any procedural texture of choice (I do it this way).&#13;
+<br/>
+Something grainy looks fine - play with the strength setting.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7219" date="Posted: Mon May 05, 2003 5:16 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Does anyone know what the maximum number of polys allowed on a single object are?&#13;
+<br/><br/>
+I've been getting good results with the following polycount:&#13;
+<br/><br/>
+High Poly Model: <span style="font-weight: bold">40,000</span>&#13;
+<br/>
+Low Poly Model: <span style="font-weight: bold">400</span>&#13;
+<br/><br/>
+At first I thought I could just make a 6 poly box, triple it, and save it as my low poly and then subpatch, and save it to create the high poly model. Hey, I'm new at modeling, give me a break. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+What happens then is you need to create a heightmap to compensate for color banding.&#13;
+<br/><br/>
+The best solution is just to increase the polycount. Then most times when you renderbump you won't even need a heightmap.&#13;
+<br/><br/>
+I also suggest you create a map in the editor with a light or two, a player start point, and a func_mover to load your model. Then you can create a script to rotate the object. This serves as a good way to view your object so you can make adjustments.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7220" date="Posted: Mon May 05, 2003 6:41 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Does anyone know what the maximum number of polys allowed on a single object are?&#13;
+<br/><br/>
+I've been getting good results with the following polycount:&#13;
+<br/><br/>
+High Poly Model: <span style="font-weight: bold">40,000</span>&#13;
+<br/>
+Low Poly Model: <span style="font-weight: bold">400</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've been getting good results with polycounts as high as 20,000 for low poly models and with over a million for high poly models <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Seriously, the RAM's the limit.&#13;
+<br/>
+I've also managed to load really high polygon models into the game engine, but that's not what it was meant for.&#13;
+<br/><br/>
+When halfway good renderbumped a character model with approx 15,000 polys looks 99% perfect to the high poly model.&#13;
+<br/>
+But with 1,500 polys it still looks almost 90% perfect to the high poly one - as long as you don't get angular heads in view...&#13;
+<br/><br/>
+To have better controll over my objects during renderbump I split the low and high poly parts up.&#13;
+<br/>
+Possible parts are head - eye(s) - ear(s) - teeth; &#13;
+<br/>
+torso - armor - fancy deco; &#13;
+<br/>
+arms - wristwatch - hands; &#13;
+<br/>
+pelvis - legs - feet - shoe details;&#13;
+<br/><br/>
+But I UV map them first as one model.&#13;
+<br/>
+When copying every part to a new object layer, the parts retain their UV map, so I just have to layer the individual tga's back together in photoshop.&#13;
+<br/>
+The same applies to the individual mesh parts (so make sure not to move them a single inch!).&#13;
+<br/><br/>
+It's a lot of work though - maybe that's why I avoid renderbumping right now...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">At first I thought I could just make a 6 poly box, triple it, and save it as my low poly and then subpatch, and save it to create the high poly model. Hey, I'm new at modeling, give me a break. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Don't triple it before you subpatch it!&#13;
+<br/>
+Tab the object into SDS mode and then subdivide it untill it looks good to you.&#13;
+<br/>
+When making a box give the edges a radius to allow Doom3 to interpolate at angles smaller than 90 degrees. A round cornder normal map looks bad on a sharp angle. Breaking it into an additional plane rotated to 45 degrees will do suffice to create the supension of a perfect round corner (if the normal looks right) .&#13;
+<br/><br/>
+[/quote]The best solution is just to increase the polycount. Then most times when you renderbump you won't even need a heightmap.[/quote]&#13;
+<br/><br/><a href="/web/20061013060738/http://www.doom3world.org/phpbb2/viewtopic.php?t=613" target="_blank" class="postlink">Creating high poly geometry</a>&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I also suggest you create a map in the editor with a light or two, a player start point, and a func_mover to load your model. Then you can create a script to rotate the object. This serves as a good way to view your object so you can make adjustments.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I do it this way:&#13;
+<br/><br/>
+I've made a huge box map with 1 fixed and 4 bobbing lights (a circle in top down view) each with a different color.&#13;
+<br/><br/>
+When I'm done with a few models, I load the map up and type "testmodel basfolderrelative_path/modelname.extension" and then "r_testmodelrotate 1".<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7222" date="Posted: Mon May 05, 2003 7:28 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The reason I mention 400 as a good polycount for the low poly model is that I use my objects in scripted events. There is a limit for scripted objects. I cannot remember what it is but I do remember having to cut back on the details so I could script movements for the object in game.&#13;
+<br/><br/>
+I suppose if your just rendering a texture for a flat panel or a static object then hey, bust your computer's balls by making it calculate an insane amount of polys. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7223" date="Posted: Mon May 05, 2003 8:11 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">The reason I mention 400 as a good polycount for the low poly model is that I use my objects in scripted events. There is a limit for scripted objects. I cannot remember what it is but I do remember having to cut back on the details so I could script movements for the object in game.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Ah thanks - another piece that falls into place.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I suppose if your just rendering a texture for a flat panel or a static object then hey, bust your computer's balls by making it calculate an insane amount of polys. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The same hold valid for 3D models, not only for renderbumpflat.&#13;
+<br/><br/>
+The high resolution models for Doom3's characters count in at over half a million polys.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7225" date="Posted: Mon May 05, 2003 10:27 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm going to have to test that limit out a little because I just made a 1000+ poly and it scripted fine. I'm in no rush to test this out so... I'll post it when I post it.<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7226" date="Posted: Mon May 05, 2003 10:40 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">I'm going to have to test that limit out a little because I just made a 1000+ poly and it scripted fine. I'm in no rush to test this out so... I'll post it when I post it.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hmm, just a thougt:&#13;
+<br/>
+Shouldn't the engine give a damn about the polycount of the model attached to a func_mover?&#13;
+<br/>
+Basically it's "only" handling the func_mover as null object and it only uses the pivot / origin point for calculations.&#13;
+<br/><br/>
+In my opinion the complexity of the model does not bother the scripting functions. All we do is push and rotate single points around while the renderer rewards us with the attached model as visual feedback.&#13;
+<br/><br/>
+When the engine has finished the repositioning of the null object according to the scripting variables it is using the newly constructed scene for collision detection and of course rendering (not to mention sound and such).<br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7227" date="Posted: Mon May 05, 2003 10:43 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Send me that landscape *.lwo you made a while back. I'll just stick it in a room and rotate it. HA! <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7228" date="Posted: Mon May 05, 2003 10:44 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">Send me that landscape *.lwo you made a while back. I'll just stick it in a room and rotate it. HA! <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+That landscape had less then 1000 polys <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060738/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="7229" date="Posted: Mon May 05, 2003 10:47 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">BAH! I'll subpatch and freeze it like 50 times. <img src="/web/20061013060738im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013060738/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060738im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060738/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153727" date="Posted: Tue Aug 15, 2006 7:12 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">wait, if the high poly models not getting uv'd where does renderbump get the diffuse map it generates from? wouldn't you have to uv the high poly to put the color map on it?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153736" date="Posted: Tue Aug 15, 2006 9:24 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The high poly model doesn't need a UV map, in fact it'll cause renderbump to flake out if you try to add one.  All the high poly model is being used for is to be traced using the low poly model like a lathe would use a template and a piece of wood (I hope you understand that analogy hehe).  No diffusemap is used during renderbumping and in many cases the diffusemap is created after renderbumping (I usually use the UV layout as a template after I've already creaed the normalmap).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153754" date="Posted: Tue Aug 15, 2006 11:30 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I cant get it to renderbump right.. I have my mesh in md5mesh format and the high poly mesh in .ase because i tried it as .md5mesh and it hella didnt work. This time it says ti took .36 seconds to complete the renderbump but I don't see anything in the target filepath. heres my material def&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/marine/boonemarine&#13;
+<br/>
+{&#13;
+<br/>
+	renderbump -size 1024 1024 -aa 2 -colorMap textures/marine/marine_local.tga models/marine/marine_hp.ase&#13;
+<br/>
+	"qer_editorimage"		"textures/marine/marine_d.tga"&#13;
+<br/>
+	"diffusemap"			"textures/marine/marine_d.tga"&#13;
+<br/>
+	"bumpmap"			"textures/marine/marine_h.tga"&#13;
+<br/>
+	noSelfShadow&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="/web/20061013055704im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/>
+exported the ase using the exporter for blender posted in the forums with material, vert and uv unselected.&#13;
+<br/><br/>
+can't find a *BITMAP line to change to a material but I guess that shouldn't matter</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153761" date="Posted: Wed Aug 16, 2006 12:00 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well there's no trace value set (probably just defaults to something if one isn't set in the material file so this may not be a big deal) and I've no clue what the colorMap declaration is for, I've never seen it used and iddevnet doesn't explain what the function does.&#13;
+<br/><br/>
+As for the problems with rendering, did you apply a material to the low poly model?  Did you UV map it?  Both of these are required for the low poly model (presumably the md5mesh model in your case) but make sure that you don't add them to the high poly one.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153762" date="Posted: Wed Aug 16, 2006 12:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yeah, the low poly md5mesh has a material and is uvmapped and just ran a testModel on the high poly .ase and it loads ok, i unchecked exporting uv material and vertex color when i exported the .ase but there were uv coordinates in there because its based off the low poly that I had already uv'd and I'm not sure how to delete uv maps. I took out the -colorMap option but I still get that renderbump took .18 seconds rendrbump completed with no actual rendering hapening or files created. &#13;
+<br/><br/>
+Command I'm using in the console is&#13;
+<br/><br/>
+renderbump models/marine/marine.md5mesh&#13;
+<br/><br/>
+marine.md5mesh points to boonemarine</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153775" date="Posted: Wed Aug 16, 2006 2:24 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Something just hit me that might be the problem.  Did you freeze the mesh's size and rotation before you exported it for both the low and the hi poly?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153781" date="Posted: Wed Aug 16, 2006 3:24 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i froze it on the .ase but not the md5mesh, just tried freezing that and still wont actually renderbump anything... I'll at it to the .ase along with the rest of the files at&#13;
+<br/><br/><a href="/web/20061013055704/http://fuag.is-a-geek.com/filez/Marine/" target="_blank">http://fuag.is-a-geek.com/filez/Marine/</a>&#13;
+<br/><br/><img src="/web/20061013055704im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153782" date="Posted: Wed Aug 16, 2006 3:53 am    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ahh I see what's wrong.  You didn't apply an image but rather a series of blends within Blender to try to, what I'd assume, is render a normalmap using Blender.  Delete the Red, Green, Blue links in the Textures tab (F6) and then add one "Image".  Then click the "Load Image" and just choose the skin you're applying (any image will work fine if you plan on going back and manually editing the link).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153787" date="Posted: Wed Aug 16, 2006 6:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sorry, the materials were left over from my first attempt at normal mapping before i realized doom3 had renderbump, I took them out though. The marine.blend is just bieng used to export marine.md5mesh and marine.md5anim so I only set up the uv coordinates in the uv image editor so that they would work when I linked a .mtr to the md5mesh. the marine_hp.blend is the one i'm tryingto use as a high poly model for the renderbump.&#13;
+<br/><br/>
+I've been told to not include uvmapping or texturing in the ase file. I wanted to just use a higher poly md5mesh file for the renderbump because I've already figured them out but it doesnt take md5mesh's for high poly models I'm guessing.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153806" date="Posted: Wed Aug 16, 2006 12:57 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">The marine.blend is just bieng used to export marine.md5mesh and marine.md5anim so I only set up the uv coordinates in the uv image editor so that they would work when I linked a .mtr to the md5mesh.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+For the low poly model you still have to reference an image, otherwise when it's exported it'll export UV coordinates but it won't export properly.  It'll export error free but if you try to force a material on it afterwards it may not actually render the material, UV coordinates or not (I made this mistake many times when I first started hehe).  This very well may still be the problem you're having though. &#13;
+<br/><br/>
+I'll try and renderbump it using static models and see what happens.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153814" date="Posted: Wed Aug 16, 2006 1:48 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, here's some problems:&#13;
+<br/><br/>
+-the high poly model still has an image reference and UV coordinates attatched.  To fix this just delete the material and TexFace&#13;
+<br/>
+-the material file is saved in rich text format instead of simple text (just use Notepad and create a new txt file then change the extension)&#13;
+<br/>
+-Also you had noselfshadow at the bottom of the shader rather than at the top.  Declarations like these should be at the top&#13;
+<br/>
+-There was also no trace value set.  I added one and started at .02 (it may need to be set higher, there were some render errors with it at .02 so this is a heavily experimental setting)&#13;
+<br/>
+-Quotes were used around the texture links and functions, it may actually ignore these but I've never done it so I don't know for sure.  It's best to not add them though and save yourself some troubleshooting <img src="/web/20061013055704im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+After correcting all of these it rendered fine (it's still baking atm).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153871" date="Posted: Wed Aug 16, 2006 11:03 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">cool, thnx for looking at em! It worked over here 2.  <img src="/web/20061013055704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  Now on to animating md5meshes  <img src="/web/20061013055704im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

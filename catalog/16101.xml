@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16101"><title>Repost of Texture Creation Tutorial - Part 1</title><posts><post id="146338" date="Posted: Sun Jun 18, 2006 2:10 am    Post subject: Repost of Texture Creation Tutorial - Part 1"><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Because the original thread is not accessable I have retrieved the cached copy of the original post from web.archive.org and restored it as best I can.&#13;
+<br/><br/>
+The post follows...<br/>_________________<br/><a href="/web/20061013022532/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022532im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022532/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146339" date="Posted: Sun Jun 18, 2006 2:10 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Greeting fellow Doom haxors. I've put together the first installment of a two part semi-exhuastive study of Doom 3 material creation. Enjoy...&#13;
+<br/><br/><span style="font-weight: bold">Some housekeeping before we get started:</span>&#13;
+<br/><br/>
+First of all, we will need to download NVidia's NormalMapFilter plug-in for Photoshop. The plug-in can be downloaded here:&#13;
+<br/><br/><a href="/web/20061013022532/http://developer.nvidia.com/docs/IO/1176/ATT/NormalMapFilter.8bf" target="_blank">http://developer.nvidia.com/docs/IO/1176/ATT/NormalMapFilter.8bf</a>&#13;
+<br/><br/>
+This file needs to be placed in Photoshop's filter plug-ins directory. The plug-ins directory should contain other .8bf files. More information about the NVidia filter and its uses can be found here:&#13;
+<br/><a href="/web/20061013022532/http://www.cyberloonies.com/bump-mapping.html" target="_blank">http://www.cyberloonies.com/bump-mapping.html</a>&#13;
+<br/><br/>
+Create a new folder called "custom/" in "Doom_III/base/textures/". This is where we will save our new textures for our material stages.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+Now for the fun stuff. Open up Photoshop and let's draw the stages.&#13;
+<br/><br/><span style="font-weight: bold">I. Draw a diffusemap texture</span>&#13;
+<br/><br/>
+This stage will serve primarily as color information for the material. This is basically just a standard RGB texture with dimensions based on powers of 2. The image should contain color and value information. A simple flat brown texture would work fine, but I whipped up this seamlessly tiling example by playing around with the drawing tools.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_d.jpg" border="0"/><br/><br/>
+Save your diffusemap as Doom_III/base/textures/custom/rockwall_d.tga&#13;
+<br/>
+By convention, diffusemap texture names are denoted with a "_d" suffix.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/> Make sure to save all your material textures as Targas because the Doom3 alpha leak doesn't seem to like Jpegs. For this tutorial, save all targas as 24-bit as we will not be making use of an alpha channel.&#13;
+<br/><br/><span style="font-weight: bold">II. Render a normalmap</span>&#13;
+<br/><br/>
+A normalmap contains per-pixel dynamic lighting information. Essentially, it uses the color information for each pixel to determine the direction from which a light source would highlight the pixel. A normalmap can be generated from an elevation map through NVidia's wonderful little NormalMapFilter Photoshop plug-in.&#13;
+<br/><br/>
+1. Create new 512x512 RGB image as the NormalMapFilter only works on images with dimensions based on powers of 2.&#13;
+<br/><br/>
+2. Select White as foreground and black as background&#13;
+<br/><br/>
+3. From the pulldown menus select: Filter -&gt; Render -&gt; Clouds&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_h.jpg" border="0"/><br/><br/>
+This cloud pattern serves as an elevation map for the NormalMapFilter plug-in. In the elevation map, white represents high spots on the texture and black represents low spots.&#13;
+<br/><br/>
+Now, if your image for some reason is not flattened, flatten it now:&#13;
+<br/>
+Layer -&gt; Flatten Image&#13;
+<br/><br/>
+4. Now apply NVidia's normalmap filter: Filter -&gt; nvTools -&gt; NormalMapFilter&#13;
+<br/><br/>
+You may get a warning message about channel selection and alphaheight. This is not a problem. Just click on OK.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_normalmap_filter.jpg" border="0"/><br/><br/>
+Use the settings depicted in the image above and then apply the normalmap color information to the image by by clicking OK.&#13;
+<br/><br/>
+5. Now resize your image to 256x256. A 512x512 normalmap is overkill in this instance.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_local.jpg" border="0"/><br/><br/>
+6. Save your normalmap as Doom_III/base/textures/custom/rockwall_local.tga&#13;
+<br/><br/>
+By convention, diffusemap texture names are denoted with a "_local" suffix. I have no idea why this is.&#13;
+<br/><br/><span style="font-weight: bold">III. Render a specularmap</span>&#13;
+<br/><br/>
+The specular map stage allows specular hightlights to be added to the material. Specular highlights give the surface a shiny, light-reflective look. In the case of our rock wall, it will give the rock a slightly wet look. Because the specularmap is an additive blend, light areas of the specularmap will create drastic specular highlights while dark areas will create none.&#13;
+<br/><br/>
+For now, lets just use simple fractal clouds to generate the specular map.&#13;
+<br/><br/>
+1. Create new 256x256 RGB image&#13;
+<br/><br/>
+2. Filter -&gt; Render -&gt; Clouds&#13;
+<br/><br/>
+3. Image -&gt; Adjust -&gt; Auto Contrast&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_s.jpg" border="0"/><br/><br/>
+The lighter regions of the texture will translate to shiny areas (specular highlights) on the final material.&#13;
+<br/><br/>
+4. Save your specularmap as Doom_III/base/textures/custom/rockwall_s.tga&#13;
+<br/><br/>
+By convention, diffusemap texture names are denoted with a "_s" suffix.&#13;
+<br/><br/><span style="font-weight: bold">IV. Create a DOOMEdit Preview image</span>&#13;
+<br/><br/>
+This final image will serve as a material preview when working in DOOMEdit.&#13;
+<br/><br/>
+1. Open up your newly create rockwall_local.tga and rockwall_d.tga images.&#13;
+<br/><br/>
+2. Create a new 256x256 RGB image and call it "rockwall_ed"&#13;
+<br/><br/>
+3. Copy the entire contents of rockwall_d.tga and paste it as a new layer into your new "rockwall_ed" image.&#13;
+<br/><br/>
+4. Copy the entire contents of rockwall_local.tga and paste it as a new layer into "rockwall_ed", on top of the layer you just pasted from rockwall_d.&#13;
+<br/><br/>
+5. Apply the following functions to the top layer of "rockwall_ed" (the layer containing the normalmap source).&#13;
+<br/><br/>
+a. Image -&gt; Adjust -&gt; Desaturate&#13;
+<br/>
+b. Image -&gt; Adjust -&gt; Auto Contrast&#13;
+<br/><br/>
+6. Now change the blending mode of the top layer from "Normal" to "Overlay". This is done from the "Layers" tab.&#13;
+<br/><br/>
+This should give you a shaded and colorized version of your material.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://div.dyndns.org/vector/rockwall/rockwall_ed.jpg" border="0"/><br/><br/>
+7. Save your editor image as Doom_III/base/textures/custom/rockwall_ed.tga&#13;
+<br/><br/>
+By convention, editor preview texture names are denoted with a "_ed" suffix. However, I have seen this convention broken in the Doom3 alpha materials.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+That wraps up our image creation. Now lets create a quick material script to pull all of our images into a great looking Doom3 material.&#13;
+<br/><br/>
+Open up your favorite text editing program and let's add the following code to a blank text file:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/custom/rockwall&#13;
+<br/>
+{&#13;
+<br/>
+    qer_editorimage  textures/custom/rockwall_ed.tga       // custom DOOMEdit material preview image&#13;
+<br/><br/>
+    diffusemap       textures/custom/rockwall_d.tga        // color and value information for the material&#13;
+<br/>
+    specularmap      textures/custom/rockwall_s.tga        // specular highlights&#13;
+<br/>
+    bumpmap          textures/custom/rockwall_local.tga    // normalmap for bumpmapped appearance&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now save your text file as Doom_III/base/materials/custom.mtr.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+We're all done with the material creation process. Now fire up DOOMEdit and place the new material on some brush faces. The material can be accessed from the Media Browser (shortcut: 'M' key) under "materials/textures/custom/rockwall".&#13;
+<br/><br/>
+After assigning the material to some brushes, bring up the Doom console and use "testmap yourmapname" to compile and test the map.&#13;
+<br/><br/>
+See the shiny highlights ingame? Those are the specular highlights that give the rocky surface a slippery wet look.&#13;
+<br/><br/><span style="font-weight: bold">Some final thoughts:</span>&#13;
+<br/><br/>
+DoomEdit handles materials much better than Radiant handled shaders. No more 'shaderlist.txt' registrations (w00t! <img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> ). DoomEdit automatically makes accessable every valid material found in any file in the 'materials' folder.&#13;
+<br/><br/><img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/><span style="font-weight: bold">IMPORTANT</span> <img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/><br/><br/>
+For those of you working on image creation and modification, I HIGHLY recommend turning Doom3's texture caching off. Do this at the console by typing the following:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">image_usePrecompressedTextures 0</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+By default, Doom3 is set up to create a cache of all images. This cache is generated the first time an image is used by the system. This cache doesn't automatically update if image modifications are made, therefore you will not see changes you make to images unless the cache is disabled. This really screwed with my head for quite some time. <img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_evil.gif" alt="Evil or Very Mad" border="0"/> Having caching turned off will increase load times, but it appears to be the only way for you to see image modifications reflected in the engine.<br/>_________________<br/><a href="/web/20061013022532/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022532im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022532/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146357" date="Posted: Sun Jun 18, 2006 9:09 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thank you very much Rich!<br/>_________________<br/><a href="/web/20061013022532/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022532im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013022532/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146379" date="Posted: Sun Jun 18, 2006 4:07 pm    Post subject: "><author>wviperw</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sweet, thanks! Been looking for this. <img src="/web/20061013022532im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><span style="font-size: 11px; line-height: normal"><span style="font-style: italic">"My dream would be a mod where you wander around in a sunlit forest buzzing with insects that glow in the light, talking to friendly NPC people about their problems with gardening."</span> -der_ton</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146338" date="Posted: Sun Jun 18, 2006 2:10 am    Post subject: Repost of Texture Creation Tutorial - Part 1"><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Because the original thread is not accessable I have retrieved the cached copy of the original post from web.archive.org and restored it as best I can.&#13;
+<br/><br/>
+The post follows...<br/>_________________<br/><a href="/web/20061013023656/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023656im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023656/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146339" date="Posted: Sun Jun 18, 2006 2:10 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Greeting fellow Doom haxors. I've put together the first installment of a two part semi-exhuastive study of Doom 3 material creation. Enjoy...&#13;
+<br/><br/><span style="font-weight: bold">Some housekeeping before we get started:</span>&#13;
+<br/><br/>
+First of all, we will need to download NVidia's NormalMapFilter plug-in for Photoshop. The plug-in can be downloaded here:&#13;
+<br/><br/><a href="/web/20061013023656/http://developer.nvidia.com/docs/IO/1176/ATT/NormalMapFilter.8bf" target="_blank">http://developer.nvidia.com/docs/IO/1176/ATT/NormalMapFilter.8bf</a>&#13;
+<br/><br/>
+This file needs to be placed in Photoshop's filter plug-ins directory. The plug-ins directory should contain other .8bf files. More information about the NVidia filter and its uses can be found here:&#13;
+<br/><a href="/web/20061013023656/http://www.cyberloonies.com/bump-mapping.html" target="_blank">http://www.cyberloonies.com/bump-mapping.html</a>&#13;
+<br/><br/>
+Create a new folder called "custom/" in "Doom_III/base/textures/". This is where we will save our new textures for our material stages.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+Now for the fun stuff. Open up Photoshop and let's draw the stages.&#13;
+<br/><br/><span style="font-weight: bold">I. Draw a diffusemap texture</span>&#13;
+<br/><br/>
+This stage will serve primarily as color information for the material. This is basically just a standard RGB texture with dimensions based on powers of 2. The image should contain color and value information. A simple flat brown texture would work fine, but I whipped up this seamlessly tiling example by playing around with the drawing tools.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_d.jpg" border="0"/><br/><br/>
+Save your diffusemap as Doom_III/base/textures/custom/rockwall_d.tga&#13;
+<br/>
+By convention, diffusemap texture names are denoted with a "_d" suffix.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/> Make sure to save all your material textures as Targas because the Doom3 alpha leak doesn't seem to like Jpegs. For this tutorial, save all targas as 24-bit as we will not be making use of an alpha channel.&#13;
+<br/><br/><span style="font-weight: bold">II. Render a normalmap</span>&#13;
+<br/><br/>
+A normalmap contains per-pixel dynamic lighting information. Essentially, it uses the color information for each pixel to determine the direction from which a light source would highlight the pixel. A normalmap can be generated from an elevation map through NVidia's wonderful little NormalMapFilter Photoshop plug-in.&#13;
+<br/><br/>
+1. Create new 512x512 RGB image as the NormalMapFilter only works on images with dimensions based on powers of 2.&#13;
+<br/><br/>
+2. Select White as foreground and black as background&#13;
+<br/><br/>
+3. From the pulldown menus select: Filter -&gt; Render -&gt; Clouds&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_h.jpg" border="0"/><br/><br/>
+This cloud pattern serves as an elevation map for the NormalMapFilter plug-in. In the elevation map, white represents high spots on the texture and black represents low spots.&#13;
+<br/><br/>
+Now, if your image for some reason is not flattened, flatten it now:&#13;
+<br/>
+Layer -&gt; Flatten Image&#13;
+<br/><br/>
+4. Now apply NVidia's normalmap filter: Filter -&gt; nvTools -&gt; NormalMapFilter&#13;
+<br/><br/>
+You may get a warning message about channel selection and alphaheight. This is not a problem. Just click on OK.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_normalmap_filter.jpg" border="0"/><br/><br/>
+Use the settings depicted in the image above and then apply the normalmap color information to the image by by clicking OK.&#13;
+<br/><br/>
+5. Now resize your image to 256x256. A 512x512 normalmap is overkill in this instance.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_local.jpg" border="0"/><br/><br/>
+6. Save your normalmap as Doom_III/base/textures/custom/rockwall_local.tga&#13;
+<br/><br/>
+By convention, diffusemap texture names are denoted with a "_local" suffix. I have no idea why this is.&#13;
+<br/><br/><span style="font-weight: bold">III. Render a specularmap</span>&#13;
+<br/><br/>
+The specular map stage allows specular hightlights to be added to the material. Specular highlights give the surface a shiny, light-reflective look. In the case of our rock wall, it will give the rock a slightly wet look. Because the specularmap is an additive blend, light areas of the specularmap will create drastic specular highlights while dark areas will create none.&#13;
+<br/><br/>
+For now, lets just use simple fractal clouds to generate the specular map.&#13;
+<br/><br/>
+1. Create new 256x256 RGB image&#13;
+<br/><br/>
+2. Filter -&gt; Render -&gt; Clouds&#13;
+<br/><br/>
+3. Image -&gt; Adjust -&gt; Auto Contrast&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_s.jpg" border="0"/><br/><br/>
+The lighter regions of the texture will translate to shiny areas (specular highlights) on the final material.&#13;
+<br/><br/>
+4. Save your specularmap as Doom_III/base/textures/custom/rockwall_s.tga&#13;
+<br/><br/>
+By convention, diffusemap texture names are denoted with a "_s" suffix.&#13;
+<br/><br/><span style="font-weight: bold">IV. Create a DOOMEdit Preview image</span>&#13;
+<br/><br/>
+This final image will serve as a material preview when working in DOOMEdit.&#13;
+<br/><br/>
+1. Open up your newly create rockwall_local.tga and rockwall_d.tga images.&#13;
+<br/><br/>
+2. Create a new 256x256 RGB image and call it "rockwall_ed"&#13;
+<br/><br/>
+3. Copy the entire contents of rockwall_d.tga and paste it as a new layer into your new "rockwall_ed" image.&#13;
+<br/><br/>
+4. Copy the entire contents of rockwall_local.tga and paste it as a new layer into "rockwall_ed", on top of the layer you just pasted from rockwall_d.&#13;
+<br/><br/>
+5. Apply the following functions to the top layer of "rockwall_ed" (the layer containing the normalmap source).&#13;
+<br/><br/>
+a. Image -&gt; Adjust -&gt; Desaturate&#13;
+<br/>
+b. Image -&gt; Adjust -&gt; Auto Contrast&#13;
+<br/><br/>
+6. Now change the blending mode of the top layer from "Normal" to "Overlay". This is done from the "Layers" tab.&#13;
+<br/><br/>
+This should give you a shaded and colorized version of your material.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://div.dyndns.org/vector/rockwall/rockwall_ed.jpg" border="0"/><br/><br/>
+7. Save your editor image as Doom_III/base/textures/custom/rockwall_ed.tga&#13;
+<br/><br/>
+By convention, editor preview texture names are denoted with a "_ed" suffix. However, I have seen this convention broken in the Doom3 alpha materials.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+That wraps up our image creation. Now lets create a quick material script to pull all of our images into a great looking Doom3 material.&#13;
+<br/><br/>
+Open up your favorite text editing program and let's add the following code to a blank text file:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/custom/rockwall&#13;
+<br/>
+{&#13;
+<br/>
+    qer_editorimage  textures/custom/rockwall_ed.tga       // custom DOOMEdit material preview image&#13;
+<br/><br/>
+    diffusemap       textures/custom/rockwall_d.tga        // color and value information for the material&#13;
+<br/>
+    specularmap      textures/custom/rockwall_s.tga        // specular highlights&#13;
+<br/>
+    bumpmap          textures/custom/rockwall_local.tga    // normalmap for bumpmapped appearance&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now save your text file as Doom_III/base/materials/custom.mtr.&#13;
+<br/><br/>
+=================&#13;
+<br/><br/>
+We're all done with the material creation process. Now fire up DOOMEdit and place the new material on some brush faces. The material can be accessed from the Media Browser (shortcut: 'M' key) under "materials/textures/custom/rockwall".&#13;
+<br/><br/>
+After assigning the material to some brushes, bring up the Doom console and use "testmap yourmapname" to compile and test the map.&#13;
+<br/><br/>
+See the shiny highlights ingame? Those are the specular highlights that give the rocky surface a slippery wet look.&#13;
+<br/><br/><span style="font-weight: bold">Some final thoughts:</span>&#13;
+<br/><br/>
+DoomEdit handles materials much better than Radiant handled shaders. No more 'shaderlist.txt' registrations (w00t! <img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> ). DoomEdit automatically makes accessable every valid material found in any file in the 'materials' folder.&#13;
+<br/><br/><img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/><span style="font-weight: bold">IMPORTANT</span> <img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_exclaim.gif" alt="Exclamation" border="0"/><br/><br/>
+For those of you working on image creation and modification, I HIGHLY recommend turning Doom3's texture caching off. Do this at the console by typing the following:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">image_usePrecompressedTextures 0</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+By default, Doom3 is set up to create a cache of all images. This cache is generated the first time an image is used by the system. This cache doesn't automatically update if image modifications are made, therefore you will not see changes you make to images unless the cache is disabled. This really screwed with my head for quite some time. <img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_evil.gif" alt="Evil or Very Mad" border="0"/> Having caching turned off will increase load times, but it appears to be the only way for you to see image modifications reflected in the engine.<br/>_________________<br/><a href="/web/20061013023656/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023656im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023656/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146357" date="Posted: Sun Jun 18, 2006 9:09 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thank you very much Rich!<br/>_________________<br/><a href="/web/20061013023656/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023656im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013023656/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="146379" date="Posted: Sun Jun 18, 2006 4:07 pm    Post subject: "><author>wviperw</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sweet, thanks! Been looking for this. <img src="/web/20061013023656im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><span style="font-size: 11px; line-height: normal"><span style="font-style: italic">"My dream would be a mod where you wander around in a sunlit forest buzzing with insects that glow in the light, talking to friendly NPC people about their problems with gardening."</span> -der_ton</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p146338" date="Posted: Sun Jun 18, 2006 3:10 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Because the original thread is not accessable I have retrieved the cached copy of the original post from web.archive.org and restored it as best I can.
+<br /><br />The post follows...</div>]]></body></post><post id="p146339" date="Posted: Sun Jun 18, 2006 3:10 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Greeting fellow Doom haxors. I've put together the first installment of a two part semi-exhuastive study of Doom 3 material creation. Enjoy...
+<br /><br /><span style="font-weight: bold">Some housekeeping before we get started:</span>
+<br /><br />First of all, we will need to download NVidia's NormalMapFilter plug-in for Photoshop. The plug-in can be downloaded here:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225125507/http://developer.nvidia.com/docs/IO/1176/ATT/NormalMapFilter.8bf">http://developer.nvidia.com/docs/IO/117 ... Filter.8bf</a><!-- m -->
+<br /><br />This file needs to be placed in Photoshop's filter plug-ins directory. The plug-ins directory should contain other .8bf files. More information about the NVidia filter and its uses can be found here:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225125507/http://www.cyberloonies.com/bump-mapping.html">http://www.cyberloonies.com/bump-mapping.html</a><!-- m -->
+<br /><br />Create a new folder called "custom/" in "Doom_III/base/textures/". This is where we will save our new textures for our material stages.
+<br /><br />=================
+<br /><br />Now for the fun stuff. Open up Photoshop and let's draw the stages.
+<br /><br /><span style="font-weight: bold">I. Draw a diffusemap texture</span>
+<br /><br />This stage will serve primarily as color information for the material. This is basically just a standard RGB texture with dimensions based on powers of 2. The image should contain color and value information. A simple flat brown texture would work fine, but I whipped up this seamlessly tiling example by playing around with the drawing tools.
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_d.jpg" alt="Image" /><br /><br />Save your diffusemap as Doom_III/base/textures/custom/rockwall_d.tga
+<br />By convention, diffusemap texture names are denoted with a "_d" suffix.
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_exclaim.gif" alt=":!:" title="Exclamation" /> Make sure to save all your material textures as Targas because the Doom3 alpha leak doesn't seem to like Jpegs. For this tutorial, save all targas as 24-bit as we will not be making use of an alpha channel.
+<br /><br /><span style="font-weight: bold">II. Render a normalmap</span>
+<br /><br />A normalmap contains per-pixel dynamic lighting information. Essentially, it uses the color information for each pixel to determine the direction from which a light source would highlight the pixel. A normalmap can be generated from an elevation map through NVidia's wonderful little NormalMapFilter Photoshop plug-in.
+<br /><br />1. Create new 512x512 RGB image as the NormalMapFilter only works on images with dimensions based on powers of 2.
+<br /><br />2. Select White as foreground and black as background
+<br /><br />3. From the pulldown menus select: Filter -&gt; Render -&gt; Clouds
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_h.jpg" alt="Image" /><br /><br />This cloud pattern serves as an elevation map for the NormalMapFilter plug-in. In the elevation map, white represents high spots on the texture and black represents low spots.
+<br /><br />Now, if your image for some reason is not flattened, flatten it now:
+<br />Layer -&gt; Flatten Image
+<br /><br />4. Now apply NVidia's normalmap filter: Filter -&gt; nvTools -&gt; NormalMapFilter
+<br /><br />You may get a warning message about channel selection and alphaheight. This is not a problem. Just click on OK.
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_normalmap_filter.jpg" alt="Image" /><br /><br />Use the settings depicted in the image above and then apply the normalmap color information to the image by by clicking OK.
+<br /><br />5. Now resize your image to 256x256. A 512x512 normalmap is overkill in this instance.
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_local.jpg" alt="Image" /><br /><br />6. Save your normalmap as Doom_III/base/textures/custom/rockwall_local.tga
+<br /><br />By convention, diffusemap texture names are denoted with a "_local" suffix. I have no idea why this is.
+<br /><br /><span style="font-weight: bold">III. Render a specularmap</span>
+<br /><br />The specular map stage allows specular hightlights to be added to the material. Specular highlights give the surface a shiny, light-reflective look. In the case of our rock wall, it will give the rock a slightly wet look. Because the specularmap is an additive blend, light areas of the specularmap will create drastic specular highlights while dark areas will create none.
+<br /><br />For now, lets just use simple fractal clouds to generate the specular map.
+<br /><br />1. Create new 256x256 RGB image
+<br /><br />2. Filter -&gt; Render -&gt; Clouds
+<br /><br />3. Image -&gt; Adjust -&gt; Auto Contrast
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_s.jpg" alt="Image" /><br /><br />The lighter regions of the texture will translate to shiny areas (specular highlights) on the final material.
+<br /><br />4. Save your specularmap as Doom_III/base/textures/custom/rockwall_s.tga
+<br /><br />By convention, diffusemap texture names are denoted with a "_s" suffix.
+<br /><br /><span style="font-weight: bold">IV. Create a DOOMEdit Preview image</span>
+<br /><br />This final image will serve as a material preview when working in DOOMEdit.
+<br /><br />1. Open up your newly create rockwall_local.tga and rockwall_d.tga images.
+<br /><br />2. Create a new 256x256 RGB image and call it "rockwall_ed"
+<br /><br />3. Copy the entire contents of rockwall_d.tga and paste it as a new layer into your new "rockwall_ed" image.
+<br /><br />4. Copy the entire contents of rockwall_local.tga and paste it as a new layer into "rockwall_ed", on top of the layer you just pasted from rockwall_d.
+<br /><br />5. Apply the following functions to the top layer of "rockwall_ed" (the layer containing the normalmap source).
+<br /><br />a. Image -&gt; Adjust -&gt; Desaturate
+<br />b. Image -&gt; Adjust -&gt; Auto Contrast
+<br /><br />6. Now change the blending mode of the top layer from "Normal" to "Overlay". This is done from the "Layers" tab.
+<br /><br />This should give you a shaded and colorized version of your material.
+<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://div.dyndns.org/vector/rockwall/rockwall_ed.jpg" alt="Image" /><br /><br />7. Save your editor image as Doom_III/base/textures/custom/rockwall_ed.tga
+<br /><br />By convention, editor preview texture names are denoted with a "_ed" suffix. However, I have seen this convention broken in the Doom3 alpha materials.
+<br /><br />=================
+<br /><br />That wraps up our image creation. Now lets create a quick material script to pull all of our images into a great looking Doom3 material.
+<br /><br />Open up your favorite text editing program and let's add the following code to a blank text file:
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/custom/rockwall<br />{<br />    qer_editorimage  textures/custom/rockwall_ed.tga       // custom DOOMEdit material preview image<br /><br />    diffusemap       textures/custom/rockwall_d.tga        // color and value information for the material<br />    specularmap      textures/custom/rockwall_s.tga        // specular highlights<br />    bumpmap          textures/custom/rockwall_local.tga    // normalmap for bumpmapped appearance<br />}</div><br /><br />Now save your text file as Doom_III/base/materials/custom.mtr.<br /><br />=================<br /><br />We're all done with the material creation process. Now fire up DOOMEdit and place the new material on some brush faces. The material can be accessed from the Media Browser (shortcut: 'M' key) under "materials/textures/custom/rockwall".<br /><br />After assigning the material to some brushes, bring up the Doom console and use "testmap yourmapname" to compile and test the map.<br /><br />See the shiny highlights ingame? Those are the specular highlights that give the rocky surface a slippery wet look.<br /><br /><span style="font-weight: bold">Some final thoughts:</span><br /><br />DoomEdit handles materials much better than Radiant handled shaders. No more 'shaderlist.txt' registrations (w00t! <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> ). DoomEdit automatically makes accessable every valid material found in any file in the 'materials' folder.<br /><br /><img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_exclaim.gif" alt=":!:" title="Exclamation" /><span style="font-weight: bold">IMPORTANT</span> <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_exclaim.gif" alt=":!:" title="Exclamation" /><br /><br />For those of you working on image creation and modification, I HIGHLY recommend turning Doom3's texture caching off. Do this at the console by typing the following:<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">image_usePrecompressedTextures 0</div>
+<br /><br />By default, Doom3 is set up to create a cache of all images. This cache is generated the first time an image is used by the system. This cache doesn't automatically update if image modifications are made, therefore you will not see changes you make to images unless the cache is disabled. This really screwed with my head for quite some time. <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_evil.gif" alt=":evil:" title="Evil or Very Mad" /> Having caching turned off will increase load times, but it appears to be the only way for you to see image modifications reflected in the engine.</div>]]></body></post><post id="p146357" date="Posted: Sun Jun 18, 2006 10:09 am "><author>BNA!</author><body><![CDATA[<div class="postbody">Thank you very much Rich!</div>]]></body></post><post id="p146379" date="Posted: Sun Jun 18, 2006 5:07 pm "><author>wviperw</author><body><![CDATA[<div class="postbody">Sweet, thanks! Been looking for this. <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p203287" date="Posted: Thu Aug 07, 2008 4:29 pm "><author>bashport</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"><img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_exclaim.gif" alt=":!:" title="Exclamation" /><span style="font-weight: bold">IMPORTANT</span> <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_exclaim.gif" alt=":!:" title="Exclamation" /><br /><br />For those of you working on image creation and modification, I HIGHLY recommend turning Doom3's texture caching off. Do this at the console by typing the following:<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">image_usePrecompressedTextures 0</div><br /><br />By default, Doom3 is set up to create a cache of all images. This cache is generated the first time an image is used by the system. This cache doesn't automatically update if image modifications are made, therefore you will not see changes you make to images unless the cache is disabled. This really screwed with my head for quite some time. <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_evil.gif" alt=":evil:" title="Evil or Very Mad" /> Having caching turned off will increase load times, but it appears to be the only way for you to see image modifications reflected in the engine.</div><br /><br /><br />If image_usePrecompressedTextures is set to zero, the engine won't use dds files<br /><br /><span style="font-weight: bold">This</span> screwed with <span style="font-weight: bold">my</span> head for quite some time  <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /></div>]]></body></post><post id="p213938" date="Posted: Fri Apr 24, 2009 3:25 am "><author>Pectabyte</author><body><![CDATA[<div class="postbody">Here is a stupid question but I have to ask it...<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Create a new folder called "custom/" in "Doom_III/base/textures/". This is where we will save our new textures for our material stages. </div><br /><br />Does it have to be named custom or can it be named after your map?</div>]]></body></post><post id="p213942" date="Posted: Fri Apr 24, 2009 5:34 am "><author>6th Venom</author><body><![CDATA[<div class="postbody">No it don't have to, it's an exemple.<br />Use a specific name of you to be sure there will be no folder's name problem with vanilla game materials/textures:<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">[yourDoom3GameDirectory]/game/textures/Pectabyte/</div> or <div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">[yourDoom3GameDirectory]/[yourModName]/textures/Pectabyte/</div>if you're using a a mod folder.<br /><br />In the two cases, your material's images will point to <span style="font-style: italic">textures/Pectabyte/blablabla.tga</span>  <img src="https://web.archive.org/web/20101225125507im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post></posts></thread></xml>

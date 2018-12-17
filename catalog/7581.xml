@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="7581"><title>developing new tool D3modman</title><posts><post id="p64955" date="Posted: Sat Nov 27, 2004 11:22 pm "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">hi.
+<br />i'll explain more bits detail about the tool i had implied at URL Redirection ... topic.
+<br /><br />i'm developing new tool D3modman.
+<br />D3modman will verify your Doom3 installation and show what required files are missing or hidden by influence of numerious installed MODs.
+<br />D3modman's behavior is based on knowledge of numerious MOD verfication info.
+<br />the knowledge is scripted by several xml files.
+<br /><br />one screenshot from developing ver is avail:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225030832/http://homepage3.nifty.com/kkdf/images/D3modman.20041128.0604.01.png">http://homepage3.nifty.com/kkdf/images/ ... 604.01.png</a><!-- m -->
+<br /><br /><br /><span style="text-decoration: underline">1. why verification for Doom 3 installation?</span>
+<br /><br />it is NOT required to verify your Doom 3 installation by D3modman AT ALL in ANY REASON.
+<br />D3modman will just provide you a way to make sure a certain MOD MAY work correctly.
+<br /><br />the problem is that, there is latent possibility that any files in pk4 file, distributed by a MOD, may be overridden by other pk4 file supplied by other MOD.
+<br /><br />for example:
+<br />a file "def/weapon_soulcube.def" is in pak000.pk4.
+<br />ZZ-DEditCleanDefsV1.pk4, the part of entity def cleanup pakage developed by by Eutectic, also contains "def/weapon_soulcube.def".
+<br />if you install def cleanup package, your original "def/weapon_soulcube.def" file distributed by id Software will be overridden.
+<br />because the pk4 name "ZZ-DEditCleanDefsV1.pk4" precedes "pak000.pk4" by filesystem inside Doom 3. (the first character "Z" precedes an one "p".)
+<br />so, the collided file "def/weapon_soulcube.def" is replaced with "ZZ-DEditCleanDefsV1.pk4".
+<br /><br />as well, when you install new MOD to your Doom 3 installation, can you make sure that any files won't be overriden by already installed MODs?
+<br />if any unexcepted collision exists, Doom 3 may imply you the problem by displaying a message line such as "entity type monster_xxx not defined".
+<br /><br />D3modman will help you to make sure existence of any file collisions.
+<br /><br />* i don't say def cleanup package may cause any problems by file collision, explicitly. i just mentioned that the package just overrides some files contained in original Doom 3 instllation.
+<br />* although i sometimes say such as "the files are overriden", the real files in your folder will NOT be overriden. Doom 3 engine formally overrides the files inside engine while game play.
+<br /><br /><span style="text-decoration: underline">2. how to verify</span>
+<br /><br />it is easy.
+<br />to verify a certain MOD is ready and activated, satisfy all of next criteria.
+<br />a) required files (such as .map/.proc/.mtr), which are distributed by MOD author, stay on your Doom 3 base folder or other MOD folder.
+<br />b) their files are not overridden by indirect way with other MOD installation. indirect way means latent dangerous possibility that a pk4 file from other MOD may override any required files for target MOD.
+<br /><br /><span style="text-decoration: underline">3. generally, what's xml</span>
+<br /><br />XML is a text file format, like HTML, recommended by w3c.
+<br /><br />XML's main purpose is to script various kind of data and to exchange them between applications.
+<br /><br />next column page has easy introduce about XML and good comparation between XML and HTML.
+<br /><br />An XML primer
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225030832/http://studio.tellme.com/general/xmlprimer.html">http://studio.tellme.com/general/xmlprimer.html</a><!-- m -->
+<br /><br /><span style="text-decoration: underline">4. format of xml for D3modman</span>
+<br /><span style="text-decoration: underline">4.1. terms</span>
+<br /><br />i use the words "<span style="font-weight: bold">ModMan xml</span>" (unofficial Doom 3 MOD managing, xml format) to point a xml format used by D3modman.
+<br /><br />i sometimes use "<span style="font-weight: bold">ModMan app</span>" to represent a program which uses ModMan xml.
+<br /><br /><span style="text-decoration: underline">4.2. root objects in ModMan xml</span>
+<br /><br />each ModMan xml has a root element "site".
+<br /><br />site contains 1 or more root objects recognized by ModMan app.
+<br /><br />currently, 3 known root object types are: package, deployment, distribution objects
+<br /><br /><span style="text-decoration: underline">4.3. 3 name types in ModMan app</span>
+<br /><br />each object has distinct names so that you can identify target object.
+<br /><br />3 name types are: myname, localname, qname
+<br /><br />myname is a name scripted in ModMan xml
+<br /><br />myname also has a concept local name/global name.
+<br />local is used by a certain ModMan xml. local name cannot be referenced by other ModMan xml.
+<br />for example, to represent a "xxxyyyzzz MOD v1.0" package.
+<br /><br />global is used by many ModMan xml. global name can be referenced by 1 or many other ModMan xml.
+<br />for example, to represent a "Doom3 v1.0" package.
+<br />global one is used by dependency concept, some package object in any ModMan xml may point any global names to describe "requirement".
+<br /><br />myname also has namespace concept like following format.
+<br />a) "my package name"
+<br />b) "::my package name"
+<br />c) "my namespace::my package name"
+<br /><br />a) and b) represents a local package name format.
+<br />c) represents a global package name format.
+<br /><br />localname is a kind of qualified name displayed by ModMan app
+<br /><br />qname is a qualified name internally used by ModMan app
+<br /><br />sample 1a: if you have a name "my_package" for package object in test.xml, 3 names should be,
+<br />myname     = "my_package"
+<br />localname -&gt; "test.xml::my_package"
+<br />qname     -&gt; "Package_t::test.xml::my_package"
+<br /><br />sample 1b: it is good idea to include your name as author into myname as namespace.
+<br />myname     = "author name::my_package"
+<br />localname -&gt; "author name::my_package"
+<br />qname     -&gt; "Package_t::author name::my_package"
+<br /><br /><span style="text-decoration: underline">4.4. object tree in ModMan xml</span>
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">+ site<br />|<br />+--+ deployment ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ distribution ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ package ...<br />   |<br />   +--+ header ...<br /></div><br /><br />... means the element repeats 1 or more times.<br /><br /><span style="text-decoration: underline">4.5. package root object</span><br /><br />pacakge object represents a "MOD".<br />package also points deployment and distribution objects to represent composition elements.<br /><br />package element has next format<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;package<br />   deployment   ="deployment_name"<br />   disrtibution ="disrtibution_name"<br />   favicon      ="ico_file_name"<br />   game_dir     ="base_or_your_mod_folder"<br />   name         ="package_name"<br />&gt;<br />   &lt;header ...&gt;&lt;/header&gt; ...<br />&lt;/package&gt;</div><br /><br /><span style="text-decoration: underline">4.6. deployment root object</span><br /><br />deployment object represents required files to run on Doom 3 as a MOD.<br />deployment element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;deployment<br />   name="deployment_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/deployment&gt;</div><br /><br /><span style="text-decoration: underline">4.7. distribution root object</span><br /><br />distribution object represents what file do you distribute with your MOD package (e.g. files in .zip file).<br />distribution element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;distribution<br />   name="distribution_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/distribution&gt;</div><br /><br /><span style="text-decoration: underline">4.8. file object</span><br /><br />file object represents a file entity.<br />if a file object in;<br />... deployment, it represents a file recognized by Doom 3 engine. name format is like "def/player.def".<br />... distribution, it represents a file in your drive. such as "doom3.exe", "base/pak000.pk4", "base/game00.pk4".<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;file<br />   name        ="filename"<br />   hash_CRC32  ="checksum"<br />   hash_MD5    ="strong_hash"<br />   size        ="filesize"<br />   mtime       ="file_modified_time"<br />   cl_severe   ="needed_file_at_client_side"<br />   sv_severe   ="needed_file_at_server_side"<br />   name_prefix ="base_or_your_mod_folder"<br />&gt;<br />&lt;/file&gt;</div>
+<br /><br />"name" is file name. format is depends on parent element (distribution, deployment).
+<br />"hash_CRC32" has 8 digit hexadecimal integer form.
+<br />"hash_MD5" has 32 digit hexadecimal integer form.
+<br />"size" has interger format.
+<br />"mtime" has date time format like "YYYY/MM/DD hh:nn:ss".
+<br />"cl_severe" is "0" or "1".
+<br />"sv_severe" is "0" or "1"
+<br />"name_prefix" is like "base" or "mymod". folder name in your Doom 3 install folder.
+<br /><br />i'll complete this document once more later...
+<br /><br />EDIT: section 3 and 4 updated (29 Nov).</div>]]></body></post><post id="p65027" date="Posted: Sun Nov 28, 2004 3:59 pm "><author>kat</author><body><![CDATA[<div class="postbody">Nice tool. So based on what you're saying even though you have your mod files in your own folder there's still the potential for items to be over written?
+<br /><br />I'll move this to the D3mods thread where it'll get more notice.</div>]]></body></post><post id="p65160" date="Posted: Mon Nov 29, 2004 8:29 am "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">thanks kat.
+<br />about goal/solution of the tool, you points well!
+<br /><br />i had 2 motives to start this one.
+<br /><br /><span style="text-decoration: underline">1. to solve potential over written issue for items</span>
+<br />as kat mentioned, and as you know, "overwritten" issue is difficult potential problem, when you install new MOD.
+<br /><br /><span style="text-decoration: underline">2. to try unknown published MOD for you</span>
+<br />thru this chance, there will be a big database, which has list of numerious MOD packages.
+<br />it will be very fun to search various kind of MOD you don't try yet (map MOD, weapon MOD, ...).</div>]]></body></post><post id="p75253" date="Posted: Mon Jan 31, 2005 10:08 am "><author>freebase</author><body><![CDATA[<div class="postbody">Wow, very nice. Super damn useful, I was thinking it would be nice to have something check files like this for me for quite some time now.</div>]]></body></post><post id="p134766" date="Posted: Sun Feb 26, 2006 10:22 pm "><author>&gt;~runaway~&lt;</author><body><![CDATA[<div class="postbody">Very useful tool for me and explained very detail  <img src="https://web.archive.org/web/20101225030832im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /> Nice one!  <img src="https://web.archive.org/web/20101225030832im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post><post id="p64955" date="Posted: Sat Nov 27, 2004 11:22 pm "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">hi.
+<br />i'll explain more bits detail about the tool i had implied at URL Redirection ... topic.
+<br /><br />i'm developing new tool D3modman.
+<br />D3modman will verify your Doom3 installation and show what required files are missing or hidden by influence of numerious installed MODs.
+<br />D3modman's behavior is based on knowledge of numerious MOD verfication info.
+<br />the knowledge is scripted by several xml files.
+<br /><br />one screenshot from developing ver is avail:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225031256/http://homepage3.nifty.com/kkdf/images/D3modman.20041128.0604.01.png">http://homepage3.nifty.com/kkdf/images/ ... 604.01.png</a><!-- m -->
+<br /><br /><br /><span style="text-decoration: underline">1. why verification for Doom 3 installation?</span>
+<br /><br />it is NOT required to verify your Doom 3 installation by D3modman AT ALL in ANY REASON.
+<br />D3modman will just provide you a way to make sure a certain MOD MAY work correctly.
+<br /><br />the problem is that, there is latent possibility that any files in pk4 file, distributed by a MOD, may be overridden by other pk4 file supplied by other MOD.
+<br /><br />for example:
+<br />a file "def/weapon_soulcube.def" is in pak000.pk4.
+<br />ZZ-DEditCleanDefsV1.pk4, the part of entity def cleanup pakage developed by by Eutectic, also contains "def/weapon_soulcube.def".
+<br />if you install def cleanup package, your original "def/weapon_soulcube.def" file distributed by id Software will be overridden.
+<br />because the pk4 name "ZZ-DEditCleanDefsV1.pk4" precedes "pak000.pk4" by filesystem inside Doom 3. (the first character "Z" precedes an one "p".)
+<br />so, the collided file "def/weapon_soulcube.def" is replaced with "ZZ-DEditCleanDefsV1.pk4".
+<br /><br />as well, when you install new MOD to your Doom 3 installation, can you make sure that any files won't be overriden by already installed MODs?
+<br />if any unexcepted collision exists, Doom 3 may imply you the problem by displaying a message line such as "entity type monster_xxx not defined".
+<br /><br />D3modman will help you to make sure existence of any file collisions.
+<br /><br />* i don't say def cleanup package may cause any problems by file collision, explicitly. i just mentioned that the package just overrides some files contained in original Doom 3 instllation.
+<br />* although i sometimes say such as "the files are overriden", the real files in your folder will NOT be overriden. Doom 3 engine formally overrides the files inside engine while game play.
+<br /><br /><span style="text-decoration: underline">2. how to verify</span>
+<br /><br />it is easy.
+<br />to verify a certain MOD is ready and activated, satisfy all of next criteria.
+<br />a) required files (such as .map/.proc/.mtr), which are distributed by MOD author, stay on your Doom 3 base folder or other MOD folder.
+<br />b) their files are not overridden by indirect way with other MOD installation. indirect way means latent dangerous possibility that a pk4 file from other MOD may override any required files for target MOD.
+<br /><br /><span style="text-decoration: underline">3. generally, what's xml</span>
+<br /><br />XML is a text file format, like HTML, recommended by w3c.
+<br /><br />XML's main purpose is to script various kind of data and to exchange them between applications.
+<br /><br />next column page has easy introduce about XML and good comparation between XML and HTML.
+<br /><br />An XML primer
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225031256/http://studio.tellme.com/general/xmlprimer.html">http://studio.tellme.com/general/xmlprimer.html</a><!-- m -->
+<br /><br /><span style="text-decoration: underline">4. format of xml for D3modman</span>
+<br /><span style="text-decoration: underline">4.1. terms</span>
+<br /><br />i use the words "<span style="font-weight: bold">ModMan xml</span>" (unofficial Doom 3 MOD managing, xml format) to point a xml format used by D3modman.
+<br /><br />i sometimes use "<span style="font-weight: bold">ModMan app</span>" to represent a program which uses ModMan xml.
+<br /><br /><span style="text-decoration: underline">4.2. root objects in ModMan xml</span>
+<br /><br />each ModMan xml has a root element "site".
+<br /><br />site contains 1 or more root objects recognized by ModMan app.
+<br /><br />currently, 3 known root object types are: package, deployment, distribution objects
+<br /><br /><span style="text-decoration: underline">4.3. 3 name types in ModMan app</span>
+<br /><br />each object has distinct names so that you can identify target object.
+<br /><br />3 name types are: myname, localname, qname
+<br /><br />myname is a name scripted in ModMan xml
+<br /><br />myname also has a concept local name/global name.
+<br />local is used by a certain ModMan xml. local name cannot be referenced by other ModMan xml.
+<br />for example, to represent a "xxxyyyzzz MOD v1.0" package.
+<br /><br />global is used by many ModMan xml. global name can be referenced by 1 or many other ModMan xml.
+<br />for example, to represent a "Doom3 v1.0" package.
+<br />global one is used by dependency concept, some package object in any ModMan xml may point any global names to describe "requirement".
+<br /><br />myname also has namespace concept like following format.
+<br />a) "my package name"
+<br />b) "::my package name"
+<br />c) "my namespace::my package name"
+<br /><br />a) and b) represents a local package name format.
+<br />c) represents a global package name format.
+<br /><br />localname is a kind of qualified name displayed by ModMan app
+<br /><br />qname is a qualified name internally used by ModMan app
+<br /><br />sample 1a: if you have a name "my_package" for package object in test.xml, 3 names should be,
+<br />myname     = "my_package"
+<br />localname -&gt; "test.xml::my_package"
+<br />qname     -&gt; "Package_t::test.xml::my_package"
+<br /><br />sample 1b: it is good idea to include your name as author into myname as namespace.
+<br />myname     = "author name::my_package"
+<br />localname -&gt; "author name::my_package"
+<br />qname     -&gt; "Package_t::author name::my_package"
+<br /><br /><span style="text-decoration: underline">4.4. object tree in ModMan xml</span>
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">+ site<br />|<br />+--+ deployment ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ distribution ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ package ...<br />   |<br />   +--+ header ...<br /></div><br /><br />... means the element repeats 1 or more times.<br /><br /><span style="text-decoration: underline">4.5. package root object</span><br /><br />pacakge object represents a "MOD".<br />package also points deployment and distribution objects to represent composition elements.<br /><br />package element has next format<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;package<br />   deployment   ="deployment_name"<br />   disrtibution ="disrtibution_name"<br />   favicon      ="ico_file_name"<br />   game_dir     ="base_or_your_mod_folder"<br />   name         ="package_name"<br />&gt;<br />   &lt;header ...&gt;&lt;/header&gt; ...<br />&lt;/package&gt;</div><br /><br /><span style="text-decoration: underline">4.6. deployment root object</span><br /><br />deployment object represents required files to run on Doom 3 as a MOD.<br />deployment element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;deployment<br />   name="deployment_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/deployment&gt;</div><br /><br /><span style="text-decoration: underline">4.7. distribution root object</span><br /><br />distribution object represents what file do you distribute with your MOD package (e.g. files in .zip file).<br />distribution element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;distribution<br />   name="distribution_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/distribution&gt;</div><br /><br /><span style="text-decoration: underline">4.8. file object</span><br /><br />file object represents a file entity.<br />if a file object in;<br />... deployment, it represents a file recognized by Doom 3 engine. name format is like "def/player.def".<br />... distribution, it represents a file in your drive. such as "doom3.exe", "base/pak000.pk4", "base/game00.pk4".<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;file<br />   name        ="filename"<br />   hash_CRC32  ="checksum"<br />   hash_MD5    ="strong_hash"<br />   size        ="filesize"<br />   mtime       ="file_modified_time"<br />   cl_severe   ="needed_file_at_client_side"<br />   sv_severe   ="needed_file_at_server_side"<br />   name_prefix ="base_or_your_mod_folder"<br />&gt;<br />&lt;/file&gt;</div>
+<br /><br />"name" is file name. format is depends on parent element (distribution, deployment).
+<br />"hash_CRC32" has 8 digit hexadecimal integer form.
+<br />"hash_MD5" has 32 digit hexadecimal integer form.
+<br />"size" has interger format.
+<br />"mtime" has date time format like "YYYY/MM/DD hh:nn:ss".
+<br />"cl_severe" is "0" or "1".
+<br />"sv_severe" is "0" or "1"
+<br />"name_prefix" is like "base" or "mymod". folder name in your Doom 3 install folder.
+<br /><br />i'll complete this document once more later...
+<br /><br />EDIT: section 3 and 4 updated (29 Nov).</div>]]></body></post><post id="p65027" date="Posted: Sun Nov 28, 2004 3:59 pm "><author>kat</author><body><![CDATA[<div class="postbody">Nice tool. So based on what you're saying even though you have your mod files in your own folder there's still the potential for items to be over written?
+<br /><br />I'll move this to the D3mods thread where it'll get more notice.</div>]]></body></post><post id="p65160" date="Posted: Mon Nov 29, 2004 8:29 am "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">thanks kat.
+<br />about goal/solution of the tool, you points well!
+<br /><br />i had 2 motives to start this one.
+<br /><br /><span style="text-decoration: underline">1. to solve potential over written issue for items</span>
+<br />as kat mentioned, and as you know, "overwritten" issue is difficult potential problem, when you install new MOD.
+<br /><br /><span style="text-decoration: underline">2. to try unknown published MOD for you</span>
+<br />thru this chance, there will be a big database, which has list of numerious MOD packages.
+<br />it will be very fun to search various kind of MOD you don't try yet (map MOD, weapon MOD, ...).</div>]]></body></post><post id="p75253" date="Posted: Mon Jan 31, 2005 10:08 am "><author>freebase</author><body><![CDATA[<div class="postbody">Wow, very nice. Super damn useful, I was thinking it would be nice to have something check files like this for me for quite some time now.</div>]]></body></post><post id="p134766" date="Posted: Sun Feb 26, 2006 10:22 pm "><author>&gt;~runaway~&lt;</author><body><![CDATA[<div class="postbody">Very useful tool for me and explained very detail  <img src="https://web.archive.org/web/20101225031256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /> Nice one!  <img src="https://web.archive.org/web/20101225031256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post><post id="p64955" date="Posted: Sat Nov 27, 2004 11:22 pm "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">hi.
+<br />i'll explain more bits detail about the tool i had implied at URL Redirection ... topic.
+<br /><br />i'm developing new tool D3modman.
+<br />D3modman will verify your Doom3 installation and show what required files are missing or hidden by influence of numerious installed MODs.
+<br />D3modman's behavior is based on knowledge of numerious MOD verfication info.
+<br />the knowledge is scripted by several xml files.
+<br /><br />one screenshot from developing ver is avail:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225031256/http://homepage3.nifty.com/kkdf/images/D3modman.20041128.0604.01.png">http://homepage3.nifty.com/kkdf/images/ ... 604.01.png</a><!-- m -->
+<br /><br /><br /><span style="text-decoration: underline">1. why verification for Doom 3 installation?</span>
+<br /><br />it is NOT required to verify your Doom 3 installation by D3modman AT ALL in ANY REASON.
+<br />D3modman will just provide you a way to make sure a certain MOD MAY work correctly.
+<br /><br />the problem is that, there is latent possibility that any files in pk4 file, distributed by a MOD, may be overridden by other pk4 file supplied by other MOD.
+<br /><br />for example:
+<br />a file "def/weapon_soulcube.def" is in pak000.pk4.
+<br />ZZ-DEditCleanDefsV1.pk4, the part of entity def cleanup pakage developed by by Eutectic, also contains "def/weapon_soulcube.def".
+<br />if you install def cleanup package, your original "def/weapon_soulcube.def" file distributed by id Software will be overridden.
+<br />because the pk4 name "ZZ-DEditCleanDefsV1.pk4" precedes "pak000.pk4" by filesystem inside Doom 3. (the first character "Z" precedes an one "p".)
+<br />so, the collided file "def/weapon_soulcube.def" is replaced with "ZZ-DEditCleanDefsV1.pk4".
+<br /><br />as well, when you install new MOD to your Doom 3 installation, can you make sure that any files won't be overriden by already installed MODs?
+<br />if any unexcepted collision exists, Doom 3 may imply you the problem by displaying a message line such as "entity type monster_xxx not defined".
+<br /><br />D3modman will help you to make sure existence of any file collisions.
+<br /><br />* i don't say def cleanup package may cause any problems by file collision, explicitly. i just mentioned that the package just overrides some files contained in original Doom 3 instllation.
+<br />* although i sometimes say such as "the files are overriden", the real files in your folder will NOT be overriden. Doom 3 engine formally overrides the files inside engine while game play.
+<br /><br /><span style="text-decoration: underline">2. how to verify</span>
+<br /><br />it is easy.
+<br />to verify a certain MOD is ready and activated, satisfy all of next criteria.
+<br />a) required files (such as .map/.proc/.mtr), which are distributed by MOD author, stay on your Doom 3 base folder or other MOD folder.
+<br />b) their files are not overridden by indirect way with other MOD installation. indirect way means latent dangerous possibility that a pk4 file from other MOD may override any required files for target MOD.
+<br /><br /><span style="text-decoration: underline">3. generally, what's xml</span>
+<br /><br />XML is a text file format, like HTML, recommended by w3c.
+<br /><br />XML's main purpose is to script various kind of data and to exchange them between applications.
+<br /><br />next column page has easy introduce about XML and good comparation between XML and HTML.
+<br /><br />An XML primer
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225031256/http://studio.tellme.com/general/xmlprimer.html">http://studio.tellme.com/general/xmlprimer.html</a><!-- m -->
+<br /><br /><span style="text-decoration: underline">4. format of xml for D3modman</span>
+<br /><span style="text-decoration: underline">4.1. terms</span>
+<br /><br />i use the words "<span style="font-weight: bold">ModMan xml</span>" (unofficial Doom 3 MOD managing, xml format) to point a xml format used by D3modman.
+<br /><br />i sometimes use "<span style="font-weight: bold">ModMan app</span>" to represent a program which uses ModMan xml.
+<br /><br /><span style="text-decoration: underline">4.2. root objects in ModMan xml</span>
+<br /><br />each ModMan xml has a root element "site".
+<br /><br />site contains 1 or more root objects recognized by ModMan app.
+<br /><br />currently, 3 known root object types are: package, deployment, distribution objects
+<br /><br /><span style="text-decoration: underline">4.3. 3 name types in ModMan app</span>
+<br /><br />each object has distinct names so that you can identify target object.
+<br /><br />3 name types are: myname, localname, qname
+<br /><br />myname is a name scripted in ModMan xml
+<br /><br />myname also has a concept local name/global name.
+<br />local is used by a certain ModMan xml. local name cannot be referenced by other ModMan xml.
+<br />for example, to represent a "xxxyyyzzz MOD v1.0" package.
+<br /><br />global is used by many ModMan xml. global name can be referenced by 1 or many other ModMan xml.
+<br />for example, to represent a "Doom3 v1.0" package.
+<br />global one is used by dependency concept, some package object in any ModMan xml may point any global names to describe "requirement".
+<br /><br />myname also has namespace concept like following format.
+<br />a) "my package name"
+<br />b) "::my package name"
+<br />c) "my namespace::my package name"
+<br /><br />a) and b) represents a local package name format.
+<br />c) represents a global package name format.
+<br /><br />localname is a kind of qualified name displayed by ModMan app
+<br /><br />qname is a qualified name internally used by ModMan app
+<br /><br />sample 1a: if you have a name "my_package" for package object in test.xml, 3 names should be,
+<br />myname     = "my_package"
+<br />localname -&gt; "test.xml::my_package"
+<br />qname     -&gt; "Package_t::test.xml::my_package"
+<br /><br />sample 1b: it is good idea to include your name as author into myname as namespace.
+<br />myname     = "author name::my_package"
+<br />localname -&gt; "author name::my_package"
+<br />qname     -&gt; "Package_t::author name::my_package"
+<br /><br /><span style="text-decoration: underline">4.4. object tree in ModMan xml</span>
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">+ site<br />|<br />+--+ deployment ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ distribution ...<br />|  |<br />|  +--+ file ...<br />|<br />+--+ package ...<br />   |<br />   +--+ header ...<br /></div><br /><br />... means the element repeats 1 or more times.<br /><br /><span style="text-decoration: underline">4.5. package root object</span><br /><br />pacakge object represents a "MOD".<br />package also points deployment and distribution objects to represent composition elements.<br /><br />package element has next format<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;package<br />   deployment   ="deployment_name"<br />   disrtibution ="disrtibution_name"<br />   favicon      ="ico_file_name"<br />   game_dir     ="base_or_your_mod_folder"<br />   name         ="package_name"<br />&gt;<br />   &lt;header ...&gt;&lt;/header&gt; ...<br />&lt;/package&gt;</div><br /><br /><span style="text-decoration: underline">4.6. deployment root object</span><br /><br />deployment object represents required files to run on Doom 3 as a MOD.<br />deployment element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;deployment<br />   name="deployment_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/deployment&gt;</div><br /><br /><span style="text-decoration: underline">4.7. distribution root object</span><br /><br />distribution object represents what file do you distribute with your MOD package (e.g. files in .zip file).<br />distribution element includes 1 or more file objects.<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;distribution<br />   name="distribution_name"<br />&gt;<br />   &lt;file ... &gt;&lt;/file&gt; ...<br />&lt;/distribution&gt;</div><br /><br /><span style="text-decoration: underline">4.8. file object</span><br /><br />file object represents a file entity.<br />if a file object in;<br />... deployment, it represents a file recognized by Doom 3 engine. name format is like "def/player.def".<br />... distribution, it represents a file in your drive. such as "doom3.exe", "base/pak000.pk4", "base/game00.pk4".<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">&lt;file<br />   name        ="filename"<br />   hash_CRC32  ="checksum"<br />   hash_MD5    ="strong_hash"<br />   size        ="filesize"<br />   mtime       ="file_modified_time"<br />   cl_severe   ="needed_file_at_client_side"<br />   sv_severe   ="needed_file_at_server_side"<br />   name_prefix ="base_or_your_mod_folder"<br />&gt;<br />&lt;/file&gt;</div>
+<br /><br />"name" is file name. format is depends on parent element (distribution, deployment).
+<br />"hash_CRC32" has 8 digit hexadecimal integer form.
+<br />"hash_MD5" has 32 digit hexadecimal integer form.
+<br />"size" has interger format.
+<br />"mtime" has date time format like "YYYY/MM/DD hh:nn:ss".
+<br />"cl_severe" is "0" or "1".
+<br />"sv_severe" is "0" or "1"
+<br />"name_prefix" is like "base" or "mymod". folder name in your Doom 3 install folder.
+<br /><br />i'll complete this document once more later...
+<br /><br />EDIT: section 3 and 4 updated (29 Nov).</div>]]></body></post><post id="p65027" date="Posted: Sun Nov 28, 2004 3:59 pm "><author>kat</author><body><![CDATA[<div class="postbody">Nice tool. So based on what you're saying even though you have your mod files in your own folder there's still the potential for items to be over written?
+<br /><br />I'll move this to the D3mods thread where it'll get more notice.</div>]]></body></post><post id="p65160" date="Posted: Mon Nov 29, 2004 8:29 am "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">thanks kat.
+<br />about goal/solution of the tool, you points well!
+<br /><br />i had 2 motives to start this one.
+<br /><br /><span style="text-decoration: underline">1. to solve potential over written issue for items</span>
+<br />as kat mentioned, and as you know, "overwritten" issue is difficult potential problem, when you install new MOD.
+<br /><br /><span style="text-decoration: underline">2. to try unknown published MOD for you</span>
+<br />thru this chance, there will be a big database, which has list of numerious MOD packages.
+<br />it will be very fun to search various kind of MOD you don't try yet (map MOD, weapon MOD, ...).</div>]]></body></post><post id="p75253" date="Posted: Mon Jan 31, 2005 10:08 am "><author>freebase</author><body><![CDATA[<div class="postbody">Wow, very nice. Super damn useful, I was thinking it would be nice to have something check files like this for me for quite some time now.</div>]]></body></post><post id="p134766" date="Posted: Sun Feb 26, 2006 10:22 pm "><author>&gt;~runaway~&lt;</author><body><![CDATA[<div class="postbody">Very useful tool for me and explained very detail  <img src="https://web.archive.org/web/20101225031256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /> Nice one!  <img src="https://web.archive.org/web/20101225031256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_rolleyes.gif" alt=":roll:" title="Rolling Eyes" /></div>]]></body></post></posts></thread></xml>

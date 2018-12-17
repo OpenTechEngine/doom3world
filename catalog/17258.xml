@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17258"><title>flares on moveables</title><posts><post id="157671" date="Posted: Thu Sep 21, 2006 5:00 am    Post subject: flares on moveables"><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey guys im sure you can help me out&#13;
+<br/>
+i want to make some flares on a model so it will moveable&#13;
+<br/>
+i got it working easy by just giving some quads the flare shader easy&#13;
+<br/>
+works great but the problems that its full white&#13;
+<br/>
+so you normaly change the brightness/color from the light but this doesnt have a light but everything i do to the MTR wont change the brightness&#13;
+<br/>
+like normaly this works fine for brushes but on a model it doesnt listen to rgb&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/env/pixfluff_flare&#13;
+<br/>
+{&#13;
+<br/>
+   sort far&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   translucent&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   deform   flare 17&#13;
+<br/>
+   {&#13;
+<br/>
+      blend    add&#13;
+<br/>
+      map   _quadratic&#13;
+<br/>
+      rgb   0.2&#13;
+<br/>
+      colored&#13;
+<br/>
+      vertexcolor&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+so no matter what i set rgb to it stays pure white and there is no _quadratic texture anywhere and i tried a bunch of stuff already but no luck&#13;
+<br/>
+im happy with how it works but when its so white you cant see through it and its ugly&#13;
+<br/>
+anyone can figure this out you will be awesome<br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013060639im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157675" date="Posted: Thu Sep 21, 2006 6:05 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The rgb keyword sets the value of all three color channels at once.&#13;
+<br/><br/>
+The problem is for example...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">rgb 0.5</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... would set red, green, and blue to 0.5. And since each color channel is set to the same value, you end up with a neutral color.&#13;
+<br/><br/>
+In order to set the color channels indepentantly, and therefore set them to separate values, you need to use the red, green, and blue keywords.&#13;
+<br/><br/>
+For instance...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">red 0&#13;
+<br/>
+green 0&#13;
+<br/>
+blue 1</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... would be blue.<br/>_________________<br/><a href="/web/20061013060639/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060639im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060639/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157714" date="Posted: Thu Sep 21, 2006 4:52 pm    Post subject: "><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks&#13;
+<br/>
+that i understand it and tried it&#13;
+<br/>
+no matter what combination of stuff i try its still full bright white&#13;
+<br/>
+i tried rgb 0.2 there cuz i want dark gray ao you can see thru it easy and should look really cool&#13;
+<br/>
+when you add it to a brush in edit it works&#13;
+<br/>
+when you add it to a model here its always white&#13;
+<br/><img src="/web/20061013060639im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013060639im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157722" date="Posted: Thu Sep 21, 2006 7:30 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The brush needs to be a flat square in order for it to work. Set all the sides of the brush to nodraw and then apply your material to one face of the brush, that should work. Never seen the _quadratic map before though. What does it do?<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061013060639/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061013060639/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157726" date="Posted: Thu Sep 21, 2006 8:29 pm    Post subject: "><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">but im trying to get the flare on a physic object its in a ASE file so i cant use it on a brush its on 2 polys&#13;
+<br/>
+i dont get any error the flare works excellent itself&#13;
+<br/>
+the problem is the brigthness\color its so dam white&#13;
+<br/>
+if i change that line from _quadratic to another texture i can get a color thats nice and transparant but then it turns into squares it doesnt blend it goes bogus and sharp<br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013060639im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157760" date="Posted: Fri Sep 22, 2006 9:50 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The only way i know to change flare colors is if the mesh of the flare, the quad, is a func_static or is part of a light group. Then you can change it's colors and intesityinside the Radiant by pushing K for color edit.&#13;
+<br/><br/>
+I'm guessing maybe the material will also affect it then?.. not aure about that.&#13;
+<br/><br/>
+But you could try make it func_static then bind it to your other object.&#13;
+<br/><br/>
+Not sure if other methods will work or not, this is just what I know.<br/>_________________<br/><a href="/web/20061013060639/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157671" date="Posted: Thu Sep 21, 2006 5:00 am    Post subject: flares on moveables"><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey guys im sure you can help me out&#13;
+<br/>
+i want to make some flares on a model so it will moveable&#13;
+<br/>
+i got it working easy by just giving some quads the flare shader easy&#13;
+<br/>
+works great but the problems that its full white&#13;
+<br/>
+so you normaly change the brightness/color from the light but this doesnt have a light but everything i do to the MTR wont change the brightness&#13;
+<br/>
+like normaly this works fine for brushes but on a model it doesnt listen to rgb&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/env/pixfluff_flare&#13;
+<br/>
+{&#13;
+<br/>
+   sort far&#13;
+<br/>
+   noshadows&#13;
+<br/>
+   translucent&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   deform   flare 17&#13;
+<br/>
+   {&#13;
+<br/>
+      blend    add&#13;
+<br/>
+      map   _quadratic&#13;
+<br/>
+      rgb   0.2&#13;
+<br/>
+      colored&#13;
+<br/>
+      vertexcolor&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+so no matter what i set rgb to it stays pure white and there is no _quadratic texture anywhere and i tried a bunch of stuff already but no luck&#13;
+<br/>
+im happy with how it works but when its so white you cant see through it and its ugly&#13;
+<br/>
+anyone can figure this out you will be awesome<br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013054932im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157675" date="Posted: Thu Sep 21, 2006 6:05 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The rgb keyword sets the value of all three color channels at once.&#13;
+<br/><br/>
+The problem is for example...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">rgb 0.5</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... would set red, green, and blue to 0.5. And since each color channel is set to the same value, you end up with a neutral color.&#13;
+<br/><br/>
+In order to set the color channels indepentantly, and therefore set them to separate values, you need to use the red, green, and blue keywords.&#13;
+<br/><br/>
+For instance...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">red 0&#13;
+<br/>
+green 0&#13;
+<br/>
+blue 1</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... would be blue.<br/>_________________<br/><a href="/web/20061013054932/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054932im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013054932/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157714" date="Posted: Thu Sep 21, 2006 4:52 pm    Post subject: "><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks&#13;
+<br/>
+that i understand it and tried it&#13;
+<br/>
+no matter what combination of stuff i try its still full bright white&#13;
+<br/>
+i tried rgb 0.2 there cuz i want dark gray ao you can see thru it easy and should look really cool&#13;
+<br/>
+when you add it to a brush in edit it works&#13;
+<br/>
+when you add it to a model here its always white&#13;
+<br/><img src="/web/20061013054932im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013054932im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157722" date="Posted: Thu Sep 21, 2006 7:30 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The brush needs to be a flat square in order for it to work. Set all the sides of the brush to nodraw and then apply your material to one face of the brush, that should work. Never seen the _quadratic map before though. What does it do?<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061013054932/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061013054932/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157726" date="Posted: Thu Sep 21, 2006 8:29 pm    Post subject: "><author>Slothette64</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">but im trying to get the flare on a physic object its in a ASE file so i cant use it on a brush its on 2 polys&#13;
+<br/>
+i dont get any error the flare works excellent itself&#13;
+<br/>
+the problem is the brigthness\color its so dam white&#13;
+<br/>
+if i change that line from _quadratic to another texture i can get a color thats nice and transparant but then it turns into squares it doesnt blend it goes bogus and sharp<br/>_________________<br/>_____________________________________&#13;
+<br/>
+whats that thing on your face? oh its your face! <img src="/web/20061013054932im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157760" date="Posted: Fri Sep 22, 2006 9:50 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The only way i know to change flare colors is if the mesh of the flare, the quad, is a func_static or is part of a light group. Then you can change it's colors and intesityinside the Radiant by pushing K for color edit.&#13;
+<br/><br/>
+I'm guessing maybe the material will also affect it then?.. not aure about that.&#13;
+<br/><br/>
+But you could try make it func_static then bind it to your other object.&#13;
+<br/><br/>
+Not sure if other methods will work or not, this is just what I know.<br/>_________________<br/><a href="/web/20061013054932/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

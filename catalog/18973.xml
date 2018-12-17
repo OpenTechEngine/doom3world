@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18973"><title>3D quaternion question</title><posts><post id="p172895" date="Posted: Tue Mar 13, 2007 10:45 am "><author>zm123</author><body><![CDATA[<div class="postbody">Hi,
+<br /><br />Anyone know how to transform a quaternion? For example, from left-hand to right-hand coordinate system:
+<br />quat.w = - quat.w
+<br />quat.y= - quat.y
+<br />how does that result come from?
+<br /><br />I need to transform the quat from a z-axis up left-hand system to a y-axis up left-hand system, how can I do that? I tried this:
+<br />quat.w=-quat.w 
+<br />temp=quat.y
+<br />quat.y=quat.z
+<br />quat.z=-temp
+<br /><br />and
+<br /><br />temp=quat.y
+<br />quat.y=quat.z
+<br />quat.z=-temp
+<br /><br />But the output is correct only under some specific conditions for both.
+<br /><br />Thanks for repply!</div>]]></body></post><post id="p172895" date="Posted: Tue Mar 13, 2007 10:45 am "><author>zm123</author><body><![CDATA[<div class="postbody">Hi,
+<br /><br />Anyone know how to transform a quaternion? For example, from left-hand to right-hand coordinate system:
+<br />quat.w = - quat.w
+<br />quat.y= - quat.y
+<br />how does that result come from?
+<br /><br />I need to transform the quat from a z-axis up left-hand system to a y-axis up left-hand system, how can I do that? I tried this:
+<br />quat.w=-quat.w 
+<br />temp=quat.y
+<br />quat.y=quat.z
+<br />quat.z=-temp
+<br /><br />and
+<br /><br />temp=quat.y
+<br />quat.y=quat.z
+<br />quat.z=-temp
+<br /><br />But the output is correct only under some specific conditions for both.
+<br /><br />Thanks for repply!</div>]]></body></post></posts></thread></xml>

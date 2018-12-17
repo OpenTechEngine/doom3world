@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="2879"><title>Editor not working ???</title><posts><post id="p28389" date="Posted: Wed Aug 04, 2004 12:51 pm "><author>Acid303</author><body><![CDATA[<div class="postbody">Hi,
+<br /><br />I'm trying to get the DOOMEditor to work but I get the following error message all the time :
+<br /><br />ERROR: wglMakeCurrent failed..
+<br />Please restart DOOMEdit if the camera view is not working
+<br /><br />Shows up in the inspector window :s
+<br /><br />Maybe i'm doing something wrong, i'm pretty newb at this <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Greetz,</div>]]></body></post><post id="p28511" date="Posted: Wed Aug 04, 2004 6:00 pm "><author>DudeMiester</author><body><![CDATA[<div class="postbody">I got that error too. Can't explain it, cause I'm no n00b at this.</div>]]></body></post><post id="p28519" date="Posted: Wed Aug 04, 2004 6:12 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">wglMakeCurrent is an openGL thing, we had this problem pretty often in the leak and got it resolved, can't find the thread to save my life tho...</div>]]></body></post><post id="p28937" date="Posted: Thu Aug 05, 2004 2:35 pm "><author>Acid303</author><body><![CDATA[<div class="postbody">Anyone know how to solve this??? Otherwise i'll just have to wait until a better editor is out, one that works because I can't see the grid or the camera view  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cry.gif" alt=":cry:" title="Crying or Very sad" /></div>]]></body></post><post id="p28955" date="Posted: Thu Aug 05, 2004 3:27 pm "><author>GomJabbar</author><body><![CDATA[<div class="postbody">This was solved earlier already, please use the search feature next time.
+<br /><br />Run doom with the following parameters, that should do the trick:
+<br /><span style="font-style: italic">doom.exe +com_allowConsole 1 +r_fullscreen 0 +editor</span>
+<br /><br />If it doesn't, try adding some +wait calls to the command line like this:
+<br /><span style="font-style: italic">doom.exe +com_allowConsole 1 +r_fullscreen 0 +wait +wait +wait +editor</span></div>]]></body></post><post id="p28958" date="Posted: Thu Aug 05, 2004 3:31 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Acid303 wrote:</div><div class="quotecontent">Anyone know how to solve this??? Otherwise i'll just have to wait until a better editor is out, one that works because I can't see the grid or the camera view  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cry.gif" alt=":cry:" title="Crying or Very sad" /></div>
+<br /><br />Look here - I've updated it:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=3">http://www.doom3world.org/phpbb2/viewtopic.php?t=3</a><!-- m --></div>]]></body></post><post id="p28995" date="Posted: Thu Aug 05, 2004 4:45 pm "><author>DaZ</author><body><![CDATA[<div class="postbody">Just have to say hi the acid junkie! <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />Best...synth...ever...</div>]]></body></post><post id="p29181" date="Posted: Fri Aug 06, 2004 12:35 am "><author>Acid303</author><body><![CDATA[<div class="postbody"><div class="quotetitle">DaZ wrote:</div><div class="quotecontent">Just have to say hi the acid junkie! <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />Best...synth...ever...</div>
+<br />Hi there <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> You are SO right ! <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />On-topic :
+<br /><br />Thanks for the replies, I'll try to get the editor to work with those commands <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I think i'll stick around here, and read some tutorials, cause i'm new to mapping. Only did some build engine maps for duke 3d (but that's MANY years ago :s).
+<br /><br />greetz,</div>]]></body></post><post id="p29657" date="Posted: Fri Aug 06, 2004 8:51 pm "><author>Cyper</author><body><![CDATA[<div class="postbody">Sorry for bumping this to the top, and sorry if your question was already answered, but if not, i had the same problem and it was right after i turned AA on ingame, so if you have it on, turn it off, and the editor should load fine, or at least it did for me, sorry again if this was answered i didn't read the whole thread like i should of ;d</div>]]></body></post><post id="p29663" date="Posted: Fri Aug 06, 2004 8:58 pm "><author>Acid303</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Cyper wrote:</div><div class="quotecontent">Sorry for bumping this to the top, and sorry if your question was already answered, but if not, i had the same problem and it was right after i turned AA on ingame, so if you have it on, turn it off, and the editor should load fine, or at least it did for me, sorry again if this was answered i didn't read the whole thread like i should of ;d</div>
+<br />It works now, might even be the AA setting, I turned it off and now the editor works perfect  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /><br /><br />Greetz,</div>]]></body></post><post id="p29694" date="Posted: Fri Aug 06, 2004 10:17 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Hello!
+<br /><br />I am so ready to start mapping Doom3, but its just not working.  I have gone through the threads and
+<br />read what to do, but to no avil.  
+<br /><br />Any more help? I can give more info.
+<br /><br /><br /><br /><br />My Shortcut:
+<br />"C:\Program Files\Doom 3\Doom3.exe" com_allowConsole 1 +r_fullscreen 0 +vid_restart +wait +wait +wait +editor
+<br /><br />( i tryed fullscreen 1 and 0, still same errors)
+<br /><br />-----------------------
+<br />Message Doom3Q:
+<br /><br />CDialogTextures::BuildTree() took 3381 milliseconds
+<br />WARNING: couldn't create font dlists
+<br />WARNING: wglUseFontBitmaps failed (6).  Trying again.
+<br />WARNING: wglUseFontBitmaps failed again (6).  Trying outlines.
+<br />WARNING: wglUseFontOutlines also failed (6), no coordinate text will be visible.
+<br />GL_VENDOR: (null)
+<br />GL_RENDERER: (null)
+<br />GL_VERSION: (null)
+<br />GL_EXTENSIONS: (null)
+<br />QE_LoadProject (doom.qe4)
+<br />WARNING: file def/map_intro.def, line 93: Unknown entityDef 'char_labcoat_young' inherited by 'intro_scientist'
+<br />Map_New
+<br />Entering message loop
+<br />ERROR: wglMakeCurrent failed..
+<br /> Please restart DOOMEdit if the camera view is not working
+<br />ERROR: wglMakeCurrent failed..
+<br /> Please restart DOOMEdit if the Z view is not working
+<br />ERROR: wglMakeCurrent failed.. Error:1282
+<br />Please restart Q3Radiant if the Map view is not working
+<br />ERROR: wglMakeCurrent failed.. Error:1282
+<br />Please restart Q3Radiant if the Map view is not working
+<br />ERROR: wglMakeCurrent failed..
+<br /> Please restart DOOMEdit if the camera view is not working
+<br />ERROR: wglMakeCurrent failed..
+<br /> Please restart DOOMEdit if the Z view is not working
+<br />ERROR: wglMakeCurrent failed..
+<br /> ERROR: wglMakeCurrent failed..
+<br /> ERROR: wglMakeCurrent failed..
+<br /><br />--------------------------
+<br /><br />Specs:
+<br />Pent 4 2.4MHz
+<br />Nvidia Gforce 4TI 4400
+<br />1024meg ram
+<br />Windows XP</div>]]></body></post><post id="p29697" date="Posted: Fri Aug 06, 2004 10:27 pm "><author>GomJabbar</author><body><![CDATA[<div class="postbody">I've just taken another look at the problem on my second pc and it seems like Cypher was right in an earlier post: On some machines the editor refuses to work if you enabled <span style="font-style: italic">antialiasing</span>. 
+<br /><br />Please try starting the editor again after switching it off. You can do that in game under <span style="font-style: italic">Options -&gt; System -&gt; Advanced Options</span>.
+<br /><br />Hope that helps.
+<br /><br /><span style="font-weight: bold">BNA</span>: This might be worth adding to the FAQ too.</div>]]></body></post><post id="p29722" date="Posted: Fri Aug 06, 2004 11:18 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">WOW, thanks that worked!  Now its time to tinker back down!
+<br />Thanks!</div>]]></body></post><post id="p29775" date="Posted: Sat Aug 07, 2004 1:02 am "><author>Schivosa</author><body><![CDATA[<div class="postbody">I am getting the same thing with no camera and gridlines. I've tried all of the configurations of parameters listed here and made sure that AA was off. Anyone have any ideas? Thanks in advance.</div>]]></body></post></posts></thread></xml>

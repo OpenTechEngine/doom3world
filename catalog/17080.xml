@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17080"><title>Modeling Help Request...</title><posts><post id="155900" date="Posted: Mon Sep 04, 2006 5:39 am    Post subject: Modeling Help Request..."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not really sure where I should put this, because it requires modelling help with md5s but also MAX help since I use 3dsMax 7.  Maybe some of you have been following my...shall we say...struggling attempt to make a mod, probably a more complicated version of a simple mod than anyone else would truly feel worth while, but fun for me nonetheless.  &#13;
+<br/><br/>
+yes, it's a barrel lights mod for the weapons, but with a little more...class, i would say, instead of the simplistic ones that have been created.  Of course the solution to my problem is not one I can find easily unless someone (other than myself who actually knows what they're doing) were to actually look at what i've done.  &#13;
+<br/><br/>
+The Mod:&#13;
+<br/><a href="/web/20061013054634/http://www.wayoftheleaf.net/download/BarrelLights.zip" target="_blank" class="postlink">http://www.wayoftheleaf.net/download/BarrelLights.zip</a>&#13;
+<br/>
+This is just the current pk4, and gamedll for my mod, that will do the barrel lights as i've designed them.  if this is all you need wonderful, because it is 3.5 meg.  (you'll need to access the game options menu to activate the lights for all the weapons)&#13;
+<br/><br/>
+The problem exists in the fact that when I turn on the light for the mod, the projected "circle of light" the actual "flashlight" appears fine in 1st person mode for all the guns.  However, if you toggle to 3rd person, you'll find that very same circular projection is only visible for the chaingun and the flashlight.  I don't know why.  I don't know how.  Yes, i am pathetic, and cannot figure out what the difference is between my models.  I di the same thing for all of them, imported them the same, attached my mesh the same, linked the bones the same, names, textures, yadda yadda yadda.  it just doesn't work.  &#13;
+<br/><br/>
+tragically, that may not be enough, so at this link:&#13;
+<br/><a href="/web/20061013054634/http://www.wayoftheleaf.net/download/max.zip" target="_blank" class="postlink">http://www.wayoftheleaf.net/download/max.zip</a>&#13;
+<br/>
+Is all my 3dsMax 7 files that I used to create these models, but tragically it is 11 meg, which means I don't expect much.&#13;
+<br/><br/>
+I know this is probably the most humiliating request for help, but I'm out of options save submitting a flawed mod (imho).  (yes, i am a perfectionist)&#13;
+<br/><br/>
+If anyone takes pity on me, and is willing to look at this to see what might be causing the discrepancy between the world models that prevents all save the chaingun from projecting the actual texture, I would be most appreciative.&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner[/url]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155929" date="Posted: Mon Sep 04, 2006 11:37 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I didn't download this to take a look but just taking a stab here. Maybe your lightsource is inside the mesh?.<br/>_________________<br/><a href="/web/20061013054634/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156219" date="Posted: Wed Sep 06, 2006 7:42 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>obihb wrote:</b></span></td>	</tr><tr><td class="quote">I didn't download this to take a look but just taking a stab here. Maybe your lightsource is inside the mesh?.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Do you mean the bone is too far inside the model, so the lightsource attached to it isn't able to project beyond the boundary of the model?&#13;
+<br/><br/>
+That would be strange but i'll look into it.&#13;
+<br/><br/>
+jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156226" date="Posted: Wed Sep 06, 2006 8:21 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Wow,&#13;
+<br/><br/>
+okay, that is strange...  ohbib, i tried what I thought you meant by the lightsource being inside the mesh, so I edited my world model, moving the bone up as close to the front of the barrel mesh as possible.  &#13;
+<br/><br/>
+An strangely enough it worked...partially.  Basically, if you look at the shotgun world mesh, there are a few testure panes in front of the barrel, for the muzzleflash animations.  Below the actual barrel, is another cylinder that looks like barrel, but is probably supposed to be the ammo/clip housing to hold the extra shells.  I placed my bone to the end of that lower cylinder, with a bulb texture on the front of it, a flare texture little further away (hovering in space) and the beam texture going right through the barrel stretching forward.&#13;
+<br/><br/><img src="/web/20061013054634im_/http://www.wayoftheleaf.net/download/sgw.jpg" border="0"/><br/>
+(You can see the bone here protuding towards the screen, and the little bulb texture at the edge of the barrel, and the beam texture extending outward from the bone)&#13;
+<br/><br/>
+Now, I tested this, since the bone was originally further back into that cylinder, but with it as it is in the above image, I got a partial view of the flashlight in 3rd person view, but it was cut in half (vertically).&#13;
+<br/><img src="/web/20061013054634im_/http://www.wayoftheleaf.net/download/sgw_screen.jpg" border="0"/><br/><br/>
+Any suggestions as to why the "hidden" mesh/textures are doing that to the final light?&#13;
+<br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156404" date="Posted: Fri Sep 08, 2006 9:04 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't say for sure what's going on there but it would seem to me that the small polygon in front "the bulb?"..  is in the way of the light source and casting a shadow.&#13;
+<br/><br/>
+Maybe the material is not set right for that poly which I guess is like a deform sprite there and should be translucent and all that so not to affect lights in any way.&#13;
+<br/><br/>
+I just can't say for sure though, but it has to be some mesh there is blocking the light partially. That's what it looks like to me in your screenshot.<br/>_________________<br/><a href="/web/20061013054634/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156408" date="Posted: Fri Sep 08, 2006 9:39 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Using the lighting-related cvars that show you shadow volumes, lightcount and light volumes might also help to see what's causing the problem.<br/>_________________<br/><a href="/web/20061013054634/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054634im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054634/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156414" date="Posted: Fri Sep 08, 2006 9:56 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Did you made your "bulb" material with <span style="font-weight: bold">noshadows</span> &amp; <span style="font-weight: bold">noselfshadow</span>?<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157175" date="Posted: Fri Sep 15, 2006 8:21 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually,&#13;
+<br/><br/>
+The bulb, flare, and beam meshes are the exact textures and materials used for the Flashlight itsself.  thus the materials for my bulb/flare/beam are found in weapon_flashlight.def  (provided at the end for ease of reference).&#13;
+<br/><br/>
+The Actual "meshs" i created myself, and then used the UV Gizmo in 3ds max to position the 'textures' via the textures editor, but the mesh texture names are not the '.tga' files, but the material names listed below.  So i'm wondering, (despite the fact that the bones were a little too far into the model meshes) if there is something unique about my meshes that i set wrong, (like two sided or something like that).&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner&#13;
+<br/><br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+material models/items/flashlight/flare {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform sprite&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/flare.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/beam1 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      maskcolor&#13;
+<br/>
+      map makealpha(models/items/flashlight/beam1.tga)&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality   &#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend gl_dst_alpha, gl_one&#13;
+<br/>
+           maskalpha&#13;
+<br/>
+      map models/items/flashlight/dust&#13;
+<br/>
+      scale    4 , 4&#13;
+<br/>
+      rotate time * -.02&#13;
+<br/>
+      scroll   time * .001 , time * .001&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/flare2 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform sprite&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/flare2.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/beam2 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      maskcolor&#13;
+<br/>
+      map makealpha(models/items/flashlight/beam1.tga)&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality&#13;
+<br/>
+   &#13;
+<br/>
+   &#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend gl_dst_alpha, gl_one&#13;
+<br/>
+           maskalpha&#13;
+<br/>
+      map models/items/flashlight/dust&#13;
+<br/>
+      scale    4 , 4&#13;
+<br/>
+      rotate time * -.02&#13;
+<br/>
+      scroll   time * .001 , time * .001&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/bulb {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/bulb.tga      &#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/></td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155900" date="Posted: Mon Sep 04, 2006 5:39 am    Post subject: Modeling Help Request..."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not really sure where I should put this, because it requires modelling help with md5s but also MAX help since I use 3dsMax 7.  Maybe some of you have been following my...shall we say...struggling attempt to make a mod, probably a more complicated version of a simple mod than anyone else would truly feel worth while, but fun for me nonetheless.  &#13;
+<br/><br/>
+yes, it's a barrel lights mod for the weapons, but with a little more...class, i would say, instead of the simplistic ones that have been created.  Of course the solution to my problem is not one I can find easily unless someone (other than myself who actually knows what they're doing) were to actually look at what i've done.  &#13;
+<br/><br/>
+The Mod:&#13;
+<br/><a href="/web/20061013061400/http://www.wayoftheleaf.net/download/BarrelLights.zip" target="_blank" class="postlink">http://www.wayoftheleaf.net/download/BarrelLights.zip</a>&#13;
+<br/>
+This is just the current pk4, and gamedll for my mod, that will do the barrel lights as i've designed them.  if this is all you need wonderful, because it is 3.5 meg.  (you'll need to access the game options menu to activate the lights for all the weapons)&#13;
+<br/><br/>
+The problem exists in the fact that when I turn on the light for the mod, the projected "circle of light" the actual "flashlight" appears fine in 1st person mode for all the guns.  However, if you toggle to 3rd person, you'll find that very same circular projection is only visible for the chaingun and the flashlight.  I don't know why.  I don't know how.  Yes, i am pathetic, and cannot figure out what the difference is between my models.  I di the same thing for all of them, imported them the same, attached my mesh the same, linked the bones the same, names, textures, yadda yadda yadda.  it just doesn't work.  &#13;
+<br/><br/>
+tragically, that may not be enough, so at this link:&#13;
+<br/><a href="/web/20061013061400/http://www.wayoftheleaf.net/download/max.zip" target="_blank" class="postlink">http://www.wayoftheleaf.net/download/max.zip</a>&#13;
+<br/>
+Is all my 3dsMax 7 files that I used to create these models, but tragically it is 11 meg, which means I don't expect much.&#13;
+<br/><br/>
+I know this is probably the most humiliating request for help, but I'm out of options save submitting a flawed mod (imho).  (yes, i am a perfectionist)&#13;
+<br/><br/>
+If anyone takes pity on me, and is willing to look at this to see what might be causing the discrepancy between the world models that prevents all save the chaingun from projecting the actual texture, I would be most appreciative.&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner[/url]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155929" date="Posted: Mon Sep 04, 2006 11:37 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I didn't download this to take a look but just taking a stab here. Maybe your lightsource is inside the mesh?.<br/>_________________<br/><a href="/web/20061013061400/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156219" date="Posted: Wed Sep 06, 2006 7:42 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>obihb wrote:</b></span></td>	</tr><tr><td class="quote">I didn't download this to take a look but just taking a stab here. Maybe your lightsource is inside the mesh?.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Do you mean the bone is too far inside the model, so the lightsource attached to it isn't able to project beyond the boundary of the model?&#13;
+<br/><br/>
+That would be strange but i'll look into it.&#13;
+<br/><br/>
+jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156226" date="Posted: Wed Sep 06, 2006 8:21 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Wow,&#13;
+<br/><br/>
+okay, that is strange...  ohbib, i tried what I thought you meant by the lightsource being inside the mesh, so I edited my world model, moving the bone up as close to the front of the barrel mesh as possible.  &#13;
+<br/><br/>
+An strangely enough it worked...partially.  Basically, if you look at the shotgun world mesh, there are a few testure panes in front of the barrel, for the muzzleflash animations.  Below the actual barrel, is another cylinder that looks like barrel, but is probably supposed to be the ammo/clip housing to hold the extra shells.  I placed my bone to the end of that lower cylinder, with a bulb texture on the front of it, a flare texture little further away (hovering in space) and the beam texture going right through the barrel stretching forward.&#13;
+<br/><br/><img src="/web/20061013061400im_/http://www.wayoftheleaf.net/download/sgw.jpg" border="0"/><br/>
+(You can see the bone here protuding towards the screen, and the little bulb texture at the edge of the barrel, and the beam texture extending outward from the bone)&#13;
+<br/><br/>
+Now, I tested this, since the bone was originally further back into that cylinder, but with it as it is in the above image, I got a partial view of the flashlight in 3rd person view, but it was cut in half (vertically).&#13;
+<br/><img src="/web/20061013061400im_/http://www.wayoftheleaf.net/download/sgw_screen.jpg" border="0"/><br/><br/>
+Any suggestions as to why the "hidden" mesh/textures are doing that to the final light?&#13;
+<br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156404" date="Posted: Fri Sep 08, 2006 9:04 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't say for sure what's going on there but it would seem to me that the small polygon in front "the bulb?"..  is in the way of the light source and casting a shadow.&#13;
+<br/><br/>
+Maybe the material is not set right for that poly which I guess is like a deform sprite there and should be translucent and all that so not to affect lights in any way.&#13;
+<br/><br/>
+I just can't say for sure though, but it has to be some mesh there is blocking the light partially. That's what it looks like to me in your screenshot.<br/>_________________<br/><a href="/web/20061013061400/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156408" date="Posted: Fri Sep 08, 2006 9:39 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Using the lighting-related cvars that show you shadow volumes, lightcount and light volumes might also help to see what's causing the problem.<br/>_________________<br/><a href="/web/20061013061400/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061400im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061400/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156414" date="Posted: Fri Sep 08, 2006 9:56 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Did you made your "bulb" material with <span style="font-weight: bold">noshadows</span> &amp; <span style="font-weight: bold">noselfshadow</span>?<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157175" date="Posted: Fri Sep 15, 2006 8:21 pm    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually,&#13;
+<br/><br/>
+The bulb, flare, and beam meshes are the exact textures and materials used for the Flashlight itsself.  thus the materials for my bulb/flare/beam are found in weapon_flashlight.def  (provided at the end for ease of reference).&#13;
+<br/><br/>
+The Actual "meshs" i created myself, and then used the UV Gizmo in 3ds max to position the 'textures' via the textures editor, but the mesh texture names are not the '.tga' files, but the material names listed below.  So i'm wondering, (despite the fact that the bones were a little too far into the model meshes) if there is something unique about my meshes that i set wrong, (like two sided or something like that).&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner&#13;
+<br/><br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+material models/items/flashlight/flare {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform sprite&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/flare.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/beam1 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      maskcolor&#13;
+<br/>
+      map makealpha(models/items/flashlight/beam1.tga)&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality   &#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend gl_dst_alpha, gl_one&#13;
+<br/>
+           maskalpha&#13;
+<br/>
+      map models/items/flashlight/dust&#13;
+<br/>
+      scale    4 , 4&#13;
+<br/>
+      rotate time * -.02&#13;
+<br/>
+      scroll   time * .001 , time * .001&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/flare2 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform sprite&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/flare2.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/beam2 {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      maskcolor&#13;
+<br/>
+      map makealpha(models/items/flashlight/beam1.tga)&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality&#13;
+<br/>
+   &#13;
+<br/>
+   &#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend gl_dst_alpha, gl_one&#13;
+<br/>
+           maskalpha&#13;
+<br/>
+      map models/items/flashlight/dust&#13;
+<br/>
+      scale    4 , 4&#13;
+<br/>
+      rotate time * -.02&#13;
+<br/>
+      scroll   time * .001 , time * .001&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+material models/items/flashlight/bulb {&#13;
+<br/>
+   translucent&#13;
+<br/>
+   {&#13;
+<br/>
+      blend         add&#13;
+<br/>
+      map            models/items/flashlight/bulb.tga      &#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/></td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

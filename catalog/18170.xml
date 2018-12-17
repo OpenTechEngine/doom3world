@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18170"><title>Where I would like to see Prey Deathmatch going...</title><posts><post id="p165174" date="Posted: Thu Dec 21, 2006 5:30 am "><author>Jehar</author><body><![CDATA[<div class="postbody">Okay, Prey brings us portals... mmm. Good. 
+<br />The portal wrench gives us the ability to make portals... albiet in a weapon and insofar as I have seen underused way.
+<br /><br />Potentially, I see portals as being able to make Prey something more intense than any other deathmatch that anybody has seen in a while... all it takes is the ability to dynamically create portals in a totally seamless fasion.
+<br /><br />Granted, I haven't scanned any of the Prey forums for new developments (frankly, not a lot of intelligence going around there), but I am curious about how the portal wrench fares in a multiplayer setting. How stable is it to have multiple players making several portals?
+<br /><br />If this proves to be viable, I was considering looking into a project aimed to make portals an integrated part of the Prey deathmatch.
+<br /><br />My vision is to allow users to make bindings that would allow them to create portals dynamically and with total customization.
+<br /><br />Such bindings would include:
+<br />-Specified distance and\or angle.
+<br />-Relative distance and or angle depending on cursorview.
+<br />-Relative to other players, etc.
+<br />-Toggle between absolute location to the player, or keeping the relative coordinates to him.
+<br /><br />Naturally, limits would have to be imposed insofar as not being outside of player visportals (i.e. a player could spawn a portal behind him, but only as far as he could see if he were turned in that direction), distance limits, 'number of portals at a time' limits (maybe even an "energy" bar that is drained for portal usage),  and time limit for portals.
+<br /><br />In addition, the portal customization would be sensitive to what the portal setup does, and would limit usage as such.
+<br /><br />Allowing players to access a scripting and aliasing infastructure with which they could bind their own custom portal sequences could *really* alter the way the game is viewed, in my opinion.
+<br /><br />An example:
+<br />I would be able to bind a key to spawn a portal directly in front of me, staying relative to my body, with the exit end spawning behind me. This would cause projectiles coming at me to "pass through me" and out the other side. Obviously, this would be balanced by the fact that I wouldn't be able to sustain such a portal setup for very long, and other players could counter my portals with their own:
+<br /><br />The projectile coming at me could fall into a projected portal of the opponent, with it coming out directly above me, so that it would impact.
+<br /><br />Again, balancing these abilities would take consideration, but I believe that with an "energy" bar and intelligent design, this could make some serious impacts.
+<br /><br />Thoughts on the incoherent rant?</div>]]></body></post></posts></thread></xml>

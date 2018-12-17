@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17151"><title>Normal vs. Height Maps</title><posts><post id="156611" date="Posted: Sun Sep 10, 2006 9:30 pm    Post subject: Normal vs. Height Maps"><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I know this topic has again and again been discussed throughout the forums, and I definatly understand their uses and such, but I just kind of need one thing clarified that I've been missing:&#13;
+<br/><br/>
+Does Doom3 treat Heightmaps and Normal Maps differently?&#13;
+<br/><br/>
+For Example, say you built a simple type of geometry for a normal map test. This geometry would just be a plane, with a few faces extruded outwards towards the camera, making it so all the faces in the model would be either 0 or 90 degree angles. &#13;
+<br/><br/>
+From what I understand, when rendered out, this test will result in a normal map with just a flat plane, not extra detail, as normal maps only work of of angles and not off of actual height correct? &#13;
+<br/><br/>
+So to go and ask what I really want to know:&#13;
+<br/><br/>
+Do heightmaps get converted to normal maps in the level loading process and thus also only work of of angle and not height? Or does it actually store height info?&#13;
+<br/><br/><br/>
+The reason I ask this is I am wondering if, in order to be able to see "theoretical Z axis information" (fake height off the plane) one could render both a normal map for angle info, and then some sort of height map off a model for height information.&#13;
+<br/><br/><br/>
+I hope my question makes sense. Sorry if this is such a monotonous question, Its just been bothering me for quite some time now.&#13;
+<br/><br/>
+-Tim</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156642" date="Posted: Mon Sep 11, 2006 1:40 am    Post subject: Re: Normal vs. Height Maps"><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Anonymousalias wrote:</b></span></td>	</tr><tr><td class="quote">Do heightmaps get converted to normal maps in the level loading process and thus also only work of of angle and not height?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+They get converted to a normalmap during the loading of the images.&#13;
+<br/><br/>
+Since the surface of a plane is never extruded by the bumpmapping process no actual "height" information is ever really relevant unless it is a physical piece of geometry.  This doesn't mean the system is limited but instead means you have to either create the geometry with Radiant or a model editor (excellant idea) and then render a normal from there and apply additional minor surface variations (bumps, low level detail, scratches, gouges, etc.) using the normal map and height map(s).  This means it takes a bit more work but imo you really get a much more superior visual as a result.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156644" date="Posted: Mon Sep 11, 2006 1:58 am    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey thanks for the reply Bittoman! <img src="/web/20061013024651im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Yeah I see what you mean, that definatly would yeld the best results, never really thought about doing that with editor patches but it definatly makes sense now that I think of it, especially if Im making the textures for that specific location anyway <img src="/web/20061013024651im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+What I also meant in asking does it carry any height info is not necessarily a physical, geometric extrusion from the mesh, but rather, some sort of lighting type info. as in a plane that is theoretically closer to the light source(even though the geometry doesnt physically make it so) is slightly brighter than a plane that is theoretically father into the mesh.&#13;
+<br/><br/>
+I hope that made sense, thanks <img src="/web/20061013024651im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+-Tim</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156652" date="Posted: Mon Sep 11, 2006 4:53 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013024651/http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps" target="_blank">http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps</a><br/>_________________<br/><a href="/web/20061013024651/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024651im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024651/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156769" date="Posted: Mon Sep 11, 2006 7:39 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah thanks rich... I knew there would be some sort of list posted in here sooner or later. &#13;
+<br/><br/>
+After reading through, it sort of leads me to believe that the only real advantage to using both a heightmap and a normal map is speed. &#13;
+<br/><br/>
+I realize that some things just are FAR more practical in a heightmap such as small scratches then actually modeling them... but just to make sure I have one more clarification question:&#13;
+<br/><br/>
+If one has enough time to model out exactly what they want(say with Zbrush to create even the small scratches) then is it better to only use a complex normal map rather then an additional heightmap to conserve texture memory? Or am I missing another hidden benefit?&#13;
+<br/><br/>
+Thanks again everyone!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156788" date="Posted: Mon Sep 11, 2006 10:16 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can combine a normal and heightmap in an image editor and simply avoid having the extra image.  Just convert the height to normalmap and then put it into another layer over the original normalmap and adjust the opacity or set it to overlay or both and then flatten it and save it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156806" date="Posted: Tue Sep 12, 2006 1:56 am    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yeah thanks bittoman, thats what I figured... Which leads me to wonder...why is this not done more often then? Is it really due to sheer lazyness?&#13;
+<br/><br/>
+Thanks!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156809" date="Posted: Tue Sep 12, 2006 2:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By keeping the height map separate, it affords you the ability to reuse it.<br/>_________________<br/><a href="/web/20061013024651/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024651im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024651/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156868" date="Posted: Tue Sep 12, 2006 8:33 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah good point rich! Never thought of that! Thankyou <img src="/web/20061013024651im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156611" date="Posted: Sun Sep 10, 2006 9:30 pm    Post subject: Normal vs. Height Maps"><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I know this topic has again and again been discussed throughout the forums, and I definatly understand their uses and such, but I just kind of need one thing clarified that I've been missing:&#13;
+<br/><br/>
+Does Doom3 treat Heightmaps and Normal Maps differently?&#13;
+<br/><br/>
+For Example, say you built a simple type of geometry for a normal map test. This geometry would just be a plane, with a few faces extruded outwards towards the camera, making it so all the faces in the model would be either 0 or 90 degree angles. &#13;
+<br/><br/>
+From what I understand, when rendered out, this test will result in a normal map with just a flat plane, not extra detail, as normal maps only work of of angles and not off of actual height correct? &#13;
+<br/><br/>
+So to go and ask what I really want to know:&#13;
+<br/><br/>
+Do heightmaps get converted to normal maps in the level loading process and thus also only work of of angle and not height? Or does it actually store height info?&#13;
+<br/><br/><br/>
+The reason I ask this is I am wondering if, in order to be able to see "theoretical Z axis information" (fake height off the plane) one could render both a normal map for angle info, and then some sort of height map off a model for height information.&#13;
+<br/><br/><br/>
+I hope my question makes sense. Sorry if this is such a monotonous question, Its just been bothering me for quite some time now.&#13;
+<br/><br/>
+-Tim</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156642" date="Posted: Mon Sep 11, 2006 1:40 am    Post subject: Re: Normal vs. Height Maps"><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Anonymousalias wrote:</b></span></td>	</tr><tr><td class="quote">Do heightmaps get converted to normal maps in the level loading process and thus also only work of of angle and not height?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+They get converted to a normalmap during the loading of the images.&#13;
+<br/><br/>
+Since the surface of a plane is never extruded by the bumpmapping process no actual "height" information is ever really relevant unless it is a physical piece of geometry.  This doesn't mean the system is limited but instead means you have to either create the geometry with Radiant or a model editor (excellant idea) and then render a normal from there and apply additional minor surface variations (bumps, low level detail, scratches, gouges, etc.) using the normal map and height map(s).  This means it takes a bit more work but imo you really get a much more superior visual as a result.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156644" date="Posted: Mon Sep 11, 2006 1:58 am    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hey thanks for the reply Bittoman! <img src="/web/20061013022250im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Yeah I see what you mean, that definatly would yeld the best results, never really thought about doing that with editor patches but it definatly makes sense now that I think of it, especially if Im making the textures for that specific location anyway <img src="/web/20061013022250im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+What I also meant in asking does it carry any height info is not necessarily a physical, geometric extrusion from the mesh, but rather, some sort of lighting type info. as in a plane that is theoretically closer to the light source(even though the geometry doesnt physically make it so) is slightly brighter than a plane that is theoretically father into the mesh.&#13;
+<br/><br/>
+I hope that made sense, thanks <img src="/web/20061013022250im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+-Tim</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156652" date="Posted: Mon Sep 11, 2006 4:53 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013022250/http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps" target="_blank">http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps</a><br/>_________________<br/><a href="/web/20061013022250/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022250im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022250/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156769" date="Posted: Mon Sep 11, 2006 7:39 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah thanks rich... I knew there would be some sort of list posted in here sooner or later. &#13;
+<br/><br/>
+After reading through, it sort of leads me to believe that the only real advantage to using both a heightmap and a normal map is speed. &#13;
+<br/><br/>
+I realize that some things just are FAR more practical in a heightmap such as small scratches then actually modeling them... but just to make sure I have one more clarification question:&#13;
+<br/><br/>
+If one has enough time to model out exactly what they want(say with Zbrush to create even the small scratches) then is it better to only use a complex normal map rather then an additional heightmap to conserve texture memory? Or am I missing another hidden benefit?&#13;
+<br/><br/>
+Thanks again everyone!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156788" date="Posted: Mon Sep 11, 2006 10:16 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You can combine a normal and heightmap in an image editor and simply avoid having the extra image.  Just convert the height to normalmap and then put it into another layer over the original normalmap and adjust the opacity or set it to overlay or both and then flatten it and save it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156806" date="Posted: Tue Sep 12, 2006 1:56 am    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yeah thanks bittoman, thats what I figured... Which leads me to wonder...why is this not done more often then? Is it really due to sheer lazyness?&#13;
+<br/><br/>
+Thanks!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156809" date="Posted: Tue Sep 12, 2006 2:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By keeping the height map separate, it affords you the ability to reuse it.<br/>_________________<br/><a href="/web/20061013022250/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022250im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022250/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156868" date="Posted: Tue Sep 12, 2006 8:33 pm    Post subject: "><author>Anonymousalias</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah good point rich! Never thought of that! Thankyou <img src="/web/20061013022250im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

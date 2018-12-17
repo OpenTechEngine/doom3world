@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="12979"><title>Still having trouble loading up a MP map</title><posts><post id="p117534" date="Posted: Sun Oct 23, 2005 2:54 am "><author>Rvasher</author><body><![CDATA[<div class="postbody">I folled Treppings example step by step and my map still does not show up on the server selection.
+<br /><br />Is there anything specific I have to do with my map? As in add certain entitie to label it as being mp?
+<br /><br />here what I did
+<br /><br /><br />Ran bsp and the files are at C:\maps
+<br /><br />made a def folder in C:\ and copied the chess .def, except I changed the map to my map pathname. I also deleted the tgas since I dont have a splash screen yet
+<br /><br />right clicked those are added them to bbdm03.pk4
+<br /><br />copied that to my baseq4 folder
+<br /><br />i load up q4 and no go <img src="https://web.archive.org/web/20121024013133im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /></div>]]></body></post><post id="p117547" date="Posted: Sun Oct 23, 2005 4:15 am "><author>goliathvt</author><body><![CDATA[<div class="postbody">In C:\maps?
+<br /><br />Uh... shouldn't those be in your Q4 path somewhere, say under a mod directory/maps or in q4base/maps?  Link the steps you followed or reply whereever "Trepping" posted if you want the best chance for feedback.  
+<br /><br />G</div>]]></body></post><post id="p117570" date="Posted: Sun Oct 23, 2005 6:27 am "><author>Rvasher</author><body><![CDATA[<div class="postbody">I have tried using the path as well, anywho heres the file i followed the exampled from
+<br /><br />MultiPlayer LoadScreen example map
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20121024013133/http://trepaning.com/q4/testMaps/q4LoadScreen.zip">http://trepaning.com/q4/testMaps/q4LoadScreen.zip</a><!-- m --></div>]]></body></post><post id="p117632" date="Posted: Sun Oct 23, 2005 2:13 pm "><author>Rvasher</author><body><![CDATA[<div class="postbody">ok I think it must be a directory error cause I can get sp maps to work fine
+<br /><br />the mp map and all the files are at
+<br /><br />quake3/baseq4/maps/mp
+<br /><br />I put my sp maps in ../maps and they work fine
+<br /><br />I think that is where the problem is
+<br /><br /><br />so frustrated  <img src="https://web.archive.org/web/20121024013133im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /> cause I spent all yesterday morning on my first q4 dm map and its ready for testing</div>]]></body></post><post id="p117656" date="Posted: Sun Oct 23, 2005 4:44 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">This is what I suggest:
+<br /><br />create a folder in your Q4 directory (so if Q4 was installed to C:\Quake4, you'd create C:\Quake4\mympmaps.
+<br /><br />Then inside mympmaps, create these folders:
+<br /><br />def
+<br />maps
+<br />gfx
+<br /><br />Within "maps", create a folder called "mp".
+<br /><br />Within "gfx", create the folder, "guis".  Within "guis" create folders:
+<br /><br />loadscreens
+<br />mainmenu
+<br /><br />Next, copy the .def files you're using into the def folder.  Copy the load screen images (.tga) into "mympmaps/gfx/guis/loadscreens" and "mympmaps/gfx/guis/mainmenu".  The mainmenu image can be smaller than the one that goes into loadscreens, since t his is what shows up when you create a server and are selecting the map you want to play (a very small image).
+<br /><br />Copy your map files, including the .proc, aas*, and .cm files into "mympmaps/maps/mp".
+<br /><br />Create a shortcut to Quake4 that has +set fs_game mympmaps in it.  Launch Q4 using that shortcut.
+<br /><br />Once Q4 is launched, you go to Multiplayer-&gt;Create Server and your map will be at the top of the list.
+<br /><br />Goliath</div>]]></body></post><post id="p117829" date="Posted: Mon Oct 24, 2005 2:29 pm "><author>Rvasher</author><body><![CDATA[<div class="postbody"><div class="quotetitle">goliathvt wrote:</div><div class="quotecontent">Create a shortcut to Quake4 that has +set fs_game mympmaps in it.  Launch Q4 using that shortcut.<br /><br /><br />Goliath</div>
+<br /><br />I used "+set fs_game mympmaps/maps/mp"
+<br /><br />and my shortcut is getting an error</div>]]></body></post><post id="p117833" date="Posted: Mon Oct 24, 2005 2:58 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">... ?
+<br /><br />Okay... you quoted what I said, "+set fs_game mympmaps"... and yet you're doing "+set fs_game mympmaps/maps/mp", which is not at all what was suggested.  You're not going to get far unless you follow the path and file conventions the game requires in order for it to be able to find and use your custom content.  It also doesn't help if someone like me offers you near step-by-step instructions, only to be ignored.  <img src="https://web.archive.org/web/20121024013133im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />  If I wasn't clear about something, let me know and I'll be glad to elaborate.  Try following my instructions more carefully and see if they work for ya. 
+<br /><br />Goliath</div>]]></body></post><post id="p117835" date="Posted: Mon Oct 24, 2005 3:03 pm "><author>Rvasher</author><body><![CDATA[<div class="postbody">ok, well i thought mympmaps was a typo cause i did try it however i still didnt get it working.
+<br /><br />regardless after all this i just threw my map files into the q4loadscreen.pk4 and it worked fine, it must have something to do with how i am compressing the files
+<br /><br />i am using winrar and keeping the path names intact but thats the only thing wrong i could think that i was doing
+<br /><br />thanks for the help and being patient with me, take care</div>]]></body></post><post id="p117841" date="Posted: Mon Oct 24, 2005 3:39 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Here's a mini tutorial on directory structure for Q4 stuff.  All you need to do to make this work for custom files is to replace the "mympmaps" folder name and the "mymap" file names with the proper directory and filenames used by your own stuff.
+<br /><br />Your Quake 4 directory, with the mod folder, "mympmaps" in it:
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs0.jpg" alt="Image" /><br /><br />The folder structure inside "mympmaps":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs1.jpg" alt="Image" /><br /><br />The .def file inside the "def" folder:
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs2.jpg" alt="Image" /><br /><br />The "guis" folder inside the "gfx" folder:
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs3.jpg" alt="Image" /><br /><br />The "loadscreens" and "mainmenu" folders inside "guis":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs4.jpg" alt="Image" /><br /><br />Image file inside "loadscreens":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs5.jpg" alt="Image" /><br /><br />Image file inside "mainmenu":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs6.jpg" alt="Image" /><br /><br />The "mp" folder inside "maps":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs7.jpg" alt="Image" /><br /><br />The various map files inside "mp":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs8.jpg" alt="Image" /><br /><br />Here's the contents of <span style="font-weight: bold">mymap.def</span>:
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// custom map loadscreen for mymap.map<br /><br />mapDef mp/mymap {<br />   "name"      "mymap Loadscreen Test"<br />   "DM"      "1"<br />   "Team DM"      "0"<br />   "Tourney"      "0"<br />   "CTF"      "0"<br />   "Arena CTF"      "0"<br />   "Gametype_Deathmatch"      "1"<br />   "Gametype_TeamDeathmatch"      "0"<br />   "Gametype_Tournament"      "0"<br />   "Gametype_CaptureTheFlag"      "0"<br />   "Gametype_ArenaCaptureTheFlag"      "0"<br />   "loadimage"      "gfx/guis/loadscreens/mymap.tga"<br />   "mp_thumb"      "gfx/guis/mainmenu/mymap.tga"<br /><br />}</div>
+<br /><br />This is the structure you need to use when adding a map to the server map list and giving it a custom screen while loading it.
+<br /><br />And now, the Quake 4 shortcut used to launch the game so that it will use the data in "mympmaps":
+<br /><br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs9.jpg" alt="Image" /><br /><br />When you've tested everything and you want to toss everything into a pak file for distribution, you do the following, assuming you have winrar installed:
+<br /><br />Go into the mympmaps folder and highlight the def, gfx, and maps folders.  Next, right-click on them and choose "Add to archive...":
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs10.jpg" alt="Image" /><br /><br />Change the filename so it has the extension ".pk4" instead of ".zip".
+<br /><br />Make sure "ZIP" Archive Format is selected instead of "RAR" Archive Format.  Leave the Compression Method at "Normal".  Your WinRar archive window should look like this:
+<br /><img src="https://web.archive.org/web/20121024013133im_/http://dev.rosebrough.com/q4/dirs/q4mod_dirs11.jpg" alt="Image" /><br /><br />Click OK and you should have a .pk4 file ready for distribution.
+<br /><br />Goliath</div>]]></body></post><post id="p120893" date="Posted: Wed Nov 09, 2005 7:03 pm "><author>heidinabucket</author><body><![CDATA[<div class="postbody">Bang on information!!!!
+<br />Thanks.</div>]]></body></post><post id="p120959" date="Posted: Thu Nov 10, 2005 6:24 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Hey Goliath, I'm curious. Have you ever considered playing an active role on the wiki? Your help would certainly be appriciated.</div>]]></body></post><post id="p189770" date="Posted: Mon Oct 08, 2007 2:21 am "><author>hotwheeler</author><body><![CDATA[<div class="postbody">-but I thot you needed an "addon.config" file in there somewhere???? <br /><br />also ,is it possible to put all map files,def files and loadscreen files into the same folder and path it all to that folder in a zip?? why wouldn't that work just as well?</div>]]></body></post></posts></thread></xml>

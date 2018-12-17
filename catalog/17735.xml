@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17735"><title>Locations and objectives</title><posts><post id="p161368" date="Posted: Fri Nov 03, 2006 5:25 pm "><author>mfh1900</author><body><![CDATA[<div class="postbody">Welcome in my tutorial about objectives and locations. We will create simple map where are three locations and one objective.
+<br /><br />But first....
+<br /><br /><span style="font-size: 150%; line-height: normal">1) OBJECTIVES</span>
+<br /><br />Create something like that (box room 512 x 512 x 256):
+<br /><br />screen 1
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img515.imageshack.us/img515/2936/objectives1ix0.jpg" alt="Image" /><br /><br />Next place walls in our map:
+<br /><br />screen 2
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img122.imageshack.us/img122/1583/objectives2bs1.jpg" alt="Image" /><br /><br />Then in center of room place light with 384 equilateral radius and unselect Cast Shadows option. Next put a shotgun in this section of room, and monster (imp): look at screen 3.
+<br />Add key/val for imp: ambush/1. Ok, then... create some triggers and objectives. First place target_primaryobjective with assigned key/value: text/objectivetext ('Clear area' for example but without '). Select info_player_start and target to target_primaryobjective (ctrl + k).
+<br /><br />screen 3
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img122.imageshack.us/img122/4314/objectives3oh6.jpg" alt="Image" /><br /><br />Next create item_objective with assigned key/val: objectivetext/text ('Kill imp using shotgun'), objectivetitle/title ('Imp'), camShot/cameraname (we will use 'camera'), screenShot/nameofimage ('objective1'). Camshot is when u want see small camera view in objective... screenShot is where to save it and what name use (the game will create folder with mapname and there will be ur screens). Target shotgun to item_objective_1.
+<br /><br />Next create cameraview (func_cameraview; change name of this camera to 'camera') and target_null. Select cameraview and target to target_null. The camera will look at target null. Move your target_null and cameraview to make good screen (camera have to look at imp):
+<br /><br />screen 4
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img163.imageshack.us/img163/3685/objectives5ya8.jpg" alt="Image" /><br /><br />Next create item_objectivecomplete. Add this keys: objectivetext/text (must be the same as in objective_1 - 'Kill imp using shotgun'), objectivetitle/title. Do not use camShot and screenShot, because this not working in objective complete!!! Target imp with objective:
+<br /><br />screen 5
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img524.imageshack.us/img524/3562/objectives6ys2.jpg" alt="Image" /><br /><br /><span style="font-size: 150%; line-height: normal">2) LOCATIONS</span>
+<br /><br />First we must create visportals. Create brushes here and they must fill Z position.... assign them common/nodraw textures:
+<br /><br />screen 6
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img163.imageshack.us/img163/1540/objectives7qv3.jpg" alt="Image" /><br /><br />Next unselect all and select this sides of brush (to select one side click on side in camera view and hold SHIFT + CTRL, to select two or more hold also SHIFT+CTRL+ALT - we must use second method). Select these sides:
+<br /><br />screen 7
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img163.imageshack.us/img163/2938/objectives8pc1.jpg" alt="Image" /><br /><br />U can see, when selecting one(more) side(s) of brush(es) in 2D view(s) u cant see selected side(s) or brush(es). Hehe(hehe)!!(!)
+<br /><br />And change texture to editor/visportal. Now we have got visportals. Create two info_locationseparators in room and put the in visportals. Waring: the origins' of separators must be on side where is visportal:
+<br /><br />screen 8
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img526.imageshack.us/img526/4743/objectives9js0.jpg" alt="Image" /><br /><br />Next create three info_locations. Put each one in each side (room). Then assign them all names of locations: location/nameoflocation or name/nameoflocation (but make sure u dont have two entities with the same name, e.g. one location have got name 'Corridor', and twenty-fourth location also is in corridor and have got 'Corridor' name, so when u want second time get this same name use location key). I named locations like that:
+<br /><br />screen 9
+<br /><img src="https://web.archive.org/web/20071110230001im_/http://img526.imageshack.us/img526/7831/objectives10re6.jpg" alt="Image" /><br /><br />Ok, that is end of our map. Bsp it and run.
+<br /><br /><br />Some problems, questions??? Post a reply!
+<br /><br /><span style="font-size: 75%; line-height: normal"><span style="color: blue">topic dedicated to: jamba</span></span>
+<br /><br />- mfh1900</div>]]></body></post><post id="p161376" date="Posted: Fri Nov 03, 2006 7:42 pm "><author>jamba</author><body><![CDATA[<div class="postbody">thanks a lot, looks good. i will try it later.</div>]]></body></post><post id="p161537" date="Posted: Sun Nov 05, 2006 8:23 pm "><author>Gunman</author><body><![CDATA[<div class="postbody">Nice tut, mfh1900! <img src="https://web.archive.org/web/20071110230001im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post></posts></thread></xml>

@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="8783"><title>DooM wad to Doom³ map converter DtoD3</title><posts><post id="p76880" date="Posted: Thu Feb 10, 2005 10:57 am "><author>redM</author><body><![CDATA[<div class="postbody">Hi Y'all,
+<br /><br />based on the QuakeDM code from Michael Stokes, I wrote a program
+<br />called DtoD3 which will convert DooM wad files into Doom³ map format.
+<br />It only takes seconds to do so.
+<br /><br />Nearly all linedefs are converted, as well as sector specials.
+<br /><br />Some linedefs are currently not supported:
+<br />- light
+<br />- scroll
+<br />- stairs
+<br /><br />Regarding the sectors, the specials concerning light are not supported.
+<br /><br />Things that DtoD3 converts:
+<br />- geometry
+<br />- objects
+<br />- correct textures names
+<br />- correct music
+<br />- creates an ambient light
+<br />...
+<br /><br />Actually there are few problems I am aware of:
+<br /><br />If more than one sector is tagged to one switch (doom), only the first brush will be tagged to the switch. In Doom 3, the other brushes get generic names. That is because there is more than one brush with the same tag, better said, name. Names must be unique in Doom3.
+<br /><br />Sometimes you cannot leave a teleporter, because in Doom³ triggers are double sided, in Doom single sided.
+<br /><br />some brushes are not drawn: if there is an upper and lower and middle texture aligned
+<br /><br />Things to do:
+<br /><br />remove bugs mentioned above ;-&gt;
+<br /><br />all items, weapons, powerups etc. must be moveable, otherwise they got no gravity	and will not move along when ie. lifts or podests are moving.
+<br />(this is doom3 side)
+<br /><br />misc objects have to be inserted/created and have to be declared as func_static. (in object file)
+<br /><br />add correct speed, damage, sound, light to doors/crusher/lamps etc.
+<br /><br />Please try this tool and report your problems you have encountered.
+<br /><br />A few things you have to do while converting:
+<br /><br />-run glbspX on your wad file
+<br />-run DtoD3 on your wad file
+<br />-open the created map file with DoomEdit
+<br />-save your map file in the /base/maps folder
+<br />-open your map file from the /base/maps folder
+<br />-run bsp
+<br />-start Doom³ and start your map via the console
+<br /><br />For the textures I recommend those from the Doom II Retexturing Project.
+<br />These textures must be converted into .tga files and renamed.
+<br />The material file is delivered with DtoD3.
+<br /><br />I have completed texture conversion, it weighs ~200 MB, too much to post.
+<br /><br />Well, if anybody can and wants to upload that tool (300kb), please report
+<br /><br />Greetings redM</div>]]></body></post><post id="p76934" date="Posted: Thu Feb 10, 2005 4:00 pm "><author>T0r1t0</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">I have completed texture conversion, it weighs ~200 MB, too much to post. <br /><br />Well, if anybody can and wants to upload that tool (300kb), please report <br /></div>
+<br /><br />I can host the tool if you want to (i have a free geocities account).  The texture pack is obviously to big.
+<br /><br />EDIT: maybe you can try <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/">http://doom3.filefront.com/</a><!-- m --></div>]]></body></post><post id="p76946" date="Posted: Thu Feb 10, 2005 5:51 pm "><author>redM</author><body><![CDATA[<div class="postbody">the file can be downloaded at Doom ³ Files:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/file/DOOM_Wad_to_DOOM_3_Map_Converter;37395">http://doom3.filefront.com/file/DOOM_Wa ... rter;37395</a><!-- m --></div>]]></body></post><post id="p76962" date="Posted: Thu Feb 10, 2005 6:59 pm "><author>Kristus</author><body><![CDATA[<div class="postbody">Impressive, do you have screenshots?</div>]]></body></post><post id="p76997" date="Posted: Thu Feb 10, 2005 10:11 pm "><author>just1n</author><body><![CDATA[<div class="postbody">Nice and very interesting work.
+<br /><br />Congrats.</div>]]></body></post><post id="p77015" date="Posted: Thu Feb 10, 2005 11:32 pm "><author>hellstorm27</author><body><![CDATA[<div class="postbody">Excellent- certainly something to fall back upon if mods like Classic Doom 3 fall by the wayside, and to try out in the meantime.</div>]]></body></post><post id="p77018" date="Posted: Thu Feb 10, 2005 11:53 pm "><author>SnoopJeDi</author><body><![CDATA[<div class="postbody"><div class="quotetitle">hellstorm27 wrote:</div><div class="quotecontent"> if mods like Classic Doom 3 fall by the wayside</div><br /><br /><br />Psssht.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /><br /><br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">and to try out in the meantime.</div>
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />Very nice redM <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p77066" date="Posted: Fri Feb 11, 2005 11:09 am "><author>Gazado</author><body><![CDATA[<div class="postbody"><div class="quotetitle">hellstorm27 wrote:</div><div class="quotecontent">Excellent- certainly something to fall back upon if mods like Classic Doom 3 fall by the wayside, and to try out in the meantime.</div>
+<br /><br />Were NOT falling by the way-side I'll have you know.
+<br /><br />We are 100% commited to completing at least the shareware version of the game - and then seeing where the project leads after that <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p77126" date="Posted: Fri Feb 11, 2005 7:27 pm "><author>zl1corvette</author><body><![CDATA[<div class="postbody">Wow, cool tool!  I was thinking about making something like this, but I started looking at the way wad files were put together and changed my mind.   <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />  Nice work.</div>]]></body></post><post id="p77210" date="Posted: Sat Feb 12, 2005 11:16 am "><author>d3comm</author><body><![CDATA[<div class="postbody">well i got many unreleased doom1 wads which i would love to convert t doom3. so this work would be really nice. i already tried it. but having a bigger map then without even one texture is no fun. i will host your 200 meg texture file, if that is legal (copyright..) and if you want to.
+<br /><br />my page is <a href="https://web.archive.org/web/20070509181516/http://www.doom3-community.de/" class="postlink">http://www.doom3-community.de</a>
+<br /><br />please tell me what you think</div>]]></body></post><post id="p77223" date="Posted: Sat Feb 12, 2005 2:37 pm "><author>redM</author><body><![CDATA[<div class="postbody">The textures have been taken from the Doom II Retexturing Project and the JDTP (JDOOM texture pack).
+<br />There is a copyright on the JDTP.
+<br /><br />So you have to download the pack at:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://forums.jfiles.org/viewtopic.php?t=66">http://forums.jfiles.org/viewtopic.php?t=66</a><!-- m -->
+<br /><br />then convert the files into tga format (uncompressed)
+<br />rename those files to remove the FLAT- prefix and add the ending _d
+<br />for diffuse for all files.
+<br />(like flat-ceil4_1.tga -&gt; ceil4_1_d.tga
+<br />metal4.tga -&gt; metal4_d.tga etc.)
+<br /><br />now create a .pk4 file with the textures in a folder called textures
+<br /><br />the matrial file which is delivered with dtod3 uses textures smaller in size for the radiant. they got the ending _ed. so the lines like
+<br />qer_editorimage textures/Aashitty_ed.tga
+<br />has to be renamed
+<br />qer_editorimage textures/Aashitty_d.tga
+<br />to actually see them in the editor
+<br /><br />in the next version I will provide the reworked material file
+<br /><br />for the renamer I recommand MagicRenamer, Paint Shop Pro for texture conversion</div>]]></body></post><post id="p77235" date="Posted: Sat Feb 12, 2005 5:16 pm "><author>d3comm</author><body><![CDATA[<div class="postbody">well.... i downloaded the files. i downloaded the renamer. i converted ... packed the pk4. only thing i didn´t do is rename the files in your material file. but my game wont start. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":-(" title="Sad" /> without a working pk4 this makes no sense. i have a map. yes. but without any textures and many other problems ("light has no name")... i really like your work. but at this state of work i cant use it. :-/ hope you will continue!</div>]]></body></post><post id="p77236" date="Posted: Sat Feb 12, 2005 5:25 pm "><author>kentaro-k.21</author><body><![CDATA[<div class="postbody">hi.
+<br />the map converter works well!
+<br />although i have to use "bsp noflood" to compile the map, the conversion result of geometory/things looks well!
+<br /><br />and i publish a batch texture converter that i used to convert. it includes
+<br />- a DOS batch file to convert png to tga and rename them
+<br />- a tool png2tga developed by frustum (<a href="https://web.archive.org/web/20070509181516/http://frustum.org/misc/" class="postlink">http://frustum.org/misc/</a>)
+<br />- a tutorial for html web browser
+<br /><br />you can download the batch texture converter from:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://homepage3.nifty.com/kkdf/texpakcvt-20050213.rar">http://homepage3.nifty.com/kkdf/texpakcvt-20050213.rar</a><!-- m --></div>]]></body></post><post id="p77238" date="Posted: Sat Feb 12, 2005 5:43 pm "><author>redM</author><body><![CDATA[<div class="postbody">be sure that you use the -bound option that prevents leaks.
+<br />also the center of the map must be within these bounds.
+<br /><br />dtod3 writes the planes in the old quake format version 1.
+<br />you have to open the converted map and MUST save it in the /base/maps folder.
+<br />then you have to reopen it before using bsp.</div>]]></body></post><post id="p77276" date="Posted: Sat Feb 12, 2005 9:41 pm "><author>hellstorm27</author><body><![CDATA[<div class="postbody">For a first release of a difficult task, I don't think it's at all bad- inspired idea, and good effort.
+<br /><br />I tested E2M8 and E1M3 from Doom 1 to see how robust it was.
+<br /><br />The issues I found:
+<br /><br />1.  The rooms seemed to be disproportionately big compared to the Doom 1 level rooms, and on top of that, the textures seemed to be disproportionately small.  A good example was E2M8, where the texture on the pillars in the outer perimiter where you fight the cyberdemon repeats up the wall about 10 times, in the original it only repeats twice.
+<br /><br />2.  The lighting is extremely inconsistent.  Some walls and floors are lit and others are black.
+<br /><br />Otherwise, there were no bugs that I found that weren't covered (and point 2 may well be a direct result of the light bugs)
+<br /><br />It certainly does a good job of converting the maps without errors and must have been a pain to set up in the first place- I imagine that all it needs now are a number of 'tweaks' to provide better results.</div>]]></body></post><post id="p77312" date="Posted: Sat Feb 12, 2005 11:48 pm "><author>redM</author><body><![CDATA[<div class="postbody">to hellstorm27:
+<br /><br />the level data is scaled by 1.5, because of the dimensions of the monsters.
+<br />using the original size causes the monsters getting stuck in walls or elsewhere. some rooms are therefor too low to pass.
+<br /><br />unfortunately there is no "basic" light in doom 3. this is created with dtod3 via setting one light source with the dimensions of the whole map using an ambient texture. the dimensions of the light should be way bigger than the map is, otherwise there is a falloff at the lights borders. I will increase the size of that light.
+<br /><br />here is a hint how to resize texture at this moment:
+<br />after converting the wad file to map format, run doomedit, open the map file, save it in the base/maps folder, run gtkradiant, open map file, mark the whole map, press s for surface inspector and type in the value of 0.75
+<br />for horizontal and vertical stretch. save the map and run doomedit to bsp.
+<br /><br />it is not perfect, but it looks way better.</div>]]></body></post><post id="p77327" date="Posted: Sun Feb 13, 2005 1:16 am "><author>hellstorm27</author><body><![CDATA[<div class="postbody">Tried it, and it does make a difference.  As you say, it's not perfect, but a little tinkering with the textures could pay big dividends.
+<br /><br />I will be using GtkRadiant 1.5.0 rather more in the future because it doesn't slow my computer down to a crawl in the manner that DoomEdit does, and thanks for bringing it to my attention.</div>]]></body></post><post id="p79991" date="Posted: Tue Mar 01, 2005 12:03 pm "><author>redM</author><body><![CDATA[<div class="postbody">A new version of DtoD3 is going to be released on d3files.com.
+<br /><br />The triggers have been reworked,
+<br />light effects on sectors are somewhat working (but still under construction)
+<br />all lifts, doors etc have correct names, so they are correctly triggered
+<br />speed has been adjusted ( doors, lifts etc.)
+<br />the object substitution file has been expanded ( not completely done yet)
+<br /><br />you can scale your maps the size you want by adding -scale x to the command line
+<br /><br />some things more...
+<br /><br />I am searching for some suitable models for the environment, now I am using the ones from jDoom, but those are former .md2 meshes which have a very low polycount.
+<br /><br />Please report your experiences
+<br /><br />greetings
+<br /><br />redM</div>]]></body></post><post id="p89519" date="Posted: Wed Apr 20, 2005 12:12 am "><author>BotManiac</author><body><![CDATA[<div class="postbody">v1.2 is released.
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/file/DOOM_to_DOOM_3_Map_Converter;40781">http://doom3.filefront.com/file/DOOM_to ... rter;40781</a><!-- m -->
+<br /><br />i was hoping to download a few maps someone converted ?
+<br />guess this is a personal tool.
+<br />is there any examples available ? maybe even some screenshots ?
+<br /><br />now if only someone can convert the 4th map from Doom for SNES
+<br />it wasnt in doom1 or 2.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />Cool Tool.</div>]]></body></post><post id="p89520" date="Posted: Wed Apr 20, 2005 12:37 am "><author>BotManiac</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - DooM wad to Doom³ map converter DtoD3</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=1&amp;t=8783&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app10.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/doom3world.org\/phpbb2\/viewtopic.php?f=1&t=8783";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=1&amp;t=8783" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/faq.php?sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Sat Jan 26, 2008 9:17 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=6c30b7d18a847b5159aab54ea7e52d85">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=73&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">Doom 3</a> » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=1&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">Doom 3 level editing</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">DooM wad to Doom³ map converter DtoD3</a></h2>
+
+	<p class="moderators">Moderators: <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6c30b7d18a847b5159aab54ea7e52d85" style="color: #AA0000;" class="username-coloured">BNA!</a>, <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=post&amp;f=1&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=reply&amp;f=1&amp;t=8783&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>4</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 74 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=1&amp;t=8783#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85&amp;start=20">2</a><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85&amp;start=40">3</a><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85&amp;start=60">4</a>  <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6c30b7d18a847b5159aab54ea7e52d85&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;view=previous&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=1&amp;t=8783&amp;view=next&amp;sid=6c30b7d18a847b5159aab54ea7e52d85">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p76880" id="p76880"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> DooM wad to Doom³ map converter DtoD3</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=76880&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p76880"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 10:57 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hi Y'all,
+<br /><br />based on the QuakeDM code from Michael Stokes, I wrote a program
+<br />called DtoD3 which will convert DooM wad files into Doom³ map format.
+<br />It only takes seconds to do so.
+<br /><br />Nearly all linedefs are converted, as well as sector specials.
+<br /><br />Some linedefs are currently not supported:
+<br />- light
+<br />- scroll
+<br />- stairs
+<br /><br />Regarding the sectors, the specials concerning light are not supported.
+<br /><br />Things that DtoD3 converts:
+<br />- geometry
+<br />- objects
+<br />- correct textures names
+<br />- correct music
+<br />- creates an ambient light
+<br />...
+<br /><br />Actually there are few problems I am aware of:
+<br /><br />If more than one sector is tagged to one switch (doom), only the first brush will be tagged to the switch. In Doom 3, the other brushes get generic names. That is because there is more than one brush with the same tag, better said, name. Names must be unique in Doom3.
+<br /><br />Sometimes you cannot leave a teleporter, because in Doom³ triggers are double sided, in Doom single sided.
+<br /><br />some brushes are not drawn: if there is an upper and lower and middle texture aligned
+<br /><br />Things to do:
+<br /><br />remove bugs mentioned above ;-&gt;
+<br /><br />all items, weapons, powerups etc. must be moveable, otherwise they got no gravity	and will not move along when ie. lifts or podests are moving.
+<br />(this is doom3 side)
+<br /><br />misc objects have to be inserted/created and have to be declared as func_static. (in object file)
+<br /><br />add correct speed, damage, sound, light to doors/crusher/lamps etc.
+<br /><br />Please try this tool and report your problems you have encountered.
+<br /><br />A few things you have to do while converting:
+<br /><br />-run glbspX on your wad file
+<br />-run DtoD3 on your wad file
+<br />-open the created map file with DoomEdit
+<br />-save your map file in the /base/maps folder
+<br />-open your map file from the /base/maps folder
+<br />-run bsp
+<br />-start Doom³ and start your map via the console
+<br /><br />For the textures I recommend those from the Doom II Retexturing Project.
+<br />These textures must be converted into .tga files and renamed.
+<br />The material file is delivered with DtoD3.
+<br /><br />I have completed texture conversion, it weighs ~200 MB, too much to post.
+<br /><br />Well, if anybody can and wants to upload that tool (300kb), please report
+<br /><br />Greetings redM</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p76934" id="p76934"></a>
+				<b class="postauthor">T0r1t0</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=76934&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p76934"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 4:00 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">fired 300 rounds</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=6547.gif" width="64" height="36" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Dec 14, 2004 8:24 pm<br /><b>Posts:</b> 309				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">I have completed texture conversion, it weighs ~200 MB, too much to post. <br /><br />Well, if anybody can and wants to upload that tool (300kb), please report <br /></div>
+<br /><br />I can host the tool if you want to (i have a free geocities account).  The texture pack is obviously to big.
+<br /><br />EDIT: maybe you can try <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/">http://doom3.filefront.com/</a><!-- m --></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6547&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p76946" id="p76946"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=76946&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p76946"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 5:51 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">the file can be downloaded at Doom ³ Files:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/file/DOOM_Wad_to_DOOM_3_Map_Converter;37395">http://doom3.filefront.com/file/DOOM_Wa ... rter;37395</a><!-- m --></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p76962" id="p76962"></a>
+				<b class="postauthor">Kristus</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=76962&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p76962"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 6:59 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">respawned 1350 times</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=6065.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Nov 06, 2004 7:33 pm<br /><b>Posts:</b> 1388<br /><b>Location:</b> In my pants.				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Impressive, do you have screenshots?</div>
+
+											<span class="postbody"><br />_________________<br />D3: Phobos - Co Leader, Artist.</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6065&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p76997" id="p76997"></a>
+				<b class="postauthor">just1n</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=76997&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p76997"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 10:11 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">missed 400 shots</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=2516.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Aug 09, 2004 3:29 am<br /><b>Posts:</b> 416<br /><b>Location:</b> Phoenix:Arizona / US				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Nice and very interesting work.
+<br /><br />Congrats.</div>
+
+											<span class="postbody"><br />_________________<br />Justin Van Horne
+<br />Lead Coder - RECA|| TO HE||</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2516&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77015" id="p77015"></a>
+				<b class="postauthor">hellstorm27</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77015&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77015"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 11:32 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 08, 2004 1:01 pm<br /><b>Posts:</b> 161<br /><b>Location:</b> Phobos				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Excellent- certainly something to fall back upon if mods like Classic Doom 3 fall by the wayside, and to try out in the meantime.</div>
+
+											<span class="postbody"><br />_________________<br />Face your DOOM!</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5018&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77018" id="p77018"></a>
+				<b class="postauthor">SnoopJeDi</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77018&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77018"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Feb 10, 2005 11:53 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Captured the Flag</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Jan 06, 2005 7:56 pm<br /><b>Posts:</b> 1880<br /><b>Location:</b> 127.0.0.1				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">hellstorm27 wrote:</div><div class="quotecontent"> if mods like Classic Doom 3 fall by the wayside</div><br /><br /><br />Psssht.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /><br /><br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">and to try out in the meantime.</div>
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />Very nice redM <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+											<span class="postbody"><br />_________________<br />Check out <a href="https://web.archive.org/web/20070509181516/http://cdoom.d3files.com/" class="postlink">Classic Doom 3!</a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.omegadrivers.net/" class="postlink">Support OmegaDrive</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12138&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77066" id="p77066"></a>
+				<b class="postauthor">Gazado</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77066&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77066"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Feb 11, 2005 11:09 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">found a secret</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 22, 2004 11:26 am<br /><b>Posts:</b> 512<br /><b>Location:</b> Kent , UK				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">hellstorm27 wrote:</div><div class="quotecontent">Excellent- certainly something to fall back upon if mods like Classic Doom 3 fall by the wayside, and to try out in the meantime.</div>
+<br /><br />Were NOT falling by the way-side I'll have you know.
+<br /><br />We are 100% commited to completing at least the shareware version of the game - and then seeing where the project leads after that <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+											<span class="postbody"><br />_________________<br />Gazz<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://cdoom.d3files.com/">http://cdoom.d3files.com</a><!-- m --> -CDoom</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5376&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77126" id="p77126"></a>
+				<b class="postauthor">zl1corvette</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77126&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77126"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Feb 11, 2005 7:27 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4025.png" width="52" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Aug 21, 2004 9:25 pm<br /><b>Posts:</b> 150<br /><b>Location:</b> Qo'noS				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Wow, cool tool!  I was thinking about making something like this, but I started looking at the way wad files were put together and changed my mind.   <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />  Nice work.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4025&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77210" id="p77210"></a>
+				<b class="postauthor">d3comm</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77210&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77210"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 11:16 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">The first 10 posts have been the best...</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 25, 2004 12:30 am<br /><b>Posts:</b> 11				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">well i got many unreleased doom1 wads which i would love to convert t doom3. so this work would be really nice. i already tried it. but having a bigger map then without even one texture is no fun. i will host your 200 meg texture file, if that is legal (copyright..) and if you want to.
+<br /><br />my page is <a href="https://web.archive.org/web/20070509181516/http://www.doom3-community.de/" class="postlink">http://www.doom3-community.de</a>
+<br /><br />please tell me what you think</div>
+
+											<span class="postbody"><br />_________________<br />Godsworld.org - the world is his!</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=11964&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77223" id="p77223"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77223&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77223"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 2:37 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">The textures have been taken from the Doom II Retexturing Project and the JDTP (JDOOM texture pack).
+<br />There is a copyright on the JDTP.
+<br /><br />So you have to download the pack at:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://forums.jfiles.org/viewtopic.php?t=66">http://forums.jfiles.org/viewtopic.php?t=66</a><!-- m -->
+<br /><br />then convert the files into tga format (uncompressed)
+<br />rename those files to remove the FLAT- prefix and add the ending _d
+<br />for diffuse for all files.
+<br />(like flat-ceil4_1.tga -&gt; ceil4_1_d.tga
+<br />metal4.tga -&gt; metal4_d.tga etc.)
+<br /><br />now create a .pk4 file with the textures in a folder called textures
+<br /><br />the matrial file which is delivered with dtod3 uses textures smaller in size for the radiant. they got the ending _ed. so the lines like
+<br />qer_editorimage textures/Aashitty_ed.tga
+<br />has to be renamed
+<br />qer_editorimage textures/Aashitty_d.tga
+<br />to actually see them in the editor
+<br /><br />in the next version I will provide the reworked material file
+<br /><br />for the renamer I recommand MagicRenamer, Paint Shop Pro for texture conversion</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77235" id="p77235"></a>
+				<b class="postauthor">d3comm</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77235&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77235"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 5:16 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">The first 10 posts have been the best...</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 25, 2004 12:30 am<br /><b>Posts:</b> 11				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">well.... i downloaded the files. i downloaded the renamer. i converted ... packed the pk4. only thing i didn´t do is rename the files in your material file. but my game wont start. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":-(" title="Sad" /> without a working pk4 this makes no sense. i have a map. yes. but without any textures and many other problems ("light has no name")... i really like your work. but at this state of work i cant use it. :-/ hope you will continue!</div>
+
+											<span class="postbody"><br />_________________<br />Godsworld.org - the world is his!</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=11964&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77236" id="p77236"></a>
+				<b class="postauthor">kentaro-k.21</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77236&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77236"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 5:25 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Aug 28, 2004 7:05 pm<br /><b>Posts:</b> 31<br /><b>Location:</b> Osaka, Japan				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">hi.
+<br />the map converter works well!
+<br />although i have to use "bsp noflood" to compile the map, the conversion result of geometory/things looks well!
+<br /><br />and i publish a batch texture converter that i used to convert. it includes
+<br />- a DOS batch file to convert png to tga and rename them
+<br />- a tool png2tga developed by frustum (<a href="https://web.archive.org/web/20070509181516/http://frustum.org/misc/" class="postlink">http://frustum.org/misc/</a>)
+<br />- a tutorial for html web browser
+<br /><br />you can download the batch texture converter from:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://homepage3.nifty.com/kkdf/texpakcvt-20050213.rar">http://homepage3.nifty.com/kkdf/texpakcvt-20050213.rar</a><!-- m --></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4561&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77238" id="p77238"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77238&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77238"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 5:43 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">be sure that you use the -bound option that prevents leaks.
+<br />also the center of the map must be within these bounds.
+<br /><br />dtod3 writes the planes in the old quake format version 1.
+<br />you have to open the converted map and MUST save it in the /base/maps folder.
+<br />then you have to reopen it before using bsp.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77276" id="p77276"></a>
+				<b class="postauthor">hellstorm27</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77276&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77276"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 9:41 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 08, 2004 1:01 pm<br /><b>Posts:</b> 161<br /><b>Location:</b> Phobos				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">For a first release of a difficult task, I don't think it's at all bad- inspired idea, and good effort.
+<br /><br />I tested E2M8 and E1M3 from Doom 1 to see how robust it was.
+<br /><br />The issues I found:
+<br /><br />1.  The rooms seemed to be disproportionately big compared to the Doom 1 level rooms, and on top of that, the textures seemed to be disproportionately small.  A good example was E2M8, where the texture on the pillars in the outer perimiter where you fight the cyberdemon repeats up the wall about 10 times, in the original it only repeats twice.
+<br /><br />2.  The lighting is extremely inconsistent.  Some walls and floors are lit and others are black.
+<br /><br />Otherwise, there were no bugs that I found that weren't covered (and point 2 may well be a direct result of the light bugs)
+<br /><br />It certainly does a good job of converting the maps without errors and must have been a pain to set up in the first place- I imagine that all it needs now are a number of 'tweaks' to provide better results.</div>
+
+											<span class="postbody"><br />_________________<br />Face your DOOM!</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5018&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p77312" id="p77312"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77312&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77312"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Feb 12, 2005 11:48 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">to hellstorm27:
+<br /><br />the level data is scaled by 1.5, because of the dimensions of the monsters.
+<br />using the original size causes the monsters getting stuck in walls or elsewhere. some rooms are therefor too low to pass.
+<br /><br />unfortunately there is no "basic" light in doom 3. this is created with dtod3 via setting one light source with the dimensions of the whole map using an ambient texture. the dimensions of the light should be way bigger than the map is, otherwise there is a falloff at the lights borders. I will increase the size of that light.
+<br /><br />here is a hint how to resize texture at this moment:
+<br />after converting the wad file to map format, run doomedit, open the map file, save it in the base/maps folder, run gtkradiant, open map file, mark the whole map, press s for surface inspector and type in the value of 0.75
+<br />for horizontal and vertical stretch. save the map and run doomedit to bsp.
+<br /><br />it is not perfect, but it looks way better.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p77327" id="p77327"></a>
+				<b class="postauthor">hellstorm27</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=77327&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p77327"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Feb 13, 2005 1:16 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 08, 2004 1:01 pm<br /><b>Posts:</b> 161<br /><b>Location:</b> Phobos				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Tried it, and it does make a difference.  As you say, it's not perfect, but a little tinkering with the textures could pay big dividends.
+<br /><br />I will be using GtkRadiant 1.5.0 rather more in the future because it doesn't slow my computer down to a crawl in the manner that DoomEdit does, and thanks for bringing it to my attention.</div>
+
+											<span class="postbody"><br />_________________<br />Face your DOOM!</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5018&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p79991" id="p79991"></a>
+				<b class="postauthor">redM</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=79991&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p79991"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Mar 01, 2005 12:03 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Dec 19, 2004 1:25 pm<br /><b>Posts:</b> 26				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">A new version of DtoD3 is going to be released on d3files.com.
+<br /><br />The triggers have been reworked,
+<br />light effects on sectors are somewhat working (but still under construction)
+<br />all lifts, doors etc have correct names, so they are correctly triggered
+<br />speed has been adjusted ( doors, lifts etc.)
+<br />the object substitution file has been expanded ( not completely done yet)
+<br /><br />you can scale your maps the size you want by adding -scale x to the command line
+<br /><br />some things more...
+<br /><br />I am searching for some suitable models for the environment, now I am using the ones from jDoom, but those are former .md2 meshes which have a very low polycount.
+<br /><br />Please report your experiences
+<br /><br />greetings
+<br /><br />redM</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6600&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p89519" id="p89519"></a>
+				<b class="postauthor">BotManiac</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=89519&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p89519"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Apr 20, 2005 12:12 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 100 armour</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 18, 2004 4:21 pm<br /><b>Posts:</b> 104				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">v1.2 is released.
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://doom3.filefront.com/file/DOOM_to_DOOM_3_Map_Converter;40781">http://doom3.filefront.com/file/DOOM_to ... rter;40781</a><!-- m -->
+<br /><br />i was hoping to download a few maps someone converted ?
+<br />guess this is a personal tool.
+<br />is there any examples available ? maybe even some screenshots ?
+<br /><br />now if only someone can convert the 4th map from Doom for SNES
+<br />it wasnt in doom1 or 2.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />Cool Tool.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=1&amp;t=8783#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6585&amp;sid=6c30b7d18a847b5159aab54ea7e52d85"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p89520" id="p89520"></a>
+				<b class="postauthor">BotManiac</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=89520&amp;sid=6c30b7d18a847b5159aab54ea7e52d85#p89520"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Apr 20, 2005 12:37 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 100 armour</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Dec 18, 2004 4:21 pm<br /><b>Posts:</b> 104				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspac=""><!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 3:56:38 Sep 26, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

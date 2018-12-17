@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18338"><title>Beginner nurms question. * new question *</title><posts><post id="p166871" date="Posted: Mon Jan 08, 2007 11:29 pm "><author>efx</author><body><![CDATA[<div class="postbody">Hi everyone,
+<br /><br />I did some searches in the documentation for this but came up emptyhanded so I hope it's ok to ask this here.
+<br /><br />I have this very simple object:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://-efx-.shackspace.com/3d/wo-nurms.gif">http://-efx-.shackspace.com/3d/wo-nurms.gif</a><!-- m -->
+<br /><br />I'm just using it to experiment with nurms (I'm in general very much a beginner at this) and I think I get it but for this one thing. When I apply them the area around the hole juts up as evidenced here:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://-efx-.shackspace.com/3d/w-nurms.gif">http://-efx-.shackspace.com/3d/w-nurms.gif</a><!-- m -->
+<br /><br />What I essentially want to do is have the box hole retain its shape when I apply the nurms.
+<br /><br />I've set the "insides" of the hole to separate groups (I've set the nurms setting to separate by smoothing groups). Silly question perhaps but I'm really stumped here.
+<br /><br />Any ideas? Hopefully I explained my issue well enough. Let me know if I can fill in any additional info needed.
+<br /><br />Thank you in advance:
+<br /><br />-efx-</div>]]></body></post><post id="p166874" date="Posted: Mon Jan 08, 2007 11:52 pm "><author>Kamikazee</author><body><![CDATA[<div class="postbody">Is there some way to visualize the control points of the nurms? Similar to Doom 3's patches, such surfaces should be possible to tweak by changing the surface's control points. They seem to work alright at the edges of the torus, but I guess that they are not correct where you cut the hole.
+<br />To correct it there, you might need to insert more control points just like you would add a new row to a patch's control grid.</div>]]></body></post><post id="p166875" date="Posted: Tue Jan 09, 2007 12:06 am "><author>6th Venom</author><body><![CDATA[<div class="postbody">Try to click on your "meshsmooth" modifier (i think you used it to apply NURMS smoothing right?), then down and check the "Show cage" box, and try to move manually your points.
+<br /><br />What i thing i'd do to achieve this form, is to create a full tube first, meshsmooth it, and then substract the "cube" form to it.
+<br /><br />Cause NURMS modifier don't know how you want a form, it just smooth as wall as it can, maybe try to use NURBS surfaces to make it like you want.</div>]]></body></post><post id="p166885" date="Posted: Tue Jan 09, 2007 1:42 am "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">Here´s a tutorial which illustrates very good how it´s done. Check out the meshsmooth section of it.
+<br />You basicly have to add edges close to the edges which define the hole. On every side. This can be very Poly intensive and is probably not very recomendable for gaming models. However it´s very useful for other things.
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://www.neilblevins.com/cg_education/rounding_the_edges/rounding_the_edges.htm" class="postlink">Link</a>
+<br /><br />Personally i would not meshsmooth this object at all. If you want the tube smoother simply give it some more segments in the beginning. If you want the edges of the hole to be smooth you´re better off with chamfering them than going through the whole process of adding more edgeloops required for reasonable meshsmoothing.
+<br /><br />You can use the creasing method but in my oppinion it´s not very useful because it´s quite a lot of work and rarely gives good results.</div>]]></body></post><post id="p166926" date="Posted: Tue Jan 09, 2007 3:21 pm "><author>obihb</author><body><![CDATA[<div class="postbody">Making something like this using subdevisions is hard and probably will never really work right, unless the tube is really high poly to start with. I mean to cut a square hole in a round surface.
+<br /><br />So in this particular case it would be easier to create the tube at it's highest res mesh and then cut in the hole. This way the hole does not affect the tube surface at all. You can then use chamfer or one of those method to create the rounded looking edge of the hole without mesh smoothing, if you wanted.</div>]]></body></post><post id="p167001" date="Posted: Wed Jan 10, 2007 5:37 am "><author>efx</author><body><![CDATA[<div class="postbody">I just wanted to say thank you guys for you quick and helpful answers! I learned a lot <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Thanks again!</div>]]></body></post><post id="p167086" date="Posted: Thu Jan 11, 2007 7:33 am "><author>efx</author><body><![CDATA[<div class="postbody">Hi guys, I have a sort of follow up question and I didn't think it needed it's own topic so I'd thought I'd put it here.
+<br /><br />I have a test object in which I have an extruded section of a meshsmoothed object and it pretty much looks like I want it but for one thing and that one thing is really annoying me.
+<br /><br />I think I can better illustrate it through imagery so here goes:
+<br /><br />Here is the basic object with the extrusion:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img180.imageshack.us/my.php?image=withoutnurms1wr3.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img180.imageshack.us/img180/2200/withoutnurms1wr3.th.gif" alt="Image" /></a>
+<br /><br />Here it is with the meshsmooth:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img363.imageshack.us/my.php?image=withnurms1pz4.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img363.imageshack.us/img363/303/withnurms1pz4.th.gif" alt="Image" /></a>
+<br /><br />So far so good. Well, I thought I wanted the corners in the extrusion to be a little less round so I did this:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img180.imageshack.us/my.php?image=withoutnurms2wy1.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img180.imageshack.us/img180/1983/withoutnurms2wy1.th.gif" alt="Image" /></a>
+<br /><br />You can see the vertical cuts there. But when I smooth it like this:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img156.imageshack.us/my.php?image=withnurms2mo3.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img156.imageshack.us/img156/1272/withnurms2mo3.th.gif" alt="Image" /></a>
+<br /><br />I get these little "pinched" sections so to speak. Here's a better view of how the issue looks:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img72.imageshack.us/my.php?image=withoutisohh5.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img72.imageshack.us/img72/9403/withoutisohh5.th.gif" alt="Image" /></a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://img72.imageshack.us/my.php?image=renderedviewwr8.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img72.imageshack.us/img72/1416/renderedviewwr8.th.gif" alt="Image" /></a>
+<br /><br />See where the arrows are pointing? I'm sure my excessive imagery illustrates what I'm trying to do so does anyone have any idea on how I can fix it? Thanks again guys, the links and ideas in this thread has already helped me a lot.
+<br /><br />Thanks in advance:)</div>]]></body></post><post id="p167089" date="Posted: Thu Jan 11, 2007 9:59 am "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">I need to see a bigger part of the base mesh.</div>]]></body></post><post id="p167102" date="Posted: Thu Jan 11, 2007 12:00 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody"><a href="https://web.archive.org/web/20070509181516/http://imageshack.us/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img442.imageshack.us/img442/4424/testzr5.jpg" alt="Image" /></a>
+<br />You should try this one. (made in Ps, so i didin't tested it.)
+<br /><br />In your exemple, did you used "cut"?
+<br />Sometimes "cut" or "slice" create extra hidden triangles, or extra vertices on edges, so for low poly works, it's still better to do all by hand.</div>]]></body></post><post id="p167119" date="Posted: Thu Jan 11, 2007 1:28 pm "><author>efx</author><body><![CDATA[<div class="postbody">6th Venom: 
+<br /><br />Thanks for the suggestion. I tried it but it doesn't seem to do it.
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img132.imageshack.us/my.php?image=withoutnurms3ze8.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img132.imageshack.us/img132/4495/withoutnurms3ze8.th.gif" alt="Image" /></a>
+<br /><br />Here's how I cut it and here's how it looks smoothed:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img402.imageshack.us/my.php?image=withnurms3sm1.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img402.imageshack.us/img402/3359/withnurms3sm1.th.gif" alt="Image" /></a>
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img154.imageshack.us/my.php?image=withnurms4vu4.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img154.imageshack.us/img154/2158/withnurms4vu4.th.gif" alt="Image" /></a>
+<br />Maybe I'm not doing it right? <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /></div>]]></body></post><post id="p167135" date="Posted: Thu Jan 11, 2007 3:33 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">Mesh Smooth doesn´t like triangles.
+<br />But i need to see a larger part of the pic to tell more.</div>]]></body></post><post id="p167146" date="Posted: Thu Jan 11, 2007 5:41 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">@Lumpengnom: Why do you say that about triangles and meshsmooth? i always work only with triangles, cause sometimes, like here maybe, there is little triangles created that you don't know about when you use faces.
+<br /><br />@efx: from your last screens i'll say that you need to to re-weld your vertices, cause it's impossible that backfaces can pass the frontfaces of your border without moving top corner vertices, except if they are separate vertices. (see the last screen before "Maybe i'm not doing it right?" to understand what i mean...)
+<br /><br />So i just suggest you to unsmooth, select all your vertices and make a "weld" (in editmesh or editpoly) with a very low value like 0,005, and check if the selected vertices count down.
+<br />Then redo your meshsmooth and check if there is any change.
+<br /><br />Also, be sure to apply tris/faces/polies smoothgroups (in edit mesh), and then check the "keep smoothgroups" in the meshsmooth modifier to keep your form right.
+<br /><br />Except all that, maybe you did something wrong previously too...  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p167156" date="Posted: Thu Jan 11, 2007 8:39 pm "><author>obihb</author><body><![CDATA[<div class="postbody">I disagree about this method. The reason why I don't think it'll work is that cutting edges in the inside of the hole but not the outside will make so there are less verts on the outside. So now when it smooths it does a "heavier" interpolation on the outside and less on the inside. So this is why the mesh cut in like that. The inner verts force it to stay more square but there are no verts outside to do so, it get rounded from the outside.
+<br /><br />To create this kind of hole will be hard to get perfect if at all possible. It's the same reason as before with your previous posts. It can be done to a certain degree but what you probably won't get is a nice square hole that still conforms to the cylindrical shape and has perfect blending corners.
+<br /><br />As I mentioned before, the best way to get this is to use a very high poly cylinder to begin with. So then make the hole and then you can turbo smooth after that once or twice to round off the corners of the hole and it'll still conform perfectly with the cylinder.
+<br /><br />Example...
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img111.imageshack.us/my.php?image=cylindersmoothst1.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img111.imageshack.us/img111/6550/cylindersmoothst1.th.jpg" alt="Image" /></a></div>]]></body></post><post id="p167159" date="Posted: Thu Jan 11, 2007 8:56 pm "><author>efx</author><body><![CDATA[<div class="postbody">Just wanted to say thank you all for the help, I'm at work atm but as soon as I get home I'm going to try these suggestions out.
+<br /><br />Thanks again.</div>]]></body></post><post id="p167161" date="Posted: Thu Jan 11, 2007 9:21 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody"><div class="quotetitle">6th Venom wrote:</div><div class="quotecontent">@Lumpengnom: Why do you say that about triangles and meshsmooth? i always work only with triangles, cause sometimes, like here maybe, there is little triangles created that you don't know about when you use faces.<br /></div>
+<br />While triangles (ngons are even worse) not necessarily cause errors they often are a source of problems. 
+<br />In these pictures you can see what i mean. This is three times the same object. In the first you see the base mesh. It´s simply a cube with some extra edges near to control mesh smooth. on top i added an edge which makes one quad into two triangles.
+<br />In the second image we see the object with mesh smooth applied. Display is set to Isolines, meaning that we can´t see the actual mesh but only the edges that were created before applying mesh smooth. We see that several abnormalities occure where the triangles were.
+<br />In the third image i turned off isoline display so that we can see the real mesh we now have with all edges and the errors become even more apparent.
+<br />When modelling with meshsmooth having as few tris and ngons as possible is the way to go.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_01.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_02.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_03.jpg" alt="Image" /><br /><br /><br /><br /><br />I´m not quite sure since i can´t see the mesh properly but something like this should probably do the trick:
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_04.jpg" alt="Image" /></div>]]></body></post><post id="p167162" date="Posted: Thu Jan 11, 2007 9:36 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">Ok, forget the above. It will have to look like this. It´s a total poly wastage and is suggest you go with chamfering but since you mean this to be an exercise it makes sence since you can learn stuff´:
+<br /><br />First and second pictures are without and with MS. Third picture is zoomed in on a corner, so you can see better where you need to add edgeloops.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_05.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_06.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_07.jpg" alt="Image" /></div>]]></body></post><post id="p167170" date="Posted: Thu Jan 11, 2007 10:53 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">@Lumpengnom about tris &amp; MS: Ok, didn't noticed that, cause usually work on organic-like (human-monsters-etc), so i don't really need to keep every thing paralelle/perpendicular cuts. thank for the tip.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p167298" date="Posted: Sat Jan 13, 2007 10:53 am "><author>modern</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - Beginner nurms question. * new question *</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=53&amp;t=18338&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app17.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/doom3world.org\/phpbb2\/viewtopic.php?f=53&t=18338";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=53&amp;t=18338" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/faq.php?sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Fri Jan 04, 2008 10:24 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=1f9e62889e16ccaca7460dabe2ea2f3d">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=71&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">General Discussion</a> » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=72&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">3D editing and offline rendering</a> » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=53&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">MAX</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">Beginner nurms question. * new question *</a></h2>
+
+	<p class="moderators">Moderator: <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=post&amp;f=53&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=reply&amp;f=53&amp;t=18338&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>2</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 21 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=53&amp;t=18338#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d&amp;start=20">2</a>  <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338&amp;view=previous&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=53&amp;t=18338&amp;view=next&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p166871" id="p166871"></a>
+				<b class="postauthor">efx</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Beginner nurms question. * new question *</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=166871&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p166871"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Jan 08, 2007 11:29 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4061.gif" width="64" height="18" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 22, 2004 7:53 am<br /><b>Posts:</b> 815<br /><b>Location:</b> Stockholm, Sweden				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hi everyone,
+<br /><br />I did some searches in the documentation for this but came up emptyhanded so I hope it's ok to ask this here.
+<br /><br />I have this very simple object:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://-efx-.shackspace.com/3d/wo-nurms.gif">http://-efx-.shackspace.com/3d/wo-nurms.gif</a><!-- m -->
+<br /><br />I'm just using it to experiment with nurms (I'm in general very much a beginner at this) and I think I get it but for this one thing. When I apply them the area around the hole juts up as evidenced here:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://-efx-.shackspace.com/3d/w-nurms.gif">http://-efx-.shackspace.com/3d/w-nurms.gif</a><!-- m -->
+<br /><br />What I essentially want to do is have the box hole retain its shape when I apply the nurms.
+<br /><br />I've set the "insides" of the hole to separate groups (I've set the nurms setting to separate by smoothing groups). Silly question perhaps but I'm really stumped here.
+<br /><br />Any ideas? Hopefully I explained my issue well enough. Let me know if I can fill in any additional info needed.
+<br /><br />Thank you in advance:
+<br /><br />-efx-</div>
+
+												<br /><br /><span class="gensmall">Last edited by <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d">efx</a> on Thu Jan 11, 2007 7:34 am, edited 1 time in total.</span>
+						<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p166874" id="p166874"></a>
+				<b class="postauthor">Kamikazee</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=166874&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p166874"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Jan 08, 2007 11:52 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">found a secret</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jun 18, 2006 5:31 pm<br /><b>Posts:</b> 554				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Is there some way to visualize the control points of the nurms? Similar to Doom 3's patches, such surfaces should be possible to tweak by changing the surface's control points. They seem to work alright at the edges of the torus, but I guess that they are not correct where you cut the hole.
+<br />To correct it there, you might need to insert more control points just like you would add a new row to a patch's control grid.</div>
+
+											<span class="postbody"><br />_________________<br />"And remember, respect is everything" - GTA2</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=16006&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p166875" id="p166875"></a>
+				<b class="postauthor">6th Venom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=166875&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p166875"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Jan 09, 2007 12:06 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=14848.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 22, 2005 12:42 am<br /><b>Posts:</b> 1172<br /><b>Location:</b> somewhere over the rainbow...				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Try to click on your "meshsmooth" modifier (i think you used it to apply NURMS smoothing right?), then down and check the "Show cage" box, and try to move manually your points.
+<br /><br />What i thing i'd do to achieve this form, is to create a full tube first, meshsmooth it, and then substract the "cube" form to it.
+<br /><br />Cause NURMS modifier don't know how you want a form, it just smooth as wall as it can, maybe try to use NURBS surfaces to make it like you want.</div>
+
+											<span class="postbody"><br />_________________<br />If that smell like a shit &amp; look like a shit... it's a shit. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=14848&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p166885" id="p166885"></a>
+				<b class="postauthor">Lumpengnom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=166885&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p166885"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Jan 09, 2007 1:42 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=17274.jpg" width="41" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Oct 20, 2006 3:20 pm<br /><b>Posts:</b> 198<br /><b>Location:</b> Stuttgart / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Here´s a tutorial which illustrates very good how it´s done. Check out the meshsmooth section of it.
+<br />You basicly have to add edges close to the edges which define the hole. On every side. This can be very Poly intensive and is probably not very recomendable for gaming models. However it´s very useful for other things.
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://www.neilblevins.com/cg_education/rounding_the_edges/rounding_the_edges.htm" class="postlink">Link</a>
+<br /><br />Personally i would not meshsmooth this object at all. If you want the tube smoother simply give it some more segments in the beginning. If you want the edges of the hole to be smooth you´re better off with chamfering them than going through the whole process of adding more edgeloops required for reasonable meshsmoothing.
+<br /><br />You can use the creasing method but in my oppinion it´s not very useful because it´s quite a lot of work and rarely gives good results.</div>
+
+											<span class="postbody"><br />_________________<br />Leader / <a href="https://web.archive.org/web/20070509181516/http://www.coulin.eu/" class="postlink">Pillars: Doom III Total Conversion</a>
+<br /><br />"There is no such thing as miracles or the supernatural... only cutting-edge
+<br />technology." ~Revolver Ocelot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17274&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p166926" id="p166926"></a>
+				<b class="postauthor">obihb</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=166926&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p166926"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Jan 09, 2007 3:21 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=1442.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat May 29, 2004 12:50 am<br /><b>Posts:</b> 1126				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Making something like this using subdevisions is hard and probably will never really work right, unless the tube is really high poly to start with. I mean to cut a square hole in a round surface.
+<br /><br />So in this particular case it would be easier to create the tube at it's highest res mesh and then cut in the hole. This way the hole does not affect the tube surface at all. You can then use chamfer or one of those method to create the rounded looking edge of the hole without mesh smoothing, if you wanted.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.open-reset.com/" class="postlink">Open-Reset</a>  ...  <a href="https://web.archive.org/web/20070509181516/http://home.telkomsa.net/obihb" class="postlink">Obi-Wan</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1442&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167001" id="p167001"></a>
+				<b class="postauthor">efx</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167001&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167001"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Wed Jan 10, 2007 5:37 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4061.gif" width="64" height="18" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 22, 2004 7:53 am<br /><b>Posts:</b> 815<br /><b>Location:</b> Stockholm, Sweden				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I just wanted to say thank you guys for you quick and helpful answers! I learned a lot <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Thanks again!</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167086" id="p167086"></a>
+				<b class="postauthor">efx</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167086&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167086"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 7:33 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4061.gif" width="64" height="18" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 22, 2004 7:53 am<br /><b>Posts:</b> 815<br /><b>Location:</b> Stockholm, Sweden				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hi guys, I have a sort of follow up question and I didn't think it needed it's own topic so I'd thought I'd put it here.
+<br /><br />I have a test object in which I have an extruded section of a meshsmoothed object and it pretty much looks like I want it but for one thing and that one thing is really annoying me.
+<br /><br />I think I can better illustrate it through imagery so here goes:
+<br /><br />Here is the basic object with the extrusion:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img180.imageshack.us/my.php?image=withoutnurms1wr3.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img180.imageshack.us/img180/2200/withoutnurms1wr3.th.gif" alt="Image" /></a>
+<br /><br />Here it is with the meshsmooth:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img363.imageshack.us/my.php?image=withnurms1pz4.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img363.imageshack.us/img363/303/withnurms1pz4.th.gif" alt="Image" /></a>
+<br /><br />So far so good. Well, I thought I wanted the corners in the extrusion to be a little less round so I did this:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img180.imageshack.us/my.php?image=withoutnurms2wy1.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img180.imageshack.us/img180/1983/withoutnurms2wy1.th.gif" alt="Image" /></a>
+<br /><br />You can see the vertical cuts there. But when I smooth it like this:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img156.imageshack.us/my.php?image=withnurms2mo3.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img156.imageshack.us/img156/1272/withnurms2mo3.th.gif" alt="Image" /></a>
+<br /><br />I get these little "pinched" sections so to speak. Here's a better view of how the issue looks:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img72.imageshack.us/my.php?image=withoutisohh5.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img72.imageshack.us/img72/9403/withoutisohh5.th.gif" alt="Image" /></a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://img72.imageshack.us/my.php?image=renderedviewwr8.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img72.imageshack.us/img72/1416/renderedviewwr8.th.gif" alt="Image" /></a>
+<br /><br />See where the arrows are pointing? I'm sure my excessive imagery illustrates what I'm trying to do so does anyone have any idea on how I can fix it? Thanks again guys, the links and ideas in this thread has already helped me a lot.
+<br /><br />Thanks in advance:)</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167089" id="p167089"></a>
+				<b class="postauthor">Lumpengnom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167089&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167089"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 9:59 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=17274.jpg" width="41" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Oct 20, 2006 3:20 pm<br /><b>Posts:</b> 198<br /><b>Location:</b> Stuttgart / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I need to see a bigger part of the base mesh.</div>
+
+											<span class="postbody"><br />_________________<br />Leader / <a href="https://web.archive.org/web/20070509181516/http://www.coulin.eu/" class="postlink">Pillars: Doom III Total Conversion</a>
+<br /><br />"There is no such thing as miracles or the supernatural... only cutting-edge
+<br />technology." ~Revolver Ocelot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17274&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167102" id="p167102"></a>
+				<b class="postauthor">6th Venom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167102&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167102"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 12:00 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=14848.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 22, 2005 12:42 am<br /><b>Posts:</b> 1172<br /><b>Location:</b> somewhere over the rainbow...				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><a href="https://web.archive.org/web/20070509181516/http://imageshack.us/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img442.imageshack.us/img442/4424/testzr5.jpg" alt="Image" /></a>
+<br />You should try this one. (made in Ps, so i didin't tested it.)
+<br /><br />In your exemple, did you used "cut"?
+<br />Sometimes "cut" or "slice" create extra hidden triangles, or extra vertices on edges, so for low poly works, it's still better to do all by hand.</div>
+
+											<span class="postbody"><br />_________________<br />If that smell like a shit &amp; look like a shit... it's a shit. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=14848&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167119" id="p167119"></a>
+				<b class="postauthor">efx</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167119&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167119"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 1:28 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4061.gif" width="64" height="18" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 22, 2004 7:53 am<br /><b>Posts:</b> 815<br /><b>Location:</b> Stockholm, Sweden				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">6th Venom: 
+<br /><br />Thanks for the suggestion. I tried it but it doesn't seem to do it.
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img132.imageshack.us/my.php?image=withoutnurms3ze8.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img132.imageshack.us/img132/4495/withoutnurms3ze8.th.gif" alt="Image" /></a>
+<br /><br />Here's how I cut it and here's how it looks smoothed:
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img402.imageshack.us/my.php?image=withnurms3sm1.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img402.imageshack.us/img402/3359/withnurms3sm1.th.gif" alt="Image" /></a>
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img154.imageshack.us/my.php?image=withnurms4vu4.gif" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img154.imageshack.us/img154/2158/withnurms4vu4.th.gif" alt="Image" /></a>
+<br />Maybe I'm not doing it right? <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167135" id="p167135"></a>
+				<b class="postauthor">Lumpengnom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167135&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167135"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 3:33 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=17274.jpg" width="41" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Oct 20, 2006 3:20 pm<br /><b>Posts:</b> 198<br /><b>Location:</b> Stuttgart / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Mesh Smooth doesn´t like triangles.
+<br />But i need to see a larger part of the pic to tell more.</div>
+
+											<span class="postbody"><br />_________________<br />Leader / <a href="https://web.archive.org/web/20070509181516/http://www.coulin.eu/" class="postlink">Pillars: Doom III Total Conversion</a>
+<br /><br />"There is no such thing as miracles or the supernatural... only cutting-edge
+<br />technology." ~Revolver Ocelot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17274&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167146" id="p167146"></a>
+				<b class="postauthor">6th Venom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167146&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167146"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 5:41 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=14848.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 22, 2005 12:42 am<br /><b>Posts:</b> 1172<br /><b>Location:</b> somewhere over the rainbow...				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">@Lumpengnom: Why do you say that about triangles and meshsmooth? i always work only with triangles, cause sometimes, like here maybe, there is little triangles created that you don't know about when you use faces.
+<br /><br />@efx: from your last screens i'll say that you need to to re-weld your vertices, cause it's impossible that backfaces can pass the frontfaces of your border without moving top corner vertices, except if they are separate vertices. (see the last screen before "Maybe i'm not doing it right?" to understand what i mean...)
+<br /><br />So i just suggest you to unsmooth, select all your vertices and make a "weld" (in editmesh or editpoly) with a very low value like 0,005, and check if the selected vertices count down.
+<br />Then redo your meshsmooth and check if there is any change.
+<br /><br />Also, be sure to apply tris/faces/polies smoothgroups (in edit mesh), and then check the "keep smoothgroups" in the meshsmooth modifier to keep your form right.
+<br /><br />Except all that, maybe you did something wrong previously too...  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+											<span class="postbody"><br />_________________<br />If that smell like a shit &amp; look like a shit... it's a shit. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=14848&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167156" id="p167156"></a>
+				<b class="postauthor">obihb</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167156&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167156"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 8:39 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=1442.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat May 29, 2004 12:50 am<br /><b>Posts:</b> 1126				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I disagree about this method. The reason why I don't think it'll work is that cutting edges in the inside of the hole but not the outside will make so there are less verts on the outside. So now when it smooths it does a "heavier" interpolation on the outside and less on the inside. So this is why the mesh cut in like that. The inner verts force it to stay more square but there are no verts outside to do so, it get rounded from the outside.
+<br /><br />To create this kind of hole will be hard to get perfect if at all possible. It's the same reason as before with your previous posts. It can be done to a certain degree but what you probably won't get is a nice square hole that still conforms to the cylindrical shape and has perfect blending corners.
+<br /><br />As I mentioned before, the best way to get this is to use a very high poly cylinder to begin with. So then make the hole and then you can turbo smooth after that once or twice to round off the corners of the hole and it'll still conform perfectly with the cylinder.
+<br /><br />Example...
+<br /><br /><a href="https://web.archive.org/web/20070509181516/http://img111.imageshack.us/my.php?image=cylindersmoothst1.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img111.imageshack.us/img111/6550/cylindersmoothst1.th.jpg" alt="Image" /></a></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.open-reset.com/" class="postlink">Open-Reset</a>  ...  <a href="https://web.archive.org/web/20070509181516/http://home.telkomsa.net/obihb" class="postlink">Obi-Wan</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1442&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167159" id="p167159"></a>
+				<b class="postauthor">efx</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167159&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167159"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 8:56 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=4061.gif" width="64" height="18" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 22, 2004 7:53 am<br /><b>Posts:</b> 815<br /><b>Location:</b> Stockholm, Sweden				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Just wanted to say thank you all for the help, I'm at work atm but as soon as I get home I'm going to try these suggestions out.
+<br /><br />Thanks again.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4061&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167161" id="p167161"></a>
+				<b class="postauthor">Lumpengnom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167161&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167161"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 9:21 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=17274.jpg" width="41" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Oct 20, 2006 3:20 pm<br /><b>Posts:</b> 198<br /><b>Location:</b> Stuttgart / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">6th Venom wrote:</div><div class="quotecontent">@Lumpengnom: Why do you say that about triangles and meshsmooth? i always work only with triangles, cause sometimes, like here maybe, there is little triangles created that you don't know about when you use faces.<br /></div>
+<br />While triangles (ngons are even worse) not necessarily cause errors they often are a source of problems. 
+<br />In these pictures you can see what i mean. This is three times the same object. In the first you see the base mesh. It´s simply a cube with some extra edges near to control mesh smooth. on top i added an edge which makes one quad into two triangles.
+<br />In the second image we see the object with mesh smooth applied. Display is set to Isolines, meaning that we can´t see the actual mesh but only the edges that were created before applying mesh smooth. We see that several abnormalities occure where the triangles were.
+<br />In the third image i turned off isoline display so that we can see the real mesh we now have with all edges and the errors become even more apparent.
+<br />When modelling with meshsmooth having as few tris and ngons as possible is the way to go.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_01.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_02.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_03.jpg" alt="Image" /><br /><br /><br /><br /><br />I´m not quite sure since i can´t see the mesh properly but something like this should probably do the trick:
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_04.jpg" alt="Image" /></div>
+
+											<span class="postbody"><br />_________________<br />Leader / <a href="https://web.archive.org/web/20070509181516/http://www.coulin.eu/" class="postlink">Pillars: Doom III Total Conversion</a>
+<br /><br />"There is no such thing as miracles or the supernatural... only cutting-edge
+<br />technology." ~Revolver Ocelot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17274&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167162" id="p167162"></a>
+				<b class="postauthor">Lumpengnom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167162&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167162"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 9:36 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=17274.jpg" width="41" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Oct 20, 2006 3:20 pm<br /><b>Posts:</b> 198<br /><b>Location:</b> Stuttgart / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Ok, forget the above. It will have to look like this. It´s a total poly wastage and is suggest you go with chamfering but since you mean this to be an exercise it makes sence since you can learn stuff´:
+<br /><br />First and second pictures are without and with MS. Third picture is zoomed in on a corner, so you can see better where you need to add edgeloops.
+<br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_05.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_06.jpg" alt="Image" /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://i10.photobucket.com/albums/a127/salm1999/Meshsmooth_07.jpg" alt="Image" /></div>
+
+											<span class="postbody"><br />_________________<br />Leader / <a href="https://web.archive.org/web/20070509181516/http://www.coulin.eu/" class="postlink">Pillars: Doom III Total Conversion</a>
+<br /><br />"There is no such thing as miracles or the supernatural... only cutting-edge
+<br />technology." ~Revolver Ocelot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17274&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p167170" id="p167170"></a>
+				<b class="postauthor">6th Venom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167170&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167170"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Jan 11, 2007 10:53 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=14848.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 22, 2005 12:42 am<br /><b>Posts:</b> 1172<br /><b>Location:</b> somewhere over the rainbow...				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">@Lumpengnom about tris &amp; MS: Ok, didn't noticed that, cause usually work on organic-like (human-monsters-etc), so i don't really need to keep every thing paralelle/perpendicular cuts. thank for the tip.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+											<span class="postbody"><br />_________________<br />If that smell like a shit &amp; look like a shit... it's a shit. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=53&amp;t=18338#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=14848&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p167298" id="p167298"></a>
+				<b class="postauthor">modern</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=167298&amp;sid=1f9e62889e16ccaca7460dabe2ea2f3d#p167298"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jan 13, 2007 10:53 am </div></td>
+				</tr></table></td>
+		</tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

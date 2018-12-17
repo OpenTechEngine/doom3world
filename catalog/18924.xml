@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18924"><title>skins</title><posts><post id="p172345" date="Posted: Wed Mar 07, 2007 11:45 am "><author>ergonaut</author><body><![CDATA[<div class="postbody">Why oh why...
+<br /><br />testburnedimp is the only skin that works (and the reflect thingie). I can't get either my own skin or any of the other doom skins to show on my in editor 'model .ase'</div>]]></body></post><post id="p172347" date="Posted: Wed Mar 07, 2007 11:55 am "><author>mikebart</author><body><![CDATA[<div class="postbody">you might want to show the .ase it could be a number of reasons but its probably because your .ase isnt targeting the right material in the .mtr</div>]]></body></post><post id="p172357" date="Posted: Wed Mar 07, 2007 2:34 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">Describing the problem a bit more detailed would help.</div>]]></body></post><post id="p172459" date="Posted: Thu Mar 08, 2007 12:36 pm "><author>modern</author><body><![CDATA[<div class="postbody">I name my diffuse texture whatever_d, and name the material whatever.  Then I navigate to that image and load it into the 3ds max material.  I usually reset the materiall editor slots so I dont get unwanted references in the .ase export.  
+<br /><br />Using the naming convention means that all you need do is open the .ase in a text editor, find the diffuse reference and delete both the "_d.tga" and the beginning of the reference so that it starts with <span style="color: red">\\base</span>.</div>]]></body></post><post id="p172468" date="Posted: Thu Mar 08, 2007 2:54 pm "><author>ergonaut</author><body><![CDATA[<div class="postbody">Below is exactly what I've got....
+<br /><br /><br />-------------.skin file
+<br />textures/textures/boxmap/boxwall
+<br />{
+<br />	textures/textures/boxmap/boxwall_d.tga
+<br />	textures/textures/boxmap/boxwall_s.tga
+<br />	textures/textures/boxmap/boxwall_local.tga	
+<br />}
+<br /><br />--------------,mtr file
+<br />textures/textures/boxmap/boxwall
+<br />{
+<br />	qer_editorimage	textures/textures/boxmap/boxwall_ed.tga
+<br />	stone
+<br />	shadows
+<br />	noselfshadow
+<br />	diffusemap	textures/textures/boxmap/boxwall_d.tga
+<br />	specularmap	textures/textures/boxmap/boxwall_s.tga
+<br />	bumpmap		textures/textures/boxmap/boxwall_local.tga
+<br />}
+<br /><br />--------.ase
+<br />*BITMAP "\\base\textures\textures\boxmap\boxwall.tga"
+<br /><br />NB.
+<br />the tabs in notepad work.</div>]]></body></post><post id="p172473" date="Posted: Thu Mar 08, 2007 4:10 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">a) Your .ase MUST point to a mtr, not to a tga. (so here: *BITMAP "\\base\textures\textures\boxmap\boxwall")
+<br /><br />b) Skins just tell what mtr will replace another one, so you must:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// yourcustomskin.skin<br /><br />textures/textures/boxmap/boxwall  //name of the skin<br />{<br />textures/textures/boxmap/boxwall    textures/textures/boxmap/newboxwall  <br />//1st is the mtr that must be replaced by 2nd<br />}<br /></div></div>]]></body></post><post id="p172553" date="Posted: Fri Mar 09, 2007 10:11 am "><author>ergonaut</author><body><![CDATA[<div class="postbody">[quote="6th Venom"]a) Your .ase MUST point to a .mtr, not to a .tga
+<br /><br />so mine would read...
+<br /> *BITMAP "\\base\materials\boxmap\boxmat"
+<br /> the .mtr is boxmat.mtr and stored in that path
+<br /><br />but I have done this and I just get warning can't load, isn't that because it is not an image file it is a text file. I get no load warnings the other way, but ofcourse it is not working properly. Ive looked through the doom zips and their .ase all have .tga. 
+<br /><br /><br />NB. I have a directory setup as in doom but on an external drive, I dont have every thing in one folder or on c.
+<br /><br /><br /><br /><br /><br />ps I guess this is why game creation involves artistist and programmers[/img]</div>]]></body></post><post id="p172562" date="Posted: Fri Mar 09, 2007 12:01 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">Thoooo! Sorry for missunderstood!  <img src="https://web.archive.org/web/20081204030256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_mad.gif" alt=":x" title="Mad" /><br /><br />When i said <span style="font-style: italic">Your .ase MUST point to a .mtr, not to a .tga</span>, i had to precise not to your mtr file, but to a material definition into this file, like <span style="font-weight: bold">\\base\textures\textures\boxmap\boxwall</span> here for you.
+<br /><br />The game will not check in what mtr the materials are stored, so you can't point a mymaterials.mtr file directly.
+<br /><br />Another thing important is that your ASE must have only one material inside (see *MATERIAL_COUNT 1 in it to check), cause if not, i think the engine automaticly take the last one.
+<br />(to be sure to export only one, check that you got only one material in your whole scene before exporting selected object)
+<br /><br />And last, seams you don't need a skin file in your case, cause you just want to apply your original texture on your ase.
+<br />Skins are here to make different versions of a model, applying on it different variance of its texture. (like a orangesuitzombie, redsuitzombie, greysuitzombie, etc...)
+<br /><br /><br /><img src="https://web.archive.org/web/20081204030256im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p172345" date="Posted: Wed Mar 07, 2007 11:45 am "><author>ergonaut</author><body><![CDATA[<div class="postbody">Why oh why...
+<br /><br />testburnedimp is the only skin that works (and the reflect thingie). I can't get either my own skin or any of the other doom skins to show on my in editor 'model .ase'</div>]]></body></post><post id="p172347" date="Posted: Wed Mar 07, 2007 11:55 am "><author>mikebart</author><body><![CDATA[<div class="postbody">you might want to show the .ase it could be a number of reasons but its probably because your .ase isnt targeting the right material in the .mtr</div>]]></body></post><post id="p172357" date="Posted: Wed Mar 07, 2007 2:34 pm "><author>Lumpengnom</author><body><![CDATA[<div class="postbody">Describing the problem a bit more detailed would help.</div>]]></body></post><post id="p172459" date="Posted: Thu Mar 08, 2007 12:36 pm "><author>modern</author><body><![CDATA[<div class="postbody">I name my diffuse texture whatever_d, and name the material whatever.  Then I navigate to that image and load it into the 3ds max material.  I usually reset the materiall editor slots so I dont get unwanted references in the .ase export.  
+<br /><br />Using the naming convention means that all you need do is open the .ase in a text editor, find the diffuse reference and delete both the "_d.tga" and the beginning of the reference so that it starts with <span style="color: red">\\base</span>.</div>]]></body></post><post id="p172468" date="Posted: Thu Mar 08, 2007 2:54 pm "><author>ergonaut</author><body><![CDATA[<div class="postbody">Below is exactly what I've got....
+<br /><br /><br />-------------.skin file
+<br />textures/textures/boxmap/boxwall
+<br />{
+<br />	textures/textures/boxmap/boxwall_d.tga
+<br />	textures/textures/boxmap/boxwall_s.tga
+<br />	textures/textures/boxmap/boxwall_local.tga	
+<br />}
+<br /><br />--------------,mtr file
+<br />textures/textures/boxmap/boxwall
+<br />{
+<br />	qer_editorimage	textures/textures/boxmap/boxwall_ed.tga
+<br />	stone
+<br />	shadows
+<br />	noselfshadow
+<br />	diffusemap	textures/textures/boxmap/boxwall_d.tga
+<br />	specularmap	textures/textures/boxmap/boxwall_s.tga
+<br />	bumpmap		textures/textures/boxmap/boxwall_local.tga
+<br />}
+<br /><br />--------.ase
+<br />*BITMAP "\\base\textures\textures\boxmap\boxwall.tga"
+<br /><br />NB.
+<br />the tabs in notepad work.</div>]]></body></post><post id="p172473" date="Posted: Thu Mar 08, 2007 4:10 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">a) Your .ase MUST point to a mtr, not to a tga. (so here: *BITMAP "\\base\textures\textures\boxmap\boxwall")
+<br /><br />b) Skins just tell what mtr will replace another one, so you must:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// yourcustomskin.skin<br /><br />textures/textures/boxmap/boxwall  //name of the skin<br />{<br />textures/textures/boxmap/boxwall    textures/textures/boxmap/newboxwall  <br />//1st is the mtr that must be replaced by 2nd<br />}<br /></div></div>]]></body></post><post id="p172553" date="Posted: Fri Mar 09, 2007 10:11 am "><author>ergonaut</author><body><![CDATA[<div class="postbody">[quote="6th Venom"]a) Your .ase MUST point to a .mtr, not to a .tga
+<br /><br />so mine would read...
+<br /> *BITMAP "\\base\materials\boxmap\boxmat"
+<br /> the .mtr is boxmat.mtr and stored in that path
+<br /><br />but I have done this and I just get warning can't load, isn't that because it is not an image file it is a text file. I get no load warnings the other way, but ofcourse it is not working properly. Ive looked through the doom zips and their .ase all have .tga. 
+<br /><br /><br />NB. I have a directory setup as in doom but on an external drive, I dont have every thing in one folder or on c.
+<br /><br /><br /><br /><br /><br />ps I guess this is why game creation involves artistist and programmers[/img]</div>]]></body></post><post id="p172562" date="Posted: Fri Mar 09, 2007 12:01 pm "><author>6th Venom</author><body><![CDATA[<div class="postbody">Thoooo! Sorry for missunderstood!  <img src="https://web.archive.org/web/20081204023847im_/http://www.doom3world.org/phpbb2/images/smilies/icon_mad.gif" alt=":x" title="Mad" /><br /><br />When i said <span style="font-style: italic">Your .ase MUST point to a .mtr, not to a .tga</span>, i had to precise not to your mtr file, but to a material definition into this file, like <span style="font-weight: bold">\\base\textures\textures\boxmap\boxwall</span> here for you.
+<br /><br />The game will not check in what mtr the materials are stored, so you can't point a mymaterials.mtr file directly.
+<br /><br />Another thing important is that your ASE must have only one material inside (see *MATERIAL_COUNT 1 in it to check), cause if not, i think the engine automaticly take the last one.
+<br />(to be sure to export only one, check that you got only one material in your whole scene before exporting selected object)
+<br /><br />And last, seams you don't need a skin file in your case, cause you just want to apply your original texture on your ase.
+<br />Skins are here to make different versions of a model, applying on it different variance of its texture. (like a orangesuitzombie, redsuitzombie, greysuitzombie, etc...)
+<br /><br /><br /><img src="https://web.archive.org/web/20081204023847im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post></posts></thread></xml>

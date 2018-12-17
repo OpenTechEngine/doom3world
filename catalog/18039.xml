@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="18039"><title>space ctf teleporter not working!</title><posts><post id="164056" date="Posted: Thu Dec 07, 2006 9:32 pm    Post subject: space ctf teleporter not working!"><author>MelGibbsome</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've always thought the teleporter in space_ctf was kewl and wanted to use it in a map I'm making.  The problem is, nothing shows up after devmap (although it's there in the editor).&#13;
+<br/><br/>
+I've tried several things to get it to show up...remmed out "twosided" and "colored" and "DECAL_MACRO" (whatever those last two do...never seen them before) and these did nothing.&#13;
+<br/><br/>
+HOWEVER, when I remmed out "clamp", it DOES show up except the things rotating all over the place and there's more than one showing up.&#13;
+<br/><br/>
+Any ideas why this doesn't show up unaltered? (The other five sides of the brush are currently "nodraw" altho I have tried using "caulk" as well as "black" found in the common folder.)&#13;
+<br/><br/>
+Oh, I also tried saving the jpgs listed as tga's to see if that did anything.  Again, the only thing that makes this show up at all, is remming out "clamp" but then it looks like crap.&#13;
+<br/><br/>
+Here's the original code with some lines remmed out by me:&#13;
+<br/><br/>
+//-----------------------------------------------------&#13;
+<br/>
+// Green Space Teleporter&#13;
+<br/>
+//-----------------------------------------------------&#13;
+<br/><br/>
+textures/illuminati/green_telep&#13;
+<br/>
+{&#13;
+<br/>
+	qer_editorimage textures/illuminati/telep_frame_.tga&#13;
+<br/>
+	//DECAL_MACRO&#13;
+<br/>
+	noShadows&#13;
+<br/>
+	noimpact&#13;
+<br/>
+	translucent &#13;
+<br/>
+	twosided&#13;
+<br/>
+	//clamp 	&#13;
+<br/>
+ 	{ &#13;
+<br/>
+  	  //colored &#13;
+<br/>
+        blend add&#13;
+<br/>
+	  rotate time / 3	  &#13;
+<br/>
+  	  map textures/illuminati/green_telep2.tga	&#13;
+<br/>
+ 	}&#13;
+<br/>
+	{ &#13;
+<br/>
+  	  //colored &#13;
+<br/>
+        blend add&#13;
+<br/>
+	  rotate time / -2.5&#13;
+<br/>
+  	  map textures/illuminati/green_telep.tga	&#13;
+<br/>
+ 	}&#13;
+<br/>
+	{   	 &#13;
+<br/>
+        blend GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA&#13;
+<br/>
+	  rotate time / 7&#13;
+<br/>
+	  centerscale 1.4, 1.4&#13;
+<br/>
+  	  map textures/illuminati/telep_frame.tga	&#13;
+<br/>
+ 	}	&#13;
+<br/>
+	{   	  &#13;
+<br/>
+        blend GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA&#13;
+<br/>
+	  rotate time / -7&#13;
+<br/>
+  	  map textures/illuminati/telep_frame.tga	&#13;
+<br/>
+ 	} &#13;
+<br/>
+}</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164111" date="Posted: Fri Dec 08, 2006 4:51 pm    Post subject: "><author>MelGibbsome</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sigh..........no help here.&#13;
+<br/><br/>
+while waiting, I have been playing with it............made the brush super humongous and put the texture on all sides............it now shows up but only on one plane............parallel to the floor vice perpendicular.&#13;
+<br/><br/>
+I dont understand this because in the space map, they are perp not parallel.&#13;
+<br/><br/>
+so, how do i flip the thing 90 degrees? (already tried physically rotating the brush and that didnt work).&#13;
+<br/><br/>
+i dont see any code in the above material script, that even defines what plane it is to appear in.&#13;
+<br/><br/>
+anyone??????????????????</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164323" date="Posted: Mon Dec 11, 2006 1:50 am    Post subject: figured it out myself"><author>MelGibbsome</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">for whatever reason, that "shader" or whatever it's called in Q4, only works on PATCHES...........wont work on brushes.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="164348" date="Posted: Mon Dec 11, 2006 6:24 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Generally whenever you see a keyword like "twosided", it means the shader as a whole is intended to be used on patches.&#13;
+<br/><br/>
+Not a rule. Just a guideline.&#13;
+<br/><br/>
+You'll find that flares also don't work unless they are applied to patches.<br/>_________________<br/><a href="/web/20070213011416/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20070213011416im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20070213011416/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

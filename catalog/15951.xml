@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="15951"><title>Tutorial Tip how to create a mask effect in doom 3</title><posts><post id="p145135" date="Posted: Wed Jun 07, 2006 4:51 am "><author>voldemort</author><body><![CDATA[<div class="postbody">Tutorial Tip how to create a mask effect in doom 3
+<br /><br />I stumbled on this little masking trick when after I had created a model of a ornate cross and textured it and then make a 2d picture of it
+<br />I saved it as a trasparent tga so only the cross would show up
+<br />I then had the bright Idea to try to make blood flow around and over it by simply adding the stages of flowing blood   to my surprise the cross acted like a mask and the blood only appeared on the cross itself nowhere else
+<br /><br />so I tested this masking technique as a true mask I made a ring shape and made it black and then the light black as well so that the texture was absolutly black but still had a trasparent background
+<br />then I added this mtr
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">textures/exhale2/mask_test3<br />{<br />   twosided<br />   noshadows<br />   noselfshadow<br />   DECAL_MACRO<br />   <br /><br />   {<br />      forceHighQuality<br />      blend diffusemap<br />      map       textures/learning/tst3.tga<br />      alphatest 0.5<br />      <br />   }<br /><br /><br />   {<br />      blend         add<br />      map            textures/decals/blood_drip1<br />      translate      1,time*-0.1<br />      rgba 0.2<br />      <br />   }<br />   {<br />      blend         add<br />      map            textures/decals/blood_drip1a<br />      translate      1,time*-0.02<br />      rgba 0.2<br />   }<br />}</div>
+<br /><br /><br />and it works I had blood flowing ounly in the ring the rest of the square texture has nothing in it
+<br /><br />I then made a  series of rivulets (vein structures) the same way and made them tileable and then added a translate parm so they scrolled and it worked I had rivulets of blood flowing in this manner quite nice effect   now I the onlything to do is modify the blood so that the whit is hidden
+<br /><br />still havnt quite worked that one out yet but its a nice start 
+<br /><br />anyone else know how to create masks like this Alternative methods would be apprecieated</div>]]></body></post><post id="p146763" date="Posted: Wed Jun 21, 2006 3:03 pm "><author>voldemort</author><body><![CDATA[<div class="postbody">just additional fun
+<br /><br />lets say you want a jiggling or quivering mass of goo
+<br />create the base mask (yoiur blob with tentacles)
+<br /><br />then add a shear or centerscale stage parm with a table
+<br />examples
+<br />shear flo1Table [ time * -0.05 ], 0.5
+<br /><br />or 
+<br />centerScale (.924 + fol1Table[time / 95]), (.924 + fol1Table[time / 95])
+<br /><br />the numbers will vary in my case for the texture in question I needed a odd number like .924 to look right
+<br /><br />the degree of alphatest determines how much of your mask will show up
+<br /><br />examples 0.9 (very little)  0.0000001 ( the whole enchilada)</div>]]></body></post><post id="p146765" date="Posted: Wed Jun 21, 2006 3:06 pm "><author>voldemort</author><body><![CDATA[<div class="postbody">forgot to mention for stages that you want to ignore the alphatest stage its preaty simple i allready said how  the stage parm
+<br /><br />ignoreAlphaTest
+<br />and magic its ignored
+<br />works well with blend filter stages</div>]]></body></post></posts></thread></xml>

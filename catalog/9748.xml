@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="9748"><title>Bloom</title><posts><post id="p86153" date="Posted: Mon Apr 04, 2005 12:58 am "><author>SantaClaws</author><body><![CDATA[<div class="postbody">So, I've been trying to do a bloom in Doom 3 that works without HDR but gives a similar effect, and doesn't soften the entire scene... just the bright stuffs. I've gotten something I'm moderately satisfied with.
+<br /><br />I haven't tested this widely. It requires support for VFP files, which means a DirectX9 level card. Let me know how it works for you if you meet the requirements.
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img112.exs.cx/my.php?loc=img112&amp;image=shot1off2qn.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img112.exs.cx/img112/9742/shot1off2qn.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot1on1ak.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/333/shot1on1ak.th.jpg" alt="Image" /></a>
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot2off6gh.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/8785/shot2off6gh.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot2on6sh.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/606/shot2on6sh.th.jpg" alt="Image" /></a>
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot3off1nd.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/9069/shot3off1nd.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img99.exs.cx/my.php?loc=img99&amp;image=shot3on3tf.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img99.exs.cx/img99/5159/shot3on3tf.th.jpg" alt="Image" /></a>
+<br /><br />You can download it here:
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.phuce.com/uploads/doom3/bloom.zip" class="postlink">http://www.phuce.com/uploads/doom3/bloom.zip</a>
+<br />Extract this into a new mod folder (i.e. Doom3\bloom).
+<br /><br />r_bloom 0 turns bloom off.
+<br />r_bloom 1 turns on a faster bloom, but it doesn't bloom nearly as well.
+<br />r_bloom 2 turns on the good bloom, that you see in the screenshots.
+<br /><br /><span style="font-weight: bold">Note</span> that I accidentally left it defaulting to r_bloom 1 in the code, so you'll probably want to change that to 2 in the console when you try it.
+<br /><br />Also note that, as this is doing a lot of operations per pixel, you're definitely going to notice a drop in performance at higher resolutions. In 640x480 (my resolution, because my computer sucks), the performance drop is negligible.
+<br /><br />There is a lot of work left to do on it, but the future changes are going to start drastically changing the way some of the stuff in Doom 3 works, and will require custom content to make any sense. So, I figured I would release it at this stage so people could mess around with it while it's still compatible with the normal game content. In the end I'd want to have something that does a bit better emulation of the &gt;1.0 range of floating point buffers, and is able to isolate the lighting reflection from the bright unlit diffuse surfaces (like a whiteboard).
+<br /><br />Because Doom 3 wasn't designed with this in mind, there are some places where it blooms a bit too much (such as the forehead of Swan when talking to Bertruger at the starting of the game).</div>]]></body></post><post id="p86154" date="Posted: Mon Apr 04, 2005 1:10 am "><author>SnoopJeDi</author><body><![CDATA[<div class="postbody">Cool...<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p86160" date="Posted: Mon Apr 04, 2005 1:43 am "><author>c--b</author><body><![CDATA[<div class="postbody">Wow, congratulations on the subtle effect in the last two screens. Its a very nice effect.
+<br /><br />Lets see how this baby runs.
+<br /><br />EDIT: Im getting an error after/as its loading up the main menu.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">ERROR: couldn't load game dynamic library</div>
+<br /><br />I think thats the most relevant portion of the blue window that came up. I can post all of it if possible.</div>]]></body></post><post id="p86168" date="Posted: Mon Apr 04, 2005 2:55 am "><author>SantaClaws</author><body><![CDATA[<div class="postbody">That's... strange. I've never seen that error and can't find any good information on it. I've run it on all the computers I have access to, though, and I only have VC2005 installed on one of them, so I don't <span style="font-style: italic">think</span> it would be a library problem.
+<br /><br />Just to confirm... you have:
+<br />- the latest version of Doom 3?
+<br />- extracted the zip file into its own mod folder?</div>]]></body></post><post id="p86172" date="Posted: Mon Apr 04, 2005 3:43 am "><author>kat</author><body><![CDATA[<div class="postbody"><div class="quotetitle">c--b wrote:</div><div class="quotecontent">Wow, congratulations on the subtle effect in the last two screens. Its a very nice effect.<br /><br />Lets see how this baby runs.<br /><br />EDIT: Im getting an error after/as its loading up the main menu.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">ERROR: couldn't load game dynamic library</div><br /><br />I think thats the most relevant portion of the blue window that came up. I can post all of it if possible.</div>@ c--b : are you running a 'patched' version of Doom 3?
+<br /><br />@ santa : did you dev this for a 'patched' or 'unpatched' version of Doom 3?
+<br /><br />I got a similar error to this not for Doom 3 but for a recently release mod for RtCW MP, it was becasue they had built ontop of the latest patch, which I didn't have. So once I updated the mod ran fine. The error said almost exactly the same thing as that above.</div>]]></body></post><post id="p86173" date="Posted: Mon Apr 04, 2005 3:46 am "><author>SantaClaws</author><body><![CDATA[<div class="postbody">Patched version of the SDK, yeah.</div>]]></body></post><post id="p86176" date="Posted: Mon Apr 04, 2005 3:59 am "><author>c--b</author><body><![CDATA[<div class="postbody">Im running a legal version of Doom 3, with the 1.1 Official patch applied (Windows XP pro).
+<br /><br />Admittedly I pulled a stupid and copied the files into the base dir. But after a reinstall I put the files in there proper folder, and the same things happens upon loading the mod. Exept inside the Doom 3 console (Still the same error).</div>]]></body></post><post id="p86178" date="Posted: Mon Apr 04, 2005 4:32 am "><author>SantaClaws</author><body><![CDATA[<div class="postbody">Arg... the crappy thing is the error is so generic that I can't really debug it without being able to duplicate it here.
+<br /><br />Sorry about not specifying a new mod folder.</div>]]></body></post><post id="p86202" date="Posted: Mon Apr 04, 2005 8:21 am "><author>Renzatic</author><body><![CDATA[<div class="postbody">I haven't tested it out yet, but from what I've seen of the pics it looks damn awesome.</div>]]></body></post><post id="p86229" date="Posted: Mon Apr 04, 2005 1:01 pm "><author>Oneofthe8devilz</author><body><![CDATA[<div class="postbody">Dude ....... you did it...... you're the man !!!!!!
+<br /><br />I have been waiting for someone to release this since I started working on my mod..... you're it ... you are THE ONE  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It also perfectly works in multiplayer which was one of my biggest concerns.......
+<br /><br />Give this man a chair and a drink  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p86342" date="Posted: Mon Apr 04, 2005 9:20 pm "><author>Dante_uk</author><body><![CDATA[<div class="postbody">I just added your code to my test code for func_gravity.
+<br />The first thing I notice is a massive drop in FPS in my test map.
+<br /><br />My test map is quiet bright already so it's not a good example.
+<br />I've got a GF5900nu card.
+<br />I was running windowed(always do for testing code changes) 1024x768
+<br /><br />bloom0
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://homepages.nildram.co.uk/~danteuk/bloom0.jpg" alt="Image" /><br /><br />bloom2
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://homepages.nildram.co.uk/~danteuk/bloom2.jpg" alt="Image" /><br /><br />I'll test on some better maps.
+<br />I may port this (with my stuff, only got one source set with my winampmod, func_gravity, water code by inolen and idiom) to Linux tomorrow if I get time.</div>]]></body></post><post id="p86348" date="Posted: Mon Apr 04, 2005 9:49 pm "><author>SantaClaws</author><body><![CDATA[<div class="postbody">Glad to see you guys got it working.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">The first thing I notice is a massive drop in FPS in my test map.</div>
+<br /><br />Yeah, this is to be expected, especially using r_bloom 2 in 1024x768. With r_bloom 2 it is doing a LOT of extra work:
+<br /><br />1) Save a copy of the current render before the screen has been bloomed.
+<br />2) Per fragment: Isolate areas to be bloomed.
+<br />3) Capture current render to texture for next pass.
+<br />4) Per fragment: gaussian blur horizontally, 17 samples (current fragment. and 8 fragments on the left and right).
+<br />5) Capture current render to texture for next pass.
+<br />6) Blur vertically, 17 samples and combine with pre-bloom texture.
+<br /><br />Just counting texture sampling, that's an additional 36 texture reads per pixel per frame.
+<br /><br />r_blur 1 shouldn't drop your FPS so much, but it doesn't blur nearly well because it's only doing a 1 pass blur and combine, sampling only 8 fragments in a diamondish shape around each fragment.
+<br /><br />Ideally the material could adjust the amount of blur depending on a user setting, without having to resort to the r_blur 1 method, but I haven't implemented anything like that yet.
+<br /><br />If you know VFP syntax, you can easily modify the amount of sampling it's doing per blur pass in the files bloomBlurX.vfp and bloomBlurY.vfp, but make sure to adjust the multipliers accordingly or the blur won't be averaged out correctly.</div>]]></body></post><post id="p86352" date="Posted: Mon Apr 04, 2005 10:02 pm "><author>ViPr</author><body><![CDATA[<div class="postbody">what does per fragment mean? and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div>]]></body></post><post id="p86355" date="Posted: Mon Apr 04, 2005 10:24 pm "><author>Mordenkainen</author><body><![CDATA[<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">what does per fragment mean? and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div>
+<br /><br />A fragment is a pixel or pixel sample. What do you mean you can't see any blooms?
+<br /><br />SantaClaws: Nice job, there's a bit of overbright in GUIs though. I don't know if the performance hit is acceptable to most people though. I get a 15fps drop in the default timedemo (46 to 31fps) which is still reasonable for me I guess.
+<br /><br />Btw, the side effects of swan's forehead looks much reduced with the glossmap shader so you might want to include that in your mod.</div>]]></body></post><post id="p86363" date="Posted: Mon Apr 04, 2005 11:15 pm "><author>SantaClaws</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div><br /><br />Do you mean you can't see where it's blooming in the screenshot? Check out the top edge of the chair in that example. You can see the light bleeding past the edge of the model.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Nice job, there's a bit of overbright in GUIs though.</div><br /><br />Yeah, unfortunately I can't find a way to avoid that using the default Doom 3 assets. That's one of the things I think can be fixed using custom assets. <br /><br />What I am planning on doing with custom assets is scaling the normal, non-blooming color range down from 0.0-1.0 to 0.0-0.9. Then, additive textures and lights will have the ability to bring the high end of these textures up from 0.9 to 1.0 (a crappy emulation of the &gt;1.0 in floating point textures), and I'd isolate anything that was greater than 0.9 and bloom it. Then, in the last pass, everything would be scaled back up again so the white point was 1.0 again.<br /><br />This could be done with Doom 3 as is, except for one big problem - the GUI doesn't use a default VFP file. The world uses interaction.vfp, so I can scale down most of the view using that, but none of the GUIs in the world have a way to do it... so they'd glow even then.<br /><br />In a custom project you could design the GUIs so that the color range was 0.0-0.9, but it would be a ton of work to do that with the existing Doom 3 assets.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">I get a 15fps drop in the default timedemo (46 to 31fps) which is still reasonable for me I guess.</div>
+<br /><br />Yeah, it's a decent drop, but this is basically the equivalent of running bloom in "Ultra" mode. Out of curiosity, how much does your FPS cange in the timedemo when you use r_bloom 1?</div>]]></body></post><post id="p86399" date="Posted: Tue Apr 05, 2005 1:12 am "><author>c--b</author><body><![CDATA[<div class="postbody">A few questions, is it possible to apply the bloom effect sparingly on select surfaces (Sun, moon)? I think that might be a better solution if preformance is a problem, or if your mod/map has a primarily dark environment.
+<br /><br />Also, if possible could people list what video cards and which drivers each of you are using?</div>]]></body></post><post id="p86403" date="Posted: Tue Apr 05, 2005 1:24 am "><author>SantaClaws</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">A few questions, is it possible to apply the bloom effect sparingly on select surfaces (Sun, moon)? I think that might be a better solution if preformance is a problem, or if your mod/map has a primarily dark environment.</div>
+<br /><br />You could restrict the fragment program to a specific material by specifying it as a stage, but I'm not sure if you'd be able to do a multipass method in that situation. You'd probably be restricted to doing the equivalent of r_bloom 0.
+<br /><br />However... in the case of multi layered sky dome, if you applied it only to a rear texture with a sun and blue sky on it (or something), you would probably be better off using a softening method instead of trying to isolate the bright colors for blooming. You could get a better bloom if you weren't worrying about isolating a color range.
+<br /><br />Since the blue sky surrounding the sun wouldn't have much noise, blurring the whole area, toning it down, and adding it on top of the real texture would get you a really good result. This is actually what I had when I first started working on this shader, and it looked very nice, but I didn't think the soft look worked well with the general Doom 3 world.</div>]]></body></post><post id="p86427" date="Posted: Tue Apr 05, 2005 3:39 am "><author>Esperti</author><body><![CDATA[<div class="postbody">please make this for Doom 3 ROE I would love to play it on the EX</div>]]></body></post><post id="p86491" date="FIXME failed to extract"><author>Mordenkainen</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - Bloom</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app0.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/doom3world.org\/phpbb2\/viewtopic.php?f=2&t=9748";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=2&amp;t=9748" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/faq.php?sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Wed Jan 09, 2008 3:50 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=e725d35747c4cba76eb992c6f87a57bf">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=e725d35747c4cba76eb992c6f87a57bf">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/index.php?sid=e725d35747c4cba76eb992c6f87a57bf">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=73&amp;sid=e725d35747c4cba76eb992c6f87a57bf">Doom 3</a> » <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewforum.php?f=2&amp;sid=e725d35747c4cba76eb992c6f87a57bf">Doom3 Texture creation</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf">Bloom</a></h2>
+
+	<p class="moderators">Moderators: <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=e725d35747c4cba76eb992c6f87a57bf" style="color: #AA0000;" class="username-coloured">BNA!</a>, <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=e725d35747c4cba76eb992c6f87a57bf">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=post&amp;f=2&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/posting.php?mode=reply&amp;f=2&amp;t=9748&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>5</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 85 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=2&amp;t=9748#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf&amp;start=20">2</a><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf&amp;start=40">3</a><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf&amp;start=60">4</a><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf&amp;start=80">5</a>  <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e725d35747c4cba76eb992c6f87a57bf&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;view=previous&amp;sid=e725d35747c4cba76eb992c6f87a57bf">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?f=2&amp;t=9748&amp;view=next&amp;sid=e725d35747c4cba76eb992c6f87a57bf">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p86153" id="p86153"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Bloom</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86153&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86153"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 12:58 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">So, I've been trying to do a bloom in Doom 3 that works without HDR but gives a similar effect, and doesn't soften the entire scene... just the bright stuffs. I've gotten something I'm moderately satisfied with.
+<br /><br />I haven't tested this widely. It requires support for VFP files, which means a DirectX9 level card. Let me know how it works for you if you meet the requirements.
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img112.exs.cx/my.php?loc=img112&amp;image=shot1off2qn.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img112.exs.cx/img112/9742/shot1off2qn.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot1on1ak.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/333/shot1on1ak.th.jpg" alt="Image" /></a>
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot2off6gh.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/8785/shot2off6gh.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot2on6sh.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/606/shot2on6sh.th.jpg" alt="Image" /></a>
+<br /><br />Off:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img227.exs.cx/my.php?loc=img227&amp;image=shot3off1nd.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img227.exs.cx/img227/9069/shot3off1nd.th.jpg" alt="Image" /></a>
+<br /><br />On:
+<br /><a href="https://web.archive.org/web/20070509181516/http://img99.exs.cx/my.php?loc=img99&amp;image=shot3on3tf.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img99.exs.cx/img99/5159/shot3on3tf.th.jpg" alt="Image" /></a>
+<br /><br />You can download it here:
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.phuce.com/uploads/doom3/bloom.zip" class="postlink">http://www.phuce.com/uploads/doom3/bloom.zip</a>
+<br />Extract this into a new mod folder (i.e. Doom3\bloom).
+<br /><br />r_bloom 0 turns bloom off.
+<br />r_bloom 1 turns on a faster bloom, but it doesn't bloom nearly as well.
+<br />r_bloom 2 turns on the good bloom, that you see in the screenshots.
+<br /><br /><span style="font-weight: bold">Note</span> that I accidentally left it defaulting to r_bloom 1 in the code, so you'll probably want to change that to 2 in the console when you try it.
+<br /><br />Also note that, as this is doing a lot of operations per pixel, you're definitely going to notice a drop in performance at higher resolutions. In 640x480 (my resolution, because my computer sucks), the performance drop is negligible.
+<br /><br />There is a lot of work left to do on it, but the future changes are going to start drastically changing the way some of the stuff in Doom 3 works, and will require custom content to make any sense. So, I figured I would release it at this stage so people could mess around with it while it's still compatible with the normal game content. In the end I'd want to have something that does a bit better emulation of the &gt;1.0 range of floating point buffers, and is able to isolate the lighting reflection from the bright unlit diffuse surfaces (like a whiteboard).
+<br /><br />Because Doom 3 wasn't designed with this in mind, there are some places where it blooms a bit too much (such as the forehead of Swan when talking to Bertruger at the starting of the game).</div>
+
+												<br /><br /><span class="gensmall">Last edited by <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf">SantaClaws</a> on Mon Apr 04, 2005 8:15 am, edited 5 times in total.</span>
+						<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86154" id="p86154"></a>
+				<b class="postauthor">SnoopJeDi</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86154&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86154"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 1:10 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Captured the Flag</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Jan 06, 2005 7:56 pm<br /><b>Posts:</b> 1880<br /><b>Location:</b> 127.0.0.1				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Cool...<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+
+											<span class="postbody"><br />_________________<br />Check out <a href="https://web.archive.org/web/20070509181516/http://cdoom.d3files.com/" class="postlink">Classic Doom 3!</a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.omegadrivers.net/" class="postlink">Support OmegaDrive</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12138&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86160" id="p86160"></a>
+				<b class="postauthor">c--b</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86160&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86160"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 1:43 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">missed 400 shots</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=3646.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Aug 17, 2004 5:08 am<br /><b>Posts:</b> 481<br /><b>Location:</b> Edmonton, Alberta				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Wow, congratulations on the subtle effect in the last two screens. Its a very nice effect.
+<br /><br />Lets see how this baby runs.
+<br /><br />EDIT: Im getting an error after/as its loading up the main menu.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">ERROR: couldn't load game dynamic library</div>
+<br /><br />I think thats the most relevant portion of the blue window that came up. I can post all of it if possible.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=3646&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86168" id="p86168"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86168&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86168"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 2:55 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">That's... strange. I've never seen that error and can't find any good information on it. I've run it on all the computers I have access to, though, and I only have VC2005 installed on one of them, so I don't <span style="font-style: italic">think</span> it would be a library problem.
+<br /><br />Just to confirm... you have:
+<br />- the latest version of Doom 3?
+<br />- extracted the zip file into its own mod folder?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86172" id="p86172"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86172&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86172"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 3:43 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">c--b wrote:</div><div class="quotecontent">Wow, congratulations on the subtle effect in the last two screens. Its a very nice effect.<br /><br />Lets see how this baby runs.<br /><br />EDIT: Im getting an error after/as its loading up the main menu.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">ERROR: couldn't load game dynamic library</div><br /><br />I think thats the most relevant portion of the blue window that came up. I can post all of it if possible.</div>@ c--b : are you running a 'patched' version of Doom 3?
+<br /><br />@ santa : did you dev this for a 'patched' or 'unpatched' version of Doom 3?
+<br /><br />I got a similar error to this not for Doom 3 but for a recently release mod for RtCW MP, it was becasue they had built ontop of the latest patch, which I didn't have. So once I updated the mod ran fine. The error said almost exactly the same thing as that above.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86173" id="p86173"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86173&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86173"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 3:46 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Patched version of the SDK, yeah.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86176" id="p86176"></a>
+				<b class="postauthor">c--b</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86176&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86176"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 3:59 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">missed 400 shots</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=3646.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Aug 17, 2004 5:08 am<br /><b>Posts:</b> 481<br /><b>Location:</b> Edmonton, Alberta				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Im running a legal version of Doom 3, with the 1.1 Official patch applied (Windows XP pro).
+<br /><br />Admittedly I pulled a stupid and copied the files into the base dir. But after a reinstall I put the files in there proper folder, and the same things happens upon loading the mod. Exept inside the Doom 3 console (Still the same error).</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=3646&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86178" id="p86178"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86178&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86178"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 4:32 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Arg... the crappy thing is the error is so generic that I can't really debug it without being able to duplicate it here.
+<br /><br />Sorry about not specifying a new mod folder.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86202" id="p86202"></a>
+				<b class="postauthor">Renzatic</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86202&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86202"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 8:21 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">fired 300 rounds</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=5551.gif" width="55" height="62" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Oct 02, 2004 11:13 pm<br /><b>Posts:</b> 376<br /><b>Location:</b> Georgia				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I haven't tested it out yet, but from what I've seen of the pics it looks damn awesome.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5551&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86229" id="p86229"></a>
+				<b class="postauthor">Oneofthe8devilz</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86229&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86229"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 1:01 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">fired 300 rounds</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=1165_1184047718.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Dec 12, 2003 8:49 am<br /><b>Posts:</b> 362<br /><b>Location:</b> Kassel / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Dude ....... you did it...... you're the man !!!!!!
+<br /><br />I have been waiting for someone to release this since I started working on my mod..... you're it ... you are THE ONE  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /><br /><br />It also perfectly works in multiplayer which was one of my biggest concerns.......
+<br /><br />Give this man a chair and a drink  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+											<span class="postbody"><br />_________________<br />I got six little friends and they all run faster than you <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />Check out my mods: 
+<br /><a href="https://web.archive.org/web/20070509181516/http://doom3.planet-multiplayer.de/5.56FMJ/opencoop/eCoop/" class="postlink">eCoop</a> and <a href="https://web.archive.org/web/20070509181516/http://doom3.planet-multiplayer.de/5.56FMJ/" class="postlink">5.56mm Full Metal Jacket</a>...</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1165&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86342" id="p86342"></a>
+				<b class="postauthor">Dante_uk</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86342&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86342"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 9:20 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">found a secret</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=235.jpg" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Nov 10, 2002 12:21 pm<br /><b>Posts:</b> 574<br /><b>Location:</b> UK				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I just added your code to my test code for func_gravity.
+<br />The first thing I notice is a massive drop in FPS in my test map.
+<br /><br />My test map is quiet bright already so it's not a good example.
+<br />I've got a GF5900nu card.
+<br />I was running windowed(always do for testing code changes) 1024x768
+<br /><br />bloom0
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://homepages.nildram.co.uk/~danteuk/bloom0.jpg" alt="Image" /><br /><br />bloom2
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://homepages.nildram.co.uk/~danteuk/bloom2.jpg" alt="Image" /><br /><br />I'll test on some better maps.
+<br />I may port this (with my stuff, only got one source set with my winampmod, func_gravity, water code by inolen and idiom) to Linux tomorrow if I get time.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://danteuk.gotadsl.co.uk/danteuk/d3/" class="postlink">My Doom3 Stuff-</a>
+<br />"The Large print giveth and the small print taketh away" - Tom Waits</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=235&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86348" id="p86348"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86348&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86348"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 9:49 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Glad to see you guys got it working.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">The first thing I notice is a massive drop in FPS in my test map.</div>
+<br /><br />Yeah, this is to be expected, especially using r_bloom 2 in 1024x768. With r_bloom 2 it is doing a LOT of extra work:
+<br /><br />1) Save a copy of the current render before the screen has been bloomed.
+<br />2) Per fragment: Isolate areas to be bloomed.
+<br />3) Capture current render to texture for next pass.
+<br />4) Per fragment: gaussian blur horizontally, 17 samples (current fragment. and 8 fragments on the left and right).
+<br />5) Capture current render to texture for next pass.
+<br />6) Blur vertically, 17 samples and combine with pre-bloom texture.
+<br /><br />Just counting texture sampling, that's an additional 36 texture reads per pixel per frame.
+<br /><br />r_blur 1 shouldn't drop your FPS so much, but it doesn't blur nearly well because it's only doing a 1 pass blur and combine, sampling only 8 fragments in a diamondish shape around each fragment.
+<br /><br />Ideally the material could adjust the amount of blur depending on a user setting, without having to resort to the r_blur 1 method, but I haven't implemented anything like that yet.
+<br /><br />If you know VFP syntax, you can easily modify the amount of sampling it's doing per blur pass in the files bloomBlurX.vfp and bloomBlurY.vfp, but make sure to adjust the multipliers accordingly or the blur won't be averaged out correctly.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86352" id="p86352"></a>
+				<b class="postauthor">ViPr</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86352&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86352"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 10:02 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Rage is my middle name</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Jan 18, 2005 6:51 pm<br /><b>Posts:</b> 956				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">what does per fragment mean? and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12282&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86355" id="p86355"></a>
+				<b class="postauthor">Mordenkainen</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86355&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86355"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 10:24 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">King of the Hill</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=41.jpg" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Nov 04, 2002 10:50 pm<br /><b>Posts:</b> 1312<br /><b>Location:</b> PT, EU				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">what does per fragment mean? and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div>
+<br /><br />A fragment is a pixel or pixel sample. What do you mean you can't see any blooms?
+<br /><br />SantaClaws: Nice job, there's a bit of overbright in GUIs though. I don't know if the performance hit is acceptable to most people though. I get a 15fps drop in the default timedemo (46 to 31fps) which is still reasonable for me I guess.
+<br /><br />Btw, the side effects of swan's forehead looks much reduced with the glossmap shader so you might want to include that in your mod.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.beyond3d.com/" class="postlink">Beyond3D.com</a> | Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=41&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86363" id="p86363"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86363&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86363"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Apr 04, 2005 11:15 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">and i cannot see any blooms. i see a difference between the screenshots but no bloom effect.</div><br /><br />Do you mean you can't see where it's blooming in the screenshot? Check out the top edge of the chair in that example. You can see the light bleeding past the edge of the model.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Nice job, there's a bit of overbright in GUIs though.</div><br /><br />Yeah, unfortunately I can't find a way to avoid that using the default Doom 3 assets. That's one of the things I think can be fixed using custom assets. <br /><br />What I am planning on doing with custom assets is scaling the normal, non-blooming color range down from 0.0-1.0 to 0.0-0.9. Then, additive textures and lights will have the ability to bring the high end of these textures up from 0.9 to 1.0 (a crappy emulation of the &gt;1.0 in floating point textures), and I'd isolate anything that was greater than 0.9 and bloom it. Then, in the last pass, everything would be scaled back up again so the white point was 1.0 again.<br /><br />This could be done with Doom 3 as is, except for one big problem - the GUI doesn't use a default VFP file. The world uses interaction.vfp, so I can scale down most of the view using that, but none of the GUIs in the world have a way to do it... so they'd glow even then.<br /><br />In a custom project you could design the GUIs so that the color range was 0.0-0.9, but it would be a ton of work to do that with the existing Doom 3 assets.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">I get a 15fps drop in the default timedemo (46 to 31fps) which is still reasonable for me I guess.</div>
+<br /><br />Yeah, it's a decent drop, but this is basically the equivalent of running bloom in "Ultra" mode. Out of curiosity, how much does your FPS cange in the timedemo when you use r_bloom 1?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86399" id="p86399"></a>
+				<b class="postauthor">c--b</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86399&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86399"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Apr 05, 2005 1:12 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">missed 400 shots</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/download/file.php?avatar=3646.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Aug 17, 2004 5:08 am<br /><b>Posts:</b> 481<br /><b>Location:</b> Edmonton, Alberta				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">A few questions, is it possible to apply the bloom effect sparingly on select surfaces (Sun, moon)? I think that might be a better solution if preformance is a problem, or if your mod/map has a primarily dark environment.
+<br /><br />Also, if possible could people list what video cards and which drivers each of you are using?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=3646&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86403" id="p86403"></a>
+				<b class="postauthor">SantaClaws</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86403&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86403"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Apr 05, 2005 1:24 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 07, 2002 8:17 pm<br /><b>Posts:</b> 59<br /><b>Location:</b> Las Vegas, NV, USA				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">A few questions, is it possible to apply the bloom effect sparingly on select surfaces (Sun, moon)? I think that might be a better solution if preformance is a problem, or if your mod/map has a primarily dark environment.</div>
+<br /><br />You could restrict the fragment program to a specific material by specifying it as a stage, but I'm not sure if you'd be able to do a multipass method in that situation. You'd probably be restricted to doing the equivalent of r_bloom 0.
+<br /><br />However... in the case of multi layered sky dome, if you applied it only to a rear texture with a sun and blue sky on it (or something), you would probably be better off using a softening method instead of trying to isolate the bright colors for blooming. You could get a better bloom if you weren't worrying about isolating a color range.
+<br /><br />Since the blue sky surrounding the sun wouldn't have much noise, blurring the whole area, toning it down, and adding it on top of the real texture would get you a really good result. This is actually what I had when I first started working on this shader, and it looked very nice, but I didn't think the soft look worked well with the general Doom 3 world.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=154&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p86427" id="p86427"></a>
+				<b class="postauthor">Esperti</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/viewtopic.php?p=86427&amp;sid=e725d35747c4cba76eb992c6f87a57bf#p86427"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Tue Apr 05, 2005 3:39 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 75 health</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Sep 08, 2004 3:25 am<br /><b>Posts:</b> 99<br /><b>Location:</b> My Room				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">please make this for Doom 3 ROE I would love to play it on the EX</div>
+
+											<span class="postbody"><br />_________________<br />Buddha....BOOM!
+<br />It came up durring a round in Halo PC</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=2&amp;t=9748#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=5006&amp;sid=e725d35747c4cba76eb992c6f87a57bf"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p86491" id="p86491"></a>
+				<b class="postauthor">Mordenkainen</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b></div></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

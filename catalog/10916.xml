@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10916"><title>YANQ (Yet another noob question)</title><posts><post id="98241" date="Posted: Mon Jun 06, 2005 1:06 am    Post subject: YANQ (Yet another noob question)"><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I hate to ask this but this just doesn't seem right and I can't seem to figure it out yet...&#13;
+<br/><br/>
+Surface Editor:&#13;
+<br/><br/>
+I hit F5 for the first time after importing an .obj I exported from Maya. Tutorials say I should already have a "default" surface in the window. I don't, and I can't seem to create a new one. Objects 1 Surfaces 0.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98264" date="Posted: Mon Jun 06, 2005 5:27 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Select the polygons that will take part of the surface, hit 'q'  and box for creating a new surface should pop up<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98288" date="Posted: Mon Jun 06, 2005 12:38 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks. That helps a lot getting started with this.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98678" date="Posted: Thu Jun 09, 2005 2:32 pm    Post subject: Lightwave basics"><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here are some basics about lightwave I've learned along the way the Goliath assumes you know when following his tutorial...&#13;
+<br/><br/>
+Important Basics for working with Lightwave&#13;
+<br/><br/>
+- If you will be using Lightwave to do anything for Doom 3, rememeber that Lightwave does NOT triangulate polygons by default. All polygons can be triangulated without selecting anything by using SHIFT-T&#13;
+<br/><br/><br/>
+- Switch to polygon selection mode (Shortcut: CTRL + H) &#13;
+<br/>
+- Select all connected polygons (Shortcut: ]) &#13;
+<br/>
+- New Surface: Select the polygons that will take part of the surface, hit 'q' and box for creating a new surface should pop up &#13;
+<br/><br/>
+- Layers &#13;
+<br/><br/>
+Like Image editors and Paint tools, LW Modeler allows each object to have multiple layers. &#13;
+<br/><br/>
+*Note that I think if you use the "load object into layer option, you can NOT load an imported object, such as an imported .obj... instead you must save objects with different file extensions as .lwo... they will load in any instance like that.&#13;
+<br/><br/>
+The tab in the upper-right hand corner that's filled with little squares and has a label allows you to pick which object to edit (it will show a list of all loaded objects, and a ghosted list of any objects loaded in Layout). It is labeled "Unnamed" if the current object is not yet saved. &#13;
+<br/>
+The ten buttons in the middle part of the image above are "Layer Buttons" â each one represents a layer â the one on the left is "Layer One". &#13;
+<br/>
+The Drop Down tab in the very corner (shown on the far right above) controls communication with Layout&#13;
+<br/>
+Click on the Top half of any layer button to edit that layer, &#13;
+<br/>
+Click on the Bottom half of any button to see the contents of that layer (but not edit it), &#13;
+<br/>
+Shift Click to multi-select layers (either top or bottom). &#13;
+<br/>
+Layers are used during the creation phase (many modeling operations require the use of layers). They help keep your workspace from getting too cluttered (build part of a model in one layer, part in another, and combine them with copy paste â or donât combine them at all.). &#13;
+<br/>
+As well, layers in LW [6] can be used to separate the parts of a model for animation â i.e. the wheels of a car can be created one in each layer, to make animation a bit easier. &#13;
+<br/>
+More layers can be accessed, and layers can be named (it is a really good idea to name them descriptively) via the "Modeler / Windows / Layer Browser Open / Close" â the keyshort for which is Shift Y. The first ten layers can also be accessed through the 1-10 keys (and &lt;alt&gt; + 1-10) on the main keyboard. &#13;
+<br/>
+Each layer can have one pivot point (the point around which it will rotate in layout). By default, that pivot point is found at the "origin" in modeler (the spot where all the axes read zero). You can relocate the pivot for any layer by choosing "Detail / Pivot", and then clicking in any view-port.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98681" date="Posted: Thu Jun 09, 2005 4:13 pm    Post subject: Re: Lightwave basics"><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>jizaboz wrote:</b></span></td>	</tr><tr><td class="quote"> the Goliath assumes you know when following his tutorial...&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+Probably becuase if you can afford a program with that price, you have a manual and good 3D skills<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98684" date="Posted: Thu Jun 09, 2005 4:41 pm    Post subject: "><author>modern</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Rayne wrote&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">jizaboz wrote:&#13;
+<br/>
+the Goliath assumes you know when following his tutorial... &#13;
+<br/><br/><br/><br/>
+Probably becuase if you can afford a program with that price, you have a manual and good 3D skills</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+How do you get good 3D skills if you dont learn the "availible" software?<br/>_________________<br/><a href="/web/20061012182726/http://creativecommons.org/" target="_blank">http://creativecommons.org/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98708" date="Posted: Thu Jun 09, 2005 7:42 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was just putting it out there for noobs like me... I'm a programmer, not a modeller... but I'm trying! As far as the expense of things like Maya and Lightwave... er, I'm a "student"... yeah.&#13;
+<br/><br/>
+Thanks again for helping to get me started Rayne.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98241" date="Posted: Mon Jun 06, 2005 1:06 am    Post subject: YANQ (Yet another noob question)"><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I hate to ask this but this just doesn't seem right and I can't seem to figure it out yet...&#13;
+<br/><br/>
+Surface Editor:&#13;
+<br/><br/>
+I hit F5 for the first time after importing an .obj I exported from Maya. Tutorials say I should already have a "default" surface in the window. I don't, and I can't seem to create a new one. Objects 1 Surfaces 0.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98264" date="Posted: Mon Jun 06, 2005 5:27 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Select the polygons that will take part of the surface, hit 'q'  and box for creating a new surface should pop up<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98288" date="Posted: Mon Jun 06, 2005 12:38 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks. That helps a lot getting started with this.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98678" date="Posted: Thu Jun 09, 2005 2:32 pm    Post subject: Lightwave basics"><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here are some basics about lightwave I've learned along the way the Goliath assumes you know when following his tutorial...&#13;
+<br/><br/>
+Important Basics for working with Lightwave&#13;
+<br/><br/>
+- If you will be using Lightwave to do anything for Doom 3, rememeber that Lightwave does NOT triangulate polygons by default. All polygons can be triangulated without selecting anything by using SHIFT-T&#13;
+<br/><br/><br/>
+- Switch to polygon selection mode (Shortcut: CTRL + H) &#13;
+<br/>
+- Select all connected polygons (Shortcut: ]) &#13;
+<br/>
+- New Surface: Select the polygons that will take part of the surface, hit 'q' and box for creating a new surface should pop up &#13;
+<br/><br/>
+- Layers &#13;
+<br/><br/>
+Like Image editors and Paint tools, LW Modeler allows each object to have multiple layers. &#13;
+<br/><br/>
+*Note that I think if you use the "load object into layer option, you can NOT load an imported object, such as an imported .obj... instead you must save objects with different file extensions as .lwo... they will load in any instance like that.&#13;
+<br/><br/>
+The tab in the upper-right hand corner that's filled with little squares and has a label allows you to pick which object to edit (it will show a list of all loaded objects, and a ghosted list of any objects loaded in Layout). It is labeled "Unnamed" if the current object is not yet saved. &#13;
+<br/>
+The ten buttons in the middle part of the image above are "Layer Buttons" â each one represents a layer â the one on the left is "Layer One". &#13;
+<br/>
+The Drop Down tab in the very corner (shown on the far right above) controls communication with Layout&#13;
+<br/>
+Click on the Top half of any layer button to edit that layer, &#13;
+<br/>
+Click on the Bottom half of any button to see the contents of that layer (but not edit it), &#13;
+<br/>
+Shift Click to multi-select layers (either top or bottom). &#13;
+<br/>
+Layers are used during the creation phase (many modeling operations require the use of layers). They help keep your workspace from getting too cluttered (build part of a model in one layer, part in another, and combine them with copy paste â or donât combine them at all.). &#13;
+<br/>
+As well, layers in LW [6] can be used to separate the parts of a model for animation â i.e. the wheels of a car can be created one in each layer, to make animation a bit easier. &#13;
+<br/>
+More layers can be accessed, and layers can be named (it is a really good idea to name them descriptively) via the "Modeler / Windows / Layer Browser Open / Close" â the keyshort for which is Shift Y. The first ten layers can also be accessed through the 1-10 keys (and &lt;alt&gt; + 1-10) on the main keyboard. &#13;
+<br/>
+Each layer can have one pivot point (the point around which it will rotate in layout). By default, that pivot point is found at the "origin" in modeler (the spot where all the axes read zero). You can relocate the pivot for any layer by choosing "Detail / Pivot", and then clicking in any view-port.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98681" date="Posted: Thu Jun 09, 2005 4:13 pm    Post subject: Re: Lightwave basics"><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>jizaboz wrote:</b></span></td>	</tr><tr><td class="quote"> the Goliath assumes you know when following his tutorial...&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+Probably becuase if you can afford a program with that price, you have a manual and good 3D skills<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98684" date="Posted: Thu Jun 09, 2005 4:41 pm    Post subject: "><author>modern</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Rayne wrote&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">jizaboz wrote:&#13;
+<br/>
+the Goliath assumes you know when following his tutorial... &#13;
+<br/><br/><br/><br/>
+Probably becuase if you can afford a program with that price, you have a manual and good 3D skills</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+How do you get good 3D skills if you dont learn the "availible" software?<br/>_________________<br/><a href="/web/20061012183908/http://creativecommons.org/" target="_blank">http://creativecommons.org/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98708" date="Posted: Thu Jun 09, 2005 7:42 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was just putting it out there for noobs like me... I'm a programmer, not a modeller... but I'm trying! As far as the expense of things like Maya and Lightwave... er, I'm a "student"... yeah.&#13;
+<br/><br/>
+Thanks again for helping to get me started Rayne.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

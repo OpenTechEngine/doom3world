@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17373"><title>Having the texture to amit effects like the lava texture?</title><posts><post id="158508" date="Posted: Sat Sep 30, 2006 8:55 pm    Post subject: Having the texture to amit effects like the lava texture?"><author>ajm113</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">How do I add effects to a custom texture? I want to make a black texture that has a blur effetct that emits. I want to add it to a zombie to make him look cooler. <img src="/web/20061013022623im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>Need help on editing on the BF2 editor? Then goto <a href="/web/20061013022623/http://www.bf2editor.org/" target="_blank">www.bf2editor.org</a>&#13;
+<br/>
+Goto my alternitve site for my Doom3 and Quake 4 tutorials <a href="/web/20061013022623/http://www.ajm113.yurx.com/doom3engine" target="_blank">www.ajm113.yurx.com/doom3engine</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158518" date="Posted: Sun Oct 01, 2006 4:40 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look at the lava texture's material shader.&#13;
+<br/><br/>
+See any keywords that you're unfamiliar with?<br/>_________________<br/><a href="/web/20061013022623/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022623im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022623/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158705" date="Posted: Tue Oct 03, 2006 1:51 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">add this parm for emmiting&#13;
+<br/>
+deform particle "name of particle" this is a global key not a stage key so it can not be part of any stage it is strictly global&#13;
+<br/><br/>
+the 2nd part you will need to look at ID's materials and look at the vertex programs and choose the appropriate one&#13;
+<br/>
+I would recomend the heat haze one<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158508" date="Posted: Sat Sep 30, 2006 8:55 pm    Post subject: Having the texture to amit effects like the lava texture?"><author>ajm113</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">How do I add effects to a custom texture? I want to make a black texture that has a blur effetct that emits. I want to add it to a zombie to make him look cooler. <img src="/web/20061013023145im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>Need help on editing on the BF2 editor? Then goto <a href="/web/20061013023145/http://www.bf2editor.org/" target="_blank">www.bf2editor.org</a>&#13;
+<br/>
+Goto my alternitve site for my Doom3 and Quake 4 tutorials <a href="/web/20061013023145/http://www.ajm113.yurx.com/doom3engine" target="_blank">www.ajm113.yurx.com/doom3engine</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158518" date="Posted: Sun Oct 01, 2006 4:40 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look at the lava texture's material shader.&#13;
+<br/><br/>
+See any keywords that you're unfamiliar with?<br/>_________________<br/><a href="/web/20061013023145/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023145im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023145/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158705" date="Posted: Tue Oct 03, 2006 1:51 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">add this parm for emmiting&#13;
+<br/>
+deform particle "name of particle" this is a global key not a stage key so it can not be part of any stage it is strictly global&#13;
+<br/><br/>
+the 2nd part you will need to look at ID's materials and look at the vertex programs and choose the appropriate one&#13;
+<br/>
+I would recomend the heat haze one<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="12648"><title>Projected light shadows (Minus the light).</title><posts><post id="114830" date="Posted: Tue Oct 04, 2005 12:19 am    Post subject: Projected light shadows (Minus the light)."><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In my search for a way to add foliage shadows overtop of another light (Such as the sun), I've created a projected light texture that makes use of the alpha maps included in the texture used for projection. I'm not really sure if this is anything new or groundbreaking, but I'm certainly exited to explore the possible uses of it.&#13;
+<br/><br/>
+To acheive this I used this material file:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/bambooshadow2&#13;
+<br/>
+{&#13;
+<br/>
+blendLight&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      blend blend&#13;
+<br/>
+      map lights/bambooshadow2.tga&#13;
+<br/>
+      alphazeroclamp&#13;
+<br/>
+         }&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+If you were to look at the texture located in my "lights" dir, you would see a completely black texture, the alpha map applied to it is what determines what shadow is projected.&#13;
+<br/><br/>
+The outcome is this:&#13;
+<br/><img src="/web/20061013023753im_/http://www.filefarmer.com/cb/shadow.jpg" border="0"/><br/>
+In this scene there are two lights, one is the sky light eluminating the map, and the other is the one projecting the shadow. &#13;
+<br/><br/>
+I'd be interested in any possible usage ideas for this that any of you might have, it seems there are very few. <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114842" date="Posted: Tue Oct 04, 2005 2:11 am    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I just did some preformance testing; once with that shadow projecting light duplicated 19 times ( A total of 20 lights in that small area), and another time with a total of 40 lights in there (The texture thats projected is 1024X1024).&#13;
+<br/><br/>
+At 20 it still ran at the origional 60 FPS, at 40 it slowed down to around a constant 40 FPS. It seems to preform pretty well.  <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114855" date="Posted: Tue Oct 04, 2005 4:49 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmmm. This is interesting.&#13;
+<br/><br/>
+Good job. I'll keep a mental note of this for sure.<br/>_________________<br/><a href="/web/20061013023753/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023753im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023753/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114857" date="Posted: Tue Oct 04, 2005 4:57 am    Post subject: Re: Projected light shadows (Minus the light)."><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">If you were to look at the texture located in my "lights" dir, you would see a completely black texture, the alpha map applied to it is what determines what shadow is projected...</td>	</tr></table><span class="postbody">Oh well that makes a little bit more sense as I was wondering what you were doing to 'block' the emition of 'light' seeing as you weren't using a normal alphamask. It's not really a 'black light' as such in that case but still pretty interesting nonetheless.<br/>_________________<br/><a href="/web/20061013023753/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023753im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023753/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114858" date="Posted: Tue Oct 04, 2005 4:57 am    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.&#13;
+<br/><br/>
+This is so perfect for foliage  <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_mrgreen.gif" alt="Mr. Green" border="0"/><br/><br/>
+Edit; Heh, sorry for that bad explaination earlier Kat <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+Edit2: <a href="/web/20061013023753/http://www.doom3world.org/phpbb2/viewtopic.php?t=12256&amp;highlight=aim+projected" target="_blank" class="postlink">Looks like its nothing new.</a><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114878" date="Posted: Tue Oct 04, 2005 8:51 am    Post subject: "><author>OrbWeaver</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you splitting up your brushes? I get a framerate of about 20 fps if I have just 9 lights hitting the same large surface, but then the Radeon 9800 XT is not exactly a top-of-the-range graphics card (although it's perfectly decent even for todays games).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114935" date="Posted: Tue Oct 04, 2005 6:32 pm    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>OrbWeaver wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you splitting up your brushes? I get a framerate of about 20 fps if I have just 9 lights hitting the same large surface, but then the Radeon 9800 XT is not exactly a top-of-the-range graphics card (although it's perfectly decent even for todays games).</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Its better to think of them as texture projectors rather than lights (They do however get projected from lights), so they don't have the same slowdowns that normal lighting does (IE- They don't cast any light, stencil shadows, or specular highlights. They only cast a texture). To clarify I tested the 80 "Projector" map on two large connected surfaces with no splitting (Aside from the split that was due to me being to lazy to connect the two large surfaces). I'm also running on a Radeon 9800 (Pro), so its not like I have some super-computer. <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158191" date="Posted: Tue Sep 26, 2006 6:56 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Dead thread rising!&#13;
+<br/><br/>
+I was just trying to get this to work and copied the material file above except for changing the file path to my texture which is completely black with a masked shape as an alpha (also as above) but for the life of me it doesn't seem to want to work and I'm noneplussed about why becasue I'm sure I'm doing the same thing - projected light with a material applied to it that contains the material file.&#13;
+<br/><br/>
+*scratches head somewhat*<br/>_________________<br/><a href="/web/20061013023753/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023753im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023753/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158195" date="Posted: Tue Sep 26, 2006 9:30 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not 100% sure about this but it seems that whether or not it works is dependant on your video hardware and software.&#13;
+<br/><br/>
+There was a thread a year or two ago where some guy was using blendlights to project images and it only worked for select people dispite they were all looking at the same assets. &#13;
+<br/><br/>
+I tried this awhile back here...&#13;
+<br/><br/><a href="/web/20061013023753/http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512</a>&#13;
+<br/><br/>
+And I couldn't get it to work.<br/>_________________<br/><a href="/web/20061013023753/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023753im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023753/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158205" date="Posted: Tue Sep 26, 2006 12:34 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">strange...  remove the "blendlight" &amp; it seems to work fine.  <img src="/web/20061013023753im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Things I've <a href="/web/20061013023753/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158217" date="Posted: Tue Sep 26, 2006 4:51 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">I'm not 100% sure about this but it seems that whether or not it works is dependant on your video hardware and software.&#13;
+<br/><br/>
+There was a thread a year or two ago where some guy was using blendlights to project images and it only worked for select people dispite they were all looking at the same assets. &#13;
+<br/><br/>
+I tried this awhile back here...&#13;
+<br/><br/><a href="/web/20061013023753/http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512</a>&#13;
+<br/><br/>
+And I couldn't get it to work.</td>	</tr></table><span class="postbody">Yeah I looked at that thread and for the life of me too I can't get it to work. It works as a 'normal' projected light but nothing else does anything.&#13;
+<br/><br/>
+I'm using an ATI 9600XT, which is an 'old' card now I guess.<br/>_________________<br/><a href="/web/20061013023753/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023753im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023753/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114830" date="Posted: Tue Oct 04, 2005 12:19 am    Post subject: Projected light shadows (Minus the light)."><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In my search for a way to add foliage shadows overtop of another light (Such as the sun), I've created a projected light texture that makes use of the alpha maps included in the texture used for projection. I'm not really sure if this is anything new or groundbreaking, but I'm certainly exited to explore the possible uses of it.&#13;
+<br/><br/>
+To acheive this I used this material file:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/bambooshadow2&#13;
+<br/>
+{&#13;
+<br/>
+blendLight&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      blend blend&#13;
+<br/>
+      map lights/bambooshadow2.tga&#13;
+<br/>
+      alphazeroclamp&#13;
+<br/>
+         }&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+If you were to look at the texture located in my "lights" dir, you would see a completely black texture, the alpha map applied to it is what determines what shadow is projected.&#13;
+<br/><br/>
+The outcome is this:&#13;
+<br/><img src="/web/20061013023918im_/http://www.filefarmer.com/cb/shadow.jpg" border="0"/><br/>
+In this scene there are two lights, one is the sky light eluminating the map, and the other is the one projecting the shadow. &#13;
+<br/><br/>
+I'd be interested in any possible usage ideas for this that any of you might have, it seems there are very few. <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114842" date="Posted: Tue Oct 04, 2005 2:11 am    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I just did some preformance testing; once with that shadow projecting light duplicated 19 times ( A total of 20 lights in that small area), and another time with a total of 40 lights in there (The texture thats projected is 1024X1024).&#13;
+<br/><br/>
+At 20 it still ran at the origional 60 FPS, at 40 it slowed down to around a constant 40 FPS. It seems to preform pretty well.  <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114855" date="Posted: Tue Oct 04, 2005 4:49 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmmm. This is interesting.&#13;
+<br/><br/>
+Good job. I'll keep a mental note of this for sure.<br/>_________________<br/><a href="/web/20061013023918/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023918im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023918/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114857" date="Posted: Tue Oct 04, 2005 4:57 am    Post subject: Re: Projected light shadows (Minus the light)."><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">If you were to look at the texture located in my "lights" dir, you would see a completely black texture, the alpha map applied to it is what determines what shadow is projected...</td>	</tr></table><span class="postbody">Oh well that makes a little bit more sense as I was wondering what you were doing to 'block' the emition of 'light' seeing as you weren't using a normal alphamask. It's not really a 'black light' as such in that case but still pretty interesting nonetheless.<br/>_________________<br/><a href="/web/20061013023918/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023918im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023918/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114858" date="Posted: Tue Oct 04, 2005 4:57 am    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.&#13;
+<br/><br/>
+This is so perfect for foliage  <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_mrgreen.gif" alt="Mr. Green" border="0"/><br/><br/>
+Edit; Heh, sorry for that bad explaination earlier Kat <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+Edit2: <a href="/web/20061013023918/http://www.doom3world.org/phpbb2/viewtopic.php?t=12256&amp;highlight=aim+projected" target="_blank" class="postlink">Looks like its nothing new.</a><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114878" date="Posted: Tue Oct 04, 2005 8:51 am    Post subject: "><author>OrbWeaver</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you splitting up your brushes? I get a framerate of about 20 fps if I have just 9 lights hitting the same large surface, but then the Radeon 9800 XT is not exactly a top-of-the-range graphics card (although it's perfectly decent even for todays games).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="114935" date="Posted: Tue Oct 04, 2005 6:32 pm    Post subject: "><author>c--b</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>OrbWeaver wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>c--b wrote:</b></span></td>	</tr><tr><td class="quote">Turns out that the slowdown was only due to the overlapping; I increased the number to 80 exept in a large spread out area and it remained at a constant 60 fps. It doesn't seem to effect framerate in the slightest. Only overlapping effects it, and only minimally.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you splitting up your brushes? I get a framerate of about 20 fps if I have just 9 lights hitting the same large surface, but then the Radeon 9800 XT is not exactly a top-of-the-range graphics card (although it's perfectly decent even for todays games).</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Its better to think of them as texture projectors rather than lights (They do however get projected from lights), so they don't have the same slowdowns that normal lighting does (IE- They don't cast any light, stencil shadows, or specular highlights. They only cast a texture). To clarify I tested the 80 "Projector" map on two large connected surfaces with no splitting (Aside from the split that was due to me being to lazy to connect the two large surfaces). I'm also running on a Radeon 9800 (Pro), so its not like I have some super-computer. <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/>1+1= 11</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158191" date="Posted: Tue Sep 26, 2006 6:56 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Dead thread rising!&#13;
+<br/><br/>
+I was just trying to get this to work and copied the material file above except for changing the file path to my texture which is completely black with a masked shape as an alpha (also as above) but for the life of me it doesn't seem to want to work and I'm noneplussed about why becasue I'm sure I'm doing the same thing - projected light with a material applied to it that contains the material file.&#13;
+<br/><br/>
+*scratches head somewhat*<br/>_________________<br/><a href="/web/20061013023918/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023918im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023918/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158195" date="Posted: Tue Sep 26, 2006 9:30 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not 100% sure about this but it seems that whether or not it works is dependant on your video hardware and software.&#13;
+<br/><br/>
+There was a thread a year or two ago where some guy was using blendlights to project images and it only worked for select people dispite they were all looking at the same assets. &#13;
+<br/><br/>
+I tried this awhile back here...&#13;
+<br/><br/><a href="/web/20061013023918/http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512</a>&#13;
+<br/><br/>
+And I couldn't get it to work.<br/>_________________<br/><a href="/web/20061013023918/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023918im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023918/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158205" date="Posted: Tue Sep 26, 2006 12:34 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">strange...  remove the "blendlight" &amp; it seems to work fine.  <img src="/web/20061013023918im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Things I've <a href="/web/20061013023918/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158217" date="Posted: Tue Sep 26, 2006 4:51 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>rich_is_bored wrote:</b></span></td>	</tr><tr><td class="quote">I'm not 100% sure about this but it seems that whether or not it works is dependant on your video hardware and software.&#13;
+<br/><br/>
+There was a thread a year or two ago where some guy was using blendlights to project images and it only worked for select people dispite they were all looking at the same assets. &#13;
+<br/><br/>
+I tried this awhile back here...&#13;
+<br/><br/><a href="/web/20061013023918/http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?p=144512#144512</a>&#13;
+<br/><br/>
+And I couldn't get it to work.</td>	</tr></table><span class="postbody">Yeah I looked at that thread and for the life of me too I can't get it to work. It works as a 'normal' projected light but nothing else does anything.&#13;
+<br/><br/>
+I'm using an ATI 9600XT, which is an 'old' card now I guess.<br/>_________________<br/><a href="/web/20061013023918/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023918im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023918/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16830"><title>water material affects texture blending</title><posts><post id="153687" date="Posted: Tue Aug 15, 2006 1:56 pm    Post subject: water material affects texture blending"><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've got a question about texture-blending:&#13;
+<br/><br/>
+After finally managing to get Lloyd Markle's extra-cool water into my map, I had to find out that it's material conflicts with that of my cartoon-outlines. The result looks like this:&#13;
+<br/><img src="/web/20061013021949im_/http://monkeykombat.planetquake.gamespy.com/water.jpg" border="0"/><br/>
+I examined it, and it seems as if the first material stage (vertexprogram... vp_water.tga) causes the problem. &#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/Water_source/water_clear &#13;
+<br/>
+{&#13;
+<br/>
+   qer_editorimage textures/water_source/w_c_editor.tga&#13;
+<br/>
+   discrete&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   water&#13;
+<br/>
+   twosided&#13;
+<br/>
+   translucent&#13;
+<br/>
+//   sort far   &#13;
+<br/>
+   deform turbulent sinTable 0.0175 (time*0.15) 10&#13;
+<br/>
+   {&#13;
+<br/>
+      vertexProgram heatHazeWithMask.vfp&#13;
+<br/>
+      vertexParm 0 time * 0.1 , time * 0.5&#13;
+<br/>
+      vertexParm 1 1.5&#13;
+<br/>
+      fragmentProgram heatHazeWithMask.vfp&#13;
+<br/>
+      fragmentMap 0 _currentRender&#13;
+<br/>
+      fragmentMap 1 textures/sfx/vp1.tga&#13;
+<br/>
+      fragmentMap 2 textures/water_source/vp_water.tga&#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend blend&#13;
+<br/>
+      map textures/water_source/water_clear.tga&#13;
+<br/>
+      translate time*.0,time*-.01&#13;
+<br/>
+      alpha 0.5&#13;
+<br/>
+   }&#13;
+<br/><br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Without that stage the water blends beneath everything outside as intended, but I think it would be a pity to forgo that nice effect.&#13;
+<br/><br/>
+Has anybody an idea what to change in one or both materials?&#13;
+<br/><br/>
+(Cartoon outline material:)&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/bb2/outline &#13;
+<br/>
+{ &#13;
+<br/>
+      noselfShadow &#13;
+<br/>
+      noShadows &#13;
+<br/>
+      unsmoothedTangents &#13;
+<br/>
+      forceOverlays &#13;
+<br/>
+      backSided &#13;
+<br/>
+      nonsolid &#13;
+<br/>
+   sort close   &#13;
+<br/>
+      { &#13;
+<br/>
+       blend    blend &#13;
+<br/>
+       map       textures/bb2/outline.tga &#13;
+<br/>
+        } &#13;
+<br/>
+} </td>	</tr></table><span class="postbody"><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153701" date="Posted: Tue Aug 15, 2006 4:05 pm    Post subject: "><author>rebb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thats the same Problem that causes your Gun's outline to be distorted when it is over a distortion-shader ( which looks all kinds of ass ).&#13;
+<br/><br/>
+The distorting fragment-program is using the _currentRender image, which holds, well, the current Render before any distortion is applied.&#13;
+<br/><br/>
+Since this also contains your Cel-Shaded Outlines and Geometry, those get distorted as well.<br/>_________________<br/>( imagine obnoxiously huge Image here )</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153706" date="Posted: Tue Aug 15, 2006 4:34 pm    Post subject: "><author>Manc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Unfortunately this is something that has carried over in other doom3 engine-based games as well.  There's nothing that can be done from a modmaker's standpoint to correct this.  The best you can do is fiddle with the parameters to make the effect less distorted and hopefully less noticeable outside distortion combined with just generally mapping around it.<br/>_________________<br/><a href="/web/20061013021949/http://mike.mancubus.net/" target="_blank" class="postlink">Mike @ MancuNET</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153719" date="Posted: Tue Aug 15, 2006 6:02 pm    Post subject: "><author>klonsemann</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Take a look at <a href="/web/20061013021949/http://www.doom3world.org/phpbb2/viewtopic.php?t=14879&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=" target="_blank" class="postlink">this  watermaterial</a>. The modder has coded a new glprog witch sloves this problem and generades very nice wave-reflection-deforms.  <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+By the side, nice Cartoonlook !! Is there a larger project, these materials are for ?&#13;
+<br/><br/>
+#EDIT# Just visited your homepage, great stuff  <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/> !<br/>_________________<br/>Not the stupid editor makes the bad maps, but bad mappers do !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153793" date="Posted: Wed Aug 16, 2006 8:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thank you all for the quick replies! Great community here at DOOM3WORLD!&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Take a look at this watermaterial. The modder has coded a new glprog witch sloves this problem and generades very nice wave-reflection-deforms.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Good tip, klonsemann! I just had a glance at it, and that's indeed cool looking water. A major problem for my use is that it doesn't include water physics, which are absolutely vital for the gameplay of the "Bermuda Bytes" map.&#13;
+<br/><br/>
+But maybe I can combine it with Lloyd Markle's water... Hope that won't requiere any coding, because that isn't my world at all <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153802" date="Posted: Wed Aug 16, 2006 10:59 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just a quick test, but it seems to work! Here is pbmax' water surrounding my cartoon-atoll... &#13;
+<br/><img src="/web/20061013021949im_/http://monkeykombat.planetquake.gamespy.com/pbmaxwater.jpg" border="0"/><br/>
+A little dark and you can walk on top of it, but that should be solvable.&#13;
+<br/><br/>
+- Most important: Now there are waves PLUS outlines (plus water physics of course)! <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Big THANKS to pbmax!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153812" date="Posted: Wed Aug 16, 2006 1:45 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">try making the water volume a func_forcefield and use a target null for the target force and place it 0.125 units from the volumes origin so the player can resist it&#13;
+<br/><br/>
+(the further the target_null the more force applied at that close range your player can resistt it still)<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153813" date="Posted: Wed Aug 16, 2006 1:48 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hm... Not as easy as I hoped it would be. <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Testing pbmax' water in Doom3 (the screenshot above is from Quake4), I get two different effects, depending on standing outside the water (i.e. one of my islands) or on top of it.&#13;
+<br/><br/>
+As you can see from the screenshot, the look from on top comes close to what I would like to have, but produces a reflection error, projecting meshes from unterwater onto the surface...&#13;
+<br/><img src="/web/20061013021949im_/http://monkeykombat.planetquake.gamespy.com/water2.jpg" border="0"/><br/>
+I have no idea why the material behaves like that. Maybe one of you does?!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153819" date="Posted: Wed Aug 16, 2006 2:11 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">When it comes to handle reflective surfaces, DooM3 engine sucks at best...<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153825" date="Posted: Wed Aug 16, 2006 2:44 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe I should have included pbmax' material script...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/pbmax/fresnel_water_pixel1&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water1_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512               // size of the texture to draw the mirror view in &#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0                  //100% reflective, 0% transparent&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_pixel.vfp         //shader program&#13;
+<br/>
+      vertexParm   0   time * 0.070 , time * 0.0      //scroll&#13;
+<br/>
+      vertexParm   1   5.00                  //magnitude&#13;
+<br/>
+      fragmentMap   0    _scratch               //the mirror/reflection image&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water1_local.tga   //normal map for distortion &amp; "per pixel" fresnel&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+textures/pbmax/fresnel_water_pixel2&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water2_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512&#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_pixel.vfp&#13;
+<br/>
+      vertexParm   0   time * 0.040 , time * 0.0&#13;
+<br/>
+      vertexParm   1   6.00&#13;
+<br/>
+      fragmentMap   0    _scratch&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water2_local.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/><br/>
+textures/pbmax/fresnel_water_vertex&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water1_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512&#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_vertex.vfp&#13;
+<br/>
+      vertexParm   0   time * 0.040 , time * 0.0&#13;
+<br/>
+      vertexParm   1   2.00&#13;
+<br/>
+      fragmentMap   0    _scratch&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water1_local.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+@voldemort: I'm a little slow again...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">try making the water volume a func_forcefield and use a target null for the target force and place it 0.125 units from the volumes origin so the player can resist it </td>	</tr></table><span class="postbody"> - Is that to keep the player out off the water?!&#13;
+<br/><br/>
+@Rayne</span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">When it comes to handle reflective surfaces, DooM3 engine sucks at best...</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... And if it carries on sucking, I simply leave that reflections out. They wouldn't be more than an extra eye-candy anyway.  <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_cool.gif" alt="Cool" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153975" date="Posted: Thu Aug 17, 2006 6:14 pm    Post subject: "><author>klonsemann</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If you use Lloyd Markle's water, there is an watermaterial too, just copy and paste PBMAX watershader in Lloyd's shader declaration. Than Lloyds physics, etc should work with PBMAX shader  <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> !&#13;
+<br/><br/>
+PS: Don't forget to include PBMAX glprog, its now used instead of Lloyd's.<br/>_________________<br/>Not the stupid editor makes the bad maps, but bad mappers do !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153979" date="Posted: Thu Aug 17, 2006 7:52 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the forcefield would create a controlled decent like you where sinking&#13;
+<br/><br/>
+otherwise player would drop like a stone&#13;
+<br/><br/>
+func_forcefields can pull and push both<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154060" date="Posted: Fri Aug 18, 2006 8:37 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">If you use Lloyd Markle's water, there is an watermaterial too, just copy and paste PBMAX watershader in Lloyd's shader declaration. Than Lloyds physics, etc should work with PBMAX shader!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Don't know why, but this produces the most remarkable results. My favourite is this one:&#13;
+<br/><img src="/web/20061013021949im_/http://monkeykombat.planetquake.gamespy.com/pbwater3.jpg" border="0"/><br/>
+Keeping both seperate works, but I can't get rid of that reflection error mentioned above. And without reflexions the effect is anything but spectacular:&#13;
+<br/><img src="/web/20061013021949im_/http://monkeykombat.planetquake.gamespy.com/pbwater2.jpg" border="0"/><br/>
+Maybe some finetuning brings better results...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">the forcefield would create a controlled decent like you where sinking</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Now I got it <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Sounds like a smart and elegant way to create the water effect! I'll try it out on the Quake4 version of my map. In Doom3 Lloyd's water physics are doing a great job. Unfortunately all attempts to bring them into Quake4 failed until now, so your idea comes to the best point of time.&#13;
+<br/><br/>
+Thank you all!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154067" date="Posted: Fri Aug 18, 2006 10:02 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">the forcefield would create a controlled decent like you where sinking</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I just tried it out: The vertical force simulates water physics very well, but the horizontal is so strong that the player can't move a centimeter towards the target_null  <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154088" date="Posted: Fri Aug 18, 2006 1:25 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">distance relattionship between the target null and forcefield afffects overall force&#13;
+<br/>
+example if you only wanted slow movement (no pull no push)  you would place the target null with the exact same origin as the forcefield  but for a slow drag down allgn it the same on x&amp;y  but on z move it down 0.125 grid units and this will give a gentle pull down<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154197" date="Posted: Sat Aug 19, 2006 8:55 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">for a slow drag down allgn it the same on x&amp;y but on z move it down 0.125 grid units and this will give a gentle pull down</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Hm... I'm pretty sure I did it exactly as you suggested, but there's still that horizontal force that blocks the player from moving in x or y direction <img src="/web/20061013021949im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013021949/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153687" date="Posted: Tue Aug 15, 2006 1:56 pm    Post subject: water material affects texture blending"><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've got a question about texture-blending:&#13;
+<br/><br/>
+After finally managing to get Lloyd Markle's extra-cool water into my map, I had to find out that it's material conflicts with that of my cartoon-outlines. The result looks like this:&#13;
+<br/><img src="/web/20061013024812im_/http://monkeykombat.planetquake.gamespy.com/water.jpg" border="0"/><br/>
+I examined it, and it seems as if the first material stage (vertexprogram... vp_water.tga) causes the problem. &#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/Water_source/water_clear &#13;
+<br/>
+{&#13;
+<br/>
+   qer_editorimage textures/water_source/w_c_editor.tga&#13;
+<br/>
+   discrete&#13;
+<br/>
+   nonsolid&#13;
+<br/>
+   water&#13;
+<br/>
+   twosided&#13;
+<br/>
+   translucent&#13;
+<br/>
+//   sort far   &#13;
+<br/>
+   deform turbulent sinTable 0.0175 (time*0.15) 10&#13;
+<br/>
+   {&#13;
+<br/>
+      vertexProgram heatHazeWithMask.vfp&#13;
+<br/>
+      vertexParm 0 time * 0.1 , time * 0.5&#13;
+<br/>
+      vertexParm 1 1.5&#13;
+<br/>
+      fragmentProgram heatHazeWithMask.vfp&#13;
+<br/>
+      fragmentMap 0 _currentRender&#13;
+<br/>
+      fragmentMap 1 textures/sfx/vp1.tga&#13;
+<br/>
+      fragmentMap 2 textures/water_source/vp_water.tga&#13;
+<br/>
+   }&#13;
+<br/>
+   {&#13;
+<br/>
+      blend blend&#13;
+<br/>
+      map textures/water_source/water_clear.tga&#13;
+<br/>
+      translate time*.0,time*-.01&#13;
+<br/>
+      alpha 0.5&#13;
+<br/>
+   }&#13;
+<br/><br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Without that stage the water blends beneath everything outside as intended, but I think it would be a pity to forgo that nice effect.&#13;
+<br/><br/>
+Has anybody an idea what to change in one or both materials?&#13;
+<br/><br/>
+(Cartoon outline material:)&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/bb2/outline &#13;
+<br/>
+{ &#13;
+<br/>
+      noselfShadow &#13;
+<br/>
+      noShadows &#13;
+<br/>
+      unsmoothedTangents &#13;
+<br/>
+      forceOverlays &#13;
+<br/>
+      backSided &#13;
+<br/>
+      nonsolid &#13;
+<br/>
+   sort close   &#13;
+<br/>
+      { &#13;
+<br/>
+       blend    blend &#13;
+<br/>
+       map       textures/bb2/outline.tga &#13;
+<br/>
+        } &#13;
+<br/>
+} </td>	</tr></table><span class="postbody"><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153701" date="Posted: Tue Aug 15, 2006 4:05 pm    Post subject: "><author>rebb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thats the same Problem that causes your Gun's outline to be distorted when it is over a distortion-shader ( which looks all kinds of ass ).&#13;
+<br/><br/>
+The distorting fragment-program is using the _currentRender image, which holds, well, the current Render before any distortion is applied.&#13;
+<br/><br/>
+Since this also contains your Cel-Shaded Outlines and Geometry, those get distorted as well.<br/>_________________<br/>( imagine obnoxiously huge Image here )</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153706" date="Posted: Tue Aug 15, 2006 4:34 pm    Post subject: "><author>Manc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Unfortunately this is something that has carried over in other doom3 engine-based games as well.  There's nothing that can be done from a modmaker's standpoint to correct this.  The best you can do is fiddle with the parameters to make the effect less distorted and hopefully less noticeable outside distortion combined with just generally mapping around it.<br/>_________________<br/><a href="/web/20061013024812/http://mike.mancubus.net/" target="_blank" class="postlink">Mike @ MancuNET</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153719" date="Posted: Tue Aug 15, 2006 6:02 pm    Post subject: "><author>klonsemann</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Take a look at <a href="/web/20061013024812/http://www.doom3world.org/phpbb2/viewtopic.php?t=14879&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=" target="_blank" class="postlink">this  watermaterial</a>. The modder has coded a new glprog witch sloves this problem and generades very nice wave-reflection-deforms.  <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+By the side, nice Cartoonlook !! Is there a larger project, these materials are for ?&#13;
+<br/><br/>
+#EDIT# Just visited your homepage, great stuff  <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/> !<br/>_________________<br/>Not the stupid editor makes the bad maps, but bad mappers do !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153793" date="Posted: Wed Aug 16, 2006 8:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thank you all for the quick replies! Great community here at DOOM3WORLD!&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Take a look at this watermaterial. The modder has coded a new glprog witch sloves this problem and generades very nice wave-reflection-deforms.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Good tip, klonsemann! I just had a glance at it, and that's indeed cool looking water. A major problem for my use is that it doesn't include water physics, which are absolutely vital for the gameplay of the "Bermuda Bytes" map.&#13;
+<br/><br/>
+But maybe I can combine it with Lloyd Markle's water... Hope that won't requiere any coding, because that isn't my world at all <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153802" date="Posted: Wed Aug 16, 2006 10:59 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just a quick test, but it seems to work! Here is pbmax' water surrounding my cartoon-atoll... &#13;
+<br/><img src="/web/20061013024812im_/http://monkeykombat.planetquake.gamespy.com/pbmaxwater.jpg" border="0"/><br/>
+A little dark and you can walk on top of it, but that should be solvable.&#13;
+<br/><br/>
+- Most important: Now there are waves PLUS outlines (plus water physics of course)! <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Big THANKS to pbmax!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153812" date="Posted: Wed Aug 16, 2006 1:45 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">try making the water volume a func_forcefield and use a target null for the target force and place it 0.125 units from the volumes origin so the player can resist it&#13;
+<br/><br/>
+(the further the target_null the more force applied at that close range your player can resistt it still)<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153813" date="Posted: Wed Aug 16, 2006 1:48 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hm... Not as easy as I hoped it would be. <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Testing pbmax' water in Doom3 (the screenshot above is from Quake4), I get two different effects, depending on standing outside the water (i.e. one of my islands) or on top of it.&#13;
+<br/><br/>
+As you can see from the screenshot, the look from on top comes close to what I would like to have, but produces a reflection error, projecting meshes from unterwater onto the surface...&#13;
+<br/><img src="/web/20061013024812im_/http://monkeykombat.planetquake.gamespy.com/water2.jpg" border="0"/><br/>
+I have no idea why the material behaves like that. Maybe one of you does?!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153819" date="Posted: Wed Aug 16, 2006 2:11 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">When it comes to handle reflective surfaces, DooM3 engine sucks at best...<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153825" date="Posted: Wed Aug 16, 2006 2:44 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe I should have included pbmax' material script...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/pbmax/fresnel_water_pixel1&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water1_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512               // size of the texture to draw the mirror view in &#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0                  //100% reflective, 0% transparent&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_pixel.vfp         //shader program&#13;
+<br/>
+      vertexParm   0   time * 0.070 , time * 0.0      //scroll&#13;
+<br/>
+      vertexParm   1   5.00                  //magnitude&#13;
+<br/>
+      fragmentMap   0    _scratch               //the mirror/reflection image&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water1_local.tga   //normal map for distortion &amp; "per pixel" fresnel&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+textures/pbmax/fresnel_water_pixel2&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water2_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512&#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_pixel.vfp&#13;
+<br/>
+      vertexParm   0   time * 0.040 , time * 0.0&#13;
+<br/>
+      vertexParm   1   6.00&#13;
+<br/>
+      fragmentMap   0    _scratch&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water2_local.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/><br/>
+textures/pbmax/fresnel_water_vertex&#13;
+<br/>
+{&#13;
+<br/>
+   qer_EditorImage      textures/pbmax/water1_local.tga&#13;
+<br/>
+   {&#13;
+<br/>
+      mirrorRenderMap   512 512&#13;
+<br/>
+      blend   blend&#13;
+<br/>
+      alpha         0.0&#13;
+<br/>
+      translate      0.5, 0.5&#13;
+<br/>
+      scale         0.5, 0.5&#13;
+<br/>
+      program      fresnel_water_vertex.vfp&#13;
+<br/>
+      vertexParm   0   time * 0.040 , time * 0.0&#13;
+<br/>
+      vertexParm   1   2.00&#13;
+<br/>
+      fragmentMap   0    _scratch&#13;
+<br/>
+      fragmentMap   1   textures/pbmax/water1_local.tga&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+@voldemort: I'm a little slow again...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">try making the water volume a func_forcefield and use a target null for the target force and place it 0.125 units from the volumes origin so the player can resist it </td>	</tr></table><span class="postbody"> - Is that to keep the player out off the water?!&#13;
+<br/><br/>
+@Rayne</span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">When it comes to handle reflective surfaces, DooM3 engine sucks at best...</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... And if it carries on sucking, I simply leave that reflections out. They wouldn't be more than an extra eye-candy anyway.  <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_cool.gif" alt="Cool" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153975" date="Posted: Thu Aug 17, 2006 6:14 pm    Post subject: "><author>klonsemann</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If you use Lloyd Markle's water, there is an watermaterial too, just copy and paste PBMAX watershader in Lloyd's shader declaration. Than Lloyds physics, etc should work with PBMAX shader  <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> !&#13;
+<br/><br/>
+PS: Don't forget to include PBMAX glprog, its now used instead of Lloyd's.<br/>_________________<br/>Not the stupid editor makes the bad maps, but bad mappers do !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153979" date="Posted: Thu Aug 17, 2006 7:52 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the forcefield would create a controlled decent like you where sinking&#13;
+<br/><br/>
+otherwise player would drop like a stone&#13;
+<br/><br/>
+func_forcefields can pull and push both<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154060" date="Posted: Fri Aug 18, 2006 8:37 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">If you use Lloyd Markle's water, there is an watermaterial too, just copy and paste PBMAX watershader in Lloyd's shader declaration. Than Lloyds physics, etc should work with PBMAX shader!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Don't know why, but this produces the most remarkable results. My favourite is this one:&#13;
+<br/><img src="/web/20061013024812im_/http://monkeykombat.planetquake.gamespy.com/pbwater3.jpg" border="0"/><br/>
+Keeping both seperate works, but I can't get rid of that reflection error mentioned above. And without reflexions the effect is anything but spectacular:&#13;
+<br/><img src="/web/20061013024812im_/http://monkeykombat.planetquake.gamespy.com/pbwater2.jpg" border="0"/><br/>
+Maybe some finetuning brings better results...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">the forcefield would create a controlled decent like you where sinking</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Now I got it <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Sounds like a smart and elegant way to create the water effect! I'll try it out on the Quake4 version of my map. In Doom3 Lloyd's water physics are doing a great job. Unfortunately all attempts to bring them into Quake4 failed until now, so your idea comes to the best point of time.&#13;
+<br/><br/>
+Thank you all!<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154067" date="Posted: Fri Aug 18, 2006 10:02 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">the forcefield would create a controlled decent like you where sinking</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I just tried it out: The vertical force simulates water physics very well, but the horizontal is so strong that the player can't move a centimeter towards the target_null  <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154088" date="Posted: Fri Aug 18, 2006 1:25 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">distance relattionship between the target null and forcefield afffects overall force&#13;
+<br/>
+example if you only wanted slow movement (no pull no push)  you would place the target null with the exact same origin as the forcefield  but for a slow drag down allgn it the same on x&amp;y  but on z move it down 0.125 grid units and this will give a gentle pull down<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154197" date="Posted: Sat Aug 19, 2006 8:55 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">for a slow drag down allgn it the same on x&amp;y but on z move it down 0.125 grid units and this will give a gentle pull down</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Hm... I'm pretty sure I did it exactly as you suggested, but there's still that horizontal force that blocks the player from moving in x or y direction <img src="/web/20061013024812im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013024812/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

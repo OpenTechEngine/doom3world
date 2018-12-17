@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="15488"><title>q4 bumpmap rendering with maya models</title><posts><post id="p141064" date="Posted: Tue Apr 25, 2006 8:20 pm "><author>d-fens</author><body><![CDATA[<div class="postbody">I'm fairly new to using maya.
+<br />I followed the instructions for rendering a bumpmap with a maya model at iddevnet.  (I'm using quake 4) I triangulated all the geometry, (I'm assuming thats what they mean when they say "tripple" the model).  I ran the cleanup and the geometry is manifold.  When I try to render using the "renderbumpflat" command, It gives me this error: 
+<br />Maya Loader F:\....texmdl.ma: Face is not a triangle
+<br />Its frustrating because as far as I can see, all the polys are triangles.  I tried deleting the Image plain thinking that that might be the problem, but it still didn't work.
+<br />Anybody have any suggestions, or ways to dial in on the offending face (if any)?  I'm thinking it's probably something simple that I missed. 
+<br /><br />Another quick question: as far as I can tell the Doom3 engine is a z-up 
+<br />world.  Maya is a y-up world.  Does the engine translate which way is up?</div>]]></body></post><post id="p143091" date="Posted: Sat May 13, 2006 6:35 pm "><author>DeathsSilkyMist</author><body><![CDATA[<div class="postbody">Hmmm. Cleanup doesnt always do much of anything. Did you at anytime merge vertices? if you put some verticies together but forgot to merge them the program sometimes still considers them 4 or more vertice faces because the verticies are touching each others faces.
+<br /><br />I would suggest selecting all of the verticies, go into the merge verticies options and set the distance to a very small distance and see if that does anything. Also, could you post either a pic or a dl of the model? its sometimes hard to determine a problem with guessing games.</div>]]></body></post></posts></thread></xml>

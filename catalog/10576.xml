@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10576"><title>Lightwave Map Exporter</title><posts><post id="94839" date="Posted: Wed May 18, 2005 12:31 pm    Post subject: Lightwave Map Exporter"><author>Mr_Flamenco</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi to all&#13;
+<br/>
+ i would like to create my Maps in Light Wave7 or Maya6 are there any Map exporter for these softwares &#13;
+<br/>
+please help &#13;
+<br/>
+thank you in advance<br/>_________________<br/>Mr_Flamencoâ¢</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94841" date="Posted: Wed May 18, 2005 12:49 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Since you can import .lwo files directly in doom3, you can just read a tutorial and build everything in Lightwave... But, lay a uv map for every surface, even flat brushes.. Sounds a bit time consuming to me, in fact, for flat brushe, you can make them easily in radiant and texture them with a click<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94849" date="Posted: Wed May 18, 2005 2:01 pm    Post subject: "><author>Enforcer</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just to let you know you should change the name to Lightwave Map Exporter i was so excited for a lightmap exporter that when i saw this i was dissapointed!<br/>_________________<br/><span style="color: blue">Enforcer</span>&#13;
+<br/>
+BSProduction studios - <a href="/web/20061012182411/http://quake4arena.planetquake.gamespy.com/" target="_blank" class="postlink">Q4Arena</a>     &amp; <a href="/web/20061012182411/http://quake4arena.planetquake.gamespy.com/phpbb2/" target="_blank" class="postlink">Q4A Forum</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94850" date="Posted: Wed May 18, 2005 2:07 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Enforcer wrote:</b></span></td>	</tr><tr><td class="quote">Just to let you know you should change the name to Lightwave Map Exporter i was so excited for a lightmap exporter that when i saw this i was dissapointed!</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Same here. I was thinking about some automated process concerning the ambient lighting method.<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061012182411/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061012182411/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94839" date="Posted: Wed May 18, 2005 12:31 pm    Post subject: Lightwave Map Exporter"><author>Mr_Flamenco</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi to all&#13;
+<br/>
+ i would like to create my Maps in Light Wave7 or Maya6 are there any Map exporter for these softwares &#13;
+<br/>
+please help &#13;
+<br/>
+thank you in advance<br/>_________________<br/>Mr_Flamencoâ¢</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94841" date="Posted: Wed May 18, 2005 12:49 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Since you can import .lwo files directly in doom3, you can just read a tutorial and build everything in Lightwave... But, lay a uv map for every surface, even flat brushes.. Sounds a bit time consuming to me, in fact, for flat brushe, you can make them easily in radiant and texture them with a click<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94849" date="Posted: Wed May 18, 2005 2:01 pm    Post subject: "><author>Enforcer</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just to let you know you should change the name to Lightwave Map Exporter i was so excited for a lightmap exporter that when i saw this i was dissapointed!<br/>_________________<br/><span style="color: blue">Enforcer</span>&#13;
+<br/>
+BSProduction studios - <a href="/web/20061012183541/http://quake4arena.planetquake.gamespy.com/" target="_blank" class="postlink">Q4Arena</a>     &amp; <a href="/web/20061012183541/http://quake4arena.planetquake.gamespy.com/phpbb2/" target="_blank" class="postlink">Q4A Forum</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94850" date="Posted: Wed May 18, 2005 2:07 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Enforcer wrote:</b></span></td>	</tr><tr><td class="quote">Just to let you know you should change the name to Lightwave Map Exporter i was so excited for a lightmap exporter that when i saw this i was dissapointed!</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Same here. I was thinking about some automated process concerning the ambient lighting method.<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061012183541/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061012183541/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

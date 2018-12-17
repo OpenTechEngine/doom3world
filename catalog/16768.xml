@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16768"><title>Id's Todd Hollenshead Talks New IP</title><posts><post id="p153074" date="Posted: Thu Aug 10, 2006 1:04 pm "><author>Burrito</author><body><![CDATA[<div class="postbody">Next-Generation talks to id Software’s CEO about the famed developer’s new IP, publishers,  partners and the Engine Wars...&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"><span style="font-weight: bold">So the new technology is the answer to Unreal 3?</span><br />Oh, that’s not what John’s working—that’s not the way we conceive of it from a technology standpoint, at all.  We look at it as a platform that we’re developing our game on.<br />In all frankness, we’ll have to see.  The technology’s not done, and John knows where he’s going with it. But it still is in the R&amp;D phase.  John was at QuakeCon to be at QuakeCon.  But also he took a week out of the office, and was in a hotel room doing programming work, on one of his ‘get away and think’ type trips.  </div>&#13;<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.next-gen.biz/index.php?option=com_content&amp;task=view&amp;id=3608&amp;Itemid=2">http://www.next-gen.biz/index.php?optio ... 8&amp;Itemid=2</a><!-- m -->&#13;<br /><br />Source: <!-- w --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.ve3d.com/">http://www.ve3d.com</a><!-- w --></div>]]></body></post><post id="p153151" date="Posted: Thu Aug 10, 2006 9:58 pm "><author>ViPr</author><body><![CDATA[<div class="postbody">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?&#13;<br /><br />btw i can probably guess what Id's new IP will be. it will be called BLAM and it will involve cyborg demon aliens trying to destroy all humans and you must defeat them single handedly with a chainsaw, pistol, shotgun, machine gun, chaingun, plasma gun, and some lava acid depleted-uranium quantum singularity paradox nuclear implosion gun.</div>]]></body></post><post id="p153158" date="Posted: Thu Aug 10, 2006 10:20 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?</div>&#13;<br /><br />Unreal 3 comes as a middleware package.&#13;<br /><br />It's not a matter of confidence, it's a matter of a different design decision.</div>]]></body></post><post id="p153164" date="Posted: Thu Aug 10, 2006 10:56 pm "><author>tabre</author><body><![CDATA[<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?<br /><br />btw i can probably guess what Id's new IP will be. it will be called BLAM and it will involve cyborg demon aliens trying to destroy all humans and you must defeat them single handedly with a chainsaw, pistol, shotgun, machine gun, chaingun, plasma gun, and some lava acid depleted-uranium quantum singularity paradox nuclear implosion gun.</div>&#13;<br /><br />Actually, going by everything I've heard, it sounds nothing like that at all. &#13;<br />Although, that is a style of gameplay I never get tired of. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />They're trying something very new and different according to John Carmack.</div>]]></body></post><post id="p153172" date="Posted: Fri Aug 11, 2006 1:29 am "><author>abbaon</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Todd Hollenshead wrote:</div><div class="quotecontent">Vitaliy</div>&#13;<br />I googled that, and... good grief. Either id's developed the greatest content creation toolchain the world has ever seen, or they've hired God's own art department. How does a company working on a next-gen game <a href="https://web.archive.org/web/20070509181516/http://www.idsoftware.com/business/team/" class="postlink">employ</a> more than half as many programmers as artists and designers? The ratio of content creators to coders is at least 3:1 at other shops.</div>]]></body></post><post id="p153174" date="Posted: Fri Aug 11, 2006 2:34 am "><author>kat</author><body><![CDATA[<div class="postbody">I tell you why... becasue <span style="font-weight: bold">they don't use middleware </span>or 3rd party code (excluding the recently kick in the balls they got from Creative), they code their own renderer, AI, physics, terrain code, sound, GFX... everything, when put into context like that you can see why they have so many programmers.</div>]]></body></post><post id="p153178" date="Posted: Fri Aug 11, 2006 4:10 am "><author>Phobos</author><body><![CDATA[<div class="postbody">This internal project looks to be some serious stuff here. &#13;<br /><br />But they're saying that .. there's an unsaid but 'cancel' competition between their technology and the half dozen plus companies that have already licensed UE3 even before it's release? &#13;<br /><br />When personally, UT2k7 doesn't look all that great, and excluding the amazing texture work on some of the UE3 models, I don't think the engine is going to be what it's cut out to be. &#13;<br /><br />doom 3 engine ftw...</div>]]></body></post><post id="p153183" date="Posted: Fri Aug 11, 2006 5:14 am "><author>Jehar</author><body><![CDATA[<div class="postbody"><div class="quotetitle">abbaon wrote:</div><div class="quotecontent"><div class="quotetitle">Todd Hollenshead wrote:</div><div class="quotecontent">Vitaliy</div><br />I googled that, and... good grief. Either id's developed the greatest content creation toolchain the world has ever seen, or they've hired God's own art department. How does a company working on a next-gen game <a href="https://web.archive.org/web/20070509181516/http://www.idsoftware.com/business/team/" class="postlink">employ</a> more than half as many programmers as artists and designers? The ratio of content creators to coders is at least 3:1 at other shops.</div>&#13;<br /><br />I'm a big supporter of small art teams. When everybody has their input on product x, the final result tends to be unstylized and... blah. I prefer a small team, or even one person (Adrian Carmack ftw) to lead the art direction... makes for a much more satisfying and unique work.</div>]]></body></post><post id="p154239" date="Posted: Sat Aug 19, 2006 5:15 pm "><author>MelvinB</author><body><![CDATA[<div class="postbody"><a href="https://web.archive.org/web/20070509181516/http://www.next-gen.biz/index.php?option=com_content&amp;task=view&amp;id=3659&amp;Itemid=2" class="postlink">John Carmack Details id's New Direction</a>&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Next-Gen goes over their QuakeCon 2006 notes, and using quotes from id Software, primarily John Carmack, they put together an article on id's new direction. Several references pertain to their next big title, which they expect to go blockbuster and do things that people have never seen from id before. Not only will the game branch in a different direction, but so will the company itself. </div></div>]]></body></post><post id="p154240" date="Posted: Sat Aug 19, 2006 5:40 pm "><author>Regulator</author><body><![CDATA[<div class="postbody">Nobody believes in them anymore <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> after Doom3 they are outdated.</div>]]></body></post><post id="p154244" date="Posted: Sat Aug 19, 2006 5:50 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Regulator wrote:</div><div class="quotecontent">Nobody believes in them anymore <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> after Doom3 they are outdated.</div>&#13;<br /><br />Stop the trolling or go elsewhere.</div>]]></body></post><post id="p154245" date="Posted: Sat Aug 19, 2006 5:51 pm "><author>pbmax</author><body><![CDATA[<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why did they let basically everyone license Unreal Engine 3 while they said nothing?</div>&#13;<br /><br />because carmack does not want to build an empire, he just wants to build good programs.&#13;<br /><br />seriously, they have no interest in whoring their engines to any two-bit developer that thinks they can make a game. plus, the more you liscence, the more support you will have to do. they don't want that type of business model.&#13;<br /><br />they have a small team and i hope it stays that way.</div>]]></body></post><post id="p154247" date="Posted: Sat Aug 19, 2006 6:02 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">pbmax wrote:</div><div class="quotecontent"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why did they let basically everyone license Unreal Engine 3 while they said nothing?</div><br /><br />because carmack does not want to build an empire, he just wants to build good programs.<br /><br />seriously, they have no interest in whoring their engines to any two-bit developer that thinks they can make a game. plus, the more you liscence, the more support you will have to do. they don't want that type of business model.<br /><br />they have a small team and i hope it stays that way.</div>&#13;<br /><br />In the meantime they have a big team and they've lost a lot of potential licencees to Unreal3 due to the superior production pipeline and toolkit it offers as middleware. Raw engine power pays only half the rent, if any.&#13;<br />Shelling out a million for a licence is cheap compared to the additional 9 or 19 million a development company has to invest in manpower to get a title done.&#13;<br /><br />I suppose the "romantic" days of game development are long over.&#13;<br /><br />Carmack wants to build spaceships and a family, additionally he works at id software as a lead programmer.&#13;<br /><br />People grow up and the focus shifts. id software is a company now and seems to be in it's final stages to mature.&#13;<br /><br />Anyhow, they're still "cool".</div>]]></body></post><post id="p154284" date="Posted: Sun Aug 20, 2006 2:41 am "><author>TinMan</author><body><![CDATA[<div class="postbody">There's some interesting stuff on bluesnews comments from developers who have been working with Unreal 3 engine.&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.bluesnews.com/cgi-bin/board.pl?action=viewthread&amp;threadid=70139">http://www.bluesnews.com/cgi-bin/board. ... adid=70139</a><!-- m --></div>]]></body></post><post id="p154304" date="Posted: Sun Aug 20, 2006 5:25 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">TinMan wrote:</div><div class="quotecontent">There's some interesting stuff on bluesnews comments from developers who have been working with Unreal 3 engine.<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.bluesnews.com/cgi-bin/board.pl?action=viewthread&amp;threadid=70139">http://www.bluesnews.com/cgi-bin/board. ... adid=70139</a><!-- m --></div>&#13;<br /><br />Thanks you very much for that link - pretty interesting!&#13;<br /><br />I had a few chats with publishers / production directors a year or so ago.&#13;<br />They went into great detail why the U3 engine was so much preferred over the D3 engine and everybody very much substantiated each others views without knowing each other.&#13;<br /><br />If the posts on the other boards are more or less correct (which imho is horrendously unprofessional as a dev to post such info to the public) then it looks like Epic is a bit trapped between middleware and game development.&#13;<br /><br />I'm convinced one cannot maintain the same focus on programming when trying to achieve two things at once. id software was going the route to tailormake the D3 engine around D3 (which was one of the biggest complaints of the people I talked to) and they, according to sources, did not provide a state of the art production pipeline one might expect when licencing middleware.&#13;<br />It was supposed to believe the adaption of the D3 engine would brought everything to a hold for ~ months to integrate all inhouse production pipeline tools into the D3 engine.&#13;<br /><br />Epic was always believed to be far superior in that regards, but eventually the ran into some roadblocks themselves.&#13;<br /><br />As far as I'm personally concerned I don't like any Unreal engine game (aside of Unreal 1 which at the time was looking marvellous and offered an interesting new world to play in). &#13;<br />Yet I was always wondering how people get along with the D3 engine in a pro development environment, acknowledging my lack of first hand knowledge of pro development environments. My guesses anyhow got always confirmed by a lot of people, this excludes studios like human head or splash damage for example.&#13;<br /><br />Furthermore I never understood the hype around U3 (gloss map support aside) as to me it looked like D3 * 4 (in terms of poly count and image map resolution). Heck, I toyed around with equally impressive things years back during the alpha days , 10k polies and multiple 2048* image maps - looked always better than real life yet very resoure demanding.&#13;<br /><br />While I'm straying away from the original topic - I don't think the typical showcase scenarios of most developers match the released game by more than 50%. Look at all the released media screenshots of U3 powered games, they look not even 50% of the original Epic engine demonstrations.&#13;<br /><br />If there's anything about id software I really admire, then it's their "what you show in public demonstrations is the real thing" approach.&#13;<br /><br />I think with a bit of help from the people here I could create a very isolated demo scene with countless never-seen-before effects with shamelessly high resolution everythingstuff and announce it as a mod or addon seeking for a publisher or whatnot. This woul steal the thunder from most other announcements, but would it be real?&#13;<br />No, but the majority of people would be substantially misled and judge everything real they see against this vaporware.</div>]]></body></post><post id="p154315" date="Posted: Sun Aug 20, 2006 7:45 am "><author>Rayne</author><body><![CDATA[<div class="postbody"><div class="quotetitle">BNA! wrote:</div><div class="quotecontent"> Furthermore I never understood the hype around U3 (gloss map support aside) as to me it looked like D3 * 4 (in terms of poly count and image map resolution). Heck, I toyed around with equally impressive things years back during the alpha days , 10k polies and multiple 2048* image maps - looked always better than real life yet very resoure demanding.<br /></div>&#13;<br /><br />Bah, so we can just stop every new technology stuff because DooM3 is enough...&#13;<br /><br /><br />It's really not a matter of texture resolution and polycount. Let's say I build a simple room, with a 10k model inside using a 2048 texture... using DooM3 renderer features you have a beautiful scene, then you switch to a next gen engine so you are able to add to your room specular power, realtime softshadow, full screen motion blur, depth of field, high dynamic range lighting, a clever radiosity solution... it's really another world, it's like compare a scene rendered with doom3 and another one rendered with a full featured 3D rendering app like mental ray or brazil.</div>]]></body></post><post id="p154316" date="Posted: Sun Aug 20, 2006 8:17 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Rayne wrote:</div><div class="quotecontent">Bah, so we can just stop every new technology stuff because DooM3 is enough...</div><br /><br />C'mon - how can you extract such a statement from my post above?<br /><br />Never said future technology is worth skipping because D3 renders nifty images.<br /><br />BTW - most features you've listed is essentially one single feature: pixel post processing. So it's mostly matter of more render passes, right?<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">it's really another world, it's like compare a scene rendered with doom3 and another one rendered with a full featured 3D rendering app like mental ray or brazil.</div>&#13;<br /><br />An offline renderer basically renders the same pixel over and over again, applying a new shader everytime and never has to worry about anything realtime. &#13;<br /><br />And don't tell me Unreal comes with real time radiosity <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />Extracting such a statement from my post is like saying:&#13;<br />I don't feel well today == I will never feel well again.</div>]]></body></post><post id="p154324" date="Posted: Sun Aug 20, 2006 9:44 am "><author>Rayne</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom 3 world • View topic - Id's Todd Hollenshead Talks New IP</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+<!--
+
+function popup(url, width, height)
+{
+	window.open(url.replace(/&amp;/g, '&'), '_popup', 'HEIGHT=' + height + ',resizable=yes,scrollbars=yes, WIDTH=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=40&amp;t=16768&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6e176feccd589334a802ecb94f1d622c';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username()
+{
+		return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+//-->
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app16.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.doom3world.org\/phpbb2\/viewtopic.php?f=40&t=17036&view=next";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=17036&amp;view=next" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=17036&amp;view=next" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=40&amp;t=17036&amp;view=next" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom 3 world</h1><span class="gen">Doom3world.org - the world is yours, soon in 6 degrees of freedom!</span></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/faq.php?sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Mon Oct 29, 2007 4:58 pm<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=6e176feccd589334a802ecb94f1d622c">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=6e176feccd589334a802ecb94f1d622c">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=6e176feccd589334a802ecb94f1d622c">Board index</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=71&amp;sid=6e176feccd589334a802ecb94f1d622c">General Discussion</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=40&amp;sid=6e176feccd589334a802ecb94f1d622c">News</a></p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=16768&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6e176feccd589334a802ecb94f1d622c">Id's Todd Hollenshead Talks New IP</a></h2>
+
+	<p class="moderators">Moderator: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=6e176feccd589334a802ecb94f1d622c">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=post&amp;f=40&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=reply&amp;f=40&amp;t=16768&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a></td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>2</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 22 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=16768&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6e176feccd589334a802ecb94f1d622c&amp;start=20">2</a>  <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=16768&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=6e176feccd589334a802ecb94f1d622c&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=16768&amp;view=previous&amp;sid=6e176feccd589334a802ecb94f1d622c">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=40&amp;t=16768&amp;view=next&amp;sid=6e176feccd589334a802ecb94f1d622c">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p153074" id="p153074"></a>
+				<b class="postauthor">Burrito</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Id's Todd Hollenshead Talks New IP</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153074&amp;sid=6e176feccd589334a802ecb94f1d622c#p153074"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Aug 10, 2006 1:04 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">True believer</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=68.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 05, 2002 3:45 pm<br /><b>Posts:</b> 1612<br /><b>Location:</b> Wiesbaden, Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Next-Generation talks to id Software’s CEO about the famed developer’s new IP, publishers,  partners and the Engine Wars...&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"><span style="font-weight: bold">So the new technology is the answer to Unreal 3?</span><br />Oh, that’s not what John’s working—that’s not the way we conceive of it from a technology standpoint, at all.  We look at it as a platform that we’re developing our game on.<br />In all frankness, we’ll have to see.  The technology’s not done, and John knows where he’s going with it. But it still is in the R&amp;D phase.  John was at QuakeCon to be at QuakeCon.  But also he took a week out of the office, and was in a hotel room doing programming work, on one of his ‘get away and think’ type trips.  </div>&#13;<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.next-gen.biz/index.php?option=com_content&amp;task=view&amp;id=3608&amp;Itemid=2">http://www.next-gen.biz/index.php?optio ... 8&amp;Itemid=2</a><!-- m -->&#13;<br /><br />Source: <!-- w --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.ve3d.com/">http://www.ve3d.com</a><!-- w --></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=68&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p153151" id="p153151"></a>
+				<b class="postauthor">ViPr</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153151&amp;sid=6e176feccd589334a802ecb94f1d622c#p153151"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Aug 10, 2006 9:58 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">I'm an annoying git and I hate you, I hate your dog, I hate everything you have ever done in your life, and I definitely hate all the people in the world that are wrong.</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Jan 18, 2005 6:51 pm<br /><b>Posts:</b> 944				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?&#13;<br /><br />btw i can probably guess what Id's new IP will be. it will be called BLAM and it will involve cyborg demon aliens trying to destroy all humans and you must defeat them single handedly with a chainsaw, pistol, shotgun, machine gun, chaingun, plasma gun, and some lava acid depleted-uranium quantum singularity paradox nuclear implosion gun.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12282&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p153158" id="p153158"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153158&amp;sid=6e176feccd589334a802ecb94f1d622c#p153158"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Aug 10, 2006 10:20 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8822<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?</div>&#13;<br /><br />Unreal 3 comes as a middleware package.&#13;<br /><br />It's not a matter of confidence, it's a matter of a different design decision.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p153164" id="p153164"></a>
+				<b class="postauthor">tabre</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153164&amp;sid=6e176feccd589334a802ecb94f1d622c#p153164"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Thu Aug 10, 2006 10:56 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 75 health</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=16457.jpg" width="63" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jul 29, 2006 2:14 am<br /><b>Posts:</b> 86				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why are they acting like they have no confidence anymore? why did they let basically everyone license Unreal Engine 3 while they said nothing?<br /><br />btw i can probably guess what Id's new IP will be. it will be called BLAM and it will involve cyborg demon aliens trying to destroy all humans and you must defeat them single handedly with a chainsaw, pistol, shotgun, machine gun, chaingun, plasma gun, and some lava acid depleted-uranium quantum singularity paradox nuclear implosion gun.</div>&#13;<br /><br />Actually, going by everything I've heard, it sounds nothing like that at all. &#13;<br />Although, that is a style of gameplay I never get tired of. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />They're trying something very new and different according to John Carmack.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=16457&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p153172" id="p153172"></a>
+				<b class="postauthor">abbaon</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Re: Id's Todd Hollenshead Talks New IP</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153172&amp;sid=6e176feccd589334a802ecb94f1d622c#p153172"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Aug 11, 2006 1:29 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up the chaingun</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Nov 09, 2002 4:12 am<br /><b>Posts:</b> 194				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Todd Hollenshead wrote:</div><div class="quotecontent">Vitaliy</div>&#13;<br />I googled that, and... good grief. Either id's developed the greatest content creation toolchain the world has ever seen, or they've hired God's own art department. How does a company working on a next-gen game <a href="https://web.archive.org/web/20070509181516/http://www.idsoftware.com/business/team/" class="postlink">employ</a> more than half as many programmers as artists and designers? The ratio of content creators to coders is at least 3:1 at other shops.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=188&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p153174" id="p153174"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153174&amp;sid=6e176feccd589334a802ecb94f1d622c#p153174"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Aug 11, 2006 2:34 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4936<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I tell you why... becasue <span style="font-weight: bold">they don't use middleware </span>or 3rd party code (excluding the recently kick in the balls they got from Creative), they code their own renderer, AI, physics, terrain code, sound, GFX... everything, when put into context like that you can see why they have so many programmers.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p153178" id="p153178"></a>
+				<b class="postauthor">Phobos</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153178&amp;sid=6e176feccd589334a802ecb94f1d622c#p153178"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Aug 11, 2006 4:10 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">is sad because his cool title went away</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=16017.gif" width="50" height="60" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Jun 19, 2006 9:04 pm<br /><b>Posts:</b> 687<br /><b>Location:</b> USWest				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">This internal project looks to be some serious stuff here. &#13;<br /><br />But they're saying that .. there's an unsaid but 'cancel' competition between their technology and the half dozen plus companies that have already licensed UE3 even before it's release? &#13;<br /><br />When personally, UT2k7 doesn't look all that great, and excluding the amazing texture work on some of the UE3 models, I don't think the engine is going to be what it's cut out to be. &#13;<br /><br />doom 3 engine ftw...</div>
+
+											<span class="postbody"><br />_________________<br />.Mods.C++.Animation.Graphics.id tech.WebDesign.VideoFx.<br /><a href="https://web.archive.org/web/20070509181516/http://simplegfx.net/" class="postlink">Simple Grafix</a> for free sigs and banners (I'm a moderator; I'll ensure you're satisfied ;) )<br /><a href="https://web.archive.org/web/20070509181516/http://recalltohell.d3files.com/" class="postlink">Reca|| to He||</a> TC mod for Doom 3<br /><a href="https://web.archive.org/web/20070509181516/http://www.goarmy.com/flindex.jsp" class="postlink">United States Army</a> - US Army Soldier</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=16017&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p153183" id="p153183"></a>
+				<b class="postauthor">Jehar</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Re: Id's Todd Hollenshead Talks New IP</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=153183&amp;sid=6e176feccd589334a802ecb94f1d622c#p153183"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Aug 11, 2006 5:14 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=12609.jpg" width="53" height="60" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Feb 22, 2005 7:50 pm<br /><b>Posts:</b> 215				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">abbaon wrote:</div><div class="quotecontent"><div class="quotetitle">Todd Hollenshead wrote:</div><div class="quotecontent">Vitaliy</div><br />I googled that, and... good grief. Either id's developed the greatest content creation toolchain the world has ever seen, or they've hired God's own art department. How does a company working on a next-gen game <a href="https://web.archive.org/web/20070509181516/http://www.idsoftware.com/business/team/" class="postlink">employ</a> more than half as many programmers as artists and designers? The ratio of content creators to coders is at least 3:1 at other shops.</div>&#13;<br /><br />I'm a big supporter of small art teams. When everybody has their input on product x, the final result tends to be unstylized and... blah. I prefer a small team, or even one person (Adrian Carmack ftw) to lead the art direction... makes for a much more satisfying and unique work.</div>
+
+											<span class="postbody"><br />_________________<br />Gee Gee or Whatnot</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12609&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p154239" id="p154239"></a>
+				<b class="postauthor">MelvinB</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154239&amp;sid=6e176feccd589334a802ecb94f1d622c#p154239"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Aug 19, 2006 5:15 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=3129.gif" width="56" height="60" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Aug 12, 2004 8:57 pm<br /><b>Posts:</b> 1003<br /><b>Location:</b> The Netherlands				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><a href="https://web.archive.org/web/20070509181516/http://www.next-gen.biz/index.php?option=com_content&amp;task=view&amp;id=3659&amp;Itemid=2" class="postlink">John Carmack Details id's New Direction</a>&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Next-Gen goes over their QuakeCon 2006 notes, and using quotes from id Software, primarily John Carmack, they put together an article on id's new direction. Several references pertain to their next big title, which they expect to go blockbuster and do things that people have never seen from id before. Not only will the game branch in a different direction, but so will the company itself. </div></div>
+
+											<span class="postbody"><br />_________________<br />]|[ Melvin ]|[</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=3129&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p154240" id="p154240"></a>
+				<b class="postauthor">Regulator</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154240&amp;sid=6e176feccd589334a802ecb94f1d622c#p154240"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Aug 19, 2006 5:40 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">found a secret</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon May 08, 2006 11:12 pm<br /><b>Posts:</b> 575				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Nobody believes in them anymore <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> after Doom3 they are outdated.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=17247&amp;start=0" class="postlink">DOWNLOAD HOLYSHIT mod for DOOM3</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15766&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p154244" id="p154244"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154244&amp;sid=6e176feccd589334a802ecb94f1d622c#p154244"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Aug 19, 2006 5:50 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8822<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Regulator wrote:</div><div class="quotecontent">Nobody believes in them anymore <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> after Doom3 they are outdated.</div>&#13;<br /><br />Stop the trolling or go elsewhere.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p154245" id="p154245"></a>
+				<b class="postauthor">pbmax</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154245&amp;sid=6e176feccd589334a802ecb94f1d622c#p154245"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Aug 19, 2006 5:51 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_online.gif" alt="Online" title="Online" /></td>
+				</tr><tr><td class="postdetails">Invisibility</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=1474.jpg" width="64" height="59" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Jun 22, 2004 5:57 pm<br /><b>Posts:</b> 3738<br /><b>Location:</b> Green Bay, WI				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why did they let basically everyone license Unreal Engine 3 while they said nothing?</div>&#13;<br /><br />because carmack does not want to build an empire, he just wants to build good programs.&#13;<br /><br />seriously, they have no interest in whoring their engines to any two-bit developer that thinks they can make a game. plus, the more you liscence, the more support you will have to do. they don't want that type of business model.&#13;<br /><br />they have a small team and i hope it stays that way.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=1474&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p154247" id="p154247"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154247&amp;sid=6e176feccd589334a802ecb94f1d622c#p154247"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Aug 19, 2006 6:02 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8822<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">pbmax wrote:</div><div class="quotecontent"><div class="quotetitle">ViPr wrote:</div><div class="quotecontent">why did they let basically everyone license Unreal Engine 3 while they said nothing?</div><br /><br />because carmack does not want to build an empire, he just wants to build good programs.<br /><br />seriously, they have no interest in whoring their engines to any two-bit developer that thinks they can make a game. plus, the more you liscence, the more support you will have to do. they don't want that type of business model.<br /><br />they have a small team and i hope it stays that way.</div>&#13;<br /><br />In the meantime they have a big team and they've lost a lot of potential licencees to Unreal3 due to the superior production pipeline and toolkit it offers as middleware. Raw engine power pays only half the rent, if any.&#13;<br />Shelling out a million for a licence is cheap compared to the additional 9 or 19 million a development company has to invest in manpower to get a title done.&#13;<br /><br />I suppose the "romantic" days of game development are long over.&#13;<br /><br />Carmack wants to build spaceships and a family, additionally he works at id software as a lead programmer.&#13;<br /><br />People grow up and the focus shifts. id software is a company now and seems to be in it's final stages to mature.&#13;<br /><br />Anyhow, they're still "cool".</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p154284" id="p154284"></a>
+				<b class="postauthor">TinMan</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154284&amp;sid=6e176feccd589334a802ecb94f1d622c#p154284"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 20, 2006 2:41 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=4029.gif" width="50" height="50" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Aug 21, 2004 10:00 pm<br /><b>Posts:</b> 299<br /><b>Location:</b> New Zealand				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">There's some interesting stuff on bluesnews comments from developers who have been working with Unreal 3 engine.&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.bluesnews.com/cgi-bin/board.pl?action=viewthread&amp;threadid=70139">http://www.bluesnews.com/cgi-bin/board. ... adid=70139</a><!-- m --></div>
+
+											<span class="postbody"><br />_________________<br />The blind coding the blinder.</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4029&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p154304" id="p154304"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154304&amp;sid=6e176feccd589334a802ecb94f1d622c#p154304"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 20, 2006 5:25 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8822<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">TinMan wrote:</div><div class="quotecontent">There's some interesting stuff on bluesnews comments from developers who have been working with Unreal 3 engine.<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.bluesnews.com/cgi-bin/board.pl?action=viewthread&amp;threadid=70139">http://www.bluesnews.com/cgi-bin/board. ... adid=70139</a><!-- m --></div>&#13;<br /><br />Thanks you very much for that link - pretty interesting!&#13;<br /><br />I had a few chats with publishers / production directors a year or so ago.&#13;<br />They went into great detail why the U3 engine was so much preferred over the D3 engine and everybody very much substantiated each others views without knowing each other.&#13;<br /><br />If the posts on the other boards are more or less correct (which imho is horrendously unprofessional as a dev to post such info to the public) then it looks like Epic is a bit trapped between middleware and game development.&#13;<br /><br />I'm convinced one cannot maintain the same focus on programming when trying to achieve two things at once. id software was going the route to tailormake the D3 engine around D3 (which was one of the biggest complaints of the people I talked to) and they, according to sources, did not provide a state of the art production pipeline one might expect when licencing middleware.&#13;<br />It was supposed to believe the adaption of the D3 engine would brought everything to a hold for ~ months to integrate all inhouse production pipeline tools into the D3 engine.&#13;<br /><br />Epic was always believed to be far superior in that regards, but eventually the ran into some roadblocks themselves.&#13;<br /><br />As far as I'm personally concerned I don't like any Unreal engine game (aside of Unreal 1 which at the time was looking marvellous and offered an interesting new world to play in). &#13;<br />Yet I was always wondering how people get along with the D3 engine in a pro development environment, acknowledging my lack of first hand knowledge of pro development environments. My guesses anyhow got always confirmed by a lot of people, this excludes studios like human head or splash damage for example.&#13;<br /><br />Furthermore I never understood the hype around U3 (gloss map support aside) as to me it looked like D3 * 4 (in terms of poly count and image map resolution). Heck, I toyed around with equally impressive things years back during the alpha days , 10k polies and multiple 2048* image maps - looked always better than real life yet very resoure demanding.&#13;<br /><br />While I'm straying away from the original topic - I don't think the typical showcase scenarios of most developers match the released game by more than 50%. Look at all the released media screenshots of U3 powered games, they look not even 50% of the original Epic engine demonstrations.&#13;<br /><br />If there's anything about id software I really admire, then it's their "what you show in public demonstrations is the real thing" approach.&#13;<br /><br />I think with a bit of help from the people here I could create a very isolated demo scene with countless never-seen-before effects with shamelessly high resolution everythingstuff and announce it as a mod or addon seeking for a publisher or whatnot. This woul steal the thunder from most other announcements, but would it be real?&#13;<br />No, but the majority of people would be substantially misled and judge everything real they see against this vaporware.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p154315" id="p154315"></a>
+				<b class="postauthor">Rayne</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154315&amp;sid=6e176feccd589334a802ecb94f1d622c#p154315"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 20, 2006 7:45 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">respawned 1350 times</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=464.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Dec 05, 2002 1:08 pm<br /><b>Posts:</b> 1365				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">BNA! wrote:</div><div class="quotecontent"> Furthermore I never understood the hype around U3 (gloss map support aside) as to me it looked like D3 * 4 (in terms of poly count and image map resolution). Heck, I toyed around with equally impressive things years back during the alpha days , 10k polies and multiple 2048* image maps - looked always better than real life yet very resoure demanding.<br /></div>&#13;<br /><br />Bah, so we can just stop every new technology stuff because DooM3 is enough...&#13;<br /><br /><br />It's really not a matter of texture resolution and polycount. Let's say I build a simple room, with a 10k model inside using a 2048 texture... using DooM3 renderer features you have a beautiful scene, then you switch to a next gen engine so you are able to add to your room specular power, realtime softshadow, full screen motion blur, depth of field, high dynamic range lighting, a clever radiosity solution... it's really another world, it's like compare a scene rendered with doom3 and another one rendered with a full featured 3D rendering app like mental ray or brazil.</div>
+
+											<span class="postbody"><br />_________________<br />theRev is coming...</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=464&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p154316" id="p154316"></a>
+				<b class="postauthor" style="color: #AA0000">BNA!</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154316&amp;sid=6e176feccd589334a802ecb94f1d622c#p154316"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 20, 2006 8:17 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Site Admin</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download.php?avatar=2.jpg" width="64" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue May 28, 2002 5:17 pm<br /><b>Posts:</b> 8822<br /><b>Location:</b> Munich / Germany				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Rayne wrote:</div><div class="quotecontent">Bah, so we can just stop every new technology stuff because DooM3 is enough...</div><br /><br />C'mon - how can you extract such a statement from my post above?<br /><br />Never said future technology is worth skipping because D3 renders nifty images.<br /><br />BTW - most features you've listed is essentially one single feature: pixel post processing. So it's mostly matter of more render passes, right?<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">it's really another world, it's like compare a scene rendered with doom3 and another one rendered with a full featured 3D rendering app like mental ray or brazil.</div>&#13;<br /><br />An offline renderer basically renders the same pixel over and over again, applying a new shader everytime and never has to worry about anything realtime. &#13;<br /><br />And don't tell me Unreal comes with real time radiosity <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />Extracting such a statement from my post is like saying:&#13;<br />I don't feel well today == I will never feel well again.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" /> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;<br /><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" class="postlink">Visit ModWiki</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=40&amp;t=17036&amp;view=next#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=6e176feccd589334a802ecb94f1d622c"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p154324" id="p154324"></a>
+				<b class="postauthor">Rayne</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=154324&amp;sid=6e176feccd589334a802ecb94f1d622c#p154324"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Aug 20, 2006 9:44 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td>
+
+
+
+
+<!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 2:53:20 Sep 26, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

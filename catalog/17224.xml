@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17224"><title>Using Inverse Kinematics with Custom AI</title><posts><post id="157386" date="Posted: Sun Sep 17, 2006 3:43 pm    Post subject: Using Inverse Kinematics with Custom AI"><author>Springheel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">We're not looking to do anything fancy, but we'd like to be able to use the IK system to make our AI climb stairs correctly like the default D3 models do.  Our AI 'bounce' up quite rigidly as they climb, probably because we have no idea what to do with the IK stuff in the def file.  &#13;
+<br/><br/>
+We basically copied over the IK info from the id humanoids:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">"ik_numLegs"					"2"&#13;
+<br/>
+	"ik_footSize"					"4"&#13;
+<br/>
+	"ik_waist"						"Body"&#13;
+<br/>
+	"ik_hip1"						"Lupleg"&#13;
+<br/>
+	"ik_hip2"						"Rupleg"&#13;
+<br/>
+	"ik_knee1"						"Lloleg"&#13;
+<br/>
+	"ik_knee2"						"Rloleg"&#13;
+<br/>
+	"ik_ankle1"						"Lankle_r"&#13;
+<br/>
+	"ik_ankle2"						"Rankle_r"&#13;
+<br/>
+	"ik_dir1"						"Lknee"&#13;
+<br/>
+	"ik_dir2"						"Rknee"&#13;
+<br/>
+	"ik_foot1"						"Lball_r"&#13;
+<br/>
+	"ik_foot2"						"Rball_r"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+But we have no idea what to do with it.  Anyone know what has to be done to get the IK variables working properly?<br/>_________________<br/>----&#13;
+<br/><a href="/web/20061013060252/http://www.mindplaces.com/" target="_blank">www.mindplaces.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157388" date="Posted: Sun Sep 17, 2006 4:55 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">did you check out iddevnet.com &amp; modwiki.net?  i belive there's a decent amount of info on those sites about ik.<br/>_________________<br/>Things I've <a href="/web/20061013060252/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157428" date="Posted: Mon Sep 18, 2006 5:08 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually, I don't think we have any IK info on the wiki.&#13;
+<br/><br/>
+But there is a small amount on <a href="/web/20061013060252/http://www.iddevnet.com..." target="_blank">www.iddevnet.com...</a>&#13;
+<br/><br/><a href="/web/20061013060252/http://www.iddevnet.com/doom3/walkik.php" target="_blank">http://www.iddevnet.com/doom3/walkik.php</a><br/>_________________<br/><a href="/web/20061013060252/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060252im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013060252/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157496" date="Posted: Mon Sep 18, 2006 11:58 pm    Post subject: "><author>Springheel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah, thanks.  I did a search there but didn't turn that page up.<br/>_________________<br/>----&#13;
+<br/><a href="/web/20061013060252/http://www.mindplaces.com/" target="_blank">www.mindplaces.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157386" date="Posted: Sun Sep 17, 2006 3:43 pm    Post subject: Using Inverse Kinematics with Custom AI"><author>Springheel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">We're not looking to do anything fancy, but we'd like to be able to use the IK system to make our AI climb stairs correctly like the default D3 models do.  Our AI 'bounce' up quite rigidly as they climb, probably because we have no idea what to do with the IK stuff in the def file.  &#13;
+<br/><br/>
+We basically copied over the IK info from the id humanoids:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">"ik_numLegs"					"2"&#13;
+<br/>
+	"ik_footSize"					"4"&#13;
+<br/>
+	"ik_waist"						"Body"&#13;
+<br/>
+	"ik_hip1"						"Lupleg"&#13;
+<br/>
+	"ik_hip2"						"Rupleg"&#13;
+<br/>
+	"ik_knee1"						"Lloleg"&#13;
+<br/>
+	"ik_knee2"						"Rloleg"&#13;
+<br/>
+	"ik_ankle1"						"Lankle_r"&#13;
+<br/>
+	"ik_ankle2"						"Rankle_r"&#13;
+<br/>
+	"ik_dir1"						"Lknee"&#13;
+<br/>
+	"ik_dir2"						"Rknee"&#13;
+<br/>
+	"ik_foot1"						"Lball_r"&#13;
+<br/>
+	"ik_foot2"						"Rball_r"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+But we have no idea what to do with it.  Anyone know what has to be done to get the IK variables working properly?<br/>_________________<br/>----&#13;
+<br/><a href="/web/20061013054009/http://www.mindplaces.com/" target="_blank">www.mindplaces.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157388" date="Posted: Sun Sep 17, 2006 4:55 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">did you check out iddevnet.com &amp; modwiki.net?  i belive there's a decent amount of info on those sites about ik.<br/>_________________<br/>Things I've <a href="/web/20061013054009/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157428" date="Posted: Mon Sep 18, 2006 5:08 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Actually, I don't think we have any IK info on the wiki.&#13;
+<br/><br/>
+But there is a small amount on <a href="/web/20061013054009/http://www.iddevnet.com..." target="_blank">www.iddevnet.com...</a>&#13;
+<br/><br/><a href="/web/20061013054009/http://www.iddevnet.com/doom3/walkik.php" target="_blank">http://www.iddevnet.com/doom3/walkik.php</a><br/>_________________<br/><a href="/web/20061013054009/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054009im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013054009/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157496" date="Posted: Mon Sep 18, 2006 11:58 pm    Post subject: "><author>Springheel</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah, thanks.  I did a search there but didn't turn that page up.<br/>_________________<br/>----&#13;
+<br/><a href="/web/20061013054009/http://www.mindplaces.com/" target="_blank">www.mindplaces.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

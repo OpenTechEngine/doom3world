@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10672"><title>Stencil drilling problem</title><posts><post id="95842" date="Posted: Tue May 24, 2005 1:41 am    Post subject: Stencil drilling problem"><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm gonna get this done tonight by god. It's become a battle between me and lightwave, and I don't have any intentions of backing down here...&#13;
+<br/><br/>
+Okay, I'm a Lightwave newbie. I only been using it for about 3 days now...so keep that in mind. Right now I'm trying to make a rather complicated normalmap and up til a couple of hours ago it was going nice and smoothly. To give you an idea of what I'm doing, <a href="/web/20061012182647/http://208.49.149.118/TheDarkMod/screenshots/renzatic/doornormal2.jpg" target="_blank" class="postlink">here's</a> a quick screenshot.&#13;
+<br/><br/>
+For the wood panels I'd make a flat box in another layer, hit shift+r, and stencil out the shape on the surface and bevel it from there. It worked fine for the first 4 panels, but on the 5th and up it quit working properly. I'd go through the same process, but instead of making a seperate poly on the face I'm working with, it'd either draw a half complete poly with missing vertex points, or mix up and cross all the points weirdly. &#13;
+<br/><br/>
+I've tried cutting the face I'm working with, tried stenciling more than one shape at a time, I've even tried boolean functions but so far nothing has worked. Any idea what's up here?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95850" date="Posted: Tue May 24, 2005 3:14 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Boolean operations are for the most part quirky regardless what program you use. This is especially true with Lightwave.&#13;
+<br/><br/>
+Everyone gravitates towards these tools at first because they offer the most intuitive solution but relying on these tools to do the work for you usually results in problems.&#13;
+<br/><br/>
+The good news is there are a million different ways to create the object your after.&#13;
+<br/><br/>
+If I were creating this object, I'd probably use the pen tool in conjunction with  add edges.<br/>_________________<br/><a href="/web/20061012182647/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182647im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182647/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95869" date="Posted: Tue May 24, 2005 6:00 am    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So basically you're saying I should start getting in the habit of doing everything by hand without relying on any drill tools or boolean operations? That'll be tough, but I can see the reasoning behind it...it'll make for much cleaner meshes in the end.&#13;
+<br/><br/>
+But since I'm almost finished with this door, is there anything else I can do to add the shapes I want into the original mesh?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95876" date="Posted: Tue May 24, 2005 7:47 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You should be able to add edges to that polygon to make the hole you need.<br/>_________________<br/><a href="/web/20061012182647/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182647im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182647/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95880" date="Posted: Tue May 24, 2005 8:38 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">'You're doing it the wroing way, here's how do do it..' is what I told him already, but he wouldn't listen :/<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012182647/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95885" date="Posted: Tue May 24, 2005 9:22 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+He'll catch on eventually. <img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+BTW Renzatic, if you've got alot of time on your hands the free video tutorials here will get you well on your feet...&#13;
+<br/><br/><a href="/web/20061012182647/http://www.simplylightwave.com/movie_pages/category.mhtml?cat_id=23" target="_blank">http://www.simplylightwave.com/movie_pages/category.mhtml?cat_id=23</a><br/>_________________<br/><a href="/web/20061012182647/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182647im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182647/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95977" date="Posted: Tue May 24, 2005 5:44 pm    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah, eventually. <img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+I've pretty much decided that I'm gonna have to redo the whole thing (again) to really do it right. I tried the edge tool, but considering how the model is built there isn't much I can do with it without practically starting from scratch anyway....so I figured I might as well.&#13;
+<br/><br/>
+I've got a good idea of what I did wrong though, so this next go round should be a helluva lot better.&#13;
+<br/><br/>
+Thanks for the help and the tutorials, Rich. I'll check em out and see if I can come up with something cool to show in the next couple of days. <img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96111" date="Posted: Wed May 25, 2005 5:55 am    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I've redone all of the base model using add edges and making polys using vertex points...I gotta admit that the end results are alot cleaner and easier to work with, but it seems I can't have a day in LW without some little problem rearing it's head and pissing on my happy little parade.&#13;
+<br/><br/>
+I've started working on the arched panels towards the top of the door, and up to the point where I started beveling the smaller panels it was going nice and smooth. I realised I couldn't do the arches the same way I did the lower panels because some of the vertex points met up weirdly when I stretched the mesh to make the surface. So I took the points from the poly above, realigned them to match the lower panel, and was gonna draw in my own polys like I had done with the arches above. It seems to work fine, the editor displays the poly in the shape it should be, but the surface seems to bleed out beyond the edges and looks like it's meeting it from top angle to bottom angle.&#13;
+<br/><br/><a href="/web/20061012182647/http://users.chartertn.net/greymatt/door_problem.jpg" target="_blank" class="postlink">Here's a quick shot showing exactly what I'm describing.</a> Everything looks like it should and I haven't done anything different here than I've already done a dozen times before down below, but something's obviously messing me up. I've also tried dividing the shape I'm going for into smaller segments but it still does the same thing. Any idea what's up?&#13;
+<br/><br/>
+Edit: Hmm, think I just fixed it. All I had to do was merge points and everything ended up looking exactly like it should. I'm still kinda weary though...it can't be that easy. <img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96226" date="Posted: Wed May 25, 2005 8:01 pm    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Alright, last post in this thread from me. The door's almost finished so I figured I'd pimp off my hard work and never again look at the gottdamn thing in LW again after today.&#13;
+<br/><br/>
+Ingame Doom 3 shots. Texture and normalmap resolution 512x1024 (will be smaller when it ships with the mod)&#13;
+<br/><br/><a href="/web/20061012182647/http://users.chartertn.net/greymatt/door.jpg" target="_blank" class="postlink">Lit from the left</a>&#13;
+<br/><a href="/web/20061012182647/http://users.chartertn.net/greymatt/door2.jpg" target="_blank" class="postlink">Lit from the right</a>&#13;
+<br/><br/>
+Thanks again for the help, Rich.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96343" date="Posted: Thu May 26, 2005 5:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That looks really sharp. Excellent work. <img src="/web/20061012182647im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012182647/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182647im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182647/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95842" date="Posted: Tue May 24, 2005 1:41 am    Post subject: Stencil drilling problem"><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm gonna get this done tonight by god. It's become a battle between me and lightwave, and I don't have any intentions of backing down here...&#13;
+<br/><br/>
+Okay, I'm a Lightwave newbie. I only been using it for about 3 days now...so keep that in mind. Right now I'm trying to make a rather complicated normalmap and up til a couple of hours ago it was going nice and smoothly. To give you an idea of what I'm doing, <a href="/web/20061012181939/http://208.49.149.118/TheDarkMod/screenshots/renzatic/doornormal2.jpg" target="_blank" class="postlink">here's</a> a quick screenshot.&#13;
+<br/><br/>
+For the wood panels I'd make a flat box in another layer, hit shift+r, and stencil out the shape on the surface and bevel it from there. It worked fine for the first 4 panels, but on the 5th and up it quit working properly. I'd go through the same process, but instead of making a seperate poly on the face I'm working with, it'd either draw a half complete poly with missing vertex points, or mix up and cross all the points weirdly. &#13;
+<br/><br/>
+I've tried cutting the face I'm working with, tried stenciling more than one shape at a time, I've even tried boolean functions but so far nothing has worked. Any idea what's up here?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95850" date="Posted: Tue May 24, 2005 3:14 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Boolean operations are for the most part quirky regardless what program you use. This is especially true with Lightwave.&#13;
+<br/><br/>
+Everyone gravitates towards these tools at first because they offer the most intuitive solution but relying on these tools to do the work for you usually results in problems.&#13;
+<br/><br/>
+The good news is there are a million different ways to create the object your after.&#13;
+<br/><br/>
+If I were creating this object, I'd probably use the pen tool in conjunction with  add edges.<br/>_________________<br/><a href="/web/20061012181939/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181939im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181939/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95869" date="Posted: Tue May 24, 2005 6:00 am    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So basically you're saying I should start getting in the habit of doing everything by hand without relying on any drill tools or boolean operations? That'll be tough, but I can see the reasoning behind it...it'll make for much cleaner meshes in the end.&#13;
+<br/><br/>
+But since I'm almost finished with this door, is there anything else I can do to add the shapes I want into the original mesh?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95876" date="Posted: Tue May 24, 2005 7:47 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You should be able to add edges to that polygon to make the hole you need.<br/>_________________<br/><a href="/web/20061012181939/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181939im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181939/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95880" date="Posted: Tue May 24, 2005 8:38 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">'You're doing it the wroing way, here's how do do it..' is what I told him already, but he wouldn't listen :/<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012181939/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95885" date="Posted: Tue May 24, 2005 9:22 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+He'll catch on eventually. <img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+BTW Renzatic, if you've got alot of time on your hands the free video tutorials here will get you well on your feet...&#13;
+<br/><br/><a href="/web/20061012181939/http://www.simplylightwave.com/movie_pages/category.mhtml?cat_id=23" target="_blank">http://www.simplylightwave.com/movie_pages/category.mhtml?cat_id=23</a><br/>_________________<br/><a href="/web/20061012181939/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181939im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181939/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="95977" date="Posted: Tue May 24, 2005 5:44 pm    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah, eventually. <img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/><br/>
+I've pretty much decided that I'm gonna have to redo the whole thing (again) to really do it right. I tried the edge tool, but considering how the model is built there isn't much I can do with it without practically starting from scratch anyway....so I figured I might as well.&#13;
+<br/><br/>
+I've got a good idea of what I did wrong though, so this next go round should be a helluva lot better.&#13;
+<br/><br/>
+Thanks for the help and the tutorials, Rich. I'll check em out and see if I can come up with something cool to show in the next couple of days. <img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96111" date="Posted: Wed May 25, 2005 5:55 am    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I've redone all of the base model using add edges and making polys using vertex points...I gotta admit that the end results are alot cleaner and easier to work with, but it seems I can't have a day in LW without some little problem rearing it's head and pissing on my happy little parade.&#13;
+<br/><br/>
+I've started working on the arched panels towards the top of the door, and up to the point where I started beveling the smaller panels it was going nice and smooth. I realised I couldn't do the arches the same way I did the lower panels because some of the vertex points met up weirdly when I stretched the mesh to make the surface. So I took the points from the poly above, realigned them to match the lower panel, and was gonna draw in my own polys like I had done with the arches above. It seems to work fine, the editor displays the poly in the shape it should be, but the surface seems to bleed out beyond the edges and looks like it's meeting it from top angle to bottom angle.&#13;
+<br/><br/><a href="/web/20061012181939/http://users.chartertn.net/greymatt/door_problem.jpg" target="_blank" class="postlink">Here's a quick shot showing exactly what I'm describing.</a> Everything looks like it should and I haven't done anything different here than I've already done a dozen times before down below, but something's obviously messing me up. I've also tried dividing the shape I'm going for into smaller segments but it still does the same thing. Any idea what's up?&#13;
+<br/><br/>
+Edit: Hmm, think I just fixed it. All I had to do was merge points and everything ended up looking exactly like it should. I'm still kinda weary though...it can't be that easy. <img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_eek.gif" alt="Shocked" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96226" date="Posted: Wed May 25, 2005 8:01 pm    Post subject: "><author>Renzatic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Alright, last post in this thread from me. The door's almost finished so I figured I'd pimp off my hard work and never again look at the gottdamn thing in LW again after today.&#13;
+<br/><br/>
+Ingame Doom 3 shots. Texture and normalmap resolution 512x1024 (will be smaller when it ships with the mod)&#13;
+<br/><br/><a href="/web/20061012181939/http://users.chartertn.net/greymatt/door.jpg" target="_blank" class="postlink">Lit from the left</a>&#13;
+<br/><a href="/web/20061012181939/http://users.chartertn.net/greymatt/door2.jpg" target="_blank" class="postlink">Lit from the right</a>&#13;
+<br/><br/>
+Thanks again for the help, Rich.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96343" date="Posted: Thu May 26, 2005 5:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">That looks really sharp. Excellent work. <img src="/web/20061012181939im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012181939/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181939im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181939/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

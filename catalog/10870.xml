@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10870"><title>I think it's FAQ</title><posts><post id="97871" date="Posted: Fri Jun 03, 2005 10:49 am    Post subject: I think it's FAQ"><author>Lexxx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What i should to do to have textured LWO object in D3. &#13;
+<br/>
+I have a model, I textured it in LightWave Modeler, and In game I have Black model. I suppose it'll be quickly<br/>_________________<br/>Der Wahnsinn &#13;
+<br/>
+ist nur eine schmale Brucke &#13;
+<br/>
+die Ufer sind Vernunft und Trieb (C) Till Lindemann "Du riechst so gut" 1995 -"Herzeleid"</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97875" date="Posted: Fri Jun 03, 2005 11:01 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You have to assign a material to yours surfaces. Make a material file and rename your surface in lightwave accordigly to that.&#13;
+<br/><br/><br/><br/>
+So if you have a material named "models/mymodel/body"&#13;
+<br/><br/><br/><br/>
+rename your surface in lightwave like this&#13;
+<br/><br/>
+models/mymodels/body<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97925" date="Posted: Fri Jun 03, 2005 6:52 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Do you know if that is the case for Maya too?&#13;
+<br/><br/>
+EDIT:&#13;
+<br/><br/><br/>
+Hmmm... Maya doesn't even accept / s in the material name. It converts / to _</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97871" date="Posted: Fri Jun 03, 2005 10:49 am    Post subject: I think it's FAQ"><author>Lexxx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What i should to do to have textured LWO object in D3. &#13;
+<br/>
+I have a model, I textured it in LightWave Modeler, and In game I have Black model. I suppose it'll be quickly<br/>_________________<br/>Der Wahnsinn &#13;
+<br/>
+ist nur eine schmale Brucke &#13;
+<br/>
+die Ufer sind Vernunft und Trieb (C) Till Lindemann "Du riechst so gut" 1995 -"Herzeleid"</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97875" date="Posted: Fri Jun 03, 2005 11:01 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You have to assign a material to yours surfaces. Make a material file and rename your surface in lightwave accordigly to that.&#13;
+<br/><br/><br/><br/>
+So if you have a material named "models/mymodel/body"&#13;
+<br/><br/><br/><br/>
+rename your surface in lightwave like this&#13;
+<br/><br/>
+models/mymodels/body<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97925" date="Posted: Fri Jun 03, 2005 6:52 pm    Post subject: "><author>jizaboz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Do you know if that is the case for Maya too?&#13;
+<br/><br/>
+EDIT:&#13;
+<br/><br/><br/>
+Hmmm... Maya doesn't even accept / s in the material name. It converts / to _</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

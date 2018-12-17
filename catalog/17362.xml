@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17362"><title>Texture size vs units</title><posts><post id="158444" date="Posted: Fri Sep 29, 2006 2:38 pm    Post subject: Texture size vs units"><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So I'm trying to make some textures for quake 4 and I'm having some trouble understanding the relation between texture size and ingame units.&#13;
+<br/><br/>
+For example:&#13;
+<br/>
+I have made a 256x256 pixel texture which fits on a 128x128 units large face in the game. This is all good.&#13;
+<br/>
+I also made a 256x128 pixel texture which in turn fits on a 128x64 unit face. This is also good.&#13;
+<br/><br/>
+The thing that confuses me is that when I made a 512x512 pixel texture I thought it would corespond to 256x256 units.&#13;
+<br/>
+Instead the game shrinks the texture down to 128x128 units. Also a 128x128 pixel texture that I thought would corespond to 64x64 units instead is expanded up to 128x128 units.&#13;
+<br/><br/>
+I have messed around a little with different texture dimensions and I can't find any logic in how textures pixel dimensions scale to the units in the game.&#13;
+<br/><br/>
+If there is a way to keep the 2 pixels = 1 unit relationship for all these textures that would be great.&#13;
+<br/>
+I have used the "guide textures/... generic_shader(...)" command in my material file. &#13;
+<br/><br/>
+I have searched the forum and different sites for an explanation without getting any wiser so if anyone could point me in the right directon or give me some insight on how this works that would be great.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158476" date="Posted: Sat Sep 30, 2006 4:46 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You've got the scale correct.&#13;
+<br/><br/>
+Question for you. Are all the various images used in each stage the same resolution?<br/>_________________<br/><a href="/web/20061013024322/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024322im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024322/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158484" date="Posted: Sat Sep 30, 2006 10:24 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, all stages for each texture are in the same resolution.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158519" date="Posted: Sun Oct 01, 2006 4:56 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe you could archive some of your textures and the cooresponding material shaders and then upload it somewhere so people could see firsthand?<br/>_________________<br/><a href="/web/20061013024322/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024322im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024322/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158529" date="Posted: Sun Oct 01, 2006 10:55 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have uploaded one of the textures I'm having problems with.&#13;
+<br/><br/><a href="/web/20061013024322/http://www.megaupload.com/se/?d=8FU7NUH0" target="_blank" class="postlink">http://www.megaupload.com/se/?d=8FU7NUH0</a>&#13;
+<br/>
+The site is in swedish but just write the 3 letters in the field in the upper right corner by the download button.&#13;
+<br/><br/>
+Anyway, the texture is 512x512 pixels but in the game it still gets shrunk down to 128x128 units.&#13;
+<br/><br/>
+ps. Feel free to comment on the texture itself as well. It's one of the first I made. <img src="/web/20061013024322im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158531" date="Posted: Sun Oct 01, 2006 11:41 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Don't know if D3 work with that (never heard about that), but <span style="font-weight: bold">floor_02_h</span> &amp; <span style="font-weight: bold">floor_02_s</span> are saved as 256 grey colors (8bits).&#13;
+<br/><br/>
+I always think d3 didn't handle textures under 24bits, but i can be wrong.&#13;
+<br/>
+Except that, all look right, even your texture looking good.  <img src="/web/20061013024322im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158532" date="Posted: Sun Oct 01, 2006 11:57 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks. <img src="/web/20061013024322im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The texture is for quake 4 though. I'm not sure if there's a difference between the games. It's the same engine, right?&#13;
+<br/><br/>
+Anyway, I thought the height and specular maps where supposed to be in grey scale. I might be wrong though so maybe someone can enlighten me on that point as well. <img src="/web/20061013024322im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+And the problem with the size is still there of course. <img src="/web/20061013024322im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158535" date="Posted: Sun Oct 01, 2006 2:01 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Don't save your speculars in greyscale.  Use the specular to add very subtle hints of color.  Just use "Color Balance" in Photoshop and add just a small amount to highlights and/or shadows or midtones, blue is good for metals, red for woods and rock, etc.  It doesn't take much, you won't even be able to see it in the specular image by itself but you'll see it in the reflectivity of the image when it's rendered.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158846" date="Posted: Wed Oct 04, 2006 8:48 pm    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the tip bittoman.&#13;
+<br/>
+It looks alot nicer with some color in the specular maps.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158444" date="Posted: Fri Sep 29, 2006 2:38 pm    Post subject: Texture size vs units"><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So I'm trying to make some textures for quake 4 and I'm having some trouble understanding the relation between texture size and ingame units.&#13;
+<br/><br/>
+For example:&#13;
+<br/>
+I have made a 256x256 pixel texture which fits on a 128x128 units large face in the game. This is all good.&#13;
+<br/>
+I also made a 256x128 pixel texture which in turn fits on a 128x64 unit face. This is also good.&#13;
+<br/><br/>
+The thing that confuses me is that when I made a 512x512 pixel texture I thought it would corespond to 256x256 units.&#13;
+<br/>
+Instead the game shrinks the texture down to 128x128 units. Also a 128x128 pixel texture that I thought would corespond to 64x64 units instead is expanded up to 128x128 units.&#13;
+<br/><br/>
+I have messed around a little with different texture dimensions and I can't find any logic in how textures pixel dimensions scale to the units in the game.&#13;
+<br/><br/>
+If there is a way to keep the 2 pixels = 1 unit relationship for all these textures that would be great.&#13;
+<br/>
+I have used the "guide textures/... generic_shader(...)" command in my material file. &#13;
+<br/><br/>
+I have searched the forum and different sites for an explanation without getting any wiser so if anyone could point me in the right directon or give me some insight on how this works that would be great.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158476" date="Posted: Sat Sep 30, 2006 4:46 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You've got the scale correct.&#13;
+<br/><br/>
+Question for you. Are all the various images used in each stage the same resolution?<br/>_________________<br/><a href="/web/20061013022431/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022431im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022431/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158484" date="Posted: Sat Sep 30, 2006 10:24 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, all stages for each texture are in the same resolution.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158519" date="Posted: Sun Oct 01, 2006 4:56 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe you could archive some of your textures and the cooresponding material shaders and then upload it somewhere so people could see firsthand?<br/>_________________<br/><a href="/web/20061013022431/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022431im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022431/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158529" date="Posted: Sun Oct 01, 2006 10:55 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have uploaded one of the textures I'm having problems with.&#13;
+<br/><br/><a href="/web/20061013022431/http://www.megaupload.com/se/?d=8FU7NUH0" target="_blank" class="postlink">http://www.megaupload.com/se/?d=8FU7NUH0</a>&#13;
+<br/>
+The site is in swedish but just write the 3 letters in the field in the upper right corner by the download button.&#13;
+<br/><br/>
+Anyway, the texture is 512x512 pixels but in the game it still gets shrunk down to 128x128 units.&#13;
+<br/><br/>
+ps. Feel free to comment on the texture itself as well. It's one of the first I made. <img src="/web/20061013022431im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158531" date="Posted: Sun Oct 01, 2006 11:41 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Don't know if D3 work with that (never heard about that), but <span style="font-weight: bold">floor_02_h</span> &amp; <span style="font-weight: bold">floor_02_s</span> are saved as 256 grey colors (8bits).&#13;
+<br/><br/>
+I always think d3 didn't handle textures under 24bits, but i can be wrong.&#13;
+<br/>
+Except that, all look right, even your texture looking good.  <img src="/web/20061013022431im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158532" date="Posted: Sun Oct 01, 2006 11:57 am    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks. <img src="/web/20061013022431im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The texture is for quake 4 though. I'm not sure if there's a difference between the games. It's the same engine, right?&#13;
+<br/><br/>
+Anyway, I thought the height and specular maps where supposed to be in grey scale. I might be wrong though so maybe someone can enlighten me on that point as well. <img src="/web/20061013022431im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+And the problem with the size is still there of course. <img src="/web/20061013022431im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158535" date="Posted: Sun Oct 01, 2006 2:01 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Don't save your speculars in greyscale.  Use the specular to add very subtle hints of color.  Just use "Color Balance" in Photoshop and add just a small amount to highlights and/or shadows or midtones, blue is good for metals, red for woods and rock, etc.  It doesn't take much, you won't even be able to see it in the specular image by itself but you'll see it in the reflectivity of the image when it's rendered.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158846" date="Posted: Wed Oct 04, 2006 8:48 pm    Post subject: "><author>bebble</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the tip bittoman.&#13;
+<br/>
+It looks alot nicer with some color in the specular maps.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

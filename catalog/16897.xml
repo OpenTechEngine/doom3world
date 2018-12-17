@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16897"><title>Material Tutorial....er Syntax Reference actually.</title><posts><post id="154294" date="Posted: Sun Aug 20, 2006 3:33 am    Post subject: Material Tutorial....er Syntax Reference actually."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yea,&#13;
+<br/><br/>
+I'm a coder, so the language of the text makes a lot more sense to me than the step by step instructions often given in tutorials.  I once wrote a reference for menu scripts for JKA, and it was well recieved.  However, I haven't a clue what a <span style="font-style: italic">specularmap</span> or <span style="font-style: italic">diffusemap </span>is, or what <span style="font-style: italic">zeroclamp </span>does, or how the <span style="font-style: italic">maskcolor </span>works in comparison to <span style="font-style: italic">blend add</span>.  That's the kind of tutorial I need to find, in order to help me with Particles and Materials.  Because showing me, as all the tutorials seemed to be focused upon, doesn't help.  &#13;
+<br/><br/>
+An alphabetical syntax guide of each command is what I'm trying to find, so that when I jump into a material for a quick update, I'm not confused as to why when i remove <span style="font-style: italic">maskcolor</span> the black background around a texture appears in the game, but with it in, the colored portion that is supposed to show dissappears.  *shrug*  also what does <span style="font-style: italic">deform</span> do? and what's the difference between a tube, a sprite and what else....&#13;
+<br/><br/>
+I think you can see what i mean.  *chuckle*&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154297" date="Posted: Sun Aug 20, 2006 4:33 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is what you're looking for...&#13;
+<br/><br/><a href="/web/20061013023521/http://www.modwiki.net/wiki/Material_%28decl%29" target="_blank">http://www.modwiki.net/wiki/Material_%28decl%29</a>&#13;
+<br/><br/>
+It's not complete but I expect it will be someday.<br/>_________________<br/><a href="/web/20061013023521/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023521im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023521/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154299" date="Posted: Sun Aug 20, 2006 4:59 am    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">there's also <a href="/web/20061013023521/http://www.iddevnet.com/doom3/materials.php" target="_blank">http://www.iddevnet.com/doom3/materials.php</a>&#13;
+<br/><br/>
+that's got great, quick, to the point definations &amp; the wiki has some of the best visual/practicle examples of what they do, so use both!<br/>_________________<br/>Things I've <a href="/web/20061013023521/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154415" date="Posted: Mon Aug 21, 2006 2:23 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">an even better way (and IM not trying to be a smart ass) is to try it your self I found alot of tricks this way that arnt listed&#13;
+<br/>
+the easiest way to experiment in d3 with textures is this&#13;
+<br/><br/>
+create a 4 or 5 different textures   ones with alpha stages regular pictures&#13;
+<br/>
+grey scale pictures (heightmaps)  and a normal map&#13;
+<br/><br/>
+now create a blank material fie&#13;
+<br/><br/>
+like this&#13;
+<br/>
+textures/mine/1&#13;
+<br/>
+{&#13;
+<br/><br/><br/><br/>
+}&#13;
+<br/><br/>
+and save that in the materials folder&#13;
+<br/><br/>
+now in editor add your blank texture to a wall or brush&#13;
+<br/>
+hit&#13;
+<br/>
+f7  --render&#13;
+<br/>
+f6  --animate&#13;
+<br/>
+&amp;&#13;
+<br/>
+f4  -realtime&#13;
+<br/><br/>
+of course it shows up black&#13;
+<br/><br/>
+go to the console tab of the entity inspector window&#13;
+<br/>
+at the bottom field type&#13;
+<br/>
+editdecls&#13;
+<br/>
+short for eddit decclarations&#13;
+<br/><br/>
+this will open an editor&#13;
+<br/>
+click on materials to expand it then browse to textures and finally browse to your texutre&#13;
+<br/>
+click edit&#13;
+<br/><br/>
+everytime you make a change click test it will show the change in your doom3 editor renderview&#13;
+<br/><br/>
+this way you can check your changes realtime output in editor&#13;
+<br/>
+I learned alot of tricks that way<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154294" date="Posted: Sun Aug 20, 2006 3:33 am    Post subject: Material Tutorial....er Syntax Reference actually."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yea,&#13;
+<br/><br/>
+I'm a coder, so the language of the text makes a lot more sense to me than the step by step instructions often given in tutorials.  I once wrote a reference for menu scripts for JKA, and it was well recieved.  However, I haven't a clue what a <span style="font-style: italic">specularmap</span> or <span style="font-style: italic">diffusemap </span>is, or what <span style="font-style: italic">zeroclamp </span>does, or how the <span style="font-style: italic">maskcolor </span>works in comparison to <span style="font-style: italic">blend add</span>.  That's the kind of tutorial I need to find, in order to help me with Particles and Materials.  Because showing me, as all the tutorials seemed to be focused upon, doesn't help.  &#13;
+<br/><br/>
+An alphabetical syntax guide of each command is what I'm trying to find, so that when I jump into a material for a quick update, I'm not confused as to why when i remove <span style="font-style: italic">maskcolor</span> the black background around a texture appears in the game, but with it in, the colored portion that is supposed to show dissappears.  *shrug*  also what does <span style="font-style: italic">deform</span> do? and what's the difference between a tube, a sprite and what else....&#13;
+<br/><br/>
+I think you can see what i mean.  *chuckle*&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154297" date="Posted: Sun Aug 20, 2006 4:33 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is what you're looking for...&#13;
+<br/><br/><a href="/web/20061013022714/http://www.modwiki.net/wiki/Material_%28decl%29" target="_blank">http://www.modwiki.net/wiki/Material_%28decl%29</a>&#13;
+<br/><br/>
+It's not complete but I expect it will be someday.<br/>_________________<br/><a href="/web/20061013022714/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013022714im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013022714/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154299" date="Posted: Sun Aug 20, 2006 4:59 am    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">there's also <a href="/web/20061013022714/http://www.iddevnet.com/doom3/materials.php" target="_blank">http://www.iddevnet.com/doom3/materials.php</a>&#13;
+<br/><br/>
+that's got great, quick, to the point definations &amp; the wiki has some of the best visual/practicle examples of what they do, so use both!<br/>_________________<br/>Things I've <a href="/web/20061013022714/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154415" date="Posted: Mon Aug 21, 2006 2:23 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">an even better way (and IM not trying to be a smart ass) is to try it your self I found alot of tricks this way that arnt listed&#13;
+<br/>
+the easiest way to experiment in d3 with textures is this&#13;
+<br/><br/>
+create a 4 or 5 different textures   ones with alpha stages regular pictures&#13;
+<br/>
+grey scale pictures (heightmaps)  and a normal map&#13;
+<br/><br/>
+now create a blank material fie&#13;
+<br/><br/>
+like this&#13;
+<br/>
+textures/mine/1&#13;
+<br/>
+{&#13;
+<br/><br/><br/><br/>
+}&#13;
+<br/><br/>
+and save that in the materials folder&#13;
+<br/><br/>
+now in editor add your blank texture to a wall or brush&#13;
+<br/>
+hit&#13;
+<br/>
+f7  --render&#13;
+<br/>
+f6  --animate&#13;
+<br/>
+&amp;&#13;
+<br/>
+f4  -realtime&#13;
+<br/><br/>
+of course it shows up black&#13;
+<br/><br/>
+go to the console tab of the entity inspector window&#13;
+<br/>
+at the bottom field type&#13;
+<br/>
+editdecls&#13;
+<br/>
+short for eddit decclarations&#13;
+<br/><br/>
+this will open an editor&#13;
+<br/>
+click on materials to expand it then browse to textures and finally browse to your texutre&#13;
+<br/>
+click edit&#13;
+<br/><br/>
+everytime you make a change click test it will show the change in your doom3 editor renderview&#13;
+<br/><br/>
+this way you can check your changes realtime output in editor&#13;
+<br/>
+I learned alot of tricks that way<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

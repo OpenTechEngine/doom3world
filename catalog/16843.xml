@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16843"><title>A load of questions probably answered before....</title><posts><post id="153831" date="Posted: Wed Aug 16, 2006 4:46 pm    Post subject: A load of questions probably answered before...."><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">...but searching brings up no results. <img src="/web/20061013023237im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Anyway, I'm looking for ways to make:&#13;
+<br/>
+A rain emitting texture in QUAKE 4, &#13;
+<br/>
+Grass that sticks up in a 3D fashion w/o modelling, &#13;
+<br/>
+And how to make trees/bushes.&#13;
+<br/><br/>
+Any links/advice would be very much appreciated.&#13;
+<br/><br/><span style="color: darkred">Shadow </span>&#13;
+<br/><br/>
+(P.S. Rather than starting a new thread, how do you divide a area into several airtight rooms with no collision blocking them/light errors?)<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153836" date="Posted: Wed Aug 16, 2006 5:33 pm    Post subject: Re: A load of questions probably answered before...."><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">There is an extensive thread on rain in D3/Q4 so I'm not going to explain it because it's a bit more complex than one reply can really do justice.  In fact I know of at least two threads (one so recent it's within the last week) that specifically discuss it.&#13;
+<br/><br/>
+For grass without modeling you have one other alternative, using textures that look like grass and use the alpha mask to clip it then just weave two or three patch meshes with this texture applied to make a grassy area.  Make sure to set the material to nonsolid though so that you can move through it.  This is an "old school" method but it's still fairly common.&#13;
+<br/><br/>
+Making trees and bushes is as simple as modeling them heh.  I mean, I can't really explain how to make them without explaining how to model with an editor.  Of all the things you can model, these are really fairly simple objects once you have the basics for modeling down.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153837" date="Posted: Wed Aug 16, 2006 5:50 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, thanks for the quick reply.&#13;
+<br/><br/>
+What do I add to my material in order to apply an alpha layer?&#13;
+<br/>
+And how do you mean by "alpha mask"?&#13;
+<br/><br/>
+Yeah, I'm a bit of a modding newbie.. <img src="/web/20061013023237im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153839" date="Posted: Wed Aug 16, 2006 6:01 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So use the search function... There are thousands of posts that describe alpha channels etc&#13;
+<br/><br/><br/><a href="/web/20061013023237/http://www.doom3world.org/phpbb2/search.php?mode=results" target="_blank">http://www.doom3world.org/phpbb2/search.php?mode=results</a><br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153840" date="Posted: Wed Aug 16, 2006 6:05 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">rain ---- bring up the particle editor&#13;
+<br/>
+(in console type edit particles)&#13;
+<br/><br/>
+open one of the default drip particles and see how it works&#13;
+<br/>
+now redoo it so you have several drips   falling randomly&#13;
+<br/><br/>
+save your particle&#13;
+<br/><br/>
+create a new material in your mtr file&#13;
+<br/>
+here is what mine looks like&#13;
+<br/>
+textures/exhale2/rain_prt&#13;
+<br/>
+{&#13;
+<br/>
+deform particle rain_drip&#13;
+<br/>
+qer_editorimage textures/common/nodraw.tga&#13;
+<br/>
+nonsolid&#13;
+<br/>
+noshadows&#13;
+<br/>
+(&#13;
+<br/>
+blend filter&#13;
+<br/>
+map  _white&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+the filter removes the white and since your mapping _white its basically not drawn all that is drawn is the deform particle  so now you have a drip particle that you can stretch over whatever area you need&#13;
+<br/><br/>
+portalling and optimizing is esential for rain without it you can have to many surfaces at once&#13;
+<br/><br/>
+grass&#13;
+<br/><br/>
+create a grass textures&#13;
+<br/><br/><br/>
+next you need the mtr&#13;
+<br/>
+textures/exhale2/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+(&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/******--your grass texture here&#13;
+<br/>
+centerscale (if needed) I did&#13;
+<br/>
+shear ( sound *0.3) + fol1Table[time*0.008],0     //this makes it move in synch with a sound (shear sound)  and the fol1Table is a table I made you could use a prebuilt one like sinTable and then just tweak the time and intensity&#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroClamp&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+this works great for bushes   what you could try And Ive meant to try is to  use this mtr as a bassis for a particle   then use the same nodraw texture method to draw grass ( i would expect a big performance hit by trying this)&#13;
+<br/><br/>
+the other thing you could try is a flat texture that shears and has an animated heightmap to simulate grass movement  again something ive been meaning to try&#13;
+<br/>
+this material works best for bushes and trees though  since grass is so tightly cropped together You would have a ton of faces to illuminate??&#13;
+<br/><br/><br/>
+as for alphatest   what you are doing is defining what sections of a texture will be drawn and what sections wont&#13;
+<br/><br/>
+you do this in gimp or photoshop by createing an alpha layer and then drawing white where you want the texture to show and black where you dont&#13;
+<br/>
+the alpatest  command then says if its black I wont draw it white I will<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153842" date="Posted: Wed Aug 16, 2006 7:09 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">&lt;3&#13;
+<br/><br/>
+Thanks, I'll have to download this page.  <img src="/web/20061013023237im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+*EDIT*&#13;
+<br/>
+It would seem the .mtr for the grass isn't working...&#13;
+<br/>
+I edited it, so it looks like this:&#13;
+<br/><br/><br/><br/>
+textures/exhale2/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+(&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/exhale2/grass.tga&#13;
+<br/>
+centerscale&#13;
+<br/>
+shear ( sound *0.3) + fol1Table[time*0.008],0 &#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroClamp&#13;
+<br/>
+}&#13;
+<br/>
+} &#13;
+<br/><br/>
+All I get (similarly with the rain) is a placeholder checkered texture?  <img src="/web/20061013023237im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153897" date="Posted: Thu Aug 17, 2006 2:23 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Thanks, I'll have to download this page.  &#13;
+<br/><br/>
+*EDIT* &#13;
+<br/>
+It would seem the .mtr for the grass isn't working... &#13;
+<br/>
+I edited it, so it looks like this: &#13;
+<br/><br/><br/><br/>
+textures/exhale2/grass &#13;
+<br/>
+{ &#13;
+<br/>
+deform sprite &#13;
+<br/>
+twosided &#13;
+<br/>
+discrete &#13;
+<br/>
+( &#13;
+<br/>
+blend diffusemap &#13;
+<br/>
+map textures/ [color=blue]exhale2[/color] /grass.tga &#13;
+<br/>
+centerscale &#13;
+<br/>
+shear ( sound *0.3) + [color=blue]fol1Table[/color] time*0.008],0 &#13;
+<br/>
+alphatest 0.5 &#13;
+<br/>
+alphaZeroClamp &#13;
+<br/>
+} &#13;
+<br/>
+} &#13;
+<br/><br/>
+All I get (similarly with the rain) is a placeholder checkered texture? </td>	</tr></table><span class="postbody">noticed the hightlighted sections if that isnt the path for your textures your outa luck&#13;
+<br/>
+also if your table isnt named that again your outa luck you need to change the mtr to match your paths and files&#13;
+<br/><br/>
+example if your folder is blah and the texture blah.tga&#13;
+<br/><br/>
+textyres/blah/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+{&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/blah/blah.tga&#13;
+<br/>
+centerscale  (you must have a scale here or omit this for instance 1, 1 or 2, 2&#13;
+<br/>
+shear (sound*0.3) =+ blahTable(time)*.009),0&#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroCLamp&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+go into the editor after you have created your mtr file&#13;
+<br/><br/>
+texture it with the texture&#13;
+<br/>
+then click on the entity inspector window&#13;
+<br/>
+click the bottom tab labeld console&#13;
+<br/>
+type editdecls in the open field&#13;
+<br/>
+this will open the declaration editor&#13;
+<br/>
+once open browse it like this&#13;
+<br/>
+materials&#13;
+<br/>
+----textures&#13;
+<br/>
+-----"""browse to the texture in question&#13;
+<br/><br/>
+double click it to edit&#13;
+<br/>
+make sure your view window is in realtime render mode&#13;
+<br/><br/>
+now every time you make a change to the material click test until it works&#13;
+<br/>
+then click save&#13;
+<br/><br/>
+if your usure about whats wrong&#13;
+<br/>
+look at the console window it will give an error everytime you test and something is wrong   the error will tell you how to fix the mtr<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154053" date="Posted: Fri Aug 18, 2006 7:06 am    Post subject: "><author>Syx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't remember offhand if you could exhibit enough control over particles to do this (the particles would have to stay still once created and have a long life span with a gradual fade in fade out so a flicker wasn't noticable), but I wonder how feasible it would be to use a particle emitter to simulate actual grass?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155279" date="Posted: Tue Aug 29, 2006 2:17 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, the grass works, but there's only one blade per suface and it's megaly streched out. Subdivison on a patch mesh does nothing - or to be more precise, it behaves like the "crusher" switch on Xaero Gravity...  <img src="/web/20061013023237im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153831" date="Posted: Wed Aug 16, 2006 4:46 pm    Post subject: A load of questions probably answered before...."><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">...but searching brings up no results. <img src="/web/20061013024444im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/><br/>
+Anyway, I'm looking for ways to make:&#13;
+<br/>
+A rain emitting texture in QUAKE 4, &#13;
+<br/>
+Grass that sticks up in a 3D fashion w/o modelling, &#13;
+<br/>
+And how to make trees/bushes.&#13;
+<br/><br/>
+Any links/advice would be very much appreciated.&#13;
+<br/><br/><span style="color: darkred">Shadow </span>&#13;
+<br/><br/>
+(P.S. Rather than starting a new thread, how do you divide a area into several airtight rooms with no collision blocking them/light errors?)<br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153836" date="Posted: Wed Aug 16, 2006 5:33 pm    Post subject: Re: A load of questions probably answered before...."><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">There is an extensive thread on rain in D3/Q4 so I'm not going to explain it because it's a bit more complex than one reply can really do justice.  In fact I know of at least two threads (one so recent it's within the last week) that specifically discuss it.&#13;
+<br/><br/>
+For grass without modeling you have one other alternative, using textures that look like grass and use the alpha mask to clip it then just weave two or three patch meshes with this texture applied to make a grassy area.  Make sure to set the material to nonsolid though so that you can move through it.  This is an "old school" method but it's still fairly common.&#13;
+<br/><br/>
+Making trees and bushes is as simple as modeling them heh.  I mean, I can't really explain how to make them without explaining how to model with an editor.  Of all the things you can model, these are really fairly simple objects once you have the basics for modeling down.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153837" date="Posted: Wed Aug 16, 2006 5:50 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, thanks for the quick reply.&#13;
+<br/><br/>
+What do I add to my material in order to apply an alpha layer?&#13;
+<br/>
+And how do you mean by "alpha mask"?&#13;
+<br/><br/>
+Yeah, I'm a bit of a modding newbie.. <img src="/web/20061013024444im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153839" date="Posted: Wed Aug 16, 2006 6:01 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So use the search function... There are thousands of posts that describe alpha channels etc&#13;
+<br/><br/><br/><a href="/web/20061013024444/http://www.doom3world.org/phpbb2/search.php?mode=results" target="_blank">http://www.doom3world.org/phpbb2/search.php?mode=results</a><br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153840" date="Posted: Wed Aug 16, 2006 6:05 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">rain ---- bring up the particle editor&#13;
+<br/>
+(in console type edit particles)&#13;
+<br/><br/>
+open one of the default drip particles and see how it works&#13;
+<br/>
+now redoo it so you have several drips   falling randomly&#13;
+<br/><br/>
+save your particle&#13;
+<br/><br/>
+create a new material in your mtr file&#13;
+<br/>
+here is what mine looks like&#13;
+<br/>
+textures/exhale2/rain_prt&#13;
+<br/>
+{&#13;
+<br/>
+deform particle rain_drip&#13;
+<br/>
+qer_editorimage textures/common/nodraw.tga&#13;
+<br/>
+nonsolid&#13;
+<br/>
+noshadows&#13;
+<br/>
+(&#13;
+<br/>
+blend filter&#13;
+<br/>
+map  _white&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+the filter removes the white and since your mapping _white its basically not drawn all that is drawn is the deform particle  so now you have a drip particle that you can stretch over whatever area you need&#13;
+<br/><br/>
+portalling and optimizing is esential for rain without it you can have to many surfaces at once&#13;
+<br/><br/>
+grass&#13;
+<br/><br/>
+create a grass textures&#13;
+<br/><br/><br/>
+next you need the mtr&#13;
+<br/>
+textures/exhale2/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+(&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/******--your grass texture here&#13;
+<br/>
+centerscale (if needed) I did&#13;
+<br/>
+shear ( sound *0.3) + fol1Table[time*0.008],0     //this makes it move in synch with a sound (shear sound)  and the fol1Table is a table I made you could use a prebuilt one like sinTable and then just tweak the time and intensity&#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroClamp&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+this works great for bushes   what you could try And Ive meant to try is to  use this mtr as a bassis for a particle   then use the same nodraw texture method to draw grass ( i would expect a big performance hit by trying this)&#13;
+<br/><br/>
+the other thing you could try is a flat texture that shears and has an animated heightmap to simulate grass movement  again something ive been meaning to try&#13;
+<br/>
+this material works best for bushes and trees though  since grass is so tightly cropped together You would have a ton of faces to illuminate??&#13;
+<br/><br/><br/>
+as for alphatest   what you are doing is defining what sections of a texture will be drawn and what sections wont&#13;
+<br/><br/>
+you do this in gimp or photoshop by createing an alpha layer and then drawing white where you want the texture to show and black where you dont&#13;
+<br/>
+the alpatest  command then says if its black I wont draw it white I will<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153842" date="Posted: Wed Aug 16, 2006 7:09 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">&lt;3&#13;
+<br/><br/>
+Thanks, I'll have to download this page.  <img src="/web/20061013024444im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+*EDIT*&#13;
+<br/>
+It would seem the .mtr for the grass isn't working...&#13;
+<br/>
+I edited it, so it looks like this:&#13;
+<br/><br/><br/><br/>
+textures/exhale2/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+(&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/exhale2/grass.tga&#13;
+<br/>
+centerscale&#13;
+<br/>
+shear ( sound *0.3) + fol1Table[time*0.008],0 &#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroClamp&#13;
+<br/>
+}&#13;
+<br/>
+} &#13;
+<br/><br/>
+All I get (similarly with the rain) is a placeholder checkered texture?  <img src="/web/20061013024444im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153897" date="Posted: Thu Aug 17, 2006 2:23 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Thanks, I'll have to download this page.  &#13;
+<br/><br/>
+*EDIT* &#13;
+<br/>
+It would seem the .mtr for the grass isn't working... &#13;
+<br/>
+I edited it, so it looks like this: &#13;
+<br/><br/><br/><br/>
+textures/exhale2/grass &#13;
+<br/>
+{ &#13;
+<br/>
+deform sprite &#13;
+<br/>
+twosided &#13;
+<br/>
+discrete &#13;
+<br/>
+( &#13;
+<br/>
+blend diffusemap &#13;
+<br/>
+map textures/ [color=blue]exhale2[/color] /grass.tga &#13;
+<br/>
+centerscale &#13;
+<br/>
+shear ( sound *0.3) + [color=blue]fol1Table[/color] time*0.008],0 &#13;
+<br/>
+alphatest 0.5 &#13;
+<br/>
+alphaZeroClamp &#13;
+<br/>
+} &#13;
+<br/>
+} &#13;
+<br/><br/>
+All I get (similarly with the rain) is a placeholder checkered texture? </td>	</tr></table><span class="postbody">noticed the hightlighted sections if that isnt the path for your textures your outa luck&#13;
+<br/>
+also if your table isnt named that again your outa luck you need to change the mtr to match your paths and files&#13;
+<br/><br/>
+example if your folder is blah and the texture blah.tga&#13;
+<br/><br/>
+textyres/blah/grass&#13;
+<br/>
+{&#13;
+<br/>
+deform sprite&#13;
+<br/>
+twosided&#13;
+<br/>
+discrete&#13;
+<br/>
+{&#13;
+<br/>
+blend diffusemap&#13;
+<br/>
+map textures/blah/blah.tga&#13;
+<br/>
+centerscale  (you must have a scale here or omit this for instance 1, 1 or 2, 2&#13;
+<br/>
+shear (sound*0.3) =+ blahTable(time)*.009),0&#13;
+<br/>
+alphatest 0.5&#13;
+<br/>
+alphaZeroCLamp&#13;
+<br/>
+}&#13;
+<br/>
+}&#13;
+<br/>
+go into the editor after you have created your mtr file&#13;
+<br/><br/>
+texture it with the texture&#13;
+<br/>
+then click on the entity inspector window&#13;
+<br/>
+click the bottom tab labeld console&#13;
+<br/>
+type editdecls in the open field&#13;
+<br/>
+this will open the declaration editor&#13;
+<br/>
+once open browse it like this&#13;
+<br/>
+materials&#13;
+<br/>
+----textures&#13;
+<br/>
+-----"""browse to the texture in question&#13;
+<br/><br/>
+double click it to edit&#13;
+<br/>
+make sure your view window is in realtime render mode&#13;
+<br/><br/>
+now every time you make a change to the material click test until it works&#13;
+<br/>
+then click save&#13;
+<br/><br/>
+if your usure about whats wrong&#13;
+<br/>
+look at the console window it will give an error everytime you test and something is wrong   the error will tell you how to fix the mtr<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154053" date="Posted: Fri Aug 18, 2006 7:06 am    Post subject: "><author>Syx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I can't remember offhand if you could exhibit enough control over particles to do this (the particles would have to stay still once created and have a long life span with a gradual fade in fade out so a flicker wasn't noticable), but I wonder how feasible it would be to use a particle emitter to simulate actual grass?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155279" date="Posted: Tue Aug 29, 2006 2:17 pm    Post subject: "><author>BlackArmsShadow</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, the grass works, but there's only one blade per suface and it's megaly streched out. Subdivison on a patch mesh does nothing - or to be more precise, it behaves like the "crusher" switch on Xaero Gravity...  <img src="/web/20061013024444im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/>_________________<br/><span style="font-style: italic">&#13;
+<br/>
+I'm not gonna think this way - Nor will I count on others&#13;
+<br/>
+Close my eyes and feel it burn - Now I see what I've gotta do&#13;
+<br/><br/>
+OPEN YOUR HEART, IT'S GONNA BE ALRIGHT </span></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

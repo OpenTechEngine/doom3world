@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="9288"><title>Looking for rock/terrain modelling tutorials for lightwave.</title><posts><post id="81533" date="Posted: Thu Mar 10, 2005 7:37 pm    Post subject: Looking for rock/terrain modelling tutorials for lightwave."><author>scorpion122</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hello again.&#13;
+<br/>
+Anybody got some links for rock/terrain modelling with lightwave/max?&#13;
+<br/>
+Thnx a lot.&#13;
+<br/>
+Must get into this terrain/rock theme to finish one after my mapping job dies eventually.<img src="/web/20061012182112im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="89794" date="Posted: Thu Apr 21, 2005 3:10 am    Post subject: "><author>elroacho</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">here's what i do...&#13;
+<br/><br/>
+make a material file for your model like...&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">// MY NEW TERRAIN MODEL&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 1, 1      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 1, 1      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }           &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+   }     &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }        &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+make a patch mesh about the size of the terrain, then&#13;
+<br/><br/>
+Selection-&gt; Export-&gt; To OBJ&#13;
+<br/><br/>
+load the object into lightwave and Modify-&gt; Center&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ&#13;
+<br/><br/>
+click on the "T" (bottom right&#13;
+<br/><br/>
+select "OBJ_UVTextureMap" from the drop arrow to the right of "T"&#13;
+<br/><br/>
+Map-&gt; Edit Maps-&gt; Delete Vertex Map&#13;
+<br/><br/>
+File-&gt; Save (the model in your "base/models/mapobjects/my_model/" folder) as my_terrain.lwo&#13;
+<br/><br/>
+File-&gt; Close All Objects&#13;
+<br/><br/>
+File-&gt; Load (the model in your "base/models/mapobjects/my_model/" folder) my_terrain.lwo&#13;
+<br/><br/>
+(i do that to remove any trailing unwanted surfaces)&#13;
+<br/><br/>
+Multiply-&gt; Subdivide (a few times)&#13;
+<br/><br/>
+modify the poly's the way i want them (add/remove)&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ&#13;
+<br/><br/>
+click on Surface near the bottom middle of the screen&#13;
+<br/><br/>
+where it says "Name", type in the name of the material file you made:&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/><br/>
+Map-&gt; Make UVs &#13;
+<br/><br/>
+Texture name: TerrainUV&#13;
+<br/>
+Map type: depends on the model (i mostly use Planer) &#13;
+<br/>
+Axis: depends on the model (i mostly use X)&#13;
+<br/><br/>
+usually you have to make a morph target to get it just right. then i make it as flat as possible. then align and Planer it on the X axis. to &#13;
+<br/><br/>
+make a morph target...&#13;
+<br/><br/>
+click on the "M" (bottom right)&#13;
+<br/><br/>
+select "new" from the drop arrow to the right of "M"&#13;
+<br/><br/>
+give it a name like "MorphFlat"&#13;
+<br/><br/>
+then start rotating polys/points until they are near flat. (will not effect base model)&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ (morph target - MorphFlat)&#13;
+<br/><br/>
+and make new UV's&#13;
+<br/><br/>
+tweak the UV's until it's stretched as little as possible.&#13;
+<br/><br/>
+Map-&gt; Vertex Paint&#13;
+<br/><br/>
+Edit-&gt; Create Vertex Color Map&#13;
+<br/><br/>
+give it a name like VertexBlend. if your morph target is flat, you can use that to paint on. just select it from the dropdown arrow. &#13;
+<br/><br/>
+near the top of the screen, click on the "T" and the "B" to get a better view. select the color box next to the eye dropper and pick "white". &#13;
+<br/><br/>
+paint the model where you want the sand/lava/whatever to appear. then select the color box again and pick "black". now paint the model where &#13;
+<br/><br/>
+you want the rock to be. (tip- moving the mouse in circles can help rotate the object the the vertex paint window)&#13;
+<br/><br/>
+hit "Save" by your objects name in the vertex paint window.&#13;
+<br/><br/>
+File-&gt; Save (and it's done)&#13;
+<br/><br/>
+load it into doom edit (entity menu-&gt; new model)&#13;
+<br/><br/>
+if the texture is stretched, adjust it by increasing/decreasing the "scale" values in the new material. like...&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">// MY NEW TERRAIN MODEL&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }           &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+   }     &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }        &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+in doom edit, hit Media-&gt; Reload and "F7" to view your progress as you change the values. you could alter the UV instead, but i tend to leave it alone and adjust externally. &#13;
+<br/><br/>
+someone please point out if there is an easier way for anything i said, i'm still learning.&#13;
+<br/><br/>
+i'll try to get screenies later, not at home.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92458" date="Posted: Wed May 04, 2005 6:20 pm    Post subject: "><author>megaman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">this is a fucking great post <img src="/web/20061012182112im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92492" date="Posted: Wed May 04, 2005 8:48 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>megaman wrote:</b></span></td>	</tr><tr><td class="quote">this is a fucking great post <img src="/web/20061012182112im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><a href="/web/20061012182112/http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1" target="_blank">http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1</a><br/>_________________<br/><a href="/web/20061012182112/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182112im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012182112/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="93612" date="Posted: Wed May 11, 2005 12:16 am    Post subject: "><author>Kaziganthe</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">try snooping around at <a href="/web/20061012182112/http://www.quake3bits.com/" target="_blank">www.quake3bits.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107914" date="Posted: Fri Aug 12, 2005 3:13 pm    Post subject: "><author>scorpion122</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thnks....I have really forgotten about this one.<img src="/web/20061012182112im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+*g* glad to see some old guys lurking around here.&#13;
+<br/>
+Edit: Somebody got an <span style="font-weight: bold">ASE</span> importer / exporter for lightwave?&#13;
+<br/>
+Thanks a lot.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="81533" date="Posted: Thu Mar 10, 2005 7:37 pm    Post subject: Looking for rock/terrain modelling tutorials for lightwave."><author>scorpion122</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hello again.&#13;
+<br/>
+Anybody got some links for rock/terrain modelling with lightwave/max?&#13;
+<br/>
+Thnx a lot.&#13;
+<br/>
+Must get into this terrain/rock theme to finish one after my mapping job dies eventually.<img src="/web/20061012182518im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="89794" date="Posted: Thu Apr 21, 2005 3:10 am    Post subject: "><author>elroacho</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">here's what i do...&#13;
+<br/><br/>
+make a material file for your model like...&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">// MY NEW TERRAIN MODEL&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 1, 1      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 1, 1      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }           &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+   }     &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }        &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 1, 1&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+make a patch mesh about the size of the terrain, then&#13;
+<br/><br/>
+Selection-&gt; Export-&gt; To OBJ&#13;
+<br/><br/>
+load the object into lightwave and Modify-&gt; Center&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ&#13;
+<br/><br/>
+click on the "T" (bottom right&#13;
+<br/><br/>
+select "OBJ_UVTextureMap" from the drop arrow to the right of "T"&#13;
+<br/><br/>
+Map-&gt; Edit Maps-&gt; Delete Vertex Map&#13;
+<br/><br/>
+File-&gt; Save (the model in your "base/models/mapobjects/my_model/" folder) as my_terrain.lwo&#13;
+<br/><br/>
+File-&gt; Close All Objects&#13;
+<br/><br/>
+File-&gt; Load (the model in your "base/models/mapobjects/my_model/" folder) my_terrain.lwo&#13;
+<br/><br/>
+(i do that to remove any trailing unwanted surfaces)&#13;
+<br/><br/>
+Multiply-&gt; Subdivide (a few times)&#13;
+<br/><br/>
+modify the poly's the way i want them (add/remove)&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ&#13;
+<br/><br/>
+click on Surface near the bottom middle of the screen&#13;
+<br/><br/>
+where it says "Name", type in the name of the material file you made:&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/><br/>
+Map-&gt; Make UVs &#13;
+<br/><br/>
+Texture name: TerrainUV&#13;
+<br/>
+Map type: depends on the model (i mostly use Planer) &#13;
+<br/>
+Axis: depends on the model (i mostly use X)&#13;
+<br/><br/>
+usually you have to make a morph target to get it just right. then i make it as flat as possible. then align and Planer it on the X axis. to &#13;
+<br/><br/>
+make a morph target...&#13;
+<br/><br/>
+click on the "M" (bottom right)&#13;
+<br/><br/>
+select "new" from the drop arrow to the right of "M"&#13;
+<br/><br/>
+give it a name like "MorphFlat"&#13;
+<br/><br/>
+then start rotating polys/points until they are near flat. (will not effect base model)&#13;
+<br/><br/>
+select Polygons (lower left), laso whole OBJ (morph target - MorphFlat)&#13;
+<br/><br/>
+and make new UV's&#13;
+<br/><br/>
+tweak the UV's until it's stretched as little as possible.&#13;
+<br/><br/>
+Map-&gt; Vertex Paint&#13;
+<br/><br/>
+Edit-&gt; Create Vertex Color Map&#13;
+<br/><br/>
+give it a name like VertexBlend. if your morph target is flat, you can use that to paint on. just select it from the dropdown arrow. &#13;
+<br/><br/>
+near the top of the screen, click on the "T" and the "B" to get a better view. select the color box next to the eye dropper and pick "white". &#13;
+<br/><br/>
+paint the model where you want the sand/lava/whatever to appear. then select the color box again and pick "black". now paint the model where &#13;
+<br/><br/>
+you want the rock to be. (tip- moving the mouse in circles can help rotate the object the the vertex paint window)&#13;
+<br/><br/>
+hit "Save" by your objects name in the vertex paint window.&#13;
+<br/><br/>
+File-&gt; Save (and it's done)&#13;
+<br/><br/>
+load it into doom edit (entity menu-&gt; new model)&#13;
+<br/><br/>
+if the texture is stretched, adjust it by increasing/decreasing the "scale" values in the new material. like...&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">// MY NEW TERRAIN MODEL&#13;
+<br/>
+models/mapobjects/my_model/my_terrain&#13;
+<br/>
+{&#13;
+<br/>
+   stone&#13;
+<br/>
+   {&#13;
+<br/>
+      blend       bumpmap&#13;
+<br/>
+      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+   }      &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/skysand1_d.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }    &#13;
+<br/>
+    {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/dirt03_s.tga&#13;
+<br/>
+      scale 5, 5      &#13;
+<br/>
+      vertexColor&#13;
+<br/>
+   }           &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      bumpmap&#13;
+<br/>
+      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+   }     &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      diffusemap&#13;
+<br/>
+      map      textures/rock/sharprock3.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }        &#13;
+<br/>
+   {&#13;
+<br/>
+      blend      specularmap&#13;
+<br/>
+      map      textures/rock/sharprock3_s.tga&#13;
+<br/>
+      scale 5, 5&#13;
+<br/>
+      inverseVertexColor&#13;
+<br/>
+   }          &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+in doom edit, hit Media-&gt; Reload and "F7" to view your progress as you change the values. you could alter the UV instead, but i tend to leave it alone and adjust externally. &#13;
+<br/><br/>
+someone please point out if there is an easier way for anything i said, i'm still learning.&#13;
+<br/><br/>
+i'll try to get screenies later, not at home.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92458" date="Posted: Wed May 04, 2005 6:20 pm    Post subject: "><author>megaman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">this is a fucking great post <img src="/web/20061012182518im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="92492" date="Posted: Wed May 04, 2005 8:48 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>megaman wrote:</b></span></td>	</tr><tr><td class="quote">this is a fucking great post <img src="/web/20061012182518im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><a href="/web/20061012182518/http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1" target="_blank">http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1</a><br/>_________________<br/><a href="/web/20061012182518/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182518im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012182518/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="93612" date="Posted: Wed May 11, 2005 12:16 am    Post subject: "><author>Kaziganthe</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">try snooping around at <a href="/web/20061012182518/http://www.quake3bits.com/" target="_blank">www.quake3bits.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107914" date="Posted: Fri Aug 12, 2005 3:13 pm    Post subject: "><author>scorpion122</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thnks....I have really forgotten about this one.<img src="/web/20061012182518im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+*g* glad to see some old guys lurking around here.&#13;
+<br/>
+Edit: Somebody got an <span style="font-weight: bold">ASE</span> importer / exporter for lightwave?&#13;
+<br/>
+Thanks a lot.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p81533" date="Posted: Thu Mar 10, 2005 7:37 pm "><author>scorpion122</author><body><![CDATA[<div class="postbody">Hello again.
+<br />Anybody got some links for rock/terrain modelling with lightwave/max?
+<br />Thnx a lot.
+<br />Must get into this terrain/rock theme to finish one after my mapping job dies eventually.<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p89794" date="Posted: Thu Apr 21, 2005 3:10 am "><author>elroacho</author><body><![CDATA[<div class="postbody">here's what i do...
+<br /><br />make a material file for your model like...
+<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// MY NEW TERRAIN MODEL<br />models/mapobjects/my_model/my_terrain<br />{<br />   stone<br />   {<br />      blend       bumpmap<br />      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))<br />      scale 1, 1      <br />   }      <br />   {<br />      blend      diffusemap<br />      map      textures/rock/skysand1_d.tga<br />      scale 1, 1<br />      vertexColor<br />   }    <br />    {<br />      blend      specularmap<br />      map      textures/rock/dirt03_s.tga<br />      scale 1, 1      <br />      vertexColor<br />   }           <br />   {<br />      blend      bumpmap<br />      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )<br />      scale 1, 1<br />   }     <br />   {<br />      blend      diffusemap<br />      map      textures/rock/sharprock3.tga<br />      scale 1, 1<br />      inverseVertexColor<br />   }        <br />   {<br />      blend      specularmap<br />      map      textures/rock/sharprock3_s.tga<br />      scale 1, 1<br />      inverseVertexColor<br />   }          <br />}</div><br /><br /><br />make a patch mesh about the size of the terrain, then<br /><br />Selection-&gt; Export-&gt; To OBJ<br /><br />load the object into lightwave and Modify-&gt; Center<br /><br />select Polygons (lower left), laso whole OBJ<br /><br />click on the "T" (bottom right<br /><br />select "OBJ_UVTextureMap" from the drop arrow to the right of "T"<br /><br />Map-&gt; Edit Maps-&gt; Delete Vertex Map<br /><br />File-&gt; Save (the model in your "base/models/mapobjects/my_model/" folder) as my_terrain.lwo<br /><br />File-&gt; Close All Objects<br /><br />File-&gt; Load (the model in your "base/models/mapobjects/my_model/" folder) my_terrain.lwo<br /><br />(i do that to remove any trailing unwanted surfaces)<br /><br />Multiply-&gt; Subdivide (a few times)<br /><br />modify the poly's the way i want them (add/remove)<br /><br />select Polygons (lower left), laso whole OBJ<br /><br />click on Surface near the bottom middle of the screen<br /><br />where it says "Name", type in the name of the material file you made:<br />models/mapobjects/my_model/my_terrain<br /><br />Map-&gt; Make UVs <br /><br />Texture name: TerrainUV<br />Map type: depends on the model (i mostly use Planer) <br />Axis: depends on the model (i mostly use X)<br /><br />usually you have to make a morph target to get it just right. then i make it as flat as possible. then align and Planer it on the X axis. to <br /><br />make a morph target...<br /><br />click on the "M" (bottom right)<br /><br />select "new" from the drop arrow to the right of "M"<br /><br />give it a name like "MorphFlat"<br /><br />then start rotating polys/points until they are near flat. (will not effect base model)<br /><br />select Polygons (lower left), laso whole OBJ (morph target - MorphFlat)<br /><br />and make new UV's<br /><br />tweak the UV's until it's stretched as little as possible.<br /><br />Map-&gt; Vertex Paint<br /><br />Edit-&gt; Create Vertex Color Map<br /><br />give it a name like VertexBlend. if your morph target is flat, you can use that to paint on. just select it from the dropdown arrow. <br /><br />near the top of the screen, click on the "T" and the "B" to get a better view. select the color box next to the eye dropper and pick "white". <br /><br />paint the model where you want the sand/lava/whatever to appear. then select the color box again and pick "black". now paint the model where <br /><br />you want the rock to be. (tip- moving the mouse in circles can help rotate the object the the vertex paint window)<br /><br />hit "Save" by your objects name in the vertex paint window.<br /><br />File-&gt; Save (and it's done)<br /><br />load it into doom edit (entity menu-&gt; new model)<br /><br />if the texture is stretched, adjust it by increasing/decreasing the "scale" values in the new material. like...<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// MY NEW TERRAIN MODEL<br />models/mapobjects/my_model/my_terrain<br />{<br />   stone<br />   {<br />      blend       bumpmap<br />      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))<br />      scale 5, 5      <br />   }      <br />   {<br />      blend      diffusemap<br />      map      textures/rock/skysand1_d.tga<br />      scale 5, 5<br />      vertexColor<br />   }    <br />    {<br />      blend      specularmap<br />      map      textures/rock/dirt03_s.tga<br />      scale 5, 5      <br />      vertexColor<br />   }           <br />   {<br />      blend      bumpmap<br />      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )<br />      scale 5, 5<br />   }     <br />   {<br />      blend      diffusemap<br />      map      textures/rock/sharprock3.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }        <br />   {<br />      blend      specularmap<br />      map      textures/rock/sharprock3_s.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }          <br />}</div>
+<br /><br /><br />in doom edit, hit Media-&gt; Reload and "F7" to view your progress as you change the values. you could alter the UV instead, but i tend to leave it alone and adjust externally. 
+<br /><br />someone please point out if there is an easier way for anything i said, i'm still learning.
+<br /><br />i'll try to get screenies later, not at home.</div>]]></body></post><post id="p92458" date="Posted: Wed May 04, 2005 6:20 pm "><author>megaman</author><body><![CDATA[<div class="postbody">this is a fucking great post <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</div>]]></body></post><post id="p92492" date="Posted: Wed May 04, 2005 8:48 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">megaman wrote:</div><div class="quotecontent">this is a fucking great post <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</div>
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1">http://www.menithings.com/main.php?acti ... 7&amp;manual=1</a><!-- m --></div>]]></body></post><post id="p93612" date="Posted: Wed May 11, 2005 12:16 am "><author>Kaziganthe</author><body><![CDATA[<div class="postbody">try snooping around at <!-- w --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.quake3bits.com/">http://www.quake3bits.com</a><!-- w --></div>]]></body></post><post id="p107914" date="Posted: Fri Aug 12, 2005 3:13 pm "><author>scorpion122</author><body><![CDATA[<div class="postbody">Thnks....I have really forgotten about this one.<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br />*g* glad to see some old guys lurking around here.
+<br />Edit: Somebody got an <span style="font-weight: bold">ASE</span> importer / exporter for lightwave?
+<br />Thanks a lot.</div>]]></body></post><post id="p81533" date="Posted: Thu Mar 10, 2005 7:37 pm "><author>scorpion122</author><body><![CDATA[<div class="postbody">Hello again.
+<br />Anybody got some links for rock/terrain modelling with lightwave/max?
+<br />Thnx a lot.
+<br />Must get into this terrain/rock theme to finish one after my mapping job dies eventually.<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p89794" date="Posted: Thu Apr 21, 2005 3:10 am "><author>elroacho</author><body><![CDATA[<div class="postbody">here's what i do...
+<br /><br />make a material file for your model like...
+<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// MY NEW TERRAIN MODEL<br />models/mapobjects/my_model/my_terrain<br />{<br />   stone<br />   {<br />      blend       bumpmap<br />      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))<br />      scale 1, 1      <br />   }      <br />   {<br />      blend      diffusemap<br />      map      textures/rock/skysand1_d.tga<br />      scale 1, 1<br />      vertexColor<br />   }    <br />    {<br />      blend      specularmap<br />      map      textures/rock/dirt03_s.tga<br />      scale 1, 1      <br />      vertexColor<br />   }           <br />   {<br />      blend      bumpmap<br />      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )<br />      scale 1, 1<br />   }     <br />   {<br />      blend      diffusemap<br />      map      textures/rock/sharprock3.tga<br />      scale 1, 1<br />      inverseVertexColor<br />   }        <br />   {<br />      blend      specularmap<br />      map      textures/rock/sharprock3_s.tga<br />      scale 1, 1<br />      inverseVertexColor<br />   }          <br />}</div><br /><br /><br />make a patch mesh about the size of the terrain, then<br /><br />Selection-&gt; Export-&gt; To OBJ<br /><br />load the object into lightwave and Modify-&gt; Center<br /><br />select Polygons (lower left), laso whole OBJ<br /><br />click on the "T" (bottom right<br /><br />select "OBJ_UVTextureMap" from the drop arrow to the right of "T"<br /><br />Map-&gt; Edit Maps-&gt; Delete Vertex Map<br /><br />File-&gt; Save (the model in your "base/models/mapobjects/my_model/" folder) as my_terrain.lwo<br /><br />File-&gt; Close All Objects<br /><br />File-&gt; Load (the model in your "base/models/mapobjects/my_model/" folder) my_terrain.lwo<br /><br />(i do that to remove any trailing unwanted surfaces)<br /><br />Multiply-&gt; Subdivide (a few times)<br /><br />modify the poly's the way i want them (add/remove)<br /><br />select Polygons (lower left), laso whole OBJ<br /><br />click on Surface near the bottom middle of the screen<br /><br />where it says "Name", type in the name of the material file you made:<br />models/mapobjects/my_model/my_terrain<br /><br />Map-&gt; Make UVs <br /><br />Texture name: TerrainUV<br />Map type: depends on the model (i mostly use Planer) <br />Axis: depends on the model (i mostly use X)<br /><br />usually you have to make a morph target to get it just right. then i make it as flat as possible. then align and Planer it on the X axis. to <br /><br />make a morph target...<br /><br />click on the "M" (bottom right)<br /><br />select "new" from the drop arrow to the right of "M"<br /><br />give it a name like "MorphFlat"<br /><br />then start rotating polys/points until they are near flat. (will not effect base model)<br /><br />select Polygons (lower left), laso whole OBJ (morph target - MorphFlat)<br /><br />and make new UV's<br /><br />tweak the UV's until it's stretched as little as possible.<br /><br />Map-&gt; Vertex Paint<br /><br />Edit-&gt; Create Vertex Color Map<br /><br />give it a name like VertexBlend. if your morph target is flat, you can use that to paint on. just select it from the dropdown arrow. <br /><br />near the top of the screen, click on the "T" and the "B" to get a better view. select the color box next to the eye dropper and pick "white". <br /><br />paint the model where you want the sand/lava/whatever to appear. then select the color box again and pick "black". now paint the model where <br /><br />you want the rock to be. (tip- moving the mouse in circles can help rotate the object the the vertex paint window)<br /><br />hit "Save" by your objects name in the vertex paint window.<br /><br />File-&gt; Save (and it's done)<br /><br />load it into doom edit (entity menu-&gt; new model)<br /><br />if the texture is stretched, adjust it by increasing/decreasing the "scale" values in the new material. like...<br /><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">// MY NEW TERRAIN MODEL<br />models/mapobjects/my_model/my_terrain<br />{<br />   stone<br />   {<br />      blend       bumpmap<br />      map         addnormals (textures/rock/skysand1_local.tga, heightmap (textures/rock/skysand1_bmp.tga, 4))<br />      scale 5, 5      <br />   }      <br />   {<br />      blend      diffusemap<br />      map      textures/rock/skysand1_d.tga<br />      scale 5, 5<br />      vertexColor<br />   }    <br />    {<br />      blend      specularmap<br />      map      textures/rock/dirt03_s.tga<br />      scale 5, 5      <br />      vertexColor<br />   }           <br />   {<br />      blend      bumpmap<br />      map      addnormals( textures/hell/sharprock2_local.tga, heightmap( textures/hell/sharprock2_h.tga, 8 ) )<br />      scale 5, 5<br />   }     <br />   {<br />      blend      diffusemap<br />      map      textures/rock/sharprock3.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }        <br />   {<br />      blend      specularmap<br />      map      textures/rock/sharprock3_s.tga<br />      scale 5, 5<br />      inverseVertexColor<br />   }          <br />}</div>
+<br /><br /><br />in doom edit, hit Media-&gt; Reload and "F7" to view your progress as you change the values. you could alter the UV instead, but i tend to leave it alone and adjust externally. 
+<br /><br />someone please point out if there is an easier way for anything i said, i'm still learning.
+<br /><br />i'll try to get screenies later, not at home.</div>]]></body></post><post id="p92458" date="Posted: Wed May 04, 2005 6:20 pm "><author>megaman</author><body><![CDATA[<div class="postbody">this is a fucking great post <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</div>]]></body></post><post id="p92492" date="Posted: Wed May 04, 2005 8:48 pm "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">megaman wrote:</div><div class="quotecontent">this is a fucking great post <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />would be cool to have some kind of tutorial (outside this forum) of it to link in a sticky</div>
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.menithings.com/main.php?action=how&amp;how_id=7&amp;manual=1">http://www.menithings.com/main.php?acti ... 7&amp;manual=1</a><!-- m --></div>]]></body></post><post id="p93612" date="Posted: Wed May 11, 2005 12:16 am "><author>Kaziganthe</author><body><![CDATA[<div class="postbody">try snooping around at <!-- w --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.quake3bits.com/">http://www.quake3bits.com</a><!-- w --></div>]]></body></post><post id="p107914" date="Posted: Fri Aug 12, 2005 3:13 pm "><author>scorpion122</author><body><![CDATA[<div class="postbody">Thnks....I have really forgotten about this one.<img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br />*g* glad to see some old guys lurking around here.
+<br />Edit: Somebody got an <span style="font-weight: bold">ASE</span> importer / exporter for lightwave?
+<br />Thanks a lot.</div>]]></body></post></posts></thread></xml>

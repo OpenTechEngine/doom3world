@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="8759"><title>custom weapon problem</title><posts><post id="76656" date="Posted: Wed Feb 09, 2005 12:19 am    Post subject: custom weapon problem"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hey does anyone have an idea why this is happening.&#13;
+<br/><br/>
+1) when I bring in a custom weapon into the game that has more than one moving part that builds up the weapon it's all diformed in the game and out of scale.&#13;
+<br/><br/>
+and lastly&#13;
+<br/><br/>
+2) Why does the fists skin become bright like light isn't effecting them&#13;
+<br/><br/><br/>
+any ideas? it's appreciated.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76659" date="Posted: Wed Feb 09, 2005 12:42 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I moved this from 'tech support' to 'modeling &amp; animations'.&#13;
+<br/><br/>
+1) can you give us some more info on what you're trying to do? Is the custom weapon a md5 or ase?&#13;
+<br/><br/>
+2) could be the material definition or the reference of the material in the model file. Can you post some of that? &#13;
+<br/><br/>
+It's hard to tell what you're doing wrong, when there's almost no description of what you are doing...<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76660" date="Posted: Wed Feb 09, 2005 12:52 am    Post subject: sorry"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yeah heres some info&#13;
+<br/><br/>
+I've built a revolver, the gun consists of the gun itself and the bullet spindle. I've turned the the arms and the gun parts into one object and rigged the bones to the model. I create all the md5anim states and md5mesh files needed to get the pistol working.&#13;
+<br/><br/>
+I get the weapon in the game only the pistol is deformed, out of shape and scale as if it resized and repostioned through the export. I've tried a few things to remedy this but the outcome is always the same. I've noticed if the gun isn't complicated and isn't built up of multiple parts then the model seems fine in the game (but this makes or boring animation)&#13;
+<br/><br/>
+for the gun itself I've just added two bones a gun bone and the bullet spindle bone so I can create the reload animations. I atach the spindle bone to the gun bone and finally the gun bone to the wrist bone of the gun hand.&#13;
+<br/><br/>
+here is a pic of the model to give you better ideas (bare in mind I DO get it in the game only it's screwed up)&#13;
+<br/><br/><a href="https://web.archive.org/web/20070509181516/http://www.blacktreeuk.net/snub_nose.html" target="_blank">http://www.blacktreeuk.net/snub_nose.html</a>&#13;
+<br/><br/>
+Thanks for the help[/img]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76666" date="Posted: Wed Feb 09, 2005 1:11 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm... did you use scaling on the bones in max? The exporter doesn't handle that, since there's no scaling of bones in md5.&#13;
+<br/><br/>
+Another possibility where things go wrong is the weights of the skin modifier. From reading your CV I assume you're familiar with how the skin modifier works so that's probably not the reason.&#13;
+<br/><br/>
+If you want you can send me the .max files and I'll have a look.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76674" date="Posted: Wed Feb 09, 2005 1:28 am    Post subject: "><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ahh!&#13;
+<br/><br/>
+scaling of bones....I have done that but only for the small bullet spindle...would that really deform the weapon in the game like that??&#13;
+<br/><br/>
+I'll give that ago anyway&#13;
+<br/><br/>
+Thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76675" date="Posted: Wed Feb 09, 2005 1:30 am    Post subject: further problems"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">if I'm still running into problems I'll send you the max file if thats ok.&#13;
+<br/><br/>
+Would you like the model to be rigged or should I just send you it all as is?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76703" date="Posted: Wed Feb 09, 2005 7:09 am    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It seems like a weighting problem, you can also send it to me via PM and a link and I might be able to look into it. Send the max file with bones setup.&#13;
+<br/><br/>
+[old superman comic voice]Seems like a problem for..... the Animators Think Tank!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> [end old superman comic voice]<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=17474" target="_blank" class="postlink">Download</a> the Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76724" date="Posted: Wed Feb 09, 2005 11:48 am    Post subject: damn"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I tried your idea der-ton and didn't scale the bones and it didn't work&#13;
+<br/><br/>
+The model was still enlarged. it's just this little problem then I'd be sorted. The gun fires and plays through the animation states only it's massive. It's just annoying cause I really want to animate this weapon haha.&#13;
+<br/><br/>
+I sent youa link to the file in a PM BloodRayne</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76725" date="Posted: Wed Feb 09, 2005 11:50 am    Post subject: ATT"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oh and I'd gladly join the ATT, I've just finished my Degree in animation.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76728" date="Posted: Wed Feb 09, 2005 12:12 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">^Nice to hear that. I'll add you to the list. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I will take a look tonight at your model and see what's wrong.<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=17474" target="_blank" class="postlink">Download</a> the Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76730" date="Posted: Wed Feb 09, 2005 12:16 pm    Post subject: Thanks pal"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks alot. I just don't understand it, how some of my custom weapons work and others don't, like I said the others were all pretty basic&#13;
+<br/><br/>
+You are working on the Hexen mod?? Just cuirous but is their any room for a modeller? I can't texture for **** but I'm a strong mapper modeller. I've just a got a job at a games company as a level designer and I start in a few weeks but I enjoyed Hexen/heritic first time round and would love to be apart of this.&#13;
+<br/><br/>
+If there is enough people I undertstand.&#13;
+<br/><br/>
+Well thanks for the help it's very appreciated.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76731" date="Posted: Wed Feb 09, 2005 12:18 pm    Post subject: site portfolio"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">My site is full of my work if you have the time check it out it's&#13;
+<br/><br/><a href="https://web.archive.org/web/20070509181516/http://www.blacktreeuk.net/" target="_blank">www.blacktreeuk.net</a>&#13;
+<br/><br/>
+Thanks BloodRayne</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76879" date="Posted: Thu Feb 10, 2005 10:04 am    Post subject: "><author>fjxokt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've the same problem as you birritan&#13;
+<br/>
+ i've tried to import my pick into doom3 and this is the result&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://img197.exs.cx/my.php?loc=img197&amp;image=pioched33jy.jpg" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://img197.exs.cx/img197/1796/pioched33jy.th.jpg" border="0"/></a>&#13;
+<br/>
+(and i didn't scale anything)<br/>_________________<br/>skizofrenia mod&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://skizofrenia.texuma.net/" target="_blank">http://skizofrenia.texuma.net</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="76907" date="Posted: Thu Feb 10, 2005 1:02 pm    Post subject: hey"><author>birritan</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Through curiousity does your pick(melee) weapin play through the states? like idle and attack because I'm struggling to get melee weapons to work. I made a screwdriver and a hammer which are in the game fine but I just don't have the weapon script file to make it actually work.&#13;
+<br/><br/>
+If your weapon works...apart from he scale problem could you tell me how you got the melee weapon to work?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

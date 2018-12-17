@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17125"><title>Q4=&gt;D3 ambient light material.</title><posts><post id="156384" date="Posted: Fri Sep 08, 2006 3:02 pm    Post subject: Q4=&gt;D3 ambient light material."><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'd like someone copy/paste me the Q4 ambient light material here for me, i think it's called <span style="font-weight: bold">lights/ambient_nofallof</span> or something like this, i can't verify, cause i gave my Q4 copy to a friend for holidays.&#13;
+<br/><br/>
+As far i remember, this ambient in Q4 is working (looking) better than the D3 ambient &amp; ambient2 materials...&#13;
+<br/><br/>
+Thanks.&#13;
+<br/><br/>
+ps: Can you post textures too?  <img src="/web/20061013023546im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156390" date="Posted: Fri Sep 08, 2006 4:01 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">a) it won't work.&#13;
+<br/>
+b) it's illegal.&#13;
+<br/>
+c) make your own ambient texture's.  it's easy &amp; if you do it properly you cna get very simular results.<br/>_________________<br/>Things I've <a href="/web/20061013023546/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156396" date="Posted: Fri Sep 08, 2006 7:19 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Its not illegal to paste the material itself (not the textures) isn't it?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156401" date="Posted: Fri Sep 08, 2006 8:49 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If by material you mean the actual shader script yeah that's not illegal.  Chances are you would be using different texture names anyway so even if you copy and paste (which we <span style="font-style: italic">all</span> do to a degree) you're going to alter the actual script to point to whatever images you want it to work with.  Also complex scripts may not always have the values you want for your custom textures so they may also need to be adjusted which once you've done all that then the shader script you copy and pasted is pretty much your own and you simply used an existing script from the game as a template to more easily work from.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156411" date="Posted: Fri Sep 08, 2006 9:48 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's a shame... i forgot about textures copyrights between Q4 &amp; D3. sorry.&#13;
+<br/><br/>
+But can you SHOW me the material (just the shader) they used for this ambient light, cause the vanilla D3 ambient lights don't really work like it is supposed to be, so i want to compare.&#13;
+<br/><br/>
+Or is there a really engine change to make it look like in Q4?<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156421" date="Posted: Fri Sep 08, 2006 11:55 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Doom 3:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeintensity( lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      map lights/squarelight1.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Quake 4:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeIntensity( gfx/lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      map gfx/lights/squarelight1a.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No different really other than forcehighquality in D3 which doesn't work (or at least never did for me) in Q4 so it's all in the renderer that changes the way it does an ambient light.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156425" date="Posted: Sat Sep 09, 2006 1:10 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks Bittoman.&#13;
+<br/>
+Just to be sure, is that Q4's ambient the nofallof's?  <img src="/web/20061013023546im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156486" date="Posted: Sat Sep 09, 2006 2:30 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I chose two identical ambient filters to show the best comparison but no, that ambient isn't the most popular choice of ambient filter for Q4 however the difference is mainly in the filter and not the shader definition.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156502" date="Posted: Sat Sep 09, 2006 4:37 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I will explain why i asked for that:&#13;
+<br/><br/>
+I was playing around with the D3 map editor, create rooms, lights, etc...&#13;
+<br/>
+For a custom model test, i created an ambient light for the entire "map", then i noticed that even if my ambient light radius envelloped the entire map, brushes who were looking backward from the light were not "ambiented" PLUS my models weren't too... &#13;
+<br/><br/>
+I remember i mapped in Q4 using ambient lights (the <span style="font-weight: bold">nofallof</span>'s one) and all was looking good.&#13;
+<br/>
+So, i made searches about raven changes on the ID engine (on D3W), and found that they change some ambient shaders.&#13;
+<br/><br/>
+That's why i asked for. Can you please post this material shader here? (to take a look at changes they made... if that's true.)&#13;
+<br/><br/>
+Thanks again.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156504" date="Posted: Sat Sep 09, 2006 4:40 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Material shader?  I posted that a ways up but if you mean the image it's just a white square on a black background.  Nothing special about it, just make a square selection in the middle of a small image (like 128x128) and fill it with white then inverse the selection and fill that with black.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156511" date="Posted: Sat Sep 09, 2006 4:53 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Lol. No, i call "material shader" the texture definition, not the texture itself...&#13;
+<br/><br/>
+The Material Shader of lights/ambientLight is:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeintensity( lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      map lights/squarelight1.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Sorry for missunderstood.  <img src="/web/20061013023546im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156512" date="Posted: Sat Sep 09, 2006 5:05 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's the same thing for two of three ambient light filters, the third is more or less identical aside from it doesn't explicitly call an image (but for some reason shows one in the light inspector), it's slightly different but I believe it is calling some explicit rendering functions that may be Q4 only.  You can try it but no garauntees.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight_nofall&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/><br/>
+   lightFalloffImage   _white&#13;
+<br/><br/>
+   {&#13;
+<br/>
+      map _white&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156513" date="Posted: Sat Sep 09, 2006 5:10 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks a lot man!  <img src="/web/20061013023546im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+no specific fonctions in what i see, just "_white" (white square emulation) that is in D3 too, anyway, thanks again!<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156384" date="Posted: Fri Sep 08, 2006 3:02 pm    Post subject: Q4=&gt;D3 ambient light material."><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'd like someone copy/paste me the Q4 ambient light material here for me, i think it's called <span style="font-weight: bold">lights/ambient_nofallof</span> or something like this, i can't verify, cause i gave my Q4 copy to a friend for holidays.&#13;
+<br/><br/>
+As far i remember, this ambient in Q4 is working (looking) better than the D3 ambient &amp; ambient2 materials...&#13;
+<br/><br/>
+Thanks.&#13;
+<br/><br/>
+ps: Can you post textures too?  <img src="/web/20061013022042im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156390" date="Posted: Fri Sep 08, 2006 4:01 pm    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">a) it won't work.&#13;
+<br/>
+b) it's illegal.&#13;
+<br/>
+c) make your own ambient texture's.  it's easy &amp; if you do it properly you cna get very simular results.<br/>_________________<br/>Things I've <a href="/web/20061013022042/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156396" date="Posted: Fri Sep 08, 2006 7:19 pm    Post subject: "><author>=NoMercy=</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Its not illegal to paste the material itself (not the textures) isn't it?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156401" date="Posted: Fri Sep 08, 2006 8:49 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">If by material you mean the actual shader script yeah that's not illegal.  Chances are you would be using different texture names anyway so even if you copy and paste (which we <span style="font-style: italic">all</span> do to a degree) you're going to alter the actual script to point to whatever images you want it to work with.  Also complex scripts may not always have the values you want for your custom textures so they may also need to be adjusted which once you've done all that then the shader script you copy and pasted is pretty much your own and you simply used an existing script from the game as a template to more easily work from.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156411" date="Posted: Fri Sep 08, 2006 9:48 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's a shame... i forgot about textures copyrights between Q4 &amp; D3. sorry.&#13;
+<br/><br/>
+But can you SHOW me the material (just the shader) they used for this ambient light, cause the vanilla D3 ambient lights don't really work like it is supposed to be, so i want to compare.&#13;
+<br/><br/>
+Or is there a really engine change to make it look like in Q4?<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156421" date="Posted: Fri Sep 08, 2006 11:55 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Doom 3:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeintensity( lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      map lights/squarelight1.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Quake 4:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeIntensity( gfx/lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      map gfx/lights/squarelight1a.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No different really other than forcehighquality in D3 which doesn't work (or at least never did for me) in Q4 so it's all in the renderer that changes the way it does an ambient light.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156425" date="Posted: Sat Sep 09, 2006 1:10 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks Bittoman.&#13;
+<br/>
+Just to be sure, is that Q4's ambient the nofallof's?  <img src="/web/20061013022042im_/http://doom3world.org/phpbb2/images/smiles/icon_rolleyes.gif" alt="Rolling Eyes" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156486" date="Posted: Sat Sep 09, 2006 2:30 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I chose two identical ambient filters to show the best comparison but no, that ambient isn't the most popular choice of ambient filter for Q4 however the difference is mainly in the filter and not the shader definition.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156502" date="Posted: Sat Sep 09, 2006 4:37 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I will explain why i asked for that:&#13;
+<br/><br/>
+I was playing around with the D3 map editor, create rooms, lights, etc...&#13;
+<br/>
+For a custom model test, i created an ambient light for the entire "map", then i noticed that even if my ambient light radius envelloped the entire map, brushes who were looking backward from the light were not "ambiented" PLUS my models weren't too... &#13;
+<br/><br/>
+I remember i mapped in Q4 using ambient lights (the <span style="font-weight: bold">nofallof</span>'s one) and all was looking good.&#13;
+<br/>
+So, i made searches about raven changes on the ID engine (on D3W), and found that they change some ambient shaders.&#13;
+<br/><br/>
+That's why i asked for. Can you please post this material shader here? (to take a look at changes they made... if that's true.)&#13;
+<br/><br/>
+Thanks again.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156504" date="Posted: Sat Sep 09, 2006 4:40 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Material shader?  I posted that a ways up but if you mean the image it's just a white square on a black background.  Nothing special about it, just make a square selection in the middle of a small image (like 128x128) and fill it with white then inverse the selection and fill that with black.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156511" date="Posted: Sat Sep 09, 2006 4:53 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Lol. No, i call "material shader" the texture definition, not the texture itself...&#13;
+<br/><br/>
+The Material Shader of lights/ambientLight is:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/>
+   lightFalloffImage   makeintensity( lights/squarelight1a.tga )&#13;
+<br/>
+   {&#13;
+<br/>
+      forceHighQuality&#13;
+<br/>
+      map lights/squarelight1.tga&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Sorry for missunderstood.  <img src="/web/20061013022042im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156512" date="Posted: Sat Sep 09, 2006 5:05 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's the same thing for two of three ambient light filters, the third is more or less identical aside from it doesn't explicitly call an image (but for some reason shows one in the light inspector), it's slightly different but I believe it is calling some explicit rendering functions that may be Q4 only.  You can try it but no garauntees.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">lights/ambientLight_nofall&#13;
+<br/>
+{&#13;
+<br/>
+   ambientLight&#13;
+<br/><br/>
+   lightFalloffImage   _white&#13;
+<br/><br/>
+   {&#13;
+<br/>
+      map _white&#13;
+<br/>
+      colored&#13;
+<br/>
+      zeroClamp&#13;
+<br/>
+   }&#13;
+<br/>
+}</td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156513" date="Posted: Sat Sep 09, 2006 5:10 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks a lot man!  <img src="/web/20061013022042im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+no specific fonctions in what i see, just "_white" (white square emulation) that is in D3 too, anyway, thanks again!<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17529"><title>problems with IK setup to 'lock feet on the ground'</title><posts><post id="p159698" date="Posted: Sun Oct 15, 2006 3:04 am "><author>hellborg</author><body><![CDATA[<div class="postbody">Hi! 
+<br /><br />I followed the BSoD/Introduction_to_Character_Animation guidelines to setup my IK, so that the character's feet are locked in place (in the game: to the floor). This was very useful for example to animate a jump animation - with the feet on the floor, the torso can simply be dragged and the legs stretch and react very naturally. As soon as the character lifts of, I can then explicitly move the feet to finish the animation. 
+<br /><br />To achieve this, controler bones are added to the feet, which are the child of "none" to keep them from moving when I animate other parts of the rig. It works great in Blender and it helps a lot to generate more complex animations and I can also export the animation, but doom3 does not like to have multiple root bones and does not load the model. So, instead of making the controler bones the child of none, I made them child of origin. Works fine in blender, but after I import it into Doom3, the legs don't react correctly anymore. It seems as if the feet stay on the ground as I wished, but the bones inbetween the feet and the body appear to be loose and the skin of the leg stretches instead of the natural way how the leg would stretch by rotations of the joints. I tried to bake the animation, but that did not help either.
+<br /><br />So, I wonder, if there is a way to properly bake all rotation/location positions, so that they import correctly into Doom3. Or, alternatively, if there is a different way how I can setup my character, so that I have a nice IK setup, which keeps the feet on the ground while I shift the torso etc.
+<br /><br />Thanks alot!</div>]]></body></post><post id="p159705" date="Posted: Sun Oct 15, 2006 5:05 am "><author>kat</author><body><![CDATA[<div class="postbody">How have you actually rigged the model? Are you using Blender auto IK system or have you set up a different system? What version of Blender are you using?
+<br /><br />Post a screenshot if you can as that's help to figure out what you've done and what you need to do. I could suggest something now but I'd rather see what you've done so you can work around the problem rather than causing you more problems than necessary.</div>]]></body></post><post id="p159714" date="Posted: Sun Oct 15, 2006 7:35 am "><author>hellborg</author><body><![CDATA[<div class="postbody">Thanks kat for offering your help.
+<br /><br />I am using Blender 2.42 and I do not use the autoIK.
+<br /><br />This is what I want to achieve:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/ikgoal.jpg">http://www.gravity-music.net/temp/ikgoal.jpg</a><!-- m -->
+<br /><br />At the same time I want to have the benefits of controling each individual foot using an IK solver:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/ikgoal2.jpg">http://www.gravity-music.net/temp/ikgoal2.jpg</a><!-- m -->
+<br /><br />As I said earlier, this all works fine in Blender, but after export to doom3, the legs are not reacting in the way how they react in Blender.
+<br /><br />This is what I have done:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/iksetup.jpg">http://www.gravity-music.net/temp/iksetup.jpg</a><!-- m -->
+<br /><br />I think all the important info is in the picture. The foot has a total of three bones: llegbfoot, backleg_l and backfoot_l (sorry for the senseless names...) basically, backleg_l is the control bone and does not have any weights assigned to it. llegbfoot and backfoot_l control the mesh. Additionally, llegbfoot has a ik solver that extends to all bones of the whole leg.</div>]]></body></post><post id="p159715" date="Posted: Sun Oct 15, 2006 8:37 am "><author>kat</author><body><![CDATA[<div class="postbody">hmm; fill in the gaps for me.. your leg chain of bones goes something like this?<div class="codetitle"><b>Code:</b></div><div class="codecontent">hips &gt; upper leg &gt; lower leg &gt; ankle &gt; foot</div><br /><br />With the 'helpers' connected to the 'foot' bone like this?<div class="codetitle"><b>Code:</b></div><div class="codecontent">foot &gt; helper 1<br />foot &gt; helper 2</div><br />Of all of that which one one the 'master' IK? The 'foot'?<br /><br />Try simply 'moving' the IK master to the two helper bones and see what that does. IOW you'll have two master IK controllers then, backfoot and backleg (I'm assuming those are the IK controllers from the info you've posted). It might be that not having an IK controller at the very end of the chain is was messing things up slightly.<br /><br />One of the other things you want to try and do is keep the bones 'upright' so the fat end is at the base of the bone becasue doing it the way you've done it looks like the chain reads from the top down rather than bottom up (hips &gt; foot instead of foot &gt; hips) which *may* also be effecting what happening. Take that with a pinch of salt though as I don't know if it 'technically' makes any difference. IOW it should go;<div class="codetitle"><b>Code:</b></div><div class="codecontent">foot &gt; ankle &gt; lower leg &gt; upper leg &gt; hips</div>That's as much as I can think without looking at the mesh itself.</div>]]></body></post><post id="p159716" date="Posted: Sun Oct 15, 2006 8:40 am "><author>kat</author><body><![CDATA[<div class="postbody">Oh wait... bleh I just remembered, there *might* be issues with the exporter and 2.42 so check that as well as a source of the problems by trying to export the model from 2.41 (you *should* be ok to open the 2.42 file in 2.41).
+<br /><br />That's an interested idea to lock the feet like that btw, I hadn't thought to try that with my own characters  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p159718" date="Posted: Sun Oct 15, 2006 9:36 am "><author>6th Venom</author><body><![CDATA[<div class="postbody">Hehe! So hellborg, you redid all bones and skin? Maybe it was the best solution for the wing problem, plus you use blender who is very different that max for Ik system.
+<br /><br />What i can say to you, is that in max you don't include helpers (IK) into the skin for export, IK in max is just used for YOU make your animations and export them.
+<br />D3 create its own IK system with your def declarations.
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">model your_monster {<br />   anim ik_pose            models/md5/monsters/your_monster.md5anim<br />...<br /></div><br />and<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">entityDef your_monster {<br />...<br />   "ik_numLegs"         "2"  //here it's for a standard 2 legs monster.<br />   "ik_footSize"           "20"<br />   "ik_minWaistAnkleDist"       "50"<br />   "ik_footUpTrace"      "32"<br />   "ik_footDownTrace"        "128"<br />   "ik_waist"            "Body"<br />   "ik_hip1"            "Lupleg"<br />   "ik_hip2"            "Rupleg"<br />   "ik_knee1"           "Lloleg"<br />   "ik_knee2"          "Rloleg"<br />   "ik_ankle1"                  "Lankle_r"<br />   "ik_ankle2"                  "Rankle_r"<br />   "ik_dir1"                  "Lknee"<br />   "ik_dir2"                  "Rknee"<br />   "ik_foot1"                  "cyber_lfoot_dust"<br />   "ik_foot2"                  "cyber_rfoot_dust"<br />...<br /></div>
+<br />So i think you don't got to export your IK system, cause you redefine it in your entity definition.
+<br />But maybe i missunderstood the blender problem here!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p159720" date="Posted: Sun Oct 15, 2006 10:00 am "><author>kat</author><body><![CDATA[<div class="postbody">This is about the IK system used in Blender to animate a model *not* a problem with trying to *export the IK*, which you correctly point out you can't do (D3 doesn't understand external 'IK' systems).
+<br /><br />It's possibly not a def file issue either, but I reserve judgement on that, as it sounds like a problem associated with the way the data is being exported (generally speaking bones that don't have any vert groups asigned to them are supposed to be ignored anyway regardless as to whether they get exported - they simply don't do anything)</div>]]></body></post><post id="p159721" date="Posted: Sun Oct 15, 2006 10:30 am "><author>hellborg</author><body><![CDATA[<div class="postbody">6th Venom:
+<br /><br />I actually did not need to redo the rig/skin - it all imported into blender from your md5mesh file. I also imported the testanimation you did and that worked fine as well. But as you point out, the md5mesh file does not contain a IK setup, so I need to redo it. The IK in the rig is not intended for in game IK functionality, but for helping to animate nice smooth animations. I also do not want to export this IK setup - I just want to use it to easily set the bone angles/positions for exporting nice animations.
+<br /><br />Kat:
+<br /><br />to make this easier, I will give the bones better names:
+<br /><br />foot for llegbfoot
+<br />toe for backfoot_l
+<br />legcontrol for backleg_l
+<br /><br />child-parent relationships:
+<br /><br />hip&gt;legup&gt;legmid&gt;leglow&gt;foot
+<br /><br />origin&gt;legcontrol&gt;toe
+<br /><br />both chains are 'somehow' glued together by the IK solver, as the 'target' (but not the parent?) of the foot is the legcontrol. See the picture for details on how the IK solver constraint was setup. Don't ask me why, this is just copying the way how it was suggested in the BSoC tutorial.
+<br /><br />the only bone in this setup that has an ik solver is the 'foot' bone, not the legcontrol. I guess, that the IK solver is controlled by the legcontrol bone, as legcontrol is a target of the IK solver.
+<br /><br />I will see if switching to 2.41 helps.</div>]]></body></post><post id="p159722" date="Posted: Sun Oct 15, 2006 10:48 am "><author>hellborg</author><body><![CDATA[<div class="postbody">hmm, I tried 2.41 and I also removed the af setup to avoid any potential problems with the altered bone rig, but neither of these solved or altered the problem....</div>]]></body></post><post id="p159724" date="Posted: Sun Oct 15, 2006 11:09 am "><author>kat</author><body><![CDATA[<div class="postbody">You know you're right... based on what you've posted there that shouldn't even be working at all because the control bones have no parent&gt;child relationship with any of the leg bones by the looks it.
+<br /><br />Those control bones *should* be parented to the legs because those are the bones they control UNLESS.....
+<br /><br />... What you did when you set the system up was extrude those control bones from the foot so they're part of the bone chain - this is hard to describe but essentially if you extrude a bone from another it remains 'connected' even if it's not set to influence the parent bone.
+<br /><br />The opposite to that is if you create the control bones independantly as seperate armature objects and then 'join' them all together the bones will move independantly of each other so will need a parent &gt; child relationship.
+<br /><br />I don't know if you've seen this video I did a while back that ran thru the basics (no audio) of <a href="https://web.archive.org/web/20070509181516/http://www.quake3bits.com/htm/tutorials/blender_ik_set_up.htm#creating" class="postlink">using Blender 'manual' IK chain setup</a>, it might prove helpful here.
+<br /><br />Basically there is something wrong with the relationship between your bones and at a guess based on what you've said the legs are breaking because those control bones are parented to the origin bone and not the 'foot' as they should be (according to the animation data on export).</div>]]></body></post><post id="p159727" date="Posted: Sun Oct 15, 2006 12:33 pm "><author>hellborg</author><body><![CDATA[<div class="postbody">Thanks for the info Kat,
+<br /><br />I think that I understand the basic manual IK setup. What I wanted to do and what I suceeded at within blender, was to lock the feet - by whatever means, so that animating the rig gets easier. I looked through various tutorials for IK setup and the technique I used here is the only one I came accross to do this. I do not really understand why it needs to be so difficult. The IK solver apparently can only be set up to influence bones in the hirarchy towards the parent bones. I.e., I can tell the IK to influence up to 5 parent bones. That works fine, if I set a IK constraint on the tip of the extremity. However, if I setup an IK solver in a central bone, such as the torso, and set a chain length of 3 bones, it will correctly influence only 3 bones up the hirachy, but then it will influence all the child bones (including the feet...). I tried to solve this problem with the above setup, which worked in blender, but then failed to export. I would be very happy, if there is another setup that would yield similar functionality. It just seems to be a very basic task to me...</div>]]></body></post><post id="p159730" date="Posted: Sun Oct 15, 2006 12:56 pm "><author>kat</author><body><![CDATA[<div class="postbody">hmmm I know what you're trying to do but I've never actually needed to try and use it so I can't confirm any technique to use. 
+<br /><br />The way the rig needs to be set up so that D3's ragdoll stuff works properly does tend to make rigging rather tricky when you want to do something like you're attempting at the moment. however, I do know there is supposed to be some 'walk helper' in 2.42 somewhere but I've yet to properly look at 2.42 myself so you may need to root around the elysiun forums and see what you can dig up.</div>]]></body></post><post id="p159742" date="Posted: Sun Oct 15, 2006 4:04 pm "><author>kat</author><body><![CDATA[<div class="postbody">OK, I just had a look at this on my Bob character. Basically this 'trick' won't work becasue it changes the parent &gt; child relationship between the anchor bone set and the origin.
+<br /><br />Becuase of the way the bones tend to reparent themselves to the origin bone (because of the way the constraint works) it means that in effect, and as D3 sees it, it's creating another 'limb' from where lowerLeg parents to origin.
+<br /><br />In other words, the *complete* leg chain has been broken (toe all the way up to hip - it's now in effect Toe &gt; lowerLeg, and then lowerLeg &gt; Hip).
+<br /><br />So although it animates and works fine in Blender (which it would do) it won't in D3 - technically it *is* working properly but because in effect there is now an extra 'limb' it means the skeleton is then behaving as if it should have one there, so relative to what you did in Blender, D3 will play that anim back 'incorrectly'.
+<br /><br />Basically this is an 'internal' trick used for animation *rendering* rather than character  animation for *exporting*, at least to D3.</div>]]></body></post><post id="p159762" date="Posted: Sun Oct 15, 2006 8:37 pm "><author>hellborg</author><body><![CDATA[<div class="postbody">Alright, let me try to look at this from another point of view. After I bake the animation, I would expect, that all the rotations and translations of the individual bones are 'baked' according to the IK solver. However, if I look at the ipo curves, I can see only the translations and rotations, which I explicitly applied while making the animation. And looking at the final result in Doom3, it appears, that these bone movements are the only ones, which are exported. Am I doing something wrong while I bake the animation?</div>]]></body></post><post id="p159766" date="Posted: Sun Oct 15, 2006 10:03 pm "><author>kat</author><body><![CDATA[<div class="postbody">You shouldn't need to use bake to be that explicit with the IPO data. Basically strategic keyframing will work as the anim gets baked on export anyway as part of the process.
+<br /><br />Baking *should* be fixing the pose for all bones at each frame of the anim and I think by default it bakes rotation/translation (not scaling or anything else), so I'd expect to see that sort of data in the MD5 anyway; if you're getting that then it at least means the animation is getting out of Blender OK. So based on what we're seeing it looks like the data *is* correct but D3 doesn't know how to work with the wierd parenting relationship it finds.
+<br /><br />Incedently have you tried running this mesh and anim through der_toms model viewer? If you get the same wierd behaviour in that as you do in D3 then yeah, there's something wrong with the exported data.
+<br /><br />I still think that what I mentioned above about the 'broken' leg is what's happening based on what I saw happen when I followed the BSoC docs myself.
+<br /><br />Have you tried (contraint) 'targeting' the legs at an empty or something like that? I seem to recall there was a way to target a bone at an object and have it not move unless the target was moved and using a constraint means that the parent &gt; child relationship shouldn't be adversly effected.</div>]]></body></post><post id="p159769" date="Posted: Mon Oct 16, 2006 12:16 am "><author>hellborg</author><body><![CDATA[<div class="postbody">THat was a good suggestion. I checked the modelviewer and the animation looks perfect. So, yes, it is soemthing about the animation within Doom3 that messes things up. One other thing about the animation in DOom3 is that the origin does not move along with the animation. Maybe that has something to do with it. I will try to experiment with this a bit more to figure out what is going on.</div>]]></body></post><post id="p159779" date="FIXME failed to extract"><author>kat</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - problems with IK setup to 'lock feet on the ground'</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=50&amp;t=17529&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e992306ff9005786fbed0265f432a4a3';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app15.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.doom3world.org\/phpbb2\/viewtopic.php?f=50&t=17529";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=50&amp;t=17529" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/faq.php?sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Thu Dec 27, 2007 5:02 pm<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=e992306ff9005786fbed0265f432a4a3">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=e992306ff9005786fbed0265f432a4a3">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=e992306ff9005786fbed0265f432a4a3">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=71&amp;sid=e992306ff9005786fbed0265f432a4a3">General Discussion</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=72&amp;sid=e992306ff9005786fbed0265f432a4a3">3D editing and offline rendering</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=50&amp;sid=e992306ff9005786fbed0265f432a4a3">Blender</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e992306ff9005786fbed0265f432a4a3">problems with IK setup to 'lock feet on the ground'</a></h2>
+
+	<p class="moderators">Moderator: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=e992306ff9005786fbed0265f432a4a3">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=post&amp;f=50&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=reply&amp;f=50&amp;t=17529&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>2</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 26 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=50&amp;t=17529#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e992306ff9005786fbed0265f432a4a3&amp;start=20">2</a>  <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=e992306ff9005786fbed0265f432a4a3&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529&amp;view=previous&amp;sid=e992306ff9005786fbed0265f432a4a3">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=50&amp;t=17529&amp;view=next&amp;sid=e992306ff9005786fbed0265f432a4a3">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p159698" id="p159698"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> problems with IK setup to 'lock feet on the ground'</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159698&amp;sid=e992306ff9005786fbed0265f432a4a3#p159698"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 3:04 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hi! 
+<br /><br />I followed the BSoD/Introduction_to_Character_Animation guidelines to setup my IK, so that the character's feet are locked in place (in the game: to the floor). This was very useful for example to animate a jump animation - with the feet on the floor, the torso can simply be dragged and the legs stretch and react very naturally. As soon as the character lifts of, I can then explicitly move the feet to finish the animation. 
+<br /><br />To achieve this, controler bones are added to the feet, which are the child of "none" to keep them from moving when I animate other parts of the rig. It works great in Blender and it helps a lot to generate more complex animations and I can also export the animation, but doom3 does not like to have multiple root bones and does not load the model. So, instead of making the controler bones the child of none, I made them child of origin. Works fine in blender, but after I import it into Doom3, the legs don't react correctly anymore. It seems as if the feet stay on the ground as I wished, but the bones inbetween the feet and the body appear to be loose and the skin of the leg stretches instead of the natural way how the leg would stretch by rotations of the joints. I tried to bake the animation, but that did not help either.
+<br /><br />So, I wonder, if there is a way to properly bake all rotation/location positions, so that they import correctly into Doom3. Or, alternatively, if there is a different way how I can setup my character, so that I have a nice IK setup, which keeps the feet on the ground while I shift the torso etc.
+<br /><br />Thanks alot!</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159705" id="p159705"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159705&amp;sid=e992306ff9005786fbed0265f432a4a3#p159705"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 5:05 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">How have you actually rigged the model? Are you using Blender auto IK system or have you set up a different system? What version of Blender are you using?
+<br /><br />Post a screenshot if you can as that's help to figure out what you've done and what you need to do. I could suggest something now but I'd rather see what you've done so you can work around the problem rather than causing you more problems than necessary.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159714" id="p159714"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159714&amp;sid=e992306ff9005786fbed0265f432a4a3#p159714"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 7:35 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Thanks kat for offering your help.
+<br /><br />I am using Blender 2.42 and I do not use the autoIK.
+<br /><br />This is what I want to achieve:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/ikgoal.jpg">http://www.gravity-music.net/temp/ikgoal.jpg</a><!-- m -->
+<br /><br />At the same time I want to have the benefits of controling each individual foot using an IK solver:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/ikgoal2.jpg">http://www.gravity-music.net/temp/ikgoal2.jpg</a><!-- m -->
+<br /><br />As I said earlier, this all works fine in Blender, but after export to doom3, the legs are not reacting in the way how they react in Blender.
+<br /><br />This is what I have done:
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.gravity-music.net/temp/iksetup.jpg">http://www.gravity-music.net/temp/iksetup.jpg</a><!-- m -->
+<br /><br />I think all the important info is in the picture. The foot has a total of three bones: llegbfoot, backleg_l and backfoot_l (sorry for the senseless names...) basically, backleg_l is the control bone and does not have any weights assigned to it. llegbfoot and backfoot_l control the mesh. Additionally, llegbfoot has a ik solver that extends to all bones of the whole leg.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159715" id="p159715"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159715&amp;sid=e992306ff9005786fbed0265f432a4a3#p159715"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 8:37 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">hmm; fill in the gaps for me.. your leg chain of bones goes something like this?<div class="codetitle"><b>Code:</b></div><div class="codecontent">hips &gt; upper leg &gt; lower leg &gt; ankle &gt; foot</div><br /><br />With the 'helpers' connected to the 'foot' bone like this?<div class="codetitle"><b>Code:</b></div><div class="codecontent">foot &gt; helper 1<br />foot &gt; helper 2</div><br />Of all of that which one one the 'master' IK? The 'foot'?<br /><br />Try simply 'moving' the IK master to the two helper bones and see what that does. IOW you'll have two master IK controllers then, backfoot and backleg (I'm assuming those are the IK controllers from the info you've posted). It might be that not having an IK controller at the very end of the chain is was messing things up slightly.<br /><br />One of the other things you want to try and do is keep the bones 'upright' so the fat end is at the base of the bone becasue doing it the way you've done it looks like the chain reads from the top down rather than bottom up (hips &gt; foot instead of foot &gt; hips) which *may* also be effecting what happening. Take that with a pinch of salt though as I don't know if it 'technically' makes any difference. IOW it should go;<div class="codetitle"><b>Code:</b></div><div class="codecontent">foot &gt; ankle &gt; lower leg &gt; upper leg &gt; hips</div>That's as much as I can think without looking at the mesh itself.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159716" id="p159716"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159716&amp;sid=e992306ff9005786fbed0265f432a4a3#p159716"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 8:40 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Oh wait... bleh I just remembered, there *might* be issues with the exporter and 2.42 so check that as well as a source of the problems by trying to export the model from 2.41 (you *should* be ok to open the 2.42 file in 2.41).
+<br /><br />That's an interested idea to lock the feet like that btw, I hadn't thought to try that with my own characters  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159718" id="p159718"></a>
+				<b class="postauthor">6th Venom</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159718&amp;sid=e992306ff9005786fbed0265f432a4a3#p159718"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 9:36 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Last man standing</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=14848.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Tue Nov 22, 2005 12:42 am<br /><b>Posts:</b> 1172<br /><b>Location:</b> somewhere over the rainbow...				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Hehe! So hellborg, you redid all bones and skin? Maybe it was the best solution for the wing problem, plus you use blender who is very different that max for Ik system.
+<br /><br />What i can say to you, is that in max you don't include helpers (IK) into the skin for export, IK in max is just used for YOU make your animations and export them.
+<br />D3 create its own IK system with your def declarations.
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">model your_monster {<br />   anim ik_pose            models/md5/monsters/your_monster.md5anim<br />...<br /></div><br />and<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">entityDef your_monster {<br />...<br />   "ik_numLegs"         "2"  //here it's for a standard 2 legs monster.<br />   "ik_footSize"           "20"<br />   "ik_minWaistAnkleDist"       "50"<br />   "ik_footUpTrace"      "32"<br />   "ik_footDownTrace"        "128"<br />   "ik_waist"            "Body"<br />   "ik_hip1"            "Lupleg"<br />   "ik_hip2"            "Rupleg"<br />   "ik_knee1"           "Lloleg"<br />   "ik_knee2"          "Rloleg"<br />   "ik_ankle1"                  "Lankle_r"<br />   "ik_ankle2"                  "Rankle_r"<br />   "ik_dir1"                  "Lknee"<br />   "ik_dir2"                  "Rknee"<br />   "ik_foot1"                  "cyber_lfoot_dust"<br />   "ik_foot2"                  "cyber_rfoot_dust"<br />...<br /></div>
+<br />So i think you don't got to export your IK system, cause you redefine it in your entity definition.
+<br />But maybe i missunderstood the blender problem here!  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+
+											<span class="postbody"><br />_________________<br />If that smell like a shit &amp; look like a shit... it's a shit. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=14848&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159720" id="p159720"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159720&amp;sid=e992306ff9005786fbed0265f432a4a3#p159720"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 10:00 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">This is about the IK system used in Blender to animate a model *not* a problem with trying to *export the IK*, which you correctly point out you can't do (D3 doesn't understand external 'IK' systems).
+<br /><br />It's possibly not a def file issue either, but I reserve judgement on that, as it sounds like a problem associated with the way the data is being exported (generally speaking bones that don't have any vert groups asigned to them are supposed to be ignored anyway regardless as to whether they get exported - they simply don't do anything)</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159721" id="p159721"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159721&amp;sid=e992306ff9005786fbed0265f432a4a3#p159721"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 10:30 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">6th Venom:
+<br /><br />I actually did not need to redo the rig/skin - it all imported into blender from your md5mesh file. I also imported the testanimation you did and that worked fine as well. But as you point out, the md5mesh file does not contain a IK setup, so I need to redo it. The IK in the rig is not intended for in game IK functionality, but for helping to animate nice smooth animations. I also do not want to export this IK setup - I just want to use it to easily set the bone angles/positions for exporting nice animations.
+<br /><br />Kat:
+<br /><br />to make this easier, I will give the bones better names:
+<br /><br />foot for llegbfoot
+<br />toe for backfoot_l
+<br />legcontrol for backleg_l
+<br /><br />child-parent relationships:
+<br /><br />hip&gt;legup&gt;legmid&gt;leglow&gt;foot
+<br /><br />origin&gt;legcontrol&gt;toe
+<br /><br />both chains are 'somehow' glued together by the IK solver, as the 'target' (but not the parent?) of the foot is the legcontrol. See the picture for details on how the IK solver constraint was setup. Don't ask me why, this is just copying the way how it was suggested in the BSoC tutorial.
+<br /><br />the only bone in this setup that has an ik solver is the 'foot' bone, not the legcontrol. I guess, that the IK solver is controlled by the legcontrol bone, as legcontrol is a target of the IK solver.
+<br /><br />I will see if switching to 2.41 helps.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159722" id="p159722"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159722&amp;sid=e992306ff9005786fbed0265f432a4a3#p159722"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 10:48 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">hmm, I tried 2.41 and I also removed the af setup to avoid any potential problems with the altered bone rig, but neither of these solved or altered the problem....</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159724" id="p159724"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159724&amp;sid=e992306ff9005786fbed0265f432a4a3#p159724"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 11:09 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">You know you're right... based on what you've posted there that shouldn't even be working at all because the control bones have no parent&gt;child relationship with any of the leg bones by the looks it.
+<br /><br />Those control bones *should* be parented to the legs because those are the bones they control UNLESS.....
+<br /><br />... What you did when you set the system up was extrude those control bones from the foot so they're part of the bone chain - this is hard to describe but essentially if you extrude a bone from another it remains 'connected' even if it's not set to influence the parent bone.
+<br /><br />The opposite to that is if you create the control bones independantly as seperate armature objects and then 'join' them all together the bones will move independantly of each other so will need a parent &gt; child relationship.
+<br /><br />I don't know if you've seen this video I did a while back that ran thru the basics (no audio) of <a href="https://web.archive.org/web/20070509181516/http://www.quake3bits.com/htm/tutorials/blender_ik_set_up.htm#creating" class="postlink">using Blender 'manual' IK chain setup</a>, it might prove helpful here.
+<br /><br />Basically there is something wrong with the relationship between your bones and at a guess based on what you've said the legs are breaking because those control bones are parented to the origin bone and not the 'foot' as they should be (according to the animation data on export).</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159727" id="p159727"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159727&amp;sid=e992306ff9005786fbed0265f432a4a3#p159727"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 12:33 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Thanks for the info Kat,
+<br /><br />I think that I understand the basic manual IK setup. What I wanted to do and what I suceeded at within blender, was to lock the feet - by whatever means, so that animating the rig gets easier. I looked through various tutorials for IK setup and the technique I used here is the only one I came accross to do this. I do not really understand why it needs to be so difficult. The IK solver apparently can only be set up to influence bones in the hirarchy towards the parent bones. I.e., I can tell the IK to influence up to 5 parent bones. That works fine, if I set a IK constraint on the tip of the extremity. However, if I setup an IK solver in a central bone, such as the torso, and set a chain length of 3 bones, it will correctly influence only 3 bones up the hirachy, but then it will influence all the child bones (including the feet...). I tried to solve this problem with the above setup, which worked in blender, but then failed to export. I would be very happy, if there is another setup that would yield similar functionality. It just seems to be a very basic task to me...</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159730" id="p159730"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159730&amp;sid=e992306ff9005786fbed0265f432a4a3#p159730"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 12:56 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">hmmm I know what you're trying to do but I've never actually needed to try and use it so I can't confirm any technique to use. 
+<br /><br />The way the rig needs to be set up so that D3's ragdoll stuff works properly does tend to make rigging rather tricky when you want to do something like you're attempting at the moment. however, I do know there is supposed to be some 'walk helper' in 2.42 somewhere but I've yet to properly look at 2.42 myself so you may need to root around the elysiun forums and see what you can dig up.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159742" id="p159742"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159742&amp;sid=e992306ff9005786fbed0265f432a4a3#p159742"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 4:04 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">OK, I just had a look at this on my Bob character. Basically this 'trick' won't work becasue it changes the parent &gt; child relationship between the anchor bone set and the origin.
+<br /><br />Becuase of the way the bones tend to reparent themselves to the origin bone (because of the way the constraint works) it means that in effect, and as D3 sees it, it's creating another 'limb' from where lowerLeg parents to origin.
+<br /><br />In other words, the *complete* leg chain has been broken (toe all the way up to hip - it's now in effect Toe &gt; lowerLeg, and then lowerLeg &gt; Hip).
+<br /><br />So although it animates and works fine in Blender (which it would do) it won't in D3 - technically it *is* working properly but because in effect there is now an extra 'limb' it means the skeleton is then behaving as if it should have one there, so relative to what you did in Blender, D3 will play that anim back 'incorrectly'.
+<br /><br />Basically this is an 'internal' trick used for animation *rendering* rather than character  animation for *exporting*, at least to D3.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159762" id="p159762"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159762&amp;sid=e992306ff9005786fbed0265f432a4a3#p159762"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 8:37 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Alright, let me try to look at this from another point of view. After I bake the animation, I would expect, that all the rotations and translations of the individual bones are 'baked' according to the IK solver. However, if I look at the ipo curves, I can see only the translations and rotations, which I explicitly applied while making the animation. And looking at the final result in Doom3, it appears, that these bone movements are the only ones, which are exported. Am I doing something wrong while I bake the animation?</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159766" id="p159766"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159766&amp;sid=e992306ff9005786fbed0265f432a4a3#p159766"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Oct 15, 2006 10:03 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">"...mostly harmless?!"</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=8.gif" width="48" height="48" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu Nov 08, 2001 11:00 pm<br /><b>Posts:</b> 4940<br /><b>Location:</b> UK, York				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">You shouldn't need to use bake to be that explicit with the IPO data. Basically strategic keyframing will work as the anim gets baked on export anyway as part of the process.
+<br /><br />Baking *should* be fixing the pose for all bones at each frame of the anim and I think by default it bakes rotation/translation (not scaling or anything else), so I'd expect to see that sort of data in the MD5 anyway; if you're getting that then it at least means the animation is getting out of Blender OK. So based on what we're seeing it looks like the data *is* correct but D3 doesn't know how to work with the wierd parenting relationship it finds.
+<br /><br />Incedently have you tried running this mesh and anim through der_toms model viewer? If you get the same wierd behaviour in that as you do in D3 then yeah, there's something wrong with the exported data.
+<br /><br />I still think that what I mentioned above about the 'broken' leg is what's happening based on what I saw happen when I followed the BSoC docs myself.
+<br /><br />Have you tried (contraint) 'targeting' the legs at an empty or something like that? I seem to recall there was a way to target a bone at an object and have it not move unless the target was moved and using a constraint means that the parent &gt; child relationship shouldn't be adversly effected.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />Co-Admin</a> - <a href="https://web.archive.org/web/20070509181516/http://www.katsbits.com/" class="postlink">Modelling and modding tutorials and tips</a></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=8&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p159769" id="p159769"></a>
+				<b class="postauthor">hellborg</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=159769&amp;sid=e992306ff9005786fbed0265f432a4a3#p159769"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Mon Oct 16, 2006 12:16 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 30, 2005 9:59 am<br /><b>Posts:</b> 277				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">THat was a good suggestion. I checked the modelviewer and the animation looks perfect. So, yes, it is soemthing about the animation within Doom3 that messes things up. One other thing about the animation in DOom3 is that the origin does not move along with the animation. Maybe that has something to do with it. I will try to experiment with this a bit more to figure out what is going on.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=50&amp;t=17529#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12392&amp;sid=e992306ff9005786fbed0265f432a4a3"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p159779" id="p159779"></a>
+				<b class="postauthor" style="color: #AA0000">kat</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:&gt;
+
+
+
+
+<!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 23:52:17 Sep 25, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></b></div></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

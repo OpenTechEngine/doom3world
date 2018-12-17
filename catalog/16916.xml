@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16916"><title>.skin file for .ase weapon model</title><posts><post id="154449" date="Posted: Mon Aug 21, 2006 9:24 am    Post subject: .skin file for .ase weapon model"><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm trying to get my Q4 weapon models into D3 for hours now and ran out of ideas what could be wrong... They show up in pure black, no matter what I do.&#13;
+<br/><br/>
+I'm pretty sure the .ase file is o.k., because if I put that into the map as a worldmodel (i.e. not defined as a weapon) it appears as I want it to (- NOT black <img src="/web/20061013060947im_/http://doom3world.org/phpbb2/images/smiles/icon_cool.gif" alt="Cool" border="0"/> ).&#13;
+<br/><br/>
+The BITMAP path in the .ase file (one of them) looks like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">*BITMAP "\\base\textures\bb2\rot_ssd"</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... And the material like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/bb2/rot_ssd   &#13;
+<br/>
+{ &#13;
+<br/>
+   qer_editorimage textures/bb2/rot_ssd.tga&#13;
+<br/>
+         diffusemap        textures/bb2/rot_ssd.tga &#13;
+<br/>
+   { &#13;
+<br/>
+       blend    add &#13;
+<br/>
+       map       textures/bb2/rot_ssd.tga &#13;
+<br/>
+       rgb      0.75 &#13;
+<br/>
+   } &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+My first guess was that the "\"s and "/"s have to point in the same direction but all combinations I tried showed no effect.&#13;
+<br/><br/>
+So what's left is the .skin file...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin skins/weapons/ww_machinegun&#13;
+<br/>
+{&#13;
+<br/>
+   "textures/bb2/rot_ssd"      "textures/bb2/rot_ssd"   &#13;
+<br/>
+}&#13;
+<br/>
+skin skins/weapons/ww_machinegun_pickup&#13;
+<br/>
+{&#13;
+<br/>
+   "textures/bb2/rot_ssd"      "textures/common/nodraw"   &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+... and the .def file:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herrws_weapon_machinegun&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "weapon_machinegun"&#13;
+<br/>
+   "model"               "models/weapons/machinegun/mach2_d3.ase"   &#13;
+<br/>
+   "editor_ignore"            "0"&#13;
+<br/>
+   "inv_icon"            "gfx/guis/hud/icons/item_machinegun.tga"&#13;
+<br/>
+   "skin"               "skins/weapons/ww_machinegun"   &#13;
+<br/>
+   "skin_pickup"            "skins/weapons/ww_machinegun_pickup"   &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060947/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154458" date="Posted: Mon Aug 21, 2006 11:07 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are you trying to use an ASE file for your hud weapon? Or as the thing entity that you pick up?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060947/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154467" date="Posted: Mon Aug 21, 2006 12:44 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">As the entities you can pick up. The one in the HUD has to be a .md5mesh as far as I know.<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060947/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154526" date="Posted: Tue Aug 22, 2006 5:48 am    Post subject: Re: .skin file for .ase weapon model"><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">...What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...</td>	</tr></table><span class="postbody">LOL, you're going to kick yourself... but using "q4base" is correct, "base" isn't for Quake 4 ase's.&#13;
+<br/><br/>
+I use "//q4base/" and it works without fail, so if that still doesn't work for you then there's something else going on here.&#13;
+<br/><br/>
+With regards to skins.... I'm not entirely sure they're supposed to work with ASE/LWO models, does the game have any set up to use them (none MD5 meshes that is)?<br/>_________________<br/><a href="/web/20061013060947/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060947im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013060947/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154534" date="Posted: Tue Aug 22, 2006 8:03 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">...What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...</td>	</tr></table><span class="postbody">LOL, you're going to kick yourself... but using "q4base" is correct, "base" isn't for Quake 4 ase's.</span></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Hm... Okay, that was misunderstandable (- damn german school-english...  <img src="/web/20061013060947im_/http://doom3world.org/phpbb2/images/smiles/icon_evil.gif" alt="Evil or Very Mad" border="0"/>  ). What I intended to say is, that the .ASE models work fine in Quake4 (with "q4base" in their *BITMAP path), but the same models appear pure black when I try to put them into Doom3 as weapon models (then with "base" instead of "q4base" in the *BITMAP path).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">With regards to skins.... I'm not entirely sure they're supposed to work with ASE/LWO models</td>	</tr></table><span class="postbody">&#13;
+<br/>
+In Quake4 they do! An example is the fading "_pickup" skin replacing the default one.&#13;
+<br/><br/>
+I had a quick look into weapon_machinegun.def (Doom3):&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef weapon_machinegun {&#13;
+<br/>
+   "editor_color"            ".3 .3 1"&#13;
+<br/>
+   "editor_mins"            "-16 -16 0"&#13;
+<br/>
+   "editor_maxs"            "16 16 32"&#13;
+<br/>
+   "editor_usage"            "Machinegun"&#13;
+<br/>
+   "editor_rotatable"         "1"&#13;
+<br/><br/>
+   "spawnclass"            "idItem"&#13;
+<br/>
+   "size"                  "32 32 32"&#13;
+<br/>
+   "model"                  "models/weapons/machinegun/w_machinegun.lwo"&#13;
+<br/>
+   "model_view"             "viewmodel_machinegun"&#13;
+<br/>
+   "model_world"             "worldmodel_machinegun"&#13;
+<br/>
+   "joint_attach"            "MGATTACHER"&#13;
+<br/>
+   "def_dropItem"            "moveable_item_machinegun"&#13;
+<br/><br/>
+   "weaponAngleOffsetAverages" "10"&#13;
+<br/>
+   "weaponAngleOffsetScale"    ".25"&#13;
+<br/>
+   "weaponAngleOffsetMax"      "15"&#13;
+<br/>
+   "weaponOffsetTime"         "400"&#13;
+<br/>
+   "weaponOffsetScale"         "0.005"&#13;
+<br/><br/><br/>
+   "inv_name"               "Machinegun"&#13;
+<br/>
+   "inv_weapon"            "weapon_machinegun"&#13;
+<br/>
+   "inv_ammo_clip"            "10"&#13;
+<br/>
+   "inv_item"               "5"&#13;
+<br/><br/>
+   "weapon_scriptobject"      "weapon_machinegun"&#13;
+<br/>
+   "def_projectile"         "projectile_bullet_machinegun"&#13;
+<br/>
+   "ammoType"               "ammo_clip"&#13;
+<br/>
+   "ammoRequired"            "1"&#13;
+<br/>
+   "clipSize"               "60"&#13;
+<br/>
+   "lowAmmo"               "10"&#13;
+<br/>
+   "mtr_flashShader"         "muzzleflash"&#13;
+<br/>
+   "flashColor"            "1 0.8 0.4"&#13;
+<br/>
+   "flashRadius"            "120"&#13;
+<br/>
+   "silent_fire"            "0"&#13;
+<br/>
+   &#13;
+<br/>
+   "gui"                  "guis/weapons/machinegun.gui"&#13;
+<br/>
+   "mtr_guiLightShader"      "lights/viewWeaponGuiLight"&#13;
+<br/>
+   &#13;
+<br/>
+   "icon"                  "guis/assets/hud/wpn_3"&#13;
+<br/>
+   "muzzle_kick_time"         "0.2"&#13;
+<br/>
+   "muzzle_kick_maxtime"      "0.6"&#13;
+<br/>
+   "muzzle_kick_angles"      "0 0 0"&#13;
+<br/>
+   "muzzle_kick_offset"      "1 1 2"&#13;
+<br/>
+   "recoilTime"            "145"&#13;
+<br/>
+   "recoilAngles"            "-1 0 0"&#13;
+<br/><br/>
+   "hide_time"               "0.3"                        // time to hide weapon when talking to npcs or looking at guis&#13;
+<br/>
+   "hide_distance"            "-15"                        // distance to offset weapon when talking to npcs or looking at guis&#13;
+<br/><br/>
+   "smoke_muzzle"            "mgmuzzlesmoke.prt"&#13;
+<br/>
+   "def_ejectBrass"         "debris_brass"&#13;
+<br/>
+   "ejectBrassDelay"         "10"&#13;
+<br/><br/>
+   "snd_acquire"            "sound_weapon_acquire"&#13;
+<br/>
+   "snd_respawn"            "sound_weapon_respawn"&#13;
+<br/>
+   "snd_lowammo"             "player_machinegun_lowammo"&#13;
+<br/>
+   "snd_glass"               "bullet_impact_glass"&#13;
+<br/>
+   "skin_invisible"         "skins/machinegun_invis"&#13;
+<br/>
+   &#13;
+<br/>
+   "spread"               "1"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+The "model" in the map is a .lwo, not an .ase.&#13;
+<br/><br/>
+And I guess that "skin_invisible" belongs to the .md5mesh in the HUD.&#13;
+<br/><br/>
+It looks like this...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin skins/machinegun_invis {&#13;
+<br/>
+   models/weapons/machinegun/machinegun models/weapons/machinegun/machinegun_invis&#13;
+<br/>
+   models/characters/player/arm2   models/characters/player/arm2_invis&#13;
+<br/>
+   models/weapons/machinegun/w_machinegun models/weapons/machinegun/w_machinegun_invis&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+... which brings up another difference to Quake4, where the materials are separated by "".&#13;
+<br/><br/>
+Hm, let's see what the models do without any "skin" declaration in their .def file...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060947/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154536" date="Posted: Tue Aug 22, 2006 8:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">... WORKS! <img src="/web/20061013060947im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> - Should have tried that earlier.&#13;
+<br/><br/>
+The bad thing about this is, that there is no pick-up effect.&#13;
+<br/><br/>
+And the question remains, if it's impossible to define a "skin" for .ase/.lwo models in Doom3...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060947/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154555" date="Posted: Tue Aug 22, 2006 4:13 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You might be able to 'force the pickup effect but using a triggered fx event, you could either use a trigger field targeted at an fx entity or use the pickup entity itself. Both should trigger an effect entity place approx to the center or origin of the pickup.&#13;
+<br/><br/>
+If //base/ didn't work you could have tried the other references... //purgatory and //model....<br/>_________________<br/><a href="/web/20061013060947/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060947im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013060947/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154636" date="Posted: Wed Aug 23, 2006 7:34 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">If //base/ didn't work you could have tried the other references... //purgatory and //model....</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I had tried both, but with no success. So meanwhile I'm pretty sure that it is as you supposed earlier: .ase models can't have a "skin" in their definition <img src="/web/20061013060947im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">You might be able to 'force the pickup effect but using a triggered fx event, you could either use a trigger field targeted at an fx entity or use the pickup entity itself. Both should trigger an effect entity place approx to the center or origin of the pickup.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+That's a good alternative! I think I'll do it that way...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060947/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154449" date="Posted: Mon Aug 21, 2006 9:24 am    Post subject: .skin file for .ase weapon model"><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm trying to get my Q4 weapon models into D3 for hours now and ran out of ideas what could be wrong... They show up in pure black, no matter what I do.&#13;
+<br/><br/>
+I'm pretty sure the .ase file is o.k., because if I put that into the map as a worldmodel (i.e. not defined as a weapon) it appears as I want it to (- NOT black <img src="/web/20061013060554im_/http://doom3world.org/phpbb2/images/smiles/icon_cool.gif" alt="Cool" border="0"/> ).&#13;
+<br/><br/>
+The BITMAP path in the .ase file (one of them) looks like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">*BITMAP "\\base\textures\bb2\rot_ssd"</td>	</tr></table><span class="postbody">&#13;
+<br/>
+... And the material like this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">textures/bb2/rot_ssd   &#13;
+<br/>
+{ &#13;
+<br/>
+   qer_editorimage textures/bb2/rot_ssd.tga&#13;
+<br/>
+         diffusemap        textures/bb2/rot_ssd.tga &#13;
+<br/>
+   { &#13;
+<br/>
+       blend    add &#13;
+<br/>
+       map       textures/bb2/rot_ssd.tga &#13;
+<br/>
+       rgb      0.75 &#13;
+<br/>
+   } &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+My first guess was that the "\"s and "/"s have to point in the same direction but all combinations I tried showed no effect.&#13;
+<br/><br/>
+So what's left is the .skin file...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin skins/weapons/ww_machinegun&#13;
+<br/>
+{&#13;
+<br/>
+   "textures/bb2/rot_ssd"      "textures/bb2/rot_ssd"   &#13;
+<br/>
+}&#13;
+<br/>
+skin skins/weapons/ww_machinegun_pickup&#13;
+<br/>
+{&#13;
+<br/>
+   "textures/bb2/rot_ssd"      "textures/common/nodraw"   &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+... and the .def file:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef herrws_weapon_machinegun&#13;
+<br/>
+{&#13;
+<br/>
+   "inherit"            "weapon_machinegun"&#13;
+<br/>
+   "model"               "models/weapons/machinegun/mach2_d3.ase"   &#13;
+<br/>
+   "editor_ignore"            "0"&#13;
+<br/>
+   "inv_icon"            "gfx/guis/hud/icons/item_machinegun.tga"&#13;
+<br/>
+   "skin"               "skins/weapons/ww_machinegun"   &#13;
+<br/>
+   "skin_pickup"            "skins/weapons/ww_machinegun_pickup"   &#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060554/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154458" date="Posted: Mon Aug 21, 2006 11:07 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Are you trying to use an ASE file for your hud weapon? Or as the thing entity that you pick up?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060554/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154467" date="Posted: Mon Aug 21, 2006 12:44 pm    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">As the entities you can pick up. The one in the HUD has to be a .md5mesh as far as I know.<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060554/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154526" date="Posted: Tue Aug 22, 2006 5:48 am    Post subject: Re: .skin file for .ase weapon model"><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Herr W wrote:</b></span></td>	</tr><tr><td class="quote">...What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...</td>	</tr></table><span class="postbody">LOL, you're going to kick yourself... but using "q4base" is correct, "base" isn't for Quake 4 ase's.&#13;
+<br/><br/>
+I use "//q4base/" and it works without fail, so if that still doesn't work for you then there's something else going on here.&#13;
+<br/><br/>
+With regards to skins.... I'm not entirely sure they're supposed to work with ASE/LWO models, does the game have any set up to use them (none MD5 meshes that is)?<br/>_________________<br/><a href="/web/20061013060554/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060554im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013060554/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154534" date="Posted: Tue Aug 22, 2006 8:03 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">...What confuses me most is that exactly the same files work in Q4. The only difference is that "q4base" instead of just "base" in the *BITMAP path...</td>	</tr></table><span class="postbody">LOL, you're going to kick yourself... but using "q4base" is correct, "base" isn't for Quake 4 ase's.</span></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Hm... Okay, that was misunderstandable (- damn german school-english...  <img src="/web/20061013060554im_/http://doom3world.org/phpbb2/images/smiles/icon_evil.gif" alt="Evil or Very Mad" border="0"/>  ). What I intended to say is, that the .ASE models work fine in Quake4 (with "q4base" in their *BITMAP path), but the same models appear pure black when I try to put them into Doom3 as weapon models (then with "base" instead of "q4base" in the *BITMAP path).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">With regards to skins.... I'm not entirely sure they're supposed to work with ASE/LWO models</td>	</tr></table><span class="postbody">&#13;
+<br/>
+In Quake4 they do! An example is the fading "_pickup" skin replacing the default one.&#13;
+<br/><br/>
+I had a quick look into weapon_machinegun.def (Doom3):&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef weapon_machinegun {&#13;
+<br/>
+   "editor_color"            ".3 .3 1"&#13;
+<br/>
+   "editor_mins"            "-16 -16 0"&#13;
+<br/>
+   "editor_maxs"            "16 16 32"&#13;
+<br/>
+   "editor_usage"            "Machinegun"&#13;
+<br/>
+   "editor_rotatable"         "1"&#13;
+<br/><br/>
+   "spawnclass"            "idItem"&#13;
+<br/>
+   "size"                  "32 32 32"&#13;
+<br/>
+   "model"                  "models/weapons/machinegun/w_machinegun.lwo"&#13;
+<br/>
+   "model_view"             "viewmodel_machinegun"&#13;
+<br/>
+   "model_world"             "worldmodel_machinegun"&#13;
+<br/>
+   "joint_attach"            "MGATTACHER"&#13;
+<br/>
+   "def_dropItem"            "moveable_item_machinegun"&#13;
+<br/><br/>
+   "weaponAngleOffsetAverages" "10"&#13;
+<br/>
+   "weaponAngleOffsetScale"    ".25"&#13;
+<br/>
+   "weaponAngleOffsetMax"      "15"&#13;
+<br/>
+   "weaponOffsetTime"         "400"&#13;
+<br/>
+   "weaponOffsetScale"         "0.005"&#13;
+<br/><br/><br/>
+   "inv_name"               "Machinegun"&#13;
+<br/>
+   "inv_weapon"            "weapon_machinegun"&#13;
+<br/>
+   "inv_ammo_clip"            "10"&#13;
+<br/>
+   "inv_item"               "5"&#13;
+<br/><br/>
+   "weapon_scriptobject"      "weapon_machinegun"&#13;
+<br/>
+   "def_projectile"         "projectile_bullet_machinegun"&#13;
+<br/>
+   "ammoType"               "ammo_clip"&#13;
+<br/>
+   "ammoRequired"            "1"&#13;
+<br/>
+   "clipSize"               "60"&#13;
+<br/>
+   "lowAmmo"               "10"&#13;
+<br/>
+   "mtr_flashShader"         "muzzleflash"&#13;
+<br/>
+   "flashColor"            "1 0.8 0.4"&#13;
+<br/>
+   "flashRadius"            "120"&#13;
+<br/>
+   "silent_fire"            "0"&#13;
+<br/>
+   &#13;
+<br/>
+   "gui"                  "guis/weapons/machinegun.gui"&#13;
+<br/>
+   "mtr_guiLightShader"      "lights/viewWeaponGuiLight"&#13;
+<br/>
+   &#13;
+<br/>
+   "icon"                  "guis/assets/hud/wpn_3"&#13;
+<br/>
+   "muzzle_kick_time"         "0.2"&#13;
+<br/>
+   "muzzle_kick_maxtime"      "0.6"&#13;
+<br/>
+   "muzzle_kick_angles"      "0 0 0"&#13;
+<br/>
+   "muzzle_kick_offset"      "1 1 2"&#13;
+<br/>
+   "recoilTime"            "145"&#13;
+<br/>
+   "recoilAngles"            "-1 0 0"&#13;
+<br/><br/>
+   "hide_time"               "0.3"                        // time to hide weapon when talking to npcs or looking at guis&#13;
+<br/>
+   "hide_distance"            "-15"                        // distance to offset weapon when talking to npcs or looking at guis&#13;
+<br/><br/>
+   "smoke_muzzle"            "mgmuzzlesmoke.prt"&#13;
+<br/>
+   "def_ejectBrass"         "debris_brass"&#13;
+<br/>
+   "ejectBrassDelay"         "10"&#13;
+<br/><br/>
+   "snd_acquire"            "sound_weapon_acquire"&#13;
+<br/>
+   "snd_respawn"            "sound_weapon_respawn"&#13;
+<br/>
+   "snd_lowammo"             "player_machinegun_lowammo"&#13;
+<br/>
+   "snd_glass"               "bullet_impact_glass"&#13;
+<br/>
+   "skin_invisible"         "skins/machinegun_invis"&#13;
+<br/>
+   &#13;
+<br/>
+   "spread"               "1"&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/>
+The "model" in the map is a .lwo, not an .ase.&#13;
+<br/><br/>
+And I guess that "skin_invisible" belongs to the .md5mesh in the HUD.&#13;
+<br/><br/>
+It looks like this...&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin skins/machinegun_invis {&#13;
+<br/>
+   models/weapons/machinegun/machinegun models/weapons/machinegun/machinegun_invis&#13;
+<br/>
+   models/characters/player/arm2   models/characters/player/arm2_invis&#13;
+<br/>
+   models/weapons/machinegun/w_machinegun models/weapons/machinegun/w_machinegun_invis&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+... which brings up another difference to Quake4, where the materials are separated by "".&#13;
+<br/><br/>
+Hm, let's see what the models do without any "skin" declaration in their .def file...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060554/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154536" date="Posted: Tue Aug 22, 2006 8:15 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">... WORKS! <img src="/web/20061013060554im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> - Should have tried that earlier.&#13;
+<br/><br/>
+The bad thing about this is, that there is no pick-up effect.&#13;
+<br/><br/>
+And the question remains, if it's impossible to define a "skin" for .ase/.lwo models in Doom3...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060554/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154555" date="Posted: Tue Aug 22, 2006 4:13 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You might be able to 'force the pickup effect but using a triggered fx event, you could either use a trigger field targeted at an fx entity or use the pickup entity itself. Both should trigger an effect entity place approx to the center or origin of the pickup.&#13;
+<br/><br/>
+If //base/ didn't work you could have tried the other references... //purgatory and //model....<br/>_________________<br/><a href="/web/20061013060554/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060554im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013060554/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154636" date="Posted: Wed Aug 23, 2006 7:34 am    Post subject: "><author>Herr W</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">If //base/ didn't work you could have tried the other references... //purgatory and //model....</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I had tried both, but with no success. So meanwhile I'm pretty sure that it is as you supposed earlier: .ase models can't have a "skin" in their definition <img src="/web/20061013060554im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">You might be able to 'force the pickup effect but using a triggered fx event, you could either use a trigger field targeted at an fx entity or use the pickup entity itself. Both should trigger an effect entity place approx to the center or origin of the pickup.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+That's a good alternative! I think I'll do it that way...<br/>_________________<br/>Visit Herr W's MONKEY KOMBAT Arena at <a href="/web/20061013060554/http://monkeykombat.planetquake.gamespy.com/" target="_blank">http://monkeykombat.planetquake.gamespy.com</a> !</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="1398"><title>Need help with adding materials to ase model</title><posts><post id="12357" date="Posted: Sat Aug 30, 2003 12:07 pm    Post subject: Need help with adding materials to ase model"><author>Muzzamil</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi,&#13;
+<br/>
+First and foremost, I'd like to show my appreciation to those who set up this forum. This forum will play a <span style="font-weight: bold">significant</span> role when Doom 3 Alpha is released!  <img src="/web/20061013055430im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+I'm new to mapping in general and just started DOOMRadiant 4 days ago. Reading through the posts in the forum i figured out how to create a material, how to get it recognised by DOOMRadiant, and how to load an ase file into DOOMRadiant. The problem I'm having is how to assign the material to my ase model. I opened my ase file in Notepad and changed the paths of the tga's to match the style of the ase files that came with d3a, but that only makes the ase file load with the diffuse map. Can somebody show me the steps to take in order to load an ase files with all the maps and materials?<br/>_________________<br/>The night has a thousand eyes.&#13;
+<br/>
+The day but one.&#13;
+<br/>
+Yet the world dies&#13;
+<br/>
+with the light of the dying sun.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="12377" date="Posted: Sat Aug 30, 2003 7:39 pm    Post subject: Re: Need help with adding materials to ase model"><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Muzzamil wrote:</b></span></td>	</tr><tr><td class="quote">Hi,&#13;
+<br/>
+First and foremost, I'd like to show my appreciation to those who set up this forum. This forum will play a <span style="font-weight: bold">significant</span> role when Doom 3 Alpha is released!  <img src="/web/20061013055430im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hi there &amp; thanks for the compliment!&#13;
+<br/><br/>
+Try this topic:&#13;
+<br/><a href="/web/20061013055430/http://www.doom3world.org/phpbb2/viewtopic.php?t=890" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=890</a><br/>_________________<br/><a href="/web/20061013055430/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055430im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013055430/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="12420" date="Posted: Sun Aug 31, 2003 2:33 pm    Post subject: "><author>Muzzamil</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the link BNA!. If anyone had the same problem and isn't clear about the answer, here's how you get all the maps to be loaded with your ase model:&#13;
+<br/><br/>
+ - First, you have to name your texture files according to their function in 3ds Max. If you have a diffuse map, add _d to it's name. Similiarly if you have a specular map add _s to it's name and add _b to the name of your bump map.&#13;
+<br/><br/>
+ - After you create the ase file, open it in a text editor like Notepad.&#13;
+<br/><br/>
+ - An ase file can have more than one model in it. For each model, there will be a material. In every material entry, there is a line that points to the texture file of the material which looks like this:&#13;
+<br/><br/>
+ *BITMAP "D:\Games\Doom III\base\model\texture_d.tga"&#13;
+<br/><br/>
+ - Change the file path from this:&#13;
+<br/><br/><span style="font-style: italic">your drive:\your doom directory\base\</span>&#13;
+<br/><br/>
+   to this:&#13;
+<br/><br/>
+\\purgatory\purgatory\Doom\base\&#13;
+<br/><br/>
+ - After that, take out the _d from the name of the diffuse map in your ase file. That doesn't mean you should rename the <span style="font-style: italic">actual</span> file, just the enry in the ase  file. What this does is make Doom 3 search for all the textures with names that start with the file name you wrote in the ase file. It then uses the files that end with _d _s _b for the model(s)&#13;
+<br/><br/>
+And tha's it! Hope I was clear with the instructions.[/i]<br/>_________________<br/>The night has a thousand eyes.&#13;
+<br/>
+The day but one.&#13;
+<br/>
+Yet the world dies&#13;
+<br/>
+with the light of the dying sun.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154138" date="Posted: Fri Aug 18, 2006 9:51 pm    Post subject: "><author>NemesisDoom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi i am new on 3d Modelling and i'm used 3DS Max 8, and it have and ASE Exporter included, but when i have my model finished textured, but when the model is in Doom 3, there are no textures, this should sound so dumb, 'cause there are post that explains this, but theres something i don't get, why do we need to use //purgatory/purgatory/doom/base, instead of just only /doom/base/models/blah/blah.tga?<br/>_________________<br/>Intel Pentium IV @ 3.6 GHZ, Nvidia Geforce 7800GT, 2GB RAM, HDD 250 GB.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154143" date="Posted: Fri Aug 18, 2006 10:04 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Probably would be better if you had created a new thread as this one is actually 3 years old and is in reference to an "outlawed" pirate copy of the alpha leak (bad joo joo).&#13;
+<br/><br/>
+Anyway the ASE file needs to reference a material shader and not an image file directly.  It will work if you reference an image but it doesn't always work properly.  The format in the ASE file should look something like this:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">*BITMAP "\\base\models\my_custom_model_directory\my_custom_material_shader"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+The "pergatory" thing is irrelevant and leftover from the alphaleak (if I remember right).  Also make sure you have the slashes going in the right direction (left slash), otherwise it may not work properly.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="12357" date="Posted: Sat Aug 30, 2003 12:07 pm    Post subject: Need help with adding materials to ase model"><author>Muzzamil</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi,&#13;
+<br/>
+First and foremost, I'd like to show my appreciation to those who set up this forum. This forum will play a <span style="font-weight: bold">significant</span> role when Doom 3 Alpha is released!  <img src="/web/20061013060342im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+I'm new to mapping in general and just started DOOMRadiant 4 days ago. Reading through the posts in the forum i figured out how to create a material, how to get it recognised by DOOMRadiant, and how to load an ase file into DOOMRadiant. The problem I'm having is how to assign the material to my ase model. I opened my ase file in Notepad and changed the paths of the tga's to match the style of the ase files that came with d3a, but that only makes the ase file load with the diffuse map. Can somebody show me the steps to take in order to load an ase files with all the maps and materials?<br/>_________________<br/>The night has a thousand eyes.&#13;
+<br/>
+The day but one.&#13;
+<br/>
+Yet the world dies&#13;
+<br/>
+with the light of the dying sun.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="12377" date="Posted: Sat Aug 30, 2003 7:39 pm    Post subject: Re: Need help with adding materials to ase model"><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Muzzamil wrote:</b></span></td>	</tr><tr><td class="quote">Hi,&#13;
+<br/>
+First and foremost, I'd like to show my appreciation to those who set up this forum. This forum will play a <span style="font-weight: bold">significant</span> role when Doom 3 Alpha is released!  <img src="/web/20061013060342im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hi there &amp; thanks for the compliment!&#13;
+<br/><br/>
+Try this topic:&#13;
+<br/><a href="/web/20061013060342/http://www.doom3world.org/phpbb2/viewtopic.php?t=890" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=890</a><br/>_________________<br/><a href="/web/20061013060342/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060342im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013060342/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="12420" date="Posted: Sun Aug 31, 2003 2:33 pm    Post subject: "><author>Muzzamil</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the link BNA!. If anyone had the same problem and isn't clear about the answer, here's how you get all the maps to be loaded with your ase model:&#13;
+<br/><br/>
+ - First, you have to name your texture files according to their function in 3ds Max. If you have a diffuse map, add _d to it's name. Similiarly if you have a specular map add _s to it's name and add _b to the name of your bump map.&#13;
+<br/><br/>
+ - After you create the ase file, open it in a text editor like Notepad.&#13;
+<br/><br/>
+ - An ase file can have more than one model in it. For each model, there will be a material. In every material entry, there is a line that points to the texture file of the material which looks like this:&#13;
+<br/><br/>
+ *BITMAP "D:\Games\Doom III\base\model\texture_d.tga"&#13;
+<br/><br/>
+ - Change the file path from this:&#13;
+<br/><br/><span style="font-style: italic">your drive:\your doom directory\base\</span>&#13;
+<br/><br/>
+   to this:&#13;
+<br/><br/>
+\\purgatory\purgatory\Doom\base\&#13;
+<br/><br/>
+ - After that, take out the _d from the name of the diffuse map in your ase file. That doesn't mean you should rename the <span style="font-style: italic">actual</span> file, just the enry in the ase  file. What this does is make Doom 3 search for all the textures with names that start with the file name you wrote in the ase file. It then uses the files that end with _d _s _b for the model(s)&#13;
+<br/><br/>
+And tha's it! Hope I was clear with the instructions.[/i]<br/>_________________<br/>The night has a thousand eyes.&#13;
+<br/>
+The day but one.&#13;
+<br/>
+Yet the world dies&#13;
+<br/>
+with the light of the dying sun.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154138" date="Posted: Fri Aug 18, 2006 9:51 pm    Post subject: "><author>NemesisDoom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi i am new on 3d Modelling and i'm used 3DS Max 8, and it have and ASE Exporter included, but when i have my model finished textured, but when the model is in Doom 3, there are no textures, this should sound so dumb, 'cause there are post that explains this, but theres something i don't get, why do we need to use //purgatory/purgatory/doom/base, instead of just only /doom/base/models/blah/blah.tga?<br/>_________________<br/>Intel Pentium IV @ 3.6 GHZ, Nvidia Geforce 7800GT, 2GB RAM, HDD 250 GB.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154143" date="Posted: Fri Aug 18, 2006 10:04 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Probably would be better if you had created a new thread as this one is actually 3 years old and is in reference to an "outlawed" pirate copy of the alpha leak (bad joo joo).&#13;
+<br/><br/>
+Anyway the ASE file needs to reference a material shader and not an image file directly.  It will work if you reference an image but it doesn't always work properly.  The format in the ASE file should look something like this:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">*BITMAP "\\base\models\my_custom_model_directory\my_custom_material_shader"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+The "pergatory" thing is irrelevant and leftover from the alphaleak (if I remember right).  Also make sure you have the slashes going in the right direction (left slash), otherwise it may not work properly.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

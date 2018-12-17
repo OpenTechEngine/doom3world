@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="1139"><title>screenshots of my md5viewer</title><posts><post id="9552" date="Posted: Mon Jul 07, 2003 1:22 pm    Post subject: screenshots of my md5viewer"><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So here are some screenshots of the md5-viewer that I made. The models shown are ofcourse property of id software, and if you think they look ugly then itÃÂ´s my fault, sorry for coding a crappy viewer.&#13;
+<br/>
+If you think they look cool then itÃÂ´s due to the talent of the guys at id software.&#13;
+<br/><br/>
+My viewer currently has code paths for graphic boards with 4 texture units and for those with 2. With 4 texture units, it uses 2 passes for each lightsource, one for diffuse-bump-lit decal + ambient and one for specular, in both passes all 4 units are used. IÃÂ´ll add another codepath for boards with 8 texture units to do it all in one pass.&#13;
+<br/>
+The OpenGL-extensions that my viewer uses are all GL_ARB and GL_EXT extensions, no hardware-specific NV or ATI extensions are used! I wanted to avoid developing different code paths for different hardware, and by the way I only have a GF4200, so testing any ATI-specific code would be tedious.&#13;
+<br/><br/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/doom3/der_ton/scientist1.jpg" border="0"/><br/><br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/der_ton/scientist2.jpg" target="_blank" class="postlink">http://www.doom3world.org/doom3/der_ton/scientist2.jpg</a>&#13;
+<br/><br/>
+Pinky is lit by two lightsources, one slightly above the camera, one far to the left:&#13;
+<br/><br/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/doom3/der_ton/pinky1.jpg" border="0"/><br/><br/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/doom3/der_ton/pinky3.jpg" border="0"/><br/><br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/der_ton/pinky2.jpg" target="_blank" class="postlink">http://www.doom3world.org/doom3/der_ton/pinky2.jpg</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/der_ton/pinky4.jpg" target="_blank" class="postlink">http://www.doom3world.org/doom3/der_ton/pinky4.jpg</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/der_ton/pinky5.jpg" target="_blank" class="postlink">http://www.doom3world.org/doom3/der_ton/pinky5.jpg</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/doom3/der_ton/pinky6.jpg" target="_blank" class="postlink">http://www.doom3world.org/doom3/der_ton/pinky6.jpg</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9554" date="Posted: Mon Jul 07, 2003 1:44 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Very nice!&#13;
+<br/><br/>
+Does the viewer allows you to preview animations also?&#13;
+<br/>
+If so, can I slide through them frame by frame?<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9557" date="Posted: Mon Jul 07, 2003 3:41 pm    Post subject: "><author>TheCray_nz</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">damn, looking good!&#13;
+<br/>
+Can it do wireframe, flatshading, bumpmapping without the diffuse? Those would be some really useful features for designers wanting to check out the id models more closely.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9565" date="Posted: Mon Jul 07, 2003 6:26 pm    Post subject: "><author>peppi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Looks nice and very promising! Can't wait to grab my own copy <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Would you mind posting some shots of the viewer's UI as well? How is it navigated, is there a timeline, what options does it have etc..?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9571" date="Posted: Mon Jul 07, 2003 10:19 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Would you mind posting some shots of the viewer's UI as well? How is it navigated, is there a timeline, what options does it have etc..?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Sorry to dissappoint you, but the viewerÃÂ´s UI is a "script" that is loaded during initialization, in which the user specifies which models with which animations at what positions and angles it should display (lightsources are hardcoded/mousecontrolled right now, but reading them from that setup script would be easy). And then there are a whole bunch of keys to move the camera, to move the lightsource, and to do affect certain parameters. IÃÂ´ll maybe do a real UI. IÃÂ´m really not sure in what direction this could go after all, but if thereÃÂ´s a need for a program to display md5meshes and anims for people who design their models, this program could be useful after some usability additions have been made, yep.&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Can it do wireframe, flatshading, bumpmapping without the diffuse? Those would be some really useful features for designers wanting to check out the id models more closely.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Sure it can, IÃÂ´m running it in alot of modes for debugging the setup of the rendering passes and the texture stages. But I havenÃÂ´t implemented those things as being interactive yet. But thatÃÂ´s a piece of cake actually.&#13;
+<br/><br/>
+BTW, you can check out D3ÃÂ´s specular pass with r_diffuse "0" if i remember correctly.&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Does the viewer allows you to preview animations also? &#13;
+<br/>
+If so, can I slide through them frame by frame?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Applying a md5anim to a model is fully implemented, I thought it shows from the screenshots... <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+Adding control of the animation to the program would be easy, because the rendering method (yes, itÃÂ´s object oriented code) only takes the time as an input. Currently the main program passes the program time (multiplied by a slowdown/speedup factor) to the animation code, but with some interaction (keys or gui-buttons in the future) anything can be done, for example jumping through the keyframes or freezing or playing backwards or pingpong or whatever.&#13;
+<br/><br/>
+Thanks to everyone for showing interest and for giving me input, just keep your comments coming.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9586" date="Posted: Tue Jul 08, 2003 6:45 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Applying a md5anim to a model is fully implemented, I thought it shows from the screenshots... <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+erm, yes, sure <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+Just wanted to be sure that it can play a full animation cycle.&#13;
+<br/><br/>
+Adding control of the animation to the program would be easy, because the rendering method (yes, itÃÂ´s object oriented code) only takes the time as an input. Currently the main program passes the program time (multiplied by a slowdown/speedup factor) to the animation code, but with some interaction (keys or gui-buttons in the future) anything can be done, for example jumping through the keyframes or freezing or playing backwards or pingpong or whatever.[/quote]&#13;
+<br/><br/>
+Sounds good.&#13;
+<br/>
+If there's a feature wishlist, I'd like to add:&#13;
+<br/>
+- looping an animation&#13;
+<br/>
+- using a timeline slider to go through it back and forth frame by frame&#13;
+<br/>
+- some sort of listing what animations are available for this particular model, so I don't have to load them all manually&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Thanks to everyone for showing interest and for giving me input, just keep your comments coming.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9590" date="Posted: Tue Jul 08, 2003 8:08 am    Post subject: "><author>[sic]</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This sure looks promising.&#13;
+<br/><br/>
+GJ!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9597" date="Posted: Tue Jul 08, 2003 11:48 am    Post subject: "><author>Doc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Very impressive work!&#13;
+<br/><br/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="9703" date="Posted: Fri Jul 11, 2003 1:22 pm    Post subject: "><author>dcreator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">nicely done der ton  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>/* No comment */</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="10494" date="Posted: Mon Jul 28, 2003 2:39 am    Post subject: Re: screenshots of my md5viewer"><author>BBA</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote"> IÃÂ´ll add another codepath for boards with 8 texture units to do it all in one pass.&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+Well, I would be happy to check out the single pass code for you if your kind enough to pass it along since I have this wonderful ATi card with 8 texture pipelines.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://billhunter.net/" target="_blank" class="postlink"><span style="font-weight: bold"><span style="font-style: italic">BBA</span></span></a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="10557" date="Posted: Mon Jul 28, 2003 8:48 pm    Post subject: Re: screenshots of my md5viewer"><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BBA wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote"> IÃÂ´ll add another codepath for boards with 8 texture units to do it all in one pass.&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/><br/>
+Well, I would be happy to check out the single pass code for you if your kind enough to pass it along since I have this wonderful ATi card with 8 texture pipelines.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/></span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+thanks for the offer!&#13;
+<br/>
+I havenÃÂ´t implemented it yet, though, and IÃÂ´ll first get it working nicely with "normal" codepaths, and then IÃÂ´ll release it (maybe this week!) and then IÃÂ´ll add the 8-textureunits path. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+I wanted to have it done earlier, but some lazyness kicked in lately, and the kinda frustrating problem with the mirrored textures (solved now) has cost me some nerves...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="19432" date="Posted: Sun Feb 29, 2004 1:17 pm    Post subject: "><author>guildenstern</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">any updates to the viewer?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

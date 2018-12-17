@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10500"><title>Quick question: patching holes?</title><posts><post id="94091" date="Posted: Sat May 14, 2005 1:29 am    Post subject: Quick question: patching holes?"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm working on my shotgun now, and I did this&#13;
+<br/><br/><a href="/web/20061012183118/http://img224.echo.cx/my.php?image=shotgun11kq.jpg" target="_blank" class="postlink"><img src="/web/20061012183118im_/http://img224.echo.cx/img224/6285/shotgun11kq.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+As you can see, I removed a few polygons, and now there are ugly holes (circled in the pic). How do I patch these ugly holes up nice and clean?[/img]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94136" date="Posted: Sat May 14, 2005 6:31 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Select the points around the holes in a clockwise fashion and press "p" to create a polygon. Then use add edges to split the polygon into quads.<br/>_________________<br/><a href="/web/20061012183118/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183118im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183118/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94139" date="Posted: Sat May 14, 2005 6:34 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">great that works, thanks rich</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94091" date="Posted: Sat May 14, 2005 1:29 am    Post subject: Quick question: patching holes?"><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm working on my shotgun now, and I did this&#13;
+<br/><br/><a href="/web/20061012182605/http://img224.echo.cx/my.php?image=shotgun11kq.jpg" target="_blank" class="postlink"><img src="/web/20061012182605im_/http://img224.echo.cx/img224/6285/shotgun11kq.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+As you can see, I removed a few polygons, and now there are ugly holes (circled in the pic). How do I patch these ugly holes up nice and clean?[/img]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94136" date="Posted: Sat May 14, 2005 6:31 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Select the points around the holes in a clockwise fashion and press "p" to create a polygon. Then use add edges to split the polygon into quads.<br/>_________________<br/><a href="/web/20061012182605/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182605im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182605/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="94139" date="Posted: Sat May 14, 2005 6:34 am    Post subject: "><author>bad marine ass</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">great that works, thanks rich</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

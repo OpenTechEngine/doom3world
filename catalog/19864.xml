@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="19864"><title>Doom 3 Sounds   ???</title><posts><post id="p181733" date="Posted: Fri Jun 22, 2007 7:28 pm "><author>mac53</author><body><![CDATA[<div class="postbody">I don't do well with the "search" option, I always wind up with more results NOT pertaining to the subjest I'm inquiring about than you can shake a stick at.  I've tried seraching for what I'm about to ask.  Please forgive me if it's somewhere else.
+<br />------------------------------------------------------------------------------------
+<br /><br />I'm working on enhancing the sounds in Doom 3.  Increasing the kbps in the .ogg files to 80 does wonders for clarity and increased all-around quality.  But those damn wave files "suck"....[period]!  Would the Doom 3 engine recognize mp3's replacing the wavs?  I know I would have to make changes in the .snd files, something I wouldn't mind doing if the engine would recognize the mp3s.</div>]]></body></post><post id="p181742" date="Posted: Fri Jun 22, 2007 8:53 pm "><author>Bittoman</author><body><![CDATA[<div class="postbody">Uh...well....let's get something out of the way first...
+<br /><br />Increasing the bitrate of an audio file will not actually make a difference in the audio quality unless you're able to work with the master tracks.  What that means is, if you take the stock sounds from Doom 3 and simply <span style="font-style: italic">increase the bit rate</span> then all you're going to do is have a larger file that sounds exactly like the smaller file.  A visual example is to take a 640x480 heavily compressed jpg image and then scaling that image up to 1024x768, all you get is a bigger image that accents the flaws caused by the compression.
+<br /><br />Now...WAV files are <span style="font-style: italic">not</span> compressed and are actually far easier to work with (more tools for one thing) so I'm not sure why you think they suck.  These files you can actually convert to OGG's with a higher bit rate than what id used as a stock setting and it would actualy decrease the quality.
+<br /><br />So all in all you're wasting time and making it worse  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /></div>]]></body></post><post id="p181748" date="Posted: Fri Jun 22, 2007 9:48 pm "><author>mac53</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Bittoman wrote:</div><div class="quotecontent">Uh...well....let's get something out of the way first...<br /><br />Increasing the bitrate of an audio file will not actually make a difference in the audio quality unless you're able to work with the master tracks.  What that means is, if you take the stock sounds from Doom 3 and simply <span style="font-style: italic">increase the bit rate</span> then all you're going to do is have a larger file that sounds exactly like the smaller file.  A visual example is to take a 640x480 heavily compressed jpg image and then scaling that image up to 1024x768, all you get is a bigger image that accents the flaws caused by the compression.<br /><br />Now...WAV files are <span style="font-style: italic">not</span> compressed and are actually far easier to work with (more tools for one thing) so I'm not sure why you think they suck.  These files you can actually convert to OGG's with a higher bit rate than what id used as a stock setting and it would actualy decrease the quality.<br /><br />So all in all you're wasting time and making it worse  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /></div>
+<br /><br /><br /><span style="color: red"><span style="text-decoration: underline"><span style="font-weight: bold">WRONG...</span></span></span>  They actually do sound a hell of a lot better.  I asked a simple question... not to get stompted on and wav files are as low on the totem pole as a file can get as far as sound files. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /></div>]]></body></post><post id="p181749" date="Posted: Fri Jun 22, 2007 9:52 pm "><author>Bittoman</author><body><![CDATA[<div class="postbody"><div class="quotetitle">mac53 wrote:</div><div class="quotecontent"><span style="color: red"><span style="text-decoration: underline"><span style="font-weight: bold">WRONG...</span></span></span>  They actually do sound a hell of a lot better.  I asked a simple question... not to get stompted on and wav files are as low on the totem pole as a file can get as far as sound files. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /></div>
+<br /><br />Alright.  They are better.  Just remember, OGG = lossy compression and WAV = Uncompressed raw audio data.  I wasn't trying to "stomp" on anything, only trying to hope you'd realize that you can't really "improve" what's there by simply upping the bit rate or changing the format (btw, turning a WAV into a MP3 will cause the sound quality to go down).
+<br /><br />Remember this, if you take shit and put it in a bucket, stir it up with some pretty color dye and then pour it out it's still going to be shit.</div>]]></body></post><post id="p181754" date="Posted: Fri Jun 22, 2007 10:12 pm "><author>Deadite4</author><body><![CDATA[<div class="postbody">No Doom 3 does not recognize .mp3 files.
+<br /><br />And yes Bittoman is 100% correct.  .WAV files are basically what is used in professional audio for master digital tracks....either that or .aif is also and is typically and export format used on apple systems, though either are typically used for pro audio.
+<br /><br />-deadite4-</div>]]></body></post><post id="p181760" date="Posted: Fri Jun 22, 2007 11:40 pm "><author>The Happy Friar</author><body><![CDATA[<div class="postbody">compressing a WAV to MP3 is much worse then letting the WAV alone.  All the D3 wav's are 16-bit, single (sometimes two) channel 44khz.  Unless you have higher quality versions of the sounds (24-bit 96/128khz) you're not going to do anything.
+<br /><br />What type of sound card/software are you using th up the ogg's?  Some software can fill in what's cut out (to a point) to simulate what it could sound like, but there "better" is subjective.  Just upping the bits/khz will NOT help digital sound unless you do something else (IE audio FX).  It's a fact.</div>]]></body></post><post id="p181764" date="Posted: Sat Jun 23, 2007 1:59 am "><author>mac53</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Deadite4 wrote:</div><div class="quotecontent"> No Doom 3 does not recognize .mp3 files.</div><br /><br />Thank you... after all of this I finally got an answer to one damn question.<br /><br /><div class="quotetitle">The Happy Friar wrote:</div><div class="quotecontent"> What type of sound card/software are you using th up the ogg's?</div><br /><br />I'm using the Creative's SB Audigy 2 ZS Platinum w/ EAX enabled.  And believe when I tell you this.  I have CD-DA Extractor with OGG Vorbis file rebuilding capabilities and when I run these oggs through it to increase the files bitrate, they are coming out much, much better!!  I mean they do sound great, a whole hell of a lot better than the originals.<br /><br /><div class="quotetitle">Bittoman wrote:</div><div class="quotecontent"> Remember this, if you take shit and put it in a bucket, stir it up with some pretty color dye and then pour it out it's still going to be shit.</div>
+<br /><br />This may be so... but my shit is coming out smelling like roses, pal!!!</div>]]></body></post><post id="p181766" date="Posted: Sat Jun 23, 2007 4:06 am "><author>Bittoman</author><body><![CDATA[<div class="postbody">I'm not saying "don't do it", by all means do go for it if you feel you're on to something but the above all stands true.  I doubt you draw much of a following unless you created a program that was far and above the current DAD conversion methods used to fill in the "lost" bits of a lossy compressed audio file.  The only point I've been trying to get across (and admittedly I did a poor job of that) is that you might be wasting your time if you're expecting anyone to jump on this with you and consider this a great idea.
+<br /><br />What might be wiser would be to take this as an exercise to learn from and go and learn more about MP3, WAV and OGG formats beyond what you might find on a box or in a help file with a media player.  The first thing you'll learn is that MP3 and OGG are essentially the same ice cream, just a different flavor (arguably one is better than another but that's for another thread) that are meant as a consumer level medium aimed at reducing file space (and memory usage) while offering high quality sound and WAV files are totally RAW audio format which means the only dependency on audio quality with a WAV at say 96khz, 24 bit stereo will be how good the DA converter before the preamp is.</div>]]></body></post><post id="p181771" date="Posted: Sat Jun 23, 2007 4:33 am "><author>mac53</author><body><![CDATA[<div class="postbody">@Bittoman
+<br /><br />I didn't ask anybody to jump in on this, as a matter of fact, I don't need any help, except an answer to a simple question about if Doom 3 recognized mp3 files and you took this way out of proportion. Unnecessarily, I may add!  I don't care about file details, compression and all that other shit... I couldn't care less!  The only thing I know is that my files are sounding 3 to 5 times better than the originals and I don't care how they technically got there.  I'm going to do what I'm going to do and I'm going to enjoy what I've done.
+<br />-------------------------------------------------
+<br />Edited:
+<br /><br />Want to hear something ironic?  Here's an error I found!
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">arcade_beargroan<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br />   no_dups<br /><br />   sound/arcade_machines/bearhunt/bear_groan1.wav<br />   sound/arcade_machines/bearhunt/bear_groan2.wav<br />}<br /><br />arcade_sargeshoot<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br /><br />   sound/arcade_machines/bearhunt/sarge_shoot1.wav<br />}<br /><br />arcade_balloonpop<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br /><br />   sound/arcade_machines/bearhunt/balloon_pop.wav<br />}</div>
+<br /><br />Go look into the sound folder from ROE's 'pak000' and tell me if you can find those four wav files!  There are none, they're all oggs!! I'm planning on converting them to see what happens!</div>]]></body></post><post id="p181774" date="Posted: Sat Jun 23, 2007 5:17 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">The information on the wiki should be sufficient, even if the audio related portions are somewhat lacking.
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Audio_design">http://www.modwiki.net/wiki/Audio_design</a><!-- m -->
+<br /><br />As far as what Bittoman said, you're mistaken. He gave you solid advice and he's right. You can't upsample a sound file and improve the fidelity. It's the exact same waveform. To give a purpose to those samples, they'd have to change the waveform.
+<br /><br />As for it sounding better or worse, that's a matter of opinion. I suspect the method your using to "enhance" the sound is a bit more involved than just upsampling. There's something else going on and you may not be aware of it.</div>]]></body></post><post id="p181792" date="Posted: Sat Jun 23, 2007 11:06 am "><author>Kristus</author><body><![CDATA[<div class="postbody">Mac53: Is this like the time when you upped the PPI on the sprites in Doom2 and argued that it made them look more vivid and such?</div>]]></body></post><post id="p181799" date="Posted: Sat Jun 23, 2007 1:47 pm "><author>mac53</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Kristus wrote:</div><div class="quotecontent">Mac53: Is this like the time when you upped the PPI on the sprites in Doom2 and argued that it made them look more vivid and such?</div>
+<br /><br />Not quite Kris...  Back then I was making them look better, but it wasn't changing them to the Hi-Def I was hoping for.  Here, the sounds have become stronger, clearer and you can actually hear minute details.  I'll tell you what... when I get finiahed with what I'm doing, I'll zip the original and a finished sound file together and let you be the judge. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br /><a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/mnmy0h" class="postlink">Here's</a> a sample.</div>]]></body></post><post id="p181850" date="Posted: Sat Jun 23, 2007 8:29 pm "><author>irishlostboy1980</author><body><![CDATA[<div class="postbody">award winning thread. i love it. i dont know why i bothered with studyin sound engineering. seems like they got it all wrong. 
+<br />and shit!! i hope no one here made the mistake of studyin physics!!, because i think they got it all wrong too.
+<br /><br />all joking aside, upping the bitrate of compressed on its own makes no differance, i think all (except one) will agree, but perhaps he is applying some EQ enhancment which is giving a falsly percieved enhansment of audio quality? that is possible. 
+<br />that of course does not mean the sound is of higher quality. 
+<br />on a side note, if you think Doom3 has crap audio, it may be a good idea to improve what you listen to the audio through. the greatist soundcard in the world will not be any good if your speakers are not so hot. i am lucky enough to have a set of one of the best headphone monitors money can buy, and i have to say, doom3 audio is some of the best i have heard in any game, ever. i am not a big doom3 fanatic, but the audio was really impressive. for crap audio, listen to the GTA games. painful. 
+<br />anyway, keep up with the happy happy vibe going on here!! i love it !!!</div>]]></body></post><post id="p181866" date="Posted: Sat Jun 23, 2007 9:52 pm "><author>vinnie_jones</author><body><![CDATA[<div class="postbody">to "upgrade" sounds i make them all into wav,
+<br />oggs have this nasty "cutoff-end" effect sometimes,
+<br />its a painstakin job sittin thru the soundshaders
+<br />but in the end its worth it imo,
+<br />like Mac i also discovered some sounds that the soundshaders
+<br />point to that doesnt exist, the last i can remember is
+<br />Players footsteps, some of those point to a folder
+<br />that doesnt exist, so i simply made some new steps and
+<br />then pointed at them in the sndfile <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br />Working with sounds is somewhat similar to working
+<br />with images, makes the sounds into wav first (uncompressed)
+<br />then when its done, THEN one turns it into the chosen
+<br />compressed format, same with uncompressed photoshop 
+<br />picture format, when its done THEN one turns it into
+<br />jpg or gif or whatever as the final stage</div>]]></body></post><post id="p181873" date="Posted: Sat Jun 23, 2007 11:35 pm "><author>mac53</author><body><![CDATA[<div class="postbody">Just let me point you guys to the link a couple of posts up.  I've done some samples...  and no matter how much technical crap gets posted, I'm happy with what I'm doing... because it's only me I'm doing it for.  Remind me next time NOT to ask a simple question here!!!
+<br />------------------------------------------
+<br /><br />Edited
+<br /><br />Try this <a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/7xh956" class="postlink">one</a> and this <a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/bk9qaz" class="postlink">one</a></div>]]></body></post><post id="p181884" date="Posted: Sun Jun 24, 2007 4:38 am "><author>chiapas</author><body><![CDATA[<div class="postbody">@irishlostboy1980
+<br /><br />nice.
+<br /><br />@mac53
+<br /><br />The point is that the theory behind the compression is important.  in fact its all that matters.  1 - PCM/WAV is uncompressed audio samples, so its the highest quality (depending on the sample size and bitrate).  2 - mp3 &amp; Ogg are both __LOSSY__ formats.  which means that once you compress from wav to ogg for example some of the sound information is lost _forever_.  and turning it back into a wav won't bring it back.
+<br /><br />if your CD-DA Extractor does bring it back for you, then there must be something else going on.  
+<br /><br />you jumped on Bittoman for telling you the correct information.  good job.</div>]]></body></post><post id="p181885" date="Posted: Sun Jun 24, 2007 5:43 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody"><div class="quotetitle">mac53 wrote:</div><div class="quotecontent">Remind me next time NOT to ask a simple question here!!!</div>
+<br /><br />Nonsense. Your question was asked and answered.
+<br /><br />What you seem to forget is the remainder of your post. You didn't have to volunteer technical information on how you went about "enhancing" the sounds to get your question answered.
+<br /><br />But since you did, and your method does not demonstrate a true understanding of audio editing, it's in our best interest to point out the flaws if we intend to keep this forum full of useful information.
+<br /><br />It's not about proving you wrong. It's about making sure newcomers don't make the same mistakes. Get over yourself.</div>]]></body></post><post id="p181911" date="Posted: Sun Jun 24, 2007 1:11 pm "><author>Rayne</author><body><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb" xml:lang="en-gb">
+  <head>
+    <script type="text/javascript" src="https://web.archive.org/static/js/analytics.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://web.archive.org/static/css/banner-styles.css" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-language" content="en-gb" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="resource-type" content="document" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="2002-2006 phpBB Group" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Doom3world • View topic - Doom 3 Sounds   ???</title>
+    <link rel="stylesheet" href="https://web.archive.org/web/20070509181516cs_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/stylesheet.css" type="text/css" />
+    <script type="text/javascript">
+<![CDATA[
+// <![CDATA[
+
+function popup(url, width, height, name)
+{
+	if (!name)
+	{
+		name = '_popup';
+	}
+
+	window.open(url.replace(/&amp;/g, '&'), name, 'height=' + height + ',resizable=yes,scrollbars=yes,width=' + width);
+	return false;
+}
+
+function jumpto()
+{
+	var page = prompt('Enter the page number you wish to go to.:', '1');
+	var perpage = '20';
+	var base_url = './viewtopic.php?f=26&amp;t=19864&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1733684b1ff0654845f4efd3cce7d8be';
+
+	if (page !== null && !isNaN(page) && page > 0)
+	{
+		document.location.href = base_url.replace(/&amp;/g, '&') + '&start=' + ((page - 1) * perpage);
+	}
+}
+
+/**
+* Find a member
+*/
+function find_username(url)
+{
+	popup(url, 760, 570, '_usersearch');
+	return false;
+}
+
+/**
+* Mark/unmark checklist
+* id = ID of parent container, name = name prefix, state = state [true/false]
+*/
+function marklist(id, name, state)
+{
+	var parent = document.getElementById(id);
+	if (!parent)
+	{
+		eval('parent = document.' + id);
+	}
+
+	if (!parent)
+	{
+		return;
+	}
+
+	var rb = parent.getElementsByTagName('input');
+	
+	for (var r = 0; r < rb.length; r++)
+	{
+		if (rb[r].name.substr(0, name.length) == name)
+		{
+			rb[r].checked = state;
+		}
+	}
+}
+
+
+// ]]]] ><![CDATA[>
+]] >
+    </script>
+  </head>
+  <body class="ltr">
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script><![CDATA[ if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app13.us.archive.org";}; ]] ></script><script type="text/javascript" src="https://web.archive.org/static/js/disclaim-element.js"></script><script type="text/javascript" src="https://web.archive.org/static/js/graph-calc.js"></script><script type="text/javascript" src="https://web.archive.org/static/jflot/jquery.min.js"></script><script type="text/javascript"><![CDATA[
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.doom3world.org\/phpbb2\/viewtopic.php?f=26&t=19864";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "9";
+var displayMonth = "May";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]]] ><![CDATA[>
+]] ></script><style type="text/css"><![CDATA[body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}]] ></style><div id="wm-ipp" lang="en" class="__wb_banner_div" style="display:none; position:relative;padding:0 5px;min-height:70px;min-width:800px" xml:lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(https://web.archive.org/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr><td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="https://web.archive.org/static/images/toolbar/wayback-toolbar-logo.png" alt="Wayback Machine" width="110" height="39" border="0" /></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr><td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="https://web.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input type="text" name="url" id="wmtbURL" value="http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" /><input type="hidden" name="type" value="replay" /><input type="hidden" name="date" value="20070509181516" /><input type="submit" value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" /><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody><!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR --><tr style="width:110px;height:16px;font-size:10px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Apr
+                       
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">MAY</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       Jun
+                       
+               </td>
+           </tr><!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR --><tr><td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_prv_off.png" alt="Previous capture" width="14" height="16" border="0" /></td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 18:15:16 May 9, 2007">9</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+                       <img src="https://web.archive.org/static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0" /></td>
+           </tr><!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR --><tr style="width:110px;height:13px;font-size:9px!important;"><td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2006
+                       
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 18:15:16 May 9, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+                       2008
+                       
+				</td>
+           </tr></tbody></table></td>
+
+       </tr><tr><td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070509181516*/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>1 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">9 May 07 - 9 May 07</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="viewtopic.php?f=26&amp;t=19864" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" width="475" height="27" border="0" src="https://web.archive.org/web/jsp/graph.jsp?graphdata=475_27_1996:-1:000000000000_1997:-1:000000000000_1998:-1:000000000000_1999:-1:000000000000_2000:-1:000000000000_2001:-1:000000000000_2002:-1:000000000000_2003:-1:000000000000_2004:-1:000000000000_2005:-1:000000000000_2006:-1:000000000000_2007:4:000010000000_2008:-1:000000000000_2009:-1:000000000000_2010:-1:000000000000_2011:-1:000000000000_2012:-1:000000000000_2013:-1:000000000000_2014:-1:000000000000" /><img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" width="25" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-yellow-pixel.png" /><img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " width="2" height="27" border="0" src="https://web.archive.org/static/images/toolbar/transp-red-pixel.png" /></div>
+		</a>
+
+       </td>
+       </tr></tbody></table></td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(https://web.archive.org/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table></div>
+</div>
+<script type="text/javascript"><![CDATA[
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+]] ></script><!-- END WAYBACK TOOLBAR INSERT --><a name="top" id="top"></a>
+
+<div id="wrapheader">
+
+	<div id="logodesc">
+		<table width="100%" cellspacing="0"><tr><td><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/site_logo.gif" width="300" height="71" alt="" title="" /></a></td>
+			<td width="100%" align="center"><h1>Doom3world</h1><span class="gen">The world is yours! Doom 3 - Quake 4 - ET:QW - Prey - Rage</span>
+      
+      <br /><script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 468;
+      google_ad_height = 60;
+      google_ad_format = "468x60_as";
+      google_ad_type = "text_image";
+      //2007-11-04: D3WForums_banner_header
+      google_ad_channel = "6206397355";
+      google_color_border = "DCE1E5";
+      google_color_bg = "DCE1E5";
+      google_color_link = "006699";
+      google_color_text = "000000";
+      google_color_url = "006699";
+      google_ui_features = "rc:0";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></td>
+		</tr></table></div>
+
+	<div id="menubar">
+		<table width="100%" cellspacing="0"><tr><td class="genmed">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=login&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_login.gif" width="12" height="13" alt="*" /> Login</a>   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/ucp.php?mode=register&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_register.gif" width="12" height="13" alt="*" /> Register</a>
+								</td>
+			<td class="genmed" align="right">
+				<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/faq.php?sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_faq.gif" width="12" height="13" alt="*" /> FAQ</a>
+				   <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/theme/images/icon_mini_search.gif" width="12" height="13" alt="*" /> Search</a>			</td>
+		</tr></table></div>
+
+	<div id="datebar">
+		<table width="100%" cellspacing="0"><tr><td class="gensmall"></td>
+			<td class="gensmall" align="right">It is currently Fri Dec 14, 2007 9:05 am<br /></td>
+		</tr></table></div>
+
+</div>
+
+<div id="wrapcentre">
+
+		<p class="searchbar">
+		<span style="float: left;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=unanswered&amp;sid=1733684b1ff0654845f4efd3cce7d8be">View unanswered posts</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/search.php?search_id=active_topics&amp;sid=1733684b1ff0654845f4efd3cce7d8be">View active topics</a></span>
+			</p>
+	
+	<br style="clear: both;" /><table class="tablebg" width="100%" cellspacing="1" cellpadding="0" style="margin-top: 5px;"><tr><td class="row1">
+			<p class="breadcrumbs"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/index.php?sid=1733684b1ff0654845f4efd3cce7d8be">Board index</a> 
+   » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=73&amp;sid=1733684b1ff0654845f4efd3cce7d8be">Doom 3</a> » <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewforum.php?f=26&amp;sid=1733684b1ff0654845f4efd3cce7d8be">Doom3 discussion</a>      
+  
+
+  
+  </p>
+			<p class="datetime">All times are UTC </p>
+		</td>
+	</tr></table><center>
+  <script type="text/javascript"><![CDATA[<!--
+      google_ad_client = "pub-9445709839432880";
+      google_ad_width = 728;
+      google_ad_height = 15;
+      google_ad_format = "728x15_0ads_al_s";
+      //2007-11-03: D3WForums_linkblock
+      google_ad_channel = "1963952183";
+      google_color_border = "FFFFFF";
+      google_color_bg = "FFFFFF";
+      google_color_link = "006699";
+      google_color_text = "006699";
+      google_color_url = "006699";
+      //-->
+      ]] ></script><script type="text/javascript" src="https://web.archive.org/web/20070509181516js_/http://pagead2.googlesyndication.com/pagead/show_ads.js"><![CDATA[
+  ]] ></script></center>
+	<br /><div id="pageheader">
+	<h2><a class="titles" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864&amp;start=0&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1733684b1ff0654845f4efd3cce7d8be">Doom 3 Sounds   ???</a></h2>
+
+	<p class="moderators">Moderators: <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=2&amp;sid=1733684b1ff0654845f4efd3cce7d8be" style="color: #AA0000;" class="username-coloured">BNA!</a>, <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=group&amp;g=654&amp;sid=1733684b1ff0654845f4efd3cce7d8be">il padrino</a></p>
+</div>
+
+<br clear="all" /><br /><div id="pagecontent">
+
+	<table width="100%" cellspacing="1"><tr><td align="left" valign="middle" nowrap="nowrap">
+		<a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=post&amp;f=26&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_new.gif" alt="Post new topic" title="Post new topic" /></a> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/posting.php?mode=reply&amp;f=26&amp;t=19864&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/button_topic_reply.gif" alt="Reply to topic" title="Reply to topic" /></a>		</td>
+					<td class="nav" valign="middle" nowrap="nowrap"> Page <strong>1</strong> of <strong>2</strong><br /></td>
+			<td class="gensmall" nowrap="nowrap"> [ 24 posts ] </td>
+			<td class="gensmall" width="100%" align="right" nowrap="nowrap"><b><a href="viewtopic.php?f=26&amp;t=19864#" onclick="jumpto(); return false;" title="Click to jump to page…">Go to page</a> <strong>1</strong><span class="page-sep">, </span><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1733684b1ff0654845f4efd3cce7d8be&amp;start=20">2</a>  <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864&amp;st=0&amp;sk=t&amp;sd=a&amp;sid=1733684b1ff0654845f4efd3cce7d8be&amp;start=20">Next</a></b></td>
+			</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><td class="cat">
+			<table width="100%" cellspacing="0"><tr><td class="nav" nowrap="nowrap"> 
+								</td>
+				<td class="nav" align="right" nowrap="nowrap"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864&amp;view=previous&amp;sid=1733684b1ff0654845f4efd3cce7d8be">Previous topic</a> | <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?f=26&amp;t=19864&amp;view=next&amp;sid=1733684b1ff0654845f4efd3cce7d8be">Next topic</a> </td>
+			</tr></table></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr><th>Author</th>
+			<th>Message</th>
+		</tr><tr class="row1"><td align="center" valign="middle">
+				<a name="p181733" id="p181733"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Doom 3 Sounds   ???</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181733&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181733"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 7:28 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I don't do well with the "search" option, I always wind up with more results NOT pertaining to the subjest I'm inquiring about than you can shake a stick at.  I've tried seraching for what I'm about to ask.  Please forgive me if it's somewhere else.
+<br />------------------------------------------------------------------------------------
+<br /><br />I'm working on enhancing the sounds in Doom 3.  Increasing the kbps in the .ogg files to 80 does wonders for clarity and increased all-around quality.  But those damn wave files "suck"....[period]!  Would the Doom 3 engine recognize mp3's replacing the wavs?  I know I would have to make changes in the .snd files, something I wouldn't mind doing if the engine would recognize the mp3s.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181742" id="p181742"></a>
+				<b class="postauthor">Bittoman</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181742&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181742"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 8:53 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">True believer</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=4625.jpg" width="47" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 29, 2004 10:39 pm<br /><b>Posts:</b> 1729				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Uh...well....let's get something out of the way first...
+<br /><br />Increasing the bitrate of an audio file will not actually make a difference in the audio quality unless you're able to work with the master tracks.  What that means is, if you take the stock sounds from Doom 3 and simply <span style="font-style: italic">increase the bit rate</span> then all you're going to do is have a larger file that sounds exactly like the smaller file.  A visual example is to take a 640x480 heavily compressed jpg image and then scaling that image up to 1024x768, all you get is a bigger image that accents the flaws caused by the compression.
+<br /><br />Now...WAV files are <span style="font-style: italic">not</span> compressed and are actually far easier to work with (more tools for one thing) so I'm not sure why you think they suck.  These files you can actually convert to OGG's with a higher bit rate than what id used as a stock setting and it would actualy decrease the quality.
+<br /><br />So all in all you're wasting time and making it worse  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4625&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181748" id="p181748"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181748&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181748"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 9:48 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Bittoman wrote:</div><div class="quotecontent">Uh...well....let's get something out of the way first...<br /><br />Increasing the bitrate of an audio file will not actually make a difference in the audio quality unless you're able to work with the master tracks.  What that means is, if you take the stock sounds from Doom 3 and simply <span style="font-style: italic">increase the bit rate</span> then all you're going to do is have a larger file that sounds exactly like the smaller file.  A visual example is to take a 640x480 heavily compressed jpg image and then scaling that image up to 1024x768, all you get is a bigger image that accents the flaws caused by the compression.<br /><br />Now...WAV files are <span style="font-style: italic">not</span> compressed and are actually far easier to work with (more tools for one thing) so I'm not sure why you think they suck.  These files you can actually convert to OGG's with a higher bit rate than what id used as a stock setting and it would actualy decrease the quality.<br /><br />So all in all you're wasting time and making it worse  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /></div>
+<br /><br /><br /><span style="color: red"><span style="text-decoration: underline"><span style="font-weight: bold">WRONG...</span></span></span>  They actually do sound a hell of a lot better.  I asked a simple question... not to get stompted on and wav files are as low on the totem pole as a file can get as far as sound files. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181749" id="p181749"></a>
+				<b class="postauthor">Bittoman</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181749&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181749"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 9:52 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">True believer</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=4625.jpg" width="47" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 29, 2004 10:39 pm<br /><b>Posts:</b> 1729				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">mac53 wrote:</div><div class="quotecontent"><span style="color: red"><span style="text-decoration: underline"><span style="font-weight: bold">WRONG...</span></span></span>  They actually do sound a hell of a lot better.  I asked a simple question... not to get stompted on and wav files are as low on the totem pole as a file can get as far as sound files. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_twisted.gif" alt=":twisted:" title="Twisted Evil" /></div>
+<br /><br />Alright.  They are better.  Just remember, OGG = lossy compression and WAV = Uncompressed raw audio data.  I wasn't trying to "stomp" on anything, only trying to hope you'd realize that you can't really "improve" what's there by simply upping the bit rate or changing the format (btw, turning a WAV into a MP3 will cause the sound quality to go down).
+<br /><br />Remember this, if you take shit and put it in a bucket, stir it up with some pretty color dye and then pour it out it's still going to be shit.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4625&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181754" id="p181754"></a>
+				<b class="postauthor">Deadite4</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181754&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181754"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 10:12 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 100 armour</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Jan 09, 2005 10:55 pm<br /><b>Posts:</b> 106				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">No Doom 3 does not recognize .mp3 files.
+<br /><br />And yes Bittoman is 100% correct.  .WAV files are basically what is used in professional audio for master digital tracks....either that or .aif is also and is typically and export format used on apple systems, though either are typically used for pro audio.
+<br /><br />-deadite4-</div>
+
+											<span class="postbody"><br />_________________<br />What do I do if a chicken bites me........did a chicken bite you?.......No, but hes gonna</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=12176&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181760" id="p181760"></a>
+				<b class="postauthor">The Happy Friar</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181760&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181760"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Fri Jun 22, 2007 11:40 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">Fell asleep on his keyboard</td>
+				</tr><tr><td><img src="download/file.php?avatar=13604.gif" width="50" height="50" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun May 29, 2005 9:02 pm<br /><b>Posts:</b> 3944<br /><b>Location:</b> Here, not there.				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">compressing a WAV to MP3 is much worse then letting the WAV alone.  All the D3 wav's are 16-bit, single (sometimes two) channel 44khz.  Unless you have higher quality versions of the sounds (24-bit 96/128khz) you're not going to do anything.
+<br /><br />What type of sound card/software are you using th up the ogg's?  Some software can fill in what's cut out (to a point) to simulate what it could sound like, but there "better" is subjective.  Just upping the bits/khz will NOT help digital sound unless you do something else (IE audio FX).  It's a fact.</div>
+
+											<span class="postbody"><br />_________________<br />"<a href="https://web.archive.org/web/20070509181516/http://www.fuzzylogicinc.com/" class="postlink">Well %#$* my daisy because that’s just not how the bottle floats in my little corner of the world.</a>"<br />Check out my Q2 server!  72.5.248.204  Now with 32 player limit! :D</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=13604&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181764" id="p181764"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181764&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181764"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 1:59 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Deadite4 wrote:</div><div class="quotecontent"> No Doom 3 does not recognize .mp3 files.</div><br /><br />Thank you... after all of this I finally got an answer to one damn question.<br /><br /><div class="quotetitle">The Happy Friar wrote:</div><div class="quotecontent"> What type of sound card/software are you using th up the ogg's?</div><br /><br />I'm using the Creative's SB Audigy 2 ZS Platinum w/ EAX enabled.  And believe when I tell you this.  I have CD-DA Extractor with OGG Vorbis file rebuilding capabilities and when I run these oggs through it to increase the files bitrate, they are coming out much, much better!!  I mean they do sound great, a whole hell of a lot better than the originals.<br /><br /><div class="quotetitle">Bittoman wrote:</div><div class="quotecontent"> Remember this, if you take shit and put it in a bucket, stir it up with some pretty color dye and then pour it out it's still going to be shit.</div>
+<br /><br />This may be so... but my shit is coming out smelling like roses, pal!!!</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181766" id="p181766"></a>
+				<b class="postauthor">Bittoman</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181766&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181766"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 4:06 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">True believer</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=4625.jpg" width="47" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sun Aug 29, 2004 10:39 pm<br /><b>Posts:</b> 1729				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">I'm not saying "don't do it", by all means do go for it if you feel you're on to something but the above all stands true.  I doubt you draw much of a following unless you created a program that was far and above the current DAD conversion methods used to fill in the "lost" bits of a lossy compressed audio file.  The only point I've been trying to get across (and admittedly I did a poor job of that) is that you might be wasting your time if you're expecting anyone to jump on this with you and consider this a great idea.
+<br /><br />What might be wiser would be to take this as an exercise to learn from and go and learn more about MP3, WAV and OGG formats beyond what you might find on a box or in a help file with a media player.  The first thing you'll learn is that MP3 and OGG are essentially the same ice cream, just a different flavor (arguably one is better than another but that's for another thread) that are meant as a consumer level medium aimed at reducing file space (and memory usage) while offering high quality sound and WAV files are totally RAW audio format which means the only dependency on audio quality with a WAV at say 96khz, 24 bit stereo will be how good the DA converter before the preamp is.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=4625&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181771" id="p181771"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181771&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181771"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 4:33 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">@Bittoman
+<br /><br />I didn't ask anybody to jump in on this, as a matter of fact, I don't need any help, except an answer to a simple question about if Doom 3 recognized mp3 files and you took this way out of proportion. Unnecessarily, I may add!  I don't care about file details, compression and all that other shit... I couldn't care less!  The only thing I know is that my files are sounding 3 to 5 times better than the originals and I don't care how they technically got there.  I'm going to do what I'm going to do and I'm going to enjoy what I've done.
+<br />-------------------------------------------------
+<br />Edited:
+<br /><br />Want to hear something ironic?  Here's an error I found!
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">arcade_beargroan<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br />   no_dups<br /><br />   sound/arcade_machines/bearhunt/bear_groan1.wav<br />   sound/arcade_machines/bearhunt/bear_groan2.wav<br />}<br /><br />arcade_sargeshoot<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br /><br />   sound/arcade_machines/bearhunt/sarge_shoot1.wav<br />}<br /><br />arcade_balloonpop<br />{<br />   minDistance   4<br />   maxDistance   15<br />   volume       0<br /><br />   sound/arcade_machines/bearhunt/balloon_pop.wav<br />}</div>
+<br /><br />Go look into the sound folder from ROE's 'pak000' and tell me if you can find those four wav files!  There are none, they're all oggs!! I'm planning on converting them to see what happens!</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181774" id="p181774"></a>
+				<b class="postauthor" style="color: #AA0000">rich_is_bored</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181774&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181774"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 5:17 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">a gun &amp; a nice word</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=517.gif" width="54" height="54" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jan 11, 2003 8:30 pm<br /><b>Posts:</b> 7537<br /><b>Location:</b> Orlando, FL				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">The information on the wiki should be sufficient, even if the audio related portions are somewhat lacking.
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Audio_design">http://www.modwiki.net/wiki/Audio_design</a><!-- m -->
+<br /><br />As far as what Bittoman said, you're mistaken. He gave you solid advice and he's right. You can't upsample a sound file and improve the fidelity. It's the exact same waveform. To give a purpose to those samples, they'd have to change the waveform.
+<br /><br />As for it sounding better or worse, that's a matter of opinion. I suspect the method your using to "enhance" the sound is a bit more involved than just upsampling. There's something else going on and you may not be aware of it.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />  Staff</a>
+<br />Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=517&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181792" id="p181792"></a>
+				<b class="postauthor">Kristus</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181792&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181792"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 11:06 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">respawned 1350 times</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=6065.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Nov 06, 2004 7:33 pm<br /><b>Posts:</b> 1355<br /><b>Location:</b> In my pants.				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Mac53: Is this like the time when you upped the PPI on the sprites in Doom2 and argued that it made them look more vivid and such?</div>
+
+											<span class="postbody"><br />_________________<br />D3: Phobos - Co Leader, Artist.</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=6065&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181799" id="p181799"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181799&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181799"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 1:47 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">Kristus wrote:</div><div class="quotecontent">Mac53: Is this like the time when you upped the PPI on the sprites in Doom2 and argued that it made them look more vivid and such?</div>
+<br /><br />Not quite Kris...  Back then I was making them look better, but it wasn't changing them to the Hi-Def I was hoping for.  Here, the sounds have become stronger, clearer and you can actually hear minute details.  I'll tell you what... when I get finiahed with what I'm doing, I'll zip the original and a finished sound file together and let you be the judge. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /><br /><br /><a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/mnmy0h" class="postlink">Here's</a> a sample.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181850" id="p181850"></a>
+				<b class="postauthor">irishlostboy1980</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> Re: Doom 3 Sounds   ???</div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181850&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181850"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 8:29 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up 200 ammo</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=13770.jpg" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Wed Jun 22, 2005 9:57 am<br /><b>Posts:</b> 261<br /><b>Location:</b> ireland				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">award winning thread. i love it. i dont know why i bothered with studyin sound engineering. seems like they got it all wrong. 
+<br />and shit!! i hope no one here made the mistake of studyin physics!!, because i think they got it all wrong too.
+<br /><br />all joking aside, upping the bitrate of compressed on its own makes no differance, i think all (except one) will agree, but perhaps he is applying some EQ enhancment which is giving a falsly percieved enhansment of audio quality? that is possible. 
+<br />that of course does not mean the sound is of higher quality. 
+<br />on a side note, if you think Doom3 has crap audio, it may be a good idea to improve what you listen to the audio through. the greatist soundcard in the world will not be any good if your speakers are not so hot. i am lucky enough to have a set of one of the best headphone monitors money can buy, and i have to say, doom3 audio is some of the best i have heard in any game, ever. i am not a big doom3 fanatic, but the audio was really impressive. for crap audio, listen to the GTA games. painful. 
+<br />anyway, keep up with the happy happy vibe going on here!! i love it !!!</div>
+
+											<span class="postbody"><br />_________________<br />my free 3d models: <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.sharecg.com/pf/irishlostboy">http://www.sharecg.com/pf/irishlostboy</a><!-- m --></span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=13770&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181866" id="p181866"></a>
+				<b class="postauthor">vinnie_jones</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181866&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181866"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 9:52 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">did just hit his 750th monster</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Mon Oct 02, 2006 8:13 pm<br /><b>Posts:</b> 792				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">to "upgrade" sounds i make them all into wav,
+<br />oggs have this nasty "cutoff-end" effect sometimes,
+<br />its a painstakin job sittin thru the soundshaders
+<br />but in the end its worth it imo,
+<br />like Mac i also discovered some sounds that the soundshaders
+<br />point to that doesnt exist, the last i can remember is
+<br />Players footsteps, some of those point to a folder
+<br />that doesnt exist, so i simply made some new steps and
+<br />then pointed at them in the sndfile <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br />Working with sounds is somewhat similar to working
+<br />with images, makes the sounds into wav first (uncompressed)
+<br />then when its done, THEN one turns it into the chosen
+<br />compressed format, same with uncompressed photoshop 
+<br />picture format, when its done THEN one turns it into
+<br />jpg or gif or whatever as the final stage</div>
+
+											<span class="postbody"><br />_________________<br />"It's nice being back on 'teh Internets', where everyone is either awesome or retarded. Myself included."</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17028&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181873" id="p181873"></a>
+				<b class="postauthor">mac53</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181873&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181873"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sat Jun 23, 2007 11:35 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">picked up a pistol</td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Thu May 11, 2006 1:11 pm<br /><b>Posts:</b> 64				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">Just let me point you guys to the link a couple of posts up.  I've done some samples...  and no matter how much technical crap gets posted, I'm happy with what I'm doing... because it's only me I'm doing it for.  Remind me next time NOT to ask a simple question here!!!
+<br />------------------------------------------
+<br /><br />Edited
+<br /><br />Try this <a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/7xh956" class="postlink">one</a> and this <a href="https://web.archive.org/web/20070509181516/http://www.sendspace.com/file/bk9qaz" class="postlink">one</a></div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=15790&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181884" id="p181884"></a>
+				<b class="postauthor">chiapas</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181884&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181884"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Jun 24, 2007 4:38 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">has joined the game</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=17881.gif" width="64" height="64" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Fri Jan 26, 2007 9:00 pm<br /><b>Posts:</b> 39<br /><b>Location:</b> middle america				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody">@irishlostboy1980
+<br /><br />nice.
+<br /><br />@mac53
+<br /><br />The point is that the theory behind the compression is important.  in fact its all that matters.  1 - PCM/WAV is uncompressed audio samples, so its the highest quality (depending on the sample size and bitrate).  2 - mp3 &amp; Ogg are both __LOSSY__ formats.  which means that once you compress from wav to ogg for example some of the sound information is lost _forever_.  and turning it back into a wav won't bring it back.
+<br /><br />if your CD-DA Extractor does bring it back for you, then there must be something else going on.  
+<br /><br />you jumped on Bittoman for telling you the correct information.  good job.</div>
+
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=17881&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row1"><td align="center" valign="middle">
+				<a name="p181885" id="p181885"></a>
+				<b class="postauthor" style="color: #AA0000">rich_is_bored</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181885&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181885"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Jun 24, 2007 5:43 am </div></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_offline.gif" alt="Offline" title="Offline" /></td>
+				</tr><tr><td class="postdetails">a gun &amp; a nice word</td>
+				</tr><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/download/file.php?avatar=517.gif" width="54" height="54" alt="User avatar" /></td>
+				</tr></table><span class="postdetails">
+					<br /><b>Joined:</b> Sat Jan 11, 2003 8:30 pm<br /><b>Posts:</b> 7537<br /><b>Location:</b> Orlando, FL				</span>
+
+			</td>
+			<td valign="top">
+				<table width="100%" cellspacing="5"><tr><td>
+					
+						<div class="postbody"><div class="quotetitle">mac53 wrote:</div><div class="quotecontent">Remind me next time NOT to ask a simple question here!!!</div>
+<br /><br />Nonsense. Your question was asked and answered.
+<br /><br />What you seem to forget is the remainder of your post. You didn't have to volunteer technical information on how you went about "enhancing" the sounds to get your question answered.
+<br /><br />But since you did, and your method does not demonstrate a true understanding of audio editing, it's in our best interest to point out the flaws if we intend to keep this forum full of useful information.
+<br /><br />It's not about proving you wrong. It's about making sure newcomers don't make the same mistakes. Get over yourself.</div>
+
+											<span class="postbody"><br />_________________<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" alt="Image" />  Staff</a>
+<br />Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" class="postlink">modwiki.net</a>?</span>
+					<br clear="all" /><br /><table width="100%" cellspacing="0"><tr valign="middle"><td class="gensmall" align="right">
+														</td>
+						</tr></table></td>
+				</tr></table></td>
+		</tr><tr class="row1"><td class="profile"><strong><a href="viewtopic.php?f=26&amp;t=19864#wrapheader">Top</a></strong></td>
+			<td><div class="gensmall" style="float: left;"> <a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/memberlist.php?mode=viewprofile&amp;u=517&amp;sid=1733684b1ff0654845f4efd3cce7d8be"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_profile.gif" alt="Profile" title="Profile" /></a>  </div> <div class="gensmall" style="float: right;"> </div></td>
+		</tr><tr><td class="spacer" colspan="2" height="1"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/spacer.gif" alt="" width="1" height="1" /></td>
+	</tr></table><table class="tablebg" width="100%" cellspacing="1"><tr class="row2"><td align="center" valign="middle">
+				<a name="p181911" id="p181911"></a>
+				<b class="postauthor">Rayne</b>
+			</td>
+			<td width="100%" height="25">
+				<table width="100%" cellspacing="0"><tr><td class="gensmall" width="100%"><div style="float: left;"> <b>Post subject:</b> </div><div style="float: right;"><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=181911&amp;sid=1733684b1ff0654845f4efd3cce7d8be#p181911"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/icon_post_target.gif" width="12" height="9" alt="Post" title="Post" /></a><b>Posted:</b> Sun Jun 24, 2007 1:11 pm </div></td>
+				</tr></table></td>
+		</tr><tr class="row2"><td valign="top" class="profile">
+				<table cellspacing="4" align="center" width="150"><tr><td><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/styles/subsilver2/imageset/en/icon_user_off" /><!--
+     FILE ARCHIVED ON 18:15:16 May 9, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 3:34:57 Sep 26, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+--></td></tr></table></td></tr></table></div></div></body>
+</html>
+]]></body></post></posts></thread></xml>

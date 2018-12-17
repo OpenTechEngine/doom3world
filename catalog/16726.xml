@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16726"><title>Could use some help starting up</title><posts><post id="152621" date="Posted: Tue Aug 08, 2006 4:29 am    Post subject: Could use some help starting up"><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, I made a model in blender, uvmaped and exported an md5mesh&#13;
+<br/><br/>
+made a material file for the model and put it in the materials foldier of my mod&#13;
+<br/><br/>
+"monkey.mtr"&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/monkey/monkey.md5mesh&#13;
+<br/>
+{&#13;
+<br/>
+	qer_editorimage	textures/monkey/monkey_d.tga&#13;
+<br/>
+	diffusemap	textures/monkey/monkey_d.tga&#13;
+<br/>
+	bumpmap		textures/monkey/monkey_h.tga&#13;
+<br/>
+	specularmap	textures/monkey/monkey_s.tga&#13;
+<br/>
+} &#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+tried making a def for him&#13;
+<br/><br/>
+"monkey_static.def"&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+entityDev monkey_static {&#13;
+<br/>
+	"inherit"				"item_default"&#13;
+<br/>
+	"inv_item"				"1"&#13;
+<br/>
+	"editor_usage"				"Monkey Static"&#13;
+<br/>
+	"editor_model"				"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"spawnclass"				"idItem"&#13;
+<br/>
+	"model"					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"snd_aquire"				"snd_shard_aquire"&#13;
+<br/>
+	"size"					"32 32 32"&#13;
+<br/>
+	"inv_name"				"Monkeyz"&#13;
+<br/>
+	"inv_armor"				"100"&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+made him an item because I dont have any animations or a .af file for the mesh yet. And thought it would be funny to pick up a monkey and get 100 armor.&#13;
+<br/><br/>
+problem.. I don't know how to get radiant to see this. I've tried sticking my foldiers into the doom3 base foldier but the monkey entity doesnt show up. If possible, I'd like to be able to point radiant to my mod foldier and have it take waht it can find from there and anything else from the doom3base foldier. Running linux.&#13;
+<br/><br/>
+also, I'm not sure weather or not the diffuse bump and normal maps are applied to my model, does just making the mtr firle do it or do I have to somehow link the .def for the model with the .mtr file?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152650" date="Posted: Tue Aug 08, 2006 7:32 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">When dealing with MD5mesh files, the model key/value pairs for your entity declaration need to reference a model declaration as opposed to the MD5mesh files themselves.&#13;
+<br/><br/>
+For instance, notice the model key/value pair here...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef monster_boss_cyberdemon {&#13;
+<br/>
+   "inherit"                  "monster_default"&#13;
+<br/>
+   "editor_mins"               "-90 -90 0"&#13;
+<br/>
+   "editor_maxs"               "90 90 300"&#13;
+<br/>
+   "scriptobject"               "monster_boss_cyberdemon"&#13;
+<br/>
+   "model"                     "monster_boss_cyberdemon"&#13;
+<br/>
+   "ragdoll"                  "monster_boss_cyberdemon"&#13;
+<br/>
+   "size"                     "100 100 300"&#13;
+<br/>
+   "use_aas"                  "aas_cyberdemon"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And the cooresponding declaration here...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">model monster_boss_cyberdemon {&#13;
+<br/>
+   mesh                     models/md5/monsters/cyberdemon/cyberdemon.md5mesh&#13;
+<br/>
+   channel torso               ( *Waist )&#13;
+<br/>
+   channel legs               ( *Hips Body origin ROT -*Waist)&#13;
+<br/><br/>
+   anim af_pose               models/md5/monsters/cyberdemon/af_pose.md5anim&#13;
+<br/>
+   anim ik_pose               models/md5/monsters/cyberdemon/ik_pose.md5anim</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Also note how the MD5mesh file is referenced inside the model declaration.<br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152838" date="Posted: Wed Aug 09, 2006 6:25 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">how do you link a material to a model though I dun see where it gets info about what to use to texture it. It would seem to make sense that there would be a material key in the model def with the value bieng the name of the material file instead of the path to it but I don't know what to reference to look that up.&#13;
+<br/><br/>
+as it stands now i have this in&#13;
+<br/><br/>
+doom3/base/def/monkey_static.def&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+model char_monkey_static {&#13;
+<br/>
+	"mesh" 					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"material"				"monkey"&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDev monkey_static {&#13;
+<br/>
+	"inherit"				"item_default"&#13;
+<br/>
+	"inv_item"				"1"&#13;
+<br/>
+	"editor_mins"				"-90 -90 0"&#13;
+<br/>
+	"editor_maxs"				"90 90 300"&#13;
+<br/>
+	"editor_usage"				"Monkey Static"&#13;
+<br/>
+	"editor_model"				"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"spawnclass"				"idItem"&#13;
+<br/>
+	"model"					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"snd_aquire"				"snd_shard_aquire"&#13;
+<br/>
+	"size"					"32 32 32"&#13;
+<br/>
+	"inv_name"				"Monkeyz"&#13;
+<br/>
+	"inv_armor"				"100"&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and then this in&#13;
+<br/><br/>
+doom3/base/materials/monkey.mtr&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/monkey/monkey.md5mesh&#13;
+<br/>
+{&#13;
+<br/>
+	qer_editorimage	textures/monkey/monkey_d.tga&#13;
+<br/>
+	diffusemap	textures/monkey/monkey_d.tga&#13;
+<br/>
+	bumpmap		textures/monkey/monkey_h.tga&#13;
+<br/>
+	specularmap	textures/monkey/monkey_s.tga&#13;
+<br/>
+} &#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+does it look for a matching material file reference when it finds the model definition?&#13;
+<br/><br/>
+what else do i need to get the md5mesh into doom3 as just a mesh.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152841" date="Posted: Wed Aug 09, 2006 7:36 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The model file itself references the material shader.&#13;
+<br/><br/>
+For instance...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">MD5Version 10&#13;
+<br/>
+commandline "mesh models/monsters/zombie/cycles/idles/npcs_mesh.mb -dest models/md5/props/adrenaline.md5mesh -game Doom -prefix ZOMBIE_ -keep RHANDCONNECTOR -rename origin blah -rename RHANDCONNECTOR origin -clearorigin -range 1 1 -keepmesh adrenalinemesh -keepmesh adrenalinefxmesh"&#13;
+<br/><br/>
+numJoints 2&#13;
+<br/>
+numMeshes 2&#13;
+<br/><br/>
+joints {&#13;
+<br/>
+   "origin"   -1 ( 0 0 0 ) ( 0 0 0 )      // &#13;
+<br/>
+   "adrenaline"   0 ( -2.3452484608 -3.9679763317 2.5343182087 ) ( 0.0439860895 0.000001688 0.0000019919 )      // origin&#13;
+<br/>
+}&#13;
+<br/><br/>
+mesh {&#13;
+<br/>
+   // meshes: adrenalinemesh&#13;
+<br/>
+   shader "models/items/powerups/adrenalin"&#13;
+<br/><br/>
+   numverts 92&#13;
+<br/>
+   vert 0 ( 0.3059248626 0.2395480871 ) 21 1</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Notice the line...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   shader "models/items/powerups/adrenalin"</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152854" date="Posted: Wed Aug 09, 2006 9:42 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Schweet  <img src="/web/20061013061319im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/>  Thanks for all your help so far, helped a lot and also is helping intuition about other things. Now the model can be loaded in the editor, and is textured correctly in the editor, but for some reason half its right leg and part of the left leg around the knee is missing polys. The map compiles but when i go to load it up where the monkey should be there is a black box, although the black box acts exactly like the monkey should. &#13;
+<br/><br/>
+Is it showing up as a box because there are missing polys and therefore it cant render the md5mesh or is the box thing an error in the .def files  <img src="/web/20061013061319im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/>
+EDIT: Just redid the md5mesh with one bone and it shows up clean in the editor now, however it still only renders a box, could this be because i dont have an md5anim for it yet?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152859" date="Posted: Wed Aug 09, 2006 10:35 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Have you loaded the model in der_ton's model viewer to see if the polygons are missing there?&#13;
+<br/><br/>
+I have a feeling that your problem isn't so much the model as it might be the fact that the entity has no means to determine what animation to apply to the model.<br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152862" date="Posted: Wed Aug 09, 2006 10:59 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hmm, checked in dir tons as well, they were gone. Found out i had forgot to link some of the verticies to bones before exporting. In specific the liwer right leg and parts of the left knee...  <img src="/web/20061013061319im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/><br/>
+I fixed that but its still just a box in game. I don't have an md5anim yet, guess I should make an initial md5anim frame for it to reference. I'ma head to bed tho, I'll make the md5anim tom and check back.. hopefully with some screenies  <img src="/web/20061013061319im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153016" date="Posted: Thu Aug 10, 2006 3:22 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sigh, just exported a md5anim and declaired it as the afpose for the model and it still renders as a black box in the engine... The only thing I can think of that I'm missing now is a .af file for the mesh but I'm hoping thats not needed because I just want the thing to spawn and be viewable in game before I try making .af files and right now the whole mesh is one vertext group linked to a bone just to see if i can get it in the engine..</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153027" date="Posted: Thu Aug 10, 2006 4:24 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I just noticed something odd about your entity delcaration...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDev monkey_static {</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Notice the typo?&#13;
+<br/><br/>
+It should be...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef monkey_static {</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153043" date="Posted: Thu Aug 10, 2006 6:48 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">oh, sorry shoulda posted an update, i noticed it a while ago and corrected, it was why it wasn't showing up in the editor. Still trying to find out whats up with the box though, I thought it might be the size so i tried re-exporting a really really small version of it but the same thing hapened. Could it be something in my mins/maxs or size declarations, i just copied those from the shotgun or fat zombie, dunno how to actually find out what they should be.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153162" date="Posted: Thu Aug 10, 2006 10:40 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok found out the black box means the models not fully implemented yet.. but what am I missing... I have a model def, a .mtr an initial af pose and ik pose, have it inherit the item entity, spawn as idItem... it complains there is no .efx file for the map but that doesnt have anything to do with the model..&#13;
+<br/><br/>
+there isn't a .cm for the model but it auto generates that if there isn't one and I can't find any errors in the auto generation of the .cm as the map loads</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153196" date="Posted: Fri Aug 11, 2006 8:47 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Have you tried the testmodel console command to see if the game can actually load the model?<br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153200" date="Posted: Fri Aug 11, 2006 10:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">whoa, it says "NULL joints on renderEntity" theres a clue, dunno what tho, I'll try to find out how to add joints</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153308" date="Posted: Sat Aug 12, 2006 5:56 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You're telling me this whole time your model didn't have any bones?&#13;
+<br/><br/><img src="/web/20061013061319im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013061319/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061319im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013061319/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153309" date="Posted: Sat Aug 12, 2006 6:03 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">it does have bones though, sorry I'm still stuck on it.. the md5mesh is rigged even made an md5anim. bones are rigged weightpainted by vertex group and i exported the model as  der_ton said from blender. Is there something special I need in the .def file.. i dont' have a .af file yet or a skin file but i thought you only needed .af files if you want it to automate the walk cycle and you only needed a .skin file if you wanted to dynamically changet the textures or hide parts of the model.&#13;
+<br/><br/>
+I've ben avoiding the .af files because thier complicated and I only have linux available to me so I have no editor.. tried to install it through cedega and wine but they come up with run errors so I'll just cross my fingers its not the .af... I know I'll need em eventually but was hoping to do em in college in the commonspace labs.&#13;
+<br/><br/>
+EDIT: double checked the exporting.. should be ok</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153658" date="Posted: Tue Aug 15, 2006 6:17 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, it has to be a problem in my defs somewhere because when I do a testmodel using the model def name it shows up ok, slightly wierdly shaded but ok. Therefore the box must be happening when i try to spawn it as an idItem or a movable_item_default... my give up, heres a link to all the files i have so far, hopefully someone can find what I'm missing.&#13;
+<br/><br/><a href="/web/20061013061319/http://fuag.is-a-geek.com/filez/Marine" target="_blank" class="postlink">http://fuag.is-a-geek.com/filez/Marine</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152621" date="Posted: Tue Aug 08, 2006 4:29 am    Post subject: Could use some help starting up"><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, I made a model in blender, uvmaped and exported an md5mesh&#13;
+<br/><br/>
+made a material file for the model and put it in the materials foldier of my mod&#13;
+<br/><br/>
+"monkey.mtr"&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/monkey/monkey.md5mesh&#13;
+<br/>
+{&#13;
+<br/>
+	qer_editorimage	textures/monkey/monkey_d.tga&#13;
+<br/>
+	diffusemap	textures/monkey/monkey_d.tga&#13;
+<br/>
+	bumpmap		textures/monkey/monkey_h.tga&#13;
+<br/>
+	specularmap	textures/monkey/monkey_s.tga&#13;
+<br/>
+} &#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+tried making a def for him&#13;
+<br/><br/>
+"monkey_static.def"&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+entityDev monkey_static {&#13;
+<br/>
+	"inherit"				"item_default"&#13;
+<br/>
+	"inv_item"				"1"&#13;
+<br/>
+	"editor_usage"				"Monkey Static"&#13;
+<br/>
+	"editor_model"				"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"spawnclass"				"idItem"&#13;
+<br/>
+	"model"					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"snd_aquire"				"snd_shard_aquire"&#13;
+<br/>
+	"size"					"32 32 32"&#13;
+<br/>
+	"inv_name"				"Monkeyz"&#13;
+<br/>
+	"inv_armor"				"100"&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+made him an item because I dont have any animations or a .af file for the mesh yet. And thought it would be funny to pick up a monkey and get 100 armor.&#13;
+<br/><br/>
+problem.. I don't know how to get radiant to see this. I've tried sticking my foldiers into the doom3 base foldier but the monkey entity doesnt show up. If possible, I'd like to be able to point radiant to my mod foldier and have it take waht it can find from there and anything else from the doom3base foldier. Running linux.&#13;
+<br/><br/>
+also, I'm not sure weather or not the diffuse bump and normal maps are applied to my model, does just making the mtr firle do it or do I have to somehow link the .def for the model with the .mtr file?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152650" date="Posted: Tue Aug 08, 2006 7:32 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">When dealing with MD5mesh files, the model key/value pairs for your entity declaration need to reference a model declaration as opposed to the MD5mesh files themselves.&#13;
+<br/><br/>
+For instance, notice the model key/value pair here...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef monster_boss_cyberdemon {&#13;
+<br/>
+   "inherit"                  "monster_default"&#13;
+<br/>
+   "editor_mins"               "-90 -90 0"&#13;
+<br/>
+   "editor_maxs"               "90 90 300"&#13;
+<br/>
+   "scriptobject"               "monster_boss_cyberdemon"&#13;
+<br/>
+   "model"                     "monster_boss_cyberdemon"&#13;
+<br/>
+   "ragdoll"                  "monster_boss_cyberdemon"&#13;
+<br/>
+   "size"                     "100 100 300"&#13;
+<br/>
+   "use_aas"                  "aas_cyberdemon"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And the cooresponding declaration here...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">model monster_boss_cyberdemon {&#13;
+<br/>
+   mesh                     models/md5/monsters/cyberdemon/cyberdemon.md5mesh&#13;
+<br/>
+   channel torso               ( *Waist )&#13;
+<br/>
+   channel legs               ( *Hips Body origin ROT -*Waist)&#13;
+<br/><br/>
+   anim af_pose               models/md5/monsters/cyberdemon/af_pose.md5anim&#13;
+<br/>
+   anim ik_pose               models/md5/monsters/cyberdemon/ik_pose.md5anim</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Also note how the MD5mesh file is referenced inside the model declaration.<br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152838" date="Posted: Wed Aug 09, 2006 6:25 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">how do you link a material to a model though I dun see where it gets info about what to use to texture it. It would seem to make sense that there would be a material key in the model def with the value bieng the name of the material file instead of the path to it but I don't know what to reference to look that up.&#13;
+<br/><br/>
+as it stands now i have this in&#13;
+<br/><br/>
+doom3/base/def/monkey_static.def&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+model char_monkey_static {&#13;
+<br/>
+	"mesh" 					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"material"				"monkey"&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDev monkey_static {&#13;
+<br/>
+	"inherit"				"item_default"&#13;
+<br/>
+	"inv_item"				"1"&#13;
+<br/>
+	"editor_mins"				"-90 -90 0"&#13;
+<br/>
+	"editor_maxs"				"90 90 300"&#13;
+<br/>
+	"editor_usage"				"Monkey Static"&#13;
+<br/>
+	"editor_model"				"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"spawnclass"				"idItem"&#13;
+<br/>
+	"model"					"models/monkey/monkey.md5mesh"&#13;
+<br/>
+	"snd_aquire"				"snd_shard_aquire"&#13;
+<br/>
+	"size"					"32 32 32"&#13;
+<br/>
+	"inv_name"				"Monkeyz"&#13;
+<br/>
+	"inv_armor"				"100"&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and then this in&#13;
+<br/><br/>
+doom3/base/materials/monkey.mtr&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+models/monkey/monkey.md5mesh&#13;
+<br/>
+{&#13;
+<br/>
+	qer_editorimage	textures/monkey/monkey_d.tga&#13;
+<br/>
+	diffusemap	textures/monkey/monkey_d.tga&#13;
+<br/>
+	bumpmap		textures/monkey/monkey_h.tga&#13;
+<br/>
+	specularmap	textures/monkey/monkey_s.tga&#13;
+<br/>
+} &#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+does it look for a matching material file reference when it finds the model definition?&#13;
+<br/><br/>
+what else do i need to get the md5mesh into doom3 as just a mesh.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152841" date="Posted: Wed Aug 09, 2006 7:36 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The model file itself references the material shader.&#13;
+<br/><br/>
+For instance...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">MD5Version 10&#13;
+<br/>
+commandline "mesh models/monsters/zombie/cycles/idles/npcs_mesh.mb -dest models/md5/props/adrenaline.md5mesh -game Doom -prefix ZOMBIE_ -keep RHANDCONNECTOR -rename origin blah -rename RHANDCONNECTOR origin -clearorigin -range 1 1 -keepmesh adrenalinemesh -keepmesh adrenalinefxmesh"&#13;
+<br/><br/>
+numJoints 2&#13;
+<br/>
+numMeshes 2&#13;
+<br/><br/>
+joints {&#13;
+<br/>
+   "origin"   -1 ( 0 0 0 ) ( 0 0 0 )      // &#13;
+<br/>
+   "adrenaline"   0 ( -2.3452484608 -3.9679763317 2.5343182087 ) ( 0.0439860895 0.000001688 0.0000019919 )      // origin&#13;
+<br/>
+}&#13;
+<br/><br/>
+mesh {&#13;
+<br/>
+   // meshes: adrenalinemesh&#13;
+<br/>
+   shader "models/items/powerups/adrenalin"&#13;
+<br/><br/>
+   numverts 92&#13;
+<br/>
+   vert 0 ( 0.3059248626 0.2395480871 ) 21 1</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Notice the line...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   shader "models/items/powerups/adrenalin"</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152854" date="Posted: Wed Aug 09, 2006 9:42 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Schweet  <img src="/web/20061013055016im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/>  Thanks for all your help so far, helped a lot and also is helping intuition about other things. Now the model can be loaded in the editor, and is textured correctly in the editor, but for some reason half its right leg and part of the left leg around the knee is missing polys. The map compiles but when i go to load it up where the monkey should be there is a black box, although the black box acts exactly like the monkey should. &#13;
+<br/><br/>
+Is it showing up as a box because there are missing polys and therefore it cant render the md5mesh or is the box thing an error in the .def files  <img src="/web/20061013055016im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><br/>
+EDIT: Just redid the md5mesh with one bone and it shows up clean in the editor now, however it still only renders a box, could this be because i dont have an md5anim for it yet?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152859" date="Posted: Wed Aug 09, 2006 10:35 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Have you loaded the model in der_ton's model viewer to see if the polygons are missing there?&#13;
+<br/><br/>
+I have a feeling that your problem isn't so much the model as it might be the fact that the entity has no means to determine what animation to apply to the model.<br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="152862" date="Posted: Wed Aug 09, 2006 10:59 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hmm, checked in dir tons as well, they were gone. Found out i had forgot to link some of the verticies to bones before exporting. In specific the liwer right leg and parts of the left knee...  <img src="/web/20061013055016im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/><br/>
+I fixed that but its still just a box in game. I don't have an md5anim yet, guess I should make an initial md5anim frame for it to reference. I'ma head to bed tho, I'll make the md5anim tom and check back.. hopefully with some screenies  <img src="/web/20061013055016im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153016" date="Posted: Thu Aug 10, 2006 3:22 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sigh, just exported a md5anim and declaired it as the afpose for the model and it still renders as a black box in the engine... The only thing I can think of that I'm missing now is a .af file for the mesh but I'm hoping thats not needed because I just want the thing to spawn and be viewable in game before I try making .af files and right now the whole mesh is one vertext group linked to a bone just to see if i can get it in the engine..</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153027" date="Posted: Thu Aug 10, 2006 4:24 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I just noticed something odd about your entity delcaration...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDev monkey_static {</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Notice the typo?&#13;
+<br/><br/>
+It should be...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">entityDef monkey_static {</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153043" date="Posted: Thu Aug 10, 2006 6:48 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">oh, sorry shoulda posted an update, i noticed it a while ago and corrected, it was why it wasn't showing up in the editor. Still trying to find out whats up with the box though, I thought it might be the size so i tried re-exporting a really really small version of it but the same thing hapened. Could it be something in my mins/maxs or size declarations, i just copied those from the shotgun or fat zombie, dunno how to actually find out what they should be.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153162" date="Posted: Thu Aug 10, 2006 10:40 pm    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok found out the black box means the models not fully implemented yet.. but what am I missing... I have a model def, a .mtr an initial af pose and ik pose, have it inherit the item entity, spawn as idItem... it complains there is no .efx file for the map but that doesnt have anything to do with the model..&#13;
+<br/><br/>
+there isn't a .cm for the model but it auto generates that if there isn't one and I can't find any errors in the auto generation of the .cm as the map loads</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153196" date="Posted: Fri Aug 11, 2006 8:47 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Have you tried the testmodel console command to see if the game can actually load the model?<br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153200" date="Posted: Fri Aug 11, 2006 10:08 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">whoa, it says "NULL joints on renderEntity" theres a clue, dunno what tho, I'll try to find out how to add joints</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153308" date="Posted: Sat Aug 12, 2006 5:56 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You're telling me this whole time your model didn't have any bones?&#13;
+<br/><br/><img src="/web/20061013055016im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/>_________________<br/><a href="/web/20061013055016/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055016im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013055016/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153309" date="Posted: Sat Aug 12, 2006 6:03 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">it does have bones though, sorry I'm still stuck on it.. the md5mesh is rigged even made an md5anim. bones are rigged weightpainted by vertex group and i exported the model as  der_ton said from blender. Is there something special I need in the .def file.. i dont' have a .af file yet or a skin file but i thought you only needed .af files if you want it to automate the walk cycle and you only needed a .skin file if you wanted to dynamically changet the textures or hide parts of the model.&#13;
+<br/><br/>
+I've ben avoiding the .af files because thier complicated and I only have linux available to me so I have no editor.. tried to install it through cedega and wine but they come up with run errors so I'll just cross my fingers its not the .af... I know I'll need em eventually but was hoping to do em in college in the commonspace labs.&#13;
+<br/><br/>
+EDIT: double checked the exporting.. should be ok</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153658" date="Posted: Tue Aug 15, 2006 6:17 am    Post subject: "><author>fuag</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, it has to be a problem in my defs somewhere because when I do a testmodel using the model def name it shows up ok, slightly wierdly shaded but ok. Therefore the box must be happening when i try to spawn it as an idItem or a movable_item_default... my give up, heres a link to all the files i have so far, hopefully someone can find what I'm missing.&#13;
+<br/><br/><a href="/web/20061013055016/http://fuag.is-a-geek.com/filez/Marine" target="_blank" class="postlink">http://fuag.is-a-geek.com/filez/Marine</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

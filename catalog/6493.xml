@@ -1,0 +1,4042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="6493"><title>MD5camera Export Project</title><posts><post id="55431" date="Posted: Thu Oct 07, 2004 9:17 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here is a maxscript function that I used for the max-&gt;md5 exporter to print floats without scientific notation. I think the algorithm should be implementable in LScript, too.&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">fn printfloat flt =&#13;
+<br/>
+--maxscript doesn't provide a way to format float output that I know of. It seems that Doom3 does not understand the &lt;x&gt;e&lt;y&gt; notation of floats&#13;
+<br/>
+--if you plan to use this in your scripts, note that this function doesn't check against a large number passed in&#13;
+<br/>
+(&#13;
+<br/>
+   --if (abs flt)&gt;10.0 then return flt -- this could be used to gain some speed.&#13;
+<br/>
+   --else&#13;
+<br/>
+   local numdigits = 10&#13;
+<br/>
+   (&#13;
+<br/>
+      str = ""&#13;
+<br/>
+      if flt&lt;0 then str += "-"&#13;
+<br/>
+      flt2 = abs flt&#13;
+<br/>
+      str += ((flt2 as integer) as string)&#13;
+<br/>
+      flt2 -= (flt2 as integer)&#13;
+<br/>
+      str +="."&#13;
+<br/>
+      for i=1 to numdigits do&#13;
+<br/>
+      (&#13;
+<br/>
+         flt2 *=10.0&#13;
+<br/>
+         str += ((flt2 as integer) as string)&#13;
+<br/>
+         flt2 -= (flt2 as integer)&#13;
+<br/>
+         if abs flt2 &lt; (1/10^(numdigits-i+1)) then break&#13;
+<br/>
+      )&#13;
+<br/>
+      return str&#13;
+<br/>
+   )&#13;
+<br/>
+)</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012183604/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55626" date="Posted: Fri Oct 08, 2004 2:22 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for that code. I had nearly the same worked out when I finally got around to checking this thread again but it was still very helpful because i wasn't finished with it.&#13;
+<br/><br/><span style="font-weight: bold">EDIT:</span> Updated code and a shitload of problems. Details are in the comments...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.previewstart;&#13;
+<br/>
+   s_end = scn.previewend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // corrections based on 360 degree test camera rotations.&#13;
+<br/><br/>
+      /*&#13;
+<br/>
+         For some reason, values over 180 or less than -180 caused the camera to switch&#13;
+<br/>
+         directions.&#13;
+<br/><br/>
+         For instance, a 0 to 360 rotation around the heading would work fine until&#13;
+<br/>
+         heading reaches a value of 181. At this point instead of continuing in a clockwise&#13;
+<br/>
+         direction it would reverse direction. It behaves as if 181 is the same as&#13;
+<br/>
+         179.&#13;
+<br/><br/>
+         I'm guessing that values in the range of -180 to 180 are the only acceptable values?&#13;
+<br/><br/>
+         It's driving me nuts because those are the only values that work. Anyway, I've&#13;
+<br/>
+         corrected that issue using the conditional statements below. This way whenever a&#13;
+<br/>
+         value is beyond that range it is looped back around into it.&#13;
+<br/><br/>
+         The only problem is I'm not sure how to adjust the camera orientation now. The&#13;
+<br/>
+         camera points east at 0,0,0 when 0,0,0 should point north.&#13;
+<br/><br/>
+         If I adjust the conditional statments affecting rot.x to compensate for this,&#13;
+<br/>
+         I get really funky results. For instance, a rotation around the bank would result&#13;
+<br/>
+         in a 270 degree rotation around pitch that then stops and then rotates 360 around&#13;
+<br/>
+         the bank.&#13;
+<br/><br/>
+         I'm sure the reason I'm struggling with this is because I don't understand the math&#13;
+<br/>
+         behind quaternions.&#13;
+<br/><br/>
+         If i did, I could adjust for the orientation after the quaternion calculations and&#13;
+<br/>
+         maybe that would make a world of difference.&#13;
+<br/><br/>
+      */&#13;
+<br/><br/>
+      rot=&lt;rot.x, rot.y, rot.z&gt;;&#13;
+<br/><br/>
+      // correct rot.x&#13;
+<br/>
+      if (rot.x &lt; -180) {&#13;
+<br/>
+          rot.x += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.x &gt; 180) {&#13;
+<br/>
+          rot.x -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      // correct rot.y&#13;
+<br/>
+      if (rot.y &lt; -180) {&#13;
+<br/>
+          rot.y += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.y &gt; 180) {&#13;
+<br/>
+          rot.y -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      // correct rot.z&#13;
+<br/>
+      if (rot.z &lt; -180) {&#13;
+<br/>
+          rot.z += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.z &gt; 180) {&#13;
+<br/>
+          rot.z -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3; //pitch&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3; //bank&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3; //heading&#13;
+<br/><br/>
+      // convert quaternions to strings so they can be written in decimal notation.&#13;
+<br/>
+      v1=forceDecimal(q1);&#13;
+<br/>
+      v2=forceDecimal(q2);&#13;
+<br/>
+      v3=forceDecimal(q3);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",v3, " ", v2, " ", v1, " ) ",fovarray[1]*180/PI);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+   info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+It's like slowly pushing a nail through your skull. <img src="/web/20061012183604im_/http://doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/><br/>
+Everytime I think I've just about got it figured out, I find something else wrong with it.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55684" date="Posted: Fri Oct 08, 2004 11:28 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You should use the forceDecimal function on all seven floats that get output.&#13;
+<br/><br/>
+About the camera rotation issue: you should go back to the original quaternion output (don't swizzle the 3 quaternion components), and manipulate (swizzle/negate) the euler angles before or after they're wrapped into the -180;+180 interval. &#13;
+<br/><br/>
+And you should change the &#13;
+<br/>
+if (rot.x &lt; -180)&#13;
+<br/>
+to &#13;
+<br/>
+while (rot.x &lt; -180), just to be really sure.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012183604/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55737" date="Posted: Fri Oct 08, 2004 8:43 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay! <img src="/web/20061012183604im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I've got the orientation issues worked out. I swiveled the euler angles instead and it works great.&#13;
+<br/><br/>
+I placed the range value wrapping conditional statement in it's own function to optimize the code a bit.&#13;
+<br/><br/>
+I've tested full 360 degree heading, pitch and bank rotations. I've tested very complex camera rigs. Everything seems to be in order.&#13;
+<br/><br/>
+Here's the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+wrapValues: num&#13;
+<br/>
+{&#13;
+<br/>
+    // takes values that exceed range and loops them back into valid values&#13;
+<br/><br/>
+    if (num &lt; -180) {&#13;
+<br/>
+      num += 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    if (num &gt; 180) {&#13;
+<br/>
+      num -= 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    return num;&#13;
+<br/>
+}&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    if (num2==0) {&#13;
+<br/>
+        strOutput += "0000000000";&#13;
+<br/>
+    }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.previewstart;&#13;
+<br/>
+   s_end = scn.previewend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // swivel camera values and adjust heading orientation&#13;
+<br/>
+      rot_d3=&lt;rot.y, rot.z, rot.x - 90&gt;;&#13;
+<br/><br/>
+      // wrap rotational values into range -180 to 180&#13;
+<br/>
+      rot_d3.x = wrapValues(rot_d3.x);&#13;
+<br/>
+      rot_d3.y = wrapValues(rot_d3.y);&#13;
+<br/>
+      rot_d3.z = wrapValues(rot_d3.z);&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot_d3.x/360*PI);&#13;
+<br/>
+      c2=cos(rot_d3.y/360*PI);&#13;
+<br/>
+      c3=cos(rot_d3.z/360*PI);&#13;
+<br/>
+      s1=sin(rot_d3.x/360*PI);&#13;
+<br/>
+      s2=sin(rot_d3.y/360*PI);&#13;
+<br/>
+      s3=sin(rot_d3.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/><br/>
+      // convert values to strings so they can be written in decimal notation&#13;
+<br/>
+      v1=forceDecimal(pos_d3.x);&#13;
+<br/>
+      v2=forceDecimal(pos_d3.y);&#13;
+<br/>
+      v3=forceDecimal(pos_d3.z);&#13;
+<br/>
+      v4=forceDecimal(q1);&#13;
+<br/>
+      v5=forceDecimal(q2);&#13;
+<br/>
+      v6=forceDecimal(q3);&#13;
+<br/>
+      v7=forceDecimal(fovarray[1]*180/PI);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", v1, " ", v2, " ", v3, " ) ( ", v4, " ", v5, " ", v6, " ) ", v7);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+   info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Do you have any ideas on how we could implement cuts or should we just leave that as something you hand edit in?<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55739" date="Posted: Fri Oct 08, 2004 8:54 pm    Post subject: "><author>goliathvt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I haven't wanted to interrupt this thread because you two were working so well through the various problems and obstacles in creating this thing... but:&#13;
+<br/><br/>
+Thank you rich_is_bored and der_ton!  Your collective work is awesome!&#13;
+<br/><br/><img src="/web/20061012183604im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+G<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55751" date="Posted: Fri Oct 08, 2004 10:32 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just tried your script. It's amazing!!! a very very gooood work!&#13;
+<br/><br/><br/>
+Thanks Rich and der_ton!<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55753" date="Posted: Fri Oct 08, 2004 10:49 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No, that's fine. I appriciate any comments or critiques.&#13;
+<br/><br/>
+At this point the script supports position, rotation, and field of view. I still need to work out a way to deal with cuts.&#13;
+<br/><br/>
+Do you guys have any suggestions?&#13;
+<br/><br/>
+What I was thinking is maybe using dopesheet markers although I haven't tried seeing if that kind of data is accessible through an LScript.&#13;
+<br/><br/>
+Once the script is fully functional I'll start on an interface.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55794" date="Posted: Sat Oct 09, 2004 6:15 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By now i've made some tests, and I've not discovered bad issues. I'll continue this afternoon, but for now I've got no problems with the exported stuff (read: my cams works perfectly)&#13;
+<br/><br/><br/>
+But like I said before, i'm a newbie in lightwave, so I can't help you with the "cuts" stuff.&#13;
+<br/><br/><br/>
+Good work!<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55801" date="Posted: Sat Oct 09, 2004 8:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, I investigated the dopesheet idea and there doesn't appear to be a way to access it.&#13;
+<br/><br/>
+Anyway, I've integrated an interface. It's just your standard LScript type stuff. I'm not interested in trying to make it look pretty.&#13;
+<br/><br/>
+I'll post the code and then I'll talk about it some more...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/>
+numcuts = nil; // number of cuts&#13;
+<br/>
+cuts = nil; // array of cuts&#13;
+<br/>
+numframes = nil; // number of frames&#13;
+<br/>
+s_fps = nil; // frames per second&#13;
+<br/>
+s_start = nil; // starting frame&#13;
+<br/>
+s_end = nil; // ending frame&#13;
+<br/><br/>
+wrapValues: num&#13;
+<br/>
+{&#13;
+<br/>
+    // takes values that exceed range and loops them back into valid values&#13;
+<br/><br/>
+    if (num &lt; -180) {&#13;
+<br/>
+      num += 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    if (num &gt; 180) {&#13;
+<br/>
+      num -= 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    return num;&#13;
+<br/>
+}&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    if (num2==0) {&#13;
+<br/>
+        strOutput += "0000000000";&#13;
+<br/>
+    }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", numframes);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts "+ numcuts + "\n");&#13;
+<br/>
+   exportfile.writeln("cuts {");&#13;
+<br/>
+   for (i = 1; i&lt;=numcuts; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+         exportfile.writeln(cuts[i]);&#13;
+<br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // swivel camera values and adjust heading orientation&#13;
+<br/>
+      rot_d3=&lt;rot.y, rot.z, rot.x - 90&gt;;&#13;
+<br/><br/>
+      // wrap rotational values into range -180 to 180&#13;
+<br/>
+      rot_d3.x = wrapValues(rot_d3.x);&#13;
+<br/>
+      rot_d3.y = wrapValues(rot_d3.y);&#13;
+<br/>
+      rot_d3.z = wrapValues(rot_d3.z);&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot_d3.x/360*PI);&#13;
+<br/>
+      c2=cos(rot_d3.y/360*PI);&#13;
+<br/>
+      c3=cos(rot_d3.z/360*PI);&#13;
+<br/>
+      s1=sin(rot_d3.x/360*PI);&#13;
+<br/>
+      s2=sin(rot_d3.y/360*PI);&#13;
+<br/>
+      s3=sin(rot_d3.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/><br/>
+      // convert values to strings so they can be written in decimal notation&#13;
+<br/>
+      v1=forceDecimal(pos_d3.x);&#13;
+<br/>
+      v2=forceDecimal(pos_d3.y);&#13;
+<br/>
+      v3=forceDecimal(pos_d3.z);&#13;
+<br/>
+      v4=forceDecimal(q1);&#13;
+<br/>
+      v5=forceDecimal(q2);&#13;
+<br/>
+      v6=forceDecimal(q3);&#13;
+<br/>
+      v7=forceDecimal(fovarray[1]*180/PI);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", v1, " ", v2, " ", v3, " ) ( ", v4, " ", v5, " ", v6, " ) ", v7);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+toggleOff: value&#13;
+<br/>
+{&#13;
+<br/>
+    return(false);&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic&#13;
+<br/>
+{&#13;
+<br/><br/>
+    // get info for requestor&#13;
+<br/>
+    scn = Scene();&#13;
+<br/>
+    userobj = scn.firstSelect();&#13;
+<br/>
+    if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+    {&#13;
+<br/>
+       //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+       userobj = Camera();&#13;
+<br/>
+       if (userobj == nil)&#13;
+<br/>
+       {&#13;
+<br/>
+          info ("No camera in the scene");&#13;
+<br/>
+          return;&#13;
+<br/>
+       }&#13;
+<br/>
+    }&#13;
+<br/>
+    cam = userobj;&#13;
+<br/>
+    cutlist = "";&#13;
+<br/>
+    exportfilename = "";&#13;
+<br/>
+    s_fps = scn.fps;&#13;
+<br/>
+    s_start = scn.previewstart;&#13;
+<br/>
+    s_end = scn.previewend;&#13;
+<br/>
+    numframes = s_end - s_start + 1;&#13;
+<br/><br/>
+    // display requester&#13;
+<br/>
+    reqbegin("Lightwave MD5camera Exporter");&#13;
+<br/>
+    reqsize(492,155);&#13;
+<br/><br/>
+    c1 = ctlinteger("Frame Rate",s_fps);&#13;
+<br/>
+    ctlposition(c1,361,12);&#13;
+<br/><br/>
+    c2 = ctlstring("Cut List",cutlist);&#13;
+<br/>
+    ctlposition(c2,10,73,476,18);&#13;
+<br/><br/>
+    c3 = ctlfilename("Save As",exportfilename);&#13;
+<br/>
+    ctlposition(c3,5,104,458,19);&#13;
+<br/><br/>
+    c4 = ctlinteger("Start Frame",s_start);&#13;
+<br/>
+    ctlposition(c4,85,42);&#13;
+<br/><br/>
+    c5 = ctlinteger("End Frame",s_end);&#13;
+<br/>
+    ctlposition(c5,225,42);&#13;
+<br/><br/>
+    c6 = ctlinteger("Total Frames",numframes);&#13;
+<br/>
+    ctlposition(c6,355,42);&#13;
+<br/><br/>
+    c7 = ctlcameraitems("Camera",cam);&#13;
+<br/>
+    ctlposition(c7,3,11,343,19);&#13;
+<br/><br/>
+    // deactivate all unmodifiable controls&#13;
+<br/>
+    ctlactive(c3, "toggleOff", c1, c4, c5, c6);&#13;
+<br/><br/>
+    return if !reqpost();&#13;
+<br/><br/>
+    s_fps = getvalue(c1);&#13;
+<br/>
+    cutlist = getvalue(c2);&#13;
+<br/>
+    exportfilename = getvalue(c3);&#13;
+<br/>
+    s_start = getvalue(c4);&#13;
+<br/>
+    s_end = getvalue(c5);&#13;
+<br/>
+    numframes = getvalue(c6);&#13;
+<br/>
+    cam = getvalue(c7);&#13;
+<br/><br/>
+    reqend();&#13;
+<br/><br/>
+    // validate values and setup file for output&#13;
+<br/>
+    if(cam == nil)&#13;
+<br/>
+    {&#13;
+<br/>
+        error ("No camera selected");&#13;
+<br/>
+        return;&#13;
+<br/>
+    }&#13;
+<br/>
+    if(cutlist == nil) {&#13;
+<br/>
+        numcuts = 0;&#13;
+<br/>
+    } else {&#13;
+<br/>
+        cuts = parse(";",cutlist);&#13;
+<br/>
+        numcuts = size(cuts);&#13;
+<br/>
+        //info(string(numcuts) + " cuts were found");&#13;
+<br/>
+        for (i=1; i&lt;=numcuts; i++)&#13;
+<br/>
+        {&#13;
+<br/>
+            test = integer(cuts[i]);&#13;
+<br/>
+            if (test == nil)&#13;
+<br/>
+            {&#13;
+<br/>
+                error(cuts[i]+" is not an integer");&#13;
+<br/>
+                return;&#13;
+<br/>
+            } else {&#13;
+<br/>
+                cuts[i] = test - s_start;&#13;
+<br/>
+            }&#13;
+<br/>
+            //error(cuts[i]+" is not an integer");&#13;
+<br/>
+            if (integer(cuts[i]) &lt; s_start or integer(cuts[i]) &gt; s_end)&#13;
+<br/>
+            {&#13;
+<br/>
+                error(cuts[i]+" is out of range");&#13;
+<br/>
+                return;&#13;
+<br/>
+            }&#13;
+<br/>
+        }&#13;
+<br/>
+    }&#13;
+<br/>
+    exportfile = File(exportfilename,"w");&#13;
+<br/>
+    if(exportfile == nil)&#13;
+<br/>
+    {&#13;
+<br/>
+       error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+       return;&#13;
+<br/>
+    }&#13;
+<br/>
+    exportmd5camera();&#13;
+<br/>
+    info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Okay, the way I'm doing the cuts is through a single textbox. The way it works is you type the frame numbers where you want the cuts to take place.&#13;
+<br/><br/>
+For instance, say you want cuts at frame 10 and 20 on the timeline in Lightwave. You simply type...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">10;20</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... in the cuts list text box.&#13;
+<br/><br/>
+Keep me posted if there are any problems with this latest iteration as I haven't done much testing. I've been mainly testing the interface.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="59043" date="Posted: Mon Oct 25, 2004 8:22 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm going to package this up into a nice little zip and update the first post with a link.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96356" date="Posted: Thu May 26, 2005 7:27 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Long time no update but I figured I'd chime in and let you all know about a problem with the script that's been on my mind for a while but I've not been terribly bothered to integrate a solution.&#13;
+<br/><br/>
+There is a bug with cuts. Well, not really a bug but it more or less amounts to a bug because I'm not sure if you can move the camera in the fashion needed in order for cuts to work.&#13;
+<br/><br/>
+The way it works now is you manually tell the script what frames to make cuts at. The problem is that while the script is exporting what amounts to multiple clips we're working with a single camera that uses one continuous fluid motion path.&#13;
+<br/><br/>
+So, if I cut on one frame to start the next clip in the script, the camera in Lightwave doesn't know that this should be a completely different movement.&#13;
+<br/><br/>
+The problem is that you can't get a camera's motion path to abruptly end and then start up again without the previous motion carrying over into the next.&#13;
+<br/><br/>
+This becomes a problem because if I insert a cut at one point and try to start a new clip immediately on the next frame at a different position Lightwave will interpret the motion from the two keyframes as something that needs interpolated.&#13;
+<br/><br/>
+The solution is to use a separate camera for each cut but that would require major overhaul to the current script and I just don't have the time to really look into it.<br/>_________________<br/><a href="/web/20061012183604/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012183604im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012183604/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="54942" date="Posted: Mon Oct 04, 2004 2:36 am    Post subject: MD5camera Export Project"><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A working LScript Plugin has been finished...&#13;
+<br/><br/><span style="font-weight: bold">DOWNLOAD CURRENT VERSION</span>&#13;
+<br/><a href="/web/20061012181508/http://www.pcgamemods.com/8120/" target="_blank">http://www.pcgamemods.com/8120/</a>&#13;
+<br/><a href="/web/20061012181508/http://www.geocities.com/rich_is_bored/LW_MD5camera_Export.zip" target="_blank">http://www.geocities.com/rich_is_bored/LW_MD5camera_Export.zip</a>&#13;
+<br/><br/>
+Original Thread:&#13;
+<br/><br/>
+Okay, to get the ball rolling on a means to export MD5cameras from Lightwave, I'm creating this thread.&#13;
+<br/><br/>
+First and foremost, contrary to popular belief, I am not a programmer. I took a class on Turbo Pascal in high school 6 years ago but that's about the extent of my programming knowledge.&#13;
+<br/><br/>
+I've got a copy of Dev-C++ and I've been toying with it so if it's absolutely nessecary I can write a program to do the conversion but, I'll be frank, it's going to suck and it's going to be a DOS mode program at best.&#13;
+<br/><br/>
+Now, on to the idea...&#13;
+<br/><br/>
+In another thread I mentioned the possibility of converting saved motion paths (*.mot) to MD5camera format. Both file formats are plain text and that should make the conversion fairly easy.&#13;
+<br/><br/>
+The first thing is to decypher the formats. So, on that note, here is what I believe the MD5 camera format is comprised of...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">MD5Version 10                     // Header and Version&#13;
+<br/>
+commandline ""                     // Command Line Parameters - Used to convert maya format&#13;
+<br/><br/>
+numFrames 452                     // The Number of Frames&#13;
+<br/>
+frameRate 24                     // The Framerate&#13;
+<br/>
+numCuts 3                     // The Number of Cuts&#13;
+<br/><br/>
+cuts {                        // A List of Frames Where Cuts Take Place&#13;
+<br/>
+   110&#13;
+<br/>
+   329&#13;
+<br/>
+   429&#13;
+<br/>
+}&#13;
+<br/><br/>
+camera {                     // A List of Key Frames&#13;
+<br/>
+   ( -908.6940917969 -3417.0383300781 552.0170898438 ) ( -0.0069773775 0.0820536837 -0.084440738 ) 54.4321250916&#13;
+<br/><br/>
+   ...                     // The format for each line is as follows...&#13;
+<br/><br/>
+   continues on                  // (X_POS, Y_POS, Z_POS) (HEADING, PITCH, BANK) FOV&#13;
+<br/><br/>
+   ...&#13;
+<br/><br/>
+   ( -903.4814453125 -3417.0383300781 555.6039428711 ) ( -0.0068133976 0.0792509392 -0.0853850618 ) 54.4321250916&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, the values that an MD5camera needs ...&#13;
+<br/><br/><ul><br/><li>Number of Frames&#13;
+<br/></li><li>Framerate&#13;
+<br/></li><li>Number of Cuts&#13;
+<br/></li><li>List of Cut Frames&#13;
+<br/></li><li>List of Frames&#13;
+<br/></li><li>Position on the X axis&#13;
+<br/></li><li>Position on the Y axis&#13;
+<br/></li><li>Position on the Z axis&#13;
+<br/></li><li>Rotation for Heading&#13;
+<br/></li><li>Rotation for Pitch&#13;
+<br/></li><li>Rotation for Bank&#13;
+<br/></li><li>Field of View&#13;
+<br/></li></ul><br/><br/>
+Now, here is what I believe the MOT motion file format is comprised of...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">LWMO&#13;
+<br/>
+3&#13;
+<br/><br/>
+NumChannels 6&#13;
+<br/>
+Channel 0                  // X channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1                     // Number of keys in this channel&#13;
+<br/>
+  Key 1 0 0 0 0 0 0 0 0               // Keys (Value, Time, Incoming Curve, Tension, Continuity, Bias, NA, NA, NA)&#13;
+<br/>
+  Behaviors 1 1                  // Pre and Post Behavior (0-Reset, 1-Constant, 2-Repeat, 3-Oscillate, 4-Offset Repeat, 5-Linear)&#13;
+<br/>
+}&#13;
+<br/>
+Channel 1                  // Y channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 2 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 2                  // Z channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 3 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 3                  // Heading channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.06981317 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 4                  // Pitch Channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.08726646 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 5                  // Bank Channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.10471975 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, the values that an MOT gives us either directly or can be calculated easily ...&#13;
+<br/><br/><ul><br/><li>Number of Frames&#13;
+<br/></li><li>List of Key Frames&#13;
+<br/></li><li>Position on the X axis&#13;
+<br/></li><li>Position on the Y axis&#13;
+<br/></li><li>Position on the Z axis&#13;
+<br/></li><li>Rotation for Heading&#13;
+<br/></li><li>Rotation for Pitch&#13;
+<br/></li><li>Rotation for Bank&#13;
+<br/></li></ul><br/><br/>
+Now if you compare the two you'll see that there are a couple problems.&#13;
+<br/><br/>
+There is no list of cuts, there is no FOV channel, and Lightwave interpolates between key frames where an MD5camera lists each frame in sequence.&#13;
+<br/><br/>
+You could force users to bake key frames in the graph editor. This would create the missing frames and make it easier to convert because all the calculation is already done.&#13;
+<br/><br/>
+The alternative isn't pretty. In order to do this manually you'd have to calculate the values for a given frame based on the curve type, tension, continuity, and bias.&#13;
+<br/><br/>
+Not to mention I don't know what those last three values are for and if they play a role.&#13;
+<br/><br/>
+As far as the cuts and FOV go, that may be do able. Is it possible to add new channels to an object in Lightwave? If so, do they get saved in a motion file?&#13;
+<br/><br/>
+If not, then perhaps we can use one or more of the extra fields in a MOT to fudge it if we force users to bake key frames.&#13;
+<br/><br/>
+The alternative is to ask the user for input and that's going to be a problem for some users.&#13;
+<br/><br/>
+Anyway, this is just me spilling my guts. Let's see where this goes from here.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"><br/><br/>Last edited by rich_is_bored on Mon Oct 25, 2004 9:14 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="55005" date="Posted: Mon Oct 04, 2004 1:13 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The second triple of values in the md5camera data is the X, Y and Z value of the camera's rotation quaternion, not the heading, pitch, bank format.&#13;
+<br/><br/>
+I'll take a look at LScript, maybe it turns out that writing such a md5camera exporter as a layout script is not that difficult.&#13;
+<br/><br/>
+Bozo, if you read this please tell us if you're planning to include a md5camera exporter in your LW-&gt;md5 converter, so we don't do the same work twice. <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55008" date="Posted: Mon Oct 04, 2004 1:55 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Good thing that users like Rich and der_ton are looking into this.. I really interested in a md5camera export for lightwave..  :thumbs up!:&#13;
+<br/><br/><br/>
+Sadly, I really don't know anything regarding Lscripts, so I can offer help for beta testing things... Let me know... Let US know...<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55044" date="Posted: Mon Oct 04, 2004 6:21 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Damn it der_ton. There's that word again! "quaternion"&#13;
+<br/><br/>
+I guess I have to do some reading....&#13;
+<br/><br/>
+meh! <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55045" date="Posted: Mon Oct 04, 2004 6:36 pm    Post subject: "><author>weak</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">maybe that helps:&#13;
+<br/><br/><a href="/web/20061012181508/http://skal.planet-d.net/demo/matrixfaq.htm" target="_blank" class="postlink">Matrix and Quaternion FAQ</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55059" date="Posted: Mon Oct 04, 2004 8:11 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No help at all but thanks for trying. I'm seeing a bunch of algorithms rather than explanations.&#13;
+<br/><br/>
+This is alot better...&#13;
+<br/><br/><a href="/web/20061012181508/http://www.gamedev.net/reference/articles/article1095.asp" target="_blank">http://www.gamedev.net/reference/articles/article1095.asp</a>&#13;
+<br/><br/>
+But I still don't have this worked out. Here's an example I was toying with but at this point I'm stumpped...&#13;
+<br/><br/>
+Euler to Quaternion Conversion&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(a/2), (sin(a/2), 0, 0)]&#13;
+<br/>
+Qy = [ cos(b/2), (0, sin(b/2), 0)]&#13;
+<br/>
+Qz = [ cos(c/2), (0, 0, sin(c/2))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, if...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">a = 90&#13;
+<br/>
+b = 180&#13;
+<br/>
+c = 270</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Then...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(90/2), (sin(90/2), 0, 0)]&#13;
+<br/>
+Qy = [ cos(180/2), (0, sin(180/2), 0)]&#13;
+<br/>
+Qz = [ cos(270/2), (0, 0, sin(270/2))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(45), (sin(45), 0, 0)]&#13;
+<br/>
+Qy = [ cos(90), (0, sin(90), 0)]&#13;
+<br/>
+Qz = [ cos(135), (0, 0, sin(135))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ 0.70710678118654752440084436210485, (0.70710678118654752440084436210485, 0, 0)]&#13;
+<br/>
+Qy = [ 0, (0, 1, 0)]&#13;
+<br/>
+Qz = [ -0.70710678118654752440084436210485, (0, 0, 0.70710678118654752440084436210485)]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And to figure out Qw I need to...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qw = Qx * Qy * Qz</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Which means I need to multiply the unit quaternions. The formula is...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Q1 * Q2 =( w1.w2 - v1.v2, w1.v2 + w2.v1 + v1*v2)</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+But that's only for two unit quaternions. I need to multiply three. Does...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qw = (Qx * Qy) * Qz</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... give me the same result as if I multiplied them all at once? The reason I ask is because this statement throws me off...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Be aware that the order of multiplication is important. Quaternion multiplication is not commutative, meaning&#13;
+<br/><br/>
+    q1 * q2    does not equal    q2 * q1</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55065" date="Posted: Mon Oct 04, 2004 8:30 pm    Post subject: "><author>weak</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">think so</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55162" date="Posted: Tue Oct 05, 2004 5:21 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, well I'm done screwing with quaternions. Unless of course I can borrow a high school math teacher for a few days.&#13;
+<br/><br/>
+Anyway, I'm looking over the MOT format again and I realize that the rotation values are not in degrees. For instance here's the rotation portion of a MOT...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Channel 3&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 1.5707963 2.5 0 0 0 0 1.5706217 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 4&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 3.1415925 2.5 0 0 0 0 3.1412435 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 5&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 4.712389 2.5 0 0 0 0 4.7118654 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now, the values we have here are...&#13;
+<br/><br/>
+Heading 1.5707963&#13;
+<br/>
+Pitch      3.1415925&#13;
+<br/>
+Bank      4.712389&#13;
+<br/><br/>
+And in Lightwave they are...&#13;
+<br/><br/>
+Heading 90&#13;
+<br/>
+Pitch      180&#13;
+<br/>
+Bank      270&#13;
+<br/><br/>
+WTF?&#13;
+<br/><br/>
+Anyway, before I even started this thread I was looking at the SDK in an attempt to find information on this but I couldn't find a section on motion files so I tried to decypher it myself.&#13;
+<br/><br/>
+I decided to read through it today and I noticed that the Scene files are also plain text and very similar. Infact they have a section in the SDK that pretty much explains the format of MOT files.&#13;
+<br/><br/>
+Take a look at this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"><span style="font-weight: bold">Envelopes</span>&#13;
+<br/><br/>
+An envelope defines a function of time. For any animation time, an envelope's parameters can be combined to generate a value at that time. Envelopes are used to store position coordinates, rotation angles, scale factors, camera zoom, light intensity, texture parameters, and anything else that can vary over time.&#13;
+<br/><br/>
+The envelope function is a piecewise polynomial curve. The function is tabulated at specific points, called keys. The curve segment between two adjacent keys is called a span, and values on the span are calculated by interpolating between the keys. The interpolation can be linear, cubic, or stepped, and it can be different for each span. The value of the function before the first key and after the last key is calculated by extrapolation.&#13;
+<br/><br/>
+In scene files, an envelope is stored in a block named Envelope that contains one or more nested Key blocks and one Behaviors block.&#13;
+<br/><br/>
+   { Envelope&#13;
+<br/>
+     nkeys&#13;
+<br/>
+     Key value time spantype p1 p2 p3 p4 p5 p6&#13;
+<br/>
+     Key ...&#13;
+<br/>
+     Behaviors pre post&#13;
+<br/>
+   }&#13;
+<br/><br/>
+The nkeys value is an integer, the number of Key blocks in the envelope. Envelopes must contain at least one Key block. The contents of a Key block are as follows.&#13;
+<br/><br/><span style="font-weight: bold">value</span>&#13;
+<br/>
+    The key value, a floating-point number. The units and limits of the value depend on what parameter the envelope represents.&#13;
+<br/><br/><span style="font-weight: bold">time</span>&#13;
+<br/>
+    The time in seconds, a float. This can be negative, zero or positive. Keys are listed in the envelope in increasing time order.&#13;
+<br/><br/><span style="font-weight: bold">spantype</span>&#13;
+<br/>
+    The curve type, an integer. This determines the kind of interpolation that will be performed on the span between this key and the previous key, and also indicates what interpolation parameters are stored for the key.&#13;
+<br/><br/>
+        0 - TCB (Kochanek-Bartels)&#13;
+<br/>
+        1 - Hermite&#13;
+<br/>
+        2 - 1D Bezier (obsolete, equivalent to Hermite)&#13;
+<br/>
+        3 - Linear&#13;
+<br/>
+        4 - Stepped&#13;
+<br/>
+        5 - 2D Bezier&#13;
+<br/><br/><span style="font-weight: bold">p1...p6</span>&#13;
+<br/>
+    Curve parameters. The data depends on the span type.&#13;
+<br/><br/>
+        TCB, Hermite, 1D Bezier&#13;
+<br/>
+            The first three parameters are tension, continuity and bias. The fourth and fifth parameters are the incoming and outgoing tangents. The sixth parameter is ignored and should be 0. Use the first three to evaluate TCB spans, and the other two to evaluate Hermite spans.&#13;
+<br/>
+        2D Bezier&#13;
+<br/>
+            The first two parameters are the incoming time and value, and the second two are the outgoing time and value.&#13;
+<br/><br/>
+The Behaviors block contains two integers.&#13;
+<br/><br/><span style="font-weight: bold">pre, post</span>&#13;
+<br/>
+    Pre- and post-behaviors. These determine how the envelope is extrapolated at times before the first key and after the last one.&#13;
+<br/><br/>
+        0 - Reset&#13;
+<br/>
+            Sets the value to 0.0.&#13;
+<br/>
+        1 - Constant&#13;
+<br/>
+            Sets the value to the value at the nearest key.&#13;
+<br/>
+        2 - Repeat&#13;
+<br/>
+            Repeats the interval between the first and last keys (the primary interval).&#13;
+<br/>
+        3 - Oscillate&#13;
+<br/>
+            Like Repeat, but alternating copies of the primary interval are time-reversed.&#13;
+<br/>
+        4 - Offset Repeat&#13;
+<br/>
+            Like Repeat, but offset by the difference between the values of the first and last keys.&#13;
+<br/>
+        5 - Linear&#13;
+<br/>
+            Linearly extrapolates the value based on the tangent at the nearest key.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now, the problem is that they don't explain how they are storing the value parameter other than saying it varies depending on what it represents. Well duh! No shit! But that doesn't explain how 1.5707963 = 90 degrees.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55165" date="Posted: Tue Oct 05, 2004 5:53 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So the value is "3.1415925" where it should be 180? Hmm, let me think why this number seems familiar... <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+These are radians. Convert between degrees and radians with these formulae:&#13;
+<br/>
+deg = rad * 180 / PI &#13;
+<br/>
+rad = deg * PI / 180<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55167" date="Posted: Tue Oct 05, 2004 6:13 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">So the value is "3.1415925" where it should be 180? Hmm, let me think why this number seems familiar... <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+These are radians. Convert between degrees and radians with these formulae:&#13;
+<br/>
+deg = rad * 180 / PI &#13;
+<br/>
+rad = deg * PI / 180</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Oh god, another "Dan Brown" style "messages hidden in numbers" guy... <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012181508/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55169" date="Posted: Tue Oct 05, 2004 6:18 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061012181508im_/http://www.smh.com.au/ffxImage/urlpicture_id_1065292617325_2003/10/08/main_derrenbrown.jpg" border="0"/><br/><br/><img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55216" date="Posted: Tue Oct 05, 2004 11:06 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here's a very simple script that dumps camera info into a file for frames 1 to 10. Unfortunately the values are all identical even for an animated camera, I'm not sure what I'm doing wrong. &#13;
+<br/>
+Anyway, if that problem is solved, it's just a small step to a real md5camera exporter. All you need to do is convert the euler angles to quaternions, add a gui with adjustable framerange, and ofcourse format the output in md5camera syntax.&#13;
+<br/><br/>
+The relevant pages in the LScript reference documentation are page 115 (Camera Object Agents) and page 97 (common data members and methods for Object Agents).&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // camera that we are going to export (Camera Object Agent)&#13;
+<br/><br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/><br/>
+   exportfile.writeln("name ", cam.name, "\n");&#13;
+<br/>
+   for (i = 1; i&lt;=10; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+   }&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to open ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55219" date="Posted: Tue Oct 05, 2004 11:34 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was initially going to try writing the program in C++ but since I'm such a noob, and you've already started writing a LScript, I'll make the switch.&#13;
+<br/><br/><span style="font-weight: bold">EDIT:</span> Yeah, I see what your saying. It exports two frames on my end and then just repeats itself.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">name Camera&#13;
+<br/><br/>
+pos 0 0 -1.99997&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -4.00005&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+...&#13;
+<br/><br/>
+continues</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><span style="font-weight: bold">EDIT AGAIN:</span> That parameter is time and not frame. So when you say ...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   for (i = 0; i&lt;=10; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+   }</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... and increment i your really telling it to export the status of the camera from 1 second to 10.&#13;
+<br/><br/>
+So, when the animation is less than 10 seconds, the last frame is repeatedly exported.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55226" date="Posted: Wed Oct 06, 2004 12:41 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I sorted it out and here is the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // camera that we are going to export (Camera Object Agent)&#13;
+<br/><br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+    // Get the fps, starting, and ending frames from the scene.&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   exportfile.writeln("name ", cam.name, "\n");&#13;
+<br/>
+   count = s_start;&#13;
+<br/>
+   i = 0;&#13;
+<br/>
+   while (count &lt;= s_end){&#13;
+<br/>
+      i = count / s_fps;        // Increment the time according to the fps.&#13;
+<br/>
+      exportfile.writeln("frame ", count);&#13;
+<br/>
+      exportfile.writeln("time ", i);&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+      count++;&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to open ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'm going to stop at this point and get back to this tommorow.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55272" date="Posted: Wed Oct 06, 2004 12:38 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've added md5-formatted output and the euler-&gt;quaternion conversion.&#13;
+<br/>
+Now all there is to do is to get the camera rotated right, by swizzling/negating the euler angles before the quaternion is calculated. This would best be done by trial&amp;error, because it can be confusing to try to get it right by thinking it through deterministically. That's because Doom3 uses a different coordinate system than LW, and because cameras are not oriented in the same way as in D3 (md5 cameras look down their x-axis, z is up, in LW they are looking down their z-axis, y is up).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getPosition(i/s_fps);&#13;
+<br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/>
+      &#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",q1, " ", q2, " ", q3, " ) ",fovarray[1]*180/PI); //maybe fovarray[2] (vertical fov) should be used?&#13;
+<br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55326" date="Posted: Wed Oct 06, 2004 6:25 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've updated the code so that it is rotates the camera correctly. I've included comments to distinguish which is the heading, pitch, and bank.&#13;
+<br/><br/>
+I created a map with different textures on each wall so that I could gauge the orientation of the camera. From this point I exported a test camera repeatedly. Each time I tried a different rotation and used what I seen in game to determine if the rotation was correct.&#13;
+<br/><br/>
+Aside from the values needing to be written in the correct order, for some reason the pitch was inverted, for instance if I told the camera to rotate up it went down. I've fixed that by multipying q2 by -1 although I'm not sure if that fix is the correct one.&#13;
+<br/><br/>
+At any rate, it seems to be 100% and I'm going to toy with it a bit more just to be sure.&#13;
+<br/><br/>
+Here's the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getPosition(i/s_fps);&#13;
+<br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3; //bank&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3; //pitch&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3; //heading&#13;
+<br/><br/>
+      // invert q2 because it rotates up when it should look down&#13;
+<br/>
+      q2=q2*-1;&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",q3, " ", q2, " ", q1, " ) ",fovarray[1]*180/PI);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+} </td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"><br/><br/>Last edited by rich_is_bored on Wed Oct 06, 2004 6:57 pm; edited 2 times in total</span></td>
+			</tr>]]></body></post><post id="55330" date="Posted: Wed Oct 06, 2004 6:44 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm, I would have found it alot cleaner if you had done the manipulations to the euler angles instead of the quaternion results (negating/swizzling rot.x/y/z before they are used in the quaternion conversion), but hey, that's totally irrelevant if we end up with a working script. <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+And q1, q2 and q3 are not bank, pitch heading. These are terms that apply to the euler angles.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55332" date="Posted: Wed Oct 06, 2004 7:08 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It works great. I can keyframe movement and rotation no problem. <img src="/web/20061012181508im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The only issue is that if I were to for instance, target the camera at a null, the orientation of the camera is affected in Lightwave but this does not effect the MD5camera.&#13;
+<br/><br/>
+This isn't a problem with the LScript though because I had the same issue trying to export motion paths. I'm sure there is a way to keyframe that kind of motion and I know if keyframed it would carry over into Doom 3.&#13;
+<br/><br/>
+The only thing left is to implement some way of performing cuts. Of course that isn't something you can keyframe so the only way to do it is to ask the user for a list of keys.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55333" date="Posted: Wed Oct 06, 2004 7:16 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe there's a way to bake constraint motion into keyframes, like you can do in Blender?&#13;
+<br/><br/>
+The FOV thingy is alright as it is, because Doom3's FOV denotes the horizontal FOV, too. The horizontal and vertical FOV are usually different, except if you have a camera that records a square-shaped image.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181508/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55389" date="Posted: Thu Oct 07, 2004 1:14 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">There is a guy who wrote a plugin called Transmotion or something that does just that. But, I'm not condoning people download it just for this.&#13;
+<br/><br/>
+Anyway, I've found a solution.&#13;
+<br/><br/>
+Instead of using getPostition and getRotation you use getWorldPosition and getWorldRotation.&#13;
+<br/><br/>
+Now, I can rig a camera up however I please but sometimes the values that are exported are in scientific notation (i.e -1.47128e-006).&#13;
+<br/><br/>
+I have to come up with a way to force the program to export decimal notation. I have a few ideas and I'll try them out and see how it goes.&#13;
+<br/><br/>
+On a side note there is another problem. It's not exporting the correct number of frames. It could be this isn't gathering the correct values...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Anyway, I'll be sorting both of these issues out tonight and if I find solutions I'll post an update.<br/>_________________<br/><a href="/web/20061012181508/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181508im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181508/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="54942" date="Posted: Mon Oct 04, 2004 2:36 am    Post subject: MD5camera Export Project"><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A working LScript Plugin has been finished...&#13;
+<br/><br/><span style="font-weight: bold">DOWNLOAD CURRENT VERSION</span>&#13;
+<br/><a href="/web/20061012181142/http://www.pcgamemods.com/8120/" target="_blank">http://www.pcgamemods.com/8120/</a>&#13;
+<br/><a href="/web/20061012181142/http://www.geocities.com/rich_is_bored/LW_MD5camera_Export.zip" target="_blank">http://www.geocities.com/rich_is_bored/LW_MD5camera_Export.zip</a>&#13;
+<br/><br/>
+Original Thread:&#13;
+<br/><br/>
+Okay, to get the ball rolling on a means to export MD5cameras from Lightwave, I'm creating this thread.&#13;
+<br/><br/>
+First and foremost, contrary to popular belief, I am not a programmer. I took a class on Turbo Pascal in high school 6 years ago but that's about the extent of my programming knowledge.&#13;
+<br/><br/>
+I've got a copy of Dev-C++ and I've been toying with it so if it's absolutely nessecary I can write a program to do the conversion but, I'll be frank, it's going to suck and it's going to be a DOS mode program at best.&#13;
+<br/><br/>
+Now, on to the idea...&#13;
+<br/><br/>
+In another thread I mentioned the possibility of converting saved motion paths (*.mot) to MD5camera format. Both file formats are plain text and that should make the conversion fairly easy.&#13;
+<br/><br/>
+The first thing is to decypher the formats. So, on that note, here is what I believe the MD5 camera format is comprised of...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">MD5Version 10                     // Header and Version&#13;
+<br/>
+commandline ""                     // Command Line Parameters - Used to convert maya format&#13;
+<br/><br/>
+numFrames 452                     // The Number of Frames&#13;
+<br/>
+frameRate 24                     // The Framerate&#13;
+<br/>
+numCuts 3                     // The Number of Cuts&#13;
+<br/><br/>
+cuts {                        // A List of Frames Where Cuts Take Place&#13;
+<br/>
+   110&#13;
+<br/>
+   329&#13;
+<br/>
+   429&#13;
+<br/>
+}&#13;
+<br/><br/>
+camera {                     // A List of Key Frames&#13;
+<br/>
+   ( -908.6940917969 -3417.0383300781 552.0170898438 ) ( -0.0069773775 0.0820536837 -0.084440738 ) 54.4321250916&#13;
+<br/><br/>
+   ...                     // The format for each line is as follows...&#13;
+<br/><br/>
+   continues on                  // (X_POS, Y_POS, Z_POS) (HEADING, PITCH, BANK) FOV&#13;
+<br/><br/>
+   ...&#13;
+<br/><br/>
+   ( -903.4814453125 -3417.0383300781 555.6039428711 ) ( -0.0068133976 0.0792509392 -0.0853850618 ) 54.4321250916&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, the values that an MD5camera needs ...&#13;
+<br/><br/><ul><br/><li>Number of Frames&#13;
+<br/></li><li>Framerate&#13;
+<br/></li><li>Number of Cuts&#13;
+<br/></li><li>List of Cut Frames&#13;
+<br/></li><li>List of Frames&#13;
+<br/></li><li>Position on the X axis&#13;
+<br/></li><li>Position on the Y axis&#13;
+<br/></li><li>Position on the Z axis&#13;
+<br/></li><li>Rotation for Heading&#13;
+<br/></li><li>Rotation for Pitch&#13;
+<br/></li><li>Rotation for Bank&#13;
+<br/></li><li>Field of View&#13;
+<br/></li></ul><br/><br/>
+Now, here is what I believe the MOT motion file format is comprised of...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">LWMO&#13;
+<br/>
+3&#13;
+<br/><br/>
+NumChannels 6&#13;
+<br/>
+Channel 0                  // X channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1                     // Number of keys in this channel&#13;
+<br/>
+  Key 1 0 0 0 0 0 0 0 0               // Keys (Value, Time, Incoming Curve, Tension, Continuity, Bias, NA, NA, NA)&#13;
+<br/>
+  Behaviors 1 1                  // Pre and Post Behavior (0-Reset, 1-Constant, 2-Repeat, 3-Oscillate, 4-Offset Repeat, 5-Linear)&#13;
+<br/>
+}&#13;
+<br/>
+Channel 1                  // Y channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 2 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 2                  // Z channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 3 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 3                  // Heading channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.06981317 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 4                  // Pitch Channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.08726646 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 5                  // Bank Channel&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  1&#13;
+<br/>
+  Key 0.10471975 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, the values that an MOT gives us either directly or can be calculated easily ...&#13;
+<br/><br/><ul><br/><li>Number of Frames&#13;
+<br/></li><li>List of Key Frames&#13;
+<br/></li><li>Position on the X axis&#13;
+<br/></li><li>Position on the Y axis&#13;
+<br/></li><li>Position on the Z axis&#13;
+<br/></li><li>Rotation for Heading&#13;
+<br/></li><li>Rotation for Pitch&#13;
+<br/></li><li>Rotation for Bank&#13;
+<br/></li></ul><br/><br/>
+Now if you compare the two you'll see that there are a couple problems.&#13;
+<br/><br/>
+There is no list of cuts, there is no FOV channel, and Lightwave interpolates between key frames where an MD5camera lists each frame in sequence.&#13;
+<br/><br/>
+You could force users to bake key frames in the graph editor. This would create the missing frames and make it easier to convert because all the calculation is already done.&#13;
+<br/><br/>
+The alternative isn't pretty. In order to do this manually you'd have to calculate the values for a given frame based on the curve type, tension, continuity, and bias.&#13;
+<br/><br/>
+Not to mention I don't know what those last three values are for and if they play a role.&#13;
+<br/><br/>
+As far as the cuts and FOV go, that may be do able. Is it possible to add new channels to an object in Lightwave? If so, do they get saved in a motion file?&#13;
+<br/><br/>
+If not, then perhaps we can use one or more of the extra fields in a MOT to fudge it if we force users to bake key frames.&#13;
+<br/><br/>
+The alternative is to ask the user for input and that's going to be a problem for some users.&#13;
+<br/><br/>
+Anyway, this is just me spilling my guts. Let's see where this goes from here.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"><br/><br/>Last edited by rich_is_bored on Mon Oct 25, 2004 9:14 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="55005" date="Posted: Mon Oct 04, 2004 1:13 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The second triple of values in the md5camera data is the X, Y and Z value of the camera's rotation quaternion, not the heading, pitch, bank format.&#13;
+<br/><br/>
+I'll take a look at LScript, maybe it turns out that writing such a md5camera exporter as a layout script is not that difficult.&#13;
+<br/><br/>
+Bozo, if you read this please tell us if you're planning to include a md5camera exporter in your LW-&gt;md5 converter, so we don't do the same work twice. <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55008" date="Posted: Mon Oct 04, 2004 1:55 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Good thing that users like Rich and der_ton are looking into this.. I really interested in a md5camera export for lightwave..  :thumbs up!:&#13;
+<br/><br/><br/>
+Sadly, I really don't know anything regarding Lscripts, so I can offer help for beta testing things... Let me know... Let US know...<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55044" date="Posted: Mon Oct 04, 2004 6:21 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Damn it der_ton. There's that word again! "quaternion"&#13;
+<br/><br/>
+I guess I have to do some reading....&#13;
+<br/><br/>
+meh! <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55045" date="Posted: Mon Oct 04, 2004 6:36 pm    Post subject: "><author>weak</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">maybe that helps:&#13;
+<br/><br/><a href="/web/20061012181142/http://skal.planet-d.net/demo/matrixfaq.htm" target="_blank" class="postlink">Matrix and Quaternion FAQ</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55059" date="Posted: Mon Oct 04, 2004 8:11 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No help at all but thanks for trying. I'm seeing a bunch of algorithms rather than explanations.&#13;
+<br/><br/>
+This is alot better...&#13;
+<br/><br/><a href="/web/20061012181142/http://www.gamedev.net/reference/articles/article1095.asp" target="_blank">http://www.gamedev.net/reference/articles/article1095.asp</a>&#13;
+<br/><br/>
+But I still don't have this worked out. Here's an example I was toying with but at this point I'm stumpped...&#13;
+<br/><br/>
+Euler to Quaternion Conversion&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(a/2), (sin(a/2), 0, 0)]&#13;
+<br/>
+Qy = [ cos(b/2), (0, sin(b/2), 0)]&#13;
+<br/>
+Qz = [ cos(c/2), (0, 0, sin(c/2))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+So, if...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">a = 90&#13;
+<br/>
+b = 180&#13;
+<br/>
+c = 270</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Then...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(90/2), (sin(90/2), 0, 0)]&#13;
+<br/>
+Qy = [ cos(180/2), (0, sin(180/2), 0)]&#13;
+<br/>
+Qz = [ cos(270/2), (0, 0, sin(270/2))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ cos(45), (sin(45), 0, 0)]&#13;
+<br/>
+Qy = [ cos(90), (0, sin(90), 0)]&#13;
+<br/>
+Qz = [ cos(135), (0, 0, sin(135))]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qx = [ 0.70710678118654752440084436210485, (0.70710678118654752440084436210485, 0, 0)]&#13;
+<br/>
+Qy = [ 0, (0, 1, 0)]&#13;
+<br/>
+Qz = [ -0.70710678118654752440084436210485, (0, 0, 0.70710678118654752440084436210485)]</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+And to figure out Qw I need to...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qw = Qx * Qy * Qz</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Which means I need to multiply the unit quaternions. The formula is...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Q1 * Q2 =( w1.w2 - v1.v2, w1.v2 + w2.v1 + v1*v2)</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+But that's only for two unit quaternions. I need to multiply three. Does...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Qw = (Qx * Qy) * Qz</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... give me the same result as if I multiplied them all at once? The reason I ask is because this statement throws me off...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Be aware that the order of multiplication is important. Quaternion multiplication is not commutative, meaning&#13;
+<br/><br/>
+    q1 * q2    does not equal    q2 * q1</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55065" date="Posted: Mon Oct 04, 2004 8:30 pm    Post subject: "><author>weak</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">think so</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55162" date="Posted: Tue Oct 05, 2004 5:21 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, well I'm done screwing with quaternions. Unless of course I can borrow a high school math teacher for a few days.&#13;
+<br/><br/>
+Anyway, I'm looking over the MOT format again and I realize that the rotation values are not in degrees. For instance here's the rotation portion of a MOT...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">Channel 3&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 1.5707963 2.5 0 0 0 0 1.5706217 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 4&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 3.1415925 2.5 0 0 0 0 3.1412435 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}&#13;
+<br/>
+Channel 5&#13;
+<br/>
+{ Envelope&#13;
+<br/>
+  2&#13;
+<br/>
+  Key 0 0 0 0 0 0 0 0 0&#13;
+<br/>
+  Key 4.712389 2.5 0 0 0 0 4.7118654 0 0&#13;
+<br/>
+  Behaviors 1 1&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now, the values we have here are...&#13;
+<br/><br/>
+Heading 1.5707963&#13;
+<br/>
+Pitch      3.1415925&#13;
+<br/>
+Bank      4.712389&#13;
+<br/><br/>
+And in Lightwave they are...&#13;
+<br/><br/>
+Heading 90&#13;
+<br/>
+Pitch      180&#13;
+<br/>
+Bank      270&#13;
+<br/><br/>
+WTF?&#13;
+<br/><br/>
+Anyway, before I even started this thread I was looking at the SDK in an attempt to find information on this but I couldn't find a section on motion files so I tried to decypher it myself.&#13;
+<br/><br/>
+I decided to read through it today and I noticed that the Scene files are also plain text and very similar. Infact they have a section in the SDK that pretty much explains the format of MOT files.&#13;
+<br/><br/>
+Take a look at this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"><span style="font-weight: bold">Envelopes</span>&#13;
+<br/><br/>
+An envelope defines a function of time. For any animation time, an envelope's parameters can be combined to generate a value at that time. Envelopes are used to store position coordinates, rotation angles, scale factors, camera zoom, light intensity, texture parameters, and anything else that can vary over time.&#13;
+<br/><br/>
+The envelope function is a piecewise polynomial curve. The function is tabulated at specific points, called keys. The curve segment between two adjacent keys is called a span, and values on the span are calculated by interpolating between the keys. The interpolation can be linear, cubic, or stepped, and it can be different for each span. The value of the function before the first key and after the last key is calculated by extrapolation.&#13;
+<br/><br/>
+In scene files, an envelope is stored in a block named Envelope that contains one or more nested Key blocks and one Behaviors block.&#13;
+<br/><br/>
+   { Envelope&#13;
+<br/>
+     nkeys&#13;
+<br/>
+     Key value time spantype p1 p2 p3 p4 p5 p6&#13;
+<br/>
+     Key ...&#13;
+<br/>
+     Behaviors pre post&#13;
+<br/>
+   }&#13;
+<br/><br/>
+The nkeys value is an integer, the number of Key blocks in the envelope. Envelopes must contain at least one Key block. The contents of a Key block are as follows.&#13;
+<br/><br/><span style="font-weight: bold">value</span>&#13;
+<br/>
+    The key value, a floating-point number. The units and limits of the value depend on what parameter the envelope represents.&#13;
+<br/><br/><span style="font-weight: bold">time</span>&#13;
+<br/>
+    The time in seconds, a float. This can be negative, zero or positive. Keys are listed in the envelope in increasing time order.&#13;
+<br/><br/><span style="font-weight: bold">spantype</span>&#13;
+<br/>
+    The curve type, an integer. This determines the kind of interpolation that will be performed on the span between this key and the previous key, and also indicates what interpolation parameters are stored for the key.&#13;
+<br/><br/>
+        0 - TCB (Kochanek-Bartels)&#13;
+<br/>
+        1 - Hermite&#13;
+<br/>
+        2 - 1D Bezier (obsolete, equivalent to Hermite)&#13;
+<br/>
+        3 - Linear&#13;
+<br/>
+        4 - Stepped&#13;
+<br/>
+        5 - 2D Bezier&#13;
+<br/><br/><span style="font-weight: bold">p1...p6</span>&#13;
+<br/>
+    Curve parameters. The data depends on the span type.&#13;
+<br/><br/>
+        TCB, Hermite, 1D Bezier&#13;
+<br/>
+            The first three parameters are tension, continuity and bias. The fourth and fifth parameters are the incoming and outgoing tangents. The sixth parameter is ignored and should be 0. Use the first three to evaluate TCB spans, and the other two to evaluate Hermite spans.&#13;
+<br/>
+        2D Bezier&#13;
+<br/>
+            The first two parameters are the incoming time and value, and the second two are the outgoing time and value.&#13;
+<br/><br/>
+The Behaviors block contains two integers.&#13;
+<br/><br/><span style="font-weight: bold">pre, post</span>&#13;
+<br/>
+    Pre- and post-behaviors. These determine how the envelope is extrapolated at times before the first key and after the last one.&#13;
+<br/><br/>
+        0 - Reset&#13;
+<br/>
+            Sets the value to 0.0.&#13;
+<br/>
+        1 - Constant&#13;
+<br/>
+            Sets the value to the value at the nearest key.&#13;
+<br/>
+        2 - Repeat&#13;
+<br/>
+            Repeats the interval between the first and last keys (the primary interval).&#13;
+<br/>
+        3 - Oscillate&#13;
+<br/>
+            Like Repeat, but alternating copies of the primary interval are time-reversed.&#13;
+<br/>
+        4 - Offset Repeat&#13;
+<br/>
+            Like Repeat, but offset by the difference between the values of the first and last keys.&#13;
+<br/>
+        5 - Linear&#13;
+<br/>
+            Linearly extrapolates the value based on the tangent at the nearest key.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Now, the problem is that they don't explain how they are storing the value parameter other than saying it varies depending on what it represents. Well duh! No shit! But that doesn't explain how 1.5707963 = 90 degrees.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55165" date="Posted: Tue Oct 05, 2004 5:53 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So the value is "3.1415925" where it should be 180? Hmm, let me think why this number seems familiar... <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+These are radians. Convert between degrees and radians with these formulae:&#13;
+<br/>
+deg = rad * 180 / PI &#13;
+<br/>
+rad = deg * PI / 180<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55167" date="Posted: Tue Oct 05, 2004 6:13 pm    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">So the value is "3.1415925" where it should be 180? Hmm, let me think why this number seems familiar... <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+These are radians. Convert between degrees and radians with these formulae:&#13;
+<br/>
+deg = rad * 180 / PI &#13;
+<br/>
+rad = deg * PI / 180</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Oh god, another "Dan Brown" style "messages hidden in numbers" guy... <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061012181142/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55169" date="Posted: Tue Oct 05, 2004 6:18 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><img src="/web/20061012181142im_/http://www.smh.com.au/ffxImage/urlpicture_id_1065292617325_2003/10/08/main_derrenbrown.jpg" border="0"/><br/><br/><img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55216" date="Posted: Tue Oct 05, 2004 11:06 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here's a very simple script that dumps camera info into a file for frames 1 to 10. Unfortunately the values are all identical even for an animated camera, I'm not sure what I'm doing wrong. &#13;
+<br/>
+Anyway, if that problem is solved, it's just a small step to a real md5camera exporter. All you need to do is convert the euler angles to quaternions, add a gui with adjustable framerange, and ofcourse format the output in md5camera syntax.&#13;
+<br/><br/>
+The relevant pages in the LScript reference documentation are page 115 (Camera Object Agents) and page 97 (common data members and methods for Object Agents).&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // camera that we are going to export (Camera Object Agent)&#13;
+<br/><br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/><br/>
+   exportfile.writeln("name ", cam.name, "\n");&#13;
+<br/>
+   for (i = 1; i&lt;=10; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+   }&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to open ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55219" date="Posted: Tue Oct 05, 2004 11:34 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was initially going to try writing the program in C++ but since I'm such a noob, and you've already started writing a LScript, I'll make the switch.&#13;
+<br/><br/><span style="font-weight: bold">EDIT:</span> Yeah, I see what your saying. It exports two frames on my end and then just repeats itself.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">name Camera&#13;
+<br/><br/>
+pos 0 0 -1.99997&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -4.00005&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+pos 0 0 -5&#13;
+<br/>
+rot 0 0 0&#13;
+<br/>
+fov 0.789582 0.60577&#13;
+<br/><br/>
+...&#13;
+<br/><br/>
+continues</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><span style="font-weight: bold">EDIT AGAIN:</span> That parameter is time and not frame. So when you say ...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   for (i = 0; i&lt;=10; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+   }</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... and increment i your really telling it to export the status of the camera from 1 second to 10.&#13;
+<br/><br/>
+So, when the animation is less than 10 seconds, the last frame is repeatedly exported.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55226" date="Posted: Wed Oct 06, 2004 12:41 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I sorted it out and here is the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // camera that we are going to export (Camera Object Agent)&#13;
+<br/><br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+    // Get the fps, starting, and ending frames from the scene.&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   exportfile.writeln("name ", cam.name, "\n");&#13;
+<br/>
+   count = s_start;&#13;
+<br/>
+   i = 0;&#13;
+<br/>
+   while (count &lt;= s_end){&#13;
+<br/>
+      i = count / s_fps;        // Increment the time according to the fps.&#13;
+<br/>
+      exportfile.writeln("frame ", count);&#13;
+<br/>
+      exportfile.writeln("time ", i);&#13;
+<br/>
+      fovarray = cam.fovAngles(i);&#13;
+<br/>
+      exportfile.writeln("pos ", cam.getPosition(i));&#13;
+<br/>
+      exportfile.writeln("rot ", cam.getRotation(i));&#13;
+<br/>
+      exportfile.writeln("fov ", fovarray[1], " ", fovarray[2], "\n");&#13;
+<br/>
+      count++;&#13;
+<br/>
+   }&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to open ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I'm going to stop at this point and get back to this tommorow.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55272" date="Posted: Wed Oct 06, 2004 12:38 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've added md5-formatted output and the euler-&gt;quaternion conversion.&#13;
+<br/>
+Now all there is to do is to get the camera rotated right, by swizzling/negating the euler angles before the quaternion is calculated. This would best be done by trial&amp;error, because it can be confusing to try to get it right by thinking it through deterministically. That's because Doom3 uses a different coordinate system than LW, and because cameras are not oriented in the same way as in D3 (md5 cameras look down their x-axis, z is up, in LW they are looking down their z-axis, y is up).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getPosition(i/s_fps);&#13;
+<br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/>
+      &#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",q1, " ", q2, " ", q3, " ) ",fovarray[1]*180/PI); //maybe fovarray[2] (vertical fov) should be used?&#13;
+<br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55326" date="Posted: Wed Oct 06, 2004 6:25 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've updated the code so that it is rotates the camera correctly. I've included comments to distinguish which is the heading, pitch, and bank.&#13;
+<br/><br/>
+I created a map with different textures on each wall so that I could gauge the orientation of the camera. From this point I exported a test camera repeatedly. Each time I tried a different rotation and used what I seen in game to determine if the rotation was correct.&#13;
+<br/><br/>
+Aside from the values needing to be written in the correct order, for some reason the pitch was inverted, for instance if I told the camera to rotate up it went down. I've fixed that by multipying q2 by -1 although I'm not sure if that fix is the correct one.&#13;
+<br/><br/>
+At any rate, it seems to be 100% and I'm going to toy with it a bit more just to be sure.&#13;
+<br/><br/>
+Here's the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getPosition(i/s_fps);&#13;
+<br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3; //bank&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3; //pitch&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3; //heading&#13;
+<br/><br/>
+      // invert q2 because it rotates up when it should look down&#13;
+<br/>
+      q2=q2*-1;&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",q3, " ", q2, " ", q1, " ) ",fovarray[1]*180/PI);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+   &#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+} </td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"><br/><br/>Last edited by rich_is_bored on Wed Oct 06, 2004 6:57 pm; edited 2 times in total</span></td>
+			</tr>]]></body></post><post id="55330" date="Posted: Wed Oct 06, 2004 6:44 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hmm, I would have found it alot cleaner if you had done the manipulations to the euler angles instead of the quaternion results (negating/swizzling rot.x/y/z before they are used in the quaternion conversion), but hey, that's totally irrelevant if we end up with a working script. <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+And q1, q2 and q3 are not bank, pitch heading. These are terms that apply to the euler angles.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55332" date="Posted: Wed Oct 06, 2004 7:08 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It works great. I can keyframe movement and rotation no problem. <img src="/web/20061012181142im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The only issue is that if I were to for instance, target the camera at a null, the orientation of the camera is affected in Lightwave but this does not effect the MD5camera.&#13;
+<br/><br/>
+This isn't a problem with the LScript though because I had the same issue trying to export motion paths. I'm sure there is a way to keyframe that kind of motion and I know if keyframed it would carry over into Doom 3.&#13;
+<br/><br/>
+The only thing left is to implement some way of performing cuts. Of course that isn't something you can keyframe so the only way to do it is to ask the user for a list of keys.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55333" date="Posted: Wed Oct 06, 2004 7:16 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Maybe there's a way to bake constraint motion into keyframes, like you can do in Blender?&#13;
+<br/><br/>
+The FOV thingy is alright as it is, because Doom3's FOV denotes the horizontal FOV, too. The horizontal and vertical FOV are usually different, except if you have a camera that records a square-shaped image.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012181142/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55389" date="Posted: Thu Oct 07, 2004 1:14 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">There is a guy who wrote a plugin called Transmotion or something that does just that. But, I'm not condoning people download it just for this.&#13;
+<br/><br/>
+Anyway, I've found a solution.&#13;
+<br/><br/>
+Instead of using getPostition and getRotation you use getWorldPosition and getWorldRotation.&#13;
+<br/><br/>
+Now, I can rig a camera up however I please but sometimes the values that are exported are in scientific notation (i.e -1.47128e-006).&#13;
+<br/><br/>
+I have to come up with a way to force the program to export decimal notation. I have a few ideas and I'll try them out and see how it goes.&#13;
+<br/><br/>
+On a side note there is another problem. It's not exporting the correct number of frames. It could be this isn't gathering the correct values...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.framestart;&#13;
+<br/>
+   s_end = scn.frameend;</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Anyway, I'll be sorting both of these issues out tonight and if I find solutions I'll post an update.<br/>_________________<br/><a href="/web/20061012181142/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012181142im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012181142/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55431" date="Posted: Thu Oct 07, 2004 9:17 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here is a maxscript function that I used for the max-&gt;md5 exporter to print floats without scientific notation. I think the algorithm should be implementable in LScript, too.&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">fn printfloat flt =&#13;
+<br/>
+--maxscript doesn't provide a way to format float output that I know of. It seems that Doom3 does not understand the &lt;x&gt;e&lt;y&gt; notation of floats&#13;
+<br/>
+--if you plan to use this in your scripts, note that this function doesn't check against a large number passed in&#13;
+<br/>
+(&#13;
+<br/>
+   --if (abs flt)&gt;10.0 then return flt -- this could be used to gain some speed.&#13;
+<br/>
+   --else&#13;
+<br/>
+   local numdigits = 10&#13;
+<br/>
+   (&#13;
+<br/>
+      str = ""&#13;
+<br/>
+      if flt&lt;0 then str += "-"&#13;
+<br/>
+      flt2 = abs flt&#13;
+<br/>
+      str += ((flt2 as integer) as string)&#13;
+<br/>
+      flt2 -= (flt2 as integer)&#13;
+<br/>
+      str +="."&#13;
+<br/>
+      for i=1 to numdigits do&#13;
+<br/>
+      (&#13;
+<br/>
+         flt2 *=10.0&#13;
+<br/>
+         str += ((flt2 as integer) as string)&#13;
+<br/>
+         flt2 -= (flt2 as integer)&#13;
+<br/>
+         if abs flt2 &lt; (1/10^(numdigits-i+1)) then break&#13;
+<br/>
+      )&#13;
+<br/>
+      return str&#13;
+<br/>
+   )&#13;
+<br/>
+)</td>	</tr></table><span class="postbody"><br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012182054/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55626" date="Posted: Fri Oct 08, 2004 2:22 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for that code. I had nearly the same worked out when I finally got around to checking this thread again but it was still very helpful because i wasn't finished with it.&#13;
+<br/><br/><span style="font-weight: bold">EDIT:</span> Updated code and a shitload of problems. Details are in the comments...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.previewstart;&#13;
+<br/>
+   s_end = scn.previewend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // corrections based on 360 degree test camera rotations.&#13;
+<br/><br/>
+      /*&#13;
+<br/>
+         For some reason, values over 180 or less than -180 caused the camera to switch&#13;
+<br/>
+         directions.&#13;
+<br/><br/>
+         For instance, a 0 to 360 rotation around the heading would work fine until&#13;
+<br/>
+         heading reaches a value of 181. At this point instead of continuing in a clockwise&#13;
+<br/>
+         direction it would reverse direction. It behaves as if 181 is the same as&#13;
+<br/>
+         179.&#13;
+<br/><br/>
+         I'm guessing that values in the range of -180 to 180 are the only acceptable values?&#13;
+<br/><br/>
+         It's driving me nuts because those are the only values that work. Anyway, I've&#13;
+<br/>
+         corrected that issue using the conditional statements below. This way whenever a&#13;
+<br/>
+         value is beyond that range it is looped back around into it.&#13;
+<br/><br/>
+         The only problem is I'm not sure how to adjust the camera orientation now. The&#13;
+<br/>
+         camera points east at 0,0,0 when 0,0,0 should point north.&#13;
+<br/><br/>
+         If I adjust the conditional statments affecting rot.x to compensate for this,&#13;
+<br/>
+         I get really funky results. For instance, a rotation around the bank would result&#13;
+<br/>
+         in a 270 degree rotation around pitch that then stops and then rotates 360 around&#13;
+<br/>
+         the bank.&#13;
+<br/><br/>
+         I'm sure the reason I'm struggling with this is because I don't understand the math&#13;
+<br/>
+         behind quaternions.&#13;
+<br/><br/>
+         If i did, I could adjust for the orientation after the quaternion calculations and&#13;
+<br/>
+         maybe that would make a world of difference.&#13;
+<br/><br/>
+      */&#13;
+<br/><br/>
+      rot=&lt;rot.x, rot.y, rot.z&gt;;&#13;
+<br/><br/>
+      // correct rot.x&#13;
+<br/>
+      if (rot.x &lt; -180) {&#13;
+<br/>
+          rot.x += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.x &gt; 180) {&#13;
+<br/>
+          rot.x -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      // correct rot.y&#13;
+<br/>
+      if (rot.y &lt; -180) {&#13;
+<br/>
+          rot.y += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.y &gt; 180) {&#13;
+<br/>
+          rot.y -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      // correct rot.z&#13;
+<br/>
+      if (rot.z &lt; -180) {&#13;
+<br/>
+          rot.z += 360;&#13;
+<br/>
+      }&#13;
+<br/>
+      if (rot.z &gt; 180) {&#13;
+<br/>
+          rot.z -= 360;&#13;
+<br/>
+      }&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot.x/360*PI);&#13;
+<br/>
+      c2=cos(rot.y/360*PI);&#13;
+<br/>
+      c3=cos(rot.z/360*PI);&#13;
+<br/>
+      s1=sin(rot.x/360*PI);&#13;
+<br/>
+      s2=sin(rot.y/360*PI);&#13;
+<br/>
+      s3=sin(rot.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3; //pitch&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3; //bank&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3; //heading&#13;
+<br/><br/>
+      // convert quaternions to strings so they can be written in decimal notation.&#13;
+<br/>
+      v1=forceDecimal(q1);&#13;
+<br/>
+      v2=forceDecimal(q2);&#13;
+<br/>
+      v3=forceDecimal(q3);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", pos_d3," ) ( ",v3, " ", v2, " ", v1, " ) ",fovarray[1]*180/PI);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+   info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+It's like slowly pushing a nail through your skull. <img src="/web/20061012182054im_/http://doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/><br/>
+Everytime I think I've just about got it figured out, I find something else wrong with it.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55684" date="Posted: Fri Oct 08, 2004 11:28 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You should use the forceDecimal function on all seven floats that get output.&#13;
+<br/><br/>
+About the camera rotation issue: you should go back to the original quaternion output (don't swizzle the 3 quaternion components), and manipulate (swizzle/negate) the euler angles before or after they're wrapped into the -180;+180 interval. &#13;
+<br/><br/>
+And you should change the &#13;
+<br/>
+if (rot.x &lt; -180)&#13;
+<br/>
+to &#13;
+<br/>
+while (rot.x &lt; -180), just to be really sure.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061012182054/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55737" date="Posted: Fri Oct 08, 2004 8:43 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay! <img src="/web/20061012182054im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I've got the orientation issues worked out. I swiveled the euler angles instead and it works great.&#13;
+<br/><br/>
+I placed the range value wrapping conditional statement in it's own function to optimize the code a bit.&#13;
+<br/><br/>
+I've tested full 360 degree heading, pitch and bank rotations. I've tested very complex camera rigs. Everything seems to be in order.&#13;
+<br/><br/>
+Here's the updated code...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/><br/>
+wrapValues: num&#13;
+<br/>
+{&#13;
+<br/>
+    // takes values that exceed range and loops them back into valid values&#13;
+<br/><br/>
+    if (num &lt; -180) {&#13;
+<br/>
+      num += 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    if (num &gt; 180) {&#13;
+<br/>
+      num -= 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    return num;&#13;
+<br/>
+}&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    if (num2==0) {&#13;
+<br/>
+        strOutput += "0000000000";&#13;
+<br/>
+    }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   s_fps = scn.fps;&#13;
+<br/>
+   s_start = scn.previewstart;&#13;
+<br/>
+   s_end = scn.previewend;&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", s_end-s_start+1);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts 0\n");&#13;
+<br/>
+   exportfile.writeln("cuts {\n}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // swivel camera values and adjust heading orientation&#13;
+<br/>
+      rot_d3=&lt;rot.y, rot.z, rot.x - 90&gt;;&#13;
+<br/><br/>
+      // wrap rotational values into range -180 to 180&#13;
+<br/>
+      rot_d3.x = wrapValues(rot_d3.x);&#13;
+<br/>
+      rot_d3.y = wrapValues(rot_d3.y);&#13;
+<br/>
+      rot_d3.z = wrapValues(rot_d3.z);&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot_d3.x/360*PI);&#13;
+<br/>
+      c2=cos(rot_d3.y/360*PI);&#13;
+<br/>
+      c3=cos(rot_d3.z/360*PI);&#13;
+<br/>
+      s1=sin(rot_d3.x/360*PI);&#13;
+<br/>
+      s2=sin(rot_d3.y/360*PI);&#13;
+<br/>
+      s3=sin(rot_d3.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/><br/>
+      // convert values to strings so they can be written in decimal notation&#13;
+<br/>
+      v1=forceDecimal(pos_d3.x);&#13;
+<br/>
+      v2=forceDecimal(pos_d3.y);&#13;
+<br/>
+      v3=forceDecimal(pos_d3.z);&#13;
+<br/>
+      v4=forceDecimal(q1);&#13;
+<br/>
+      v5=forceDecimal(q2);&#13;
+<br/>
+      v6=forceDecimal(q3);&#13;
+<br/>
+      v7=forceDecimal(fovarray[1]*180/PI);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", v1, " ", v2, " ", v3, " ) ( ", v4, " ", v5, " ", v6, " ) ", v7);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic {&#13;
+<br/>
+   scn = Scene();&#13;
+<br/>
+   userobj = scn.firstSelect();&#13;
+<br/>
+   if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+   {&#13;
+<br/>
+      //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+      userobj = Camera();&#13;
+<br/>
+      if (userobj == nil)&#13;
+<br/>
+      {&#13;
+<br/>
+         info ("No camera in the scene");&#13;
+<br/>
+         return;&#13;
+<br/>
+      }&#13;
+<br/>
+   }&#13;
+<br/>
+   cam = userobj;&#13;
+<br/>
+   exportfilename = getfile("Export File", "*.md5camera");&#13;
+<br/>
+   if(exportfilename == nil)&#13;
+<br/>
+      return;&#13;
+<br/>
+   exportfile = File(exportfilename,"w");&#13;
+<br/>
+   if(exportfile == nil)&#13;
+<br/>
+   {&#13;
+<br/>
+      error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+      return;&#13;
+<br/>
+   }&#13;
+<br/>
+   exportmd5camera();&#13;
+<br/>
+   info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Do you have any ideas on how we could implement cuts or should we just leave that as something you hand edit in?<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55739" date="Posted: Fri Oct 08, 2004 8:54 pm    Post subject: "><author>goliathvt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I haven't wanted to interrupt this thread because you two were working so well through the various problems and obstacles in creating this thing... but:&#13;
+<br/><br/>
+Thank you rich_is_bored and der_ton!  Your collective work is awesome!&#13;
+<br/><br/><img src="/web/20061012182054im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+G<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55751" date="Posted: Fri Oct 08, 2004 10:32 pm    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just tried your script. It's amazing!!! a very very gooood work!&#13;
+<br/><br/><br/>
+Thanks Rich and der_ton!<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55753" date="Posted: Fri Oct 08, 2004 10:49 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No, that's fine. I appriciate any comments or critiques.&#13;
+<br/><br/>
+At this point the script supports position, rotation, and field of view. I still need to work out a way to deal with cuts.&#13;
+<br/><br/>
+Do you guys have any suggestions?&#13;
+<br/><br/>
+What I was thinking is maybe using dopesheet markers although I haven't tried seeing if that kind of data is accessible through an LScript.&#13;
+<br/><br/>
+Once the script is fully functional I'll start on an interface.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55794" date="Posted: Sat Oct 09, 2004 6:15 am    Post subject: "><author>Rayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By now i've made some tests, and I've not discovered bad issues. I'll continue this afternoon, but for now I've got no problems with the exported stuff (read: my cams works perfectly)&#13;
+<br/><br/><br/>
+But like I said before, i'm a newbie in lightwave, so I can't help you with the "cuts" stuff.&#13;
+<br/><br/><br/>
+Good work!<br/>_________________<br/>theRev is coming...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55801" date="Posted: Sat Oct 09, 2004 8:16 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, I investigated the dopesheet idea and there doesn't appear to be a way to access it.&#13;
+<br/><br/>
+Anyway, I've integrated an interface. It's just your standard LScript type stuff. I'm not interested in trying to make it look pretty.&#13;
+<br/><br/>
+I'll post the code and then I'll talk about it some more...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">@version 2.0&#13;
+<br/>
+@warnings&#13;
+<br/>
+@script generic&#13;
+<br/><br/>
+exportfile = nil; // exportfile&#13;
+<br/>
+cam = nil; // cam that we are going to export (Camera Object Agent)&#13;
+<br/>
+numcuts = nil; // number of cuts&#13;
+<br/>
+cuts = nil; // array of cuts&#13;
+<br/>
+numframes = nil; // number of frames&#13;
+<br/>
+s_fps = nil; // frames per second&#13;
+<br/>
+s_start = nil; // starting frame&#13;
+<br/>
+s_end = nil; // ending frame&#13;
+<br/><br/>
+wrapValues: num&#13;
+<br/>
+{&#13;
+<br/>
+    // takes values that exceed range and loops them back into valid values&#13;
+<br/><br/>
+    if (num &lt; -180) {&#13;
+<br/>
+      num += 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    if (num &gt; 180) {&#13;
+<br/>
+      num -= 360;&#13;
+<br/>
+    }&#13;
+<br/>
+    return num;&#13;
+<br/>
+}&#13;
+<br/><br/>
+forceDecimal: num&#13;
+<br/>
+{&#13;
+<br/>
+    // Lscript will convert a decimal to scientific notation after 4 consecutive zeros.&#13;
+<br/><br/>
+    numDigits = 10;&#13;
+<br/>
+    strOutput = "";&#13;
+<br/>
+    if (num&lt;0)&#13;
+<br/>
+    {&#13;
+<br/>
+        strOutput += "-";&#13;
+<br/>
+    }&#13;
+<br/>
+    num = abs(num);&#13;
+<br/>
+    num2 = frac(num);&#13;
+<br/>
+    num = num - num2;&#13;
+<br/>
+    strOutput += string(num) + ".";&#13;
+<br/>
+    for (i=1; i&lt;=numDigits; i++)&#13;
+<br/>
+      {&#13;
+<br/>
+         num2 *= 10.0;&#13;
+<br/>
+         strOutput += string(integer(num2));&#13;
+<br/>
+         num2 -= integer(num2);&#13;
+<br/>
+         if (abs(num2) &lt; (pow(1/10,(numDigits-i+1)))) { break; }&#13;
+<br/>
+      }&#13;
+<br/>
+    if (num2==0) {&#13;
+<br/>
+        strOutput += "0000000000";&#13;
+<br/>
+    }&#13;
+<br/>
+    return strOutput;&#13;
+<br/>
+}&#13;
+<br/><br/>
+exportmd5camera&#13;
+<br/>
+{&#13;
+<br/>
+   &#13;
+<br/>
+   exportfile.writeln("MD5Version 10");&#13;
+<br/>
+   exportfile.writeln("commandline \"\"\n");&#13;
+<br/>
+   exportfile.writeln("numFrames ", numframes);&#13;
+<br/>
+   exportfile.writeln("frameRate ", s_fps);&#13;
+<br/>
+   exportfile.writeln("numCuts "+ numcuts + "\n");&#13;
+<br/>
+   exportfile.writeln("cuts {");&#13;
+<br/>
+   for (i = 1; i&lt;=numcuts; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+         exportfile.writeln(cuts[i]);&#13;
+<br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}\n");&#13;
+<br/>
+   exportfile.writeln("camera {\n");&#13;
+<br/>
+   &#13;
+<br/>
+   for (i = s_start; i&lt;=s_end; i++)&#13;
+<br/>
+   {&#13;
+<br/>
+      fovarray = cam.fovAngles(i/s_fps);&#13;
+<br/>
+      rot=cam.getWorldRotation(i/s_fps);&#13;
+<br/>
+      pos=cam.getWorldPosition(i/s_fps);&#13;
+<br/><br/>
+      // swivel camera values and adjust heading orientation&#13;
+<br/>
+      rot_d3=&lt;rot.y, rot.z, rot.x - 90&gt;;&#13;
+<br/><br/>
+      // wrap rotational values into range -180 to 180&#13;
+<br/>
+      rot_d3.x = wrapValues(rot_d3.x);&#13;
+<br/>
+      rot_d3.y = wrapValues(rot_d3.y);&#13;
+<br/>
+      rot_d3.z = wrapValues(rot_d3.z);&#13;
+<br/><br/>
+      pos_d3=&lt;pos.x, pos.z, pos.y&gt;;&#13;
+<br/>
+      c1=cos(rot_d3.x/360*PI);&#13;
+<br/>
+      c2=cos(rot_d3.y/360*PI);&#13;
+<br/>
+      c3=cos(rot_d3.z/360*PI);&#13;
+<br/>
+      s1=sin(rot_d3.x/360*PI);&#13;
+<br/>
+      s2=sin(rot_d3.y/360*PI);&#13;
+<br/>
+      s3=sin(rot_d3.z/360*PI);&#13;
+<br/>
+      q1=s1*c2*c3-c1*s2*s3;&#13;
+<br/>
+      q2=c1*s2*c3+s1*c2*s3;&#13;
+<br/>
+      q3=c1*c2*s3-s1*s2*c3;&#13;
+<br/><br/>
+      // convert values to strings so they can be written in decimal notation&#13;
+<br/>
+      v1=forceDecimal(pos_d3.x);&#13;
+<br/>
+      v2=forceDecimal(pos_d3.y);&#13;
+<br/>
+      v3=forceDecimal(pos_d3.z);&#13;
+<br/>
+      v4=forceDecimal(q1);&#13;
+<br/>
+      v5=forceDecimal(q2);&#13;
+<br/>
+      v6=forceDecimal(q3);&#13;
+<br/>
+      v7=forceDecimal(fovarray[1]*180/PI);&#13;
+<br/><br/>
+      // User should set camera aspect ratio to 1:1 so that fovarray[1] and fovarray[2] are the same?&#13;
+<br/>
+      exportfile.writeln("\t( ", v1, " ", v2, " ", v3, " ) ( ", v4, " ", v5, " ", v6, " ) ", v7);&#13;
+<br/><br/>
+   }&#13;
+<br/>
+   exportfile.writeln("}");&#13;
+<br/>
+}&#13;
+<br/><br/>
+toggleOff: value&#13;
+<br/>
+{&#13;
+<br/>
+    return(false);&#13;
+<br/>
+}&#13;
+<br/><br/>
+generic&#13;
+<br/>
+{&#13;
+<br/><br/>
+    // get info for requestor&#13;
+<br/>
+    scn = Scene();&#13;
+<br/>
+    userobj = scn.firstSelect();&#13;
+<br/>
+    if (userobj == nil || userobj.genus != CAMERA)&#13;
+<br/>
+    {&#13;
+<br/>
+       //no camera was selected, so we export the first in the scene if there is any&#13;
+<br/>
+       userobj = Camera();&#13;
+<br/>
+       if (userobj == nil)&#13;
+<br/>
+       {&#13;
+<br/>
+          info ("No camera in the scene");&#13;
+<br/>
+          return;&#13;
+<br/>
+       }&#13;
+<br/>
+    }&#13;
+<br/>
+    cam = userobj;&#13;
+<br/>
+    cutlist = "";&#13;
+<br/>
+    exportfilename = "";&#13;
+<br/>
+    s_fps = scn.fps;&#13;
+<br/>
+    s_start = scn.previewstart;&#13;
+<br/>
+    s_end = scn.previewend;&#13;
+<br/>
+    numframes = s_end - s_start + 1;&#13;
+<br/><br/>
+    // display requester&#13;
+<br/>
+    reqbegin("Lightwave MD5camera Exporter");&#13;
+<br/>
+    reqsize(492,155);&#13;
+<br/><br/>
+    c1 = ctlinteger("Frame Rate",s_fps);&#13;
+<br/>
+    ctlposition(c1,361,12);&#13;
+<br/><br/>
+    c2 = ctlstring("Cut List",cutlist);&#13;
+<br/>
+    ctlposition(c2,10,73,476,18);&#13;
+<br/><br/>
+    c3 = ctlfilename("Save As",exportfilename);&#13;
+<br/>
+    ctlposition(c3,5,104,458,19);&#13;
+<br/><br/>
+    c4 = ctlinteger("Start Frame",s_start);&#13;
+<br/>
+    ctlposition(c4,85,42);&#13;
+<br/><br/>
+    c5 = ctlinteger("End Frame",s_end);&#13;
+<br/>
+    ctlposition(c5,225,42);&#13;
+<br/><br/>
+    c6 = ctlinteger("Total Frames",numframes);&#13;
+<br/>
+    ctlposition(c6,355,42);&#13;
+<br/><br/>
+    c7 = ctlcameraitems("Camera",cam);&#13;
+<br/>
+    ctlposition(c7,3,11,343,19);&#13;
+<br/><br/>
+    // deactivate all unmodifiable controls&#13;
+<br/>
+    ctlactive(c3, "toggleOff", c1, c4, c5, c6);&#13;
+<br/><br/>
+    return if !reqpost();&#13;
+<br/><br/>
+    s_fps = getvalue(c1);&#13;
+<br/>
+    cutlist = getvalue(c2);&#13;
+<br/>
+    exportfilename = getvalue(c3);&#13;
+<br/>
+    s_start = getvalue(c4);&#13;
+<br/>
+    s_end = getvalue(c5);&#13;
+<br/>
+    numframes = getvalue(c6);&#13;
+<br/>
+    cam = getvalue(c7);&#13;
+<br/><br/>
+    reqend();&#13;
+<br/><br/>
+    // validate values and setup file for output&#13;
+<br/>
+    if(cam == nil)&#13;
+<br/>
+    {&#13;
+<br/>
+        error ("No camera selected");&#13;
+<br/>
+        return;&#13;
+<br/>
+    }&#13;
+<br/>
+    if(cutlist == nil) {&#13;
+<br/>
+        numcuts = 0;&#13;
+<br/>
+    } else {&#13;
+<br/>
+        cuts = parse(";",cutlist);&#13;
+<br/>
+        numcuts = size(cuts);&#13;
+<br/>
+        //info(string(numcuts) + " cuts were found");&#13;
+<br/>
+        for (i=1; i&lt;=numcuts; i++)&#13;
+<br/>
+        {&#13;
+<br/>
+            test = integer(cuts[i]);&#13;
+<br/>
+            if (test == nil)&#13;
+<br/>
+            {&#13;
+<br/>
+                error(cuts[i]+" is not an integer");&#13;
+<br/>
+                return;&#13;
+<br/>
+            } else {&#13;
+<br/>
+                cuts[i] = test - s_start;&#13;
+<br/>
+            }&#13;
+<br/>
+            //error(cuts[i]+" is not an integer");&#13;
+<br/>
+            if (integer(cuts[i]) &lt; s_start or integer(cuts[i]) &gt; s_end)&#13;
+<br/>
+            {&#13;
+<br/>
+                error(cuts[i]+" is out of range");&#13;
+<br/>
+                return;&#13;
+<br/>
+            }&#13;
+<br/>
+        }&#13;
+<br/>
+    }&#13;
+<br/>
+    exportfile = File(exportfilename,"w");&#13;
+<br/>
+    if(exportfile == nil)&#13;
+<br/>
+    {&#13;
+<br/>
+       error("Unable to get writing access to ",exportfilename);&#13;
+<br/>
+       return;&#13;
+<br/>
+    }&#13;
+<br/>
+    exportmd5camera();&#13;
+<br/>
+    info("Export Complete");&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Okay, the way I'm doing the cuts is through a single textbox. The way it works is you type the frame numbers where you want the cuts to take place.&#13;
+<br/><br/>
+For instance, say you want cuts at frame 10 and 20 on the timeline in Lightwave. You simply type...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">10;20</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+... in the cuts list text box.&#13;
+<br/><br/>
+Keep me posted if there are any problems with this latest iteration as I haven't done much testing. I've been mainly testing the interface.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="59043" date="Posted: Mon Oct 25, 2004 8:22 pm    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm going to package this up into a nice little zip and update the first post with a link.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="96356" date="Posted: Thu May 26, 2005 7:27 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Long time no update but I figured I'd chime in and let you all know about a problem with the script that's been on my mind for a while but I've not been terribly bothered to integrate a solution.&#13;
+<br/><br/>
+There is a bug with cuts. Well, not really a bug but it more or less amounts to a bug because I'm not sure if you can move the camera in the fashion needed in order for cuts to work.&#13;
+<br/><br/>
+The way it works now is you manually tell the script what frames to make cuts at. The problem is that while the script is exporting what amounts to multiple clips we're working with a single camera that uses one continuous fluid motion path.&#13;
+<br/><br/>
+So, if I cut on one frame to start the next clip in the script, the camera in Lightwave doesn't know that this should be a completely different movement.&#13;
+<br/><br/>
+The problem is that you can't get a camera's motion path to abruptly end and then start up again without the previous motion carrying over into the next.&#13;
+<br/><br/>
+This becomes a problem because if I insert a cut at one point and try to start a new clip immediately on the next frame at a different position Lightwave will interpret the motion from the two keyframes as something that needs interpolated.&#13;
+<br/><br/>
+The solution is to use a separate camera for each cut but that would require major overhaul to the current script and I just don't have the time to really look into it.<br/>_________________<br/><a href="/web/20061012182054/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061012182054im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061012182054/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

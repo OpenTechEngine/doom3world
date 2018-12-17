@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="9953"><title>TUTORIAL : Milkshape LWO to Doom 3</title><posts><post id="p88235" date="Posted: Thu Apr 14, 2005 9:37 am "><author>GreyDog</author><body><![CDATA[<div class="postbody">The "EASY" way to get Milkshape LWO models into Doom 3.
+<br /><br />After wasting a week trying to get ASE format model files into Doom3 and being thoroughly boggled by the process of using Milkshape to get a static model into the game using ASE format and manually having to edit the ASE file as per tutorials etc.  I tried using Milkshape's LWO exporter using a twist on the default material name and the darn thing was so easy and worked perfectly !  Goodbye ASE's hello LWO  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /><br /><br />Here is how you do it (consult the pic shown below).
+<br />Assuming you have made your static model and have the diffuse targa texture for it already loaded ie: MyPic_d.tga.  You also have completed the UV mapping of your model (if required) within Milkshape using the "Texture Coordinate Editor".  You are now ready to perform the procedure to turn your Milkshape ms3d model into a Lightwave LWO model.
+<br /><br />1) save your model using the standard native ms3d file format.
+<br /><br />2) select all of your model.
+<br /><br />3) click on the Materials Tab.  You have probably already assigned your targa texture to the model, but may or maynot have changed the default name 'assigned' to this "material", so it may be just the default "Material01" or you may have "renamed" this default name when you made your model and UV mapped it.  No matter, we are going to change that name.
+<br /><br />4) In the box to the lower right beside the 'Rename' button, write the name of your material shader name declaration ie:
+<br />models/textures/mypic
+<br />make sure it is identical to your shader name declaration for the texture file.  Ie: if your material shader looks like this:
+<br /><br /><span style="color: blue">models/textures/box1</span>
+<br />{
+<br />qer_editorimage  models/textures/box1_ed.tga        // image for editor view
+<br />diffusemap         models/textures/box1_d.tga           // diffuse for color texture purpose
+<br />specularmap     models/textures/box1_s.tga           // specular highlights 
+<br />bumpmap         models/textures/box1_local.tga     // normalmap for bumpmapped appearance 
+<br />}
+<br /><br />then write the <span style="color: blue">models/textures/box1 </span>declaration into your material name field contained within Milkshape.
+<br /><br />You can use backward slashes or forward slashes, it makes no dif as long as the same words appear in the Milkshape material name.  (makes it easy for dummies like me who can't be bothered to remember whether it should be back slash or forward slash, as it makes no dif with this LWO file)  both ways will work just fine!.
+<br /><br /><span style="color: blue">Note: </span>
+<br /><span style="color: red">DO NOT</span> add any \base or /base to the beginning of the material name.
+<br />(the LWO model will search for the material shader starting at the     \base directory point as a default, so if you add that \base bit to the material name it will casue the LWO model to be searching for \base\base\models\subdir\subdir\MyPic  which is wrong.
+<br /><br /><span style="color: red">DO NOT</span> add the .tga extension to the material name.
+<br />(we want the LWO model to search for the material shader name declaration , NOT a single particular pic file alone.)
+<br /><br />5) Now press the "Rename" button to rename this material name.
+<br />(don't worry, this will not effect the texture targa file that you have selected and applied to your model.  We are merely changing the material name used to hold your texture file and trick the LWO model file into searching for this shader file instead of a single texture targa file.)
+<br /><br />6) Now press the "Assign" button to assign this new material name to the model.
+<br /><br />7) You are now ready to export your model over to the Lightwave LWO 
+<br />file format.  From the Milkshape menu go: File--&gt;Export---&gt;Lightwave 6.5x and mouse-click to export the file into you Doom3\base\models\subdir spot.  There are several LWO export plugins shown on that menu, so be careful not to use the older ones.  There should be no Pop-ups or anything and the export model will just be saved, no confirmation will be seen.
+<br /><br />That's it, you now have your LWO model ready for use in the game.  Add it to your map in the usual manner using the "New Model" selection of right-clicking while within the Doom3 Map Editor.
+<br /><br />Click on the thumbnail below to see a Milkshape pic with highlights of the simply procedure.
+<br /><a href="https://web.archive.org/web/20070509181516/http://i4.photobucket.com/albums/y135/GreyDog/Milkshape2LWO.jpg" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://i4.photobucket.com/albums/y135/GreyDog/th_Milkshape2LWO.jpg" alt="Image" /></a>
+<br /><br />Here are some other Milkshape Tutorials you might like:
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=10317" class="postlink">TUTORIAL: Milkshape 3D: Multitextures and Lights in LWO.</a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=10323" class="postlink">TUTORIAL: Milkshape 3D: Make a Tunnel and Export as LWO to Doom 3.</a>
+<br /><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?p=93060#93060" class="postlink">TUTORIAL: Milkshape 3D: Embedding GUI's into your model</a></div>]]></body></post><post id="p88282" date="Posted: Thu Apr 14, 2005 2:56 pm "><author>kat</author><body><![CDATA[<div class="postbody">I've edited the title a little to make it search freindly and made this a sticky.</div>]]></body></post></posts></thread></xml>

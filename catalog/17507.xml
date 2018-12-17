@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17507"><title>noobi question, about exporting md5</title><posts><post id="p159495" date="Posted: Fri Oct 13, 2006 7:13 am "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20081204230505im_/http://www.doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /><br />hi,
+<br />i hope anyone can hlep me, i´ve startet in the last days to take a short look in the engine. 
+<br /><br />now i tryd to create from my maya meshes - md5 files, used by the doom3 md5 converter, so i made a simply def file, fixedthe reg and so on ... bla bla bla 
+<br /><br />but everytime, also by using a very simply geo like a cube, i got back a md5 file, but without any mesh inof, only the vector of the joint?!?
+<br /><br /><br /><br /><br />export test {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model terra {
+<br />	mesh	models/tests/mountain.md5mesh
+<br /><br /><br />entityDef tera {
+<br />	"editor_color"			"1 1 1"
+<br />	"editor_mins"			"0 0 0"
+<br />	"editor_maxs"			"0 0 0"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"terra"
+<br /><br /><br />//	"combatModel"			"1"
+<br />//	"bleed"					"1"
+<br />0
+<br />}
+<br /><br />thanX a lot for help 
+<br /><img src="https://web.archive.org/web/20081204230505im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p159499" date="Posted: Fri Oct 13, 2006 7:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">im using maya 4, so maybe this is the problem?
+<br /><br />but another question more sorry, is it possible to set individual the path to the model environment paths (in the editor)?
+<br /><br />i have not enough free space on my hd to expand the pk files?!? if this is the problem.
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p159495" date="Posted: Fri Oct 13, 2006 7:13 am "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20081204224730im_/http://www.doom3world.org/phpbb2/images/smilies/icon_question.gif" alt=":?:" title="Question" /><br />hi,
+<br />i hope anyone can hlep me, i´ve startet in the last days to take a short look in the engine. 
+<br /><br />now i tryd to create from my maya meshes - md5 files, used by the doom3 md5 converter, so i made a simply def file, fixedthe reg and so on ... bla bla bla 
+<br /><br />but everytime, also by using a very simply geo like a cube, i got back a md5 file, but without any mesh inof, only the vector of the joint?!?
+<br /><br /><br /><br /><br />export test {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model terra {
+<br />	mesh	models/tests/mountain.md5mesh
+<br /><br /><br />entityDef tera {
+<br />	"editor_color"			"1 1 1"
+<br />	"editor_mins"			"0 0 0"
+<br />	"editor_maxs"			"0 0 0"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"terra"
+<br /><br /><br />//	"combatModel"			"1"
+<br />//	"bleed"					"1"
+<br />0
+<br />}
+<br /><br />thanX a lot for help 
+<br /><img src="https://web.archive.org/web/20081204224730im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p159499" date="Posted: Fri Oct 13, 2006 7:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">im using maya 4, so maybe this is the problem?
+<br /><br />but another question more sorry, is it possible to set individual the path to the model environment paths (in the editor)?
+<br /><br />i have not enough free space on my hd to expand the pk files?!? if this is the problem.
+<br /><br />greetz
+<br />d</div>]]></body></post></posts></thread></xml>

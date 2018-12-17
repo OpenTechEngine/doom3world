@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="8490"><title>what is the ID way ? LW to MAYA</title><posts><post id="p73670" date="Posted: Sun Jan 23, 2005 10:07 pm "><author>TYROT</author><body><![CDATA[<div class="postbody">Dear DOOM fans (especially lightwavers)
+<br /><br />Ok i have read the almost every tutorial here..Ok im making cool looking meshes...OK there is no problem with static meshes at all..Doom3 is importing without any problems..
+<br /><br />BUT Damn it..OK .What the hell im gonna do with animating characters?
+<br /><br />In which way im gonna export it to MAYA. OBJ support not enough..Seriously im about to release something for your pleasure but im in hell...WHAT was the WAY of ID ...when converting meshes from Lightwave into Maya...
+<br /><br />Help me ...I will help you...What is the Official ID based converting from Lightwave to MAYA.. I m sick of searching...What did they use?...I have tried FBX not a damn chance...
+<br /><br />BEST
+<br /><br />(and thanks for all those posts, tutorials...you are all great)</div>]]></body></post><post id="p73748" date="Posted: Mon Jan 24, 2005 9:17 am "><author>Rayne</author><body><![CDATA[<div class="postbody">They done animations in maya, and static stuff in lightwave, they don't have to convert anything <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p73762" date="Posted: Mon Jan 24, 2005 11:26 am "><author>TYROT</author><body><![CDATA[<div class="postbody">dear RAYNE
+<br /><br />Seneca Menard modelled all those characters in Lightwave..And he export it to MAYA..Then they made the animations in maya ...( he is even saying modelling the Cyberdemon took his 4 weeks)
+<br /><br />this is why im asking..what is that exporting tool...between Lightwave and MAya.(deep exploration or custom plugin or Polytans.) 
+<br /><br />BEST</div>]]></body></post><post id="p73776" date="Posted: Mon Jan 24, 2005 2:18 pm "><author>Rayne</author><body><![CDATA[<div class="postbody">Yeah you re right, I totally forgot this particular passage of the Menard interview on newtek.com ( <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /> ).. I can't really remember any place where this question is answered, so you probably save time sending a mail to Brian on <!-- w --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.iddevnet.com/">http://www.iddevnet.com</a><!-- w -->  I'm really sure he would answer those question to the community. Let me know, I'm really curious..
+<br /><br /><br /><br />Ps: can you explain why .obj support is not enough?  when you import it in maya, you can make what you want with it, or am I wrong?</div>]]></body></post><post id="p73787" date="Posted: Mon Jan 24, 2005 3:11 pm "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Lightwave does a poor job when it comes to exporting OBJ format.
+<br /><br />The only thing exported is geometry so UV maps and bones are disgarded.
+<br /><br />Of course, this is only a concern if you aren't able to UV map or rig a model in Maya.</div>]]></body></post><post id="p73978" date="Posted: Tue Jan 25, 2005 12:45 pm "><author>TYROT</author><body><![CDATA[<div class="postbody">dear DOOM3 community
+<br /><br />YES!!! YES!!!! they have answered...Ok here is the deal..
+<br />They are converting character meshes from Lightwave to MAYA  with DEEP EXPLORATION. either OBJ or MB format..Mostly MB..So guys..This is the ID way..
+<br /><br />My goodness they are really HELPFUL! 
+<br /><br />BEST
+<br /><br />ID rules!</div>]]></body></post><post id="p74624" date="Posted: Thu Jan 27, 2005 9:35 pm "><author>aRKeycH</author><body><![CDATA[<div class="postbody">LW can export UVmaps within *.obj well. 
+<br />Be sure you have in the color SurfacePanel the uv map explicit assigned.</div>]]></body></post></posts></thread></xml>

@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="2275"><title>Maya 5 md5mesh exporter complete, working on md5anim</title><posts><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.&#13;<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.&#13;<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.&#13;<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform&#13;<br /><br />weight.position = ( absolute_position - T ) * inverse(R), &#13;<br /><br />where T is the bindpos and R is the bindmat.&#13;<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.&#13;<br /><br />Here's a screenshot in the viewer:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->&#13;<br /><br />Here's the skeleton in Maya:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->&#13;<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.&#13;<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)&#13;<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  &#13;<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.&#13;<br /><br /><br /><br />Thanks!&#13;<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?&#13;<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. &#13;<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>&#13;<br /><br />I´d rather see it as &#13;<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>&#13;<br />(a matrix holds rotation AND transformation)&#13;<br />2. convert the rotation part to euler angles&#13;<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.&#13;<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.&#13;<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.&#13;<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->&#13;<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to &#13;<br />1. transform the bone´s matrix into its parent´s space: &#13;<br />Code: &#13;<br />anim_matrix = bone_matrix * inverted parent_matrix &#13;<br /><br />(a matrix holds rotation AND transformation) &#13;<br />2. convert the rotation part to euler angles "&#13;<br /><br />Just a small question here&#13;<br /><br />this is&#13;<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?&#13;<br /><br /><br />and&#13;<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix&#13;<br />is the right thing.&#13;<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).&#13;<br /><br />Oh, I didn´t answer that yet:&#13;<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>&#13;<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.&#13;<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.&#13;<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.&#13;<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.&#13;<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  &#13;<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.&#13;<br /><br />This is my guess:&#13;<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.&#13;<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)&#13;<br /><br />Example:&#13;<br /><br />----------------------------------&#13;<br />(left arm gib .md5mesh&#13;<br /><br />MD5Version 10&#13;<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"&#13;<br /><br />numJoints 5&#13;<br />numMeshes 1&#13;<br />joints {&#13;<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// &#13;<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin&#13;<br />}(edited for space)&#13;<br /><br />mesh {&#13;<br />	// meshes: polySurface7&#13;<br />	shader "models/gibs/gibmaster"&#13;<br />	numverts 84&#13;<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2&#13;<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1&#13;<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2&#13;<br />	(EDIT for space)&#13;<br /><br />	numtris 122&#13;<br />	tri 0 2 1 0&#13;<br />	tri 1 0 1 3&#13;<br />	tri 2 6 5 4&#13;<br />	(edited for space)&#13;<br /><br />	numweights 101&#13;<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )&#13;<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )&#13;<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )&#13;<br />	(edited for space)&#13;<br />---&#13;<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? &#13;<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.&#13;<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.&#13;<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?&#13;<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, &#13;<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.&#13;<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111216/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111216/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111216/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20081205111216im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111216/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20081205111216im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20081205111216im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111216/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 10:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 8:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 1:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 6:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 6:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 7:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 11:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 11:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 11:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 5:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 10:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 10:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 8:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 1:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225094032/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 6:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 6:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20101225094032im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 7:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 11:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 11:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 11:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 5:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 10:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="22114" date="Posted: Thu Apr 22, 2004 9:30 pm    Post subject: Maya 5 md5mesh exporter complete, working on md5anim"><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.&#13;
+<br/><br/>
+The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.&#13;
+<br/><br/>
+I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.&#13;
+<br/><br/>
+My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform&#13;
+<br/><br/>
+weight.position = ( absolute_position - T ) * inverse(R), &#13;
+<br/><br/>
+where T is the bindpos and R is the bindmat.&#13;
+<br/><br/>
+This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.&#13;
+<br/><br/>
+Here's a screenshot in the viewer:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg" target="_blank">http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg</a>&#13;
+<br/><br/>
+Here's the skeleton in Maya:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg" target="_blank">http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg</a>&#13;
+<br/><br/>
+It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.&#13;
+<br/><br/>
+Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)&#13;
+<br/><br/>
+I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  &#13;
+<br/><br/>
+I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.&#13;
+<br/><br/><br/><br/>
+Thanks!&#13;
+<br/><br/>
+EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22133" date="Posted: Fri Apr 23, 2004 7:20 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I donÃÂ´t have much experience with Maya. Would that even be possible in MEL?&#13;
+<br/><br/>
+Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But thatÃÂ´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. &#13;
+<br/>
+If you didnÃÂ´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe thereÃÂ´s some info of interest.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">weight.position = ( absolute_position - T ) * inverse(R)</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+IÃÂ´d rather see it as &#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">position = abs_position * inverse(bone-matrix)</td>	</tr></table><span class="postbody">&#13;
+<br/>
+so that the boneÃÂ´s transformation is included in the bone-matrix. ItÃÂ´s mathematically the same, but itÃÂ´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when youÃÂ´re outputting to the md5mesh.&#13;
+<br/><br/>
+About the md5anim thing, this might help:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a>&#13;
+<br/><br/>
+I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.&#13;
+<br/><br/>
+YouÃÂ´re right, the bone matrices in the md5anim are in the parentÃÂ´s space. So you have to&#13;
+<br/>
+1. transform the boneÃÂ´s matrix into its parentÃÂ´s space:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">anim_matrix = bone_matrix * inverted parent_matrix</td>	</tr></table><span class="postbody">&#13;
+<br/>
+(a matrix holds rotation AND transformation)&#13;
+<br/>
+2. convert the rotation part to euler angles&#13;
+<br/><br/>
+And thatÃÂ´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+If the Maya API doesnÃÂ´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22156" date="Posted: Fri Apr 23, 2004 12:32 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.&#13;
+<br/><br/>
+Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.&#13;
+<br/><br/>
+I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.&#13;
+<br/><br/>
+It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml" target="_blank">http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml</a>&#13;
+<br/><br/>
+I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22168" date="Posted: Fri Apr 23, 2004 5:24 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">"YouÃÂ´re right, the bone matrices in the md5anim are in the parentÃÂ´s space. So you have to &#13;
+<br/>
+1. transform the boneÃÂ´s matrix into its parentÃÂ´s space: &#13;
+<br/>
+Code: &#13;
+<br/>
+anim_matrix = bone_matrix * inverted parent_matrix &#13;
+<br/><br/>
+(a matrix holds rotation AND transformation) &#13;
+<br/>
+2. convert the rotation part to euler angles "&#13;
+<br/><br/>
+Just a small question here&#13;
+<br/><br/>
+this is&#13;
+<br/><br/>
+anim_matrix = bone_local_matrix * inverted_parent_world_matrix?&#13;
+<br/><br/><br/>
+and&#13;
+<br/><br/>
+recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22169" date="Posted: Fri Apr 23, 2004 5:49 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix&#13;
+<br/>
+is the right thing.&#13;
+<br/>
+The root bone(s) donÃÂ´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> ).&#13;
+<br/><br/>
+Oh, I didnÃÂ´t answer that yet:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. MayaÃÂ´s bones grow along a different axis than MaxÃÂ´s bones, for example. So thereÃÂ´s lots of information lost.&#13;
+<br/>
+My viewer displays the bonesÃÂ´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.&#13;
+<br/>
+It displays blue lines towards from a boneÃÂ´s origin towards its childrenÃÂ´s origins, thatÃÂ´s the best that you can do. The md5mesh/anims just donÃÂ´t hold any more information, because thatÃÂ´s all thatÃÂ´s needed to do the skeletal animation.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22176" date="Posted: Fri Apr 23, 2004 6:59 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the quick response.&#13;
+<br/><br/>
+I succesfully exported an md5mesh and the corresponding bind pose md5anim.&#13;
+<br/><br/>
+Time to iterate keyframes and export some interesting md5anims.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35542" date="Posted: Sat Aug 14, 2004 10:20 pm    Post subject: "><author>marsellus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  &#13;
+<br/>
+No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.&#13;
+<br/><br/>
+This is my guess:&#13;
+<br/><br/>
+Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.&#13;
+<br/>
+Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)&#13;
+<br/><br/>
+Example:&#13;
+<br/><br/>
+----------------------------------&#13;
+<br/>
+(left arm gib .md5mesh&#13;
+<br/><br/>
+MD5Version 10&#13;
+<br/>
+commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"&#13;
+<br/><br/>
+numJoints 5&#13;
+<br/>
+numMeshes 1&#13;
+<br/>
+joints {&#13;
+<br/>
+	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// &#13;
+<br/>
+	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin&#13;
+<br/>
+}(edited for space)&#13;
+<br/><br/>
+mesh {&#13;
+<br/>
+	// meshes: polySurface7&#13;
+<br/>
+	shader "models/gibs/gibmaster"&#13;
+<br/>
+	numverts 84&#13;
+<br/>
+	vert 0 ( 0.1495526433 0.7503765821 ) 0 2&#13;
+<br/>
+	vert 1 ( 0.1121515036 0.686191082 ) 10 1&#13;
+<br/>
+	vert 2 ( 0.0983231068 0.7449886799 ) 15 2&#13;
+<br/>
+	(EDIT for space)&#13;
+<br/><br/>
+	numtris 122&#13;
+<br/>
+	tri 0 2 1 0&#13;
+<br/>
+	tri 1 0 1 3&#13;
+<br/>
+	tri 2 6 5 4&#13;
+<br/>
+	(edited for space)&#13;
+<br/><br/>
+	numweights 101&#13;
+<br/>
+weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )&#13;
+<br/>
+weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )&#13;
+<br/>
+weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )&#13;
+<br/>
+	(edited for space)&#13;
+<br/>
+---&#13;
+<br/><br/>
+Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? &#13;
+<br/><br/>
+Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.&#13;
+<br/><br/>
+thanks, <a href="mailto:themulf@gmail.com">themulf@gmail.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35555" date="Posted: Sat Aug 14, 2004 10:41 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35565" date="Posted: Sat Aug 14, 2004 10:53 pm    Post subject: "><author>marsellus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was just asking you of the process you went through.&#13;
+<br/><br/>
+If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="43679" date="Posted: Sun Aug 29, 2004 4:22 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This thread is still alive?&#13;
+<br/>
+I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156833" date="Posted: Tue Sep 12, 2006 9:26 am    Post subject: "><author>ehmdjii</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hello Cat, &#13;
+<br/><br/>
+i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.&#13;
+<br/><br/>
+thanks a lot!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.&#13;<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.&#13;<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.&#13;<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform&#13;<br /><br />weight.position = ( absolute_position - T ) * inverse(R), &#13;<br /><br />where T is the bindpos and R is the bindmat.&#13;<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.&#13;<br /><br />Here's a screenshot in the viewer:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->&#13;<br /><br />Here's the skeleton in Maya:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->&#13;<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.&#13;<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)&#13;<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  &#13;<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.&#13;<br /><br /><br /><br />Thanks!&#13;<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?&#13;<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. &#13;<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.&#13;<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>&#13;<br /><br />I´d rather see it as &#13;<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>&#13;<br />(a matrix holds rotation AND transformation)&#13;<br />2. convert the rotation part to euler angles&#13;<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.&#13;<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.&#13;<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.&#13;<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->&#13;<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to &#13;<br />1. transform the bone´s matrix into its parent´s space: &#13;<br />Code: &#13;<br />anim_matrix = bone_matrix * inverted parent_matrix &#13;<br /><br />(a matrix holds rotation AND transformation) &#13;<br />2. convert the rotation part to euler angles "&#13;<br /><br />Just a small question here&#13;<br /><br />this is&#13;<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?&#13;<br /><br /><br />and&#13;<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix&#13;<br />is the right thing.&#13;<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).&#13;<br /><br />Oh, I didn´t answer that yet:&#13;<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>&#13;<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.&#13;<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.&#13;<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.&#13;<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.&#13;<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  &#13;<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.&#13;<br /><br />This is my guess:&#13;<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.&#13;<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)&#13;<br /><br />Example:&#13;<br /><br />----------------------------------&#13;<br />(left arm gib .md5mesh&#13;<br /><br />MD5Version 10&#13;<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"&#13;<br /><br />numJoints 5&#13;<br />numMeshes 1&#13;<br />joints {&#13;<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// &#13;<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin&#13;<br />}(edited for space)&#13;<br /><br />mesh {&#13;<br />	// meshes: polySurface7&#13;<br />	shader "models/gibs/gibmaster"&#13;<br />	numverts 84&#13;<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2&#13;<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1&#13;<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2&#13;<br />	(EDIT for space)&#13;<br /><br />	numtris 122&#13;<br />	tri 0 2 1 0&#13;<br />	tri 1 0 1 3&#13;<br />	tri 2 6 5 4&#13;<br />	(edited for space)&#13;<br /><br />	numweights 101&#13;<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )&#13;<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )&#13;<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )&#13;<br />	(edited for space)&#13;<br />---&#13;<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? &#13;<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.&#13;<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:&#13;<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.&#13;<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?&#13;<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, &#13;<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.&#13;<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="22114" date="Posted: Thu Apr 22, 2004 9:30 pm    Post subject: Maya 5 md5mesh exporter complete, working on md5anim"><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.&#13;
+<br/><br/>
+The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.&#13;
+<br/><br/>
+I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.&#13;
+<br/><br/>
+My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform&#13;
+<br/><br/>
+weight.position = ( absolute_position - T ) * inverse(R), &#13;
+<br/><br/>
+where T is the bindpos and R is the bindmat.&#13;
+<br/><br/>
+This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.&#13;
+<br/><br/>
+Here's a screenshot in the viewer:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg" target="_blank">http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg</a>&#13;
+<br/><br/>
+Here's the skeleton in Maya:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg" target="_blank">http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg</a>&#13;
+<br/><br/>
+It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.&#13;
+<br/><br/>
+Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)&#13;
+<br/><br/>
+I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  &#13;
+<br/><br/>
+I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.&#13;
+<br/><br/><br/><br/>
+Thanks!&#13;
+<br/><br/>
+EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22133" date="Posted: Fri Apr 23, 2004 7:20 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I donÃÂ´t have much experience with Maya. Would that even be possible in MEL?&#13;
+<br/><br/>
+Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But thatÃÂ´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. &#13;
+<br/>
+If you didnÃÂ´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe thereÃÂ´s some info of interest.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">weight.position = ( absolute_position - T ) * inverse(R)</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+IÃÂ´d rather see it as &#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">position = abs_position * inverse(bone-matrix)</td>	</tr></table><span class="postbody">&#13;
+<br/>
+so that the boneÃÂ´s transformation is included in the bone-matrix. ItÃÂ´s mathematically the same, but itÃÂ´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when youÃÂ´re outputting to the md5mesh.&#13;
+<br/><br/>
+About the md5anim thing, this might help:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a>&#13;
+<br/><br/>
+I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.&#13;
+<br/><br/>
+YouÃÂ´re right, the bone matrices in the md5anim are in the parentÃÂ´s space. So you have to&#13;
+<br/>
+1. transform the boneÃÂ´s matrix into its parentÃÂ´s space:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">anim_matrix = bone_matrix * inverted parent_matrix</td>	</tr></table><span class="postbody">&#13;
+<br/>
+(a matrix holds rotation AND transformation)&#13;
+<br/>
+2. convert the rotation part to euler angles&#13;
+<br/><br/>
+And thatÃÂ´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+If the Maya API doesnÃÂ´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22156" date="Posted: Fri Apr 23, 2004 12:32 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.&#13;
+<br/><br/>
+Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.&#13;
+<br/><br/>
+I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.&#13;
+<br/><br/>
+It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml" target="_blank">http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml</a>&#13;
+<br/><br/>
+I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22168" date="Posted: Fri Apr 23, 2004 5:24 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">"YouÃÂ´re right, the bone matrices in the md5anim are in the parentÃÂ´s space. So you have to &#13;
+<br/>
+1. transform the boneÃÂ´s matrix into its parentÃÂ´s space: &#13;
+<br/>
+Code: &#13;
+<br/>
+anim_matrix = bone_matrix * inverted parent_matrix &#13;
+<br/><br/>
+(a matrix holds rotation AND transformation) &#13;
+<br/>
+2. convert the rotation part to euler angles "&#13;
+<br/><br/>
+Just a small question here&#13;
+<br/><br/>
+this is&#13;
+<br/><br/>
+anim_matrix = bone_local_matrix * inverted_parent_world_matrix?&#13;
+<br/><br/><br/>
+and&#13;
+<br/><br/>
+recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22169" date="Posted: Fri Apr 23, 2004 5:49 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix&#13;
+<br/>
+is the right thing.&#13;
+<br/>
+The root bone(s) donÃÂ´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/> ).&#13;
+<br/><br/>
+Oh, I didnÃÂ´t answer that yet:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. MayaÃÂ´s bones grow along a different axis than MaxÃÂ´s bones, for example. So thereÃÂ´s lots of information lost.&#13;
+<br/>
+My viewer displays the bonesÃÂ´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.&#13;
+<br/>
+It displays blue lines towards from a boneÃÂ´s origin towards its childrenÃÂ´s origins, thatÃÂ´s the best that you can do. The md5mesh/anims just donÃÂ´t hold any more information, because thatÃÂ´s all thatÃÂ´s needed to do the skeletal animation.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="22176" date="Posted: Fri Apr 23, 2004 6:59 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the quick response.&#13;
+<br/><br/>
+I succesfully exported an md5mesh and the corresponding bind pose md5anim.&#13;
+<br/><br/>
+Time to iterate keyframes and export some interesting md5anims.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35542" date="Posted: Sat Aug 14, 2004 10:20 pm    Post subject: "><author>marsellus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  &#13;
+<br/>
+No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.&#13;
+<br/><br/>
+This is my guess:&#13;
+<br/><br/>
+Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.&#13;
+<br/>
+Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)&#13;
+<br/><br/>
+Example:&#13;
+<br/><br/>
+----------------------------------&#13;
+<br/>
+(left arm gib .md5mesh&#13;
+<br/><br/>
+MD5Version 10&#13;
+<br/>
+commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"&#13;
+<br/><br/>
+numJoints 5&#13;
+<br/>
+numMeshes 1&#13;
+<br/>
+joints {&#13;
+<br/>
+	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// &#13;
+<br/>
+	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin&#13;
+<br/>
+}(edited for space)&#13;
+<br/><br/>
+mesh {&#13;
+<br/>
+	// meshes: polySurface7&#13;
+<br/>
+	shader "models/gibs/gibmaster"&#13;
+<br/>
+	numverts 84&#13;
+<br/>
+	vert 0 ( 0.1495526433 0.7503765821 ) 0 2&#13;
+<br/>
+	vert 1 ( 0.1121515036 0.686191082 ) 10 1&#13;
+<br/>
+	vert 2 ( 0.0983231068 0.7449886799 ) 15 2&#13;
+<br/>
+	(EDIT for space)&#13;
+<br/><br/>
+	numtris 122&#13;
+<br/>
+	tri 0 2 1 0&#13;
+<br/>
+	tri 1 0 1 3&#13;
+<br/>
+	tri 2 6 5 4&#13;
+<br/>
+	(edited for space)&#13;
+<br/><br/>
+	numweights 101&#13;
+<br/>
+weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )&#13;
+<br/>
+weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )&#13;
+<br/>
+weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )&#13;
+<br/>
+	(edited for space)&#13;
+<br/>
+---&#13;
+<br/><br/>
+Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? &#13;
+<br/><br/>
+Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.&#13;
+<br/><br/>
+thanks, <a href="mailto:themulf@gmail.com">themulf@gmail.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35555" date="Posted: Sat Aug 14, 2004 10:41 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="35565" date="Posted: Sat Aug 14, 2004 10:53 pm    Post subject: "><author>marsellus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I was just asking you of the process you went through.&#13;
+<br/><br/>
+If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="43679" date="Posted: Sun Aug 29, 2004 4:22 pm    Post subject: "><author>Cat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This thread is still alive?&#13;
+<br/>
+I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="156833" date="Posted: Tue Sep 12, 2006 9:26 am    Post subject: "><author>ehmdjii</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hello Cat, &#13;
+<br/><br/>
+i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.&#13;
+<br/><br/>
+thanks a lot!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post><post id="p22114" date="Posted: Thu Apr 22, 2004 9:30 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm trying to export animation from Maya 5; thankfully the API makes this pretty easy.  However, I'm a bit uncomfortable with the bone- and model- space information.
+<br /><br />The md5mesh portion of the exporter _seems_ to work fine (it loads in der_ton's wonderful viewer.)  It supports an arbitrary number of weights per vertex, and submeshes.
+<br /><br />I'm not sure if I'm writing out the bindpos and bindmat correctly, however.  Please correct me where I'm wrong.
+<br /><br />My understanding of the bindpos is the model-space (absolute, for now) coordinates of the bone origin.  The bindmat is the absolute orientation of the bone.  I then compute extract the weights, and perform
+<br /><br />weight.position = ( absolute_position - T ) * inverse(R), 
+<br /><br />where T is the bindpos and R is the bindmat.
+<br /><br />This, as I said, looks right in the viewer.  The skeleton still bothers me, however.  The bones don't look oriented completely right, but maybe it's because I'm operating in Maya's Y-up system, and not Doom 3's Z-up.
+<br /><br />Here's a screenshot in the viewer:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/md5mesh_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />Here's the skeleton in Maya:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.cs.virginia.edu/~csz9v/skeletal_animation/maya_skeleton.jpg">http://www.cs.virginia.edu/~csz9v/skele ... eleton.jpg</a><!-- m -->
+<br /><br />It looks like the orientation is wrong, and I'm positive I'm pulling the world-space values from the bones.
+<br /><br />Now comes my seemingly bigger problem.  All I want to do for now is export a totally idle animation.  (the bind/rest pose.)
+<br /><br />I assumed that for each bone I would just export the local, or bone-space position and rotation of the bone in its bind/rest position, but I'm not quite sure I understand this.  
+<br /><br />I'd appreciate a thorough description of exactly what I'm supposed to do here.  I'm somewhat comfortable with extracting the absolute transformation information, but not the local.  I'm not sure if I'm supposed to be exporting the transformation relative to the parent, or something similar.
+<br /><br /><br /><br />Thanks!
+<br /><br />EDIT:  What is the proper way to display the skeleton, given only the md5mesh?  ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>]]></body></post><post id="p22133" date="Posted: Fri Apr 23, 2004 7:20 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Cool thing, your exporter! Do you do that in MEL or as a compiled plugin? I don´t have much experience with Maya. Would that even be possible in MEL?
+<br /><br />Yes, from the screenshots it seems that the coordinate systems of the md5 bones are not the original ones from the Maya model. But that´s ok as long as the animations work, too. Note that for Doom3 you have to have righthanded bone spaces because the animation is given in euler angles, not given in explicit matrices. I ran into that problem with the 3dsmax-exporter when someone made a model by mirroring some bones, so they had left-handed coordinate systems in 3dsmax. Maybe Maya prevents that from happening. 
+<br />If you didn´t already, you might want to take a look at the forum threads or sourcecode for the blender exporter and the 3dsmax exporter, maybe there´s some info of interest.
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">weight.position = ( absolute_position - T ) * inverse(R)</div>
+<br /><br />I´d rather see it as 
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">position = abs_position * inverse(bone-matrix)</div><br />so that the bone´s transformation is included in the bone-matrix. It´s mathematically the same, but it´s a better way to organize your matrices. You only split them up into bindpos and bindmat at the very end, when you´re outputting to the md5mesh.<br /><br />About the md5anim thing, this might help:<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=1969">http://www.doom3world.org/phpbb2/viewtopic.php?t=1969</a><!-- m --><br /><br />I wrote some information related to md5anims, with readers in mind that want to make a md5-viewer.<br /><br />You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to<br />1. transform the bone´s matrix into its parent´s space:<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">anim_matrix = bone_matrix * inverted parent_matrix</div>
+<br />(a matrix holds rotation AND transformation)
+<br />2. convert the rotation part to euler angles
+<br /><br />And that´s it.  <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />If the Maya API doesn´t offer support for the math stuff (like the euler conversion), you can look at the blender2md5 script, it has that stuff included.</div>]]></body></post><post id="p22156" date="Posted: Fri Apr 23, 2004 12:32 pm "><author>Cat</author><body><![CDATA[<div class="postbody">I'm currently writing a compiled plug-in, but once it's finished, I'll look into writing it in MEL.
+<br /><br />Maya's C++ API provides a plethora of Matrix, Quaternion, Euler angle classes and conversions between each other.
+<br /><br />I think I'll use the more elegant transformation + rotation stored as a single transform matrix as you suggested.
+<br /><br />It's not perfectly clear to me what transformation matrix I need, as Maya's joints, which inherit from Maya's Transform class, have additional transformation information:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.alias.com/eng/support/maya/knowledgebase/api/2384.jhtml">http://www.alias.com/eng/support/maya/k ... 2384.jhtml</a><!-- m -->
+<br /><br />I'll gladly release this to the public, especially since I'm being helped by this forum. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p22168" date="Posted: Fri Apr 23, 2004 5:24 pm "><author>Cat</author><body><![CDATA[<div class="postbody">"You´re right, the bone matrices in the md5anim are in the parent´s space. So you have to 
+<br />1. transform the bone´s matrix into its parent´s space: 
+<br />Code: 
+<br />anim_matrix = bone_matrix * inverted parent_matrix 
+<br /><br />(a matrix holds rotation AND transformation) 
+<br />2. convert the rotation part to euler angles "
+<br /><br />Just a small question here
+<br /><br />this is
+<br /><br />anim_matrix = bone_local_matrix * inverted_parent_world_matrix?
+<br /><br /><br />and
+<br /><br />recursively multiplying bone_local_matrices will give you bone_world_matrices, right?</div>]]></body></post><post id="p22169" date="Posted: Fri Apr 23, 2004 5:49 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">anim_matrix = bone_world_matrix * inverted parentbone_world_matrix
+<br />is the right thing.
+<br />The root bone(s) don´t have a parent, no need to transform them. To get the world matrices of the bones during animation (in a viewer for example), you go through the bone-tree top-down (assuming the standard computer science metaphor of a tree that grows downwards ofcourse <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /> ).
+<br /><br />Oh, I didn´t answer that yet:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">What is the proper way to display the skeleton, given only the md5mesh? ( I don't want to draw lines from bindpos to bindpos, I'd like to display the bones' local axes.)</div>
+<br />Well, all there is in a md5 is the matrices of the bones. No length of a bone, and actually not a real direction either. Maya´s bones grow along a different axis than Max´s bones, for example. So there´s lots of information lost.
+<br />My viewer displays the bones´ local axes. The RGB vector triples, see? R,G,B = X,Y,Z vector of the matrix.
+<br />It displays blue lines towards from a bone´s origin towards its children´s origins, that´s the best that you can do. The md5mesh/anims just don´t hold any more information, because that´s all that´s needed to do the skeletal animation.</div>]]></body></post><post id="p22176" date="Posted: Fri Apr 23, 2004 6:59 pm "><author>Cat</author><body><![CDATA[<div class="postbody">Thanks for the quick response.
+<br /><br />I succesfully exported an md5mesh and the corresponding bind pose md5anim.
+<br /><br />Time to iterate keyframes and export some interesting md5anims.</div>]]></body></post><post id="p35542" date="Posted: Sat Aug 14, 2004 10:20 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">Cat, I understand C++, and readup and understand MEL.  I have not really worked with it, but the understanding is there.  (I use to do alot of basic programming) and MEL is not very hard and C++ is close.  
+<br />No I am not asking you to teach me, but let me try to guess how to export a static mesh (non-animated) to a MD5.
+<br /><br />This is my guess:
+<br /><br />Step 1.  Open a MD5 file of a static mesh, and learn how its syntax is formated.
+<br />Step 2.  Create a MEL script that will take a selected poly mesh, loop through it, and organize it the way the MD5 is. (or plugin for more controll)
+<br /><br />Example:
+<br /><br />----------------------------------
+<br />(left arm gib .md5mesh
+<br /><br />MD5Version 10
+<br />commandline "mesh models/gibs/cycles/initial.mb -dest models/md5/gibs/leftarmgib.md5mesh -game Doom -prefix GIB2_"
+<br /><br />numJoints 5
+<br />numMeshes 1
+<br />joints {
+<br />	"origin"	-1 ( 0 0 0 ) ( 0 0 -0.7071067691 )		// 
+<br />	"luparm"	0 ( -19.5236797333 7.9370079041 59.3041687012 ) ( -0.6382610798 0.6561502814 -0.3043398261 )		// origin
+<br />}(edited for space)
+<br /><br />mesh {
+<br />	// meshes: polySurface7
+<br />	shader "models/gibs/gibmaster"
+<br />	numverts 84
+<br />	vert 0 ( 0.1495526433 0.7503765821 ) 0 2
+<br />	vert 1 ( 0.1121515036 0.686191082 ) 10 1
+<br />	vert 2 ( 0.0983231068 0.7449886799 ) 15 2
+<br />	(EDIT for space)
+<br /><br />	numtris 122
+<br />	tri 0 2 1 0
+<br />	tri 1 0 1 3
+<br />	tri 2 6 5 4
+<br />	(edited for space)
+<br /><br />	numweights 101
+<br />weight 0 1 0.8477444053 ( -7.2114658356 -0.4997648597 -1.7153018713 )
+<br />weight 1 2 0.1522555798 ( 1.7257144451 -1.227357626 -1.7315846682 )
+<br />weight 2 2 1 ( -3.1451933384 -0.9853061438 1.2875579596 )
+<br />	(edited for space)
+<br />---
+<br /><br />Now I edited that rather well, but if you where to go through this and figure out how thats organized, what the numbers mean, than is this how you do it? 
+<br /><br />Would you be willing to share your source code? (with comments)  I think this would be a teriffic way for me to pull the things i like (Moding, Modeling, C++/MEL) into a cool plug in.
+<br /><br />thanks, <!-- e --><a href="mailto:themulf@gmail.com">themulf@gmail.com</a><!-- e --></div>]]></body></post><post id="p35555" date="Posted: Sat Aug 14, 2004 10:41 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">I'm not sure what you mean, but if you need info about the md5 syntax, it's all been done:
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/phpbb2/viewtopic.php?t=2884">http://www.doom3world.org/phpbb2/viewtopic.php?t=2884</a><!-- m --></div>]]></body></post><post id="p35565" date="Posted: Sat Aug 14, 2004 10:53 pm "><author>marsellus</author><body><![CDATA[<div class="postbody">I was just asking you of the process you went through.
+<br /><br />If you created a MEL script, would it be a loop that goes through the geometry data, and prints it out in the Md5 format?</div>]]></body></post><post id="p43679" date="Posted: Sun Aug 29, 2004 4:22 pm "><author>Cat</author><body><![CDATA[<div class="postbody">This thread is still alive?
+<br />I can share my source code, that's not a problem.  It's C++, not MEL, and is meant for the alpha.  I may update it for the retail version, but I have a feeling id already has a Maya 6 compatible exporter.  There'd really be no point.</div>]]></body></post><post id="p156833" date="Posted: Tue Sep 12, 2006 9:26 am "><author>ehmdjii</author><body><![CDATA[<div class="postbody">hello Cat, 
+<br /><br />i am looking for an up to date md5 exporter from maya and i would be very happy if you could help me out by providing me with what you have done already.
+<br /><br />thanks a lot!</div>]]></body></post></posts></thread></xml>

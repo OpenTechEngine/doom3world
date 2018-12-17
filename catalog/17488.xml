@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17488"><title>declManager-&gt;FindSkin</title><posts><post id="159363" date="Posted: Wed Oct 11, 2006 5:24 pm    Post subject: declManager-&gt;FindSkin"><author>Giganoto</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Does anybody know how I can check that it actually found the skin?&#13;
+<br/><br/>
+I thought it would return null when it didn't find the skin specified, but it doesn't <img src="/web/20061013040536im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> Even if the skin doesn't exist, it still returns an object.&#13;
+<br/><br/>
+So how can I use this object to check if the skin was found or not? Or even is there another way to do this?&#13;
+<br/><br/>
+Thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159364" date="Posted: Wed Oct 11, 2006 5:25 pm    Post subject: "><author>Giganoto</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sorry, wrong section, should have posted in Mod Coding... Please move this topic.&#13;
+<br/><br/>
+Thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159450" date="Posted: Thu Oct 12, 2006 10:59 pm    Post subject: "><author>zl1corvette</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>declmanager.h wrote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+// If makeDefault is true, a default decl of appropriate type will be created&#13;
+<br/>
+// if an explicit one isn't found. If makeDefault is false, NULL will be returned&#13;
+<br/>
+// if the decl wasn't explcitly defined.&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+so </span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">FindSkin("myskin",false)</td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159363" date="Posted: Wed Oct 11, 2006 5:24 pm    Post subject: declManager-&gt;FindSkin"><author>Giganoto</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Does anybody know how I can check that it actually found the skin?&#13;
+<br/><br/>
+I thought it would return null when it didn't find the skin specified, but it doesn't <img src="/web/20061013043343im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/> Even if the skin doesn't exist, it still returns an object.&#13;
+<br/><br/>
+So how can I use this object to check if the skin was found or not? Or even is there another way to do this?&#13;
+<br/><br/>
+Thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159364" date="Posted: Wed Oct 11, 2006 5:25 pm    Post subject: "><author>Giganoto</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sorry, wrong section, should have posted in Mod Coding... Please move this topic.&#13;
+<br/><br/>
+Thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159450" date="Posted: Thu Oct 12, 2006 10:59 pm    Post subject: "><author>zl1corvette</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>declmanager.h wrote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+// If makeDefault is true, a default decl of appropriate type will be created&#13;
+<br/>
+// if an explicit one isn't found. If makeDefault is false, NULL will be returned&#13;
+<br/>
+// if the decl wasn't explcitly defined.&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+so </span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">FindSkin("myskin",false)</td>	</tr></table><span class="postbody"/><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="4618"><title>Another MD5 Exporter for MAX/gmax</title><posts><post id="159177" date="Posted: Mon Oct 09, 2006 7:12 am    Post subject: "><author>zenarion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah i solved it.&#13;
+<br/>
+But i had to use der_ton's exporter for this one.&#13;
+<br/>
+Damnit, now to make all the AFs  <img src="/web/20061013054107im_/http://doom3world.org/phpbb2/images/smiles/icon_cry.gif" alt="Crying or Very sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40349" date="Posted: Mon Aug 23, 2004 3:46 am    Post subject: Another MD5 Exporter for MAX/gmax"><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So I've finally take the time to finish my MD5 exporter. I haven't had too much time to test it but I tried to import some Doom III models (imp and fatty) into MAX and then re-export them with my exporter and the results seem to be correct. BTW, I have only tested the exporter in MAX6.&#13;
+<br/><br/>
+The worst of this exporter is that takes up too much time for meshes with a medium/high poly count. That's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex &amp; texture coordinates for each vertex in the list.&#13;
+<br/><br/>
+Another thing that bugs me is that, when I animate a bone using a LookAt controller (the bone is linked to a node who indicates the bone the direction to look at), the exporter doesn't detect the transform for that bone so no animated components for this bone are exported.&#13;
+<br/><br/>
+Anyway, hope you find it useful. There is a help file (in spanish and "english" <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>) into the zip file explaining all about the exporter.&#13;
+<br/><br/>
+I want to thank bozo for the MD5 specs and der_ton for his MD5 viewer. That way I were able to test my exporter fast and easily. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/><a href="/web/20061013061259/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download MD5Export for MAX</span></a> (outdated)&#13;
+<br/><a href="/web/20061013061259/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter_for_gmax.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download MD5Export for gmax</span></a> (outdated)&#13;
+<br/><br/><br/><span style="font-weight: bold"><span style="color: #FF0000">UPDATE</span> (08/16/05): new version of the MAX/GMAX MD5 exporters!</span>. Now you can use any node as a bone in the skin modifier (MAX standard bones, CAT, biped, etc) among other improvements.&#13;
+<br/><br/><a href="/web/20061013061259/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.MAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><a href="/web/20061013061259/http://www.arrakis.es/~jonathan01/d3w/MD5.GMAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.GMAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><br/>
+Enjoy!.</span><span class="gensmall"><br/><br/>Last edited by BeRSeRKeR on Tue Aug 16, 2005 7:48 am; edited 6 times in total</span></td>
+			</tr>]]></body></post><post id="40443" date="Posted: Mon Aug 23, 2004 11:00 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nice job!&#13;
+<br/><br/>
+From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.&#13;
+<br/><br/>
+I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice (no hard feelings if I'm wrong. Anyway, if my exporter wouldn't exist, I'm sure you would have been able to do yours just as well. Don't get me wrong here. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )<br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40503" date="Posted: Mon Aug 23, 2004 2:35 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Nice job!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks! <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I'll take a look at it.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I have to admit that I took a look at your exporter when I came to a point the bone orientations were not correctly. I found the solution in the:&#13;
+<br/><br/>
+if (q.w &lt; 0) do ....switch the sign of the quat components&#13;
+<br/><br/>
+and that was  before I read the post of bozo where he exposed this solution so I guess I should credit you. And well, if you see something more, similar to your code let me know, please. Besides that, I don't remember more things.&#13;
+<br/><br/>
+I have credited people in the help file, you included but only for the md5 viewer so I will credit you for your exporter. I'm not here to make enemies. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Said that. I want to comment something about your code. You have a function that converts a left handed matrix to a right handed one. I thought that MAX stored rotations in a right handed way. So is that for something special or to assure that the matrices are correct?. I say that because I don't convert the matrices to right handed and all seems to work. But who know, always exists a case that destroys all your theories. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+One thing more. Your exporter takes less time to export the geometry than mine. As I said before, that's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex and texture coordinates for each vertex in the list. Do you do something like that or do you export duplicated vertices?.&#13;
+<br/><br/>
+That's all for now. And sorry for any inconvenience.&#13;
+<br/><br/>
+Greetings.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40516" date="Posted: Mon Aug 23, 2004 2:51 pm    Post subject: "><author>bozo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">@BeRSeRKeR&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"> You have a function that converts a left handed matrix to a right handed one.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this&#13;
+<br/><br/>
+some times ago i only made a quick test of this and it seems to do the work properly</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40521" date="Posted: Mon Aug 23, 2004 2:58 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Forgot to mention that to get the rotation and position of the bones, I was using the "rotation" and "pos" members of the node class but it didn't work in all cases. I always thought  that the "transform" member was the result of doing:&#13;
+<br/><br/>
+mat = node.rotation as Matrix3&#13;
+<br/>
+mat.row4 = node.pos&#13;
+<br/><br/>
+but ok, seems not to be the same. So this part is another thing I saw in your code.&#13;
+<br/><br/>
+Anyway I have updated the exporter and I have credited you for your exporter. Also, I have put a reference to you and bozo in the MD5AnimExporter.ms file.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40525" date="Posted: Mon Aug 23, 2004 3:02 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>bozo wrote:</b></span></td>	</tr><tr><td class="quote">i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this some times ago i only made a quick test of this and it seems to do the work properly</td>	</tr></table><span class="postbody">&#13;
+<br/>
+The truth is that I haven't rigged a mesh in my life so things like mirroring bones escapes from my understanding. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I will change that.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40528" date="Posted: Mon Aug 23, 2004 3:09 pm    Post subject: "><author>bozo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">you are not alone <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+i am a coder and do only some really simple modeling stuff for testing-only&#13;
+<br/><br/>
+btw. nice work <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40546" date="Posted: Mon Aug 23, 2004 3:33 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Berserker, I'm totally ok with all of that. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. &#13;
+<br/>
+That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". That is also mentioned in the maxscript documentation:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Take care when mixing rotation derived from these matrices and rotation used in rotation-related functions or from rotation properties.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+About the duplicate vertices, I don't check for that, nope. But I'm not sure if that's necessary. Maybe that's related to another difference in our exporters. Yours collapses each mesh to use one material (even if it uses submaterials), while mine splits it into md5 submeshes according to the used submaterials. I think your way of creating submeshes is to export multiple mesh objects from 3dmax.&#13;
+<br/><br/>
+BTW, I encountered a real problem with exporting via maxscript, it affects both our exporters. The 6 digit precision of float output is not enough, my camera importer/exporter is done but the problem is really evident there, because the quaternions need better precision. &#13;
+<br/>
+The problem can also be seen when you export a mesh (with your or my exporter) and import it with my importer again, then there are some slight deviations. I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.<br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40558" date="Posted: Mon Aug 23, 2004 3:54 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Berserker, I'm totally ok with all of that. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Nice. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. &#13;
+<br/>
+That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". </td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks for the explanation. I have implemented your right handed funcion and now, when using mirrored bones, the orientation is ok but the faces affected by these bones are reversed!. I'll have to take a look on it.&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I think your way of creating submeshes is to export multiple mesh objects from 3dmax.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Exactly. With my exporter, only one material can be assigned to one mesh so if you want to export multiple meshes with different materials assigned, also, you have to have multiple meshes in MAX.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yeah, that's a real problem. I have implemented a function that reduces the decimal count of a number down to 5 but as you said, seems not to be sufficient.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40623" date="Posted: Mon Aug 23, 2004 6:14 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have updated the exporter so now takes into account left/right handed matrices. Seems to work ok but I have found a case where the faces affected by the "left-handed bones" are reversed so you can see the "inner" of the mesh. Thanks to der_ton a bozo for help me. That's a great forum where coexists great artists and great coders too! <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/><a href="/web/20061013061259/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download</span></a> (same URL as above)&#13;
+<br/><br/>
+So now I have some stuff in mind. I'm thinking of supports biped bones and give the option to export "physiqued" meshes. My first attempt to write a MD5 exporter (when the leaked alpha came up) was using physique to export skinned meshes so if I have time enough, I could try this.&#13;
+<br/><br/>
+Of course, I have to add support for md5camera too! <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40648" date="Posted: Mon Aug 23, 2004 7:30 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have a question regarding md5camera file format.&#13;
+<br/><br/>
+Here is a snip of data:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">cuts {&#13;
+<br/>
+   96&#13;
+<br/>
+   148&#13;
+<br/>
+   198&#13;
+<br/>
+   290&#13;
+<br/>
+   324&#13;
+<br/>
+}&#13;
+<br/><br/>
+camera {&#13;
+<br/>
+   ( 1781.0610351563 293.2318115234 70.8310394287 ) ( 0.09791141 -0.0939290896 -0.714956522 ) 72.1649246216&#13;
+<br/>
+   ....&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Seems to be clear that first triplet is the camera position, the second is the camera orientation and finally the camera fov (correct me if I'm wrong, please).&#13;
+<br/><br/>
+But now the cuts stuff. I think is a way to specify different "camera takes" so, in the example above, one take would be from 0 to 98, another from 99 to 148, and so on. Is this correct?.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40657" date="Posted: Mon Aug 23, 2004 7:40 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yep. Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.<br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40662" date="Posted: Mon Aug 23, 2004 7:54 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yes. Makes sense.&#13;
+<br/><br/>
+Thanks much.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41405" date="Posted: Wed Aug 25, 2004 12:43 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The precision issue I was talking about was not the reason why I had these big deviations, that was a typo in a formula I had in there. The problem was not in the v.91 and is ofcourse not in v.92 of the script. I don't know if the 6 digit precision of maxscript's float printing is enough, so I wrote this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">fn printfloat flt =&#13;
+<br/>
+--maxscript doesn't provide a way to format float output that I know of. It seems that Doom3 does not understand the &lt;x&gt;e&lt;y&gt; notation of floats&#13;
+<br/>
+--if you plan to use this in your scripts, note that this function doesn't check against a large number passed in&#13;
+<br/>
+(&#13;
+<br/>
+   --if (abs flt)&gt;10.0 then return flt -- this could be used to gain some speed.&#13;
+<br/>
+   --else&#13;
+<br/>
+   local numdigits = 10&#13;
+<br/>
+   (&#13;
+<br/>
+      str = ""&#13;
+<br/>
+      if flt&lt;0 then str += "-"&#13;
+<br/>
+      flt2 = abs flt&#13;
+<br/>
+      str += ((flt2 as integer) as string)&#13;
+<br/>
+      flt2 -= (flt2 as integer)&#13;
+<br/>
+      str +="."&#13;
+<br/>
+      for i=1 to numdigits do&#13;
+<br/>
+      (&#13;
+<br/>
+         flt2 *=10.0&#13;
+<br/>
+         str += ((flt2 as integer) as string)&#13;
+<br/>
+         flt2 -= (flt2 as integer)&#13;
+<br/>
+      )&#13;
+<br/>
+      return str&#13;
+<br/>
+   )&#13;
+<br/>
+)&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Feel free to use if you think it is necessary.&#13;
+<br/><br/>
+BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41411" date="Posted: Wed Aug 25, 2004 12:52 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Feel free to use if you think it is necessary.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks for share. I will take a look on it.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yes. It's a good thing. Now I'm trying to design a good way to expose the camera cuts to the user. I'm trying to do it the more easy as possible.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41493" date="Posted: Wed Aug 25, 2004 5:30 am    Post subject: "><author>Aphax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You know, you guys seem to put quite an amount of effort into your exporting tools, but from what I understand they basically do the same. Why not colaberate and work on a single, powerful, exporter? <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41550" date="Posted: Wed Aug 25, 2004 9:30 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think it's not a bad thing that there are two different exporters available. Berserker's exporter works a bit differently, requiring to have each object to use a standard material, but being able to export multiple objects, while my exporter exports only one object, but it can have several textures via multi/submaterials (but I might change that).&#13;
+<br/>
+Working on the same stuff as a team introduces communication overhead and problems with keeping track of versions.&#13;
+<br/><br/>
+As long as we allow each other to use the code freely and help each other out by discussion on the forum, I think we have a pretty efficient way of handling it.<br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41587" date="Posted: Wed Aug 25, 2004 11:04 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">....  but it can have several textures via multi/submaterials (but I might change that).</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Please don't get rid of that!.. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  If that's what you mean by changing it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41601" date="Posted: Wed Aug 25, 2004 11:49 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No I won't get rid of that. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+My importer imports in the same format, so that's gonna be left in forever. But I might add the option to select more than one object for export, like Berserker's exporter does (note that I had that in the todo list from the first release of my exporter, though).<br/>_________________<br/><a href="/web/20061013061259/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061259im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061259/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41763" date="Posted: Wed Aug 25, 2004 7:09 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Aphax wrote:</b></span></td>	</tr><tr><td class="quote">I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Not a bad idea at all. Anyway we are sharing code so that's a form of collaboration and a way to speed up the development. And of course, I think we, coders, are a bit reticent to work in group. Each one has his/her code style, his/her obsessions, etc. <img src="/web/20061013061259im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+And comming back to the exporter, I have found a "bug" in MAX. Actually I don't know if it's a bug or a windows limitation. When you call the function getSaveFileName with a long extension (more than 8 chars), MAX throws an unhandled exception. You can try that executing this in "MAXScript Listener":&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">getSaveFileName caption:"Save MD5Camera" types:"Doom III MD5Camera (*.md5camera)|*.md5camera"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+A save dialog will be shown where you have to specify the file location and name. So if you don't add the ".md5camera" extension manually to the name of the file, the exception will be thrown.&#13;
+<br/><br/>
+I have seen that der_ton add automatically a file name and the extension but does exist another way around this?&#13;
+<br/><br/>
+When I solve this problem I'll release the new version with md5camera support.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40349" date="Posted: Mon Aug 23, 2004 3:46 am    Post subject: Another MD5 Exporter for MAX/gmax"><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So I've finally take the time to finish my MD5 exporter. I haven't had too much time to test it but I tried to import some Doom III models (imp and fatty) into MAX and then re-export them with my exporter and the results seem to be correct. BTW, I have only tested the exporter in MAX6.&#13;
+<br/><br/>
+The worst of this exporter is that takes up too much time for meshes with a medium/high poly count. That's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex &amp; texture coordinates for each vertex in the list.&#13;
+<br/><br/>
+Another thing that bugs me is that, when I animate a bone using a LookAt controller (the bone is linked to a node who indicates the bone the direction to look at), the exporter doesn't detect the transform for that bone so no animated components for this bone are exported.&#13;
+<br/><br/>
+Anyway, hope you find it useful. There is a help file (in spanish and "english" <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>) into the zip file explaining all about the exporter.&#13;
+<br/><br/>
+I want to thank bozo for the MD5 specs and der_ton for his MD5 viewer. That way I were able to test my exporter fast and easily. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/><a href="/web/20061013054704/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download MD5Export for MAX</span></a> (outdated)&#13;
+<br/><a href="/web/20061013054704/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter_for_gmax.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download MD5Export for gmax</span></a> (outdated)&#13;
+<br/><br/><br/><span style="font-weight: bold"><span style="color: #FF0000">UPDATE</span> (08/16/05): new version of the MAX/GMAX MD5 exporters!</span>. Now you can use any node as a bone in the skin modifier (MAX standard bones, CAT, biped, etc) among other improvements.&#13;
+<br/><br/><a href="/web/20061013054704/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.MAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><a href="/web/20061013054704/http://www.arrakis.es/~jonathan01/d3w/MD5.GMAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.GMAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><br/>
+Enjoy!.</span><span class="gensmall"><br/><br/>Last edited by BeRSeRKeR on Tue Aug 16, 2005 7:48 am; edited 6 times in total</span></td>
+			</tr>]]></body></post><post id="40443" date="Posted: Mon Aug 23, 2004 11:00 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nice job!&#13;
+<br/><br/>
+From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.&#13;
+<br/><br/>
+I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice (no hard feelings if I'm wrong. Anyway, if my exporter wouldn't exist, I'm sure you would have been able to do yours just as well. Don't get me wrong here. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/> )<br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40503" date="Posted: Mon Aug 23, 2004 2:35 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Nice job!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks! <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I'll take a look at it.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice</td>	</tr></table><span class="postbody">&#13;
+<br/>
+I have to admit that I took a look at your exporter when I came to a point the bone orientations were not correctly. I found the solution in the:&#13;
+<br/><br/>
+if (q.w &lt; 0) do ....switch the sign of the quat components&#13;
+<br/><br/>
+and that was  before I read the post of bozo where he exposed this solution so I guess I should credit you. And well, if you see something more, similar to your code let me know, please. Besides that, I don't remember more things.&#13;
+<br/><br/>
+I have credited people in the help file, you included but only for the md5 viewer so I will credit you for your exporter. I'm not here to make enemies. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Said that. I want to comment something about your code. You have a function that converts a left handed matrix to a right handed one. I thought that MAX stored rotations in a right handed way. So is that for something special or to assure that the matrices are correct?. I say that because I don't convert the matrices to right handed and all seems to work. But who know, always exists a case that destroys all your theories. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+One thing more. Your exporter takes less time to export the geometry than mine. As I said before, that's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex and texture coordinates for each vertex in the list. Do you do something like that or do you export duplicated vertices?.&#13;
+<br/><br/>
+That's all for now. And sorry for any inconvenience.&#13;
+<br/><br/>
+Greetings.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40516" date="Posted: Mon Aug 23, 2004 2:51 pm    Post subject: "><author>bozo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">@BeRSeRKeR&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote"> You have a function that converts a left handed matrix to a right handed one.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this&#13;
+<br/><br/>
+some times ago i only made a quick test of this and it seems to do the work properly</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40521" date="Posted: Mon Aug 23, 2004 2:58 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Forgot to mention that to get the rotation and position of the bones, I was using the "rotation" and "pos" members of the node class but it didn't work in all cases. I always thought  that the "transform" member was the result of doing:&#13;
+<br/><br/>
+mat = node.rotation as Matrix3&#13;
+<br/>
+mat.row4 = node.pos&#13;
+<br/><br/>
+but ok, seems not to be the same. So this part is another thing I saw in your code.&#13;
+<br/><br/>
+Anyway I have updated the exporter and I have credited you for your exporter. Also, I have put a reference to you and bozo in the MD5AnimExporter.ms file.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40525" date="Posted: Mon Aug 23, 2004 3:02 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>bozo wrote:</b></span></td>	</tr><tr><td class="quote">i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this some times ago i only made a quick test of this and it seems to do the work properly</td>	</tr></table><span class="postbody">&#13;
+<br/>
+The truth is that I haven't rigged a mesh in my life so things like mirroring bones escapes from my understanding. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I will change that.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40528" date="Posted: Mon Aug 23, 2004 3:09 pm    Post subject: "><author>bozo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">you are not alone <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+i am a coder and do only some really simple modeling stuff for testing-only&#13;
+<br/><br/>
+btw. nice work <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40546" date="Posted: Mon Aug 23, 2004 3:33 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Berserker, I'm totally ok with all of that. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. &#13;
+<br/>
+That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". That is also mentioned in the maxscript documentation:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Take care when mixing rotation derived from these matrices and rotation used in rotation-related functions or from rotation properties.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+About the duplicate vertices, I don't check for that, nope. But I'm not sure if that's necessary. Maybe that's related to another difference in our exporters. Yours collapses each mesh to use one material (even if it uses submaterials), while mine splits it into md5 submeshes according to the used submaterials. I think your way of creating submeshes is to export multiple mesh objects from 3dmax.&#13;
+<br/><br/>
+BTW, I encountered a real problem with exporting via maxscript, it affects both our exporters. The 6 digit precision of float output is not enough, my camera importer/exporter is done but the problem is really evident there, because the quaternions need better precision. &#13;
+<br/>
+The problem can also be seen when you export a mesh (with your or my exporter) and import it with my importer again, then there are some slight deviations. I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.<br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40558" date="Posted: Mon Aug 23, 2004 3:54 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Berserker, I'm totally ok with all of that. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Nice. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. &#13;
+<br/>
+That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". </td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks for the explanation. I have implemented your right handed funcion and now, when using mirrored bones, the orientation is ok but the faces affected by these bones are reversed!. I'll have to take a look on it.&#13;
+<br/><br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I think your way of creating submeshes is to export multiple mesh objects from 3dmax.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Exactly. With my exporter, only one material can be assigned to one mesh so if you want to export multiple meshes with different materials assigned, also, you have to have multiple meshes in MAX.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yeah, that's a real problem. I have implemented a function that reduces the decimal count of a number down to 5 but as you said, seems not to be sufficient.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40623" date="Posted: Mon Aug 23, 2004 6:14 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have updated the exporter so now takes into account left/right handed matrices. Seems to work ok but I have found a case where the faces affected by the "left-handed bones" are reversed so you can see the "inner" of the mesh. Thanks to der_ton a bozo for help me. That's a great forum where coexists great artists and great coders too! <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/><a href="/web/20061013054704/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" target="_blank" class="postlink"><span style="font-weight: bold">Download</span></a> (same URL as above)&#13;
+<br/><br/>
+So now I have some stuff in mind. I'm thinking of supports biped bones and give the option to export "physiqued" meshes. My first attempt to write a MD5 exporter (when the leaked alpha came up) was using physique to export skinned meshes so if I have time enough, I could try this.&#13;
+<br/><br/>
+Of course, I have to add support for md5camera too! <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40648" date="Posted: Mon Aug 23, 2004 7:30 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have a question regarding md5camera file format.&#13;
+<br/><br/>
+Here is a snip of data:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">cuts {&#13;
+<br/>
+   96&#13;
+<br/>
+   148&#13;
+<br/>
+   198&#13;
+<br/>
+   290&#13;
+<br/>
+   324&#13;
+<br/>
+}&#13;
+<br/><br/>
+camera {&#13;
+<br/>
+   ( 1781.0610351563 293.2318115234 70.8310394287 ) ( 0.09791141 -0.0939290896 -0.714956522 ) 72.1649246216&#13;
+<br/>
+   ....&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Seems to be clear that first triplet is the camera position, the second is the camera orientation and finally the camera fov (correct me if I'm wrong, please).&#13;
+<br/><br/>
+But now the cuts stuff. I think is a way to specify different "camera takes" so, in the example above, one take would be from 0 to 98, another from 99 to 148, and so on. Is this correct?.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40657" date="Posted: Mon Aug 23, 2004 7:40 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yep. Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.<br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="40662" date="Posted: Mon Aug 23, 2004 7:54 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yes. Makes sense.&#13;
+<br/><br/>
+Thanks much.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41405" date="Posted: Wed Aug 25, 2004 12:43 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The precision issue I was talking about was not the reason why I had these big deviations, that was a typo in a formula I had in there. The problem was not in the v.91 and is ofcourse not in v.92 of the script. I don't know if the 6 digit precision of maxscript's float printing is enough, so I wrote this:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">fn printfloat flt =&#13;
+<br/>
+--maxscript doesn't provide a way to format float output that I know of. It seems that Doom3 does not understand the &lt;x&gt;e&lt;y&gt; notation of floats&#13;
+<br/>
+--if you plan to use this in your scripts, note that this function doesn't check against a large number passed in&#13;
+<br/>
+(&#13;
+<br/>
+   --if (abs flt)&gt;10.0 then return flt -- this could be used to gain some speed.&#13;
+<br/>
+   --else&#13;
+<br/>
+   local numdigits = 10&#13;
+<br/>
+   (&#13;
+<br/>
+      str = ""&#13;
+<br/>
+      if flt&lt;0 then str += "-"&#13;
+<br/>
+      flt2 = abs flt&#13;
+<br/>
+      str += ((flt2 as integer) as string)&#13;
+<br/>
+      flt2 -= (flt2 as integer)&#13;
+<br/>
+      str +="."&#13;
+<br/>
+      for i=1 to numdigits do&#13;
+<br/>
+      (&#13;
+<br/>
+         flt2 *=10.0&#13;
+<br/>
+         str += ((flt2 as integer) as string)&#13;
+<br/>
+         flt2 -= (flt2 as integer)&#13;
+<br/>
+      )&#13;
+<br/>
+      return str&#13;
+<br/>
+   )&#13;
+<br/>
+)&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Feel free to use if you think it is necessary.&#13;
+<br/><br/>
+BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41411" date="Posted: Wed Aug 25, 2004 12:52 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">Feel free to use if you think it is necessary.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Thanks for share. I will take a look on it.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>der_ton wrote:</b></span></td>	</tr><tr><td class="quote">BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Yes. It's a good thing. Now I'm trying to design a good way to expose the camera cuts to the user. I'm trying to do it the more easy as possible.&#13;
+<br/><br/>
+Thanks.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41493" date="Posted: Wed Aug 25, 2004 5:30 am    Post subject: "><author>Aphax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You know, you guys seem to put quite an amount of effort into your exporting tools, but from what I understand they basically do the same. Why not colaberate and work on a single, powerful, exporter? <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/> I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41550" date="Posted: Wed Aug 25, 2004 9:30 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think it's not a bad thing that there are two different exporters available. Berserker's exporter works a bit differently, requiring to have each object to use a standard material, but being able to export multiple objects, while my exporter exports only one object, but it can have several textures via multi/submaterials (but I might change that).&#13;
+<br/>
+Working on the same stuff as a team introduces communication overhead and problems with keeping track of versions.&#13;
+<br/><br/>
+As long as we allow each other to use the code freely and help each other out by discussion on the forum, I think we have a pretty efficient way of handling it.<br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41587" date="Posted: Wed Aug 25, 2004 11:04 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">....  but it can have several textures via multi/submaterials (but I might change that).</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Please don't get rid of that!.. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  If that's what you mean by changing it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41601" date="Posted: Wed Aug 25, 2004 11:49 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No I won't get rid of that. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+My importer imports in the same format, so that's gonna be left in forever. But I might add the option to select more than one object for export, like Berserker's exporter does (note that I had that in the todo list from the first release of my exporter, though).<br/>_________________<br/><a href="/web/20061013054704/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054704im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054704/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="41763" date="Posted: Wed Aug 25, 2004 7:09 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Aphax wrote:</b></span></td>	</tr><tr><td class="quote">I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Not a bad idea at all. Anyway we are sharing code so that's a form of collaboration and a way to speed up the development. And of course, I think we, coders, are a bit reticent to work in group. Each one has his/her code style, his/her obsessions, etc. <img src="/web/20061013054704im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+And comming back to the exporter, I have found a "bug" in MAX. Actually I don't know if it's a bug or a windows limitation. When you call the function getSaveFileName with a long extension (more than 8 chars), MAX throws an unhandled exception. You can try that executing this in "MAXScript Listener":&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">getSaveFileName caption:"Save MD5Camera" types:"Doom III MD5Camera (*.md5camera)|*.md5camera"</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+A save dialog will be shown where you have to specify the file location and name. So if you don't add the ".md5camera" extension manually to the name of the file, the exception will be thrown.&#13;
+<br/><br/>
+I have seen that der_ton add automatically a file name and the extension but does exist another way around this?&#13;
+<br/><br/>
+When I solve this problem I'll release the new version with md5camera support.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98508" date="Posted: Wed Jun 08, 2005 7:58 am    Post subject: Error: -- Unkown property: &quot;name&quot; undefined"><author>Banzai</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>evilartist/pickle_yeah/Killinplayer wrote:</b></span></td>	</tr><tr><td class="quote">Whenever I try to export, It shows an error message:&#13;
+<br/><br/>
+-- Unknown property: "name" in undefined&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hi Guyz,&#13;
+<br/><br/>
+I'm really a newbie about Modelling 4 Games and i use the gmax-MD5-Exporter today the first time.&#13;
+<br/><br/>
+I've the same Error, but now I know how to solve ;o)&#13;
+<br/><br/>
+You MUST have a UVW-Map (or another Mapping-Info and Material I think) join to your Mesh. Then the gmax-Exporter works fine!&#13;
+<br/><br/><br/>
+Banz&#13;
+<br/><br/><br/>
+PS: Excuse my bad english, I'm a old german man and it's hard to learn another language.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98509" date="Posted: Wed Jun 08, 2005 8:08 am    Post subject: BeRsErKeR gmax-Exporter"><author>Banzai</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Me again...&#13;
+<br/><br/>
+one thing i didn't knew at this time:&#13;
+<br/><br/>
+WHERE export the Script the meshes/anims????? It's a long way, to scan &gt; 80GB Harddisks....&#13;
+<br/><br/>
+Can someone help?&#13;
+<br/><br/>
+Banz</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98514" date="Posted: Wed Jun 08, 2005 9:28 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It outputs to the MaxScript listener window (open it in the menu or with F12 if I remember correctly)<br/>_________________<br/><a href="/web/20061013061107/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061107im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061107/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98523" date="Posted: Wed Jun 08, 2005 11:31 am    Post subject: "><author>Banzai</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">OK, thx 4 answer, i see....&#13;
+<br/><br/>
+but there is no 'Save As...'-Dialog implemented and Ctrl-A (or Mouse_Drag or anythingelse) select only 1/20 of the whole text.&#13;
+<br/><br/>
+I don't think it's a good editor (or my system malfunctional?)....&#13;
+<br/><br/>
+Think, I must find out a way, to Save this #@â¬~*# to file....&#13;
+<br/><br/><br/>
+Thx a lot&#13;
+<br/><br/>
+Banz<br/>_________________<br/>I spiik english werry well, brÃ¶ck'lersweis und gaornet schnell....</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98532" date="Posted: Wed Jun 08, 2005 3:14 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Did you read the exporter's readme, or this thread? It will clear things up I'm sure...<br/>_________________<br/><a href="/web/20061013061107/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061107im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061107/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98599" date="Posted: Wed Jun 08, 2005 10:14 pm    Post subject: "><author>Banzai</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, i read this thread and i read the exporter manual, but can't find anything tells me how to save the Listener-Output to a file in a simple way (Did I write, that my english is very bad?).&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BeRSeRKeR wrote:</b></span></td>	</tr><tr><td class="quote">GMax has some limitations. One of them is that you can select only 10K characters at a time in the MAXScript Listener window. However, there are some tools to avoid this limitation. Of course, doing this you will be breaking the gmax EULA. </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+It's pretty good, that there are tools to manipulate this limitations, but i don't know some.... Why don't exists a normal SaveAs-Funktion (I know nothing about Maxscript, so please excuse this Lamer-Question), or is there a conflict with EULA too?&#13;
+<br/><br/>
+BeRSeRKeR did a great job in this script and i hope, nobody spend to much time for answering me.&#13;
+<br/><br/>
+Banz<br/>_________________<br/>I spiik english werry well, brÃ¶ck'lersweis und gaornet schnell....</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98712" date="Posted: Thu Jun 09, 2005 8:22 pm    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i have just the thing for you guys, GMaxSLGRAB is a little utility for the Gmax Listener Window, that saves all text and then lets you save it to any file format, example .md5anim im very happy with this little utility, it has save me loads of times having to drag my dam mouse over the listener window for animations, here's the link&#13;
+<br/><br/><a href="/web/20061013061107/http://www.icecreamhasnobones.org/GMaxThing/GMaxSLGRAB.zip" target="_blank">http://www.icecreamhasnobones.org/GMaxThing/GMaxSLGRAB.zip</a>&#13;
+<br/><br/>
+ENJOY <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+here's were i found it&#13;
+<br/><a href="/web/20061013061107/http://cloud.prohosting.com/talone/gmax/render.html" target="_blank">http://cloud.prohosting.com/talone/gmax/render.html</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="98732" date="Posted: Thu Jun 09, 2005 10:35 pm    Post subject: "><author>Banzai</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Many many Thanks for this information... it's hard to find such things...&#13;
+<br/><br/>
+Many thanks also to der_ton, BeRSeRkER any anyother guyz, who have done a good job with this forum...&#13;
+<br/><br/><br/>
+Banz<br/>_________________<br/>I spiik english werry well, brÃ¶ck'lersweis und gaornet schnell....</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107948" date="Posted: Fri Aug 12, 2005 7:55 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hello everybody.&#13;
+<br/><br/>
+I'm so sorry for not answer your questions before.&#13;
+<br/><br/>
+Well, the MD5 exporter for Character Studio seems to have some problems with some types of weights, so (sometimes) the mesh deforms incorrectly. That's  the reason I have not release this exporter yet.&#13;
+<br/><br/>
+Yesterday I was doing some changes in the exporter (the skin modifier version) because one of the artists uses CAT as animation system and the previous version of my exporter only supported MAX bones. So the new version supports (in theory) any node you use as a bone with the skin modifier (standard MAX bones, CAT, biped I guess, etc).&#13;
+<br/><br/>
+You can download the new version for the skin modifier <a href="/web/20061013061107/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink">here</a>. Hope it works... <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Here's a list of (important) things to do:&#13;
+<br/><ul><br/><li>Reduce the amount of time needed to export the mesh.&#13;
+<br/></li><li>A progress bar.&#13;
+<br/></li></ul><br/>
+I expect to release the gmax version soon.&#13;
+<br/><br/>
+Greets.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="107988" date="Posted: Sat Aug 13, 2005 12:59 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi again. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+I have updated the MAX exporter and redone the GMAX version. Hope it still works after all the changes I've done!. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/><br/>
+Downloads:&#13;
+<br/><br/><a href="/web/20061013061107/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.MAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><a href="/web/20061013061107/http://www.arrakis.es/~jonathan01/d3w/MD5.GMAX.Exporter.For.Skin.Modifier.zip" target="_blank" class="postlink"><span style="font-weight: bold">MD5.GMAX.Exporter.For.Skin.Modifier</span></a>&#13;
+<br/><br/>
+It works the same way than before (the UI is the same), the changes only affect the source code.&#13;
+<br/><br/>
+Greets.&#13;
+<br/><br/><span style="color: #FF0000"><span style="font-weight: bold">WARNING</span></span>: note that the links to the new exporters are different than the previous versions!.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108006" date="Posted: Sat Aug 13, 2005 4:12 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">By the way, I've received some messages asking for the MD5 exporter for Character Studio. As I stated before, this exporter has some problems with the weights and I don't know if I'll give it a chance so...&#13;
+<br/><br/>
+Fortunately, there's another option for the people that still want to make use of Character Studio and be able to export to MD5. You can download an utility plugin from <span style="font-weight: bold"><a href="/web/20061013061107/http://sparks.discreet.com/" target="_blank" class="postlink">sparks.discreet.com</a></span> named <span style="font-weight: bold">phy2skin</span> that converts a "physiqued" mesh to a skinned mesh. I have uploaded this plugin to my ftp so you don't need to register in sparks. You can download it <span style="font-weight: bold"><a href="/web/20061013061107/http://www.arrakis.es/~jonathan01/d3w/phy2skin.zip" target="_blank" class="postlink">here</a></span>.&#13;
+<br/><br/>
+Once you convert the physique mesh to skin, you can export your model with one of the MD5 exporters available for the skin modifier.&#13;
+<br/><br/>
+Hope you'll find this interesting.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108010" date="Posted: Sat Aug 13, 2005 4:39 am    Post subject: "><author>evilartist</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Very useful, Berserker!&#13;
+<br/><br/>
+Are you going to make other new exporters for gmax? .ASE? .LWO? OBJ.? Those would also be quite useful.<br/>_________________<br/>&lt;Enter retarded, poorly thought-up sig here.&gt;</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108013" date="Posted: Sat Aug 13, 2005 4:58 am    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Speaking of that, does anyone know of a LWO importer/exporter for MAX 7?<br/>_________________<br/><a href="/web/20061013061107/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061107im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061107/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108017" date="Posted: Sat Aug 13, 2005 5:39 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>evilartist wrote:</b></span></td>	</tr><tr><td class="quote">Are you going to make other new exporters for gmax? .ASE? .LWO? OBJ.? Those would also be quite useful.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Exists an obj exporter for gmax. You can download it <a href="/web/20061013061107/http://cloud.prohosting.com/talone/gmax/gmax2obj.zip" target="_blank" class="postlink"><span style="font-weight: bold">here</span></a>. I haven't tried it though.&#13;
+<br/><br/>
+Greets.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108055" date="Posted: Sat Aug 13, 2005 5:58 pm    Post subject: "><author>evilartist</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BeRSeRKeR wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>evilartist wrote:</b></span></td>	</tr><tr><td class="quote">Are you going to make other new exporters for gmax? .ASE? .LWO? OBJ.? Those would also be quite useful.</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Exists an obj exporter for gmax. You can download it <a href="/web/20061013061107/http://cloud.prohosting.com/talone/gmax/gmax2obj.zip" target="_blank" class="postlink"><span style="font-weight: bold">here</span></a>. I haven't tried it though.&#13;
+<br/><br/>
+Greets.</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Sorry. My bad. I meant an OBJ importer.<br/>_________________<br/>&lt;Enter retarded, poorly thought-up sig here.&gt;</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108100" date="Posted: Sat Aug 13, 2005 11:54 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013061107/http://www.gamasutraexchange.com/Forum/Index.cfm/stgAct/PostList/intThreadID/16045" target="_blank" class="postlink"><span style="font-weight: bold">Here</span></a> you have some importers/exporters for gmax. I think the obj importer has some problems but the 3ds importer seems to work ok (only tested with a simple cube <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>).&#13;
+<br/><br/>
+Greets.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108107" date="Posted: Sun Aug 14, 2005 1:37 am    Post subject: "><author>evilartist</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Damn, I wish those sites would appear first on my searches. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/><br/>
+Yeah, there's a problem with the OBJ importer. The OBJ won't show, but thanks anyways.<br/>_________________<br/>&lt;Enter retarded, poorly thought-up sig here.&gt;</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108743" date="Posted: Wed Aug 17, 2005 10:35 pm    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Quick Question, does this exporter work with gmax 1.2? Or, does anyone else have a problem that clicking on "add" does nothing, even though you can hit H and select the nodes?&#13;
+<br/><br/>
+thx <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+EDIT:&#13;
+<br/>
+I with draw my question, (don't want to affend anyone) I'f I come up with the answer I'll post it for someone else... &#13;
+<br/><br/>
+(Perhaps this is a stupid question, I have no idea what I'm with GMAX, but managed to get the animations to work correctly for my replaced gun, but it won't export <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_sad.gif" alt="Sad" border="0"/>  ) That's ok, Ill try and see if I can repeat what I did over there in blender, and see if it will export...<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013061107/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="108989" date="Posted: Fri Aug 19, 2005 6:34 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, it works with gmax 1.2. I have tested the Add button right now and works ok. Take into account that the add button only supports geometry class nodes and nodes that have not been already selected.&#13;
+<br/><br/>
+Greets.&#13;
+<br/><br/>
+EDIT: by the way, the Add button doesn't add the selected node (maybe I should do it that way). When you press the Add button, you have to click on the right node.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013061107im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="109312" date="Posted: Sat Aug 20, 2005 11:54 pm    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thx, Berserker. &#13;
+<br/><br/>
+I'm not sure why, maybe it's not geometry based. (Like I said, I know little about this stuff. - The mesh is an imported one, deleted the weapon, and replaced with one that I have successfully gotten into the game before It is triangle based if thats what geometry based means?) &#13;
+<br/><br/>
+When I press the "add" button it does nothing, Also, I've tried both selecting and deselecting the nodes, and no matter what is there the add button does nothing. (Whether it is selected or not the add button does nothing - there is no list to select from if I hit H there is though...) Also, the other add button does work, though you have to click in the corners.&#13;
+<br/><br/>
+Also all the other buttons work ok... &#13;
+<br/><br/>
+It's probably my setup or something. Thx anyway...&#13;
+<br/><br/>
+Anyway, it was just a 5 min test object thats not even textured or anything to see If I could get it to replace an existing weapon... &#13;
+<br/><br/>
+If you import a md5mesh, and animation, is there something that would need to be done, to get it to export correctly?<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013061107/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="109321" date="Posted: Sun Aug 21, 2005 1:34 am    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">With valid geometry I mean editable poly or editable mesh. I have captured a <a href="/web/20061013054722/http://www.arrakis.es/~jonathan01/d3w/md5_exp_add_button.avi" target="_blank" class="postlink"><span style="font-weight: bold">little video</span></a> where I demostrate how it works the "Add" button. Is  that the way you do it?. Is really weird that something so simple doesn't work.&#13;
+<br/><br/>
+Greets.<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013054722im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="109550" date="Posted: Mon Aug 22, 2005 9:49 am    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks again for your help, and the vid. Nothing happens when I click the "add" button, no matter how I try to do it.&#13;
+<br/><br/>
+Are there any situations where the ADD button won't even work. (It looks like it becomes orange-ish, it doesn't do that or anything)&#13;
+<br/><br/>
+Like I said the other buttons work, though I have to click in the botom left corner of the camera add button....&#13;
+<br/><br/>
+Trying to narrow down the prob, if you have a new file open, with nothing is the "add" button clickable? If it is, then It's not my mesh(s) and it's some other problem a setting or who knows... If the add botton isn't supposed to do anything unless there is a valid mesh, then I need to figure out why it isn't valid....&#13;
+<br/><br/><br/>
+Thanks<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013054722/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115183" date="Posted: Thu Oct 06, 2005 2:38 pm    Post subject: small problem"><author>kapta</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i'm also trying to use this exporter but doesn't work, i am using 3ds max 7 as above the add button doesn't work either, donno if this is a specific issue to 3ds max 7 or something else!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115188" date="Posted: Thu Oct 06, 2005 3:46 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Nope, I am using max 7 and the add button works fine for me.<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054722/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115223" date="Posted: Thu Oct 06, 2005 10:57 pm    Post subject: "><author>kapta</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">not sure then why the add button doesn't work, if it works for you should work here then too, i'm on windows 2000 and have a nvida graphics card!&#13;
+<br/><br/>
+also here a screenshot of it&#13;
+<br/><a href="/web/20061013054722/http://img153.imageshack.us/img153/3284/untitled3fg1.jpg" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://img153.imageshack.us/img153/3284/untitled3fg1.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+if you look carefully it could be that the add/remove buttons are appearing behind the "node to export" box making them unclickable!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115240" date="Posted: Fri Oct 07, 2005 2:58 am    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Still haven't had any luck here, but I'm using gmax on XP with ATI card. I don't suppose someone could post a valid mesh we could test? (one proven to export) this way we could tell if its the mesh, or what?&#13;
+<br/><br/>
+Mine looks the same as the screen except it's the gmax exporter that has the little gmax logo on it. The about says it's for gmax 1.0 though....&#13;
+<br/><br/><br/>
+thx.<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013054722/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115269" date="Posted: Fri Oct 07, 2005 10:44 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I don't know anything about this exporter but from that screen shot it seems to me that Windows is set up to use large fonts. This has an affect on spacing. You can see how some of the text goes off the window, into the side. This could be why the buttons are being shifted up.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115280" date="Posted: Fri Oct 07, 2005 3:07 pm    Post subject: "><author>kapta</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>obihb wrote:</b></span></td>	</tr><tr><td class="quote">I don't know anything about this exporter but from that screen shot it seems to me that Windows is set up to use large fonts. This has an affect on spacing. You can see how some of the text goes off the window, into the side. This could be why the buttons are being shifted up.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+that did the trick, switching to small fonts fixed the problem and now the add button works, hope this is fixed in the next release!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115323" date="Posted: Fri Oct 07, 2005 6:44 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>kapta wrote:</b></span></td>	</tr><tr><td class="quote">that did the trick, switching to small fonts fixed the problem and now the add button works, hope this is fixed in the next release!</td>	</tr></table><span class="postbody">&#13;
+<br/>
+Using nonstandard large fonts is dangerous, I wouldn't say it's the program's fault. Window layouts are bound to get messed up with your settings.<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054722/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="115451" date="Posted: Sun Oct 09, 2005 1:32 am    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Fixed mine too, thx! &#13;
+<br/><br/>
+Hmm, large fonts, go figure! (of all the things that could go wrong) <img src="/web/20061013054722im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>
+Welp, I feel stupid, I should have looked closer at the button!&#13;
+<br/><br/>
+Thx again...<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013054722/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="118754" date="Posted: Fri Oct 28, 2005 3:05 pm    Post subject: "><author>BeRSeRKeR</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So the problem was the system font size?... <img src="/web/20061013054722im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+By the way I may released a small update solving some issues with the bone hierarchy.&#13;
+<br/><br/>
+Greets.&#13;
+<br/><br/>
+PD: BTW, I'm sorry for not give more attention to the forum. I'm a bit bussy right now. I'm developing a 3D engine with a friend of mine. You can check some videos <a href="/web/20061013054722/http://www.thezbuffer.com/articles/191.aspx" target="_blank" class="postlink"><span style="font-weight: bold">here</span></a>. The last one is "The Date".<br/>_________________<br/>Excuse my bad english. <img src="/web/20061013054722im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="118777" date="Posted: Fri Oct 28, 2005 4:15 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>BeRSeRKeR wrote:</b></span></td>	</tr><tr><td class="quote">..PD: BTW, I'm sorry for not give more attention to the forum. I'm a bit bussy right now. I'm developing a 3D engine with a friend of mine. You can check some videos <a href="/web/20061013054722/http://www.thezbuffer.com/articles/191.aspx" target="_blank" class="postlink"><span style="font-weight: bold">here</span></a>. The last one is "The Date".</td>	</tr></table><span class="postbody">That's not bad, I had to watch it a couple of time to see exactly what was going on with the flames (which looked really good btw) and the shadow 'jitter' which is good to see implimented. Nice job to the team.<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054722/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="119657" date="Posted: Wed Nov 02, 2005 1:50 am    Post subject: "><author>RedWolf</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks again for trying to help Berzerker, and your importer works perfectly!  (Had nothing to do with the importer) (Of course thx to Der_ton and obihb.)<br/>_________________<br/>RedWolf&#13;
+<br/>
+"Now go vote and participate in your own oppression." -dataangel&#13;
+<br/><a href="/web/20061013054722/http://www.anti-lie.dissenthost.org/" target="_blank" class="postlink">The Anti-Lie</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157685" date="Posted: Thu Sep 21, 2006 9:01 am    Post subject: Unable to export my model"><author>pkovacs</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi,&#13;
+<br/><br/>
+I was trying to export an animated dinosaur model to MD5. I've tried BeRSeRKeR's MD5Exporter (from <a href="/web/20061013054722/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" target="_blank">http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip</a>), and it fails in the following line:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">local nBones = skinOps.getVertexWeightCount skin vTri[i]</td>	</tr></table><span class="postbody">&#13;
+<br/>
+with the error: "Runtime error: Exceeded the vertex countSkin:Skin"&#13;
+<br/>
+I've tried searching the forum and google for this error, but couldn't find any useful information.&#13;
+<br/><br/>
+The contents of the Listener window is:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">-- Error occurred in i loop; filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp25\MD5MeshExporter.ms; position: 9258&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   invert: [-75.8407,-144.023,-30.7395]&#13;
+<br/>
+--   nBones: undefined&#13;
+<br/>
+--   firstMatch: 390&#13;
+<br/>
+--   i: 2&#13;
+<br/>
+--   inTVert: [0.254781,0.56059]&#13;
+<br/>
+--   outVert: (sVertex oldIndex:undefined newIndex:undefined coord:undefined texCoord:undefined weightIndex:undefined weightCount:undefined)&#13;
+<br/>
+--   called in nFace loop; filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp25\MD5MeshExporter.ms; position: 10854&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   nFace: 716&#13;
+<br/>
+--   matID: 1&#13;
+<br/>
+--   vertices: #((sVertex oldIndex:undefined newIndex:1 coord:[-78.9299,-125.229,-41.8769] texCoord:[0.199796,0.535254] weightIndex:1 weightCount:1), (sVertex oldIndex:undefined newIndex:2 coord:[-79.081,-126.037,-42.409] texCoord:[0.201427,0.530609] weightIndex:2 weightCount:1), (sVertex oldIndex:undefined newIndex:3 coord:[-79.6067,-125.659,-41.7115] texCoord:[0.201427,0.535254] weightIndex:3 weightCount:1), (sVertex oldIndex:undefined newIndex:4 coord:[-79.0862,-125.304,-40.3571] texCoord:[0.201427,0.543699] weightIndex:4 weightCount:1), (sVertex oldIndex:undefined newIndex:5 coord:[-79.4012,-127.377,-42.0897] texCoord:[0.205238,0.529712] weightIndex:5 weightCount:1), (sVertex oldIndex:undefined newIndex:6 coord:[-80.0197,-126.927,-41.257] texCoord:[0.205238,0.535254] weightIndex:6 weightCount:1), (sVertex oldIndex:undefined newIndex:7 coord:[-79.5565,-126.559,-39.9059] texCoord:[0.205238,0.543699] weightIndex:7 weightCount:1), (sVertex oldIndex:undefined newIndex:8 coord:[-79.0372,-125.298,-40.3077] texCoord:[0.201427,0.543996] weightIndex:8 weightCount:1), (sVertex oldIndex:undefined newIndex:9 coord:[-79.3514,-126.536,-39.6987] texCoord:[0.205238,0.544944] weightIndex:9 weightCount:1), (sVertex oldIndex:undefined newIndex:10 coord:[-79.6293,-128.071,-40.8627] texCoord:[0.208196,0.535254] weightIndex:10 weightCount:1), (sVertex oldIndex:undefined newIndex:11 coord:[-79.4175,-126.857,-39.8041] texCoord:[0.205984,0.543699] weightIndex:11 weightCount:1), (sVertex oldIndex:undefined newIndex:12 coord:[-82.2777,-138.482,-35.6559] texCoord:[0.240339,0.543699] weightIndex:12 weightCount:1), (sVertex oldIndex:undefined newIndex:13 coord:[-82.5414,-139.726,-35.9402] texCoord:[0.243348,0.539565] weightIndex:13 weightCount:1), (sVertex oldIndex:undefined newIndex:14 coord:[-83.0501,-139.381,-35.3219] texCoord:[0.243348,0.543699] weightIndex:14 weightCount:1), (sVertex oldIndex:undefined newIndex:15 coord:[-83.0585,-138.905,-33.9974] texCoord:[0.243348,0.552145] weightIndex:15 weightCount:1), (sVertex oldIndex:undefined newIndex:16 coord:[-82.3039,-138.234,-34.2512] texCoord:[0.240987,0.552145] weightIndex:16 weightCount:1), (sVertex oldIndex:undefined newIndex:17 coord:[-82.86,-141.052,-35.5996] texCoord:[0.247159,0.538773] weightIndex:17 weightCount:1), (sVertex oldIndex:undefined newIndex:18 coord:[-83.5864,-140.614,-34.8699] texCoord:[0.247159,0.543699] weightIndex:18 weightCount:1), (sVertex oldIndex:undefined newIndex:19 coord:[-83.8117,-140.088,-33.5567] texCoord:[0.247159,0.552145] weightIndex:19 weightCount:1), (sVertex oldIndex:undefined newIndex:20 coord:[-83.3588,-139.708,-32.1986] texCoord:[0.247159,0.56059] weightIndex:20 weightCount:1), ...)&#13;
+<br/>
+--   weights: #((sWeight jointIndex:56 weight:1.0 coordIndex:1 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:2 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:3 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:4 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:5 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:6 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:7 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:8 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:9 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:10 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:11 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:12 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:13 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:14 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:15 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:16 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:17 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:18 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:19 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:20 coord:undefined), ...)&#13;
+<br/>
+--   vTri: [388,465,386]&#13;
+<br/>
+--   faces: #([1,2,3], [1,3,4], [3,2,5], [5,6,3], [6,7,3], [7,4,3], [8,4,7], [8,7,9], [6,5,10], [6,10,11], [6,11,7], [7,11,9], [12,13,14], [15,16,12], [12,14,15], [14,13,17], [17,18,14], [18,19,14], [19,15,14], [20,15,19], ...)&#13;
+<br/>
+--   outFace: [389,0,0]&#13;
+<br/>
+--   tTri: [388,465,386]&#13;
+<br/>
+--   nSubMesh: 1&#13;
+<br/>
+--   called in node loop; filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp25\MD5MeshExporter.ms; position: 10933&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   mesh: TriMesh&#13;
+<br/>
+--   node: $META&#13;
+<br/>
+--   subMeshes: #((sSubMesh matID:1 Shader:"DINOMAT" vertices:#((sVertex oldIndex:undefined newIndex:1 coord:[-78.9299,-125.229,-41.8769] texCoord:[0.199796,0.535254] weightIndex:1 weightCount:1), (sVertex oldIndex:undefined newIndex:2 coord:[-79.081,-126.037,-42.409] texCoord:[0.201427,0.530609] weightIndex:2 weightCount:1), (sVertex oldIndex:undefined newIndex:3 coord:[-79.6067,-125.659,-41.7115] texCoord:[0.201427,0.535254] weightIndex:3 weightCount:1), (sVertex oldIndex:undefined newIndex:4 coord:[-79.0862,-125.304,-40.3571] texCoord:[0.201427,0.543699] weightIndex:4 weightCount:1), (sVertex oldIndex:undefined newIndex:5 coord:[-79.4012,-127.377,-42.0897] texCoord:[0.205238,0.529712] weightIndex:5 weightCount:1), (sVertex oldIndex:undefined newIndex:6 coord:[-80.0197,-126.927,-41.257] texCoord:[0.205238,0.535254] weightIndex:6 weightCount:1), (sVertex oldIndex:undefined newIndex:7 coord:[-79.5565,-126.559,-39.9059] texCoord:[0.205238,0.543699] weightIndex:7 weightCount:1), (sVertex oldIndex:undefined newIndex:8 coord:[-79.0372,-125.298,-40.3077] texCoord:[0.201427,0.543996] weightIndex:8 weightCount:1), (sVertex oldIndex:undefined newIndex:9 coord:[-79.3514,-126.536,-39.6987] texCoord:[0.205238,0.544944] weightIndex:9 weightCount:1), (sVertex oldIndex:undefined newIndex:10 coord:[-79.6293,-128.071,-40.8627] texCoord:[0.208196,0.535254] weightIndex:10 weightCount:1), (sVertex oldIndex:undefined newIndex:11 coord:[-79.4175,-126.857,-39.8041] texCoord:[0.205984,0.543699] weightIndex:11 weightCount:1), (sVertex oldIndex:undefined newIndex:12 coord:[-82.2777,-138.482,-35.6559] texCoord:[0.240339,0.543699] weightIndex:12 weightCount:1), (sVertex oldIndex:undefined newIndex:13 coord:[-82.5414,-139.726,-35.9402] texCoord:[0.243348,0.539565] weightIndex:13 weightCount:1), (sVertex oldIndex:undefined newIndex:14 coord:[-83.0501,-139.381,-35.3219] texCoord:[0.243348,0.543699] weightIndex:14 weightCount:1), (sVertex oldIndex:undefined newIndex:15 coord:[-83.0585,-138.905,-33.9974] texCoord:[0.243348,0.552145] weightIndex:15 weightCount:1), (sVertex oldIndex:undefined newIndex:16 coord:[-82.3039,-138.234,-34.2512] texCoord:[0.240987,0.552145] weightIndex:16 weightCount:1), (sVertex oldIndex:undefined newIndex:17 coord:[-82.86,-141.052,-35.5996] texCoord:[0.247159,0.538773] weightIndex:17 weightCount:1), (sVertex oldIndex:undefined newIndex:18 coord:[-83.5864,-140.614,-34.8699] texCoord:[0.247159,0.543699] weightIndex:18 weightCount:1), (sVertex oldIndex:undefined newIndex:19 coord:[-83.8117,-140.088,-33.5567] texCoord:[0.247159,0.552145] weightIndex:19 weightCount:1), (sVertex oldIndex:undefined newIndex:20 coord:[-83.3588,-139.708,-32.1986] texCoord:[0.247159,0.56059] weightIndex:20 weightCount:1), ...) faces:#([1,2,3], [1,3,4], [3,2,5], [5,6,3], [6,7,3], [7,4,3], [8,4,7], [8,7,9], [6,5,10], [6,10,11], [6,11,7], [7,11,9], [12,13,14], [15,16,12], [12,14,15], [14,13,17], [17,18,14], [18,19,14], [19,15,14], [20,15,19], ...) weights:#((sWeight jointIndex:56 weight:1.0 coordIndex:1 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:2 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:3 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:4 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:5 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:6 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:7 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:8 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:9 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:10 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:11 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:12 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:13 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:14 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:15 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:16 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:17 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:18 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:19 coord:undefined), (sWeight jointIndex:56 weight:1.0 coordIndex:20 coord:undefined), ...)), (sSubMesh matID:2 Shader:"Material #16" vertices:#() faces:#() weights:#()), (sSubMesh matID:3 Shader:"Material #52" vertices:#() faces:#() weights:#()), (sSubMesh matID:4 Shader:"Material #53" vertices:#() faces:#() weights:#()))&#13;
+<br/>
+--   msg: undefined&#13;
+<br/>
+--   Skin: Skin:Skin&#13;
+<br/>
+--   called in doExport(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp25\MD5MeshExporter.ms; position: 12326&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   nodeList: #($META)&#13;
+<br/>
+--   joints: #((sJoint name:"Bone10" parentName:undefined parentIndex:0 bindMat:(matrix3 [0.221091,0.54614,0.0829128] [-0.0654888,-0.062763,0.588045] [0.548502,-0.227633,0.0367895] [-75.8366,-232.381,-3.25691]) invBindMat:(matrix3 [0.624508,-0.184984,1.54933] [1.54266,-0.177284,-0.642985] [0.2342,1.66103,0.103918] [406.608,-49.8162,-31.5828])), (sJoint name:"Bone88" parentName:"Bone10" parentIndex:1 bindMat:(matrix3 [0.12647,0.217606,-0.539145] [0.192809,0.504833,0.248985] [0.548502,-0.227632,0.0367897] [-90.7721,-214.237,-9.29881]) invBindMat:(matrix3 [0.357236,0.54462,1.54933] [0.614663,1.42598,-0.642986] [-1.5229,0.703299,0.103918] [149.949,361.473,3.85146])), (sJoint name:"Bone87" parentName:"Bone88" parentIndex:2 bindMat:(matrix3 [-0.109294,-0.340241,-0.475727] [0.203039,0.431792,-0.355466] [0.548504,-0.227633,0.0367897] [-79.6138,-195.038,-56.8666]) invBindMat:(matrix3 [-0.308719,0.573516,1.54933] [-0.961064,1.21966,-0.642983] [-1.34376,-1.00407,0.103918] [-288.438,226.442,3.85143])), (sJoint name:"Bone35" parentName:"Bone87" parentIndex:3 bindMat:(matrix3 [-0.0941631,0.559463,-0.179331] [0.348701,0.19939,0.438947] [0.472828,-0.0356315,-0.35943] [-88.6142,-222.008,-94.563]) invBindMat:(matrix3 [-0.265976,0.984965,1.33557] [1.58029,0.563212,-0.100645] [-0.506549,1.23988,-1.01527] [279.368,329.567,4.29751e-005])), (sJoint name:"Bone77" parentName:"Bone35" parentIndex:4 bindMat:(matrix3 [-0.055696,0.581567,-0.112712] [-0.0107439,0.112199,0.584225] [0.592291,0.0567229,1.24675e-006] [-92.3389,-198.985,-101.862]) invBindMat:(matrix3 [-0.157321,-0.0303547,1.67302] [1.64272,0.316922,0.160222] [-0.318374,1.65025,-3.49884e-006] [279.92,228.357,186.366])), (sJoint name:"Bone84" parentName:"Bone77" parentIndex:5 bindMat:(matrix3 [0.144472,0.574089,-0.0597981] [-0.0115671,0.064511,0.591377] [0.577079,-0.14243,0.0268268] [-86.3829,-196.668,-102.406]) invBindMat:(matrix3 [0.408083,-0.0326801,1.63005] [1.6216,0.182221,-0.402315] [-0.168912,1.67045,0.07577] [336.871,204.078,69.445])), (sJoint name:"Bone85" parentName:"Bone84" parentIndex:6 bindMat:(matrix3 [0.144872,0.570107,-0.0895265] [-0.00430198,0.0933682,0.587612] [0.577078,-0.142426,0.026857] [-85.2074,-192.001,-102.889]) invBindMat:(matrix3 [0.409215,-0.0121551,1.63005] [1.61036,0.263736,-0.402304] [-0.252881,1.65981,0.0758576] [318.04,220.378,69.4541])), (sJoint name:"Bone86" parentName:"Bone85" parentIndex:7 bindMat:(matrix3 [0.144925,0.565699,-0.114046] [0.00176632,0.117152,0.583349] [0.577078,-0.142426,0.0268569] [-83.8697,-186.738,-103.719]) invBindMat:(matrix3 [0.409365,0.00498593,1.63005] [1.59791,0.330917,-0.402304] [-0.322141,1.64777,0.0758576] [299.31,233.117,69.4542])), (sJoint name:"Bone83" parentName:"Bone77" parentIndex:5 bindMat:(matrix3 [-0.264838,0.529526,-0.0590708] [-0.000504675,0.0657154,0.591358] [0.53281,0.263268,-0.0287988] [-97.3402,-197.797,-102.395]) invBindMat:(matrix3 [-0.748076,-0.00143255,1.505] [1.49572,0.185623,0.743641] [-0.166853,1.67039,-0.0813537] [205.948,207.617,285.257])), (sJoint name:"Bone82" parentName:"Bone83" parentIndex:9 bindMat:(matrix3 [-0.264477,0.52554,-0.088798] [-0.0138217,0.0923317,0.587629] [0.53281,0.263263,-0.0288324] [-99.4943,-193.493,-102.873]) invBindMat:(matrix3 [-0.747054,-0.039045,1.505] [1.48447,0.260809,0.743629] [-0.25082,1.65986,-0.0814439] [187.104,217.333,285.248])), (sJoint name:"Bone81" parentName:"Bone82" parentIndex:10 bindMat:(matrix3 [-0.263667,0.521215,-0.113319] [-0.024881,0.114251,0.583396] [0.53281,0.263263,-0.0288324] [-101.936,-188.641,-103.695]) invBindMat:(matrix3 [-0.744765,-0.0702835,1.505] [1.47225,0.322722,0.74363] [-0.320084,1.6479,-0.081444] [168.617,224.594,285.248])), (sJoint name:"Bone78" parentName:"Bone77" parentIndex:5 bindMat:(matrix3 [-0.0563897,0.58881,-0.0644069] [-0.00613909,0.0641126,0.591503] [0.592291,0.0567221,2.95327e-007] [-92.856,-193.585,-102.908]) invBindMat:(matrix3 [-0.159279,-0.0173442,1.67302] [1.66319,0.181099,0.160223] [-0.181925,1.6708,-2.51206e-006] [288.456,205.387,186.366])), (sJoint name:"Bone79" parentName:"Bone78" parentIndex:12 bindMat:(matrix3 [-0.056008,0.58483,-0.0941404] [-0.00897368,0.0937107,0.587504] [0.592291,0.0567216,4.16646e-007] [-93.3144,-188.798,-103.43]) invBindMat:(matrix3 [-0.158201,-0.0253509,1.67302] [1.65194,0.264704,0.160221] [-0.265912,1.65951,-2.25699e-006] [269.618,219.252,186.366])), (sJoint name:"Bone80" parentName:"Bone79" parentIndex:13 bindMat:(matrix3 [-0.0555834,0.580395,-0.118652] [-0.0113104,0.11811,0.583049] [0.592291,0.0567218,3.44771e-007] [-93.8315,-183.399,-104.302]) invBindMat:(matrix3 [-0.157001,-0.0319511,1.67302] [1.63941,0.333624,0.160221] [-0.335148,1.64692,-2.17283e-006] [250.978,229.965,186.366])), (sJoint name:"Bone25" parentName:"Bone10" parentIndex:1 bindMat:(matrix3 [0.12647,0.217606,-0.539145] [0.192809,0.504832,0.248985] [0.548502,-0.227632,0.0367897] [-50.0461,-231.138,-6.5672]) invBindMat:(matrix3 [0.357236,0.544621,1.54933] [0.614663,1.42598,-0.642986] [-1.5229,0.703299,0.103918] [149.949,361.474,-70.398])), (sJoint name:"Bone26" parentName:"Bone25" parentIndex:15 bindMat:(matrix3 [-0.109294,-0.340241,-0.475727] [0.203039,0.431792,-0.355466] [0.548504,-0.227633,0.0367897] [-38.8879,-211.939,-54.135]) invBindMat:(matrix3 [-0.308719,0.573516,1.54933] [-0.961065,1.21966,-0.642983] [-1.34376,-1.00407,0.103918] [-288.438,226.442,-70.3978])), (sJoint name:"Bone13" parentName:"Bone26" parentIndex:16 bindMat:(matrix3 [-0.0812697,-0.503064,-0.30716] [0.159666,0.279683,-0.500307] [0.567388,-0.150761,0.0967933] [-47.9201,-239.09,-91.4962]) invBindMat:(matrix3 [-0.22956,0.451001,1.60267] [-1.42098,0.790014,-0.425848] [-0.867622,-1.41321,0.273409] [-430.128,81.1935,-4.71753e-006])), (sJoint name:"Bone21" parentName:"Bone13" parentIndex:17 bindMat:(matrix3 [-0.177246,0.484527,-0.296382] [-0.101821,0.278343,0.515927] [0.558787,0.20441,0] [-51.309,-260.067,-104.304]) invBindMat:(matrix3 [-0.500656,-0.28761,1.57838] [1.36862,0.786227,0.577388] [-0.83718,1.45733,0] [242.924,341.721,231.144])), (sJoint name:"Bone22" parentName:"Bone21" parentIndex:18 bindMat:(matrix3 [-0.185,0.505727,-0.253061] [-0.086937,0.237658,0.538502] [0.558787,0.20441,0] [-52.9546,-255.568,-107.056]) invBindMat:(matrix3 [-0.522563,-0.245571,1.57838] [1.42851,0.671306,0.577385] [-0.71481,1.52109,-1.59018e-006] [260.884,321.403,231.144])), (sJoint name:"Bone23" parentName:"Bone22" parentIndex:19 bindMat:(matrix3 [-0.180398,0.493146,-0.279801] [-0.0961236,0.262771,0.525105] [0.558787,0.20441,0] [-54.4596,-251.454,-109.115]) invBindMat:(matrix3 [-0.509564,-0.27152,1.57838] [1.39297,0.742242,0.577386] [-0.790343,1.48325,-1.92392e-006] [236.279,333.697,231.144])), ...)&#13;
+<br/>
+--   filename: "D:\Munka\MD5\exporter\MD5Exporter\dino.md5mesh"&#13;
+<br/>
+--   fp: &lt;File:D:\Munka\MD5\exporter\MD5Exporter\dino.md5mesh&gt;&#13;
+<br/>
+--   msg: undefined&#13;
+<br/>
+--   called in btnExport.pressed(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp25\MD5Exporter.ms; position: 7124&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   End: undefined&#13;
+<br/>
+--   nodeList: #($META)&#13;
+<br/>
+--   meshFileName: "D:\Munka\MD5\exporter\MD5Exporter\dino.md5mesh"&#13;
+<br/>
+--   animFileName: undefined&#13;
+<br/>
+--   bUpdate: false&#13;
+<br/>
+--   md5Exp: (MD5MeshExporter )&#13;
+<br/>
+--   bOk: false&#13;
+<br/>
+--   start: undefined&#13;
+<br/>
+--   nBaseFrame: undefined&#13;
+<br/>
+--   animRange: undefined&#13;
+<br/>
+&gt;&gt; MAXScript Rollout Handler Exception: -- Runtime error: Exceeded the vertex countSkin:Skin &lt;&lt;&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Then, I've tried MD5.MAX.Exporter.For.Skin.Modifier (from <a href="/web/20061013054722/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" target="_blank">http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip</a>),&#13;
+<br/>
+This one fails at this line:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">if ((findBoneByName boneList b.name) != 0) or (b == rootBone) do</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+The contents of the Listener window is:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">-- Error occurred in sortBones(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp26\helper_funcs_skin.ms; position: 544&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   b: undefined&#13;
+<br/>
+--   called in init(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp26\helper_funcs_skin.ms; position: 2018&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   nodeList: #($META)&#13;
+<br/>
+--   called in doExport(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp26\MD5MeshExporter.ms; position: 4729&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   nodeList: #($META)&#13;
+<br/>
+--   joints: #()&#13;
+<br/>
+--   filename: "D:\Munka\MD5\exporter\MD5.MAX.Exporter.For.Skin.Modifier\dino.md5mesh"&#13;
+<br/>
+--   skinHelp: (skinHelper rootBone:undefined sortedBoneList:#() boneList:#($Bone10, $Bone01, $Bone02, $Bone03, $Bone04, $Bone05, $Bone06, $Bone07, $Bone08, $Bone09, $Bone70, $Bone48, $Bone49, $Bone50, $Bone51, $Bone52, $Bone53, $Bone54, $Bone55, $Bone56, ...) tab:0)&#13;
+<br/>
+--   fp: &lt;File:D:\Munka\MD5\exporter\MD5.MAX.Exporter.For.Skin.Modifier\dino.md5mesh&gt;&#13;
+<br/>
+--   msg: undefined&#13;
+<br/>
+--   called in btnExport.pressed(); filename: C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\mzptmp26\MD5Exporter.ms; position: 6959&#13;
+<br/>
+--  Frame:&#13;
+<br/>
+--   End: undefined&#13;
+<br/>
+--   nodeList: #($META)&#13;
+<br/>
+--   meshFileName: "D:\Munka\MD5\exporter\MD5.MAX.Exporter.For.Skin.Modifier\dino.md5mesh"&#13;
+<br/>
+--   animFileName: undefined&#13;
+<br/>
+--   bUpdate: false&#13;
+<br/>
+--   md5Exp: (MD5MeshExporter )&#13;
+<br/>
+--   bOk: false&#13;
+<br/>
+--   start: undefined&#13;
+<br/>
+--   nBaseFrame: undefined&#13;
+<br/>
+--   animRange: undefined&#13;
+<br/>
+&gt;&gt; MAXScript Rollout Handler Exception: -- Unknown property: "name" in undefined &lt;&lt;&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I don't really know what is the problem with the model. The only modifier on the stack is the Skin modifier, I've added enough submaterials (this was the first problem, but I've overcame it).&#13;
+<br/><br/>
+I'm using 3dsmax 8 SP3 on WinXP x64. &#13;
+<br/>
+The model I've tried to export can be downloaded here:&#13;
+<br/><a href="/web/20061013054722/http://holoiroda.com/2Forum_Dino.zip" target="_blank">http://holoiroda.com/2Forum_Dino.zip</a>&#13;
+<br/><br/>
+BTW, where can I find a list of the features that are supported / unsupported by the exporter? The readme does not contain much information about this, some bits of information can be found in this forum, but I was unable to find a comprehensive list of the things I'm allowed or not allowed to do if I ever want to export my model to MD5.&#13;
+<br/><br/>
+I would be very grateful if someone could help me with these issues.&#13;
+<br/><br/>
+Best regards,&#13;
+<br/>
+Peter</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157697" date="Posted: Thu Sep 21, 2006 2:45 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Has the dino got a skeleton? (stupid question I know) It looks like there's a lot of 'undefined' errors there so something isn't linked up properly. It's also possible that Max 8 has something changed or tweaked that's breaking the script. If you have access to Max 5, 6 or 7 try the exporter in that (although you might get a broken model becuase Max isn't that great loading new into old).<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054722/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157698" date="Posted: Thu Sep 21, 2006 2:50 pm    Post subject: "><author>pkovacs</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi, and thanks for your reply!&#13;
+<br/><br/>
+yes, it has lost of bones which animate it. Unfortunately, I cannot load the model to an older max..&#13;
+<br/><br/>
+Maybe I should move to the thread of der_ton's MD5 exporter, because with that, at least 'something' gets exported (after some modifications), but it's still far from correct. Only the eyes of the dino are exported, strange, huh?&#13;
+<br/><br/>
+Ami I right these exporters don't really like material definitions without textures?&#13;
+<br/><br/>
+Peter</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157699" date="Posted: Thu Sep 21, 2006 3:02 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, generally speaking they're looking for textures rather than materials becasue it those that get written into the texture path slots in the MD5. Make sure your bones follow a proper hierachy; "origin" should be the 1st bone to which everything else is connected in the skeleton. For example.;&#13;
+<br/><br/>
+origin &gt; body &gt; hips &gt; leg &gt; lowerleg &gt; foot &gt; toes<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013054722/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158012" date="Posted: Sun Sep 24, 2006 9:46 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>pkovacs wrote:</b></span></td>	</tr><tr><td class="quote">Maybe I should move to the thread of der_ton's MD5 exporter, because with that, at least 'something' gets exported (after some modifications), but it's still far from correct. Only the eyes of the dino are exported, strange, huh?&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/>
+Is the whole model one single object? My exporter only exports one object (the selected one). You'll have to merge the meshes into a single one. This is also covered in the readme file BTW.<br/>_________________<br/><a href="/web/20061013054722/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013054722im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013054722/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159154" date="Posted: Sun Oct 08, 2006 8:48 pm    Post subject: Re: Error: -- Unkown property: &quot;name&quot; undefined"><author>zenarion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Banzai wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>evilartist/pickle_yeah/Killinplayer wrote:</b></span></td>	</tr><tr><td class="quote">Whenever I try to export, It shows an error message:&#13;
+<br/><br/>
+-- Unknown property: "name" in undefined&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Hi Guyz,&#13;
+<br/><br/>
+I'm really a newbie about Modelling 4 Games and i use the gmax-MD5-Exporter today the first time.&#13;
+<br/><br/>
+I've the same Error, but now I know how to solve ;o)&#13;
+<br/><br/>
+You MUST have a UVW-Map (or another Mapping-Info and Material I think) join to your Mesh. Then the gmax-Exporter works fine!&#13;
+<br/></span></td>	</tr></table><span class="postbody">&#13;
+<br/>
+A what now? I have this:&#13;
+<br/><img src="/web/20061013054722im_/http://img.photobucket.com/albums/v216/zenarion/Screenshots/max_prob.gif" border="0"/><br/><br/>
+So ive got a Skin modifyer, and an Unwrap UVW. Still the exporter gives me this:&#13;
+<br/><img src="/web/20061013054722im_/http://img.photobucket.com/albums/v216/zenarion/Screenshots/exporter_problem.gif" border="0"/><br/><br/>
+Can somebody clear this up for me? Or should i switch to Maya from 3dsmax?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159156" date="Posted: Sun Oct 08, 2006 9:18 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">you got to UVW your model BEFORE skin it (swap stacks), collapse it TO editable poly... for poly, i really don't know if it work cause i always convert in mesh at end, so try like that, and if i don't work, convert it to mesh.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="159177" date="Posted: Mon Oct 09, 2006 7:12 am    Post subject: "><author>zenarion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah i solved it.&#13;
+<br/>
+But i had to use der_ton's exporter for this one.&#13;
+<br/>
+Damnit, now to make all the AFs  <img src="/web/20061013055337im_/http://doom3world.org/phpbb2/images/smiles/icon_cry.gif" alt="Crying or Very sad" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="p40349" date="Posted: Mon Aug 23, 2004 3:46 am "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody">So I've finally take the time to finish my MD5 exporter. I haven't had too much time to test it but I tried to import some Doom III models (imp and fatty) into MAX and then re-export them with my exporter and the results seem to be correct. BTW, I have only tested the exporter in MAX6.
+<br /><br />The worst of this exporter is that takes up too much time for meshes with a medium/high poly count. That's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex &amp; texture coordinates for each vertex in the list.
+<br /><br />Another thing that bugs me is that, when I animate a bone using a LookAt controller (the bone is linked to a node who indicates the bone the direction to look at), the exporter doesn't detect the transform for that bone so no animated components for this bone are exported.
+<br /><br />Anyway, hope you find it useful. There is a help file (in spanish and "english" <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />) into the zip file explaining all about the exporter.
+<br /><br />I want to thank bozo for the MD5 specs and der_ton for his MD5 viewer. That way I were able to test my exporter fast and easily. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br /><a href="https://web.archive.org/web/20081119193823/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" class="postlink"><span style="font-weight: bold">Download MD5Export for MAX</span></a> (outdated)
+<br /><a href="https://web.archive.org/web/20081119193823/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter_for_gmax.zip" class="postlink"><span style="font-weight: bold">Download MD5Export for gmax</span></a> (outdated)
+<br /><br /><br /><span style="font-weight: bold"><span style="color: #FF0000">UPDATE</span> (08/16/05): new version of the MAX/GMAX MD5 exporters!</span>. Now you can use any node as a bone in the skin modifier (MAX standard bones, CAT, biped, etc) among other improvements.
+<br /><br /><a href="https://web.archive.org/web/20081119193823/http://www.arrakis.es/~jonathan01/d3w/MD5.MAX.Exporter.For.Skin.Modifier.zip" class="postlink"><span style="font-weight: bold">MD5.MAX.Exporter.For.Skin.Modifier</span></a>
+<br /><a href="https://web.archive.org/web/20081119193823/http://www.arrakis.es/~jonathan01/d3w/MD5.GMAX.Exporter.For.Skin.Modifier.zip" class="postlink"><span style="font-weight: bold">MD5.GMAX.Exporter.For.Skin.Modifier</span></a>
+<br /><br />Enjoy!.</div>]]></body></post><post id="p40443" date="Posted: Mon Aug 23, 2004 11:00 am "><author>der_ton</author><body><![CDATA[<div class="postbody">Nice job!
+<br /><br />From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.
+<br /><br />I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice (no hard feelings if I'm wrong. Anyway, if my exporter wouldn't exist, I'm sure you would have been able to do yours just as well. Don't get me wrong here. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> )</div>]]></body></post><post id="p40503" date="Posted: Mon Aug 23, 2004 2:35 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">Nice job!</div><br />Thanks! <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">From one single test I noticed there is something wrong with the model's orientation, but apart from that it worked.</div><br />I'll take a look at it.<br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">I took a look at the code, and some of that looks familiar, but that's probably because some stuff has to be done the same way. But if you took some inspiration from my exporter, credits would be nice</div>
+<br />I have to admit that I took a look at your exporter when I came to a point the bone orientations were not correctly. I found the solution in the:
+<br /><br />if (q.w &lt; 0) do ....switch the sign of the quat components
+<br /><br />and that was  before I read the post of bozo where he exposed this solution so I guess I should credit you. And well, if you see something more, similar to your code let me know, please. Besides that, I don't remember more things.
+<br /><br />I have credited people in the help file, you included but only for the md5 viewer so I will credit you for your exporter. I'm not here to make enemies. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />Said that. I want to comment something about your code. You have a function that converts a left handed matrix to a right handed one. I thought that MAX stored rotations in a right handed way. So is that for something special or to assure that the matrices are correct?. I say that because I don't convert the matrices to right handed and all seems to work. But who know, always exists a case that destroys all your theories. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_lol.gif" alt=":lol:" title="Laughing" /><br /><br />One thing more. Your exporter takes less time to export the geometry than mine. As I said before, that's because, to avoid duplicated vertices, I have to, for each face index, loop through the final list of vertices and compare vertex and texture coordinates for each vertex in the list. Do you do something like that or do you export duplicated vertices?.
+<br /><br />That's all for now. And sorry for any inconvenience.
+<br /><br />Greetings.</div>]]></body></post><post id="p40516" date="Posted: Mon Aug 23, 2004 2:51 pm "><author>bozo</author><body><![CDATA[<div class="postbody">@BeRSeRKeR
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"> You have a function that converts a left handed matrix to a right handed one.</div>
+<br /><br />i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this
+<br /><br />some times ago i only made a quick test of this and it seems to do the work properly</div>]]></body></post><post id="p40521" date="Posted: Mon Aug 23, 2004 2:58 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody">Forgot to mention that to get the rotation and position of the bones, I was using the "rotation" and "pos" members of the node class but it didn't work in all cases. I always thought  that the "transform" member was the result of doing:
+<br /><br />mat = node.rotation as Matrix3
+<br />mat.row4 = node.pos
+<br /><br />but ok, seems not to be the same. So this part is another thing I saw in your code.
+<br /><br />Anyway I have updated the exporter and I have credited you for your exporter. Also, I have put a reference to you and bozo in the MD5AnimExporter.ms file.
+<br /><br />Greets.</div>]]></body></post><post id="p40525" date="Posted: Mon Aug 23, 2004 3:02 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">bozo wrote:</div><div class="quotecontent">i think, when you create bones via mirror them, than this mirrored bones have this left-handed matrixes and the code fix this some times ago i only made a quick test of this and it seems to do the work properly</div>
+<br />The truth is that I haven't rigged a mesh in my life so things like mirroring bones escapes from my understanding. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />I will change that.
+<br /><br />Thanks.</div>]]></body></post><post id="p40528" date="Posted: Mon Aug 23, 2004 3:09 pm "><author>bozo</author><body><![CDATA[<div class="postbody">you are not alone <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />i am a coder and do only some really simple modeling stuff for testing-only
+<br /><br />btw. nice work <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p40546" date="Posted: Mon Aug 23, 2004 3:33 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">Berserker, I'm totally ok with all of that. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. 
+<br />That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". That is also mentioned in the maxscript documentation:
+<br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Take care when mixing rotation derived from these matrices and rotation used in rotation-related functions or from rotation properties.</div>
+<br /><br />About the duplicate vertices, I don't check for that, nope. But I'm not sure if that's necessary. Maybe that's related to another difference in our exporters. Yours collapses each mesh to use one material (even if it uses submaterials), while mine splits it into md5 submeshes according to the used submaterials. I think your way of creating submeshes is to export multiple mesh objects from 3dmax.
+<br /><br />BTW, I encountered a real problem with exporting via maxscript, it affects both our exporters. The 6 digit precision of float output is not enough, my camera importer/exporter is done but the problem is really evident there, because the quaternions need better precision. 
+<br />The problem can also be seen when you export a mesh (with your or my exporter) and import it with my importer again, then there are some slight deviations. I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.</div>]]></body></post><post id="p40558" date="Posted: Mon Aug 23, 2004 3:54 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">Berserker, I'm totally ok with all of that. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div><br />Nice. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">The thing with the mirrored bones matrices resulting in lefthanded bones came up with a model that 7318 did once. If you scale a bone negatively, then the transform matrix becomes lefthanded. <br />That is also related to the fact that the "transform" property is not necessarily the same as the combined "pos * quat as matrix". </div><br />Thanks for the explanation. I have implemented your right handed funcion and now, when using mirrored bones, the orientation is ok but the faces affected by these bones are reversed!. I'll have to take a look on it.<br /><br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">I think your way of creating submeshes is to export multiple mesh objects from 3dmax.</div><br />Exactly. With my exporter, only one material can be assigned to one mesh so if you want to export multiple meshes with different materials assigned, also, you have to have multiple meshes in MAX.<br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">I'll think about a custom print function for floats. I don't know of a way to tell Maxscript to use better precision for the built-in print float.</div>
+<br />Yeah, that's a real problem. I have implemented a function that reduces the decimal count of a number down to 5 but as you said, seems not to be sufficient.
+<br /><br />Greets.</div>]]></body></post><post id="p40623" date="Posted: Mon Aug 23, 2004 6:14 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody">I have updated the exporter so now takes into account left/right handed matrices. Seems to work ok but I have found a case where the faces affected by the "left-handed bones" are reversed so you can see the "inner" of the mesh. Thanks to der_ton a bozo for help me. That's a great forum where coexists great artists and great coders too! <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br /><a href="https://web.archive.org/web/20081119193823/http://www.arrakis.es/~jonathan01/d3w/MD5Exporter.zip" class="postlink"><span style="font-weight: bold">Download</span></a> (same URL as above)
+<br /><br />So now I have some stuff in mind. I'm thinking of supports biped bones and give the option to export "physiqued" meshes. My first attempt to write a MD5 exporter (when the leaked alpha came up) was using physique to export skinned meshes so if I have time enough, I could try this.
+<br /><br />Of course, I have to add support for md5camera too! <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Greets.</div>]]></body></post><post id="p40648" date="Posted: Mon Aug 23, 2004 7:30 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody">I have a question regarding md5camera file format.
+<br /><br />Here is a snip of data:
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">cuts {<br />   96<br />   148<br />   198<br />   290<br />   324<br />}<br /><br />camera {<br />   ( 1781.0610351563 293.2318115234 70.8310394287 ) ( 0.09791141 -0.0939290896 -0.714956522 ) 72.1649246216<br />   ....<br />}</div>
+<br /><br />Seems to be clear that first triplet is the camera position, the second is the camera orientation and finally the camera fov (correct me if I'm wrong, please).
+<br /><br />But now the cuts stuff. I think is a way to specify different "camera takes" so, in the example above, one take would be from 0 to 98, another from 99 to 148, and so on. Is this correct?.
+<br /><br />Thanks.</div>]]></body></post><post id="p40657" date="Posted: Mon Aug 23, 2004 7:40 pm "><author>der_ton</author><body><![CDATA[<div class="postbody">Yep. Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.</div>]]></body></post><post id="p40662" date="Posted: Mon Aug 23, 2004 7:54 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">Actually, the only reason why that's in there is because the engine has to know when NOT to interpolate between two keyframes.</div>
+<br />Yes. Makes sense.
+<br /><br />Thanks much.</div>]]></body></post><post id="p41405" date="Posted: Wed Aug 25, 2004 12:43 am "><author>der_ton</author><body><![CDATA[<div class="postbody">The precision issue I was talking about was not the reason why I had these big deviations, that was a typo in a formula I had in there. The problem was not in the v.91 and is ofcourse not in v.92 of the script. I don't know if the 6 digit precision of maxscript's float printing is enough, so I wrote this:
+<br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">fn printfloat flt =<br />--maxscript doesn't provide a way to format float output that I know of. It seems that Doom3 does not understand the &lt;x&gt;e&lt;y&gt; notation of floats<br />--if you plan to use this in your scripts, note that this function doesn't check against a large number passed in<br />(<br />   --if (abs flt)&gt;10.0 then return flt -- this could be used to gain some speed.<br />   --else<br />   local numdigits = 10<br />   (<br />      str = ""<br />      if flt&lt;0 then str += "-"<br />      flt2 = abs flt<br />      str += ((flt2 as integer) as string)<br />      flt2 -= (flt2 as integer)<br />      str +="."<br />      for i=1 to numdigits do<br />      (<br />         flt2 *=10.0<br />         str += ((flt2 as integer) as string)<br />         flt2 -= (flt2 as integer)<br />      )<br />      return str<br />   )<br />)<br /></div>
+<br />Feel free to use if you think it is necessary.
+<br /><br />BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p41411" date="Posted: Wed Aug 25, 2004 12:52 am "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">Feel free to use if you think it is necessary.</div><br />Thanks for share. I will take a look on it.<br /><br /><div class="quotetitle">der_ton wrote:</div><div class="quotecontent">BTW, in my new version of the scripts, I added the function for reading the animationRange interval to preset the input values in the GUI, I've seen that your script does that and it's ofcourse a useful detail. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>
+<br />Yes. It's a good thing. Now I'm trying to design a good way to expose the camera cuts to the user. I'm trying to do it the more easy as possible.
+<br /><br />Thanks.</div>]]></body></post><post id="p41493" date="Posted: Wed Aug 25, 2004 5:30 am "><author>Aphax</author><body><![CDATA[<div class="postbody">You know, you guys seem to put quite an amount of effort into your exporting tools, but from what I understand they basically do the same. Why not colaberate and work on a single, powerful, exporter? <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>]]></body></post><post id="p41550" date="Posted: Wed Aug 25, 2004 9:30 am "><author>der_ton</author><body><![CDATA[<div class="postbody">I think it's not a bad thing that there are two different exporters available. Berserker's exporter works a bit differently, requiring to have each object to use a standard material, but being able to export multiple objects, while my exporter exports only one object, but it can have several textures via multi/submaterials (but I might change that).
+<br />Working on the same stuff as a team introduces communication overhead and problems with keeping track of versions.
+<br /><br />As long as we allow each other to use the code freely and help each other out by discussion on the forum, I think we have a pretty efficient way of handling it.</div>]]></body></post><post id="p41587" date="Posted: Wed Aug 25, 2004 11:04 am "><author>obihb</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">....  but it can have several textures via multi/submaterials (but I might change that).</div>
+<br />Please don't get rid of that!.. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" />  If that's what you mean by changing it.</div>]]></body></post><post id="p41601" date="Posted: Wed Aug 25, 2004 11:49 am "><author>der_ton</author><body><![CDATA[<div class="postbody">No I won't get rid of that. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br />My importer imports in the same format, so that's gonna be left in forever. But I might add the option to select more than one object for export, like Berserker's exporter does (note that I had that in the todo list from the first release of my exporter, though).</div>]]></body></post><post id="p41763" date="Posted: Wed Aug 25, 2004 7:09 pm "><author>BeRSeRKeR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Aphax wrote:</div><div class="quotecontent">I'm sorry if this is a really bad suggestion and you guys rather work on your own thing, but I figured having two geniusses working on the same tool would make it even better <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=":wink:" title="Wink" /></div>
+<br />Not a bad idea at all. Anyway we are sharing code so that's a form of collaboration and a way to speed up the development. And of course, I think we, coders, are a bit reticent to work in group. Each one has his/her code style, his/her obsessions, etc. <img src="https://web.archive.org/web/20081119193823im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />And comming back to the exporter, I have found a "bug" in MAX. Actually I don't know if it's a bug or a windows limitation. When you call the function getSaveFileName with a long extension (more than 8 chars), MAX throws an unhandled exception. You can try that executing this in "MAXScript Listener":
+<br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">getSaveFileName caption:"Save MD5Camera" types:"Doom III MD5Camera (*.md5camera)|*.md5camera"</div>
+<br /><br />A save dialog will be shown where you have to specify the file location and name. So if you don't add the ".md5camera" extension manually to the name of the file, the exception will be thrown.
+<br /><br />I have seen that der_ton add automatically a file name and the extension but does exist another way around this?
+<br /><br />When I solve this problem I'll release the new version with md5camera support.
+<br /><br />Greets.</div>]]></body></post></posts></thread></xml>

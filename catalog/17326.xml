@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17326"><title>Custom Skybox</title><posts><post id="157985" date="Posted: Sun Sep 24, 2006 5:18 am    Post subject: Custom Skybox"><author>Bubba-E</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I hope this is the right section.&#13;
+<br/><br/>
+Okay, using the skybox tutorial, I made a skybox, once, a long time ago. I can probably do it again given some time. The thing is the box was just all stars, so it was extremely easy to assemble.&#13;
+<br/><br/>
+My question is, how can I get extremely realistic custom skyboxes with landscape, mountains, or just a large nebula and a star nearby? How do I align everything right? Are there some special programs to do that with? Any way I can get one of those programs for free that'll do what I want?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157987" date="Posted: Sun Sep 24, 2006 5:54 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013024128/http://www.planetside.co.uk/terragen/" target="_blank">http://www.planetside.co.uk/terragen/</a>&#13;
+<br/>
+It's free version that you can use to render extremely nice skyboxes. The free version has some limits on the texture resolution you can use but even so it's very useful.&#13;
+<br/><br/>
+Here's a neat script for it that takes 6 snapshots of your terragen scene and lines up them up perfectly. Then you can just take those 6 images and use them in your skybox.&#13;
+<br/><a href="/web/20061013024128/http://-efx-.shackspace.com/leveldesign/skyboxscript.tgs" target="_blank">http://-efx-.shackspace.com/leveldesign/skyboxscript.tgs</a>&#13;
+<br/>
+Best of luck,&#13;
+<br/><br/>
+-efx-!<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157992" date="Posted: Sun Sep 24, 2006 7:37 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Terregen is great and all but it's no substitute for real artwork.&#13;
+<br/><br/>
+If you're aiming for realism, you'll have to do some image editing. I highly recommend using <a href="/web/20061013024128/http://www.skypaint.com/" target="_blank" class="postlink">SkyPaint</a> in conjunction with your image editing application of choice.<br/>_________________<br/><a href="/web/20061013024128/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024128im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024128/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157985" date="Posted: Sun Sep 24, 2006 5:18 am    Post subject: Custom Skybox"><author>Bubba-E</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I hope this is the right section.&#13;
+<br/><br/>
+Okay, using the skybox tutorial, I made a skybox, once, a long time ago. I can probably do it again given some time. The thing is the box was just all stars, so it was extremely easy to assemble.&#13;
+<br/><br/>
+My question is, how can I get extremely realistic custom skyboxes with landscape, mountains, or just a large nebula and a star nearby? How do I align everything right? Are there some special programs to do that with? Any way I can get one of those programs for free that'll do what I want?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157987" date="Posted: Sun Sep 24, 2006 5:54 am    Post subject: "><author>efx</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20061013023632/http://www.planetside.co.uk/terragen/" target="_blank">http://www.planetside.co.uk/terragen/</a>&#13;
+<br/>
+It's free version that you can use to render extremely nice skyboxes. The free version has some limits on the texture resolution you can use but even so it's very useful.&#13;
+<br/><br/>
+Here's a neat script for it that takes 6 snapshots of your terragen scene and lines up them up perfectly. Then you can just take those 6 images and use them in your skybox.&#13;
+<br/><a href="/web/20061013023632/http://-efx-.shackspace.com/leveldesign/skyboxscript.tgs" target="_blank">http://-efx-.shackspace.com/leveldesign/skyboxscript.tgs</a>&#13;
+<br/>
+Best of luck,&#13;
+<br/><br/>
+-efx-!<br/>_________________<br/>I love the caulk</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157992" date="Posted: Sun Sep 24, 2006 7:37 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Terregen is great and all but it's no substitute for real artwork.&#13;
+<br/><br/>
+If you're aiming for realism, you'll have to do some image editing. I highly recommend using <a href="/web/20061013023632/http://www.skypaint.com/" target="_blank" class="postlink">SkyPaint</a> in conjunction with your image editing application of choice.<br/>_________________<br/><a href="/web/20061013023632/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023632im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023632/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

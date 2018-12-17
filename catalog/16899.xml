@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16899"><title>helmet skins seperate?</title><posts><post id="154303" date="Posted: Sun Aug 20, 2006 5:25 am    Post subject: helmet skins seperate?"><author>krylon</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i'm reskinning marine_helmet. so far the body skins all work properly; the helmets are giving me trouble. i tried a skin like this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin custom/characters/marine_dpm_mp   {&#13;
+<br/><br/>
+   models/characters/male_npc/marine/marine   models/characters/male_npc/marine/marine_dpm_mp&#13;
+<br/>
+   models/characters/sarge2/helmet         models/characters/sarge2/helmet_mp&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+with a corresponding .mtr...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">models/characters/male_npc/marine/marine_dpm_mp&#13;
+<br/>
+{&#13;
+<br/>
+       //noselfShadow&#13;
+<br/>
+      unsmoothedTangents&#13;
+<br/>
+      flesh&#13;
+<br/>
+      forceOverlays&#13;
+<br/>
+      clamp&#13;
+<br/>
+      collision&#13;
+<br/><br/>
+   {   // burning corpse effect&#13;
+<br/>
+      if   parm7         // only when dead&#13;
+<br/>
+      // make a burned away alpha test for the normal skin&#13;
+<br/>
+      blend   gl_zero, gl_one         // don't draw anything&#13;
+<br/>
+      &#13;
+<br/>
+      map models/monsters/spectre/dis2.tga   // replace this with a monster-specific texture&#13;
+<br/>
+      alphaTest 0.05 + 1.7 * (time - parm7)&#13;
+<br/>
+   }&#13;
+<br/><br/>
+   renderbump  -size 1024 1024 -trace 0.07 -colorMap -aa 2  models/characters/male_npc/marine/marine_local.tga models/characters/male_npc/marine/marine_hi.lwo&#13;
+<br/>
+      forceoverlays&#13;
+<br/>
+        diffusemap     models/characters/male_npc/marine/marine_dpm_mp.tga&#13;
+<br/>
+      bumpmap        addnormals(models/characters/male_npc/marine/marine_local.tga, heightmap(models/characters/male_npc/marine/marine_h.tga, 5 ) )&#13;
+<br/>
+        specularmap     models/characters/male_npc/marine/marine_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and the separate .mtr for the helmet...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">models/characters/sarge2/helmet_mp&#13;
+<br/>
+{&#13;
+<br/>
+    noselfShadow&#13;
+<br/>
+   unsmoothedTangents&#13;
+<br/>
+   collision&#13;
+<br/>
+   forceOverlays&#13;
+<br/>
+   clamp&#13;
+<br/>
+   metal&#13;
+<br/><br/>
+   renderbump  -size 512 512 -aa 2  models/characters/sarge2/helmet_local.tga models/characters/sarge2/helmet_hi.lwo&#13;
+<br/><br/>
+   {   // burning corpse effect&#13;
+<br/>
+      if   parm7         // only when dead&#13;
+<br/>
+      // make a burned away alpha test for the normal skin&#13;
+<br/>
+      blend   gl_zero, gl_one         // don't draw anything&#13;
+<br/>
+      &#13;
+<br/>
+      map models/monsters/spectre/dis2.tga   // replace this with a monster-specific texture&#13;
+<br/>
+      alphaTest 0.05 + 1.7 * (time - parm7)&#13;
+<br/>
+   }&#13;
+<br/><br/><br/><br/>
+   {    &#13;
+<br/>
+      blend diffusemap   &#13;
+<br/>
+      map  models/characters/sarge2/helmet_mp.tga&#13;
+<br/>
+      //alphaTest parm6&#13;
+<br/>
+   } &#13;
+<br/>
+   &#13;
+<br/>
+         bumpmap         models/characters/sarge2/helmet_local.tga&#13;
+<br/>
+           specularmap      models/characters/sarge2/helmet_mp_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and my .def for the default marine:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">model npc_marine_helmet {&#13;
+<br/>
+   inherit                     npc_marine&#13;
+<br/><br/>
+   anim stand                  models/md5/chars/stand.md5anim&#13;
+<br/>
+   anim talk_primary               models/md5/chars/stand_talk.md5anim&#13;
+<br/>
+   anim talk_secondary1               models/md5/chars/stand_talk.md5anim&#13;
+<br/>
+   anim talk_secondary2               models/md5/chars/stand_talk.md5anim&#13;
+<br/><br/><br/>
+ &#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef npc_marine_helmet {&#13;
+<br/>
+   "inherit"                  "npc_base"&#13;
+<br/>
+   "model"                     "npc_marine_helmet"&#13;
+<br/><br/>
+   "def_head"                  "head_marine_helmet"&#13;
+<br/><br/>
+   "copy_joint_world eyecontrol"   ""&#13;
+<br/>
+   &#13;
+<br/><br/>
+   "head_joint"                  "Shoulders"&#13;
+<br/>
+   "talk_no_turn"                  "1"&#13;
+<br/>
+   "talktime"                  ".5"&#13;
+<br/>
+   "talkradius"                  "384"&#13;
+<br/><br/>
+      &#13;
+<br/>
+   "head_focus_rate"               "0.1"&#13;
+<br/><br/>
+   &#13;
+<br/><br/>
+}&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+is something wrong with the def i made? the marine's def_head in npcs.def is head_marine_helmet, right? right, but the material def for the marine's helmet is actually models/characters/sarge2/helmet i think. i changed helmet.tga in this folder and the helmets changed. i need skins for different helmets though, not a different default texture. do the marines actually use sarge2/w_helmet as the material? i thought i tried this, but i may have missed something.. i'm tired. am i missing something else entirely? i thought about making seperate def_heads for the different skins i was making, but this seemed tedious. if that's the way to go however, i'll do it i guess. maybe it's the skin file? ideas? i'm getting confused. it's too late at night for this many files to depend on each other.  <img src="/web/20061013022058im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154303" date="Posted: Sun Aug 20, 2006 5:25 am    Post subject: helmet skins seperate?"><author>krylon</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i'm reskinning marine_helmet. so far the body skins all work properly; the helmets are giving me trouble. i tried a skin like this...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">skin custom/characters/marine_dpm_mp   {&#13;
+<br/><br/>
+   models/characters/male_npc/marine/marine   models/characters/male_npc/marine/marine_dpm_mp&#13;
+<br/>
+   models/characters/sarge2/helmet         models/characters/sarge2/helmet_mp&#13;
+<br/>
+}</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+with a corresponding .mtr...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">models/characters/male_npc/marine/marine_dpm_mp&#13;
+<br/>
+{&#13;
+<br/>
+       //noselfShadow&#13;
+<br/>
+      unsmoothedTangents&#13;
+<br/>
+      flesh&#13;
+<br/>
+      forceOverlays&#13;
+<br/>
+      clamp&#13;
+<br/>
+      collision&#13;
+<br/><br/>
+   {   // burning corpse effect&#13;
+<br/>
+      if   parm7         // only when dead&#13;
+<br/>
+      // make a burned away alpha test for the normal skin&#13;
+<br/>
+      blend   gl_zero, gl_one         // don't draw anything&#13;
+<br/>
+      &#13;
+<br/>
+      map models/monsters/spectre/dis2.tga   // replace this with a monster-specific texture&#13;
+<br/>
+      alphaTest 0.05 + 1.7 * (time - parm7)&#13;
+<br/>
+   }&#13;
+<br/><br/>
+   renderbump  -size 1024 1024 -trace 0.07 -colorMap -aa 2  models/characters/male_npc/marine/marine_local.tga models/characters/male_npc/marine/marine_hi.lwo&#13;
+<br/>
+      forceoverlays&#13;
+<br/>
+        diffusemap     models/characters/male_npc/marine/marine_dpm_mp.tga&#13;
+<br/>
+      bumpmap        addnormals(models/characters/male_npc/marine/marine_local.tga, heightmap(models/characters/male_npc/marine/marine_h.tga, 5 ) )&#13;
+<br/>
+        specularmap     models/characters/male_npc/marine/marine_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and the separate .mtr for the helmet...&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">models/characters/sarge2/helmet_mp&#13;
+<br/>
+{&#13;
+<br/>
+    noselfShadow&#13;
+<br/>
+   unsmoothedTangents&#13;
+<br/>
+   collision&#13;
+<br/>
+   forceOverlays&#13;
+<br/>
+   clamp&#13;
+<br/>
+   metal&#13;
+<br/><br/>
+   renderbump  -size 512 512 -aa 2  models/characters/sarge2/helmet_local.tga models/characters/sarge2/helmet_hi.lwo&#13;
+<br/><br/>
+   {   // burning corpse effect&#13;
+<br/>
+      if   parm7         // only when dead&#13;
+<br/>
+      // make a burned away alpha test for the normal skin&#13;
+<br/>
+      blend   gl_zero, gl_one         // don't draw anything&#13;
+<br/>
+      &#13;
+<br/>
+      map models/monsters/spectre/dis2.tga   // replace this with a monster-specific texture&#13;
+<br/>
+      alphaTest 0.05 + 1.7 * (time - parm7)&#13;
+<br/>
+   }&#13;
+<br/><br/><br/><br/>
+   {    &#13;
+<br/>
+      blend diffusemap   &#13;
+<br/>
+      map  models/characters/sarge2/helmet_mp.tga&#13;
+<br/>
+      //alphaTest parm6&#13;
+<br/>
+   } &#13;
+<br/>
+   &#13;
+<br/>
+         bumpmap         models/characters/sarge2/helmet_local.tga&#13;
+<br/>
+           specularmap      models/characters/sarge2/helmet_mp_s.tga&#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+and my .def for the default marine:&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">model npc_marine_helmet {&#13;
+<br/>
+   inherit                     npc_marine&#13;
+<br/><br/>
+   anim stand                  models/md5/chars/stand.md5anim&#13;
+<br/>
+   anim talk_primary               models/md5/chars/stand_talk.md5anim&#13;
+<br/>
+   anim talk_secondary1               models/md5/chars/stand_talk.md5anim&#13;
+<br/>
+   anim talk_secondary2               models/md5/chars/stand_talk.md5anim&#13;
+<br/><br/><br/>
+ &#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef npc_marine_helmet {&#13;
+<br/>
+   "inherit"                  "npc_base"&#13;
+<br/>
+   "model"                     "npc_marine_helmet"&#13;
+<br/><br/>
+   "def_head"                  "head_marine_helmet"&#13;
+<br/><br/>
+   "copy_joint_world eyecontrol"   ""&#13;
+<br/>
+   &#13;
+<br/><br/>
+   "head_joint"                  "Shoulders"&#13;
+<br/>
+   "talk_no_turn"                  "1"&#13;
+<br/>
+   "talktime"                  ".5"&#13;
+<br/>
+   "talkradius"                  "384"&#13;
+<br/><br/>
+      &#13;
+<br/>
+   "head_focus_rate"               "0.1"&#13;
+<br/><br/>
+   &#13;
+<br/><br/>
+}&#13;
+<br/><br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+is something wrong with the def i made? the marine's def_head in npcs.def is head_marine_helmet, right? right, but the material def for the marine's helmet is actually models/characters/sarge2/helmet i think. i changed helmet.tga in this folder and the helmets changed. i need skins for different helmets though, not a different default texture. do the marines actually use sarge2/w_helmet as the material? i thought i tried this, but i may have missed something.. i'm tired. am i missing something else entirely? i thought about making seperate def_heads for the different skins i was making, but this seemed tedious. if that's the way to go however, i'll do it i guess. maybe it's the skin file? ideas? i'm getting confused. it's too late at night for this many files to depend on each other.  <img src="/web/20061013023411im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

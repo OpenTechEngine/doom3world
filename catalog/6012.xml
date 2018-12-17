@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="6012"><title>Shaders Cleaned up</title><posts><post id="50780" date="Posted: Thu Sep 16, 2004 4:51 pm    Post subject: Shaders Cleaned up"><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">As everybody knows Doom3 comes with a crapload of empty shaders.&#13;
+<br/><br/>
+The famous Eutetic has donated his time to present us with - you may guess it - clean shaders! Yay! &#13;
+<br/><br/>
+Download them here:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/7524/" target="_blank">http://www.pcgamemods.com/7524/</a>&#13;
+<br/><br/>
+This is really much appreciated - thanks Eutetic!<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="50941" date="Posted: Fri Sep 17, 2004 1:00 am    Post subject: "><author>AEon</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In case you are wondering if these cleaned up shaders/textures are meant for you... &#13;
+<br/><br/><span style="color: red">YES they are... this means everyone at LE!</span>&#13;
+<br/><br/>
+These should be the new default standard to use. &#13;
+<br/><br/>
+Especially to avoid bugging folks in this forum about not working shaders, because you did not install the pack <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="50953" date="Posted: Fri Sep 17, 2004 1:32 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Oooh! That reminds me.&#13;
+<br/><br/>
+I updated the FAQ to reflect the new fix.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51358" date="Posted: Sat Sep 18, 2004 7:45 am    Post subject: "><author>Eutectic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">BNA, I just fixed a little problem with the textures/common/mirror material which caused the qer_mirror.tga texture to appear on mirrors in the game. I uploaded a new version (V2) of the PAK. Could you update your link to this new one? I already updated my post in the LE forum.&#13;
+<br/><br/><a href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/7524/" target="_blank">http://www.pcgamemods.com/7524/</a>&#13;
+<br/><br/>
+thanks</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51599" date="Posted: Sun Sep 19, 2004 7:04 am    Post subject: "><author>sock</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">OMG its cranky squirrel shooting Eutectic and he is back! Ive been trying to contact u for years mate, if u got a moment send me a mail.&#13;
+<br/><br/>
+BTW very nice work on the material files. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Sock&#13;
+<br/>
+3D Button</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51752" date="Posted: Sun Sep 19, 2004 5:55 pm    Post subject: "><author>JayDawg22</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Awesome stuff Eutectic, this is how it shoulda been when you bought the game! Thanks a bunch!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51852" date="Posted: Mon Sep 20, 2004 1:22 am    Post subject: "><author>cold_Fusion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just wanted to point out a small problem I found with this. After I installed the pk4 file, I noticed that the spawn decal (the one that appears when demons are teleported) is messed up in-game. I deleted the pk4 file, and the problem was fixed. I'm not sure if it's the same in V2, I haven't tried it yet.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51862" date="Posted: Mon Sep 20, 2004 2:03 am    Post subject: "><author>zeh</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>cold_Fusion wrote:</b></span></td>	</tr><tr><td class="quote">Just wanted to point out a small problem I found with this. After I installed the pk4 file, I noticed that the spawn decal (the one that appears when demons are teleported) is messed up in-game. I deleted the pk4 file, and the problem was fixed. I'm not sure if it's the same in V2, I haven't tried it yet.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+That happened to my computer aswell. I didn't think it was related to the package, but it might be the case, since I haven't installed anything else.<br/>_________________<br/><span style="font-size: 9px; line-height: normal"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> | Additional D3++ modding links: <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/How_to_get_help" target="_blank" class="postlink">General help guide</a> | <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" target="_blank">http://www.modwiki.net</a> | <a href="https://web.archive.org/web/20070509181516/http://www.iddevnet.com/" target="_blank">http://www.iddevnet.com</a> | <a href="https://web.archive.org/web/20070509181516/http://www.quake3bits.com/" target="_blank">http://www.quake3bits.com</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52079" date="Posted: Mon Sep 20, 2004 9:22 pm    Post subject: "><author>Eutectic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>cold_Fusion wrote:</b></span></td>	</tr><tr><td class="quote">Just wanted to point out a small problem I found with this. After I installed the pk4 file, I noticed that the spawn decal (the one that appears when demons are teleported) is messed up in-game. I deleted the pk4 file, and the problem was fixed. I'm not sure if it's the same in V2, I haven't tried it yet.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Damm... you mean the "textures/decals/spawndecal" material right?&#13;
+<br/>
+(and yes it's the same in V2, don't bother to DL it)&#13;
+<br/><br/>
+I checked and I noticed that it's commented out when I should have left it in... A result of my indecision at a time when I was juggling whether or not I should comment those out or not: before I decided to use the "dontuse.tga" qer_editorimage and before I learned about the vertexcolor parameter. This broke the methodical verification flow and caused this oversight. Matt, I should have listened to you from the beginning... damm that bloody temper of mine  <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/><br/>
+Oh well... Version 3 is now up. I don't mind doing the fixes and re-uploading. What bugs me is that I feel bad for the users having to re-download a 13MB pak every time and I feel like a heel for abusing pcgamemod's storage space this way.&#13;
+<br/><br/>
+I've re-verified the entire textures/decals family to be sure there weren't any others. Thanks for the feedback cold_Fusion, this is exactly what I need to make this thing as error-free as I can <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+Oh BTW, you don't need to delete the pk4 when a problem occurs, just temporarily rename to .zip and the Doom3 game won't see it. Also, if you want, you can fix it yourself easily without having to download a new version (assuming you already have V2). Here's how:&#13;
+<br/><br/>
+- rename the pk4 to .zip and double-click on it to open the file in wizip&#13;
+<br/>
+- scroll to the file decals.mtr, right-click on it and select "view with NOTEPAD.EXE"&#13;
+<br/>
+- scroll down to where the material "textures/decals/spawndecal" is&#13;
+<br/>
+- remove the // at the beginning of every line of that shader/material&#13;
+<br/>
+- edit the qer_editorimage parameter to "textures/editor/dontuse.tga"&#13;
+<br/>
+- save the file and close it, Winzip will notice the file has changed and ask you if you want to update the archive. Choose YES.&#13;
+<br/>
+- that's it, your pak file is fixed. Just rename it to .pk4 again and you're ready to go <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/><br/>
+But if you have a broadband connection and don't mind DL'ing a 13MB file:&#13;
+<br/><a href="https://web.archive.org/web/20070509181516/http://www.pcgamemods.com/7561/" target="_blank">http://www.pcgamemods.com/7561/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52227" date="Posted: Tue Sep 21, 2004 2:10 pm    Post subject: "><author>goliathvt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well you can contact pcgamemods and just let them know what's up (ask them to remove the outdated versions, etc.  Or maybe just give you rights to do it.  The admin, Sergio, is pretty cool, so I wouldn't forsee a problem.&#13;
+<br/><br/>
+G<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="83609" date="Posted: Mon Mar 21, 2005 7:25 pm    Post subject: "><author>ZeroFear</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">this is very good. gj</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="175543" date="Posted: Sun Apr 08, 2007 11:13 pm    Post subject: "><author>Mordenkainen</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Sorry for necroing this thread but if you want to download the last versions of all the Eutectic's clean packs in one go I've updated my local host:&#13;
+<br/><br/><a href="https://web.archive.org/web/20070509181516/http://xor.planetaclix.pt/files/cleanxpak10.rar" target="_blank">http://xor.planetaclix.pt/files/cleanxpak10.rar</a> (11mb)<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.beyond3d.com/" target="_blank" class="postlink">Beyond3D.com</a> | Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="175566" date="Posted: Mon Apr 09, 2007 5:05 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ah, good. I'm glad someone kept a copy of all of those.<br/>_________________<br/><a href="https://web.archive.org/web/20070509181516/http://www.doom3world.org/" target="_blank" class="postlink"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="https://web.archive.org/web/20070509181516/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

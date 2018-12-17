@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17413"><title>tips for texture begginers</title><posts><post id="158793" date="Posted: Wed Oct 04, 2006 11:15 am    Post subject: tips for texture begginers"><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">tips for texture begginers&#13;
+<br/><br/>
+got to thinking last night and figured I should share theese two tips&#13;
+<br/><br/>
+1. if you find a bunch of old photo shop filters that dont work with newer versions&#13;
+<br/>
+download&#13;
+<br/>
+MSVCRT10.DLL&#13;
+<br/>
+its as simple as googling a place to download it.  Place the dill in your windows system32 folder and your filter should now work&#13;
+<br/><br/>
+2.  If your  a long time gimp user like me  but want ""Some"" photoshop filters to playwith as well&#13;
+<br/>
+download pspi.exe for gimp&#13;
+<br/>
+place pspi in your gimp plugins folder&#13;
+<br/>
+now restart the gimp  there will be a nother entry in your menus that will allow you to point pspi  to your photoshop plugins folder&#13;
+<br/>
+warning not all plugins work but quite a few do&#13;
+<br/><br/>
+I know the other day someone mentioned &#13;
+<br/><a href="/web/20061013023508/http://www.artweaver.de/index.php?en_version" target="_blank">http://www.artweaver.de/index.php?en_version</a>  artweaver as a free paint program as well&#13;
+<br/>
+so thought Id mention that another freebie is&#13;
+<br/><a href="/web/20061013023508/http://www.getpaint.net/" target="_blank">http://www.getpaint.net/</a>  (requires net2.0)&#13;
+<br/><br/>
+and a fun one is gloodle&#13;
+<br/><br/>
+one last tip since I started playing with gimp and photoshop together I sometimes want to take the picture between the 2 programs&#13;
+<br/>
+gimp is happy to import photoshop's clippboard stuff but photoshop dosnt like the gimp's&#13;
+<br/>
+quick and easy way around this&#13;
+<br/><a href="/web/20061013023508/http://www.irfanview.com/" target="_blank">http://www.irfanview.com</a>&#13;
+<br/><br/>
+i open a copy of irfanview ahead of time and paste gimps clippboard into irfanview  then do a &#13;
+<br/>
+control+a and a  control+c to copy from irfanviews clipboard&#13;
+<br/><br/>
+it serves as a nice go between so the two stop bickering<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158793" date="Posted: Wed Oct 04, 2006 11:15 am    Post subject: tips for texture begginers"><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">tips for texture begginers&#13;
+<br/><br/>
+got to thinking last night and figured I should share theese two tips&#13;
+<br/><br/>
+1. if you find a bunch of old photo shop filters that dont work with newer versions&#13;
+<br/>
+download&#13;
+<br/>
+MSVCRT10.DLL&#13;
+<br/>
+its as simple as googling a place to download it.  Place the dill in your windows system32 folder and your filter should now work&#13;
+<br/><br/>
+2.  If your  a long time gimp user like me  but want ""Some"" photoshop filters to playwith as well&#13;
+<br/>
+download pspi.exe for gimp&#13;
+<br/>
+place pspi in your gimp plugins folder&#13;
+<br/>
+now restart the gimp  there will be a nother entry in your menus that will allow you to point pspi  to your photoshop plugins folder&#13;
+<br/>
+warning not all plugins work but quite a few do&#13;
+<br/><br/>
+I know the other day someone mentioned &#13;
+<br/><a href="/web/20061013023643/http://www.artweaver.de/index.php?en_version" target="_blank">http://www.artweaver.de/index.php?en_version</a>  artweaver as a free paint program as well&#13;
+<br/>
+so thought Id mention that another freebie is&#13;
+<br/><a href="/web/20061013023643/http://www.getpaint.net/" target="_blank">http://www.getpaint.net/</a>  (requires net2.0)&#13;
+<br/><br/>
+and a fun one is gloodle&#13;
+<br/><br/>
+one last tip since I started playing with gimp and photoshop together I sometimes want to take the picture between the 2 programs&#13;
+<br/>
+gimp is happy to import photoshop's clippboard stuff but photoshop dosnt like the gimp's&#13;
+<br/>
+quick and easy way around this&#13;
+<br/><a href="/web/20061013023643/http://www.irfanview.com/" target="_blank">http://www.irfanview.com</a>&#13;
+<br/><br/>
+i open a copy of irfanview ahead of time and paste gimps clippboard into irfanview  then do a &#13;
+<br/>
+control+a and a  control+c to copy from irfanviews clipboard&#13;
+<br/><br/>
+it serves as a nice go between so the two stop bickering<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

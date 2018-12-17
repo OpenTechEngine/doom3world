@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="10833"><title>More Lightwave Smoothing Concerns</title><posts><post id="97436" date="Posted: Tue May 31, 2005 8:04 pm    Post subject: More Lightwave Smoothing Concerns"><author>Warchyld</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have a model in LW with 3 different surfaces,   because I need 3 different smoothing values.   They all use the same texture&#13;
+<br/><br/>
+Now,  I can't name them all the same thing in LW....   which it appears I need to do in order to use the same texture within doom&#13;
+<br/><br/>
+Is there away I can have three differently named surfaces use the same texture within doom?&#13;
+<br/><br/>
+maybe if there was a wildcard type of deal  like:&#13;
+<br/><br/>
+models/mapobjects/airlock/airlockbrace&#13;
+<br/>
+models/mapobjects/airlock/airlockbr*&#13;
+<br/>
+models/mapobjects/airlock/airlockb*&#13;
+<br/><br/>
+Then I could name my surfaces different things, but still use the same texture in LW.&#13;
+<br/><br/>
+(I also want to stay away from unwelding vertices for the sake of smoothing, it's bad practice  )&#13;
+<br/><br/><br/><span style="font-size: 9px; line-height: normal">*** NOTE&#13;
+<br/><br/>
+before we get into a lightwave bashing session,  yes I know that it sucks the way lightwaves smoothing works,  and yes I know that going through max or another package for smoothing would work fine.  Infact,  I had to go from Lightwave -&gt; Max on a commercial project using Unreal Engine,  just because of the smoothing issue. (and vertex painting)&#13;
+<br/><br/>
+I would be doing this again,  however there are two reasons why I don't want to go through max.&#13;
+<br/><br/>
+1. I own Lightwave,  I do not own Max.&#13;
+<br/><br/>
+2. Going through 2 modeling packages kills your workflow and speed.</span>&#13;
+<br/><br/><br/>
+Thanks in advance for any help.  Doom3world is an awesome resource!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97454" date="Posted: Tue May 31, 2005 9:13 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You just give them three different names, it doesn't matter what you call them  and copy and paste the shader for each one, just changing the name to your lightwave surface names.&#13;
+<br/><br/>
+ ..and you forgot reason three why you won't be using Max - because it sucks compared to Lightwave modeler.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012182239/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97465" date="Posted: Tue May 31, 2005 9:56 pm    Post subject: "><author>parsonsbear</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Not to go too far off topic, but what's the big deal about lightwave? Your models speak for themselves, so I trust you know what you're talking about. I've had a good run of things with maya, as long as you add MJPolyTools to the mix.&#13;
+<br/><br/>
+Is it a workflow thing? Are edgeloops easier? The lightwave interface looks a little daunting. After labouring over ZBrush I'm not looking forward to learning yet another interface, but if it's worth it...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97502" date="Posted: Wed Jun 01, 2005 2:33 am    Post subject: "><author>elroacho</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Is there away I can have three differently named surfaces use the same texture within doom? </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+if you open the surface properties, it lists the shader name for each surface. and you apply smoothing on a shader/surface basis. so i don't understand either how you could split up what get's smoothed without multiple shaders that are the same but with different names.&#13;
+<br/><br/>
+i've setteled for multiple shaders with the same parameters to achive the smoothing i want. i'm all ears for an easier way.&#13;
+<br/><br/>
+btw, i like LW's layout better than 3ds Max for some reason. but i like 3ds Max grid much beter than LW's. it's a toss up, neither is perfect. plus editing an ase to correct the shader path everytime a change is made drives me nuts.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97536" date="Posted: Wed Jun 01, 2005 7:57 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>parsonsbear wrote:</b></span></td>	</tr><tr><td class="quote">Not to go too far off topic, but what's the big deal about lightwave? Your models speak for themselves, so I trust you know what you're talking about. I've had a good run of things with maya, as long as you add MJPolyTools to the mix.&#13;
+<br/><br/>
+Is it a workflow thing? Are edgeloops easier? The lightwave interface looks a little daunting. After labouring over ZBrush I'm not looking forward to learning yet another interface, but if it's worth it...</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+ What do you mean' the interface looks daunting'? It has rows of button with text written on them telling you what they're for. I'd ban icons in apps if I could.&#13;
+<br/>
+ I think speed is lightwave's main asset, a lightwave guru could make a given model faster than a guru in any other app. There are no shitty manipulator handles to get in the way, and tools take their center point from where ever your mouse is, not like Maya where you have to hit the insert key and drag the manipulator handle around. You don't have to select points before you move them, there are tools like drag, magnet dragnet etc so you can sculpt a model in subpatch mode, it's so easy to take a generic template head and sculpt it into something completely different in no time - and there is just generally dozens of litle tools that make life easy and make modeling so intuitive. I'm sure a lot of it is do so with the fact that lightwave model is just a modeler, not like all other 3d apps, where the modleing happens in the same space and interface as everyting else the app can do. Modeler is dedicated entirely to modeling.&#13;
+<br/>
+ Of course, some of this is due to the fact I've  been using it for 2 years and have the hotkeys memorized and laid out the way I want them, and know every single tool, what it does and when to use it most efficently. When I'm modeling I don't even have to think about which tool or key to hit next, it just happens, so nothing interupts my flow of modeling. I am biased, yes)<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012182239/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97815" date="Posted: Fri Jun 03, 2005 12:07 am    Post subject: "><author>Warchyld</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">You just give them three different names, it doesn't matter what you call them and copy and paste the shader for each one, just changing the name to your lightwave surface names.&#13;
+<br/><br/>
+..and you forgot reason three why you won't be using Max - because it sucks compared to Lightwave modeler.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+ugh,   I am reeling in my stupidity,   I wasnt thinking in terms of materials,  only textures.&#13;
+<br/><br/>
+Thank you, I will just create new materials for each named surface.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97819" date="Posted: Fri Jun 03, 2005 12:26 am    Post subject: "><author>binaryc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">fwiw, Modo is the best modelling tool ever:&#13;
+<br/><a href="/web/20061012182239/http://www.luxology.com/modo/" target="_blank">http://www.luxology.com/modo/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97852" date="Posted: Fri Jun 03, 2005 6:55 am    Post subject: "><author>parsonsbear</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What's so good about modo? The website lists all the senior engineers as former Lightwave programmers, so I guess that means it's better than lightwave ? <img src="/web/20061012182239im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+This is my favorite line from the site:&#13;
+<br/>
+"modo helps artists steer clear of the âValley of Painâ that  is a part of the learning curve in so many applications."&#13;
+<br/><br/>
+Zbrush has a 'valley of pain' like the grand canyon. It does cook an insane amount of detail though. If only Maya's built in artisan tools were as capable...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97854" date="Posted: Fri Jun 03, 2005 7:41 am    Post subject: "><author>1eyed</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">don't forget XSI Foundation <a href="/web/20061012182239/http://www.softimage.com/" target="_blank">www.softimage.com</a> and Silo <a href="/web/20061012182239/http://www.nevercenter.com/" target="_blank">http://www.nevercenter.com/</a> <img src="/web/20061012182239im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  You can get both for the price of a modo license</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97856" date="Posted: Fri Jun 03, 2005 8:28 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Modo is good, but it's not so much better hat Lightwave that it's worth the time or money to switch to it for someone who is already a Lightwave Expert. The reward would be minimal.&#13;
+<br/>
+ It was not desgned for lightwave users since it makes a big  deal out its n-gons and subDs, neither of which are  compatable with lightwave.&#13;
+<br/>
+ It's a great choice of modeler for Maya users though.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012182239/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97436" date="Posted: Tue May 31, 2005 8:04 pm    Post subject: More Lightwave Smoothing Concerns"><author>Warchyld</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I have a model in LW with 3 different surfaces,   because I need 3 different smoothing values.   They all use the same texture&#13;
+<br/><br/>
+Now,  I can't name them all the same thing in LW....   which it appears I need to do in order to use the same texture within doom&#13;
+<br/><br/>
+Is there away I can have three differently named surfaces use the same texture within doom?&#13;
+<br/><br/>
+maybe if there was a wildcard type of deal  like:&#13;
+<br/><br/>
+models/mapobjects/airlock/airlockbrace&#13;
+<br/>
+models/mapobjects/airlock/airlockbr*&#13;
+<br/>
+models/mapobjects/airlock/airlockb*&#13;
+<br/><br/>
+Then I could name my surfaces different things, but still use the same texture in LW.&#13;
+<br/><br/>
+(I also want to stay away from unwelding vertices for the sake of smoothing, it's bad practice  )&#13;
+<br/><br/><br/><span style="font-size: 9px; line-height: normal">*** NOTE&#13;
+<br/><br/>
+before we get into a lightwave bashing session,  yes I know that it sucks the way lightwaves smoothing works,  and yes I know that going through max or another package for smoothing would work fine.  Infact,  I had to go from Lightwave -&gt; Max on a commercial project using Unreal Engine,  just because of the smoothing issue. (and vertex painting)&#13;
+<br/><br/>
+I would be doing this again,  however there are two reasons why I don't want to go through max.&#13;
+<br/><br/>
+1. I own Lightwave,  I do not own Max.&#13;
+<br/><br/>
+2. Going through 2 modeling packages kills your workflow and speed.</span>&#13;
+<br/><br/><br/>
+Thanks in advance for any help.  Doom3world is an awesome resource!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97454" date="Posted: Tue May 31, 2005 9:13 pm    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">You just give them three different names, it doesn't matter what you call them  and copy and paste the shader for each one, just changing the name to your lightwave surface names.&#13;
+<br/><br/>
+ ..and you forgot reason three why you won't be using Max - because it sucks compared to Lightwave modeler.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183240/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97465" date="Posted: Tue May 31, 2005 9:56 pm    Post subject: "><author>parsonsbear</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Not to go too far off topic, but what's the big deal about lightwave? Your models speak for themselves, so I trust you know what you're talking about. I've had a good run of things with maya, as long as you add MJPolyTools to the mix.&#13;
+<br/><br/>
+Is it a workflow thing? Are edgeloops easier? The lightwave interface looks a little daunting. After labouring over ZBrush I'm not looking forward to learning yet another interface, but if it's worth it...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97502" date="Posted: Wed Jun 01, 2005 2:33 am    Post subject: "><author>elroacho</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Is there away I can have three differently named surfaces use the same texture within doom? </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+if you open the surface properties, it lists the shader name for each surface. and you apply smoothing on a shader/surface basis. so i don't understand either how you could split up what get's smoothed without multiple shaders that are the same but with different names.&#13;
+<br/><br/>
+i've setteled for multiple shaders with the same parameters to achive the smoothing i want. i'm all ears for an easier way.&#13;
+<br/><br/>
+btw, i like LW's layout better than 3ds Max for some reason. but i like 3ds Max grid much beter than LW's. it's a toss up, neither is perfect. plus editing an ase to correct the shader path everytime a change is made drives me nuts.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97536" date="Posted: Wed Jun 01, 2005 7:57 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>parsonsbear wrote:</b></span></td>	</tr><tr><td class="quote">Not to go too far off topic, but what's the big deal about lightwave? Your models speak for themselves, so I trust you know what you're talking about. I've had a good run of things with maya, as long as you add MJPolyTools to the mix.&#13;
+<br/><br/>
+Is it a workflow thing? Are edgeloops easier? The lightwave interface looks a little daunting. After labouring over ZBrush I'm not looking forward to learning yet another interface, but if it's worth it...</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+ What do you mean' the interface looks daunting'? It has rows of button with text written on them telling you what they're for. I'd ban icons in apps if I could.&#13;
+<br/>
+ I think speed is lightwave's main asset, a lightwave guru could make a given model faster than a guru in any other app. There are no shitty manipulator handles to get in the way, and tools take their center point from where ever your mouse is, not like Maya where you have to hit the insert key and drag the manipulator handle around. You don't have to select points before you move them, there are tools like drag, magnet dragnet etc so you can sculpt a model in subpatch mode, it's so easy to take a generic template head and sculpt it into something completely different in no time - and there is just generally dozens of litle tools that make life easy and make modeling so intuitive. I'm sure a lot of it is do so with the fact that lightwave model is just a modeler, not like all other 3d apps, where the modleing happens in the same space and interface as everyting else the app can do. Modeler is dedicated entirely to modeling.&#13;
+<br/>
+ Of course, some of this is due to the fact I've  been using it for 2 years and have the hotkeys memorized and laid out the way I want them, and know every single tool, what it does and when to use it most efficently. When I'm modeling I don't even have to think about which tool or key to hit next, it just happens, so nothing interupts my flow of modeling. I am biased, yes)<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183240/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97815" date="Posted: Fri Jun 03, 2005 12:07 am    Post subject: "><author>Warchyld</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">You just give them three different names, it doesn't matter what you call them and copy and paste the shader for each one, just changing the name to your lightwave surface names.&#13;
+<br/><br/>
+..and you forgot reason three why you won't be using Max - because it sucks compared to Lightwave modeler.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+ugh,   I am reeling in my stupidity,   I wasnt thinking in terms of materials,  only textures.&#13;
+<br/><br/>
+Thank you, I will just create new materials for each named surface.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97819" date="Posted: Fri Jun 03, 2005 12:26 am    Post subject: "><author>binaryc</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">fwiw, Modo is the best modelling tool ever:&#13;
+<br/><a href="/web/20061012183240/http://www.luxology.com/modo/" target="_blank">http://www.luxology.com/modo/</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97852" date="Posted: Fri Jun 03, 2005 6:55 am    Post subject: "><author>parsonsbear</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What's so good about modo? The website lists all the senior engineers as former Lightwave programmers, so I guess that means it's better than lightwave ? <img src="/web/20061012183240im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+This is my favorite line from the site:&#13;
+<br/>
+"modo helps artists steer clear of the âValley of Painâ that  is a part of the learning curve in so many applications."&#13;
+<br/><br/>
+Zbrush has a 'valley of pain' like the grand canyon. It does cook an insane amount of detail though. If only Maya's built in artisan tools were as capable...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97854" date="Posted: Fri Jun 03, 2005 7:41 am    Post subject: "><author>1eyed</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">don't forget XSI Foundation <a href="/web/20061012183240/http://www.softimage.com/" target="_blank">www.softimage.com</a> and Silo <a href="/web/20061012183240/http://www.nevercenter.com/" target="_blank">http://www.nevercenter.com/</a> <img src="/web/20061012183240im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/>  You can get both for the price of a modo license</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="97856" date="Posted: Fri Jun 03, 2005 8:28 am    Post subject: "><author>oDDity</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Modo is good, but it's not so much better hat Lightwave that it's worth the time or money to switch to it for someone who is already a Lightwave Expert. The reward would be minimal.&#13;
+<br/>
+ It was not desgned for lightwave users since it makes a big  deal out its n-gons and subDs, neither of which are  compatable with lightwave.&#13;
+<br/>
+ It's a great choice of modeler for Maya users though.<br/>_________________<br/>Civillisation will not attain perfection until the last stone, from the last church, falls on the last priest.&#13;
+<br/>
+ - Emil Zola&#13;
+<br/><br/><a href="/web/20061012183240/http://www.pixelwerks.be/" target="_blank" class="postlink">character models site</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

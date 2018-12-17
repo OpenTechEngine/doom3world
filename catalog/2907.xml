@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="2907"><title>ALERT: Official Doom3 Editor bug report thread</title><posts><post id="p112825" date="Posted: Fri Sep 16, 2005 10:58 am "><author>son_of_sam2</author><body><![CDATA[<div class="postbody">new problem
+<br /><br />in the editor you have a tab that says console, textures entity and so on....
+<br />well mine (the tab)that says console is missing anyone know how to fix?</div>]]></body></post><post id="p112865" date="Posted: Fri Sep 16, 2005 5:14 pm "><author>kropcke</author><body><![CDATA[<div class="postbody">Hey all.
+<br /><br />Odd bug here...
+<br /><br />For some reason, it started out of nowhere - at least that seems to be the case. It's now happening on my machine, as well as other machines in the nearby computer lab which have different specs.
+<br /><br />I can no longer cap a bevel or an endcap. Doom3 crashes once I apply one.
+<br /><br />Was working fine - now it crashes...and crashes consistently.
+<br /><br />Tried using different textures applied to the patch - crash.
+<br />Tried saving map with endcap, restarting machine, and then cap - crash.
+<br />Tried caps/inverted caps - crash.
+<br />Tried on multiple machines (here and lab) - was working, now crashes.
+<br /><br />Is so odd.
+<br /><br />Any others find a similar problem, or hopefully a work-around?
+<br /><br />Thanx much!
+<br /><br />DOOM3 - patch 1.3
+<br />512 mb ram
+<br />quadrofx 500
+<br />winXP
+<br />1 gig AMD Athlon
+<br /><br />-kropcke</div>]]></body></post><post id="p112878" date="Posted: Fri Sep 16, 2005 6:46 pm "><author>kropcke</author><body><![CDATA[<div class="postbody"><div class="quotetitle">kropcke wrote:</div><div class="quotecontent"><span style="font-size: 75%; line-height: normal">Hey all.<br /><br />Odd bug here...<br /><br />For some reason, it started out of nowhere - at least that seems to be the case. It's now happening on my machine, as well as other machines in the nearby computer lab which have different specs.<br /><br />I can no longer cap a bevel or an endcap. Doom3 crashes once I apply one.<br /><br />Was working fine - now it crashes...and crashes consistently.<br /><br />Tried using different textures applied to the patch - crash.<br />Tried saving map with endcap, restarting machine, and then cap - crash.<br />Tried caps/inverted caps - crash.<br />Tried on multiple machines (here and lab) - was working, now crashes.<br /><br />Is so odd.<br /><br />Any others find a similar problem, or hopefully a work-around?<br /><br />Thanx much!<br /><br />DOOM3 - patch 1.3<br />512 mb ram<br />quadrofx 500<br />winXP<br />1 gig AMD Athlon<br /><br />-kropcke</span></div>
+<br /><br />Well, I sort of came up with a fix anyway...not too good, but it works all the same.
+<br /><br />From searching a little, I found a few others having a similar problem. Their work-around was to:
+<br /><br />1. create the brush
+<br />2. turn it into an endcap/bevel
+<br />3. DO NOT SCALE OR TRANSLATE IT
+<br />4. cap immediately!!!!!!!!!
+<br />5. then rotate, flip, scale at your will
+<br /><br />----------------------
+<br /><br />You will notice that the mesh is probably not quite set to the proportions you desire...however...a couple of things to note:
+<br /><br />1. rotating and flipping working just fine
+<br />2. if you want to start scaling your capped mesh, follow these steps:
+<br /><br /><img src="https://web.archive.org/web/20101224233738im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1a.jpg" alt="Image" /><br /><br />This is our currrent endcap (patch) with a cap.
+<br />But we want to scale it a little.
+<br /><br /><img src="https://web.archive.org/web/20101224233738im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1b.jpg" alt="Image" /><br /><br />Scaling perpendicular to the curve works just fine.
+<br /><br /><img src="https://web.archive.org/web/20101224233738im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1c.jpg" alt="Image" /><br /><br />Scaling parallel to the curve will deform your cap.
+<br /><br />So...if you do in fact need to scale your patch parallel to the curve, deselect the caps first. Scale. Then move your caps into place manually.
+<br /><br />----------------------
+<br /><br />If anyone has a better work-around, please let me know - I would greatly appreciate it <img src="https://web.archive.org/web/20101224233738im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />All in all, it's just a few extra steps - so no biggie.
+<br /><br />Thanx be to the boards!!!
+<br /><br />-kropcke</div>]]></body></post><post id="p115900" date="Posted: Wed Oct 12, 2005 9:09 pm "><author>Corsair</author><body><![CDATA[<div class="postbody">at long last ive gotten myself an upgraded pc, which made me able to run d3, or rather, to edit - which I started doing yesterday.
+<br />and then.. today, I continued, to find myself being abbandoned by the "media" tab. I frustratedly browsed through all the menu's and crap and found - nothing.
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101224233738/http://www.planetquake.com/corsair/bawkishlybawk.jpg">http://www.planetquake.com/corsair/bawkishlybawk.jpg</a><!-- m -->
+<br /><br />here's a screenshot of the situation (great overbrightness.. .btw.. .. . cough.. sarcasm.. )</div>]]></body></post><post id="p115944" date="Posted: Thu Oct 13, 2005 5:00 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Have you tried this from our level editing FAQ?...
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"><span style="font-weight: bold">I've lost the toolbar/inspector window. How do I bring it back?</span><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">Open regedit, search for "DoomRadiant" and delete the key.</div><br /><br />If you're deathly afraid of regedit I've written up a reg file to do the work for you <a href="https://web.archive.org/web/20101224233738/http://www.geocities.com/rich_is_bored/toolbar_fix.zip" class="postlink">here</a> (right click save as).</div></div>]]></body></post><post id="p116034" date="Posted: Thu Oct 13, 2005 8:18 pm "><author>Corsair</author><body><![CDATA[<div class="postbody">I did take a look at the faq, but aparently not good enough.
+<br />Just did what you refered me to, twice manualy, and once through that zip file, both didnt cure my lack of the media tab :[
+<br />thanks, tho
+<br /><br />edit: apparently it was hidden beneath (virtualy) of my monitor, changing resolution to 2048xblab made me discover it</div>]]></body></post><post id="p119008" date="Posted: Sat Oct 29, 2005 3:36 pm "><author>slimebucket</author><body><![CDATA[<div class="postbody">I'm having the same problem as the persom ^ above.
+<br /><br />I notcie when ever I use any option from the patch tab I get the error
+<br /><br />WARNING: patchMesh_t::ctrl: control point out of range 
+<br /><br />four times</div>]]></body></post><post id="p137048" date="Posted: Fri Mar 17, 2006 9:33 pm "><author>Phluxus</author><body><![CDATA[<div class="postbody">hmm i'm having the cap crash problem here too, very annoying.</div>]]></body></post><post id="p160583" date="Posted: Tue Oct 24, 2006 10:46 pm "><author>djtestor</author><body><![CDATA[<div class="postbody">Hi all, ive been trying to use doom 3 editor but with great frustration! The problem is that as soon as i click on a texture in the media tab (eg.caulk) the editor crashes? The editor also seems to crash when i try to render in cam view (eg.F3 then crashes when i update F7).
+<br />Can anyone please shed some light to what the problem might be?
+<br /><br />I am using Doom 3 with RoE and the 1.3 patch.
+<br />Doom is installed in c:\games\doom3
+<br /><br />System spec:
+<br />Windows XP Pro
+<br />AMD Athlon FX60 X2 (OC at 2.8Ghz)
+<br />Sapphire Pure crossfire A9RD580 MB
+<br />Sapphire 1900 XTX 512MB (using catalyst V6.9)
+<br />Corrsair 2GB xms pro 4400
+<br />Sound Blaster audigy 4
+<br />No fsaa and no specail settings</div>]]></body></post><post id="p160631" date="Posted: Wed Oct 25, 2006 10:49 am "><author>S@TaNiC</author><body><![CDATA[<div class="postbody">^^^^^
+<br /><br />Its because your using a dual core processor and an ATI x1000 series card. Turning off the catalyst A.I in the control center will sort the problem out.
+<br />You have to use ATI's catalyst though, if you use ATI tool tray ( what ever its called ) it doesnt seem to turn the A.I off properly.
+<br /><br /><a href="https://web.archive.org/web/20101224233738/http://www.doom3world.org/phpbb2/viewtopic.php?t=15183&amp;postdays=0&amp;postorder=asc&amp;highlight=x1900&amp;start=20" class="postlink">http://www.doom3world.org/phpbb2/viewtopic.php?t=15183&amp;postdays=0&amp;postorder=asc&amp;highlight=x1900&amp;start=20</a>
+<br /><br /><a href="https://web.archive.org/web/20101224233738/http://www.doom3world.org/phpbb2/viewtopic.php?t=17165&amp;highlight=catalyst" class="postlink">http://www.doom3world.org/phpbb2/viewtopic.php?t=17165&amp;highlight=catalyst</a></div>]]></body></post><post id="p160641" date="Posted: Wed Oct 25, 2006 2:10 pm "><author>djtestor</author><body><![CDATA[<div class="postbody">Thanks, turning off the AI seems to have worked so far no crashes.</div>]]></body></post><post id="p161955" date="Posted: Sat Nov 11, 2006 7:33 am "><author>Marineofuac</author><body><![CDATA[<div class="postbody">F3 is your worst enemy (as it turns on the renderer) if you got a level loaded and alt tab to the editor, and then you press F3 you got the most best crash ever, everytime. i just ussally type in "Disconnect" in the console then alt tab.
+<br /><br />works every time</div>]]></body></post><post id="p177052" date="Posted: Sun Apr 29, 2007 4:49 pm "><author>Eddy king</author><body><![CDATA[<div class="postbody">I go to test my map, suddenly I'm back to the menu.</div>]]></body></post><post id="p185062" date="Posted: Fri Aug 03, 2007 8:07 am "><author>13579~</author><body><![CDATA[<div class="postbody">Ok, here's a new one:<br /><br />I was trying to attach a func_cameraview to a monster and have the monster follow an attack path.<br /><br />Well, worked fine in my test map, but wouldn't do anything in my map that I wanted it in. I spend 2 hours trying to figure out whats wrong, I even copy and past the enemy, camera, attackpaths, trigger, and script from the working map into the non working map, and it still doesn't work.<br /><br />When I was doing this I copy and pasted the imp I used in the test map, and when I pasted him all the flip and rotate controls went crazy.<br /><br />Now no matter what button I press, whatever I have selected turns to the right instantly.<br /><br />So now I can't rotate or flip stuff.<br /><br />Any idea what caused this?<br /><br />I'm going to reinstall now, I've tried different maps and restarting my computer but my flip and rotate controls still instantly moved stuff to the right and then wouldn't do anything.<br /><br />3'd reinstall in two days...</div>]]></body></post><post id="p197639" date="Posted: Sat Apr 12, 2008 6:26 pm "><author>lordzapharos</author><body><![CDATA[<div class="postbody">@eddy - if you are returned to the menu after attempting to load your map, open the console and see if an error was listed.  The cause could be anything from a leak to entity errors, so a specific error message would be helpful.</div>]]></body></post><post id="p215722" date="Posted: Sun Jun 28, 2009 3:32 pm "><author>alisandro86</author><body><![CDATA[<div class="postbody">Hi all,<br />I got a problem. When i try to put a func static or a texture on a wall the editor starts to lag very much. I got a ATI HD 3650. Any help?</div>]]></body></post><post id="p219143" date="Posted: Thu Oct 01, 2009 8:59 pm "><author>downer</author><body><![CDATA[<div class="postbody">When I import QuArK Brush Primitives for Quake into the Doom 3 Editor, they don't get converted all the way, and give strange errors in other editors. Don't know about Doom 3 Editor, since I don't use it. To fix the errors, I have to copy and paste one brush at a time into another editor, and save in between each pasted brush. It goes faster if I comment out the assertions in the other editor's sourcecode.</div>]]></body></post><post id="p28522" date="Posted: Wed Aug 04, 2004 7:20 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Please report all (suspected) bugs related to the editor here.
+<br /><br />Make sure to also include your system specs as follows:
+<br /><br />CPU
+<br />GPU (+used driver version)
+<br />RAM
+<br />Soundcard
+<br />OS
+<br />Overclocked anything - if yes, what if no then post: O/C no
+<br />Any special cvar settings you've made
+<br />FSAA - if yes, which setting (disabling it might already resolve some issues)</div>]]></body></post><post id="p28529" date="Posted: Wed Aug 04, 2004 7:26 pm "><author>DudeMiester</author><body><![CDATA[<div class="postbody">Ok first bug yeay!
+<br /><br />Anyhow, the doom 3 editor will not work with antialiasing turned on, so in order to get around this problem for now add the command +set r_multiSamples 0 to your editor shortcut.
+<br /><br />Furthermore, using a driver override to force antialiasing doesn't cause any problems with the editor, so this bug must lie within Doom 3 and not your video drivers.
+<br /><br />This error is independant from system specifications, as other people have reported it, so I won't bother listing my system.</div>]]></body></post><post id="p28895" date="Posted: Thu Aug 05, 2004 1:25 pm "><author>St4rdog</author><body><![CDATA[<div class="postbody">Sometimes when insterting a model from "Right Click &gt; New Model...", instead of a blue mesh wireframe appearing in your viewport, a box about the size of the player start box appears instead, although the model DOES get inserted... you just can't see it (as a blue mesh) in the non-3d viewport unless you restart the editor.
+<br /><br /><span style="font-weight: bold">EDIT - Cloning the box fixes the problem.</span>
+<br /><br />Intel Pentium 4 2.6Ghz
+<br />512 RAM
+<br />Mobility Radeon 9600 (laptop)
+<br />Windows XP
+<br />O/C no
+<br />FSAA no</div>]]></body></post><post id="p28900" date="Posted: Thu Aug 05, 2004 1:41 pm "><author>Rayne</author><body><![CDATA[<div class="postbody">Have you tried to clone it? If not, select the model that is screwed (the box that you don't like) and hit "space". This command clone all selected objects. So, now it has cloned your box, but the new one should show the right model. Delete your old ugly box, and continue mapping..</div>]]></body></post><post id="p28921" date="Posted: Thu Aug 05, 2004 2:41 pm "><author>St4rdog</author><body><![CDATA[<div class="postbody">Cloning the box works, thanks.</div>]]></body></post><post id="p29246" date="Posted: Fri Aug 06, 2004 5:34 am "><author>korn</author><body><![CDATA[<div class="postbody">1) Shift+Click+Drag in Camera Window wont allow you to select everything you drag over in the camera view.
+<br /><br />2) You can no longer resize more then one brush at same time even if they are the same length (In 2d window) (<a href="https://web.archive.org/web/20101224224558/http://www.hosting-hub.com/filedeposit/uploads/05082004/d3r_bug00.jpg" class="postlink">ScreenShot</a>)</div>]]></body></post><post id="p29268" date="Posted: Fri Aug 06, 2004 6:27 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">korn wrote:</div><div class="quotecontent">1) Shift+Click+Drag in Camera Window wont allow you to select everything you drag over in the camera view.<br /><br />2) You can no longer resize more then one brush at same time even if they are the same length (In 2d window) (<a href="https://web.archive.org/web/20101224224558/http://www.hosting-hub.com/filedeposit/uploads/05082004/d3r_bug00.jpg" class="postlink">ScreenShot</a>)</div>
+<br /><br />Sounds more like feature downgrades to GTKRad than bugs - is DoomEdit supposed to do these things or do you miss them?</div>]]></body></post><post id="p29315" date="Posted: Fri Aug 06, 2004 8:41 am "><author>korn</author><body><![CDATA[<div class="postbody"><div class="quotetitle">BNA! wrote:</div><div class="quotecontent">Sounds more like feature downgrades to GTKRad than bugs - is DoomEdit supposed to do these things or do you miss them?</div>
+<br /><br />ahh yes, i would say your correct, but why would they have removed features that save SOO much time in mapping? But that does help explain why it took them 4 years, rofl, jk <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /> anyway, here is a true bug:
+<br /><br />1) Converting entites brushes to new entities gives this error, even get this error if you try to move entity brushes to worldspawn (<a href="https://web.archive.org/web/20101224224558/http://www.hosting-hub.com/filedeposit/uploads/06082004/d3r_bug01.jpg" class="postlink">Error ScreenShot</a>)</div>]]></body></post><post id="p29340" date="Posted: Fri Aug 06, 2004 10:17 am "><author>BNA!</author><body><![CDATA[<div class="postbody"><div class="quotetitle">korn wrote:</div><div class="quotecontent">ahh yes, i would say your correct, but why would they have removed features that save SOO much time in mapping? But that does help explain why it took them 4 years, rofl, jk <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div><br /><br />GTKRadiant and DoomEdit (or quake radinat version gazillion.03) are different development branches. While Ttimo is or was with id software, he still develops GTKRadiant outside the company.<br /><br />So it might look like a degrade from GTK but you have to look at it as an upgrade to radiant.202 (version?).<br /><br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">anyway, here is a true bug:<br /><br />1) Converting entites brushes to new entities gives this error, even get this error if you try to move entity brushes to worldspawn (<a href="https://web.archive.org/web/20101224224558/http://www.hosting-hub.com/filedeposit/uploads/06082004/d3r_bug01.jpg" class="postlink">Error ScreenShot</a>)</div>
+<br /><br />Being an entity is a boolean state of mind in DoomEdit.
+<br />I haven't found an option to change a "entityfied" brush back to world and forth to a new entity.</div>]]></body></post><post id="p29699" date="Posted: Fri Aug 06, 2004 11:34 pm "><author>odex</author><body><![CDATA[<div class="postbody">I have a funny bug, anyone else had this one?
+<br /><br />I can only enter the game from the editor one time, it doesn't matter if I use the F2 button or click the Doom 3 button, it only works one time, then I have to exit the editor and manually start D3 to test my map. When I go back in the editor, it works again, but yeah, one time only.</div>]]></body></post><post id="p29780" date="Posted: Sat Aug 07, 2004 2:20 am "><author>m4rine</author><body><![CDATA[<div class="postbody">try not exiting your game once you tested your map, just alt tab out and the doom window goes away.
+<br /><br />I got a bug, Im not sure if this is an engine bug or an editor bug, but creating 2 info_player_start's and deleting the first, leaving the second one named 'info_player_start_1' by default will give you the 'too many info_player_starts' error when you try to run the map.  Seems like the engine just checks for a info_player_start* entity name and if one exists with a _1 in it it assumes there were 2 created?  Renaming the entity to info_player_start fixed this.
+<br /><br />Not sure what my system specs matter but I will post them anyways:
+<br />P4 1300Mhz
+<br />nVidia fx5200 128MB (dont wanna check driver version)
+<br />768 SD ram
+<br />O/C no
+<br />FSAA no</div>]]></body></post><post id="p29909" date="Posted: Sat Aug 07, 2004 6:15 am "><author>ParticleMan</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">I can only enter the game from the editor one time, it doesn't matter if I use the F2 button or click the Doom 3 button, it only works one time, then I have to exit the editor and manually start D3 to test my map. When I go back in the editor, it works again, but yeah, one time only.</div>
+<br /><br />Are you typing "quit" in the console in order to close out ur game window? I used to have the same problem a long time ago, but I can't quite remember how I fixed it <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /> . Also, try typing quit and hitting return even if you dont see the game window open. If there is one thing I have learned about going from game to editor over and over is that sometimes little display hicups happen in certain spots.
+<br /><br />I have a bug, I used to not have any display, but the Dude is so cool he solved that one for me  <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> . Now, I just don't have a visable cursor to work with  <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /> .
+<br /><br />AMD 2600+
+<br />Radeon 9800 pro  (driver: wxp-w2k-DOOM-HOTFIX-8-05-040727a-017086E)
+<br />1 Gig DDR
+<br />Fortissimo 7.1
+<br />Windows  <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /><br />no oc....yet
+<br />no special cvars (other than r_multiSamples 0)
+<br />(sorry FSAA?  <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /> )</div>]]></body></post><post id="p29988" date="Posted: Sat Aug 07, 2004 9:58 am "><author>Cunbelin</author><body><![CDATA[<div class="postbody">When on the media tab in the inspectors window if your right click on most files and select edit the editor promptly crashes. Do I need to have a helper program setup for this to work or is this a menu item that should be removed ? Oh and I've had no trouble resizing multiple brush selections, I've even had problems where it tries to resize brushes that are not the same height. Oh and another kind of random one, I was making a tapered octagon using the vert editing and I would keep having faces disappear kind of randomly on that brush I'll have to look into it a bit more.
+<br /><br />AMD Athlon 2000
+<br />Nvidia Geforce FX ultra 256MB
+<br />512MB RAM</div>]]></body></post><post id="p30213" date="Posted: Sat Aug 07, 2004 7:16 pm "><author>NoSoup4U</author><body><![CDATA[<div class="postbody">I miss alot of good things from GTKRadiant, and I hope that the guys will be able to pump out a working version for D3. (missing easy 3d viewport navigation, and the auto-clip tool the most :/)
+<br /><br />Since this is a bug thread though ; 
+<br /><br />I am not able to change my viewport configuration ; I never worked with the default viewport setup, and prefer to have the four viewports (3d, top, front, side) : Somehow, in preferences, the option to do so seems to be grayed (sp?) out.
+<br />Anyone who knows a fix for this ? 
+<br />Editing as of now is doing my head in <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /> (i -HATE- the Z-coordinates viewport : Never understood how people comfortably worked with that setup).</div>]]></body></post><post id="p30405" date="Posted: Sun Aug 08, 2004 2:42 am "><author>odex</author><body><![CDATA[<div class="postbody"><div class="quotetitle">ParticleMan wrote:</div><div class="quotecontent">Are you typing "quit" in the console in order to close out ur game window? I used to have the same problem a long time ago, but I can't quite remember how I fixed it <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_sad.gif" alt=":(" title="Sad" /></div>
+<br /><br />Thanks <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> This did the trick, just had to quit the game with the "quit" command in the console, great stuff.</div>]]></body></post><post id="p30583" date="Posted: Sun Aug 08, 2004 12:41 pm "><author>Ahiles</author><body><![CDATA[<div class="postbody">Didn't know in what topic should i put this so.
+<br /><br />I cant make or select any brush it was working ok like 2 days ago but now i can only select/move object like monster, weapons, lights etc. I cant even select wall to change texture. Any idea what could be wrong and how to fix it.</div>]]></body></post><post id="p30678" date="Posted: Sun Aug 08, 2004 4:32 pm "><author>korn</author><body><![CDATA[<div class="postbody"><div class="quotetitle">BNA! wrote:</div><div class="quotecontent">Being an entity is a boolean state of mind in DoomEdit.<br />I haven't found an option to change a "entityfied" brush back to world and forth to a new entity.</div>
+<br /><br />i might add that i have found a way around this, if you select the entity brushes you want to move to world, and right click and goto ungroup entity, it drops the brushes back to worldspawn without any errors.</div>]]></body></post><post id="p30804" date="Posted: Sun Aug 08, 2004 9:13 pm "><author>CypheR</author><body><![CDATA[<div class="postbody"><div class="quotetitle">korn wrote:</div><div class="quotecontent">2) You can no longer resize more then one brush at same time even if they are the same length (In 2d window) (<a href="https://web.archive.org/web/20101224224558/http://www.hosting-hub.com/filedeposit/uploads/05082004/d3r_bug00.jpg" class="postlink">ScreenShot</a>)</div><br /><br />Go to edit/preferences in the "new functionality" section make sure "alt + multi-drag" is not selected. then you'll be able to resize multiple brush.... -OR- simply keep "alt" pushed while resizing brushes...<br /><br /><div class="quotetitle">odex wrote:</div><div class="quotecontent">I can only enter the game from the editor one time, it doesn't matter if I use the F2 button or click the Doom 3 button, it only works one time, then I have to exit the editor and manually start D3 to test my map. When I go back in the editor, it works again, but yeah, one time only.</div>
+<br /><br />I always use "editor" console command to switch back to editor
+<br /><br /><br /><br />Now i do have a slight problem, i'm used to build all my structure in caulk texture, then apply textures by selecting only visible faces.. but the thing is i cant seem to be able to select 1 face from multiple brushes (like the 4 walls of a room for example) to apply the same textures to all of them. in mohradiant, pressing CTRL+SHIFT+LEFT CLICK would do the job, keeping the first selected, then the next...but in this editor it just switches from one to another...anyway, i bet you get the picture...so anyone got a clue on this one?
+<br /><br />**EDIT** Nevermind...just figured it out..hehehe seems like SHIFT+CTRL+ALT+LEFT CLICK does the job... hehe. why keep things simple when they can be sooo complicated <img src="https://web.archive.org/web/20101224224558im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p31355" date="Posted: Mon Aug 09, 2004 3:42 pm "><author>plasm</author><body><![CDATA[<div class="postbody">Not reporting a bug. I just fixed a problem I had in the editor by updating my display drivers - the media inspector would lag massivly (e.g. only register mouse clicks once each second) when browsing anything visual, but downloading the newest nVidia drivers fixed it.</div>]]></body></post><post id="p31557" date="Posted: Mon Aug 09, 2004 9:28 pm "><author>Cheekio</author><body><![CDATA[<div class="postbody">Here's something that doesn't make sense... and appears to be only affecting me.
+<br /><br />When creating a new patch mesh, as soon as I deselect it, the damn thing disappears. Not even just goes invisble or textureless, but is entirely gone from my map. THis has proven to be a problem as this is only the second tutorial I am on, and yet I've run into a problem no one else seems to have had any trouble with.
+<br /><br />CPU: P4 2.4 ghz
+<br />Radeon 9700 Pro (catalyst drivers, I think it's version 6.14.10.0252 cause that's the only version number I can find, but it's the 'spanking new for doom 3' drivers they just released)
+<br />1 gig of ram
+<br />win xp
+<br />integrated sound
+<br />not overclocked anything
+<br />No AA, no special cvar settings as far as I know.</div>]]></body></post><post id="p112825" date="Posted: Fri Sep 16, 2005 10:58 am "><author>son_of_sam2</author><body><![CDATA[<div class="postbody">new problem
+<br /><br />in the editor you have a tab that says console, textures entity and so on....
+<br />well mine (the tab)that says console is missing anyone know how to fix?</div>]]></body></post><post id="p112865" date="Posted: Fri Sep 16, 2005 5:14 pm "><author>kropcke</author><body><![CDATA[<div class="postbody">Hey all.
+<br /><br />Odd bug here...
+<br /><br />For some reason, it started out of nowhere - at least that seems to be the case. It's now happening on my machine, as well as other machines in the nearby computer lab which have different specs.
+<br /><br />I can no longer cap a bevel or an endcap. Doom3 crashes once I apply one.
+<br /><br />Was working fine - now it crashes...and crashes consistently.
+<br /><br />Tried using different textures applied to the patch - crash.
+<br />Tried saving map with endcap, restarting machine, and then cap - crash.
+<br />Tried caps/inverted caps - crash.
+<br />Tried on multiple machines (here and lab) - was working, now crashes.
+<br /><br />Is so odd.
+<br /><br />Any others find a similar problem, or hopefully a work-around?
+<br /><br />Thanx much!
+<br /><br />DOOM3 - patch 1.3
+<br />512 mb ram
+<br />quadrofx 500
+<br />winXP
+<br />1 gig AMD Athlon
+<br /><br />-kropcke</div>]]></body></post><post id="p112878" date="Posted: Fri Sep 16, 2005 6:46 pm "><author>kropcke</author><body><![CDATA[<div class="postbody"><div class="quotetitle">kropcke wrote:</div><div class="quotecontent"><span style="font-size: 75%; line-height: normal">Hey all.<br /><br />Odd bug here...<br /><br />For some reason, it started out of nowhere - at least that seems to be the case. It's now happening on my machine, as well as other machines in the nearby computer lab which have different specs.<br /><br />I can no longer cap a bevel or an endcap. Doom3 crashes once I apply one.<br /><br />Was working fine - now it crashes...and crashes consistently.<br /><br />Tried using different textures applied to the patch - crash.<br />Tried saving map with endcap, restarting machine, and then cap - crash.<br />Tried caps/inverted caps - crash.<br />Tried on multiple machines (here and lab) - was working, now crashes.<br /><br />Is so odd.<br /><br />Any others find a similar problem, or hopefully a work-around?<br /><br />Thanx much!<br /><br />DOOM3 - patch 1.3<br />512 mb ram<br />quadrofx 500<br />winXP<br />1 gig AMD Athlon<br /><br />-kropcke</span></div>
+<br /><br />Well, I sort of came up with a fix anyway...not too good, but it works all the same.
+<br /><br />From searching a little, I found a few others having a similar problem. Their work-around was to:
+<br /><br />1. create the brush
+<br />2. turn it into an endcap/bevel
+<br />3. DO NOT SCALE OR TRANSLATE IT
+<br />4. cap immediately!!!!!!!!!
+<br />5. then rotate, flip, scale at your will
+<br /><br />----------------------
+<br /><br />You will notice that the mesh is probably not quite set to the proportions you desire...however...a couple of things to note:
+<br /><br />1. rotating and flipping working just fine
+<br />2. if you want to start scaling your capped mesh, follow these steps:
+<br /><br /><img src="https://web.archive.org/web/20101225004547im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1a.jpg" alt="Image" /><br /><br />This is our currrent endcap (patch) with a cap.
+<br />But we want to scale it a little.
+<br /><br /><img src="https://web.archive.org/web/20101225004547im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1b.jpg" alt="Image" /><br /><br />Scaling perpendicular to the curve works just fine.
+<br /><br /><img src="https://web.archive.org/web/20101225004547im_/http://atec.utdallas.edu/swearingen/screenies/web/patch_cap_1c.jpg" alt="Image" /><br /><br />Scaling parallel to the curve will deform your cap.
+<br /><br />So...if you do in fact need to scale your patch parallel to the curve, deselect the caps first. Scale. Then move your caps into place manually.
+<br /><br />----------------------
+<br /><br />If anyone has a better work-around, please let me know - I would greatly appreciate it <img src="https://web.archive.org/web/20101225004547im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />All in all, it's just a few extra steps - so no biggie.
+<br /><br />Thanx be to the boards!!!
+<br /><br />-kropcke</div>]]></body></post><post id="p115900" date="Posted: Wed Oct 12, 2005 9:09 pm "><author>Corsair</author><body><![CDATA[<div class="postbody">at long last ive gotten myself an upgraded pc, which made me able to run d3, or rather, to edit - which I started doing yesterday.
+<br />and then.. today, I continued, to find myself being abbandoned by the "media" tab. I frustratedly browsed through all the menu's and crap and found - nothing.
+<br /><br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20101225004547/http://www.planetquake.com/corsair/bawkishlybawk.jpg">http://www.planetquake.com/corsair/bawkishlybawk.jpg</a><!-- m -->
+<br /><br />here's a screenshot of the situation (great overbrightness.. .btw.. .. . cough.. sarcasm.. )</div>]]></body></post><post id="p115944" date="Posted: Thu Oct 13, 2005 5:00 am "><author>rich_is_bored</author><body><![CDATA[<div class="postbody">Have you tried this from our level editing FAQ?...
+<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent"><span style="font-weight: bold">I've lost the toolbar/inspector window. How do I bring it back?</span><br /><br /><div class="codetitle"><b>Code:</b></div><div class="codecontent">Open regedit, search for "DoomRadiant" and delete the key.</div><br /><br />If you're deathly afraid of regedit I've written up a reg file to do the work for you <a href="https://web.archive.org/web/20101225004547/http://www.geocities.com/rich_is_bored/toolbar_fix.zip" class="postlink">here</a> (right click save as).</div></div>]]></body></post><post id="p116034" date="Posted: Thu Oct 13, 2005 8:18 pm "><author>Corsair</author><body><![CDATA[<div class="postbody">I did take a look at the faq, but aparently not good enough.
+<br />Just did what you refered me to, twice manualy, and once through that zip file, both didnt cure my lack of the media tab :[
+<br />thanks, tho
+<br /><br />edit: apparently it was hidden beneath (virtualy) of my monitor, changing resolution to 2048xblab made me discover it</div>]]></body></post><post id="p119008" date="Posted: Sat Oct 29, 2005 3:36 pm "><author>slimebucket</author><body><![CDATA[<div class="postbody">I'm having the same problem as the persom ^ above.
+<br /><br />I notcie when ever I use any option from the patch tab I get the error
+<br /><br />WARNING: patchMesh_t::ctrl: control point out of range 
+<br /><br />four times</div>]]></body></post><post id="p137048" date="Posted: Fri Mar 17, 2006 9:33 pm "><author>Phluxus</author><body><![CDATA[<div class="postbody">hmm i'm having the cap crash problem here too, very annoying.</div>]]></body></post><post id="p160583" date="Posted: Tue Oct 24, 2006 10:46 pm "><author>djtestor</author><body><![CDATA[<div class="postbody">Hi all, ive been trying to use doom 3 editor but with great frustration! The problem is that as soon as i click on a texture in the media tab (eg.caulk) the editor crashes? The editor also seems to crash when i try to render in cam view (eg.F3 then crashes when i update F7).
+<br />Can anyone please shed some light to what the problem might be?
+<br /><br />I am using Doom 3 with RoE and the 1.3 patch.
+<br />Doom is installed in c:\games\doom3
+<br /><br />System spec:
+<br />Windows XP Pro
+<br />AMD Athlon FX60 X2 (OC at 2.8Ghz)
+<br />Sapphire Pure crossfire A9RD580 MB
+<br />Sapphire 1900 XTX 512MB (using catalyst V6.9)
+<br />Corrsair 2GB xms pro 4400
+<br />Sound Blaster audigy 4
+<br />No fsaa and no specail settings</div>]]></body></post><post id="p160631" date="Posted: Wed Oct 25, 2006 10:49 am "><author>S@TaNiC</author><body><![CDATA[<div class="postbody">^^^^^
+<br /><br />Its because your using a dual core processor and an ATI x1000 series card. Turning off the catalyst A.I in the control center will sort the problem out.
+<br />You have to use ATI's catalyst though, if you use ATI tool tray ( what ever its called ) it doesnt seem to turn the A.I off properly.
+<br /><br /><a href="https://web.archive.org/web/20101225004547/http://www.doom3world.org/phpbb2/viewtopic.php?t=15183&amp;postdays=0&amp;postorder=asc&amp;highlight=x1900&amp;start=20" class="postlink">http://www.doom3world.org/phpbb2/viewtopic.php?t=15183&amp;postdays=0&amp;postorder=asc&amp;highlight=x1900&amp;start=20</a>
+<br /><br /><a href="https://web.archive.org/web/20101225004547/http://www.doom3world.org/phpbb2/viewtopic.php?t=17165&amp;highlight=catalyst" class="postlink">http://www.doom3world.org/phpbb2/viewtopic.php?t=17165&amp;highlight=catalyst</a></div>]]></body></post><post id="p160641" date="Posted: Wed Oct 25, 2006 2:10 pm "><author>djtestor</author><body><![CDATA[<div class="postbody">Thanks, turning off the AI seems to have worked so far no crashes.</div>]]></body></post><post id="p161955" date="Posted: Sat Nov 11, 2006 7:33 am "><author>Marineofuac</author><body><![CDATA[<div class="postbody">F3 is your worst enemy (as it turns on the renderer) if you got a level loaded and alt tab to the editor, and then you press F3 you got the most best crash ever, everytime. i just ussally type in "Disconnect" in the console then alt tab.
+<br /><br />works every time</div>]]></body></post><post id="p177052" date="Posted: Sun Apr 29, 2007 4:49 pm "><author>Eddy king</author><body><![CDATA[<div class="postbody">I go to test my map, suddenly I'm back to the menu.</div>]]></body></post><post id="p185062" date="Posted: Fri Aug 03, 2007 8:07 am "><author>13579~</author><body><![CDATA[<div class="postbody">Ok, here's a new one:<br /><br />I was trying to attach a func_cameraview to a monster and have the monster follow an attack path.<br /><br />Well, worked fine in my test map, but wouldn't do anything in my map that I wanted it in. I spend 2 hours trying to figure out whats wrong, I even copy and past the enemy, camera, attackpaths, trigger, and script from the working map into the non working map, and it still doesn't work.<br /><br />When I was doing this I copy and pasted the imp I used in the test map, and when I pasted him all the flip and rotate controls went crazy.<br /><br />Now no matter what button I press, whatever I have selected turns to the right instantly.<br /><br />So now I can't rotate or flip stuff.<br /><br />Any idea what caused this?<br /><br />I'm going to reinstall now, I've tried different maps and restarting my computer but my flip and rotate controls still instantly moved stuff to the right and then wouldn't do anything.<br /><br />3'd reinstall in two days...</div>]]></body></post><post id="p197639" date="Posted: Sat Apr 12, 2008 6:26 pm "><author>lordzapharos</author><body><![CDATA[<div class="postbody">@eddy - if you are returned to the menu after attempting to load your map, open the console and see if an error was listed.  The cause could be anything from a leak to entity errors, so a specific error message would be helpful.</div>]]></body></post><post id="p215722" date="Posted: Sun Jun 28, 2009 3:32 pm "><author>alisandro86</author><body><![CDATA[<div class="postbody">Hi all,<br />I got a problem. When i try to put a func static or a texture on a wall the editor starts to lag very much. I got a ATI HD 3650. Any help?</div>]]></body></post><post id="p219143" date="Posted: Thu Oct 01, 2009 8:59 pm "><author>downer</author><body><![CDATA[<div class="postbody">When I import QuArK Brush Primitives for Quake into the Doom 3 Editor, they don't get converted all the way, and give strange errors in other editors. Don't know about Doom 3 Editor, since I don't use it. To fix the errors, I have to copy and paste one brush at a time into another editor, and save in between each pasted brush. It goes faster if I comment out the assertions in the other editor's sourcecode.</div>]]></body></post><post id="p42686" date="Posted: Fri Aug 27, 2004 10:20 am "><author>oMenacEo</author><body><![CDATA[<div class="postbody">Okay, I cannot even get the editor open.  I used a shortcut I found in a vid tutorial by making the shortcut target as follows: <span style="font-style: italic">"C:\Program Files\Doom 3\Doom3.exe"  +seta r_fullscreen 0 +seta com_allowconsole 1 +vid_restart +editor. </span> 
+<br /><br />However, when I try to run it I come up with an nVidia OpenGL driver error that says "Driver component sizes mis-match. Retry to keep going.  Cancel to exit"  Obviously, retry does not work.  
+<br /><br />I hope this is a simple error to fix.
+<br /><br />specs
+<br /><br />AMD AthlonXP 1.8 ghz
+<br />512mb pc2700
+<br />GeForce FX 5900 XT  61.77
+<br />Windows XP Pro</div>]]></body></post><post id="p42698" date="Posted: Fri Aug 27, 2004 11:00 am "><author>oMenacEo</author><body><![CDATA[<div class="postbody">Never freakin mind.  I figured it out.  I had downloaded a windows update earlier tonight and had been waiting for something to finish dowloading before I restarted.  It was apparently some nVidia driver stuff update which is why I was getting the OpenGL error.</div>]]></body></post><post id="p42730" date="Posted: Fri Aug 27, 2004 1:07 pm "><author>Krankster</author><body><![CDATA[<div class="postbody">ok, when i try using showlightcount, everthing is fine at first, but if i move my mouse even the slightest bit, it crashes to the desktop.  it happens every time.
+<br /><br /><br />Amd 2800+
+<br />GeForce 5200  61.77
+<br />768mb ram
+<br />win xp pro 5.1.2600 service pack 1</div>]]></body></post><post id="p43034" date="Posted: Sat Aug 28, 2004 7:25 am "><author>ChaosPhoenix</author><body><![CDATA[<div class="postbody">Haven't seen someone post a problem like this.  Also, I'm not sure whether this is a bug, or just something wrong with the way I'm doing this. 
+<br /><br />I create a room, and add some square pillars in it (brushes).  I compile and test out my map, and everything is fine.  After testing, I move the pillars around, and then test it again.  Everything loads fine except that the location of the textures have not changed, but the physical geometry of the pillars has.  Basically, the pillars got moved, but now they are invisible, and the old textures still remain, but with no physical presence or solidity.
+<br /><br />I've tried restarting the editor amoung other things, but nothing helps.  This has happened to me multiple times, on different maps.
+<br /><br />AMD Athlon XP 2500+
+<br />nVidia Geforce 4 Ti4600
+<br />1024mb PC3200 DDR
+<br />Windows XP
+<br />SB Audigy
+<br />No O/C
+<br />No cvar
+<br />FSAA - no
+<br /><br />-Phoenix</div>]]></body></post><post id="p46007" date="Posted: Thu Sep 02, 2004 10:01 pm "><author>Bittoman</author><body><![CDATA[<div class="postbody">This doesn't appear to be something system specific but a straight out editor bug.  I created a test map to test a script I'd been working on and upon creating a trig_multiple to turn it on and off with everything looked fine, I hit bsp and it returns an error saying "found #INF on line 129" and the program ends.  I open up the .map file and I find this at line 129:
+<br /><br />// entity 1
+<br />{
+<br />"classname" "trigger_multiple"
+<br />"name" "trigger_multiple_1"
+<br />"model" "trigger_multiple_1"
+<br />"origin" "-224 -288 -512"
+<br />"target" "k_light_1"
+<br />"target1" "k_light_2"
+<br />"wait" "5"
+<br />// primitive 0
+<br />{
+<br /> brushDef3
+<br /> {
+<br />  ( 0 0 -1 0 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br />  ( 0 0 1 -8 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br />  ( 0 -1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br />  ( 1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br />  ( 0 1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br />  ( -1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0
+<br /> }
+<br />}
+<br /><br /><br /><br />The map would no longer reload (would return the exact same error and then the map would exit) until after I manually removed this entity with a text editor heh and I did nothing out of the ordinary to create the trigger with, just right click and selected "trig_multiple" and everything appeared fine until I bsp'd it.</div>]]></body></post><post id="p51436" date="Posted: Sat Sep 18, 2004 5:25 pm "><author>Snic</author><body><![CDATA[<div class="postbody">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</div>]]></body></post><post id="p51444" date="Posted: Sat Sep 18, 2004 6:17 pm "><author>Docgalaad</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Snic wrote:</div><div class="quotecontent">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</div>
+<br /><br />Are you sure there are deleted ?
+<br />If you create another one, which incremented number will it get ?
+<br /><br />Go in the menu -&gt; View -&gt; Show -&gt; Ensure that Show Trigger is ticked.
+<br />If it is ticked, untick it, then tick it again. Twice. Save and reload.
+<br /><br />It's known than some of the Show/Hide options are bugged the first time you use the editor. Some ticked options are not in fact.</div>]]></body></post><post id="p51449" date="Posted: Sat Sep 18, 2004 7:01 pm "><author>Snic</author><body><![CDATA[<div class="postbody">it worked! show triggers was unticked. thanks for the help.</div>]]></body></post><post id="p52475" date="Posted: Wed Sep 22, 2004 2:53 pm "><author>bb_matt</author><body><![CDATA[<div class="postbody">It's probably been added here, but generally, patch meshes are really flakey.
+<br /><br />Odd things happen, that I don't know if they are features or not.
+<br />I was dragging a flat patch mesh today, in normal mode and it basically started curving in on itself. I couldn't replicate this error.
+<br /><br />Undo is very touch and go with patch meshes - CTRL+Z, CTRL+Z - nothing, leave for a bit, CTRL+Z ahh, finally, it undos
+<br /><br />The old "bug" of trying to drag a flat patch mesh on a side view where you can just see a thin line is still around - sometimes you can drag it, sometimes it just gives errors, sometimes it drags the texture.
+<br /><br />Basically, patch meshes in DoomEdit are a bit painful at the moment.</div>]]></body></post><post id="p52543" date="Posted: Wed Sep 22, 2004 7:32 pm "><author>Docgalaad</author><body><![CDATA[<div class="postbody">I apologize for the off-topic but, do they plan to release a new version of doomedit in the future ?
+<br /><br />Also it's not a bug but i had this nasty issue with the fog selection box in the Light Editor Panel. All you do in this panel is rendered and applied in realtime. Dont be fooled by the Apply and Cancel button. If you did a change in the Fog box, it will be applied, you pressed cancel or not. 
+<br /><br />I spent a lot of time to figure out my light was fucked cause i didnt remove the key/value pair for the fog preset in my light entity properties.</div>]]></body></post><post id="p55904" date="Posted: Sat Oct 09, 2004 11:05 pm "><author>logoliv</author><body><![CDATA[<div class="postbody">often when i hit F7 to see my work in render mode, i get graphic corruption (color squares) and it stays when i quit the editor... the only thing to make that disappear is to reboot... and it is boring when it happens 3 times in a row  <img src="https://web.archive.org/web/20081120152137im_/http://www.doom3world.org/phpbb2/images/smilies/icon_mad.gif" alt=":x" title="Mad" /><br />has someone the same issue ?
+<br />thanks for your help  <img src="https://web.archive.org/web/20081120152137im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p58614" date="Posted: Sat Oct 23, 2004 1:14 pm "><author>hussassin</author><body><![CDATA[<div class="postbody">every brush i create turns into a worldspawn. Why?
+<br /><br />thanks for any help
+<br /><br />-Hussassin
+<br /><br />No overclocking
+<br />Windows XP
+<br />VGA driver - 6.14 as the newest crashes doom 3</div>]]></body></post><post id="p58698" date="Posted: Sat Oct 23, 2004 10:23 pm "><author>Docgalaad</author><body><![CDATA[<div class="postbody">lol.
+<br /><br />This is not a bug. Where do you see a worldspawn ? You see it in the Entity properties panel. And what is the entity properties panel ? This is the panel to set the properties of entities. 
+<br />A brush is not an entity. A light is. There are a lot of entities. Each right click on the grid will show a menu to select a ton of them. 
+<br />If you select a brush, then you didnt select an entity.
+<br />The Entity properties panel is refreshed when you select something.
+<br />If it's not an entity, it shows the prime entity of a map. The worldspawn. 
+<br />This is the "container of the map", a global entity in some way. 
+<br />There is only one worldspawn for all the map. 
+<br />Selecting any brush will show the worldspawn. Easy so.
+<br /><br />Remember, any brush will show the worldspawn properties.</div>]]></body></post><post id="p60386" date="Posted: Mon Nov 01, 2004 4:59 am "><author>mage150</author><body><![CDATA[<div class="postbody"><!-- m --><a class="postlink" href="https://web.archive.org/web/20081120152137/http://img.photobucket.com/albums/v226/mage150/seclusion_bug.jpg">http://img.photobucket.com/albums/v226/ ... on_bug.jpg</a><!-- m -->
+<br /><br />Read up alot on this and some reason this was associated with clipping brushes and CGS Subtract.  Well I used neither in this map and took peoples advice of using only resized brushes.   The only thing i used besides making a brush is the Vert edit mode which I didnt even use on that particular brush.</div>]]></body></post><post id="p61195" date="Posted: Thu Nov 04, 2004 2:32 pm "><author>KrisTof</author><body><![CDATA[<div class="postbody">Following up on that worldspawn thingy, one can always convert them to func_static if that need to become an entity (right click over the editor window)</div>]]></body></post><post id="p63305" date="Posted: Mon Nov 15, 2004 11:28 am "><author>Moth</author><body><![CDATA[<div class="postbody">I placed a admin_impdoors entity in my map, and after it had been de-selected, it was impossible to select it again afterwards. I had to start a new map to get rid of it.</div>]]></body></post><post id="p66068" date="Posted: Sat Dec 04, 2004 2:38 am "><author>hobomaster222</author><body><![CDATA[<div class="postbody">Ok, I'm new to this whole brush thing. Anyway, I've gotten used to it and I started a new map. I ran saved and ran bsp. I closed the editor came back, reloaded it and all the brushes were gone, nothing but things. I didnt do anything different than on any other map I made, and its happened for the second time now. Hopefully I'm doing something wrong and maybe someone knows?
+<br /><br />P4 2ghz
+<br />Radeon 9600se
+<br />512mb ddr
+<br />Windows xp</div>]]></body></post><post id="p67530" date="Posted: Mon Dec 13, 2004 2:46 pm "><author>pilchard</author><body><![CDATA[<div class="postbody">**** UPDATE ****
+<br /><br />If you are experiencing the below issue try the following
+<br />I was previously using the Super Mal theme (Misc&gt;Colours&gt;Themes), but that may not be important. 
+<br />I changed back to the Original theme and the problem is very much reduced. Yay! I still get the occassional extra "end on" view, but the vertex drag issue is gone. Further, the editor start up  issue is gone.
+<br />My new guess is I had a messed up cfg/ini or some such. Hope it works for someone 
+<br /><br />Cheer to Admins for the effort, look forward to messing me pants over everyones maps.
+<br /><br />**** UPDATE ENDS ****
+<br /><br />I think this ones been reported, but I'll add mine aswell.
+<br /><br />I create a brush of equal dimensions. With brush selected I chose Patches&gt;Cylinder. Everything is fine at this point.... Ive got a nice stubby cylinder. However, if i try to manipulate the patch in anyway (resize in any direction or vertex drag) I get ghost images of the cylinder. These appear to be what i'd be seeing from a different orthoganal view. For example if i drag out lengthways in top view I'll get the end view of the cylinder sporadically drawn on the screen. These "extra" views of the cylinder arent selectable, nor do they appear in game after BSP.
+<br />Once they have appeared they will not go away until I restart the editor and reload the map. They also persist if i open a new map with/without saving changes Ive made.
+<br />Pretty much the same occurs with vertex dragging, except the mess is much worse ... more like a smear.
+<br /><br />I tried displaying patches as wireframes and get the same effect, however, when changing back to a non-wireframe view of the patch the patch becomes unselectable in any way. Again, shutting the editor and restarting, and reloading solves the problem until you manipulate again.
+<br /><br />This has occured with the last 3 official releases of the ATI Catalyst drivers (havent tried any others). Im currently running Catalyst version 4.11 released 11/10/04 . (machine spec below)
+<br /><br />Another very minor bug I experience is when first starting the editor after rebooting. If i do this the editor does not keep its previous display state (ie its not full screen) and the camera window is dead no matter what I do.
+<br />If i restart the editor the issue is gone and all seems normal (except the above patch stuff)
+<br /><br />Apologies for the length of post, but its a bug report. Wether this is an editor bug or a driver bug I dunno, but it feels like a screen redraw issue to me.
+<br /><br />Heres me spec;
+<br /><br />CPU: Intel Northwood P4 3.2 GHz
+<br />GPU: Asus Radeon 9600 SE 128 Mb, Driver 4.11 (released 11/10/04 )
+<br />RAM: 1 Gb Dual Channel, timings by SPD/Auto
+<br />Soundcard: Philips Acoustic Edge, Driver version 5.12.1.50
+<br />OS: Windows XP Pro SP 2 all MS patches applied
+<br />Overclocked: Nothing
+<br />Any special cvar settings you've made: Nothing
+<br />FSAA: Are you joking! Not with my Gfx card Razz <img src="https://web.archive.org/web/20081120152137im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><img src="https://web.archive.org/web/20081120152137im_/http://www.doom3world.org/phpbb2/images/smilies/icon_razz.gif" alt=":P" title="Razz" /></div>]]></body></post><post id="p80794" date="Posted: Sun Mar 06, 2005 2:45 am "><author>Spacemonkey</author><body><![CDATA[<div class="postbody">Heres something I think is a bug.
+<br /><br />I have a monster and a speaker, both are triggered by one trigger_once, it works fine, until I move the monster to another position, It doesn't matter how short is the displacement, when I load the map, the monster isn't where is supposed to be... then I have to detele it, and put another one.
+<br /><br />Board: DFI AD77 KT400
+<br />Athlon 2.4
+<br />768mb RAM
+<br />PixelView GeForceFX 5200 128mb
+<br />OS: Windows XP SP2</div>]]></body></post><post id="p89361" date="Posted: Tue Apr 19, 2005 10:45 am "><author>IRON-PAWW</author><body><![CDATA[<div class="postbody">Here is an issue that has appeard since installing ROE.   When saving a map in the editor under a new name  I'll get a save error that stated the backup files 1 and 2 cannot be overwritten.  The errors persist until the editor autosaves the map.  Does not seem to affect the the saving of the map though.  As I said, only since installing ROE.</div>]]></body></post><post id="p92281" date="Posted: Tue May 03, 2005 8:05 pm "><author>Mechanical Animal</author><body><![CDATA[<div class="postbody">Ive done a search on the following problem but i couldnt find anything so please forgive me if this has been mentioned before.
+<br /><br />When i create a func explosion, i go to the entity tab and click on particle and the editor freezes. any idea what the problem is?
+<br /><br />specs of my machine...
+<br /><br />amd athlon 64 3500+
+<br />1gb ram
+<br />geforce 6800 gt
+<br />sound blaster live 5.1 digital
+<br />windows xp SP2</div>]]></body></post><post id="p93448" date="Posted: Tue May 10, 2005 2:29 am "><author>DoV_Tomas</author><body><![CDATA[<div class="postbody">Not a good place to ask a question, maybe go to the editing forum instead. 
+<br /><br />Okay, I've lost count of the bugs and maybe this one has been mentioned before, so for the hell of it I'll add my voice to the chorus. 
+<br /><br />If you copy say a room from from one map to another, and have to move the works over a bit, all the models (doors, gui stands, frames, etc) get shifted over slightly. The lights suffer from the same fate. It's a real drag since if your map has lots of models you'll have to adjust each one separately to their original position. This is a real, big freaking drag and almost renders the cut and paste feature useless. What was ID thinking in not solving this problem?!?!?!
+<br /><br />A few more things like this - that keep me angry and frustrated - and I think I will chose another game to mod in after my project is complete. Too damn frustrating having to do stuff over and over again. Good game engine but a damn buggy editor.</div>]]></body></post><post id="p93454" date="Posted: Tue May 10, 2005 3:36 am "><author>MercyKiller</author><body><![CDATA[<div class="postbody">Your doom3 directory is C:\doom3, right? I think having it anywhere else makes the editor...uncomfortable on some machines and may cause problems.</div>]]></body></post><post id="p93480" date="Posted: Tue May 10, 2005 6:52 am "><author>Rayne</author><body><![CDATA[<div class="postbody">Sorry, but it's not "a damn buggy editor.".. It has his bugs like every other program in the world, and I assure you that there is no reason to switch to another game because "you can't do anything with the editor".
+<br /><br /><br />I use radiant for something like 3 years and I know what problems it has and my workflow it's "shaped" around that, nothing more. 
+<br /><br />Obviously, it has problems, no one is here to tell lies.. for example I hate the small bug that came out when you move certain models or patches.. You move your model/patch and the origin starts to wonder around messing your func_static integrity.. But it's simple to solve: now I simply took the habit to select the "move only, not resize" in the toolbar options of radiant. It's a small icon with four arrows going around. It works, period.
+<br /><br />You can just take a look to one of the quality maps are came out from modders.. If radiant works for them, then will works for you too.
+<br /><br />I can tell you that I wrote to Brian five or six mails about an issue I discovered on the "envshot" command (the one that takes cubemaps). Actually, seems to work only in 640x480. Since I took my cubemaps in 800x600 them were messed up and not seamless. So, Brian pointed me out that envshot works fine on 640x480 (and btw he will check why it doesn't works on others resolutions), so, in the meanwhile, I have two choices: coming here and blaming "oh well, I can't take cubemaps where I am in 800x600 " saying that i will switch to another game, or.. I can simply write r_mode 3 in console and be happy (and appreciating if ID will update that in the next patch <img src="https://web.archive.org/web/20101225000633im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /> )</div>]]></body></post><post id="p94035" date="Posted: Fri May 13, 2005 8:34 pm "><author>Sparky</author><body><![CDATA[<div class="postbody">click + drag in edge mode with multiple objects selected often causes a crash.
+<br /><br />Undo after delete patch row/column doesn't work.
+<br /><br />WinXP Pro (no service packs)
+<br />onboard sound (NForce 4 motherboard)
+<br />Geforce 6800
+<br />Athlon 64
+<br />1 GB RAM</div>]]></body></post><post id="p95344" date="Posted: Sat May 21, 2005 12:36 pm "><author>neoAbadon</author><body><![CDATA[<div class="postbody">Hi everyone!
+<br />I have a big problem right at the beginning: The editor opens all the windows normally, except xou can see NOTHING, there are no grids, just an empty, white space in each window. What can I do?
+<br />Thx,
+<br />neoAbadon</div>]]></body></post><post id="p95715" date="Posted: Mon May 23, 2005 5:02 pm "><author>neoAbadon</author><body><![CDATA[<div class="postbody">Well, I solved the problem myself...
+<br />just had to set all details to "default" in the normal game.
+<br />Now it works!</div>]]></body></post><post id="p95720" date="Posted: Mon May 23, 2005 5:36 pm "><author>Rayne</author><body><![CDATA[<div class="postbody"><div class="quotetitle">neoAbadon wrote:</div><div class="quotecontent">Well, I solved the problem myself...<br />just had to set all details to "default" in the normal game.<br />Now it works!</div>
+<br /><br />Have you tweaked the r_brightness option in the past? I've changed my gamma settings and the editor has the same problem.. By simply switch back to r_brightness 1 did the trick...</div>]]></body></post><post id="p95771" date="Posted: Mon May 23, 2005 9:13 pm "><author>neoAbadon</author><body><![CDATA[<div class="postbody">Yeah...
+<br />I had this command added to my ed_shortcut when I had first created it.
+<br />But thx anyway <img src="https://web.archive.org/web/20101225000633im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p99458" date="Posted: Thu Jun 16, 2005 4:48 pm "><author>chuckdood</author><body><![CDATA[<div class="postbody">Check out this pic, and maybe you can give an idea of what is causing this.
+<br />This occurs whenever I edit/move/delete/etc. a patch.  It's more annoying than anything else, it doesn't cause me to lose data or anything, it just looks retarded.
+<br /><br /><img src="https://web.archive.org/web/20101225000633im_/http://home.comcast.net/~chuckdoodbmx/D3EDisplayError.jpg" alt="Image" /><br /><br />Also, I have no values appear for the Size Info on a selected Brush, and I also don't have Grid Coordinate appear.  I tried mucking around with the font color for the Grid Text, but that didn't do anything.   These are just minor annoyances, though. 
+<br /><br />Also, I get the following error message, when I go to save a testmap:
+<br /><br />Unable to rename .map to the .bak: 13
+<br /><br />The file still saves, but I don't know why it keeps popping up that error message.  Again, an annoyance, but doesn't halt production.
+<br /><br />my system is a:
+<br /><br />Abit IS7/V2
+<br />2GB RAM
+<br />eVGA 6800GT 256mb AGP
+<br />P4 3.0e Prescott
+<br /><br />if that has an effect of this.   I have the latest nVidia/eVGA drivers for the card.   
+<br /><br />Could this be caused by a graphical setting in the engine?  AA is turned off.  Any ideas are appreciated.
+<br /><br />thanks
+<br /><br />chuck
+<br />It is rather brilliant of ID to include the source of each level with the game, because it gives us mappers a chance to see how they actually make the levels.</div>]]></body></post><post id="p99480" date="Posted: Thu Jun 16, 2005 8:40 pm "><author>Mordenkainen</author><body><![CDATA[<div class="postbody"><div class="quotetitle">chuckdood wrote:</div><div class="quotecontent">Also, I have no values appear for the Size Info on a selected Brush, and I also don't have Grid Coordinate appear.  I tried mucking around with the font color for the Grid Text, but that didn't do anything.   These are just minor annoyances, though.</div><br /><br />preferences &gt; paint size info. Ok, restart.<br /><br /><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">Also, I get the following error message, when I go to save a testmap:<br /><br />Unable to rename .map to the .bak: 13<br /><br />The file still saves, but I don't know why it keeps popping up that error message.  Again, an annoyance, but doesn't halt production.</div>
+<br /><br />For this and more see <!-- m --><a class="postlink" href="https://web.archive.org/web/20101225000633/http://wiki.doom3reference.com/wiki/DoomEdit">http://wiki.doom3reference.com/wiki/DoomEdit</a><!-- m -->
+<br /><br />No idea about the patch graphical errors though, it happens to me but only occasionally.</div>]]></body></post><post id="p99493" date="Posted: Thu Jun 16, 2005 10:04 pm "><author>chuckdood</author><body><![CDATA[<div class="postbody">I have that (preferences &gt; paint size info.) turned on.  I will try deleting the editor.cfg, and restarting the editor.
+<br /><br />EDIT:   Upon restarting the editor, I still have no grid values, nor size info.  Also, I have this appear in the console:
+<br /><br />X..GL_EXT_shared_texture_palette not found
+<br />X..GL_ATI_fragment_shader not found
+<br />X..GL_ATI_text_fragment_shader not found
+<br /><br />chuck</div>]]></body></post><post id="p99499" date="Posted: Thu Jun 16, 2005 10:57 pm "><author>Mordenkainen</author><body><![CDATA[<div class="postbody"><div class="quotetitle">chuckdood wrote:</div><div class="quotecontent">I have that (preferences &gt; paint size info.) turned on.  I will try deleting the editor.cfg, and restarting the editor.<br /><br />EDIT:   Upon restarting the editor, I still have no grid values, nor size info.  Also, I have this appear in the console:<br /><br />X..GL_EXT_shared_texture_palette not found<br />X..GL_ATI_fragment_shader not found<br />X..GL_ATI_text_fragment_shader not found<br /><br />chuck</div>
+<br /><br />Hmm, strange. Could you copy the following as it appears on your computer:
+<br /><br />GL_VENDOR: ATI Technologies Inc.
+<br />GL_RENDERER: RADEON 9800 Pro x86/SSE2
+<br />GL_VERSION: 2.0.5147 WinXP Release
+<br /><br />What video card and driver version are you using?
+<br /><br />Do those missing extensions warnings also appear in the game's console or just the editor's?
+<br /><br />Also, do you have GTKradiant 1.5.0 beta installed?
+<br /><br />Open your editor.cfg and see if you have this line:
+<br /><br />sett radiant_SizePainting "1"
+<br /><br />Do you have a "doom.qe4" in your \base directory?</div>]]></body></post><post id="p107672" date="Posted: Wed Aug 10, 2005 10:30 pm "><author>Brandon</author><body><![CDATA[<div class="postbody">Alright im getting a simmilar bug as described before.. Its extremely annoying and i pretty much cant do anything with my levels.
+<br /><br /><img src="https://web.archive.org/web/20101225000633im_/http://img.photobucket.com/albums/v121/Brandons/error1.jpg" alt="Image" /><br />Just a screen shot of the error i get, also pops up another error saying it cant rename it instead of the delete.
+<br /><br />Anyone have any idea how to fix this?  Saving it about 4 times seems to go alright lol.
+<br /><br />thanks.</div>]]></body></post><post id="p107720" date="Posted: Thu Aug 11, 2005 3:24 am "><author>Quanta</author><body><![CDATA[<div class="postbody">It's a known bug since 1.3. You just need to save it a bunch of times.</div>]]></body></post><post id="p108186" date="Posted: Sun Aug 14, 2005 9:51 pm "><author>Brandon</author><body><![CDATA[<div class="postbody">Yeah i figured out the saving thing, wew, had me freaking out for a bit before..  Quite awkward that bug, but oh well.</div>]]></body></post><post id="p110509" date="Posted: Sun Aug 28, 2005 5:14 am "><author>kat</author><body><![CDATA[<div class="postbody">D3Ed 1.1
+<br /><br />Editor was crashing whenever I tried to 'render' a scene with a light in it. 
+<br /><br />Turns out that when I changed the name of my projects 'lights' material file (which is sat in my project folder off the D3 root - 'doom3/quake3bits') that it causes a major conflict with Doom 3's own 'lights' file and crashes the editor out.
+<br /><br />Renaming *my* file to something else allows cameraview rendering.</div>]]></body></post><post id="p111406" date="Posted: Sun Sep 04, 2005 5:55 pm "><author>InsomniakLad</author><body><![CDATA[<div class="postbody"><div class="quotetitle">IRON-PAWW wrote:</div><div class="quotecontent">Here is an issue that has appeard since installing ROE.   When saving a map in the editor under a new name  I'll get a save error that stated the backup files 1 and 2 cannot be overwritten.  The errors persist until the editor autosaves the map.  Does not seem to affect the the saving of the map though.  As I said, only since installing ROE.</div>
+<br /><br />I have this issue too, but I can't seem to fix it, and it is ONLY since installing RoE. Even if trying to save over an existing map. Also, for some reason in the console it is looking for the .bak file in "maps\E:\Games\Doom 3\base\" even when I've told the project to use the base directory of "E:\Games\Doom 3\base\maps\"
+<br /><br />Any help on this would be greatly appreciated.
+<br />Oh, specs are as follows:
+<br /><br />P4 3.0 Prescott
+<br />1g Dual Channel Kingston
+<br />Radeon 9600XT 128 (Catalyst 5.<img src="https://web.archive.org/web/20101225000633im_/http://www.doom3world.org/phpbb2/images/smilies/icon_cool.gif" alt="8)" title="Cool" /> (This issue happens both when the clock speed of the card is upped, and when it's running standard)
+<br />XP Pro SP2</div>]]></body></post><post id="p111412" date="Posted: Sun Sep 04, 2005 7:05 pm "><author>chuckdood</author><body><![CDATA[<div class="postbody"><div class="quotetitle">Mordenkainen wrote:</div><div class="quotecontent"><br />Hmm, strange. Could you copy the following as it appears on your computer:<br /><br />GL_VENDOR: ATI Technologies Inc.<br />GL_RENDERER: RADEON 9800 Pro x86/SSE2<br />GL_VERSION: 2.0.5147 WinXP Release<br /><br />What video card and driver version are you using?<br /><br />Do those missing extensions warnings also appear in the game's console or just the editor's?<br /><br />Also, do you have GTKradiant 1.5.0 beta installed?<br /><br />Open your editor.cfg and see if you have this line:<br /><br />sett radiant_SizePainting "1"<br /><br />Do you have a "doom.qe4" in your \base directory?</div>
+<br /><br />GL_VENDOR: NVIDIA Corporation
+<br />GL_RENDERER: GeForce 6800 GT/AGP/SSE2
+<br />GL_VERSION: 2.0.0
+<br /><br />eVGA GeForce 6800GT 256mb
+<br />I do NOT have GTKRadiant 1.5.0 beta installed.
+<br /><br />I have: sett radiant_SizePainting "1"
+<br /><br />I DO have "doom.qe4" in my base dir.
+<br /><br />The warnings:  
+<br />X..GL_EXT_shared_texture_palette NOT FOUND
+<br />X..GL_ATI_fragment_shader NOT FOUND
+<br />X..GL_ATI_text_fragment_shader NOT FOUND
+<br /><br />also
+<br /><br />glprogs/arbVP_glasswarp.txt: File Not Found
+<br />glprogs/arbFP_glasswarp.txt: File Not Found
+<br /><br />chuck</div>]]></body></post><post id="p112824" date="Posted: Fri Sep 16, 2005 10:57 am "><author>son_of_sam2</author><body><![CDATA[<div class="postbody">i have found a simple fix for the bak problem
+<br /><br />1. do your map cdd things change things whatever
+<br />2.  do a bsp first (it will be short) it will say something about map un named or whatever
+<br />3. now save the map
+<br />4 now run the bsp ---and this time you will not get the bak error and everything will work fine</div>]]></body></post><post id="42686" date="Posted: Fri Aug 27, 2004 10:20 am    Post subject: "><author>oMenacEo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I cannot even get the editor open.  I used a shortcut I found in a vid tutorial by making the shortcut target as follows: <span style="font-style: italic">"C:\Program Files\Doom 3\Doom3.exe"  +seta r_fullscreen 0 +seta com_allowconsole 1 +vid_restart +editor. </span> &#13;
+<br/><br/>
+However, when I try to run it I come up with an nVidia OpenGL driver error that says "Driver component sizes mis-match. Retry to keep going.  Cancel to exit"  Obviously, retry does not work.  &#13;
+<br/><br/>
+I hope this is a simple error to fix.&#13;
+<br/><br/>
+specs&#13;
+<br/><br/>
+AMD AthlonXP 1.8 ghz&#13;
+<br/>
+512mb pc2700&#13;
+<br/>
+GeForce FX 5900 XT  61.77&#13;
+<br/>
+Windows XP Pro</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="42698" date="Posted: Fri Aug 27, 2004 11:00 am    Post subject: "><author>oMenacEo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Never freakin mind.  I figured it out.  I had downloaded a windows update earlier tonight and had been waiting for something to finish dowloading before I restarted.  It was apparently some nVidia driver stuff update which is why I was getting the OpenGL error.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="42730" date="Posted: Fri Aug 27, 2004 1:07 pm    Post subject: problems with showlightcount"><author>Krankster</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, when i try using showlightcount, everthing is fine at first, but if i move my mouse even the slightest bit, it crashes to the desktop.  it happens every time.&#13;
+<br/><br/><br/>
+Amd 2800+&#13;
+<br/>
+GeForce 5200  61.77&#13;
+<br/>
+768mb ram&#13;
+<br/>
+win xp pro 5.1.2600 service pack 1<br/>_________________<br/>Hell ain't a bad place to be</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="43034" date="Posted: Sat Aug 28, 2004 7:25 am    Post subject: "><author>ChaosPhoenix</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Haven't seen someone post a problem like this.  Also, I'm not sure whether this is a bug, or just something wrong with the way I'm doing this. &#13;
+<br/><br/>
+I create a room, and add some square pillars in it (brushes).  I compile and test out my map, and everything is fine.  After testing, I move the pillars around, and then test it again.  Everything loads fine except that the location of the textures have not changed, but the physical geometry of the pillars has.  Basically, the pillars got moved, but now they are invisible, and the old textures still remain, but with no physical presence or solidity.&#13;
+<br/><br/>
+I've tried restarting the editor amoung other things, but nothing helps.  This has happened to me multiple times, on different maps.&#13;
+<br/><br/>
+AMD Athlon XP 2500+&#13;
+<br/>
+nVidia Geforce 4 Ti4600&#13;
+<br/>
+1024mb PC3200 DDR&#13;
+<br/>
+Windows XP&#13;
+<br/>
+SB Audigy&#13;
+<br/>
+No O/C&#13;
+<br/>
+No cvar&#13;
+<br/>
+FSAA - no&#13;
+<br/><br/>
+-Phoenix</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="46007" date="Posted: Thu Sep 02, 2004 10:01 pm    Post subject: Re: ALERT: Official Doom3 Editor bug report thread"><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This doesn't appear to be something system specific but a straight out editor bug.  I created a test map to test a script I'd been working on and upon creating a trig_multiple to turn it on and off with everything looked fine, I hit bsp and it returns an error saying "found #INF on line 129" and the program ends.  I open up the .map file and I find this at line 129:&#13;
+<br/><br/>
+// entity 1&#13;
+<br/>
+{&#13;
+<br/>
+"classname" "trigger_multiple"&#13;
+<br/>
+"name" "trigger_multiple_1"&#13;
+<br/>
+"model" "trigger_multiple_1"&#13;
+<br/>
+"origin" "-224 -288 -512"&#13;
+<br/>
+"target" "k_light_1"&#13;
+<br/>
+"target1" "k_light_2"&#13;
+<br/>
+"wait" "5"&#13;
+<br/>
+// primitive 0&#13;
+<br/>
+{&#13;
+<br/>
+ brushDef3&#13;
+<br/>
+ {&#13;
+<br/>
+  ( 0 0 -1 0 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 0 1 -8 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 -1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( -1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+ }&#13;
+<br/>
+}&#13;
+<br/><br/><br/><br/>
+The map would no longer reload (would return the exact same error and then the map would exit) until after I manually removed this entity with a text editor heh and I did nothing out of the ordinary to create the trigger with, just right click and selected "trig_multiple" and everything appeared fine until I bsp'd it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51436" date="Posted: Sat Sep 18, 2004 5:25 pm    Post subject: "><author>Snic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51444" date="Posted: Sat Sep 18, 2004 6:17 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Snic wrote:</b></span></td>	</tr><tr><td class="quote">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you sure there are deleted ?&#13;
+<br/>
+If you create another one, which incremented number will it get ?&#13;
+<br/><br/>
+Go in the menu -&gt; View -&gt; Show -&gt; Ensure that Show Trigger is ticked.&#13;
+<br/>
+If it is ticked, untick it, then tick it again. Twice. Save and reload.&#13;
+<br/><br/>
+It's known than some of the Show/Hide options are bugged the first time you use the editor. Some ticked options are not in fact.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51449" date="Posted: Sat Sep 18, 2004 7:01 pm    Post subject: "><author>Snic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">it worked! show triggers was unticked. thanks for the help.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52475" date="Posted: Wed Sep 22, 2004 2:53 pm    Post subject: "><author>bb_matt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's probably been added here, but generally, patch meshes are really flakey.&#13;
+<br/><br/>
+Odd things happen, that I don't know if they are features or not.&#13;
+<br/>
+I was dragging a flat patch mesh today, in normal mode and it basically started curving in on itself. I couldn't replicate this error.&#13;
+<br/><br/>
+Undo is very touch and go with patch meshes - CTRL+Z, CTRL+Z - nothing, leave for a bit, CTRL+Z ahh, finally, it undos&#13;
+<br/><br/>
+The old "bug" of trying to drag a flat patch mesh on a side view where you can just see a thin line is still around - sometimes you can drag it, sometimes it just gives errors, sometimes it drags the texture.&#13;
+<br/><br/>
+Basically, patch meshes in DoomEdit are a bit painful at the moment.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52543" date="Posted: Wed Sep 22, 2004 7:32 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I apologize for the off-topic but, do they plan to release a new version of doomedit in the future ?&#13;
+<br/><br/>
+Also it's not a bug but i had this nasty issue with the fog selection box in the Light Editor Panel. All you do in this panel is rendered and applied in realtime. Dont be fooled by the Apply and Cancel button. If you did a change in the Fog box, it will be applied, you pressed cancel or not. &#13;
+<br/><br/>
+I spent a lot of time to figure out my light was fucked cause i didnt remove the key/value pair for the fog preset in my light entity properties.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55904" date="Posted: Sat Oct 09, 2004 11:05 pm    Post subject: "><author>logoliv</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">often when i hit F7 to see my work in render mode, i get graphic corruption (color squares) and it stays when i quit the editor... the only thing to make that disappear is to reboot... and it is boring when it happens 3 times in a row  <img src="/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/>
+has someone the same issue ?&#13;
+<br/>
+thanks for your help  <img src="/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="58614" date="Posted: Sat Oct 23, 2004 1:14 pm    Post subject: "><author>hussassin</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">every brush i create turns into a worldspawn. Why?&#13;
+<br/><br/>
+thanks for any help&#13;
+<br/><br/>
+-Hussassin&#13;
+<br/><br/>
+No overclocking&#13;
+<br/>
+Windows XP&#13;
+<br/>
+VGA driver - 6.14 as the newest crashes doom 3<br/>_________________<br/>AMD Athlon 3000+&#13;
+<br/>
+512mb RAM&#13;
+<br/>
+Geforce 6800</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="58698" date="Posted: Sat Oct 23, 2004 10:23 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">lol.&#13;
+<br/><br/>
+This is not a bug. Where do you see a worldspawn ? You see it in the Entity properties panel. And what is the entity properties panel ? This is the panel to set the properties of entities. &#13;
+<br/>
+A brush is not an entity. A light is. There are a lot of entities. Each right click on the grid will show a menu to select a ton of them. &#13;
+<br/>
+If you select a brush, then you didnt select an entity.&#13;
+<br/>
+The Entity properties panel is refreshed when you select something.&#13;
+<br/>
+If it's not an entity, it shows the prime entity of a map. The worldspawn. &#13;
+<br/>
+This is the "container of the map", a global entity in some way. &#13;
+<br/>
+There is only one worldspawn for all the map. &#13;
+<br/>
+Selecting any brush will show the worldspawn. Easy so.&#13;
+<br/><br/>
+Remember, any brush will show the worldspawn properties.<br/>_________________<br/><span style="font-style: italic">English is not my first language, i apologize but i do my best. Oh and i forgot, i love the D3 engine.</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="60386" date="Posted: Mon Nov 01, 2004 4:59 am    Post subject: "><author>mage150</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="/web/20060427085320/http://img.photobucket.com/albums/v226/mage150/seclusion_bug.jpg" target="_blank">http://img.photobucket.com/albums/v226/mage150/seclusion_bug.jpg</a>&#13;
+<br/><br/>
+Read up alot on this and some reason this was associated with clipping brushes and CGS Subtract.  Well I used neither in this map and took peoples advice of using only resized brushes.   The only thing i used besides making a brush is the Vert edit mode which I didnt even use on that particular brush.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="61195" date="Posted: Thu Nov 04, 2004 2:32 pm    Post subject: "><author>KrisTof</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Following up on that worldspawn thingy, one can always convert them to func_static if that need to become an entity (right click over the editor window)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="63305" date="Posted: Mon Nov 15, 2004 11:28 am    Post subject: "><author>Moth</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I placed a admin_impdoors entity in my map, and after it had been de-selected, it was impossible to select it again afterwards. I had to start a new map to get rid of it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="66068" date="Posted: Sat Dec 04, 2004 2:38 am    Post subject: "><author>hobomaster222</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, I'm new to this whole brush thing. Anyway, I've gotten used to it and I started a new map. I ran saved and ran bsp. I closed the editor came back, reloaded it and all the brushes were gone, nothing but things. I didnt do anything different than on any other map I made, and its happened for the second time now. Hopefully I'm doing something wrong and maybe someone knows?&#13;
+<br/><br/>
+P4 2ghz&#13;
+<br/>
+Radeon 9600se&#13;
+<br/>
+512mb ddr&#13;
+<br/>
+Windows xp<br/>_________________<br/>meow</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="67530" date="Posted: Mon Dec 13, 2004 2:46 pm    Post subject: "><author>pilchard</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">**** UPDATE ****&#13;
+<br/><br/>
+If you are experiencing the below issue try the following&#13;
+<br/>
+I was previously using the Super Mal theme (Misc&gt;Colours&gt;Themes), but that may not be important. &#13;
+<br/>
+I changed back to the Original theme and the problem is very much reduced. Yay! I still get the occassional extra "end on" view, but the vertex drag issue is gone. Further, the editor start up  issue is gone.&#13;
+<br/>
+My new guess is I had a messed up cfg/ini or some such. Hope it works for someone &#13;
+<br/><br/>
+Cheer to Admins for the effort, look forward to messing me pants over everyones maps.&#13;
+<br/><br/>
+**** UPDATE ENDS ****&#13;
+<br/><br/>
+I think this ones been reported, but I'll add mine aswell.&#13;
+<br/><br/>
+I create a brush of equal dimensions. With brush selected I chose Patches&gt;Cylinder. Everything is fine at this point.... Ive got a nice stubby cylinder. However, if i try to manipulate the patch in anyway (resize in any direction or vertex drag) I get ghost images of the cylinder. These appear to be what i'd be seeing from a different orthoganal view. For example if i drag out lengthways in top view I'll get the end view of the cylinder sporadically drawn on the screen. These "extra" views of the cylinder arent selectable, nor do they appear in game after BSP.&#13;
+<br/>
+Once they have appeared they will not go away until I restart the editor and reload the map. They also persist if i open a new map with/without saving changes Ive made.&#13;
+<br/>
+Pretty much the same occurs with vertex dragging, except the mess is much worse ... more like a smear.&#13;
+<br/><br/>
+I tried displaying patches as wireframes and get the same effect, however, when changing back to a non-wireframe view of the patch the patch becomes unselectable in any way. Again, shutting the editor and restarting, and reloading solves the problem until you manipulate again.&#13;
+<br/><br/>
+This has occured with the last 3 official releases of the ATI Catalyst drivers (havent tried any others). Im currently running Catalyst version 4.11 released 11/10/04 . (machine spec below)&#13;
+<br/><br/>
+Another very minor bug I experience is when first starting the editor after rebooting. If i do this the editor does not keep its previous display state (ie its not full screen) and the camera window is dead no matter what I do.&#13;
+<br/>
+If i restart the editor the issue is gone and all seems normal (except the above patch stuff)&#13;
+<br/><br/>
+Apologies for the length of post, but its a bug report. Wether this is an editor bug or a driver bug I dunno, but it feels like a screen redraw issue to me.&#13;
+<br/><br/>
+Heres me spec;&#13;
+<br/><br/>
+CPU: Intel Northwood P4 3.2 GHz&#13;
+<br/>
+GPU: Asus Radeon 9600 SE 128 Mb, Driver 4.11 (released 11/10/04 )&#13;
+<br/>
+RAM: 1 Gb Dual Channel, timings by SPD/Auto&#13;
+<br/>
+Soundcard: Philips Acoustic Edge, Driver version 5.12.1.50&#13;
+<br/>
+OS: Windows XP Pro SP 2 all MS patches applied&#13;
+<br/>
+Overclocked: Nothing&#13;
+<br/>
+Any special cvar settings you've made: Nothing&#13;
+<br/>
+FSAA: Are you joking! Not with my Gfx card Razz <img src="/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><img src="/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="80794" date="Posted: Sun Mar 06, 2005 2:45 am    Post subject: "><author>Spacemonkey</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Heres something I think is a bug.&#13;
+<br/><br/>
+I have a monster and a speaker, both are triggered by one trigger_once, it works fine, until I move the monster to another position, It doesn't matter how short is the displacement, when I load the map, the monster isn't where is supposed to be... then I have to detele it, and put another one.&#13;
+<br/><br/>
+Board: DFI AD77 KT400&#13;
+<br/>
+Athlon 2.4&#13;
+<br/>
+768mb RAM&#13;
+<br/>
+PixelView GeForceFX 5200 128mb&#13;
+<br/>
+OS: Windows XP SP2<br/>_________________<br/>You're not a beautiful or unique snowflake.&#13;
+<br/><a href="/web/20060427085320/http://www.myinsomnia.com/" target="_blank" class="postlink">www.MyInsomnia.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="89361" date="Posted: Tue Apr 19, 2005 10:45 am    Post subject: "><author>IRON-PAWW</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here is an issue that has appeard since installing ROE.   When saving a map in the editor under a new name  I'll get a save error that stated the backup files 1 and 2 cannot be overwritten.  The errors persist until the editor autosaves the map.  Does not seem to affect the the saving of the map though.  As I said, only since installing ROE.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="42686" date="Posted: Fri Aug 27, 2004 10:20 am    Post subject: "><author>oMenacEo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay, I cannot even get the editor open.  I used a shortcut I found in a vid tutorial by making the shortcut target as follows: <span style="font-style: italic">"C:\Program Files\Doom 3\Doom3.exe"  +seta r_fullscreen 0 +seta com_allowconsole 1 +vid_restart +editor. </span> &#13;
+<br/><br/>
+However, when I try to run it I come up with an nVidia OpenGL driver error that says "Driver component sizes mis-match. Retry to keep going.  Cancel to exit"  Obviously, retry does not work.  &#13;
+<br/><br/>
+I hope this is a simple error to fix.&#13;
+<br/><br/>
+specs&#13;
+<br/><br/>
+AMD AthlonXP 1.8 ghz&#13;
+<br/>
+512mb pc2700&#13;
+<br/>
+GeForce FX 5900 XT  61.77&#13;
+<br/>
+Windows XP Pro</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="42698" date="Posted: Fri Aug 27, 2004 11:00 am    Post subject: "><author>oMenacEo</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Never freakin mind.  I figured it out.  I had downloaded a windows update earlier tonight and had been waiting for something to finish dowloading before I restarted.  It was apparently some nVidia driver stuff update which is why I was getting the OpenGL error.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="42730" date="Posted: Fri Aug 27, 2004 1:07 pm    Post subject: problems with showlightcount"><author>Krankster</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">ok, when i try using showlightcount, everthing is fine at first, but if i move my mouse even the slightest bit, it crashes to the desktop.  it happens every time.&#13;
+<br/><br/><br/>
+Amd 2800+&#13;
+<br/>
+GeForce 5200  61.77&#13;
+<br/>
+768mb ram&#13;
+<br/>
+win xp pro 5.1.2600 service pack 1<br/>_________________<br/>Hell ain't a bad place to be</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="43034" date="Posted: Sat Aug 28, 2004 7:25 am    Post subject: "><author>ChaosPhoenix</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Haven't seen someone post a problem like this.  Also, I'm not sure whether this is a bug, or just something wrong with the way I'm doing this. &#13;
+<br/><br/>
+I create a room, and add some square pillars in it (brushes).  I compile and test out my map, and everything is fine.  After testing, I move the pillars around, and then test it again.  Everything loads fine except that the location of the textures have not changed, but the physical geometry of the pillars has.  Basically, the pillars got moved, but now they are invisible, and the old textures still remain, but with no physical presence or solidity.&#13;
+<br/><br/>
+I've tried restarting the editor amoung other things, but nothing helps.  This has happened to me multiple times, on different maps.&#13;
+<br/><br/>
+AMD Athlon XP 2500+&#13;
+<br/>
+nVidia Geforce 4 Ti4600&#13;
+<br/>
+1024mb PC3200 DDR&#13;
+<br/>
+Windows XP&#13;
+<br/>
+SB Audigy&#13;
+<br/>
+No O/C&#13;
+<br/>
+No cvar&#13;
+<br/>
+FSAA - no&#13;
+<br/><br/>
+-Phoenix</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="46007" date="Posted: Thu Sep 02, 2004 10:01 pm    Post subject: Re: ALERT: Official Doom3 Editor bug report thread"><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This doesn't appear to be something system specific but a straight out editor bug.  I created a test map to test a script I'd been working on and upon creating a trig_multiple to turn it on and off with everything looked fine, I hit bsp and it returns an error saying "found #INF on line 129" and the program ends.  I open up the .map file and I find this at line 129:&#13;
+<br/><br/>
+// entity 1&#13;
+<br/>
+{&#13;
+<br/>
+"classname" "trigger_multiple"&#13;
+<br/>
+"name" "trigger_multiple_1"&#13;
+<br/>
+"model" "trigger_multiple_1"&#13;
+<br/>
+"origin" "-224 -288 -512"&#13;
+<br/>
+"target" "k_light_1"&#13;
+<br/>
+"target1" "k_light_2"&#13;
+<br/>
+"wait" "5"&#13;
+<br/>
+// primitive 0&#13;
+<br/>
+{&#13;
+<br/>
+ brushDef3&#13;
+<br/>
+ {&#13;
+<br/>
+  ( 0 0 -1 0 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 0 1 -8 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 -1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( 0 1 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+  ( -1 0 0 -32 ) ( ( 1.#INF -1.#IND -1.#IND ) ( -1.#IND 1.#INF -1.#IND ) ) "textures/common/trigmulti" 0 0 0&#13;
+<br/>
+ }&#13;
+<br/>
+}&#13;
+<br/><br/><br/><br/>
+The map would no longer reload (would return the exact same error and then the map would exit) until after I manually removed this entity with a text editor heh and I did nothing out of the ordinary to create the trigger with, just right click and selected "trig_multiple" and everything appeared fine until I bsp'd it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51436" date="Posted: Sat Sep 18, 2004 5:25 pm    Post subject: "><author>Snic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51444" date="Posted: Sat Sep 18, 2004 6:17 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Snic wrote:</b></span></td>	</tr><tr><td class="quote">when I create a trigger entity and place it on the map, it's deleted after I deselect it with Esc. it did the same thing with all the triggers. it was also gone when i start up DoomEdit and load my map and everything was deselected.  so basically, the trigger disappears when it is deselected. can anyone help me?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Are you sure there are deleted ?&#13;
+<br/>
+If you create another one, which incremented number will it get ?&#13;
+<br/><br/>
+Go in the menu -&gt; View -&gt; Show -&gt; Ensure that Show Trigger is ticked.&#13;
+<br/>
+If it is ticked, untick it, then tick it again. Twice. Save and reload.&#13;
+<br/><br/>
+It's known than some of the Show/Hide options are bugged the first time you use the editor. Some ticked options are not in fact.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="51449" date="Posted: Sat Sep 18, 2004 7:01 pm    Post subject: "><author>Snic</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">it worked! show triggers was unticked. thanks for the help.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52475" date="Posted: Wed Sep 22, 2004 2:53 pm    Post subject: "><author>bb_matt</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It's probably been added here, but generally, patch meshes are really flakey.&#13;
+<br/><br/>
+Odd things happen, that I don't know if they are features or not.&#13;
+<br/>
+I was dragging a flat patch mesh today, in normal mode and it basically started curving in on itself. I couldn't replicate this error.&#13;
+<br/><br/>
+Undo is very touch and go with patch meshes - CTRL+Z, CTRL+Z - nothing, leave for a bit, CTRL+Z ahh, finally, it undos&#13;
+<br/><br/>
+The old "bug" of trying to drag a flat patch mesh on a side view where you can just see a thin line is still around - sometimes you can drag it, sometimes it just gives errors, sometimes it drags the texture.&#13;
+<br/><br/>
+Basically, patch meshes in DoomEdit are a bit painful at the moment.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="52543" date="Posted: Wed Sep 22, 2004 7:32 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I apologize for the off-topic but, do they plan to release a new version of doomedit in the future ?&#13;
+<br/><br/>
+Also it's not a bug but i had this nasty issue with the fog selection box in the Light Editor Panel. All you do in this panel is rendered and applied in realtime. Dont be fooled by the Apply and Cancel button. If you did a change in the Fog box, it will be applied, you pressed cancel or not. &#13;
+<br/><br/>
+I spent a lot of time to figure out my light was fucked cause i didnt remove the key/value pair for the fog preset in my light entity properties.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="55904" date="Posted: Sat Oct 09, 2004 11:05 pm    Post subject: "><author>logoliv</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">often when i hit F7 to see my work in render mode, i get graphic corruption (color squares) and it stays when i quit the editor... the only thing to make that disappear is to reboot... and it is boring when it happens 3 times in a row  <img src="https://web.archive.org/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_mad.gif" alt="Mad" border="0"/><br/>
+has someone the same issue ?&#13;
+<br/>
+thanks for your help  <img src="https://web.archive.org/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="58614" date="Posted: Sat Oct 23, 2004 1:14 pm    Post subject: "><author>hussassin</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">every brush i create turns into a worldspawn. Why?&#13;
+<br/><br/>
+thanks for any help&#13;
+<br/><br/>
+-Hussassin&#13;
+<br/><br/>
+No overclocking&#13;
+<br/>
+Windows XP&#13;
+<br/>
+VGA driver - 6.14 as the newest crashes doom 3<br/>_________________<br/>AMD Athlon 3000+&#13;
+<br/>
+512mb RAM&#13;
+<br/>
+Geforce 6800</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="58698" date="Posted: Sat Oct 23, 2004 10:23 pm    Post subject: "><author>Docgalaad</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">lol.&#13;
+<br/><br/>
+This is not a bug. Where do you see a worldspawn ? You see it in the Entity properties panel. And what is the entity properties panel ? This is the panel to set the properties of entities. &#13;
+<br/>
+A brush is not an entity. A light is. There are a lot of entities. Each right click on the grid will show a menu to select a ton of them. &#13;
+<br/>
+If you select a brush, then you didnt select an entity.&#13;
+<br/>
+The Entity properties panel is refreshed when you select something.&#13;
+<br/>
+If it's not an entity, it shows the prime entity of a map. The worldspawn. &#13;
+<br/>
+This is the "container of the map", a global entity in some way. &#13;
+<br/>
+There is only one worldspawn for all the map. &#13;
+<br/>
+Selecting any brush will show the worldspawn. Easy so.&#13;
+<br/><br/>
+Remember, any brush will show the worldspawn properties.<br/>_________________<br/><span style="font-style: italic">English is not my first language, i apologize but i do my best. Oh and i forgot, i love the D3 engine.</span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="60386" date="Posted: Mon Nov 01, 2004 4:59 am    Post subject: "><author>mage150</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"><a href="https://web.archive.org/web/20060427085320/http://img.photobucket.com/albums/v226/mage150/seclusion_bug.jpg" target="_blank">http://img.photobucket.com/albums/v226/mage150/seclusion_bug.jpg</a>&#13;
+<br/><br/>
+Read up alot on this and some reason this was associated with clipping brushes and CGS Subtract.  Well I used neither in this map and took peoples advice of using only resized brushes.   The only thing i used besides making a brush is the Vert edit mode which I didnt even use on that particular brush.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="61195" date="Posted: Thu Nov 04, 2004 2:32 pm    Post subject: "><author>KrisTof</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Following up on that worldspawn thingy, one can always convert them to func_static if that need to become an entity (right click over the editor window)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="63305" date="Posted: Mon Nov 15, 2004 11:28 am    Post subject: "><author>Moth</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I placed a admin_impdoors entity in my map, and after it had been de-selected, it was impossible to select it again afterwards. I had to start a new map to get rid of it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="66068" date="Posted: Sat Dec 04, 2004 2:38 am    Post subject: "><author>hobomaster222</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ok, I'm new to this whole brush thing. Anyway, I've gotten used to it and I started a new map. I ran saved and ran bsp. I closed the editor came back, reloaded it and all the brushes were gone, nothing but things. I didnt do anything different than on any other map I made, and its happened for the second time now. Hopefully I'm doing something wrong and maybe someone knows?&#13;
+<br/><br/>
+P4 2ghz&#13;
+<br/>
+Radeon 9600se&#13;
+<br/>
+512mb ddr&#13;
+<br/>
+Windows xp<br/>_________________<br/>meow</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="67530" date="Posted: Mon Dec 13, 2004 2:46 pm    Post subject: "><author>pilchard</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">**** UPDATE ****&#13;
+<br/><br/>
+If you are experiencing the below issue try the following&#13;
+<br/>
+I was previously using the Super Mal theme (Misc&gt;Colours&gt;Themes), but that may not be important. &#13;
+<br/>
+I changed back to the Original theme and the problem is very much reduced. Yay! I still get the occassional extra "end on" view, but the vertex drag issue is gone. Further, the editor start up  issue is gone.&#13;
+<br/>
+My new guess is I had a messed up cfg/ini or some such. Hope it works for someone &#13;
+<br/><br/>
+Cheer to Admins for the effort, look forward to messing me pants over everyones maps.&#13;
+<br/><br/>
+**** UPDATE ENDS ****&#13;
+<br/><br/>
+I think this ones been reported, but I'll add mine aswell.&#13;
+<br/><br/>
+I create a brush of equal dimensions. With brush selected I chose Patches&gt;Cylinder. Everything is fine at this point.... Ive got a nice stubby cylinder. However, if i try to manipulate the patch in anyway (resize in any direction or vertex drag) I get ghost images of the cylinder. These appear to be what i'd be seeing from a different orthoganal view. For example if i drag out lengthways in top view I'll get the end view of the cylinder sporadically drawn on the screen. These "extra" views of the cylinder arent selectable, nor do they appear in game after BSP.&#13;
+<br/>
+Once they have appeared they will not go away until I restart the editor and reload the map. They also persist if i open a new map with/without saving changes Ive made.&#13;
+<br/>
+Pretty much the same occurs with vertex dragging, except the mess is much worse ... more like a smear.&#13;
+<br/><br/>
+I tried displaying patches as wireframes and get the same effect, however, when changing back to a non-wireframe view of the patch the patch becomes unselectable in any way. Again, shutting the editor and restarting, and reloading solves the problem until you manipulate again.&#13;
+<br/><br/>
+This has occured with the last 3 official releases of the ATI Catalyst drivers (havent tried any others). Im currently running Catalyst version 4.11 released 11/10/04 . (machine spec below)&#13;
+<br/><br/>
+Another very minor bug I experience is when first starting the editor after rebooting. If i do this the editor does not keep its previous display state (ie its not full screen) and the camera window is dead no matter what I do.&#13;
+<br/>
+If i restart the editor the issue is gone and all seems normal (except the above patch stuff)&#13;
+<br/><br/>
+Apologies for the length of post, but its a bug report. Wether this is an editor bug or a driver bug I dunno, but it feels like a screen redraw issue to me.&#13;
+<br/><br/>
+Heres me spec;&#13;
+<br/><br/>
+CPU: Intel Northwood P4 3.2 GHz&#13;
+<br/>
+GPU: Asus Radeon 9600 SE 128 Mb, Driver 4.11 (released 11/10/04 )&#13;
+<br/>
+RAM: 1 Gb Dual Channel, timings by SPD/Auto&#13;
+<br/>
+Soundcard: Philips Acoustic Edge, Driver version 5.12.1.50&#13;
+<br/>
+OS: Windows XP Pro SP 2 all MS patches applied&#13;
+<br/>
+Overclocked: Nothing&#13;
+<br/>
+Any special cvar settings you've made: Nothing&#13;
+<br/>
+FSAA: Are you joking! Not with my Gfx card Razz <img src="https://web.archive.org/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><img src="https://web.archive.org/web/20060427085320im_/http://www.doom3world.org/phpbb2/images/smiles/icon_razz.gif" alt="Razz" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="80794" date="Posted: Sun Mar 06, 2005 2:45 am    Post subject: "><author>Spacemonkey</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Heres something I think is a bug.&#13;
+<br/><br/>
+I have a monster and a speaker, both are triggered by one trigger_once, it works fine, until I move the monster to another position, It doesn't matter how short is the displacement, when I load the map, the monster isn't where is supposed to be... then I have to detele it, and put another one.&#13;
+<br/><br/>
+Board: DFI AD77 KT400&#13;
+<br/>
+Athlon 2.4&#13;
+<br/>
+768mb RAM&#13;
+<br/>
+PixelView GeForceFX 5200 128mb&#13;
+<br/>
+OS: Windows XP SP2<br/>_________________<br/>You're not a beautiful or unique snowflake.&#13;
+<br/><a href="https://web.archive.org/web/20060427085320/http://www.myinsomnia.com/" target="_blank" class="postlink">www.MyInsomnia.com</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="89361" date="Posted: Tue Apr 19, 2005 10:45 am    Post subject: "><author>IRON-PAWW</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here is an issue that has appeard since installing ROE.   When saving a map in the editor under a new name  I'll get a save error that stated the backup files 1 and 2 cannot be overwritten.  The errors persist until the editor autosaves the map.  Does not seem to affect the the saving of the map though.  As I said, only since installing ROE.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

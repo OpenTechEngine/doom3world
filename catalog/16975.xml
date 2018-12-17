@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16975"><title>Importing .md5's into blender</title><posts><post id="p155013" date="Posted: Sat Aug 26, 2006 11:25 am "><author>Scott B.</author><body><![CDATA[<div class="postbody">What am I doing wrong.
+<br />I keep getting 
+<br />import errror no mudule named blender
+<br />What does that mean?
+<br />How can I fix this?</div>]]></body></post><post id="p155015" date="Posted: Sat Aug 26, 2006 11:43 am "><author>der_ton</author><body><![CDATA[<div class="postbody">What are you trying to do?
+<br /><br />You have to start the script from within Blender. Doubleclicking the .py file in explorer doesn't work.</div>]]></body></post><post id="p155049" date="Posted: Sat Aug 26, 2006 8:14 pm "><author>kat</author><body><![CDATA[<div class="postbody"><div class="quotetitle"><b>Quote:</b></div><div class="quotecontent">o.k. I seem to be able to load .md5's in blender now <br />now a new problem. <br />how to attach model to bones skeleton? <br />and then how to call up texturemap? <br />any ideas?</div>
+<br /><br />Quoted your other topic above, there's no real need to start a separate topic on this when you can continue below.</div>]]></body></post><post id="p155050" date="Posted: Sat Aug 26, 2006 8:17 pm "><author>kat</author><body><![CDATA[<div class="postbody">You should really go look at some basic tutorials on how to use Blender as you'll get a better explaination then anything anyone can really supply you with here.
+<br /><br />Surfice to say select the skeleton and then the mesh then hit Ctrl +P to parent the mesh to the rig. You need to get the mesh fully materialed and textured before doing this.</div>]]></body></post></posts></thread></xml>

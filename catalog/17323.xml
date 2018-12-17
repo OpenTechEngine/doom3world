@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17323"><title>How do you build your normal maps?</title><posts><post id="157966" date="Posted: Sat Sep 23, 2006 8:38 pm    Post subject: How do you build your normal maps?"><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The basic/prefered method of creating normal maps seems to be creating a low poly model for use in a game, and a high poly version with genreally matching UV layouts to create the normal map. However I was wondering exactly how people on here prefer to go about doing this?&#13;
+<br/><br/>
+For example do you like to create a low poly model, map out the UV's, save it, then convert it to subdiv/nurbs (or even keep as polys) to add all the key details, giving you a high poly version but working from the same UV layout.&#13;
+<br/><br/>
+Or do you prefer to create the high poly version of a model first, map out all of the UV's, save it and then build the low poly from scratch, aligning the UV's afterwards?&#13;
+<br/><br/>
+The reason i ask is because while I'm pretty happy with my low poly modeling abilities, I really want to focus on getting some hi res creations done, and am struggling to find a method I'm comfortable with focusing on.&#13;
+<br/><br/>
+Also regarding the creation of high poly models, lets say you've got a character with screws running up his arm. You dont want to model them on the low poly version, just the high poly, but it's too dirty to try and 'extrude' these details directly from the mesh. Is it generaly better to build such things seperately and then just place them ontop of the model, or can this create a lot of problems with overlaying UV's?&#13;
+<br/><br/>
+Sorry if this is somewhat of a noob question, but I am somewhat of a noob when it comes to creating high poly characters with a view to normal mapping. As always, cheers in advance!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157967" date="Posted: Sat Sep 23, 2006 9:26 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm by no means a professional however what I have learned over the past 10 months trying to learn modeling I've found that there is no one exact answer for your question.  Your question by the way may better be stated as "how do you create your models?" rather than normalmaps.  Normalmaps are images generated from a number of different methods (one of which is by rendering models).  In any case I've found that the way I choose to create models almost always hinges on the complexity of the model.  I will say more often than not I build a frame that becomes sort of a bare-bones skeleton for the high poly later on but it doesn't always remain exactly as I first created it and from there I build the highpoly model from that frame.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157968" date="Posted: Sat Sep 23, 2006 9:49 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the low poly and high poly UVs do not have to match at all and in fact the high poly does not even need UVs at all. you can put seperate meshes onto the high poly model for detail and they will convert fine.&#13;
+<br/><br/>
+it is recommended to fully texture the high poly model and then let converters generate the textures for the low poly model automatically but for Doom3 this won't work because the converter made especially for Doom3 doesn't do that as far as i know.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157969" date="Posted: Sat Sep 23, 2006 10:52 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">the low poly and high poly UVs do not have to match at all and in fact the high poly does not even need UVs at all. you can put seperate meshes onto the high poly model for detail and they will convert fine.&#13;
+<br/><br/>
+it is recommended to fully texture the high poly model and then let converters generate the textures for the low poly model automatically but for Doom3 this won't work because the converter made especially for Doom3 doesn't do that as far as i know.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've never really used it myself, but I'm quite certain there's a -colormap parameter in some of id's materials.&#13;
+<br/><br/>
+Either way, the free ORB tool will do this anyways, as will every recent 3d app.<br/>_________________<br/><a href="/web/20061013061008/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061008im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061008/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157971" date="Posted: Sat Sep 23, 2006 11:34 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">but doesn't nobody know how Doom3 calculates tangents resulting in distorted normals if you use the 3rd party normal map generators?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157976" date="Posted: Sun Sep 24, 2006 12:27 am    Post subject: "><author>hellborg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+but doesn't nobody know how Doom3 calculates tangents resulting in distorted normals if you use the 3rd party normal map generators?&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+In texture seam areas, I had problems with the ORB normal map utility - presumably, because the ORB tool does not do a nice job in merging the seams with the same normal. When I used the normalmap generator built into Doom3 (renderbump) I got the best results, so in the end I only used that.   [/quote]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157977" date="Posted: Sun Sep 24, 2006 12:57 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In max you can apply a bumpmap to your high poly model that will be used by the render-to-texture process (making the normal map), so you can basicly make a your high_model, and apply on it a skin/stone/lava/etc bumpmap... to not make those details in real 3d.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157983" date="Posted: Sun Sep 24, 2006 4:45 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yah but 3dsmax normals maps and Doom3 normal maps do not match as far as i recall so you will get distorted looking normals in game.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158023" date="Posted: Sun Sep 24, 2006 11:39 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I use max normals in Doom3, so do Obihb. Looks great.&#13;
+<br/><br/>
+My process is like this:&#13;
+<br/><br/>
+Tintin makes an awesome hipoly model using Modo and Mudbox and sends it to me.&#13;
+<br/><br/>
+I take the awesome hipoly model and build a low poly model around it, using Modo.&#13;
+<br/><br/>
+Then I export the thing to Max and start working on the UV map and rendering the normalmap. Aswell as rigging it. &#13;
+<br/><br/>
+Then I export it to Doom3.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013061008/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158024" date="Posted: Sun Sep 24, 2006 11:51 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">...forgot to mention that in max you can also use more than one model as high poly's one, so as you took for exemple, you can easilly make an high poly arm, and another model for screws running up his arms.&#13;
+<br/>
+The render-to-texture process will use those as one.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158026" date="Posted: Sun Sep 24, 2006 12:24 pm    Post subject: "><author>elusive</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">For mapobjects I usually use the RenderBump tool of Doom3 or Maya Surface Sampler. Both give great results!&#13;
+<br/>
+When doing creatures our modelers use Zbrush for the hipoly models and Max or Maya for the lowpoly and UVs. The normalmaps are being created using ZMapper. I rig the lowpolys and give some to other animators or animate a few myself.<br/>_________________<br/>Doom 3 mod "Reca|| To He||" &#13;
+<br/>
+recalltohell.d3files.com</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158027" date="Posted: Sun Sep 24, 2006 12:27 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Kristus, try that procedure with a simple box. you'll probably see the sides will look bent instead of flat. it's difficult to tell on complex models.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158041" date="Posted: Sun Sep 24, 2006 2:30 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've made both character models and simple door objects. Never had any problems.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013061008/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158053" date="Posted: Sun Sep 24, 2006 4:38 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Doom3 has no problems with Max's normal maps.&#13;
+<br/><br/>
+The problems you are talking about with a box is not because of the normal map but because of the Doom3 render engine. It's basically unavoidable accept in a very special case of using Renderbump. It's a "special" Doom3 engine thing and not because of other software creating bad normal maps.&#13;
+<br/><br/>
+The technology of normal maps has it's limits and therefore can't be looked at as the perfect technology to create whatever you want without any flaws whatsoever. Knowing the limits and working around them is part of using them as is anything really in realtime graphics.&#13;
+<br/><br/>
+As for modelling high poly models. Esentially you can use any method that gives the result you are after. One thing that you'll find is that everybody has their own way and advice to give. The fact is that whatever works, works. There are obviously more efficient ways to do various things and that you learn along the way.&#13;
+<br/><br/>
+For low poly stuff however there are some stuff to keep in mind to make good use of normal maps and of course it has impact on game performance. So the low poly model is very important to get right. You also only have to worry about UV mapping the low poly model, so that saves time there. It's just  a matter of poly count balance and putting the right details in the right places. Also making sure face angles are good for normal maps to work nicely. As was said before making just a box may cause problems if not handled correctly because of the sharp 90 degree edges.&#13;
+<br/><br/>
+Experimenting is always a good idea and that way you'll learn first hand what works and what don't work. After a while you can judge even before working on somethig what might cause problems.<br/>_________________<br/><a href="/web/20061013061008/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157966" date="Posted: Sat Sep 23, 2006 8:38 pm    Post subject: How do you build your normal maps?"><author>Koroshiya Ichi</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The basic/prefered method of creating normal maps seems to be creating a low poly model for use in a game, and a high poly version with genreally matching UV layouts to create the normal map. However I was wondering exactly how people on here prefer to go about doing this?&#13;
+<br/><br/>
+For example do you like to create a low poly model, map out the UV's, save it, then convert it to subdiv/nurbs (or even keep as polys) to add all the key details, giving you a high poly version but working from the same UV layout.&#13;
+<br/><br/>
+Or do you prefer to create the high poly version of a model first, map out all of the UV's, save it and then build the low poly from scratch, aligning the UV's afterwards?&#13;
+<br/><br/>
+The reason i ask is because while I'm pretty happy with my low poly modeling abilities, I really want to focus on getting some hi res creations done, and am struggling to find a method I'm comfortable with focusing on.&#13;
+<br/><br/>
+Also regarding the creation of high poly models, lets say you've got a character with screws running up his arm. You dont want to model them on the low poly version, just the high poly, but it's too dirty to try and 'extrude' these details directly from the mesh. Is it generaly better to build such things seperately and then just place them ontop of the model, or can this create a lot of problems with overlaying UV's?&#13;
+<br/><br/>
+Sorry if this is somewhat of a noob question, but I am somewhat of a noob when it comes to creating high poly characters with a view to normal mapping. As always, cheers in advance!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157967" date="Posted: Sat Sep 23, 2006 9:26 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I'm by no means a professional however what I have learned over the past 10 months trying to learn modeling I've found that there is no one exact answer for your question.  Your question by the way may better be stated as "how do you create your models?" rather than normalmaps.  Normalmaps are images generated from a number of different methods (one of which is by rendering models).  In any case I've found that the way I choose to create models almost always hinges on the complexity of the model.  I will say more often than not I build a frame that becomes sort of a bare-bones skeleton for the high poly later on but it doesn't always remain exactly as I first created it and from there I build the highpoly model from that frame.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157968" date="Posted: Sat Sep 23, 2006 9:49 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the low poly and high poly UVs do not have to match at all and in fact the high poly does not even need UVs at all. you can put seperate meshes onto the high poly model for detail and they will convert fine.&#13;
+<br/><br/>
+it is recommended to fully texture the high poly model and then let converters generate the textures for the low poly model automatically but for Doom3 this won't work because the converter made especially for Doom3 doesn't do that as far as i know.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157969" date="Posted: Sat Sep 23, 2006 10:52 pm    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>ViPr wrote:</b></span></td>	</tr><tr><td class="quote">the low poly and high poly UVs do not have to match at all and in fact the high poly does not even need UVs at all. you can put seperate meshes onto the high poly model for detail and they will convert fine.&#13;
+<br/><br/>
+it is recommended to fully texture the high poly model and then let converters generate the textures for the low poly model automatically but for Doom3 this won't work because the converter made especially for Doom3 doesn't do that as far as i know.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+I've never really used it myself, but I'm quite certain there's a -colormap parameter in some of id's materials.&#13;
+<br/><br/>
+Either way, the free ORB tool will do this anyways, as will every recent 3d app.<br/>_________________<br/><a href="/web/20061013055149/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055149im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055149/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157971" date="Posted: Sat Sep 23, 2006 11:34 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">but doesn't nobody know how Doom3 calculates tangents resulting in distorted normals if you use the 3rd party normal map generators?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157976" date="Posted: Sun Sep 24, 2006 12:27 am    Post subject: "><author>hellborg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">&#13;
+<br/>
+but doesn't nobody know how Doom3 calculates tangents resulting in distorted normals if you use the 3rd party normal map generators?&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+In texture seam areas, I had problems with the ORB normal map utility - presumably, because the ORB tool does not do a nice job in merging the seams with the same normal. When I used the normalmap generator built into Doom3 (renderbump) I got the best results, so in the end I only used that.   [/quote]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157977" date="Posted: Sun Sep 24, 2006 12:57 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">In max you can apply a bumpmap to your high poly model that will be used by the render-to-texture process (making the normal map), so you can basicly make a your high_model, and apply on it a skin/stone/lava/etc bumpmap... to not make those details in real 3d.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157983" date="Posted: Sun Sep 24, 2006 4:45 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">yah but 3dsmax normals maps and Doom3 normal maps do not match as far as i recall so you will get distorted looking normals in game.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158023" date="Posted: Sun Sep 24, 2006 11:39 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I use max normals in Doom3, so do Obihb. Looks great.&#13;
+<br/><br/>
+My process is like this:&#13;
+<br/><br/>
+Tintin makes an awesome hipoly model using Modo and Mudbox and sends it to me.&#13;
+<br/><br/>
+I take the awesome hipoly model and build a low poly model around it, using Modo.&#13;
+<br/><br/>
+Then I export the thing to Max and start working on the UV map and rendering the normalmap. Aswell as rigging it. &#13;
+<br/><br/>
+Then I export it to Doom3.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055149/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158024" date="Posted: Sun Sep 24, 2006 11:51 am    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">...forgot to mention that in max you can also use more than one model as high poly's one, so as you took for exemple, you can easilly make an high poly arm, and another model for screws running up his arms.&#13;
+<br/>
+The render-to-texture process will use those as one.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158026" date="Posted: Sun Sep 24, 2006 12:24 pm    Post subject: "><author>elusive</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">For mapobjects I usually use the RenderBump tool of Doom3 or Maya Surface Sampler. Both give great results!&#13;
+<br/>
+When doing creatures our modelers use Zbrush for the hipoly models and Max or Maya for the lowpoly and UVs. The normalmaps are being created using ZMapper. I rig the lowpolys and give some to other animators or animate a few myself.<br/>_________________<br/>Doom 3 mod "Reca|| To He||" &#13;
+<br/>
+recalltohell.d3files.com</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158027" date="Posted: Sun Sep 24, 2006 12:27 pm    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Kristus, try that procedure with a simple box. you'll probably see the sides will look bent instead of flat. it's difficult to tell on complex models.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158041" date="Posted: Sun Sep 24, 2006 2:30 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've made both character models and simple door objects. Never had any problems.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055149/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158053" date="Posted: Sun Sep 24, 2006 4:38 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Doom3 has no problems with Max's normal maps.&#13;
+<br/><br/>
+The problems you are talking about with a box is not because of the normal map but because of the Doom3 render engine. It's basically unavoidable accept in a very special case of using Renderbump. It's a "special" Doom3 engine thing and not because of other software creating bad normal maps.&#13;
+<br/><br/>
+The technology of normal maps has it's limits and therefore can't be looked at as the perfect technology to create whatever you want without any flaws whatsoever. Knowing the limits and working around them is part of using them as is anything really in realtime graphics.&#13;
+<br/><br/>
+As for modelling high poly models. Esentially you can use any method that gives the result you are after. One thing that you'll find is that everybody has their own way and advice to give. The fact is that whatever works, works. There are obviously more efficient ways to do various things and that you learn along the way.&#13;
+<br/><br/>
+For low poly stuff however there are some stuff to keep in mind to make good use of normal maps and of course it has impact on game performance. So the low poly model is very important to get right. You also only have to worry about UV mapping the low poly model, so that saves time there. It's just  a matter of poly count balance and putting the right details in the right places. Also making sure face angles are good for normal maps to work nicely. As was said before making just a box may cause problems if not handled correctly because of the sharp 90 degree edges.&#13;
+<br/><br/>
+Experimenting is always a good idea and that way you'll learn first hand what works and what don't work. After a while you can judge even before working on somethig what might cause problems.<br/>_________________<br/><a href="/web/20061013055149/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

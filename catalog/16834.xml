@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16834"><title>what is the advantage of normal maps over heightmaps</title><posts><post id="154194" date="Posted: Sat Aug 19, 2006 8:18 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>kat wrote:</b></span></td>	</tr><tr><td class="quote">The height channel of a normal map in D3 won't get you the same level of detail as a full 24bit greyscale toned heightmap, it's technically impossible (single 8 bit versus 8x8x8), plus as the chaps have said above, the height does just that, adds height; the normal maps aren't doing that in game.&#13;
+<br/><br/>
+I have a feeling you're looking at this from the point of view of a high poly modeller used to some pretty knarly detail level when doing renders, you won't get that in D3 (at least not 'cheaply').</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><span style="font-weight: bold">kat:</span> The height seen ingame isn't "real height", it's just an illusion created by clever normalmap conversion, afaik Doom3 doesn't use parallex mapping either.&#13;
+<br/>
+When the game loads it just blends the normalmap with the converted heightmap.&#13;
+<br/>
+I'm looking just for that, see the resulted normalmap from the combination with the heightmap or at least immitate it.&#13;
+<br/><br/><span style="font-weight: bold">Rich :</span> I've found the command <span style="font-weight: bold">"write_imageNormalTGA"</span>, was this the one you used ? still can't figure out how to get it to work though  <img src="/web/20061013023827im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><span style="font-weight: bold">Edit :</span> just figured this out, wrote the image into the dds dir (might also be because i turned on "image_usecache" and "image_useofflinecompressior") - the resulted normalmap looks really nice, much better than the one i got by using nvidia tool .. guess it's time to experiment some more with it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154200" date="Posted: Sat Aug 19, 2006 10:18 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes. That's the command.&#13;
+<br/><br/>
+I belive you have to disable compression completely to get it to output TGAs.<br/>_________________<br/><a href="/web/20061013023827/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023827im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023827/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154237" date="Posted: Sat Aug 19, 2006 4:53 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">....<span style="font-weight: bold">kat:</span> The height seen ingame isn't "real height", it's just an illusion created by clever normalmap conversion, afaik Doom3 doesn't use parallex mapping either.&#13;
+<br/>
+When the game loads it just blends the normalmap with the converted heightmap.&#13;
+<br/>
+I'm looking just for that, see the resulted normalmap from the combination with the heightmap or at least immitate it....</td>	</tr></table><span class="postbody">Yes 'height' is meant as a relative term, using a separate height map should result of better detail even when the conversion/combination process gets done in D3(otherwise they wouldn't have used them), and yes D3 doesn't use any parallax mapping.&#13;
+<br/><br/>
+So you're wanting to output the results of the D3 combination process to see what difference it makes compared to other manual conbination processes?<br/>_________________<br/><a href="/web/20061013023827/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023827im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023827/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154242" date="Posted: Sat Aug 19, 2006 5:48 pm    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Yes 'height' is meant as a relative term, using a separate height map should result of better detail even when the conversion/combination process gets done in D3(otherwise they wouldn't have used them), and yes D3 doesn't use any parallax mapping.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Nice assumption, but that's not why they used them.&#13;
+<br/>
+1. The final tga doom3 uses is 24bit RGB, which means the lowest difference in the heightmap would be (1,1,1) for the RGB values, which means any more than 8bit in the greyscale map would be discarded in the blending.&#13;
+<br/>
+2. Even if doom3 would support true 24bit grescale maps (which like most game engines don't), the changes wouldn't be seen to the eye, especially those of a gamer .&#13;
+<br/>
+3. Most heightmaps i've seen in doom3 are in rgb 24bit mode, which means only 8bit for greyscale. (i guess they were too lazy to convert it and save HD space on those, open one and see for yourself)&#13;
+<br/><br/>
+My guess is they used them because it's production effecient, having the programmers adding support for heightmaps inside the engine means it cuts one step whenever the designer wants to test his maps ingame, and as you can see the overtime added is next to nothing.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>kat wrote:</b></span></td>	</tr><tr><td class="quote">So you're wanting to output the results of the D3 combination process to see what difference it makes compared to other manual conbination processes?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Aye that what i did this morning, results are at the end of this thread : <a href="/web/20061013023827/http://www.doom3world.org/phpbb2/viewtopic.php?t=16870&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=16870&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=</a>&#13;
+<br/>
+In my opinion the built-in heightmap support is far better than the results i got with nvidia plugin, and i can use ORB if i want to bake the maps, which yields nearly identical results.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154257" date="Posted: Sat Aug 19, 2006 6:32 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">nVidia's plugin isn't the best really for normalmaps.  I actually like GIMP's version a bit better and the one that you download seperately from GIMP even better (a lot more options for one but the output seems better).  There is one advantage though with doing heightmaps and then adding them to the normalmap yourself.  For one you can create an ultra-high res heightmap and use different image scaling techniques to sharpen or soften the detail or even create high res heightmaps, convert them to normalmaps and then scale (which seems to help with banding, at least in my experience but remember to "normalize" afterwards).  You also have the option to use different blending techniques onto the base normalmap to help define, sharpen or soften the height map's details onto the base normalmap.  And last you also have the ability use opacity to make the details more or less pronounced.&#13;
+<br/><br/>
+Either way there are some great benefits for converting heightmaps to normals outside of D3 engine's method but for simplicity or for dynamic heightmap changes to the bumpmaping of a material in game using seperate heightmaps can be useful as well.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153723" date="Posted: Tue Aug 15, 2006 6:52 pm    Post subject: what is the advantage of normal maps over heightmaps"><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">what is the advantage of normal maps over heightmaps&#13;
+<br/>
+im finding that for someone that is a rooky texture person like my self it seems much easier to finetune the intensity of the heightmap by simply altering the interger in the mtr file.  While with normal maps once Ive mapped it if its wrong then I have to redoo the whole process whereas again with the heightmap I can used a flawed initial intensity by either increasing the interger over 1 or by using decimals to decreese it&#13;
+<br/><br/>
+Also as a side note does anyone know how to use addnormals with 2 heightmaps instead of a normal + a heightmap  with both heightmaps having seperate intergers  Ive tried various formulas in the mtr without success&#13;
+<br/><br/>
+thanks<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153725" date="Posted: Tue Aug 15, 2006 7:02 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No real difference in terms of the rendered result really.  The way heightmaps are used in the D3 engine they basically made simple hi poly models (lots of clean but fine detail) and then to add dents, gouges and rough areas they would reference a seperate heightmap (look at the player model normal and heightmaps, also Makron's is a very good example).  If you are not renderbumping hi poly models to create the locals you really don't need a heightmap because you are essentially creating one to run a normalmap plugin on and adding another heightmap created from the same image would only cause the normals to fight and make the final "bumped" look be a bit blurry, flattened or even backwards.  Also there is no point in having multiple heightmaps referenced on a single image since you could simply add the two together in an image program like Photoshop or GIMP and use one texture rather than two (saves memory and does the exact same thing).&#13;
+<br/><br/>
+For the most part I've gotten in a habit of renderbumping hi poly models then using the final image of the diffusemap to create a heightmap.  Tweaking that heavily (so that it's not extreme, just adds a little detail) and then using the nVidia plugin to create a normalmap from that.  Taking that image and pasting it into a seperate layer on top of the renderbumped local, set the second layer (one created from the heightmap) to screen and then adjusting the opacity until I'm happy with how it looks.  Of course you have to normalize the flattened image but generally this works very well, prevents having to deal with a fourth image and ultimately gives you a little more memory to play with when it's rendered.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153728" date="Posted: Tue Aug 15, 2006 7:15 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The purpose of the seperate heightmaps with seperate intergers was to animate the seperate maps using seperate values to give a more natural feel to the movement&#13;
+<br/><br/>
+But as far as the rest of your reply I guess Im still a little confused I gather you say there is no difference between the two But you still convert your heightmaps to normal maps-- I guess Im confussed as to why if there is no difference&#13;
+<br/><br/>
+THnaks fof the reply<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153735" date="Posted: Tue Aug 15, 2006 9:18 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A heightmap is the "old school" bumpmap.  Normalmaps are a more recent, more purpose specific image format specifically created for bumpmapping  I'm sure that's not exactly the best description but for all intents and purposes they do the same thing.&#13;
+<br/><br/>
+I didn't really explain it as well as I could so let me try again hehe.&#13;
+<br/><br/>
+When I generate a normalmap I usually try to generate one with renderbump.  Since adding a bunch of fussy detail to models can take loads of time (like dents, scratches, other very light surface deformations, etc.) and still not look "right" or look to fake I usually just go the basic route.  Let's use brick as an example.  The renderbumpped local would be smooth and carve out the general shape of the brick.  Now I have two options to "rough up" the brick so that the surface looks a bit more like a brick when it's rendered.  I could make a heightmap using the brick's diffusemap image and use it as a seperate black and white heightmap <span style="font-style: italic">or</span> I could take that black and white heightmap, convert it to a normalmap and then layer it onto the renderbumped local and get the same effect.&#13;
+<br/><br/>
+So here's how I do it again and step by step since I still don't think that's clear hehe:&#13;
+<br/><br/>
+1.  renderbump a hi poly model for the basic normalmap, this provides the solid base normalmap I'll use later&#13;
+<br/>
+2.  Create the diffusemap and then convert this diffusemap to a heightmap&#13;
+<br/>
+3.  Convert the heightmap to a normalmap using a normalmap plugin&#13;
+<br/>
+4.  Take the converted heightmap and layer it onto the base normalmap I renderebumped earlier from the hi poly model and adjust the blend and opacity so that it adds a more realistically textured surface to the renderbumped normalmap.&#13;
+<br/>
+5.  Normalize the final normalmap to ensure it's integrity and test it in game.&#13;
+<br/><br/>
+Now I do not do this for every normalmap, it depends heavily on what the image is supposed to be.  If it's a piece of plastic or a metal or glass surface or something that's usually smooth I may only add minor deformations by hand.  Essentially I only do this for any image that I might use a heightmap on.  Anyway here's an example of before and after.&#13;
+<br/><br/>
+This is the renderbumpped local created by Q4's renderbump (this is for a barrel btw):&#13;
+<br/><a href="/web/20061013024631/http://img462.imageshack.us/my.php?image=barrel2lolocalnj1.jpg" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://img462.imageshack.us/img462/7519/barrel2lolocalnj1.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+This is the same normalmap after I added the heightmap to the localmap:&#13;
+<br/><a href="/web/20061013024631/http://img470.imageshack.us/my.php?image=barrel2lolocalroughcc1.jpg" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://img470.imageshack.us/img470/7106/barrel2lolocalroughcc1.th.jpg" border="0"/></a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153738" date="Posted: Tue Aug 15, 2006 9:58 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay So Im a retard I still dont get It from what Ive seen I can add tons of detail using a heightmap&#13;
+<br/>
+and on top of that using intergers from 0.000000001 to 99999999999 you can really get some either very fine tuned results or some really exagerated ones&#13;
+<br/><br/>
+I used a hight detail normal map on one mtr&#13;
+<br/>
+and a hight detail height map on a different one&#13;
+<br/><br/>
+the two looked identical in game at max settings????&#13;
+<br/>
+Im not trying to argue Im just apparently to dense to get it&#13;
+<br/>
+Big block letters and talking real slow might help me <img src="/web/20061013024631im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Sorry  &#13;
+<br/>
+Im sure there is something Im just not assimilating in your reply especially since all of mapping is 100% new to me the simplesest things tend to make me go crosseyed and confused &#13;
+<br/><br/>
+Thanks for the reply Im just sorry the recieving end wasnt up to the necassary level to get it---me<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153746" date="Posted: Tue Aug 15, 2006 10:43 pm    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">well graphic design is something you can never allways understand its experimental so i would just try other things untill you get the hang of it <img src="/web/20061013024631im_/http://doom3world.org/phpbb2/images/smiles/icon_surprised.gif" alt="Surprised" border="0"/><br/><br/>
+the thing i like about heightmaps is that you can control how much is applied on the model ingame through the material defs so it makes it eaiser in different areas&#13;
+<br/><br/>
+its all about fine tunning and tweaking&#13;
+<br/><br/>
+trial and error <img src="/web/20061013024631im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153757" date="Posted: Tue Aug 15, 2006 11:34 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I used a hight detail normal map on one mtr&#13;
+<br/>
+and a hight detail height map on a different one&#13;
+<br/><br/>
+the two looked identical in game at max settings???? </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+This is because they both do essentially the same thing which is telling the render how to render light on the surface of the material.  A localmap, normalmap, bumpmap, heightmap are all a part of one big happy family.  None of these actually physically affect the surface, at least not in the D3 engine (that's parallax mapping or something).  All a bumpmap and/or heightmap does is tell the renderer where to stop when it's rendering light on the material the bumpmap is referenced with.&#13;
+<br/><br/>
+Ok, I've gone a bit way out beyond when I expressed my opinion (oops heh) and I fear I've caused it to go a bit offtopic but I'll try one more time to explain it hehe.  Since a heightmap is adding just more bumpmapping information it's really unecessary for most materials to contain both a heightmap and a normalmap if a normalmap is already being referenced.  All the heightmap is going to do is "adjust" the normalmap during render and if you're not careful you can actually cause visual anomolies if the heightmap and normalmap "fight".&#13;
+<br/><br/>
+For example, the barrel normalmap I posted up earlier shows the original normalmap from which I rendered through renderbump when I rendered a hi poly version of a barrel and then it shows that same normalmap with the heightmap that I made (which just adds the wood and metal grains) merged onto the original normalmap (using Photoshop and adding the heightmap as a layer set to overlay).&#13;
+<br/><br/>
+I could just as easily have left the normalmap for the barrel as was rendered from renderbump and used a heightmap, this <span style="font-style: italic">can</span> produce a slightly higher resolution material when rendered and it does give you the ability to "fine tune" through changing the integer but at the expense of more texture memory used and a larger texture directory as well as the possibility that the heightmap and normalmap don't want to cooperate completely (render errors, which fortunately I've only seen a few of), also once you've tweaked the integer value for the heightmap there's no need to really mess with it again and you can do the same thing by altering the opacity of the heightmap's layer when merging the heightmap onto the normalmap using something like Photoshop or GIMP.&#13;
+<br/><br/>
+There are some instances where using a heightmap is preferable.  You listed a good one earlier and adding minor details to the pre-rendered normalmap (like in the Makron normalmap and heightmap adding dents in his armor and such) also.  Of course if you're going for the ultimate, no hold's barred resolution then using a heightmap would also be a good choice.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153789" date="Posted: Wed Aug 16, 2006 6:55 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just want to pop in briefly to add a very simplified punchline:&#13;
+<br/><br/>
+Normal map &#13;
+<br/>
+= extract of geometric detail with 3d vector information for per pixel lighting.&#13;
+<br/><br/>
+Height map&#13;
+<br/>
+= traditional greyscale bumpmap which only stores 2d height information but no information regarding the orientation of a pixel.&#13;
+<br/><br/>
+The heightmap in Doom3 is not a replacement or substitute method for normal mapping, it's meant to be used in conjunction with normal maps.&#13;
+<br/>
+Painting noise in it in 2d is much easier than adding all the small cracks, rust or other comparable surface roughness in a modelling program.<br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024631/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153791" date="Posted: Wed Aug 16, 2006 7:45 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I recently revised a portion of the wiki with information relavant to this topic...&#13;
+<br/><br/><a href="/web/20061013024631/http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps" target="_blank">http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps</a><br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024631/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153811" date="Posted: Wed Aug 16, 2006 1:44 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay now I see the difference So there are advantages &#13;
+<br/><br/>
+Figures Everytime I find a method I like I can preaty much guarentee It will be against convention and probably not the best choice..&#13;
+<br/><br/><img src="/web/20061013024631im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Oh well I guess Ill go ahead and pull my head out of my *** --censored&#13;
+<br/>
+and figure out normal maps<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153824" date="Posted: Wed Aug 16, 2006 2:33 pm    Post subject: "><author>pbmax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">this was written by carmack once apon a time...&#13;
+<br/><br/><span style="font-style: italic">"Virtually all geometric surface detail should be represented in bump maps instead of drawn into the diffuse maps in the conventional style. This allows a single texture to take on different characteristics based on itâs interaction with lights. &#13;
+<br/><br/>
+Two types of images can be used for bump mapping: height maps and normal maps. &#13;
+<br/><br/>
+A height map is a gray scale image, with black being the farthest distance away and white being the closest. An addition scale parameter is required when using height maps to determine how deep the image is supposed to be. You canât properly cut and paste image fragments between height maps with different scale values without distorting the shading. You can add, subtract, airbrush, or smooth gray values by hand on a height map with predictable results. &#13;
+<br/><br/>
+A local normal map encodes the actual perturbation angle of the surface at each point in the RGB color, so it is complete by itself without any scaling parameters. You can cut and paste between any normal maps without problems, but you canât reasonably modify the angles of normal map surfaces by hand, or create one from scratch. Smoothing a normal map works reasonably well in practice, although it does result in denormalized pixel values. &#13;
+<br/><br/>
+The normal vector is encoded as ( ( R-128 ) / 128, ( G-128 ) / 128, ( B-128 ) / 128 ), so a normal pointing straight up ( 0, 0, 1 ) would be encoded as ( 128, 128, 255 ) in the image. Most local normal maps will be primarily bluish, because most of the vectors will be pointing up more strongly than any other direction. &#13;
+<br/><br/>
+Renderbump is also capable of generating "global normal maps", which encode an absolute direction in object space, instead of in local surface space, but global maps cannot be deformed or used on different wall orientations in the same object. They have some minor quality and performance benefits, so we might wind up using them for some static objects later, but the support has been disabled for a while. &#13;
+<br/><br/>
+Height maps must be converted to normal maps at load time, so it is usually superior to use normal maps unless you need to manually create or manipulate the image in a way that is easier with height maps. &#13;
+<br/><br/>
+You canât make a perfectly smooth slope in a height map because of the limited precision in the gray scale image. This results in shaded streaks along the slope, especially with higher resolution height maps. You may be able to hide that by adding some waviness to the surface manually."</span>&#13;
+<br/><br/>
+the key is to remember that grey scale images only contain <span style="font-weight: bold">height information</span> were as normal maps contain <span style="font-weight: bold">slope information</span>&#13;
+<br/><br/>
+for example, a band of pixels might be white and right next to that is a band of grey. you could say "the white band is 1.0 units above the grey band". ok, great. but how would per pixel lighting work on something like this? it can't beause per pixel lighting needs a slope, not two flat areas next to each other. if you think about it, such a surface would be equally lit every where!&#13;
+<br/><br/>
+now run that grey scale image thru a normal map plug-in. guess what happens? it creates a small sloped region between the two areas. now per pixel lighting will work as expected.&#13;
+<br/><br/>
+plus, as carmack mentioned above, grey scale images are limited to the amount of information they can hold compared to generating a normal map off of a super high poly model.<br/>_________________<br/><span style="font-weight: bold">Download: </span><a href="/web/20061013024631/http://www.pcgamemods.com/user/6056.html" target="_blank" class="postlink">My Doom3 mods</a>.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153826" date="Posted: Wed Aug 16, 2006 2:48 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just a note, perhaps I misunderstood what you're saying but just in case.  Normalmaps are capable of height just as a heightmap.  Carmack's statement here pretty much confirms that when he says that heightmaps are converted to normalmaps at the load time of the material.  All the heightmap's doing is tweaking the extremes of the normalmap referenced by applying a second normalmap to the first (which is actually what I was doing above but poorly explained).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154056" date="Posted: Fri Aug 18, 2006 7:41 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154064" date="Posted: Fri Aug 18, 2006 9:30 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+If you use it in Doom3 you don't need to merge them.<br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024631/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154065" date="Posted: Fri Aug 18, 2006 9:51 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">While Doom 3 is capable of combining a height map and normal map into a single image, there are benefits to doing this externally.&#13;
+<br/><br/><ul><br/><li>You reduce your total image count&#13;
+<br/></li><li>You reduce load times</li></ul><br/><br/>
+I don't imagine that it would have a significant effect when done with a single material but it could yield some worthwhile results if done to a series of materials. Most notably in the file size of your distribution.&#13;
+<br/><br/>
+As for what programs to use, I know ORB can merge a height map and normal map.&#13;
+<br/><br/>
+I believe Doom 3 is capable of exporting the final composited textures as they are in memory via a console command or variable. I remember doing it. I just can't remember what I did.<br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024631/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154091" date="Posted: Fri Aug 18, 2006 2:04 pm    Post subject: "><author>pbmax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin...</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+when i generate a normal map in the gimp, i usually manually edit the image (sometimes one pixel at a time) afterwards to get it exactly how i want it. its time consuming, but it works.&#13;
+<br/><br/>
+in fact, i've created some really great normal maps almost completely by hand by cutting and pasting from a bunch of different normal maps.<br/>_________________<br/><span style="font-weight: bold">Download: </span><a href="/web/20061013024631/http://www.pcgamemods.com/user/6056.html" target="_blank" class="postlink">My Doom3 mods</a>.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154116" date="Posted: Fri Aug 18, 2006 5:58 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</td>	</tr></table><span class="postbody">Personally the best results I've had is to convert the heightmap into a normalmap and then combine them in my image editor as if I was combining any other images using either 'overlay' or 'screen' deoending on the 'look' I'm going for.<br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013024631/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154128" date="Posted: Fri Aug 18, 2006 7:42 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Everyone pretty much answered that question exactly as I would have so I thankfully don't need to make this any messier than I already have lol.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154190" date="Posted: Sat Aug 19, 2006 7:52 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So far, the results i get aren't even close to using the heightmap ingame.&#13;
+<br/>
+I'll look up that console var so i could at least see how doom3 is doing it. (and might isolate the height areas if i can't reproduce it)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154193" date="Posted: Sat Aug 19, 2006 8:06 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">So far, the results i get aren't even close to using the heightmap ingame.&#13;
+<br/>
+I'll look up that console var so i could at least see how doom3 is doing it. (and might isolate the height areas if i can't reproduce it)</td>	</tr></table><span class="postbody">The height channel of a normal map in D3 won't get you the same level of detail as a full 24bit greyscale toned heightmap, it's technically impossible (single 8 bit versus 8x8x8), plus as the chaps have said above, the height does just that, adds height; the normal maps aren't doing that in game.&#13;
+<br/><br/>
+I have a feeling you're looking at this from the point of view of a high poly modeller used to some pretty knarly detail level when doing renders, you won't get that in D3 (at least not 'cheaply').<br/>_________________<br/><a href="/web/20061013024631/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024631im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013024631/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153723" date="Posted: Tue Aug 15, 2006 6:52 pm    Post subject: what is the advantage of normal maps over heightmaps"><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">what is the advantage of normal maps over heightmaps&#13;
+<br/>
+im finding that for someone that is a rooky texture person like my self it seems much easier to finetune the intensity of the heightmap by simply altering the interger in the mtr file.  While with normal maps once Ive mapped it if its wrong then I have to redoo the whole process whereas again with the heightmap I can used a flawed initial intensity by either increasing the interger over 1 or by using decimals to decreese it&#13;
+<br/><br/>
+Also as a side note does anyone know how to use addnormals with 2 heightmaps instead of a normal + a heightmap  with both heightmaps having seperate intergers  Ive tried various formulas in the mtr without success&#13;
+<br/><br/>
+thanks<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153725" date="Posted: Tue Aug 15, 2006 7:02 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No real difference in terms of the rendered result really.  The way heightmaps are used in the D3 engine they basically made simple hi poly models (lots of clean but fine detail) and then to add dents, gouges and rough areas they would reference a seperate heightmap (look at the player model normal and heightmaps, also Makron's is a very good example).  If you are not renderbumping hi poly models to create the locals you really don't need a heightmap because you are essentially creating one to run a normalmap plugin on and adding another heightmap created from the same image would only cause the normals to fight and make the final "bumped" look be a bit blurry, flattened or even backwards.  Also there is no point in having multiple heightmaps referenced on a single image since you could simply add the two together in an image program like Photoshop or GIMP and use one texture rather than two (saves memory and does the exact same thing).&#13;
+<br/><br/>
+For the most part I've gotten in a habit of renderbumping hi poly models then using the final image of the diffusemap to create a heightmap.  Tweaking that heavily (so that it's not extreme, just adds a little detail) and then using the nVidia plugin to create a normalmap from that.  Taking that image and pasting it into a seperate layer on top of the renderbumped local, set the second layer (one created from the heightmap) to screen and then adjusting the opacity until I'm happy with how it looks.  Of course you have to normalize the flattened image but generally this works very well, prevents having to deal with a fourth image and ultimately gives you a little more memory to play with when it's rendered.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153728" date="Posted: Tue Aug 15, 2006 7:15 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">The purpose of the seperate heightmaps with seperate intergers was to animate the seperate maps using seperate values to give a more natural feel to the movement&#13;
+<br/><br/>
+But as far as the rest of your reply I guess Im still a little confused I gather you say there is no difference between the two But you still convert your heightmaps to normal maps-- I guess Im confussed as to why if there is no difference&#13;
+<br/><br/>
+THnaks fof the reply<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153735" date="Posted: Tue Aug 15, 2006 9:18 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A heightmap is the "old school" bumpmap.  Normalmaps are a more recent, more purpose specific image format specifically created for bumpmapping  I'm sure that's not exactly the best description but for all intents and purposes they do the same thing.&#13;
+<br/><br/>
+I didn't really explain it as well as I could so let me try again hehe.&#13;
+<br/><br/>
+When I generate a normalmap I usually try to generate one with renderbump.  Since adding a bunch of fussy detail to models can take loads of time (like dents, scratches, other very light surface deformations, etc.) and still not look "right" or look to fake I usually just go the basic route.  Let's use brick as an example.  The renderbumpped local would be smooth and carve out the general shape of the brick.  Now I have two options to "rough up" the brick so that the surface looks a bit more like a brick when it's rendered.  I could make a heightmap using the brick's diffusemap image and use it as a seperate black and white heightmap <span style="font-style: italic">or</span> I could take that black and white heightmap, convert it to a normalmap and then layer it onto the renderbumped local and get the same effect.&#13;
+<br/><br/>
+So here's how I do it again and step by step since I still don't think that's clear hehe:&#13;
+<br/><br/>
+1.  renderbump a hi poly model for the basic normalmap, this provides the solid base normalmap I'll use later&#13;
+<br/>
+2.  Create the diffusemap and then convert this diffusemap to a heightmap&#13;
+<br/>
+3.  Convert the heightmap to a normalmap using a normalmap plugin&#13;
+<br/>
+4.  Take the converted heightmap and layer it onto the base normalmap I renderebumped earlier from the hi poly model and adjust the blend and opacity so that it adds a more realistically textured surface to the renderbumped normalmap.&#13;
+<br/>
+5.  Normalize the final normalmap to ensure it's integrity and test it in game.&#13;
+<br/><br/>
+Now I do not do this for every normalmap, it depends heavily on what the image is supposed to be.  If it's a piece of plastic or a metal or glass surface or something that's usually smooth I may only add minor deformations by hand.  Essentially I only do this for any image that I might use a heightmap on.  Anyway here's an example of before and after.&#13;
+<br/><br/>
+This is the renderbumpped local created by Q4's renderbump (this is for a barrel btw):&#13;
+<br/><a href="/web/20061013024155/http://img462.imageshack.us/my.php?image=barrel2lolocalnj1.jpg" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://img462.imageshack.us/img462/7519/barrel2lolocalnj1.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+This is the same normalmap after I added the heightmap to the localmap:&#13;
+<br/><a href="/web/20061013024155/http://img470.imageshack.us/my.php?image=barrel2lolocalroughcc1.jpg" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://img470.imageshack.us/img470/7106/barrel2lolocalroughcc1.th.jpg" border="0"/></a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153738" date="Posted: Tue Aug 15, 2006 9:58 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay So Im a retard I still dont get It from what Ive seen I can add tons of detail using a heightmap&#13;
+<br/>
+and on top of that using intergers from 0.000000001 to 99999999999 you can really get some either very fine tuned results or some really exagerated ones&#13;
+<br/><br/>
+I used a hight detail normal map on one mtr&#13;
+<br/>
+and a hight detail height map on a different one&#13;
+<br/><br/>
+the two looked identical in game at max settings????&#13;
+<br/>
+Im not trying to argue Im just apparently to dense to get it&#13;
+<br/>
+Big block letters and talking real slow might help me <img src="/web/20061013024155im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Sorry  &#13;
+<br/>
+Im sure there is something Im just not assimilating in your reply especially since all of mapping is 100% new to me the simplesest things tend to make me go crosseyed and confused &#13;
+<br/><br/>
+Thanks for the reply Im just sorry the recieving end wasnt up to the necassary level to get it---me<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153746" date="Posted: Tue Aug 15, 2006 10:43 pm    Post subject: "><author>doomkid3000</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">well graphic design is something you can never allways understand its experimental so i would just try other things untill you get the hang of it <img src="/web/20061013024155im_/http://doom3world.org/phpbb2/images/smiles/icon_surprised.gif" alt="Surprised" border="0"/><br/><br/>
+the thing i like about heightmaps is that you can control how much is applied on the model ingame through the material defs so it makes it eaiser in different areas&#13;
+<br/><br/>
+its all about fine tunning and tweaking&#13;
+<br/><br/>
+trial and error <img src="/web/20061013024155im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153757" date="Posted: Tue Aug 15, 2006 11:34 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">I used a hight detail normal map on one mtr&#13;
+<br/>
+and a hight detail height map on a different one&#13;
+<br/><br/>
+the two looked identical in game at max settings???? </td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+This is because they both do essentially the same thing which is telling the render how to render light on the surface of the material.  A localmap, normalmap, bumpmap, heightmap are all a part of one big happy family.  None of these actually physically affect the surface, at least not in the D3 engine (that's parallax mapping or something).  All a bumpmap and/or heightmap does is tell the renderer where to stop when it's rendering light on the material the bumpmap is referenced with.&#13;
+<br/><br/>
+Ok, I've gone a bit way out beyond when I expressed my opinion (oops heh) and I fear I've caused it to go a bit offtopic but I'll try one more time to explain it hehe.  Since a heightmap is adding just more bumpmapping information it's really unecessary for most materials to contain both a heightmap and a normalmap if a normalmap is already being referenced.  All the heightmap is going to do is "adjust" the normalmap during render and if you're not careful you can actually cause visual anomolies if the heightmap and normalmap "fight".&#13;
+<br/><br/>
+For example, the barrel normalmap I posted up earlier shows the original normalmap from which I rendered through renderbump when I rendered a hi poly version of a barrel and then it shows that same normalmap with the heightmap that I made (which just adds the wood and metal grains) merged onto the original normalmap (using Photoshop and adding the heightmap as a layer set to overlay).&#13;
+<br/><br/>
+I could just as easily have left the normalmap for the barrel as was rendered from renderbump and used a heightmap, this <span style="font-style: italic">can</span> produce a slightly higher resolution material when rendered and it does give you the ability to "fine tune" through changing the integer but at the expense of more texture memory used and a larger texture directory as well as the possibility that the heightmap and normalmap don't want to cooperate completely (render errors, which fortunately I've only seen a few of), also once you've tweaked the integer value for the heightmap there's no need to really mess with it again and you can do the same thing by altering the opacity of the heightmap's layer when merging the heightmap onto the normalmap using something like Photoshop or GIMP.&#13;
+<br/><br/>
+There are some instances where using a heightmap is preferable.  You listed a good one earlier and adding minor details to the pre-rendered normalmap (like in the Makron normalmap and heightmap adding dents in his armor and such) also.  Of course if you're going for the ultimate, no hold's barred resolution then using a heightmap would also be a good choice.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153789" date="Posted: Wed Aug 16, 2006 6:55 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just want to pop in briefly to add a very simplified punchline:&#13;
+<br/><br/>
+Normal map &#13;
+<br/>
+= extract of geometric detail with 3d vector information for per pixel lighting.&#13;
+<br/><br/>
+Height map&#13;
+<br/>
+= traditional greyscale bumpmap which only stores 2d height information but no information regarding the orientation of a pixel.&#13;
+<br/><br/>
+The heightmap in Doom3 is not a replacement or substitute method for normal mapping, it's meant to be used in conjunction with normal maps.&#13;
+<br/>
+Painting noise in it in 2d is much easier than adding all the small cracks, rust or other comparable surface roughness in a modelling program.<br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024155/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153791" date="Posted: Wed Aug 16, 2006 7:45 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I recently revised a portion of the wiki with information relavant to this topic...&#13;
+<br/><br/><a href="/web/20061013024155/http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps" target="_blank">http://www.modwiki.net/wiki/Texturing#Normal_maps_vs._height_maps</a><br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024155/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153811" date="Posted: Wed Aug 16, 2006 1:44 pm    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Okay now I see the difference So there are advantages &#13;
+<br/><br/>
+Figures Everytime I find a method I like I can preaty much guarentee It will be against convention and probably not the best choice..&#13;
+<br/><br/><img src="/web/20061013024155im_/http://doom3world.org/phpbb2/images/smiles/icon_biggrin.gif" alt="Very Happy" border="0"/><br/>
+Oh well I guess Ill go ahead and pull my head out of my *** --censored&#13;
+<br/>
+and figure out normal maps<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153824" date="Posted: Wed Aug 16, 2006 2:33 pm    Post subject: "><author>pbmax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">this was written by carmack once apon a time...&#13;
+<br/><br/><span style="font-style: italic">"Virtually all geometric surface detail should be represented in bump maps instead of drawn into the diffuse maps in the conventional style. This allows a single texture to take on different characteristics based on itâs interaction with lights. &#13;
+<br/><br/>
+Two types of images can be used for bump mapping: height maps and normal maps. &#13;
+<br/><br/>
+A height map is a gray scale image, with black being the farthest distance away and white being the closest. An addition scale parameter is required when using height maps to determine how deep the image is supposed to be. You canât properly cut and paste image fragments between height maps with different scale values without distorting the shading. You can add, subtract, airbrush, or smooth gray values by hand on a height map with predictable results. &#13;
+<br/><br/>
+A local normal map encodes the actual perturbation angle of the surface at each point in the RGB color, so it is complete by itself without any scaling parameters. You can cut and paste between any normal maps without problems, but you canât reasonably modify the angles of normal map surfaces by hand, or create one from scratch. Smoothing a normal map works reasonably well in practice, although it does result in denormalized pixel values. &#13;
+<br/><br/>
+The normal vector is encoded as ( ( R-128 ) / 128, ( G-128 ) / 128, ( B-128 ) / 128 ), so a normal pointing straight up ( 0, 0, 1 ) would be encoded as ( 128, 128, 255 ) in the image. Most local normal maps will be primarily bluish, because most of the vectors will be pointing up more strongly than any other direction. &#13;
+<br/><br/>
+Renderbump is also capable of generating "global normal maps", which encode an absolute direction in object space, instead of in local surface space, but global maps cannot be deformed or used on different wall orientations in the same object. They have some minor quality and performance benefits, so we might wind up using them for some static objects later, but the support has been disabled for a while. &#13;
+<br/><br/>
+Height maps must be converted to normal maps at load time, so it is usually superior to use normal maps unless you need to manually create or manipulate the image in a way that is easier with height maps. &#13;
+<br/><br/>
+You canât make a perfectly smooth slope in a height map because of the limited precision in the gray scale image. This results in shaded streaks along the slope, especially with higher resolution height maps. You may be able to hide that by adding some waviness to the surface manually."</span>&#13;
+<br/><br/>
+the key is to remember that grey scale images only contain <span style="font-weight: bold">height information</span> were as normal maps contain <span style="font-weight: bold">slope information</span>&#13;
+<br/><br/>
+for example, a band of pixels might be white and right next to that is a band of grey. you could say "the white band is 1.0 units above the grey band". ok, great. but how would per pixel lighting work on something like this? it can't beause per pixel lighting needs a slope, not two flat areas next to each other. if you think about it, such a surface would be equally lit every where!&#13;
+<br/><br/>
+now run that grey scale image thru a normal map plug-in. guess what happens? it creates a small sloped region between the two areas. now per pixel lighting will work as expected.&#13;
+<br/><br/>
+plus, as carmack mentioned above, grey scale images are limited to the amount of information they can hold compared to generating a normal map off of a super high poly model.<br/>_________________<br/><span style="font-weight: bold">Download: </span><a href="/web/20061013024155/http://www.pcgamemods.com/user/6056.html" target="_blank" class="postlink">My Doom3 mods</a>.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153826" date="Posted: Wed Aug 16, 2006 2:48 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Just a note, perhaps I misunderstood what you're saying but just in case.  Normalmaps are capable of height just as a heightmap.  Carmack's statement here pretty much confirms that when he says that heightmaps are converted to normalmaps at the load time of the material.  All the heightmap's doing is tweaking the extremes of the normalmap referenced by applying a second normalmap to the first (which is actually what I was doing above but poorly explained).</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154056" date="Posted: Fri Aug 18, 2006 7:41 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154064" date="Posted: Fri Aug 18, 2006 9:30 am    Post subject: "><author>BNA!</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+If you use it in Doom3 you don't need to merge them.<br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff - The world is yours</a>, soon in 6 degrees of freedom!&#13;
+<br/><a href="/web/20061013024155/http://www.modwiki.net/" target="_blank" class="postlink">Visit ModWiki</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154065" date="Posted: Fri Aug 18, 2006 9:51 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">While Doom 3 is capable of combining a height map and normal map into a single image, there are benefits to doing this externally.&#13;
+<br/><br/><ul><br/><li>You reduce your total image count&#13;
+<br/></li><li>You reduce load times</li></ul><br/><br/>
+I don't imagine that it would have a significant effect when done with a single material but it could yield some worthwhile results if done to a series of materials. Most notably in the file size of your distribution.&#13;
+<br/><br/>
+As for what programs to use, I know ORB can merge a height map and normal map.&#13;
+<br/><br/>
+I believe Doom 3 is capable of exporting the final composited textures as they are in memory via a console command or variable. I remember doing it. I just can't remember what I did.<br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013024155/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154091" date="Posted: Fri Aug 18, 2006 2:04 pm    Post subject: "><author>pbmax</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin...</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+when i generate a normal map in the gimp, i usually manually edit the image (sometimes one pixel at a time) afterwards to get it exactly how i want it. its time consuming, but it works.&#13;
+<br/><br/>
+in fact, i've created some really great normal maps almost completely by hand by cutting and pasting from a bunch of different normal maps.<br/>_________________<br/><span style="font-weight: bold">Download: </span><a href="/web/20061013024155/http://www.pcgamemods.com/user/6056.html" target="_blank" class="postlink">My Doom3 mods</a>.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154116" date="Posted: Fri Aug 18, 2006 5:58 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">Bittoman: just curious, what method would recommend to bake the heightmap into the normalmap ?&#13;
+<br/>
+I've tried using nvidia normalmap plugin for photoshop, but couldn't merge the two normalmaps well (original + converted heightmap) plus the plugin seems to use 2 pixel width (1 inside and one outside from the original border of heightmap) for the normalmaps where as doom3 uses 1 pixel.</td>	</tr></table><span class="postbody">Personally the best results I've had is to convert the heightmap into a normalmap and then combine them in my image editor as if I was combining any other images using either 'overlay' or 'screen' deoending on the 'look' I'm going for.<br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013024155/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154128" date="Posted: Fri Aug 18, 2006 7:42 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Everyone pretty much answered that question exactly as I would have so I thankfully don't need to make this any messier than I already have lol.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154190" date="Posted: Sat Aug 19, 2006 7:52 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">So far, the results i get aren't even close to using the heightmap ingame.&#13;
+<br/>
+I'll look up that console var so i could at least see how doom3 is doing it. (and might isolate the height areas if i can't reproduce it)</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154193" date="Posted: Sat Aug 19, 2006 8:06 am    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">So far, the results i get aren't even close to using the heightmap ingame.&#13;
+<br/>
+I'll look up that console var so i could at least see how doom3 is doing it. (and might isolate the height areas if i can't reproduce it)</td>	</tr></table><span class="postbody">The height channel of a normal map in D3 won't get you the same level of detail as a full 24bit greyscale toned heightmap, it's technically impossible (single 8 bit versus 8x8x8), plus as the chaps have said above, the height does just that, adds height; the normal maps aren't doing that in game.&#13;
+<br/><br/>
+I have a feeling you're looking at this from the point of view of a high poly modeller used to some pretty knarly detail level when doing renders, you won't get that in D3 (at least not 'cheaply').<br/>_________________<br/><a href="/web/20061013024155/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013024155im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013024155/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154194" date="Posted: Sat Aug 19, 2006 8:18 am    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>kat wrote:</b></span></td>	</tr><tr><td class="quote">The height channel of a normal map in D3 won't get you the same level of detail as a full 24bit greyscale toned heightmap, it's technically impossible (single 8 bit versus 8x8x8), plus as the chaps have said above, the height does just that, adds height; the normal maps aren't doing that in game.&#13;
+<br/><br/>
+I have a feeling you're looking at this from the point of view of a high poly modeller used to some pretty knarly detail level when doing renders, you won't get that in D3 (at least not 'cheaply').</td>	</tr></table><span class="postbody">&#13;
+<br/><br/><span style="font-weight: bold">kat:</span> The height seen ingame isn't "real height", it's just an illusion created by clever normalmap conversion, afaik Doom3 doesn't use parallex mapping either.&#13;
+<br/>
+When the game loads it just blends the normalmap with the converted heightmap.&#13;
+<br/>
+I'm looking just for that, see the resulted normalmap from the combination with the heightmap or at least immitate it.&#13;
+<br/><br/><span style="font-weight: bold">Rich :</span> I've found the command <span style="font-weight: bold">"write_imageNormalTGA"</span>, was this the one you used ? still can't figure out how to get it to work though  <img src="/web/20061013023106im_/http://doom3world.org/phpbb2/images/smiles/icon_confused.gif" alt="Confused" border="0"/><br/><span style="font-weight: bold">Edit :</span> just figured this out, wrote the image into the dds dir (might also be because i turned on "image_usecache" and "image_useofflinecompressior") - the resulted normalmap looks really nice, much better than the one i got by using nvidia tool .. guess it's time to experiment some more with it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154200" date="Posted: Sat Aug 19, 2006 10:18 am    Post subject: "><author>rich_is_bored</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes. That's the command.&#13;
+<br/><br/>
+I belive you have to disable compression completely to get it to output TGAs.<br/>_________________<br/><a href="/web/20061013023106/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023106im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>  Staff</a>&#13;
+<br/>
+Learn something today? Why not write an article about it on <a href="/web/20061013023106/http://www.modwiki.net/wiki/Main_Page" target="_blank" class="postlink">modwiki.net</a>?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154237" date="Posted: Sat Aug 19, 2006 4:53 pm    Post subject: "><author>kat</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Svartberg wrote:</b></span></td>	</tr><tr><td class="quote">....<span style="font-weight: bold">kat:</span> The height seen ingame isn't "real height", it's just an illusion created by clever normalmap conversion, afaik Doom3 doesn't use parallex mapping either.&#13;
+<br/>
+When the game loads it just blends the normalmap with the converted heightmap.&#13;
+<br/>
+I'm looking just for that, see the resulted normalmap from the combination with the heightmap or at least immitate it....</td>	</tr></table><span class="postbody">Yes 'height' is meant as a relative term, using a separate height map should result of better detail even when the conversion/combination process gets done in D3(otherwise they wouldn't have used them), and yes D3 doesn't use any parallax mapping.&#13;
+<br/><br/>
+So you're wanting to output the results of the D3 combination process to see what difference it makes compared to other manual conbination processes?<br/>_________________<br/><a href="/web/20061013023106/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013023106im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/>Co-Admin</a> - <a href="/web/20061013023106/http://www.quake3bits.com/" target="_blank" class="postlink">Modelling and modding tutorials and tips</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154242" date="Posted: Sat Aug 19, 2006 5:48 pm    Post subject: "><author>Svartberg</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">Yes 'height' is meant as a relative term, using a separate height map should result of better detail even when the conversion/combination process gets done in D3(otherwise they wouldn't have used them), and yes D3 doesn't use any parallax mapping.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Nice assumption, but that's not why they used them.&#13;
+<br/>
+1. The final tga doom3 uses is 24bit RGB, which means the lowest difference in the heightmap would be (1,1,1) for the RGB values, which means any more than 8bit in the greyscale map would be discarded in the blending.&#13;
+<br/>
+2. Even if doom3 would support true 24bit grescale maps (which like most game engines don't), the changes wouldn't be seen to the eye, especially those of a gamer .&#13;
+<br/>
+3. Most heightmaps i've seen in doom3 are in rgb 24bit mode, which means only 8bit for greyscale. (i guess they were too lazy to convert it and save HD space on those, open one and see for yourself)&#13;
+<br/><br/>
+My guess is they used them because it's production effecient, having the programmers adding support for heightmaps inside the engine means it cuts one step whenever the designer wants to test his maps ingame, and as you can see the overtime added is next to nothing.&#13;
+<br/><br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>kat wrote:</b></span></td>	</tr><tr><td class="quote">So you're wanting to output the results of the D3 combination process to see what difference it makes compared to other manual conbination processes?</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Aye that what i did this morning, results are at the end of this thread : <a href="/web/20061013023106/http://www.doom3world.org/phpbb2/viewtopic.php?t=16870&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=16870&amp;start=0&amp;postdays=0&amp;postorder=asc&amp;highlight=</a>&#13;
+<br/>
+In my opinion the built-in heightmap support is far better than the results i got with nvidia plugin, and i can use ORB if i want to bake the maps, which yields nearly identical results.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154257" date="Posted: Sat Aug 19, 2006 6:32 pm    Post subject: "><author>Bittoman</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">nVidia's plugin isn't the best really for normalmaps.  I actually like GIMP's version a bit better and the one that you download seperately from GIMP even better (a lot more options for one but the output seems better).  There is one advantage though with doing heightmaps and then adding them to the normalmap yourself.  For one you can create an ultra-high res heightmap and use different image scaling techniques to sharpen or soften the detail or even create high res heightmaps, convert them to normalmaps and then scale (which seems to help with banding, at least in my experience but remember to "normalize" afterwards).  You also have the option to use different blending techniques onto the base normalmap to help define, sharpen or soften the height map's details onto the base normalmap.  And last you also have the ability use opacity to make the details more or less pronounced.&#13;
+<br/><br/>
+Either way there are some great benefits for converting heightmaps to normals outside of D3 engine's method but for simplicity or for dynamic heightmap changes to the bumpmaping of a material in game using seperate heightmaps can be useful as well.</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

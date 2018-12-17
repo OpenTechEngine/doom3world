@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16993"><title>i also need help rigging</title><posts><post id="155127" date="Posted: Sun Aug 27, 2006 11:19 pm    Post subject: i also need help rigging"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've created a bone structurte for a character that is linked completely with only one root bone, origin. i can animate the bones and export them fine using derton's exporter when skinned to the character.&#13;
+<br/><br/>
+However when the bone structure is ik chained and controlled with dummy objects the animation created for the character won't show up in the games engine? The model itself does but it remains static. &#13;
+<br/><br/>
+If anyone could offer a solution to this problem i would be very grateful. I think it may have something to do with the origin but im not sure what.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155156" date="Posted: Mon Aug 28, 2006 11:26 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What software do you use?.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155157" date="Posted: Mon Aug 28, 2006 11:39 am    Post subject: "><author>Jack Rammsdell</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">make sure you select both bones and model when exporting.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155158" date="Posted: Mon Aug 28, 2006 12:00 pm    Post subject: animation"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi folks, im using max 8. The game engine dosen't seem to except a boned mesh that is animated with ik chains and dummy objects to control the chains.&#13;
+<br/><br/>
+I've checked all the bones are linked and aren't linked to any other objects. The bones haven't been scaled and are the original size when created.&#13;
+<br/><br/>
+Am i wrong in thinkin that this form of animation is just not accepted by doom or am i missing something completely. Bones animated directly seem to be accepted no problem, why would this be if in principle ik chains apply animation to a bone structure also.&#13;
+<br/><br/>
+Im a bit desperate at the minute so any advice is welcome</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155160" date="Posted: Mon Aug 28, 2006 2:13 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think some info on how you do your IK rig would help. You can in fact use IK to animate a model for Doom so I'm wondering what your rig is like to cause this problem for you.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155164" date="Posted: Mon Aug 28, 2006 3:04 pm    Post subject: ik chain"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here's a picture of how the ik looks.&#13;
+<br/><br/><a href="/web/20061013055928/http://www.infm.ulst.ac.uk/~cdf5map/ikchain.jpg" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/ikchain.jpg</a>&#13;
+<br/><br/>
+Here's a screen shot to the ikchain ive created.&#13;
+<br/><br/>
+Does this help[/img]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155170" date="Posted: Mon Aug 28, 2006 4:49 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This setup seems ok, but I can't say for sure.&#13;
+<br/><br/>
+If you use HI solvers and just simple link the end effctor to the dummy, you shouldn't have problems.&#13;
+<br/><br/>
+From the bones I see it seems you don't have the origin down on the ground. You should put it there because Doom use the origin to place the model on the ground. This of course only counts for an AI character. If this is merely for a cinematic, then don't bother.&#13;
+<br/><br/>
+But about the IK again, I'm really not sure in what situation it will not work. The exporter doesn't really care how the bone moves, as long as it moves.&#13;
+<br/><br/>
+You should maybe post your Max file to take a look at.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155176" date="Posted: Mon Aug 28, 2006 6:04 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sorry for the delay in getting back to you.&#13;
+<br/><br/><a href="/web/20061013055928/http://www.infm.ulst.ac.uk/~cdf5map/bend.max" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/bend.max</a>&#13;
+<br/><br/>
+Here's a link to the max file. I've redone the bones again but its basically the same as before. It still dosen't work by the way.&#13;
+<br/><br/>
+There are no dummy objects but the ik chains are set up. Even when simply animating ik the animation for the bones still fails to export with der tons md5 export.&#13;
+<br/><br/>
+The project itself is for cinematic purposes rather than doom level editing.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155177" date="Posted: Mon Aug 28, 2006 6:15 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Jack Rammsdell wrote:</b></span></td>	</tr><tr><td class="quote">make sure you select both bones and model when exporting.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No, you can't do that. You have to select the mesh alone. The bones are linked to the mesh, so they will follow anyway. But if you select them you will get an error.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055928/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"><br/><br/>Last edited by Kristus on Mon Aug 28, 2006 6:16 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="155178" date="Posted: Mon Aug 28, 2006 6:15 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">its created in max 8 but i could create something in a lower version if you have difficulty opening the max file</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155184" date="Posted: Mon Aug 28, 2006 6:46 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It seems to work just fine.&#13;
+<br/><br/>
+I exported the model and first 100 frames of animation. Works just fine in Doom.&#13;
+<br/><br/>
+So, i'm not sure what you're doing. If you got the thing working in the game without IK, and now it does not work with IK. Doesn't make complete sense. You must be doing something else wrong somewhere.&#13;
+<br/><br/>
+Maybe give some more details on your methods of exporting and testing.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155191" date="Posted: Mon Aug 28, 2006 7:16 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">After running dertons md5 export i get a message saying that the animation and mesh have both been exported successfully, no problems there then. &#13;
+<br/><br/>
+I then create the necessay doom files for the material, model and textures. A def file is also created saying this:&#13;
+<br/><br/><span style="font-weight: bold">&#13;
+<br/>
+model anim6 {&#13;
+<br/>
+            mesh       models/anim6/anim6.md5mesh&#13;
+<br/>
+            anim idle  models/anim6/anim6.md5anim&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef anim6 {&#13;
+<br/>
+                 "inherit"     "func_animate"&#13;
+<br/>
+                  "model"      "anim6"&#13;
+<br/><br/>
+}</span>&#13;
+<br/><br/>
+When the model imports and move to the entity tab and type two lines found from Brian Trep's tuts which are;&#13;
+<br/><br/>
+start_anim&#13;
+<br/><br/>
+idle&#13;
+<br/><br/>
+Is there maybe a different value I should enter rather than idle?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155196" date="Posted: Mon Aug 28, 2006 8:30 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, to make sure the thing is working just run  a test map and in the console type...&#13;
+<br/><br/>
+testmodel anim6&#13;
+<br/><br/>
+This should spawn in a test of the model and then use this to cycle the available animations...&#13;
+<br/><br/>
+nextAnim&#13;
+<br/><br/>
+So just doing this you can test it to make sure it works.&#13;
+<br/><br/>
+You may have some problems with the "origin" because you have the origin set as the pelvic bone. What you should do is add another bone, rename the origin you have to pelvis, link the pelvis to the new bone and name this new bone origin.&#13;
+<br/><br/>
+So you'll have the origin as a parent to all bones but also not influencing the animation in any way. The origin should just sit there with no animation on it. You can't use it as a pelvic bone.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155200" date="Posted: Mon Aug 28, 2006 8:44 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the reply.&#13;
+<br/><br/>
+Do you mean create a new bone sepereately from the skeleton and then use the link button to attach it to the model.&#13;
+<br/><br/>
+Would this not bring up an error saying "too many root nodes attached to model, only one permitted". &#13;
+<br/><br/>
+I'll try anyway, also just to be sure, there is only one version of derton's md5 export?&#13;
+<br/><br/>
+Could you send me the md5 files exported with the model you tested to compare the files exported when i run the script, just to see if there are any obvious differences?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155204" date="Posted: Mon Aug 28, 2006 9:03 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi, the model you downloaded contained animation on the bones, are you sure that that didn't show up in doom rather than the ik chain anim. &#13;
+<br/><br/>
+When i export the anim and check the .ASE file there is no data for the frames where there was data for the directly animated bone. &#13;
+<br/><br/>
+Here's the new file without the animated bones just animated IK. &#13;
+<br/><br/><a href="/web/20061013055928/http://www.infm.ulst.ac.uk/~cdf5map/bend.max" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/bend.max</a>&#13;
+<br/><br/>
+Sorry!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155258" date="Posted: Tue Aug 29, 2006 9:48 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No problem.&#13;
+<br/><br/>
+This new one you posted also works.&#13;
+<br/><br/>
+About the exporter, I know there are 2 different ones. One of them does extra stuff like automatically add bones to a mesh that is morphed, stuff like that. I use the normal one, the one that just purely exports skinned meshes.&#13;
+<br/><br/>
+I know the other one does have some problems. I remember somebody else had a problem with it but it was completely unrelated to this. It was about running out of memory.&#13;
+<br/><br/>
+Anyway, here's what I exported and it does work.&#13;
+<br/><br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb/temp/test.rar" target="_blank">http://home.telkomsa.net/obihb/temp/test.rar</a>&#13;
+<br/><br/>
+Just check the material in the MD5Mesh, I changed it to work for me.<br/>_________________<br/><a href="/web/20061013055928/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155270" date="Posted: Tue Aug 29, 2006 12:41 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Apart from the "testmodel" command, you could use a modelviewer to check if the generated md5mesh and md5anim files are ok. This way you can take a look at the md5 files without writing any def files, eliminating the possibility of mistakes there.&#13;
+<br/><br/>
+Some short technical explanation about the md5exporter: The exporter only reads the positions of the bone objects frame by frame. You can use any method of animation available to you in 3dsmax to animate your rig, the only critical point is that the bone obects (the ones that are declared as the skeleton in the mesh object's skin modifier) are affected by your method of animation. So everything from directly keyframing the bone objects to indirectly affecting them with complicated IK or expression-based constraint or any animation-related plugins that you might use should work. As long as the method in the end results in animating the objects that are declared as "bones" in its skin modifier.<br/>_________________<br/><a href="/web/20061013055928/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055928im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055928/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155391" date="Posted: Wed Aug 30, 2006 3:06 pm    Post subject: Got it workin thanks a whole lot"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks very much guys for all your advice and help, i got the animation exporting and working in Doom. &#13;
+<br/><br/>
+To be honest i don't know what the problem was, but im just glad to have overcome it. Again your suggestions and help was greatly appreciated!!!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155127" date="Posted: Sun Aug 27, 2006 11:19 pm    Post subject: i also need help rigging"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I've created a bone structurte for a character that is linked completely with only one root bone, origin. i can animate the bones and export them fine using derton's exporter when skinned to the character.&#13;
+<br/><br/>
+However when the bone structure is ik chained and controlled with dummy objects the animation created for the character won't show up in the games engine? The model itself does but it remains static. &#13;
+<br/><br/>
+If anyone could offer a solution to this problem i would be very grateful. I think it may have something to do with the origin but im not sure what.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155156" date="Posted: Mon Aug 28, 2006 11:26 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">What software do you use?.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155157" date="Posted: Mon Aug 28, 2006 11:39 am    Post subject: "><author>Jack Rammsdell</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">make sure you select both bones and model when exporting.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155158" date="Posted: Mon Aug 28, 2006 12:00 pm    Post subject: animation"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Hi folks, im using max 8. The game engine dosen't seem to except a boned mesh that is animated with ik chains and dummy objects to control the chains.&#13;
+<br/><br/>
+I've checked all the bones are linked and aren't linked to any other objects. The bones haven't been scaled and are the original size when created.&#13;
+<br/><br/>
+Am i wrong in thinkin that this form of animation is just not accepted by doom or am i missing something completely. Bones animated directly seem to be accepted no problem, why would this be if in principle ik chains apply animation to a bone structure also.&#13;
+<br/><br/>
+Im a bit desperate at the minute so any advice is welcome</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155160" date="Posted: Mon Aug 28, 2006 2:13 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">I think some info on how you do your IK rig would help. You can in fact use IK to animate a model for Doom so I'm wondering what your rig is like to cause this problem for you.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155164" date="Posted: Mon Aug 28, 2006 3:04 pm    Post subject: ik chain"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Here's a picture of how the ik looks.&#13;
+<br/><br/><a href="/web/20061013061242/http://www.infm.ulst.ac.uk/~cdf5map/ikchain.jpg" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/ikchain.jpg</a>&#13;
+<br/><br/>
+Here's a screen shot to the ikchain ive created.&#13;
+<br/><br/>
+Does this help[/img]</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155170" date="Posted: Mon Aug 28, 2006 4:49 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This setup seems ok, but I can't say for sure.&#13;
+<br/><br/>
+If you use HI solvers and just simple link the end effctor to the dummy, you shouldn't have problems.&#13;
+<br/><br/>
+From the bones I see it seems you don't have the origin down on the ground. You should put it there because Doom use the origin to place the model on the ground. This of course only counts for an AI character. If this is merely for a cinematic, then don't bother.&#13;
+<br/><br/>
+But about the IK again, I'm really not sure in what situation it will not work. The exporter doesn't really care how the bone moves, as long as it moves.&#13;
+<br/><br/>
+You should maybe post your Max file to take a look at.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155176" date="Posted: Mon Aug 28, 2006 6:04 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">sorry for the delay in getting back to you.&#13;
+<br/><br/><a href="/web/20061013061242/http://www.infm.ulst.ac.uk/~cdf5map/bend.max" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/bend.max</a>&#13;
+<br/><br/>
+Here's a link to the max file. I've redone the bones again but its basically the same as before. It still dosen't work by the way.&#13;
+<br/><br/>
+There are no dummy objects but the ik chains are set up. Even when simply animating ik the animation for the bones still fails to export with der tons md5 export.&#13;
+<br/><br/>
+The project itself is for cinematic purposes rather than doom level editing.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155177" date="Posted: Mon Aug 28, 2006 6:15 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Jack Rammsdell wrote:</b></span></td>	</tr><tr><td class="quote">make sure you select both bones and model when exporting.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+No, you can't do that. You have to select the mesh alone. The bones are linked to the mesh, so they will follow anyway. But if you select them you will get an error.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013061242/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"><br/><br/>Last edited by Kristus on Mon Aug 28, 2006 6:16 pm; edited 1 time in total</span></td>
+			</tr>]]></body></post><post id="155178" date="Posted: Mon Aug 28, 2006 6:15 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">its created in max 8 but i could create something in a lower version if you have difficulty opening the max file</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155184" date="Posted: Mon Aug 28, 2006 6:46 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">It seems to work just fine.&#13;
+<br/><br/>
+I exported the model and first 100 frames of animation. Works just fine in Doom.&#13;
+<br/><br/>
+So, i'm not sure what you're doing. If you got the thing working in the game without IK, and now it does not work with IK. Doesn't make complete sense. You must be doing something else wrong somewhere.&#13;
+<br/><br/>
+Maybe give some more details on your methods of exporting and testing.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155191" date="Posted: Mon Aug 28, 2006 7:16 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">After running dertons md5 export i get a message saying that the animation and mesh have both been exported successfully, no problems there then. &#13;
+<br/><br/>
+I then create the necessay doom files for the material, model and textures. A def file is also created saying this:&#13;
+<br/><br/><span style="font-weight: bold">&#13;
+<br/>
+model anim6 {&#13;
+<br/>
+            mesh       models/anim6/anim6.md5mesh&#13;
+<br/>
+            anim idle  models/anim6/anim6.md5anim&#13;
+<br/>
+}&#13;
+<br/><br/>
+entityDef anim6 {&#13;
+<br/>
+                 "inherit"     "func_animate"&#13;
+<br/>
+                  "model"      "anim6"&#13;
+<br/><br/>
+}</span>&#13;
+<br/><br/>
+When the model imports and move to the entity tab and type two lines found from Brian Trep's tuts which are;&#13;
+<br/><br/>
+start_anim&#13;
+<br/><br/>
+idle&#13;
+<br/><br/>
+Is there maybe a different value I should enter rather than idle?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155196" date="Posted: Mon Aug 28, 2006 8:30 pm    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, to make sure the thing is working just run  a test map and in the console type...&#13;
+<br/><br/>
+testmodel anim6&#13;
+<br/><br/>
+This should spawn in a test of the model and then use this to cycle the available animations...&#13;
+<br/><br/>
+nextAnim&#13;
+<br/><br/>
+So just doing this you can test it to make sure it works.&#13;
+<br/><br/>
+You may have some problems with the "origin" because you have the origin set as the pelvic bone. What you should do is add another bone, rename the origin you have to pelvis, link the pelvis to the new bone and name this new bone origin.&#13;
+<br/><br/>
+So you'll have the origin as a parent to all bones but also not influencing the animation in any way. The origin should just sit there with no animation on it. You can't use it as a pelvic bone.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155200" date="Posted: Mon Aug 28, 2006 8:44 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks for the reply.&#13;
+<br/><br/>
+Do you mean create a new bone sepereately from the skeleton and then use the link button to attach it to the model.&#13;
+<br/><br/>
+Would this not bring up an error saying "too many root nodes attached to model, only one permitted". &#13;
+<br/><br/>
+I'll try anyway, also just to be sure, there is only one version of derton's md5 export?&#13;
+<br/><br/>
+Could you send me the md5 files exported with the model you tested to compare the files exported when i run the script, just to see if there are any obvious differences?</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155204" date="Posted: Mon Aug 28, 2006 9:03 pm    Post subject: "><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">hi, the model you downloaded contained animation on the bones, are you sure that that didn't show up in doom rather than the ik chain anim. &#13;
+<br/><br/>
+When i export the anim and check the .ASE file there is no data for the frames where there was data for the directly animated bone. &#13;
+<br/><br/>
+Here's the new file without the animated bones just animated IK. &#13;
+<br/><br/><a href="/web/20061013061242/http://www.infm.ulst.ac.uk/~cdf5map/bend.max" target="_blank">http://www.infm.ulst.ac.uk/~cdf5map/bend.max</a>&#13;
+<br/><br/>
+Sorry!</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155258" date="Posted: Tue Aug 29, 2006 9:48 am    Post subject: "><author>obihb</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">No problem.&#13;
+<br/><br/>
+This new one you posted also works.&#13;
+<br/><br/>
+About the exporter, I know there are 2 different ones. One of them does extra stuff like automatically add bones to a mesh that is morphed, stuff like that. I use the normal one, the one that just purely exports skinned meshes.&#13;
+<br/><br/>
+I know the other one does have some problems. I remember somebody else had a problem with it but it was completely unrelated to this. It was about running out of memory.&#13;
+<br/><br/>
+Anyway, here's what I exported and it does work.&#13;
+<br/><br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb/temp/test.rar" target="_blank">http://home.telkomsa.net/obihb/temp/test.rar</a>&#13;
+<br/><br/>
+Just check the material in the MD5Mesh, I changed it to work for me.<br/>_________________<br/><a href="/web/20061013061242/http://home.telkomsa.net/obihb" target="_blank" class="postlink">Obi-Wan</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155270" date="Posted: Tue Aug 29, 2006 12:41 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Apart from the "testmodel" command, you could use a modelviewer to check if the generated md5mesh and md5anim files are ok. This way you can take a look at the md5 files without writing any def files, eliminating the possibility of mistakes there.&#13;
+<br/><br/>
+Some short technical explanation about the md5exporter: The exporter only reads the positions of the bone objects frame by frame. You can use any method of animation available to you in 3dsmax to animate your rig, the only critical point is that the bone obects (the ones that are declared as the skeleton in the mesh object's skin modifier) are affected by your method of animation. So everything from directly keyframing the bone objects to indirectly affecting them with complicated IK or expression-based constraint or any animation-related plugins that you might use should work. As long as the method in the end results in animating the objects that are declared as "bones" in its skin modifier.<br/>_________________<br/><a href="/web/20061013061242/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013061242im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013061242/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="155391" date="Posted: Wed Aug 30, 2006 3:06 pm    Post subject: Got it workin thanks a whole lot"><author>paudy</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">thanks very much guys for all your advice and help, i got the animation exporting and working in Doom. &#13;
+<br/><br/>
+To be honest i don't know what the problem was, but im just glad to have overcome it. Again your suggestions and help was greatly appreciated!!!</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16774"><title>Particle Effects??</title><posts><post id="153147" date="Posted: Thu Aug 10, 2006 9:23 pm    Post subject: Particle Effects??"><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Helo,&#13;
+<br/><br/>
+I've been working on this little mod of mine for a while now, and I'm now at the final stage.  Everything else works beautifully except for the Pistol Laser Sight.  I've been suggested many different avenues to solve this issue, but of all of them I'd say none of them make sense.&#13;
+<br/><br/>
+So, given that I have the Pistol model, and a special bone from which to eminate my "laser", I figure it would work similarly to the flash light method that I've used so far, but that method involves the use of three textures, a beam, a flare, and a bulb.  The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.  &#13;
+<br/><br/>
+One particular suggestion did seem to make a lot of sense, logically speaking, but effectually I haven't a clue how to do it.  The suggestion is a particle effect.  It was describe in one response to my many posts on this as </span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">drawing the laser with a stream of particles</td>	</tr></table><span class="postbody"> but how do you do that?  Where would I go to learn about creating a particle effect that follows the same trace as the actual flashlight beam does?  What is a particle effect?  A Shader (material), texture, combination of both?  I truthfully don't know.  &#13;
+<br/><br/>
+Thanks&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153180" date="Posted: Fri Aug 11, 2006 4:19 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">you can have the model emmit the particle easy enough but first I suggest getting used to particles and thier creation so you understand how they work&#13;
+<br/><br/>
+for starters in you entity inspector window (of doomed) click the console tab  then at the bottom at the open filed for typing type &#13;
+<br/>
+editparticles this will bring up the particle editor wich will allow you to see how to build them and see how they work&#13;
+<br/><br/>
+one warning the editor is buggy<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153182" date="Posted: Fri Aug 11, 2006 4:52 am    Post subject: Re: Particle Effects??"><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>JaedenRuiner wrote:</b></span></td>	</tr><tr><td class="quote">The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+You realize that laser is only visible if it hits something, right? Since it's light.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013023049/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153209" date="Posted: Fri Aug 11, 2006 1:25 pm    Post subject: Re: Particle Effects??"><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Kristus wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>JaedenRuiner wrote:</b></span></td>	</tr><tr><td class="quote">The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+You realize that laser is only visible if it hits something, right? Since it's light.</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Well, yes, but I figure that I can either fake it...since well this is hollywood, not reality.  I mean if it was reality, we wouldn't have games that involved hellspawn demons and heinous possessive mutated monsters now would we.  *cheezygrin*&#13;
+<br/><br/>
+But in a smoke filled room, or with the right imperfection put on the emitter rod a Laser can actually illuminate a beam, which is the effect I want.  Nothing to hardcore, just pretty, (and hopefully with my code modifications, accurate.&#13;
+<br/><br/>
+I plan to use the code from the Light emission to calculate the trajectory of the projectiles, so that the laser dot is where the bullet ends up.  It'll take some work, but I know i can work it...as soon as i figure out these Particle effects.  *chuckle*&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner&#13;
+<br/><br/>
+ps - Voldemort, thanks for the suggestion i'll take a look into it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154063" date="Posted: Fri Aug 18, 2006 9:06 am    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>voldemort wrote:</b></span></td>	</tr><tr><td class="quote">for starters in you entity inspector window (of doomed) click the console tab  then at the bottom at the open filed for typing type &#13;
+<br/>
+editparticles this will bring up the particle editor wich will allow you to see how to build them and see how they work</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+By any chance is there another place i could look to edit particles?  The reason being is that I can't seem to get the DoomED to load for that particular editor.  (no pun intended).  every time i run "editparticles" doom3 crashes.  &#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154087" date="Posted: Fri Aug 18, 2006 1:09 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Your only other option would then be to edit them via notepad by hand. But I wouldn't advise it. You should be able to run the particle editor without any problems. Perhaps some mod you installed earlier crashes it.&#13;
+<br/><br/>
+Be warned, it's less of a pain to figure out what's crashing the particle editor than to figure out how to edit particles by hand *and* get the desired effects.<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061013023049/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061013023049/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154195" date="Posted: Sat Aug 19, 2006 8:26 am    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ooookaay...&#13;
+<br/><br/>
+Yea, i got the particle editor working and this is what I saw:&#13;
+<br/><br/><img src="/web/20061013023049im_/http://www.wayoftheleaf.net/images/particleeditor.jpg" border="0"/><br/><br/>
+Yea...&#13;
+<br/><br/>
+um, is there like a tutorial somewhere that could tell me what the &lt;bleep&gt; any of that means.  &#13;
+<br/><br/>
+(i did try to warn people i am not 'graphically' inclined, i'm a writer/coder, not a painter.  *cheezygrin*&#13;
+<br/><br/>
+Thanks for the help,&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153147" date="Posted: Thu Aug 10, 2006 9:23 pm    Post subject: Particle Effects??"><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Helo,&#13;
+<br/><br/>
+I've been working on this little mod of mine for a while now, and I'm now at the final stage.  Everything else works beautifully except for the Pistol Laser Sight.  I've been suggested many different avenues to solve this issue, but of all of them I'd say none of them make sense.&#13;
+<br/><br/>
+So, given that I have the Pistol model, and a special bone from which to eminate my "laser", I figure it would work similarly to the flash light method that I've used so far, but that method involves the use of three textures, a beam, a flare, and a bulb.  The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.  &#13;
+<br/><br/>
+One particular suggestion did seem to make a lot of sense, logically speaking, but effectually I haven't a clue how to do it.  The suggestion is a particle effect.  It was describe in one response to my many posts on this as </span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Quote:</b></span></td>	</tr><tr><td class="quote">drawing the laser with a stream of particles</td>	</tr></table><span class="postbody"> but how do you do that?  Where would I go to learn about creating a particle effect that follows the same trace as the actual flashlight beam does?  What is a particle effect?  A Shader (material), texture, combination of both?  I truthfully don't know.  &#13;
+<br/><br/>
+Thanks&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153180" date="Posted: Fri Aug 11, 2006 4:19 am    Post subject: "><author>voldemort</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">you can have the model emmit the particle easy enough but first I suggest getting used to particles and thier creation so you understand how they work&#13;
+<br/><br/>
+for starters in you entity inspector window (of doomed) click the console tab  then at the bottom at the open filed for typing type &#13;
+<br/>
+editparticles this will bring up the particle editor wich will allow you to see how to build them and see how they work&#13;
+<br/><br/>
+one warning the editor is buggy<br/>_________________<br/>it was bad enough imps and maggots everywhere but when that Hellknight copped a feel that was to much now I really was in hell</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153182" date="Posted: Fri Aug 11, 2006 4:52 am    Post subject: Re: Particle Effects??"><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>JaedenRuiner wrote:</b></span></td>	</tr><tr><td class="quote">The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+You realize that laser is only visible if it hits something, right? Since it's light.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013023720/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="153209" date="Posted: Fri Aug 11, 2006 1:25 pm    Post subject: Re: Particle Effects??"><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Kristus wrote:</b></span></td>	</tr><tr><td class="quote"><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>JaedenRuiner wrote:</b></span></td>	</tr><tr><td class="quote">The laser is different than an actual <span style="font-style: italic">light</span> so I figure I must go back to the drawing board.</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+You realize that laser is only visible if it hits something, right? Since it's light.</span></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+Well, yes, but I figure that I can either fake it...since well this is hollywood, not reality.  I mean if it was reality, we wouldn't have games that involved hellspawn demons and heinous possessive mutated monsters now would we.  *cheezygrin*&#13;
+<br/><br/>
+But in a smoke filled room, or with the right imperfection put on the emitter rod a Laser can actually illuminate a beam, which is the effect I want.  Nothing to hardcore, just pretty, (and hopefully with my code modifications, accurate.&#13;
+<br/><br/>
+I plan to use the code from the Light emission to calculate the trajectory of the projectiles, so that the laser dot is where the bullet ends up.  It'll take some work, but I know i can work it...as soon as i figure out these Particle effects.  *chuckle*&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner&#13;
+<br/><br/>
+ps - Voldemort, thanks for the suggestion i'll take a look into it.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154063" date="Posted: Fri Aug 18, 2006 9:06 am    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody"/><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>voldemort wrote:</b></span></td>	</tr><tr><td class="quote">for starters in you entity inspector window (of doomed) click the console tab  then at the bottom at the open filed for typing type &#13;
+<br/>
+editparticles this will bring up the particle editor wich will allow you to see how to build them and see how they work</td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+By any chance is there another place i could look to edit particles?  The reason being is that I can't seem to get the DoomED to load for that particular editor.  (no pun intended).  every time i run "editparticles" doom3 crashes.  &#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154087" date="Posted: Fri Aug 18, 2006 1:09 pm    Post subject: "><author>BloodRayne</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Your only other option would then be to edit them via notepad by hand. But I wouldn't advise it. You should be able to run the particle editor without any problems. Perhaps some mod you installed earlier crashes it.&#13;
+<br/><br/>
+Be warned, it's less of a pain to figure out what's crashing the particle editor than to figure out how to edit particles by hand *and* get the desired effects.<br/>_________________<br/>Hexen Edge Of Chaos&#13;
+<br/>
+Ultimate Mod&#13;
+<br/><br/>
+Personal websites:&#13;
+<br/><a href="/web/20061013023720/http://www.fabianband.com/" target="_blank" class="postlink">http://www.fabianband.com</a>&#13;
+<br/><a href="/web/20061013023720/http://pixels.ontheweb.nl/" target="_blank" class="postlink">http://pixels.ontheweb.nl</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154195" date="Posted: Sat Aug 19, 2006 8:26 am    Post subject: "><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Ooookaay...&#13;
+<br/><br/>
+Yea, i got the particle editor working and this is what I saw:&#13;
+<br/><br/><img src="/web/20061013023720im_/http://www.wayoftheleaf.net/images/particleeditor.jpg" border="0"/><br/><br/>
+Yea...&#13;
+<br/><br/>
+um, is there like a tutorial somewhere that could tell me what the &lt;bleep&gt; any of that means.  &#13;
+<br/><br/>
+(i did try to warn people i am not 'graphically' inclined, i'm a writer/coder, not a painter.  *cheezygrin*&#13;
+<br/><br/>
+Thanks for the help,&#13;
+<br/><br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

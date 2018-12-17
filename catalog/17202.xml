@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17202"><title>Mephisto monster/boss model available for a mod...</title><posts><post id="157156" date="Posted: Fri Sep 15, 2006 3:37 pm    Post subject: Mephisto monster/boss model available for a mod..."><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Weeks ago, i reworked on my Mephisto ( <a href="/web/20061013055522/http://www.doom3world.org/phpbb2/viewtopic.php?t=13676&amp;highlight=" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=13676&amp;highlight=</a> ) model to finish him. but like every time, my motivation goes away with days, and i finished bored by him...&#13;
+<br/><br/>
+After a short reflexion, i decided to give to one MOD (alive) my Mephisto model as a contribution. like this, it will take life by another rather than diying on my hard drive...&#13;
+<br/><br/>
+Already done:&#13;
+<br/>
+- Modelled semi-High &amp; low polys (3578 triangles)&#13;
+<br/>
+- Textured with 2x 1024*1024 materials (tga*3) and a 256*256 one (total 3x3=9 TGAs). Materials (.mtr) are done.&#13;
+<br/>
+- Already rigged/skinned (not perfectly).&#13;
+<br/><br/>
+What need to be done:&#13;
+<br/>
+- Export him as a "real" monster for your mod (i exported it as a func_animate for test...)&#13;
+<br/>
+- Retouch some "skin" bones.&#13;
+<br/>
+- Sounds?  <img src="/web/20061013055522im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Here are some low poly pics:&#13;
+<br/><a href="/web/20061013055522/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img159.imageshack.us/img159/3241/meph3ix6.jpg" border="0"/></a>&#13;
+<br/><a href="/web/20061013055522/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img159.imageshack.us/img159/8292/meph2bs1.jpg" border="0"/></a>&#13;
+<br/>
+Max bones:&#13;
+<br/><a href="/web/20061013055522/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img59.imageshack.us/img59/5745/meph1dk4.jpg" border="0"/></a>&#13;
+<br/><br/>
+1200*900 pic:&#13;
+<br/><a href="/web/20061013055522/http://img183.imageshack.us/my.php?image=meph4largepa6.jpg" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img183.imageshack.us/img183/6950/meph4largepa6.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+So before give it to your mod, i want to be sure that your MOD fit a minimum with its style/world.&#13;
+<br/>
+If to adopt it interests you, give me a link to your MOD' site, and i'll choose what's the best carreer choice for him!  <img src="/web/20061013055522im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+Thanks.&#13;
+<br/><br/>
+Ps: Sorry for not beeing able to achieve the surprise as a stand alone "free for all" monster. <img src="/web/20061013055522im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157157" date="Posted: Fri Sep 15, 2006 3:47 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">He looks pretty badass- Do you have any shot of the lowpoly with only the normalmap though?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055522/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157159" date="Posted: Fri Sep 15, 2006 4:03 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">For sure:&#13;
+<br/><a href="/web/20061013055522/http://img171.imageshack.us/my.php?image=meph1gs0.jpg" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img171.imageshack.us/img171/1058/meph1gs0.th.jpg" border="0"/></a> <a href="/web/20061013055522/http://img171.imageshack.us/my.php?image=meph2jv6.jpg" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img171.imageshack.us/img171/4033/meph2jv6.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Plus like i mentionned above, i give the low poly model (3580 triangles) and a semi-high one of 21680 polys and vertex painted (if you want to change lavas textures...), a "test" animation, all in a MAX file.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157160" date="Posted: Fri Sep 15, 2006 4:09 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">His mouth should be dark so it would contrast with the teeth. Generally there should be less that orange skin so it will look cooler.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013055522/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157161" date="Posted: Fri Sep 15, 2006 4:18 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look at his teeth:&#13;
+<br/><a href="/web/20061013055522/http://img247.imageshack.us/my.php?image=meph1wn8.jpg" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img247.imageshack.us/img247/2920/meph1wn8.th.jpg" border="0"/></a> <a href="/web/20061013055522/http://img247.imageshack.us/my.php?image=meph2zo2.jpg" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://img247.imageshack.us/img247/1415/meph2zo2.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+His teeth are not modelled, they are faked by textures, like pinky's &amp; cherub's.&#13;
+<br/><br/>
+But still as i said, i will not make any other modifications...  <img src="/web/20061013055522im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/><span style="font-weight: bold">*EDIT*</span>: For the orange color, that's cause he was coming out of lava, and i love this "more colored" skin rather than a grey/black/red(flesh).<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157529" date="Posted: Tue Sep 19, 2006 10:00 am    Post subject: "><author>zenarion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">HECK! That is an awesome monster. You did surprise me though, i was kinda expecting the Mephisto from Diablo2.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157530" date="Posted: Tue Sep 19, 2006 11:05 am    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">He could do with a lot of fiery particles coming from his orange areas, they look a little stupid now IMO.<br/>_________________<br/><a href="/web/20061013055522/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055522im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055522/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157531" date="Posted: Tue Sep 19, 2006 11:11 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, that's not harder than to add a "deform particle.prt" to the material. Something that the one who end up getting the model could do.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055522/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157535" date="Posted: Tue Sep 19, 2006 1:35 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah, plus in bones, i already add bone_mouthfire, bone_leye &amp; bone_reye to emit particles like flames &amp; smoke from eyes &amp; mouth. plus 4 feet bone_smoke for each steps=&gt;ground collision fake. (like cyberdemon got)<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157156" date="Posted: Fri Sep 15, 2006 3:37 pm    Post subject: Mephisto monster/boss model available for a mod..."><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Weeks ago, i reworked on my Mephisto ( <a href="/web/20061013060659/http://www.doom3world.org/phpbb2/viewtopic.php?t=13676&amp;highlight=" target="_blank">http://www.doom3world.org/phpbb2/viewtopic.php?t=13676&amp;highlight=</a> ) model to finish him. but like every time, my motivation goes away with days, and i finished bored by him...&#13;
+<br/><br/>
+After a short reflexion, i decided to give to one MOD (alive) my Mephisto model as a contribution. like this, it will take life by another rather than diying on my hard drive...&#13;
+<br/><br/>
+Already done:&#13;
+<br/>
+- Modelled semi-High &amp; low polys (3578 triangles)&#13;
+<br/>
+- Textured with 2x 1024*1024 materials (tga*3) and a 256*256 one (total 3x3=9 TGAs). Materials (.mtr) are done.&#13;
+<br/>
+- Already rigged/skinned (not perfectly).&#13;
+<br/><br/>
+What need to be done:&#13;
+<br/>
+- Export him as a "real" monster for your mod (i exported it as a func_animate for test...)&#13;
+<br/>
+- Retouch some "skin" bones.&#13;
+<br/>
+- Sounds?  <img src="/web/20061013060659im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/>
+Here are some low poly pics:&#13;
+<br/><a href="/web/20061013060659/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img159.imageshack.us/img159/3241/meph3ix6.jpg" border="0"/></a>&#13;
+<br/><a href="/web/20061013060659/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img159.imageshack.us/img159/8292/meph2bs1.jpg" border="0"/></a>&#13;
+<br/>
+Max bones:&#13;
+<br/><a href="/web/20061013060659/http://imageshack.us/" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img59.imageshack.us/img59/5745/meph1dk4.jpg" border="0"/></a>&#13;
+<br/><br/>
+1200*900 pic:&#13;
+<br/><a href="/web/20061013060659/http://img183.imageshack.us/my.php?image=meph4largepa6.jpg" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img183.imageshack.us/img183/6950/meph4largepa6.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+So before give it to your mod, i want to be sure that your MOD fit a minimum with its style/world.&#13;
+<br/>
+If to adopt it interests you, give me a link to your MOD' site, and i'll choose what's the best carreer choice for him!  <img src="/web/20061013060659im_/http://doom3world.org/phpbb2/images/smiles/icon_lol.gif" alt="Laughing" border="0"/><br/><br/>
+Thanks.&#13;
+<br/><br/>
+Ps: Sorry for not beeing able to achieve the surprise as a stand alone "free for all" monster. <img src="/web/20061013060659im_/http://doom3world.org/phpbb2/images/smiles/icon_redface.gif" alt="Embarassed" border="0"/><br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157157" date="Posted: Fri Sep 15, 2006 3:47 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">He looks pretty badass- Do you have any shot of the lowpoly with only the normalmap though?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060659/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157159" date="Posted: Fri Sep 15, 2006 4:03 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">For sure:&#13;
+<br/><a href="/web/20061013060659/http://img171.imageshack.us/my.php?image=meph1gs0.jpg" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img171.imageshack.us/img171/1058/meph1gs0.th.jpg" border="0"/></a> <a href="/web/20061013060659/http://img171.imageshack.us/my.php?image=meph2jv6.jpg" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img171.imageshack.us/img171/4033/meph2jv6.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+Plus like i mentionned above, i give the low poly model (3580 triangles) and a semi-high one of 21680 polys and vertex painted (if you want to change lavas textures...), a "test" animation, all in a MAX file.<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157160" date="Posted: Fri Sep 15, 2006 4:09 pm    Post subject: "><author>Regulator</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">His mouth should be dark so it would contrast with the teeth. Generally there should be less that orange skin so it will look cooler.<br/>_________________<br/><span style="font-size: 15px; line-height: normal"><a href="/web/20061013060659/http://www.zshare.net/download/holyshitv-0-1-zip.html" target="_blank" class="postlink">DOWNLOAD HS MOD</a></span></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157161" date="Posted: Fri Sep 15, 2006 4:18 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Look at his teeth:&#13;
+<br/><a href="/web/20061013060659/http://img247.imageshack.us/my.php?image=meph1wn8.jpg" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img247.imageshack.us/img247/2920/meph1wn8.th.jpg" border="0"/></a> <a href="/web/20061013060659/http://img247.imageshack.us/my.php?image=meph2zo2.jpg" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://img247.imageshack.us/img247/1415/meph2zo2.th.jpg" border="0"/></a>&#13;
+<br/><br/>
+His teeth are not modelled, they are faked by textures, like pinky's &amp; cherub's.&#13;
+<br/><br/>
+But still as i said, i will not make any other modifications...  <img src="/web/20061013060659im_/http://doom3world.org/phpbb2/images/smiles/icon_wink.gif" alt="Wink" border="0"/><br/><br/><span style="font-weight: bold">*EDIT*</span>: For the orange color, that's cause he was coming out of lava, and i love this "more colored" skin rather than a grey/black/red(flesh).<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157529" date="Posted: Tue Sep 19, 2006 10:00 am    Post subject: "><author>zenarion</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">HECK! That is an awesome monster. You did surprise me though, i was kinda expecting the Mephisto from Diablo2.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157530" date="Posted: Tue Sep 19, 2006 11:05 am    Post subject: "><author>iceheart</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">He could do with a lot of fiery particles coming from his orange areas, they look a little stupid now IMO.<br/>_________________<br/><a href="/web/20061013060659/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060659im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013060659/http://www.modwiki.net/" target="_blank" class="postlink">www.modwiki.net</a> - wiki resource for all Doom 3 engine-based games.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157531" date="Posted: Tue Sep 19, 2006 11:11 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well, that's not harder than to add a "deform particle.prt" to the material. Something that the one who end up getting the model could do.<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060659/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157535" date="Posted: Tue Sep 19, 2006 1:35 pm    Post subject: "><author>6th Venom</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yeah, plus in bones, i already add bone_mouthfire, bone_leye &amp; bone_reye to emit particles like flames &amp; smoke from eyes &amp; mouth. plus 4 feet bone_smoke for each steps=&gt;ground collision fake. (like cyberdemon got)<br/>_________________<br/>I just wanna make something not made...</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17268"><title>Exported models VS stock Doom3 models</title><posts><post id="157793" date="Posted: Fri Sep 22, 2006 5:52 pm    Post subject: Exported models VS stock Doom3 models"><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is something I just noticed today. Not sure how I missed it before though. (I might add that I am using Der_ton's Md5 importer and exporter for all of this.)&#13;
+<br/><br/>
+I imported one of my own md5 models into Max to do some changes and I noticed that the whole model had been sectioned up into one element for each material used on it. This also applies for anywhere the UV map is cut up and causing a seam. &#13;
+<br/><br/>
+This had me a bit perplexed since I've never seen it before. I looked at a bunch of other models I had worked on in max and they all shared this. &#13;
+<br/><br/>
+This is when I decided to look at the stock id models and they definitely didn't have anything like this going on. The whole model were one model and even if the model were using more skins, or the UV map were cut up making seams, this simply didn't exist in the original id models. They were solid.&#13;
+<br/><br/>
+I've had issues with models not hiding the middle seam unless I make the middle seam not be affected by the animations. And while I've spotted seams in the stock id models once in a while when they move, they still keep the seam pretty locked up tight. Could this be why that isn't the case with my models? And what can be done about this to fix it?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055310/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158015" date="Posted: Sun Sep 24, 2006 10:31 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A vertex in a md5mesh can only belong to one submaterial, and can only have one UV. So all vertices are duplicated, and if you import a md5mesh into max, you can see there are sometimes vertices sharing the same position. Actually, if you import stock id models with my importer into Max, they must show this same thing going on. Are you sure that they are different from your own re-imported models?<br/>_________________<br/><a href="/web/20061013055310/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055310im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055310/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158019" date="Posted: Sun Sep 24, 2006 11:18 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, very sure.&#13;
+<br/><br/>
+EDIT: let me demonstrate with a bunch of stupidly large pictures. (heh)&#13;
+<br/><br/>
+Here you can see the Hellknight model as it is fresh imported into Max w/o any sort of changes to it other than being imported. As you can see it's all smooth, there's no cracks in the model.&#13;
+<br/><a href="/web/20061013055310/http://www.darch-angel.com/temporary/md5model1.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model1.jpg</a>&#13;
+<br/><br/>
+To further demonstrate what I mean, I select the body element of the model and the whole body is selected:&#13;
+<br/><a href="/web/20061013055310/http://www.darch-angel.com/temporary/md5model2.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model2.jpg</a>&#13;
+<br/><br/>
+Now I exported it and reimported it.&#13;
+<br/><br/>
+As you can see here in this picture, where all the seams of the UV map is you get a crack in the model:&#13;
+<br/><a href="/web/20061013055310/http://www.darch-angel.com/temporary/md5model3.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model3.jpg</a>&#13;
+<br/><br/>
+And like before I select the same area of the body model using the element selection and only that area of the model is selected, because it's been cut up into several smaller peices:&#13;
+<br/><a href="/web/20061013055310/http://www.darch-angel.com/temporary/md5model4.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model4.jpg</a><br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055310/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158533" date="Posted: Sun Oct 01, 2006 12:23 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Alright, thanks for the screenshots. I'll look into this.<br/>_________________<br/><a href="/web/20061013055310/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013055310im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013055310/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158828" date="Posted: Wed Oct 04, 2006 5:11 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks, much appreciated. <img src="/web/20061013055310im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013055310/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="157793" date="Posted: Fri Sep 22, 2006 5:52 pm    Post subject: Exported models VS stock Doom3 models"><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">This is something I just noticed today. Not sure how I missed it before though. (I might add that I am using Der_ton's Md5 importer and exporter for all of this.)&#13;
+<br/><br/>
+I imported one of my own md5 models into Max to do some changes and I noticed that the whole model had been sectioned up into one element for each material used on it. This also applies for anywhere the UV map is cut up and causing a seam. &#13;
+<br/><br/>
+This had me a bit perplexed since I've never seen it before. I looked at a bunch of other models I had worked on in max and they all shared this. &#13;
+<br/><br/>
+This is when I decided to look at the stock id models and they definitely didn't have anything like this going on. The whole model were one model and even if the model were using more skins, or the UV map were cut up making seams, this simply didn't exist in the original id models. They were solid.&#13;
+<br/><br/>
+I've had issues with models not hiding the middle seam unless I make the middle seam not be affected by the animations. And while I've spotted seams in the stock id models once in a while when they move, they still keep the seam pretty locked up tight. Could this be why that isn't the case with my models? And what can be done about this to fix it?<br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060542/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158015" date="Posted: Sun Sep 24, 2006 10:31 am    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">A vertex in a md5mesh can only belong to one submaterial, and can only have one UV. So all vertices are duplicated, and if you import a md5mesh into max, you can see there are sometimes vertices sharing the same position. Actually, if you import stock id models with my importer into Max, they must show this same thing going on. Are you sure that they are different from your own re-imported models?<br/>_________________<br/><a href="/web/20061013060542/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060542im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013060542/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158019" date="Posted: Sun Sep 24, 2006 11:18 am    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Yes, very sure.&#13;
+<br/><br/>
+EDIT: let me demonstrate with a bunch of stupidly large pictures. (heh)&#13;
+<br/><br/>
+Here you can see the Hellknight model as it is fresh imported into Max w/o any sort of changes to it other than being imported. As you can see it's all smooth, there's no cracks in the model.&#13;
+<br/><a href="/web/20061013060542/http://www.darch-angel.com/temporary/md5model1.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model1.jpg</a>&#13;
+<br/><br/>
+To further demonstrate what I mean, I select the body element of the model and the whole body is selected:&#13;
+<br/><a href="/web/20061013060542/http://www.darch-angel.com/temporary/md5model2.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model2.jpg</a>&#13;
+<br/><br/>
+Now I exported it and reimported it.&#13;
+<br/><br/>
+As you can see here in this picture, where all the seams of the UV map is you get a crack in the model:&#13;
+<br/><a href="/web/20061013060542/http://www.darch-angel.com/temporary/md5model3.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model3.jpg</a>&#13;
+<br/><br/>
+And like before I select the same area of the body model using the element selection and only that area of the model is selected, because it's been cut up into several smaller peices:&#13;
+<br/><a href="/web/20061013060542/http://www.darch-angel.com/temporary/md5model4.jpg" target="_blank">http://www.darch-angel.com/temporary/md5model4.jpg</a><br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060542/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158533" date="Posted: Sun Oct 01, 2006 12:23 pm    Post subject: "><author>der_ton</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Alright, thanks for the screenshots. I'll look into this.<br/>_________________<br/><a href="/web/20061013060542/http://www.doom3world.org/" target="_blank" class="postlink"><img src="/web/20061013060542im_/http://www.doom3world.org/site/img/d3w.gif" border="0"/> Staff</a>&#13;
+<br/><a href="/web/20061013060542/http://www.doom3world.org/phpbb2/viewtopic.php?t=5474" target="_blank" class="postlink">Modelviewer  |  3DSMax&lt;-&gt;MD5  |  Blender&lt;-&gt;MD5</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="158828" date="Posted: Wed Oct 04, 2006 5:11 pm    Post subject: "><author>Kristus</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Thanks, much appreciated. <img src="/web/20061013060542im_/http://doom3world.org/phpbb2/images/smiles/icon_smile.gif" alt="Smile" border="0"/><br/>_________________<br/>D3: Phobos&#13;
+<br/><a href="/web/20061013060542/http://www.doomworld.com/phobos" target="_blank">http://www.doomworld.com/phobos</a>&#13;
+<br/><br/>
+"About the hardest part of my job is to connect Iraq, to the war on terror." - George Bush</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>

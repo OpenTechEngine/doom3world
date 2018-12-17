@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="2487"><title>Tutorial: Materials for an animated model - MAYA * Updated *</title><posts><post id="p24511" date="Posted: Sun Jun 20, 2004 1:54 am "><author>goliathvt</author><body><![CDATA[<div class="postbody">Okay, so you have your specular, diffuse and normal maps and a model all ready to go... so now what?
+<br /><br /><span style="font-weight: bold">GO HERE</span>
+<br /><!-- m --><a class="postlink" href="https://web.archive.org/web/20100522162903/http://www.doom3world.org/phpbb2/viewtopic.php?p=58097#58097">http://www.doom3world.org/phpbb2/viewto ... 8097#58097</a><!-- m -->
+<br /><br />Updated 10/21/2004
+<br /><br />==============
+<br /><br /><br />EDIT by Goliath:
+<br /><br />Well, you have to wait if you want to follow my tutorial... the export / def file information has changed with the release of Doom3, so the tutorial doesn't work anymore.
+<br /><br />I'll update the tutorial as soon as I have the time and will re-post the links.
+<br /><br />Update:
+<br />Well bugger all.  It seems Maya 4.0 is not able to export models to MD5 with Doom3 anymore... which means I can't export any Maya files to see if the tutorial works.  
+<br /><br />I think the id guys were using Maya 4.5 when they finished D3, so anyone with 4.5... 
+<br /><br />EDIT:  Well, even with 4.5, it won't work (Thanks for testing, Brian, if you ever read these boards).  I should have noticed this before, but, quite simply, the Maya import .dll doesn't exist... period.  I imagine we'll be getting that w/ the SDK, but for now, we're S.O.L. unless we can talk Cat into updating his MD5 exporter for Maya....
+<br /><br />Goliath</div>]]></body></post><post id="p24547" date="Posted: Mon Jun 21, 2004 7:24 am "><author>BNA!</author><body><![CDATA[<div class="postbody">Very nice - much appreciated!</div>]]></body></post><post id="p24552" date="Posted: Mon Jun 21, 2004 1:04 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">I just made an update to the tutorial with a few more items in the Troubleshooting section.  
+<br /><br />Goliath</div>]]></body></post><post id="p24820" date="Posted: Fri Jun 25, 2004 7:06 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Yet another update, now that I understand how the whole "origin" bone works.  
+<br /><br />G</div>]]></body></post><post id="p24850" date="Posted: Sun Jun 27, 2004 5:32 am "><author>demonspawn</author><body><![CDATA[<div class="postbody">very cool Goliathvt..thanks a lot for your efforts and for sharing your results..you rock <img src="https://web.archive.org/web/20100522162903im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /></div>]]></body></post><post id="p25056" date="Posted: Wed Jun 30, 2004 3:06 pm "><author>goliathvt</author><body><![CDATA[<div class="postbody">Always glad to contribute to the community.  Thanks for the kind words.
+<br /><br />Goliath</div>]]></body></post><post id="p129719" date="Posted: Sun Jan 15, 2006 7:13 am "><author>OBWANDO</author><body><![CDATA[<div class="postbody">Link does not work... File on that link when you hit download takes you to a page that says file doesnt exist...</div>]]></body></post><post id="p129750" date="Posted: Sun Jan 15, 2006 5:12 pm "><author>kat</author><body><![CDATA[<div class="postbody">Are you sure? I just tried it and got to the PCGameMods page that's hosting the file. You might have just hit a bad spot?</div>]]></body></post><post id="p134272" date="Posted: Thu Feb 23, 2006 1:19 am "><author>jasonwel</author><body><![CDATA[<div class="postbody">I keep getting the same error monster_buddy.def not found
+<br /><br />My aolbuddy folder is in c:\doom3 
+<br /><br />Am I missing somthing</div>]]></body></post></posts></thread></xml>

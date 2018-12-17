@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="1007"><title>Tutorial: Renderbump flat - tips and tricks</title><posts><post id="p8005" date="Posted: Sun May 25, 2003 10:38 pm "><author>BNA!</author><body><![CDATA[<div class="postbody">Another entry to the "Get Your Ass In The Known" series <img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Ok - you've messed around with the creation of normal maps for Doom3 or Tenebrae and bumped into the limits of either your pc or the tool that renders out the normal map.
+<br /><br />This can easily happen when you model exceeds a million polys.
+<br /><br />Impossible you think?
+<br /><br />No - the more you try to achieve good results the more often you'll find yourself detailing down a single bolt for a tech panel to 20k polys, let alone the panelframe itself which alone weights in 250k...
+<br /><br />Now there's an easy solution for this and eventually for another problem you've experienced.
+<br /><br />Let's get it started:
+<br /><br /><span style="color: red"><span style="font-size: 134%; line-height: normal">Problem:</span></span>
+<br />You want to create a set of very highly detailed panels, each using the same "frame", but varying content in the middle of it.
+<br /><br /><span style="color: green"><span style="font-size: 134%; line-height: normal">Solution:</span></span>
+<br />Split you model into modules and palceholders.
+<br /><br />Let me illustrate it for you.
+<br />Here's the full panel you want to renderbump:
+<br /><br /><img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/doom3/tut/2/renderbumpflat_0.jpg" alt="Image" /><br /><br />The red part is the highly smooth frame, the blue part is what everybody has the righ to name it "sucky pipe" and the invisible part is the "canvas".
+<br />"Invisible?" You ask - what the hell is this?
+<br />It's the yellow outlined part you see in the screenshot.
+<br /><br />It is a square polygon with it's surface normal flipped away from the camera vew, so you are looking at the backside of it hence you're able to look right through it.
+<br />This square polygon act's as a placholder for various reasons:
+<br />- when you render the red frame alone, it'll ensure the correct boundaries of your normal map, especially since this smooth frame has rounded corners
+<br />- when you render only the "sucky pipe" it will ensure that this amazing pipe will not get distorted and the proportions for later compositioning will stay intact
+<br /><br />If you may think that it's all not neccessary since you always render all in the same run, then you obviously haven't rendered pervertly detailed geometry <img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />When I do a panel, it often ends up with a full polycount of 5 or 6 millions - that's admittedly more than my pc can handle - chances are that you'll also run into serious problems...
+<br /><br />So you have to split it up - a nice side effect is, that you can cut down your render times significantly and you always have a nice collection of templates / modules at hand.
+<br /><br />First template - the frame:
+<br /><br /><img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/doom3/tut/2/renderbumpflat_1.jpg" alt="Image" /><br /><br />What are we doing here?
+<br />We're rendering only the frame, what else <img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />Note that the background canvas polygon is still flipped backwards.
+<br />This render will output only the frame itself as both - a colormap and a normalmap.
+<br /><br />Now you're basically done with your panel if you want it nice, easy and boring.
+<br /><br />But you want more - for example a really sucky pipe:
+<br /><br /><img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/doom3/tut/2/renderbumpflat_2.jpg" alt="Image" /><br /><br />Now this render will output only the pipe as both - a colormap and a normalmap.
+<br />Again note that the background canvas poly is flipped and invisible.
+<br /><br />You will also note that the renderoutput is not distorted in any way - if you would have choosen only to render the pipe without the canvas poly you would notice that the engine stretches the output image to fit the dimensions you've entered, so you've lost all proportions.
+<br /><br />Just in case you're scratching your head what this is all about - it's about building a set of renderbumped images you can compose together in a image editor later.
+<br /><br />Look - with keeping the background poly in place and modelling only the individual geometry for the panel on top of it you can add an unlimited amount of geometry to your panel.
+<br /><br />Just render one highly detailed bolt on top of the canvas, then drop the rendered frame into your image editor, add a new layer and drop the bolt there.
+<br /><br />Delete the grey background and copy and paste the normal map of the bolt around as often as you want it (however - do not rotate it!!!) and you have a panel with 100 bolts each originally weighting 100k polys - impossible to render when the geometry is in the same object, but easy if you've split it up.
+<br /><br />Or use the sucky pipe and do a copy and paste for a few times - the same.
+<br /><br />Don't limit yourself to the geometry your object can hold!
+<br /><br />When you're done copying and pasting the normal maps you still have to fill the background with the equivalent for "flat" in the world of normal maps - the color: R: 128 G: 128 B: 255
+<br /><br />This approach is also very handy if you wanto objects to overlap but can't get it done properly in 3D.
+<br /><br />I know the little tutorial is a little confusing for people who are new to this, but if you already got stuck a few times I'm sure you get what I mean <img src="https://web.archive.org/web/20080418194819im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />As usual - all questions go below...</div>]]></body></post></posts></thread></xml>

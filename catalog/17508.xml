@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="17508"><title>WIP to export parts =D</title><posts><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111745/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20081205111745/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20081205111745im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 9:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20101225084441/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 10:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 10:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 12:32 pm "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 1:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 1:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20101225084441/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 11:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 11:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 6:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 9:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20101225084441/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 10:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 10:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 12:32 pm "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 1:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 1:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20101225084441/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20101225084441im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 11:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 11:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 6:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://www.doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post><post id="p159502" date="Posted: Fri Oct 13, 2006 8:50 am "><author>dirk</author><body><![CDATA[<div class="postbody">hi im new here,
+<br />how i cant export this or a mesh like this, is it important that i have to triangulate the mesh;)
+<br />da mesh have without and in a triangulate state 79o vertiXes
+<br /><br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img209.imageshack.us/my.php?image=duivr4.jpg">http://img209.imageshack.us/my.php?image=duivr4.jpg</a><!-- m --> [/img]
+<br /><br />greetz
+<br />dirk</div>]]></body></post><post id="p159503" date="Posted: Fri Oct 13, 2006 9:16 am "><author>modern</author><body><![CDATA[<div class="postbody">Your model needs to be triangulated before you export it.  Doom understands three formats:
+<br /><br />MD5
+<br />ASE
+<br />LWO
+<br /><br />Brain Treppaning made some legendary tutorials in 3ds max on this very topic.  You can find links in the level editing forum tutorial list. <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_biggrin.gif" alt=":D" title="Very Happy" /></div>]]></body></post><post id="p159504" date="Posted: Fri Oct 13, 2006 9:44 am "><author>dirk</author><body><![CDATA[<div class="postbody">thx <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /><br /><br />i haved tryed it from ma to md5, but all tests res i get i am not much luky wit.
+<br /><br />can you take a look on the def file, i am not sure and a noobie with doom3 and moding,  but what i read about the possibilitys im more then lucky =D
+<br /><br />how it use to set up cars?
+<br /><br />ho w is it work to change from a static to a physic obj?
+<br /><br /><br /><br />export dirk {
+<br />	options -prefix piv
+<br />	mesh	models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />	mesh							models/dirk/mountain.md5mesh
+<br /><br />entityDef Terra {
+<br />//	"editor_color"			"1 .5 0"
+<br />//	"editor_mins"			"-16 -16 0"
+<br />//	"editor_maxs"			"16 16 64"
+<br /><br />	"spawnclass"			"static"
+<br />	"model"					"Terra"
+<br /><br /><br />}
+<br /><br />if i export with this file i get only the orientation vector of the joint
+<br /><br />thx a lot,doom3 n moding rules =D</div>]]></body></post><post id="p159517" date="Posted: Fri Oct 13, 2006 11:32 am "><author>elusive</author><body><![CDATA[<div class="postbody">There is a "}" missing <img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />export dirk {
+<br />options -prefix piv
+<br />mesh models/tests/mountain_ma.ma -dest models/tests/mountain
+<br /><br />}
+<br /><br />model Terra {
+<br />mesh models/dirk/mountain.md5mesh
+<br />}  // &lt;- this was missing
+<br /><br />entityDef Terra {
+<br />// "editor_color" "1 .5 0"
+<br />// "editor_mins" "-16 -16 0"
+<br />// "editor_maxs" "16 16 64"
+<br /><br />"spawnclass" "static"
+<br />"model" "Terra"
+<br />} 
+<br /><br />Or maybe you try exporting the Maya Binary than Maya Ascii. I usually use *.mb for the mesh and *.ma for the animations.</div>]]></body></post><post id="p159521" date="Posted: Fri Oct 13, 2006 12:59 pm "><author>dirk</author><body><![CDATA[<div class="postbody"><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_smile.gif" alt=":)" title="Smile" /> danke</div>]]></body></post><post id="p159688" date="Posted: Sun Oct 15, 2006 12:24 am "><author>dirk</author><body><![CDATA[<div class="postbody">the problem is still there, have you an idea what i do wrong,
+<br /><br />example - workflow
+<br /> cube
+<br /><br />1-polycube
+<br />2-triangualte
+<br />3-freeze it
+<br />4-connect joint to mesh, smooth bind
+<br />5-create the def file
+<br />6-converte to md5
+<br /><br /><br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_redface.gif" alt=":oops:" title="Embarassed" /><br />lol
+<br />[img] <!-- m --><a class="postlink" href="https://web.archive.org/web/20070509181516/http://img90.imageshack.us/my.php?image=diu1px0.jpg">http://img90.imageshack.us/my.php?image=diu1px0.jpg</a><!-- m --> [/img]
+<br /><img src="https://web.archive.org/web/20070509181516im_/http://doom3world.org/phpbb2/images/smilies/icon_eek.gif" alt=":shock:" title="Shocked" /><br /><br />2208 verts
+<br /><br />greetz
+<br />d</div>]]></body></post><post id="p160298" date="Posted: Sat Oct 21, 2006 10:02 am "><author>Zombie13</author><body><![CDATA[<div class="postbody">Sorry, but wtf. Is that a triceratops in your pants, or are you just happy to see me?
+<br /><br />Z</div>]]></body></post><post id="p160300" date="Posted: Sat Oct 21, 2006 10:25 am "><author>elusive</author><body><![CDATA[<div class="postbody">If you just want to create simple terrains it would be better to export them to lwo or ase. They're handled as static meshes automatically without writing an extra def file.
+<br />Use the ActorX plugin for Maya to export as ase.
+<br /><br />Unless you have animatied objects like characters or machines or even cinematics then use md5mesh, md5anim, md5camera.</div>]]></body></post><post id="p160652" date="Posted: Wed Oct 25, 2006 5:03 pm "><author>dirk</author><body><![CDATA[<div class="postbody">thx for your help</div>]]></body></post></posts></thread></xml>

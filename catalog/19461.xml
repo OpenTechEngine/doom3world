@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="19461"><title>Quake 4 blured textures.</title><posts><post id="p177660" date="Posted: Mon May 07, 2007 8:39 pm "><author>.apathy</author><body><![CDATA[<div class="postbody">Just installed q4 on vista ultimate and having some problems with the textures being blury.
+<br /><br />Specs as follows:
+<br /><br />Core 2 2.4ghz
+<br />2 gb RAM
+<br />GF7950GX2
+<br />XF-i s/c
+<br />Asus p5wdh
+<br /><br />Video/Sound card drivers all up to date, and i have tried both the 1.3 and 1.4.1 beta patch, but still are sowing the same result.
+<br />I suspect its vista thats causing the corruption. Uploaded 2 pics below
+<br /><br />Any help would be appriciated.
+<br /><br /><a href="https://web.archive.org/web/20081205064535/http://img2.freeimagehosting.net/image.php?5dde290b38.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?5dde290b38.jpg</a>
+<br /><a href="https://web.archive.org/web/20081205064535/http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg</a></div>]]></body></post><post id="p203587" date="Posted: Tue Aug 12, 2008 4:42 pm "><author>morstua</author><body><![CDATA[<div class="postbody">disable the force ambient light <img src="https://web.archive.org/web/20081205064535im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />(in the menu)</div>]]></body></post><post id="p203595" date="Posted: Tue Aug 12, 2008 6:33 pm "><author>LDAsh</author><body><![CDATA[<div class="postbody">Can't view the pics so not sure the exact problem, but here are the cvars that control texture quality:-<div class="codetitle"><b>Code:</b></div><div class="codecontent">seta image_downSize "0"<br />seta image_downSizeBump "0"<br />seta image_downSizeSpecular "0"<br />seta image_filter "GL_LINEAR_MIPMAP_LINEAR"<br />seta image_ignoreHighQuality "0"<br />seta image_roundDown "0"<br />seta image_useCompression "0"<br />seta image_useNormalCompression "0"<br />seta r_renderer "best"</div>You can put those in the console or your CFGs to override the in-game menu settings.</div>]]></body></post><post id="p177660" date="Posted: Mon May 07, 2007 8:39 pm "><author>.apathy</author><body><![CDATA[<div class="postbody">Just installed q4 on vista ultimate and having some problems with the textures being blury.
+<br /><br />Specs as follows:
+<br /><br />Core 2 2.4ghz
+<br />2 gb RAM
+<br />GF7950GX2
+<br />XF-i s/c
+<br />Asus p5wdh
+<br /><br />Video/Sound card drivers all up to date, and i have tried both the 1.3 and 1.4.1 beta patch, but still are sowing the same result.
+<br />I suspect its vista thats causing the corruption. Uploaded 2 pics below
+<br /><br />Any help would be appriciated.
+<br /><br /><a href="https://web.archive.org/web/20081205065245/http://img2.freeimagehosting.net/image.php?5dde290b38.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?5dde290b38.jpg</a>
+<br /><a href="https://web.archive.org/web/20081205065245/http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg</a></div>]]></body></post><post id="p203587" date="Posted: Tue Aug 12, 2008 4:42 pm "><author>morstua</author><body><![CDATA[<div class="postbody">disable the force ambient light <img src="https://web.archive.org/web/20081205065245im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />(in the menu)</div>]]></body></post><post id="p203595" date="Posted: Tue Aug 12, 2008 6:33 pm "><author>LDAsh</author><body><![CDATA[<div class="postbody">Can't view the pics so not sure the exact problem, but here are the cvars that control texture quality:-<div class="codetitle"><b>Code:</b></div><div class="codecontent">seta image_downSize "0"<br />seta image_downSizeBump "0"<br />seta image_downSizeSpecular "0"<br />seta image_filter "GL_LINEAR_MIPMAP_LINEAR"<br />seta image_ignoreHighQuality "0"<br />seta image_roundDown "0"<br />seta image_useCompression "0"<br />seta image_useNormalCompression "0"<br />seta r_renderer "best"</div>You can put those in the console or your CFGs to override the in-game menu settings.</div>]]></body></post><post id="p177660" date="Posted: Mon May 07, 2007 8:39 pm "><author>.apathy</author><body><![CDATA[<div class="postbody">Just installed q4 on vista ultimate and having some problems with the textures being blury.
+<br /><br />Specs as follows:
+<br /><br />Core 2 2.4ghz
+<br />2 gb RAM
+<br />GF7950GX2
+<br />XF-i s/c
+<br />Asus p5wdh
+<br /><br />Video/Sound card drivers all up to date, and i have tried both the 1.3 and 1.4.1 beta patch, but still are sowing the same result.
+<br />I suspect its vista thats causing the corruption. Uploaded 2 pics below
+<br /><br />Any help would be appriciated.
+<br /><br /><a href="https://web.archive.org/web/20081205065245/http://img2.freeimagehosting.net/image.php?5dde290b38.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?5dde290b38.jpg</a>
+<br /><a href="https://web.archive.org/web/20081205065245/http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg" class="postlink">http://img2.freeimagehosting.net/image.php?d33fb4fe51.jpg</a></div>]]></body></post><post id="p203587" date="Posted: Tue Aug 12, 2008 4:42 pm "><author>morstua</author><body><![CDATA[<div class="postbody">disable the force ambient light <img src="https://web.archive.org/web/20081205065245im_/http://www.doom3world.org/phpbb2/images/smilies/icon_wink.gif" alt=";)" title="Wink" /><br /><br />(in the menu)</div>]]></body></post><post id="p203595" date="Posted: Tue Aug 12, 2008 6:33 pm "><author>LDAsh</author><body><![CDATA[<div class="postbody">Can't view the pics so not sure the exact problem, but here are the cvars that control texture quality:-<div class="codetitle"><b>Code:</b></div><div class="codecontent">seta image_downSize "0"<br />seta image_downSizeBump "0"<br />seta image_downSizeSpecular "0"<br />seta image_filter "GL_LINEAR_MIPMAP_LINEAR"<br />seta image_ignoreHighQuality "0"<br />seta image_roundDown "0"<br />seta image_useCompression "0"<br />seta image_useNormalCompression "0"<br />seta r_renderer "best"</div>You can put those in the console or your CFGs to override the in-game menu settings.</div>]]></body></post></posts></thread></xml>

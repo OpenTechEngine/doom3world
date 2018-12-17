@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml><thread id="16896"><title>A simple light shader...</title><posts><post id="154291" date="Posted: Sun Aug 20, 2006 3:24 am    Post subject: A simple light shader..."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well,&#13;
+<br/><br/>
+Suffice it to say I broke down and just made a simple texture/material combo for my laser, and it apparently works well enough for me.  All this visual stuff kind of ruins my mood because I know what I want but I don't know the language to describe it, nor do I know the vernacular of the graphics world to be able to understand what button or value or command in the material/particle/texture world will actually achieve my desired aim.  Of course, yes, I could learn, but that time would be better spent for me learning PHP, xml, and a dozen other new programming languages, than to waste my frustrated time to attempt and achieve some semblance of "art".  &#13;
+<br/><br/>
+Anyway.  This is what I've got, and because I obviously don't know what I'm doing this is what it looks like:&#13;
+<br/><br/>
+Texture:&#13;
+<br/><img src="/web/20061013022909im_/http://www.wayoftheleaf.net/images/laser.jpg" border="0"/><br/><br/>
+Material:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/items/laser/laser &#13;
+<br/>
+{&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      blend add&#13;
+<br/>
+      map lights/laser.tga&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality   &#13;
+<br/>
+   }   &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+End Result in the game:&#13;
+<br/><img src="/web/20061013022909im_/http://www.wayoftheleaf.net/images/in_action.jpg" border="0"/><br/><br/>
+Naturally, that tubular effect expanding and fading the laser beam is not my intention.  But with this imagery and description, I figured (in a naive hopeful sort of way) that someone could give me a quick fix of what I need to do to the material to get the texture of the beam to just render solidly, instead of fading in the distance, or growing in diameter.&#13;
+<br/>
+(if anything it should slightly reduce in diameter the further away from the light source - the barrel of the gun, and possibly fade in the last, oh say 10% of the beam, but i'm not picky, just getting it to stay solid from start to finish would be just fine.)&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154296" date="Posted: Sun Aug 20, 2006 3:41 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the blurring out with distance is probably caused by trilinear filtering. i believe anisotropic filtering was designed to reduce this problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154298" date="Posted: Sun Aug 20, 2006 4:58 am    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i've seen mipmapping do this too.  i belive using the "forcehighquality" keyword would help with that.<br/>_________________<br/>Things I've <a href="/web/20061013022909/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154306" date="Posted: Sun Aug 20, 2006 5:28 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">trilinear is gradated mipmapping</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154291" date="Posted: Sun Aug 20, 2006 3:24 am    Post subject: A simple light shader..."><author>JaedenRuiner</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">Well,&#13;
+<br/><br/>
+Suffice it to say I broke down and just made a simple texture/material combo for my laser, and it apparently works well enough for me.  All this visual stuff kind of ruins my mood because I know what I want but I don't know the language to describe it, nor do I know the vernacular of the graphics world to be able to understand what button or value or command in the material/particle/texture world will actually achieve my desired aim.  Of course, yes, I could learn, but that time would be better spent for me learning PHP, xml, and a dozen other new programming languages, than to waste my frustrated time to attempt and achieve some semblance of "art".  &#13;
+<br/><br/>
+Anyway.  This is what I've got, and because I obviously don't know what I'm doing this is what it looks like:&#13;
+<br/><br/>
+Texture:&#13;
+<br/><img src="/web/20061013024802im_/http://www.wayoftheleaf.net/images/laser.jpg" border="0"/><br/><br/>
+Material:&#13;
+<br/></span><table width="90%" cellspacing="1" cellpadding="3" border="0" align="center"><tr><td><span class="genmed"><b>Code:</b></span></td>	</tr><tr><td class="code">&#13;
+<br/>
+models/items/laser/laser &#13;
+<br/>
+{&#13;
+<br/>
+   translucent&#13;
+<br/>
+   deform tube&#13;
+<br/>
+   {&#13;
+<br/>
+      blend add&#13;
+<br/>
+      map lights/laser.tga&#13;
+<br/>
+      //   scroll   time * 3 , time * 0   &#13;
+<br/>
+      forcehighquality   &#13;
+<br/>
+   }   &#13;
+<br/>
+}&#13;
+<br/></td>	</tr></table><span class="postbody">&#13;
+<br/><br/>
+End Result in the game:&#13;
+<br/><img src="/web/20061013024802im_/http://www.wayoftheleaf.net/images/in_action.jpg" border="0"/><br/><br/>
+Naturally, that tubular effect expanding and fading the laser beam is not my intention.  But with this imagery and description, I figured (in a naive hopeful sort of way) that someone could give me a quick fix of what I need to do to the material to get the texture of the beam to just render solidly, instead of fading in the distance, or growing in diameter.&#13;
+<br/>
+(if anything it should slightly reduce in diameter the further away from the light source - the barrel of the gun, and possibly fade in the last, oh say 10% of the beam, but i'm not picky, just getting it to stay solid from start to finish would be just fine.)&#13;
+<br/><br/>
+Thanks&#13;
+<br/>
+Jaeden "Sifo Dyas" al'Raec Ruiner</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154296" date="Posted: Sun Aug 20, 2006 3:41 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">the blurring out with distance is probably caused by trilinear filtering. i believe anisotropic filtering was designed to reduce this problem.</span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154298" date="Posted: Sun Aug 20, 2006 4:58 am    Post subject: "><author>The Happy Friar</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">i've seen mipmapping do this too.  i belive using the "forcehighquality" keyword would help with that.<br/>_________________<br/>Things I've <a href="/web/20061013024802/http://www.sterlingshield.net/home/steve/doom3/index.html" target="_blank" class="postlink">Learned</a></span><span class="gensmall"/></td>
+			</tr>]]></body></post><post id="154306" date="Posted: Sun Aug 20, 2006 5:28 am    Post subject: "><author>ViPr</author><body><![CDATA[<tr><td colspan="2"><span class="postbody">trilinear is gradated mipmapping</span><span class="gensmall"/></td>
+			</tr>]]></body></post></posts></thread></xml>
